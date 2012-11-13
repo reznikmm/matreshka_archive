@@ -167,9 +167,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
-   --  "InvalidType"
+   --  "exp1"
 
    MS_0009 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0031#,
+           others => 16#0000#),
+         others => <>);
+
+   --  "InvalidType"
+
+   MS_000A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -180,9 +191,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp9"
+
+   MS_000B : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0039#,
+           others => 16#0000#),
+         others => <>);
+
    --  "VariableExp"
 
-   MS_000A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_000C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -195,7 +217,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referringExp"
 
-   MS_000B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_000D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -208,7 +230,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "PropertyCallExp"
 
-   MS_000C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_000E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -222,7 +244,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "representedParameter"
 
-   MS_000D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_000F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 20,
          Length => 20,
@@ -237,7 +259,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "realSymbol"
 
-   MS_000E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -250,7 +272,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "Variable"
 
-   MS_000F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -262,7 +284,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referredSignal"
 
-   MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0012 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -276,7 +298,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "argument"
 
-   MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0013 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -288,7 +310,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "thenOwner"
 
-   MS_0012 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0014 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -301,7 +323,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "owningClassifier"
 
-   MS_0013 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0015 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -315,7 +337,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "item"
 
-   MS_0014 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0016 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -326,7 +348,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referredProperty"
 
-   MS_0015 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0017 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -338,9 +360,21 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp11"
+
+   MS_0018 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0031#,
+           16#0031#,
+           others => 16#0000#),
+         others => <>);
+
    --  "TupleLiteralPart"
 
-   MS_0016 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0019 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -354,7 +388,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionRange"
 
-   MS_0017 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -368,7 +402,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "integerSymbol"
 
-   MS_0018 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -382,7 +416,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referredOperation"
 
-   MS_0019 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -397,7 +431,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "EnumLiteralExp"
 
-   MS_001A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -411,7 +445,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "stringSymbol"
 
-   MS_001B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -424,7 +458,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "AnyType"
 
-   MS_001C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_001F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -436,7 +470,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "InvalidLiteralExp"
 
-   MS_001D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0020 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -451,7 +485,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "Bag"
 
-   MS_001E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0021 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 3,
          Length => 3,
@@ -462,7 +496,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "bodyExpression"
 
-   MS_001F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0022 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -476,7 +510,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "ExpressionInOcl"
 
-   MS_0020 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0023 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -490,7 +524,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionKind"
 
-   MS_0021 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0024 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -504,7 +538,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "resultVariable"
 
-   MS_0022 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0025 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -518,7 +552,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "result"
 
-   MS_0023 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0026 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -530,7 +564,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "initExpression"
 
-   MS_0024 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0027 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -544,7 +578,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "thenExpression"
 
-   MS_0025 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0028 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -558,7 +592,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "NullLiteralExp"
 
-   MS_0026 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0029 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -572,7 +606,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "attribute"
 
-   MS_0027 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -585,7 +619,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "varOwner"
 
-   MS_0028 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -597,7 +631,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "MessageType"
 
-   MS_0029 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -610,7 +644,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "generatedType"
 
-   MS_002A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -624,7 +658,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "appliedElement"
 
-   MS_002B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -638,7 +672,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "booleanSymbol"
 
-   MS_002C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_002F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -652,7 +686,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionLiteralPart"
 
-   MS_002D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0030 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 21,
          Length => 21,
@@ -668,7 +702,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "navigationSource"
 
-   MS_002E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0031 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -682,7 +716,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "IterateExp"
 
-   MS_002F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0032 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -693,9 +727,21 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "type1"
+
+   MS_0033 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0074#, 16#0079#, 16#0070#, 16#0065#,
+           16#0031#,
+           others => 16#0000#),
+         others => <>);
+
    --  "condition"
 
-   MS_0030 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0034 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -708,7 +754,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "firstOwner"
 
-   MS_0031 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0035 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -721,7 +767,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "parameterVariable"
 
-   MS_0032 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0036 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -734,9 +780,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp2"
+
+   MS_0037 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0032#,
+           others => 16#0000#),
+         others => <>);
+
    --  "specification"
 
-   MS_0033 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0038 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -750,7 +807,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "VoidType"
 
-   MS_0034 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0039 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -762,7 +819,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "BagType"
 
-   MS_0035 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_003A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -774,7 +831,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "IntegerLiteralExp"
 
-   MS_0036 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_003B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -789,7 +846,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "elseExpression"
 
-   MS_0037 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_003C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -803,7 +860,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "target"
 
-   MS_0038 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_003D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -815,7 +872,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionLiteralExp"
 
-   MS_0039 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_003E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 20,
          Length => 20,
@@ -828,9 +885,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp3"
+
+   MS_003F : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0033#,
+           others => 16#0000#),
+         others => <>);
+
    --  "FeatureCallExp"
 
-   MS_003A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -844,7 +912,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "OrderedSetType"
 
-   MS_003B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -856,9 +924,32 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "item1"
+
+   MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0069#, 16#0074#, 16#0065#, 16#006D#,
+           16#0031#,
+           others => 16#0000#),
+         others => <>);
+
+   --  "exp4"
+
+   MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0034#,
+           others => 16#0000#),
+         others => <>);
+
    --  "contextVariable"
 
-   MS_003C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -872,7 +963,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "unlimitedNaturalSymbol"
 
-   MS_003D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 22,
          Length => 22,
@@ -886,9 +977,25 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "AssociationClassCallExp"
+
+   MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 31,
+         Unused => 23,
+         Length => 23,
+         Value  =>
+          (16#0041#, 16#0073#, 16#0073#, 16#006F#,
+           16#0063#, 16#0069#, 16#0061#, 16#0074#,
+           16#0069#, 16#006F#, 16#006E#, 16#0043#,
+           16#006C#, 16#0061#, 16#0073#, 16#0073#,
+           16#0043#, 16#0061#, 16#006C#, 16#006C#,
+           16#0045#, 16#0078#, 16#0070#,
+           others => 16#0000#),
+         others => <>);
+
    --  "http://www.omg.org/spec/OCL/20090501"
 
-   MS_003E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 39,
          Unused => 36,
          Length => 36,
@@ -905,25 +1012,9 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
-   --  "AssociationClassCallExp"
-
-   MS_003F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
-          (16#0041#, 16#0073#, 16#0073#, 16#006F#,
-           16#0063#, 16#0069#, 16#0061#, 16#0074#,
-           16#0069#, 16#006F#, 16#006E#, 16#0043#,
-           16#006C#, 16#0061#, 16#0073#, 16#0073#,
-           16#0043#, 16#0061#, 16#006C#, 16#006C#,
-           16#0045#, 16#0078#, 16#0070#,
-           others => 16#0000#),
-         others => <>);
-
    --  "IfExp"
 
-   MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 5,
          Length => 5,
@@ -935,7 +1026,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "OclExpression"
 
-   MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -949,7 +1040,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "loopExp"
 
-   MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -961,7 +1052,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "NavigationCallExp"
 
-   MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -976,7 +1067,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionItem"
 
-   MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -990,7 +1081,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CollectionType"
 
-   MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -1004,7 +1095,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "OrderedSet"
 
-   MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1017,7 +1108,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "in"
 
-   MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_004F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 2,
          Length => 2,
@@ -1028,7 +1119,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "topExpression"
 
-   MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1042,7 +1133,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "StateExp"
 
-   MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1054,7 +1145,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "TupleType"
 
-   MS_004A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1067,7 +1158,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "sentSignal"
 
-   MS_004B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1080,7 +1171,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "OperationCallExp"
 
-   MS_004C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1094,7 +1185,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referredType"
 
-   MS_004D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -1107,7 +1198,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "body"
 
-   MS_004E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -1118,7 +1209,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "kind"
 
-   MS_004F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -1129,7 +1220,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "RealLiteralExp"
 
-   MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 14,
          Length => 14,
@@ -1143,7 +1234,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "loopBodyOwner"
 
-   MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1157,7 +1248,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "Sequence"
 
-   MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1169,7 +1260,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "variable"
 
-   MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1181,7 +1272,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "TupleLiteralExp"
 
-   MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 15,
          Length => 15,
@@ -1195,7 +1286,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "PrimitiveLiteralExp"
 
-   MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 19,
          Length => 19,
@@ -1210,7 +1301,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "UnspecifiedValueExp"
 
-   MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 19,
          Length => 19,
@@ -1225,7 +1316,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "iterator"
 
-   MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_005F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -1237,7 +1328,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "StringLiteralExp"
 
-   MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1251,7 +1342,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "TemplateParameterType"
 
-   MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 21,
          Length => 21,
@@ -1267,7 +1358,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "LetExp"
 
-   MS_005A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -1277,9 +1368,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp6"
+
+   MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0036#,
+           others => 16#0000#),
+         others => <>);
+
    --  "elementType"
 
-   MS_005B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -1292,7 +1394,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "part"
 
-   MS_005C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -1303,7 +1405,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "Collection"
 
-   MS_005D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1314,9 +1416,21 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "type2"
+
+   MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0074#, 16#0079#, 16#0070#, 16#0065#,
+           16#0032#,
+           others => 16#0000#),
+         others => <>);
+
    --  "referredState"
 
-   MS_005E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -1330,7 +1444,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "elseOwner"
 
-   MS_005F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1343,7 +1457,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "parentNav"
 
-   MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1356,7 +1470,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "qualifier"
 
-   MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1369,7 +1483,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "ifOwner"
 
-   MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006C : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1381,7 +1495,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "last"
 
-   MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 4,
          Length => 4,
@@ -1392,7 +1506,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "first"
 
-   MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 5,
          Length => 5,
@@ -1404,7 +1518,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "NumericLiteralExp"
 
-   MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_006F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 17,
          Length => 17,
@@ -1419,7 +1533,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "baseExp"
 
-   MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0070 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1429,9 +1543,21 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "part2"
+
+   MS_0071 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0070#, 16#0061#, 16#0072#, 16#0074#,
+           16#0032#,
+           others => 16#0000#),
+         others => <>);
+
    --  "lastOwner"
 
-   MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0072 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1444,7 +1570,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "SequenceType"
 
-   MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0073 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 12,
          Length => 12,
@@ -1457,7 +1583,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "IteratorExp"
 
-   MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0074 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -1470,7 +1596,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "UnlimitedNaturalLiteralExp"
 
-   MS_006A : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0075 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 31,
          Unused => 26,
          Length => 26,
@@ -1485,9 +1611,32 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp7"
+
+   MS_0076 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0037#,
+           others => 16#0000#),
+         others => <>);
+
+   --  "type3"
+
+   MS_0077 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 5,
+         Length => 5,
+         Value  =>
+          (16#0074#, 16#0079#, 16#0070#, 16#0065#,
+           16#0033#,
+           others => 16#0000#),
+         others => <>);
+
    --  "selfOwner"
 
-   MS_006B : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0078 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -1500,7 +1649,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "LoopExp"
 
-   MS_006C : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0079 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1512,7 +1661,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referredVariable"
 
-   MS_006D : aliased Matreshka.Internals.Strings.Shared_String
+   MS_007A : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 16,
          Length => 16,
@@ -1526,7 +1675,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "initializedElement"
 
-   MS_006E : aliased Matreshka.Internals.Strings.Shared_String
+   MS_007B : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 18,
          Length => 18,
@@ -1539,9 +1688,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp8"
+
+   MS_007C : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0038#,
+           others => 16#0000#),
+         others => <>);
+
    --  "MessageExp"
 
-   MS_006F : aliased Matreshka.Internals.Strings.Shared_String
+   MS_007D : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 10,
          Length => 10,
@@ -1554,7 +1714,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "source"
 
-   MS_0070 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_007E : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -1566,7 +1726,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "referingExp"
 
-   MS_0071 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_007F : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -1579,7 +1739,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "CallExp"
 
-   MS_0072 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0080 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1591,7 +1751,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "SetType"
 
-   MS_0073 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0081 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 7,
          Length => 7,
@@ -1601,9 +1761,20 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
            others => 16#0000#),
          others => <>);
 
+   --  "exp5"
+
+   MS_0082 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 4,
+         Length => 4,
+         Value  =>
+          (16#0065#, 16#0078#, 16#0070#, 16#0035#,
+           others => 16#0000#),
+         others => <>);
+
    --  "referredEnumLiteral"
 
-   MS_0074 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0083 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 23,
          Unused => 19,
          Length => 19,
@@ -1618,7 +1789,7 @@ package AMF.Internals.Tables.OCL_String_Data_00 is
 
    --  "Set"
 
-   MS_0075 : aliased Matreshka.Internals.Strings.Shared_String
+   MS_0084 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 3,
          Length => 3,

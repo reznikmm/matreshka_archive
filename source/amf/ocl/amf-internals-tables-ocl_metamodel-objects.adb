@@ -57,7 +57,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Objects is
    procedure Initialize is
       Extent : constant AMF.Internals.AMF_Extent
         := AMF.Internals.Extents.Allocate_Extent
-            (AMF.Internals.Tables.OCL_String_Data_00.MS_003E'Access);
+            (AMF.Internals.Tables.OCL_String_Data_00.MS_0047'Access);
 
    begin
       Base := AMF.Internals.Tables.CMOF_Element_Table.Last;

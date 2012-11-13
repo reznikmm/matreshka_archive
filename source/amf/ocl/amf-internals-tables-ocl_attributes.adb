@@ -2038,7 +2038,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Literal_Part =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Tuple_Literal_Part_Attribute_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Tuple_Literal_Part_Attribute_Part2,
               Self,
               To);
 
@@ -2142,7 +2142,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Called_Operation_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Called_Operation_Exp6,
               Self,
               To);
 
@@ -2202,31 +2202,31 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_Type1,
               Self,
               To);
 
          when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_Type1,
               Self,
               To);
 
          when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_Type1,
               Self,
               To);
 
          when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_Type1,
               Self,
               To);
 
          when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Type_Element_Type_Type1,
               Self,
               To);
 
@@ -2306,7 +2306,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Let_Exp_In_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Let_Exp_In_Exp4,
               Self,
               To);
 
@@ -2418,7 +2418,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Item =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Item_Item_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Collection_Item_Item_Item1,
               Self,
               To);
 
@@ -2746,13 +2746,13 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Association_Class_Call_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Navigation_Call_Exp_Navigation_Source_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Navigation_Call_Exp_Navigation_Source_Exp9,
               Self,
               To);
 
          when AMF.Internals.Tables.OCL_Types.E_OCL_Property_Call_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Navigation_Call_Exp_Navigation_Source_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Navigation_Call_Exp_Navigation_Source_Exp9,
               Self,
               To);
 
@@ -3076,7 +3076,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Type_Referred_Operation_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Type_Referred_Operation_Type2,
               Self,
               To);
 
@@ -3122,7 +3122,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Type_Referred_Signal_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Type_Referred_Signal_Type3,
               Self,
               To);
 
@@ -3142,7 +3142,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_State_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Exp_Referred_State_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_State_Exp_Referred_State_Exp9,
               Self,
               To);
 
@@ -3162,7 +3162,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Type_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Type_Exp_Referred_Type_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Type_Exp_Referred_Type_Exp11,
               Self,
               To);
 
@@ -3322,7 +3322,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Sent_Signal_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Sent_Signal_Exp7,
               Self,
               To);
 
@@ -3437,7 +3437,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Target_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Message_Exp_Target_Exp8,
               Self,
               To);
 
@@ -3757,7 +3757,7 @@ package body AMF.Internals.Tables.OCL_Attributes is
       case AMF.Internals.Tables.OCL_Element_Table.Table (Self).Kind is
          when AMF.Internals.Tables.OCL_Types.E_OCL_Let_Exp =>
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Let_Exp_Variable_A,
+             (AMF.Internals.Tables.OCL_Metamodel.MA_OCL_Let_Exp_Variable_Exp5,
               Self,
               To);
 

@@ -265,7 +265,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Any_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -273,7 +273,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -281,7 +281,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -289,7 +289,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -297,7 +297,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -305,7 +305,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -313,7 +313,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -321,7 +321,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -329,7 +329,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -361,7 +361,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -377,7 +377,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -386,7 +386,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -395,7 +395,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -403,7 +403,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -411,7 +411,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -419,7 +419,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -427,7 +427,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -436,7 +436,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -445,7 +445,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -453,7 +453,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -462,7 +462,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -471,7 +471,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -480,7 +480,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -488,7 +488,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -504,7 +504,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -512,7 +512,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -520,7 +520,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -528,7 +528,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -537,7 +537,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -545,7 +545,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -553,7 +553,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Any_Types.OCL_Any_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -562,7 +562,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -571,7 +571,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Any_Types.OCL_Any_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -606,7 +606,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Association_Class_Call_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -622,7 +622,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -631,7 +631,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -640,7 +640,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source_A_Exp9 then
             --  NavigationCallExp::navigationSource : Property
 
             return
@@ -649,7 +649,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Navigation_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -657,7 +657,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -665,7 +665,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -682,7 +682,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Qualifier then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Qualifier_A_Parent_Nav then
             --  NavigationCallExp::qualifier : OclExpression
 
             return
@@ -690,7 +690,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualifier);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Association_Class_Call_Exp_Referred_Association_Class then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Association_Class_Call_Exp_Referred_Association_Class_A_Referring_Exp then
             --  AssociationClassCallExp::referredAssociationClass : AssociationClass
 
             return
@@ -699,7 +699,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Association_Class));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             return
@@ -708,7 +708,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -736,7 +736,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Bag_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -744,7 +744,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -752,7 +752,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -760,7 +760,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -768,7 +768,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             return
@@ -777,7 +777,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -785,7 +785,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -793,7 +793,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -801,7 +801,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -809,7 +809,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -841,7 +841,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -857,7 +857,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -866,7 +866,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -875,7 +875,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -883,7 +883,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -891,7 +891,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -899,7 +899,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -907,7 +907,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -915,7 +915,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -923,7 +923,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -932,7 +932,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -941,7 +941,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -949,7 +949,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -958,7 +958,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -967,7 +967,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -976,7 +976,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -984,7 +984,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -1000,7 +1000,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -1008,7 +1008,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -1016,7 +1016,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -1024,7 +1024,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -1033,7 +1033,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -1041,7 +1041,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -1049,7 +1049,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -1058,7 +1058,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -1067,7 +1067,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Bag_Types.OCL_Bag_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -1110,7 +1110,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Boolean_Symbol);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1126,7 +1126,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1135,7 +1135,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1144,7 +1144,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1152,7 +1152,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1160,7 +1160,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1177,7 +1177,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -1205,7 +1205,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Collection_Item_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1213,7 +1213,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Item_Item then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Item_Item_A_Item1 then
             --  CollectionItem::item : OclExpression
 
             return
@@ -1230,7 +1230,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1239,7 +1239,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1248,7 +1248,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1256,7 +1256,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1264,7 +1264,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1281,7 +1281,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Items.OCL_Collection_Item_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -1309,7 +1309,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Collection_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1333,7 +1333,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1342,7 +1342,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1351,7 +1351,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1359,7 +1359,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1367,7 +1367,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1376,7 +1376,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Literal_Exp_Part then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Literal_Exp_Part_A_Exp1 then
             --  CollectionLiteralExp::part : CollectionLiteralPart
 
             return
@@ -1392,7 +1392,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -1420,7 +1420,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Collection_Range_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1428,7 +1428,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_First then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_First_A_First_Owner then
             --  CollectionRange::first : OclExpression
 
             return
@@ -1437,7 +1437,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_First));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_Last then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_Last_A_Last_Owner then
             --  CollectionRange::last : OclExpression
 
             return
@@ -1454,7 +1454,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1463,7 +1463,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1472,7 +1472,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1480,7 +1480,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1488,7 +1488,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1505,7 +1505,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -1533,7 +1533,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Collection_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -1541,7 +1541,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1549,7 +1549,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -1557,7 +1557,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -1565,7 +1565,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             return
@@ -1574,7 +1574,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -1582,7 +1582,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -1590,7 +1590,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -1598,7 +1598,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -1606,7 +1606,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -1638,7 +1638,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -1654,7 +1654,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1663,7 +1663,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1672,7 +1672,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -1680,7 +1680,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1688,7 +1688,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1696,7 +1696,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -1704,7 +1704,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -1712,7 +1712,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -1720,7 +1720,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -1729,7 +1729,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -1738,7 +1738,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -1746,7 +1746,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1755,7 +1755,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -1764,7 +1764,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -1773,7 +1773,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -1781,7 +1781,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -1797,7 +1797,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -1805,7 +1805,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -1813,7 +1813,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -1821,7 +1821,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -1830,7 +1830,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -1838,7 +1838,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -1846,7 +1846,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -1855,7 +1855,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -1864,7 +1864,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Collection_Types.OCL_Collection_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -1899,7 +1899,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Enum_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -1915,7 +1915,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -1924,7 +1924,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -1933,7 +1933,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -1941,7 +1941,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -1949,7 +1949,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -1966,7 +1966,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Enum_Literal_Exp_Referred_Enum_Literal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Enum_Literal_Exp_Referred_Enum_Literal_A_Literal_Exp then
             --  EnumLiteralExp::referredEnumLiteral : EnumerationLiteral
 
             return
@@ -1975,7 +1975,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Enum_Literal));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2003,7 +2003,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Expression_In_Ocl_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression then
             --  OpaqueExpression::behavior : Behavior
 
             return
@@ -2020,7 +2020,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Body);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Body_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Body_Expression_A_Top_Expression then
             --  ExpressionInOcl::bodyExpression : OclExpression
 
             return
@@ -2029,7 +2029,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Body_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2037,7 +2037,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Context_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Context_Variable_A_Self_Owner then
             --  ExpressionInOcl::contextVariable : Variable
 
             return
@@ -2046,7 +2046,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Context_Variable));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Generated_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Generated_Type_A_Owning_Classifier then
             --  ExpressionInOcl::generatedType : Classifier
 
             return
@@ -2071,7 +2071,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2080,7 +2080,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2089,7 +2089,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2097,7 +2097,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2105,7 +2105,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2114,7 +2114,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -2123,7 +2123,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Parameter_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Parameter_Variable_A_Var_Owner then
             --  ExpressionInOcl::parameterVariable : Variable
 
             return
@@ -2139,7 +2139,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Result then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Result_A_Opaque_Expression then
             --  OpaqueExpression::result : Parameter
 
             return
@@ -2148,7 +2148,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Result));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Result_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Result_Variable_A_Result_Owner then
             --  ExpressionInOcl::resultVariable : Variable
 
             return
@@ -2157,7 +2157,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Result_Variable));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -2166,7 +2166,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2202,7 +2202,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_If_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2210,7 +2210,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.If_Exps.OCL_If_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Condition then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Condition_A_If_Owner then
             --  IfExp::condition : OclExpression
 
             return
@@ -2219,7 +2219,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.If_Exps.OCL_If_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Condition));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Else_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Else_Expression_A_Else_Owner then
             --  IfExp::elseExpression : OclExpression
 
             return
@@ -2236,7 +2236,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.If_Exps.OCL_If_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2245,7 +2245,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.If_Exps.OCL_If_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2254,7 +2254,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.If_Exps.OCL_If_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2262,7 +2262,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.If_Exps.OCL_If_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2270,7 +2270,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.If_Exps.OCL_If_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2287,7 +2287,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.If_Exps.OCL_If_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Then_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Then_Expression_A_Then_Owner then
             --  IfExp::thenExpression : OclExpression
 
             return
@@ -2296,7 +2296,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.If_Exps.OCL_If_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Then_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2324,7 +2324,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Integer_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2348,7 +2348,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2357,7 +2357,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2366,7 +2366,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2374,7 +2374,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2382,7 +2382,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2399,7 +2399,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2427,7 +2427,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Invalid_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2443,7 +2443,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2452,7 +2452,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2461,7 +2461,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2469,7 +2469,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2477,7 +2477,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2494,7 +2494,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2522,7 +2522,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Invalid_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -2530,7 +2530,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2538,7 +2538,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -2546,7 +2546,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -2554,7 +2554,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -2562,7 +2562,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -2570,7 +2570,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -2578,7 +2578,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -2586,7 +2586,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -2618,7 +2618,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -2634,7 +2634,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2643,7 +2643,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2652,7 +2652,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2660,7 +2660,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2668,7 +2668,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -2676,7 +2676,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -2684,7 +2684,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -2693,7 +2693,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -2702,7 +2702,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -2710,7 +2710,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2719,7 +2719,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -2728,7 +2728,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -2737,7 +2737,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -2745,7 +2745,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -2761,7 +2761,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -2769,7 +2769,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -2777,7 +2777,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -2785,7 +2785,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -2794,7 +2794,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -2802,7 +2802,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -2810,7 +2810,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -2819,7 +2819,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -2828,7 +2828,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -2863,7 +2863,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Iterate_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body_A_Loop_Body_Owner then
             --  LoopExp::body : OclExpression
 
             return
@@ -2872,7 +2872,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Body));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -2880,7 +2880,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Iterator then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Iterator_A_Loop_Exp then
             --  LoopExp::iterator : Variable
 
             return
@@ -2896,7 +2896,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -2905,7 +2905,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -2914,7 +2914,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -2922,7 +2922,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -2930,7 +2930,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -2947,7 +2947,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Iterate_Exp_Result then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Iterate_Exp_Result_A_Base_Exp then
             --  IterateExp::result : Variable
 
             return
@@ -2956,7 +2956,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Result));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             return
@@ -2965,7 +2965,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -2993,7 +2993,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Iterator_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body_A_Loop_Body_Owner then
             --  LoopExp::body : OclExpression
 
             return
@@ -3002,7 +3002,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Body));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3010,7 +3010,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Iterator then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Iterator_A_Loop_Exp then
             --  LoopExp::iterator : Variable
 
             return
@@ -3026,7 +3026,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3035,7 +3035,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3044,7 +3044,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3052,7 +3052,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3060,7 +3060,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3077,7 +3077,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             return
@@ -3086,7 +3086,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -3114,7 +3114,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Let_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3122,7 +3122,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_In then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_In_A_Exp4 then
             --  LetExp::in : OclExpression
 
             return
@@ -3139,7 +3139,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3148,7 +3148,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3157,7 +3157,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3165,7 +3165,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3173,7 +3173,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3190,7 +3190,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -3199,7 +3199,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Let_Exps.OCL_Let_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Type));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_Variable_A_Exp5 then
             --  LetExp::variable : Variable
 
             return
@@ -3227,7 +3227,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Message_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Argument then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Argument_A_Exp2 then
             --  MessageExp::argument : OclExpression
 
             return
@@ -3235,7 +3235,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Argument);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Called_Operation then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Called_Operation_A_Exp6 then
             --  MessageExp::calledOperation : CallOperationAction
 
             return
@@ -3244,7 +3244,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Called_Operation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3260,7 +3260,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3269,7 +3269,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3278,7 +3278,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3286,7 +3286,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3294,7 +3294,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3311,7 +3311,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Sent_Signal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Sent_Signal_A_Exp7 then
             --  MessageExp::sentSignal : SendSignalAction
 
             return
@@ -3320,7 +3320,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Sent_Signal));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Target then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Target_A_Exp8 then
             --  MessageExp::target : OclExpression
 
             return
@@ -3329,7 +3329,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Exps.OCL_Message_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Target));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -3357,7 +3357,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Message_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -3365,7 +3365,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3373,7 +3373,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -3381,7 +3381,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -3389,7 +3389,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -3397,7 +3397,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -3405,7 +3405,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -3413,7 +3413,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -3421,7 +3421,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -3453,7 +3453,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -3469,7 +3469,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3478,7 +3478,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3487,7 +3487,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3495,7 +3495,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3503,7 +3503,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -3511,7 +3511,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -3519,7 +3519,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -3528,7 +3528,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -3537,7 +3537,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -3545,7 +3545,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3554,7 +3554,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -3563,7 +3563,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -3572,7 +3572,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -3580,7 +3580,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -3596,7 +3596,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -3604,7 +3604,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -3612,7 +3612,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -3620,7 +3620,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Operation then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Operation_A_Type2 then
             --  MessageType::referredOperation : Operation
 
             return
@@ -3629,7 +3629,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Operation));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Signal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Signal_A_Type3 then
             --  MessageType::referredSignal : Signal
 
             return
@@ -3638,7 +3638,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Signal));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -3647,7 +3647,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -3655,7 +3655,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -3663,7 +3663,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Message_Types.OCL_Message_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -3672,7 +3672,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -3681,7 +3681,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Message_Types.OCL_Message_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -3716,7 +3716,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Null_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3732,7 +3732,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3741,7 +3741,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3750,7 +3750,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3758,7 +3758,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3766,7 +3766,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3783,7 +3783,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -3811,7 +3811,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Operation_Call_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Argument then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Argument_A_Parent_Call then
             --  OperationCallExp::argument : OclExpression
 
             return
@@ -3819,7 +3819,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Argument);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3835,7 +3835,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -3844,7 +3844,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -3853,7 +3853,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -3861,7 +3861,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -3869,7 +3869,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -3886,7 +3886,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Referred_Operation then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Referred_Operation_A_Refering_Exp then
             --  OperationCallExp::referredOperation : Operation
 
             return
@@ -3895,7 +3895,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Operation));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             return
@@ -3904,7 +3904,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -3932,7 +3932,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Ordered_Set_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -3940,7 +3940,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -3948,7 +3948,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -3956,7 +3956,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -3964,7 +3964,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             return
@@ -3973,7 +3973,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -3981,7 +3981,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -3989,7 +3989,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -3997,7 +3997,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -4005,7 +4005,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -4037,7 +4037,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -4053,7 +4053,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -4062,7 +4062,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -4071,7 +4071,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -4079,7 +4079,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -4087,7 +4087,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -4095,7 +4095,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -4103,7 +4103,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -4111,7 +4111,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -4119,7 +4119,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -4128,7 +4128,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -4137,7 +4137,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -4145,7 +4145,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -4154,7 +4154,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -4163,7 +4163,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -4172,7 +4172,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -4180,7 +4180,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -4196,7 +4196,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -4204,7 +4204,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -4212,7 +4212,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -4220,7 +4220,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -4229,7 +4229,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -4237,7 +4237,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -4245,7 +4245,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -4254,7 +4254,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -4263,7 +4263,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -4298,7 +4298,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Property_Call_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -4314,7 +4314,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -4323,7 +4323,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -4332,7 +4332,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source_A_Exp9 then
             --  NavigationCallExp::navigationSource : Property
 
             return
@@ -4341,7 +4341,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Navigation_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -4349,7 +4349,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -4357,7 +4357,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -4374,7 +4374,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Qualifier then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Qualifier_A_Parent_Nav then
             --  NavigationCallExp::qualifier : OclExpression
 
             return
@@ -4382,7 +4382,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualifier);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Property_Call_Exp_Referred_Property then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Property_Call_Exp_Referred_Property_A_Refering_Exp then
             --  PropertyCallExp::referredProperty : Property
 
             return
@@ -4391,7 +4391,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Property));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             return
@@ -4400,7 +4400,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Source));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -4428,7 +4428,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Real_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -4444,7 +4444,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -4453,7 +4453,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -4462,7 +4462,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -4470,7 +4470,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -4478,7 +4478,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -4503,7 +4503,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Real_Symbol);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -4531,7 +4531,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Sequence_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -4539,7 +4539,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -4547,7 +4547,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -4555,7 +4555,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -4563,7 +4563,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             return
@@ -4572,7 +4572,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -4580,7 +4580,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -4588,7 +4588,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -4596,7 +4596,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -4604,7 +4604,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -4636,7 +4636,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -4652,7 +4652,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -4661,7 +4661,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -4670,7 +4670,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -4678,7 +4678,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -4686,7 +4686,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -4694,7 +4694,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -4702,7 +4702,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -4710,7 +4710,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -4718,7 +4718,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -4727,7 +4727,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -4736,7 +4736,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -4744,7 +4744,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -4753,7 +4753,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -4762,7 +4762,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -4771,7 +4771,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -4779,7 +4779,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -4795,7 +4795,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -4803,7 +4803,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -4811,7 +4811,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -4819,7 +4819,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -4828,7 +4828,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -4836,7 +4836,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -4844,7 +4844,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -4853,7 +4853,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -4862,7 +4862,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -4897,7 +4897,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Set_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -4905,7 +4905,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -4913,7 +4913,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -4921,7 +4921,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -4929,7 +4929,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             return
@@ -4938,7 +4938,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -4946,7 +4946,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -4954,7 +4954,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -4962,7 +4962,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -4970,7 +4970,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -5002,7 +5002,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -5018,7 +5018,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5027,7 +5027,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5036,7 +5036,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -5044,7 +5044,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5052,7 +5052,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5060,7 +5060,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -5068,7 +5068,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -5076,7 +5076,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -5084,7 +5084,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -5093,7 +5093,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -5102,7 +5102,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -5110,7 +5110,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5119,7 +5119,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -5128,7 +5128,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -5137,7 +5137,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -5145,7 +5145,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -5161,7 +5161,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -5169,7 +5169,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -5177,7 +5177,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -5185,7 +5185,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -5194,7 +5194,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -5202,7 +5202,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -5210,7 +5210,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Set_Types.OCL_Set_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -5219,7 +5219,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -5228,7 +5228,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Set_Types.OCL_Set_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -5263,7 +5263,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_State_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -5279,7 +5279,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.State_Exps.OCL_State_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5288,7 +5288,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.State_Exps.OCL_State_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5297,7 +5297,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.State_Exps.OCL_State_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5305,7 +5305,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.State_Exps.OCL_State_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5313,7 +5313,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.State_Exps.OCL_State_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5330,7 +5330,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.State_Exps.OCL_State_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_State_Exp_Referred_State then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_State_Exp_Referred_State_A_Exp9 then
             --  StateExp::referredState : State
 
             return
@@ -5339,7 +5339,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.State_Exps.OCL_State_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_State));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -5367,7 +5367,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_String_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -5383,7 +5383,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5392,7 +5392,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5401,7 +5401,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5409,7 +5409,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5417,7 +5417,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5442,7 +5442,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_String_Symbol);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -5470,7 +5470,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Template_Parameter_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -5478,7 +5478,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -5486,7 +5486,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -5494,7 +5494,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -5502,7 +5502,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -5510,7 +5510,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -5518,7 +5518,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -5526,7 +5526,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -5534,7 +5534,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -5566,7 +5566,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -5582,7 +5582,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5591,7 +5591,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5600,7 +5600,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5608,7 +5608,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5616,7 +5616,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -5624,7 +5624,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -5632,7 +5632,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -5641,7 +5641,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -5650,7 +5650,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -5658,7 +5658,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5667,7 +5667,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -5676,7 +5676,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -5685,7 +5685,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -5693,7 +5693,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -5709,7 +5709,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -5717,7 +5717,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -5725,7 +5725,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -5733,7 +5733,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -5750,7 +5750,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Specification);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -5758,7 +5758,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -5766,7 +5766,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -5775,7 +5775,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -5784,7 +5784,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -5819,7 +5819,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Tuple_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -5835,7 +5835,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5844,7 +5844,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5853,7 +5853,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5861,7 +5861,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5869,7 +5869,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5878,7 +5878,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Exp_Part then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Exp_Part_A_Exp3 then
             --  TupleLiteralExp::part : TupleLiteralPart
 
             return
@@ -5894,7 +5894,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -5922,7 +5922,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Tuple_Literal_Part_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute_A_Part2 then
             --  TupleLiteralPart::attribute : Property
 
             return
@@ -5931,7 +5931,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -5947,7 +5947,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -5956,7 +5956,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -5965,7 +5965,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -5973,7 +5973,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -5981,7 +5981,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -5998,7 +5998,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6026,7 +6026,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Tuple_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -6034,7 +6034,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6042,7 +6042,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -6050,7 +6050,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -6058,7 +6058,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -6066,7 +6066,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -6074,7 +6074,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -6082,7 +6082,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -6090,7 +6090,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -6122,7 +6122,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -6138,7 +6138,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6147,7 +6147,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6156,7 +6156,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute_Property_Datatype then
             --  DataType::ownedAttribute : Property
 
             return
@@ -6164,7 +6164,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6172,7 +6172,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6180,7 +6180,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -6188,7 +6188,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation_Operation_Datatype then
             --  DataType::ownedOperation : Operation
 
             return
@@ -6196,7 +6196,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Operation);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -6204,7 +6204,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -6213,7 +6213,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -6222,7 +6222,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -6230,7 +6230,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6239,7 +6239,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -6248,7 +6248,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -6257,7 +6257,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -6265,7 +6265,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -6281,7 +6281,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -6289,7 +6289,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -6297,7 +6297,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -6305,7 +6305,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -6314,7 +6314,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -6322,7 +6322,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -6330,7 +6330,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -6339,7 +6339,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -6348,7 +6348,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -6383,7 +6383,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Type_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6399,7 +6399,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6408,7 +6408,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6417,7 +6417,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6425,7 +6425,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6433,7 +6433,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6450,7 +6450,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Type_Exp_Referred_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Type_Exp_Referred_Type_A_Exp11 then
             --  TypeExp::referredType : Classifier
 
             return
@@ -6459,7 +6459,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Type_Exps.OCL_Type_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Type));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6487,7 +6487,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Unlimited_Natural_Literal_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6503,7 +6503,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6512,7 +6512,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6521,7 +6521,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6529,7 +6529,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6537,7 +6537,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6554,7 +6554,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6590,7 +6590,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Unspecified_Value_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6606,7 +6606,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6615,7 +6615,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6624,7 +6624,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6632,7 +6632,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6640,7 +6640,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6657,7 +6657,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6685,7 +6685,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Variable_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6693,7 +6693,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variables.OCL_Variable_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Init_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Init_Expression_A_Initialized_Element then
             --  Variable::initExpression : OclExpression
 
             return
@@ -6710,7 +6710,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variables.OCL_Variable_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6719,7 +6719,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variables.OCL_Variable_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6728,7 +6728,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variables.OCL_Variable_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6736,7 +6736,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variables.OCL_Variable_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6744,7 +6744,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variables.OCL_Variable_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6761,7 +6761,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variables.OCL_Variable_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Represented_Parameter then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Represented_Parameter_A_Variable then
             --  Variable::representedParameter : Parameter
 
             return
@@ -6770,7 +6770,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variables.OCL_Variable_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Represented_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6798,7 +6798,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Variable_Exp_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6814,7 +6814,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -6823,7 +6823,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -6832,7 +6832,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -6840,7 +6840,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -6848,7 +6848,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -6865,7 +6865,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Exp_Referred_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Exp_Referred_Variable_A_Refering_Exp then
             --  VariableExp::referredVariable : Variable
 
             return
@@ -6874,7 +6874,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Referred_Variable));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             return
@@ -6902,7 +6902,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       function OCL_Void_Type_Get return League.Holders.Holder is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             --  Classifier::attribute : Property
 
             return
@@ -6910,7 +6910,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Attribute);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Client_Dependency_Dependency_Client then
             --  NamedElement::clientDependency : Dependency
 
             return
@@ -6918,7 +6918,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Client_Dependency);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Collaboration_Use_A_Classifier then
             --  Classifier::collaborationUse : CollaborationUse
 
             return
@@ -6926,7 +6926,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Collaboration_Use);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             --  Namespace::elementImport : ElementImport
 
             return
@@ -6934,7 +6934,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Element_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             --  Classifier::feature : Feature
 
             return
@@ -6942,7 +6942,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Feature);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_General_A_Classifier then
             --  Classifier::general : Classifier
 
             return
@@ -6950,7 +6950,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_General);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Generalization_Generalization_Specific then
             --  Classifier::generalization : Generalization
 
             return
@@ -6958,7 +6958,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Generalization);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member_A_Namespace then
             --  Namespace::importedMember : PackageableElement
 
             return
@@ -6966,7 +6966,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Imported_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member_A_Classifier then
             --  Classifier::inheritedMember : NamedElement
 
             return
@@ -6998,7 +6998,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Is_Leaf);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Member_A_Member_Namespace then
             --  Namespace::member : NamedElement
 
             return
@@ -7014,7 +7014,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             return
@@ -7023,7 +7023,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Name_Expression));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Namespace_Namespace_Owned_Member then
             --  NamedElement::namespace : Namespace
 
             return
@@ -7032,7 +7032,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Namespace));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             --  Element::ownedComment : Comment
 
             return
@@ -7040,7 +7040,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Comment);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Element_Element_Owner then
             --  Element::ownedElement : Element
 
             return
@@ -7048,7 +7048,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             --  Namespace::ownedMember : NamedElement
 
             return
@@ -7056,7 +7056,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Member);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             --  Namespace::ownedRule : Constraint
 
             return
@@ -7064,7 +7064,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Rule);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             return
@@ -7073,7 +7073,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             return
@@ -7082,7 +7082,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Template_Signature));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case_A_Classifier then
             --  Classifier::ownedUseCase : UseCase
 
             return
@@ -7090,7 +7090,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Owned_Use_Case);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owner_Element_Owned_Element then
             --  Element::owner : Element
 
             return
@@ -7099,7 +7099,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owner));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             return
@@ -7108,7 +7108,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Owning_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             return
@@ -7117,7 +7117,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Package));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             --  Namespace::packageImport : PackageImport
 
             return
@@ -7125,7 +7125,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Package_Import);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype then
             --  Classifier::powertypeExtent : GeneralizationSet
 
             return
@@ -7141,7 +7141,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Qualified_Name);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Redefined_Classifier_A_Classifier then
             --  Classifier::redefinedClassifier : Classifier
 
             return
@@ -7149,7 +7149,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Classifier);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element then
             --  RedefinableElement::redefinedElement : RedefinableElement
 
             return
@@ -7157,7 +7157,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefined_Element);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element then
             --  RedefinableElement::redefinitionContext : Classifier
 
             return
@@ -7165,7 +7165,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Redefinition_Context);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             return
@@ -7174,7 +7174,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Representation));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier then
             --  Classifier::substitution : Substitution
 
             return
@@ -7182,7 +7182,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Substitution);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             --  TemplateableElement::templateBinding : TemplateBinding
 
             return
@@ -7190,7 +7190,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                (AMF.OCL.Void_Types.OCL_Void_Type_Access
                  (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Binding);
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             return
@@ -7199,7 +7199,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             return
@@ -7208,7 +7208,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
                  (AMF.OCL.Void_Types.OCL_Void_Type_Access
                    (AMF.Internals.Helpers.To_Element (Self)).Get_Template_Parameter));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Use_Case_Use_Case_Subject then
             --  Classifier::useCase : UseCase
 
             return
@@ -7643,56 +7643,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Any_Types.OCL_Any_Type_Access
@@ -7731,35 +7731,35 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source_A_Exp9 then
             --  NavigationCallExp::navigationSource : Property
 
             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Navigation_Source
                (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Association_Class_Call_Exp_Referred_Association_Class then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Association_Class_Call_Exp_Referred_Association_Class_A_Referring_Exp then
             --  AssociationClassCallExp::referredAssociationClass : AssociationClass
 
             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Association_Class
                (AMF.UML.Association_Classes.UML_Association_Class_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Source
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Association_Class_Call_Exps.OCL_Association_Class_Call_Exp_Access
@@ -7784,7 +7784,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Bag_Type_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
@@ -7819,56 +7819,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Bag_Types.OCL_Bag_Type_Access
@@ -7914,14 +7914,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Boolean_Literal_Exps.OCL_Boolean_Literal_Exp_Access
@@ -7946,7 +7946,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Collection_Item_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Item_Item then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Item_Item_A_Item1 then
             --  CollectionItem::item : OclExpression
 
             AMF.OCL.Collection_Items.OCL_Collection_Item_Access
@@ -7960,14 +7960,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Collection_Items.OCL_Collection_Item_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Collection_Items.OCL_Collection_Item_Access
@@ -8006,14 +8006,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Collection_Literal_Exps.OCL_Collection_Literal_Exp_Access
@@ -8038,14 +8038,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Collection_Range_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_First then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_First_A_First_Owner then
             --  CollectionRange::first : OclExpression
 
             AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_First
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_Last then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Range_Last_A_Last_Owner then
             --  CollectionRange::last : OclExpression
 
             AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
@@ -8059,14 +8059,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Collection_Ranges.OCL_Collection_Range_Access
@@ -8091,7 +8091,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Collection_Type_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
@@ -8126,56 +8126,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Collection_Types.OCL_Collection_Type_Access
@@ -8214,21 +8214,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Enum_Literal_Exp_Referred_Enum_Literal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Enum_Literal_Exp_Referred_Enum_Literal_A_Literal_Exp then
             --  EnumLiteralExp::referredEnumLiteral : EnumerationLiteral
 
             AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Enum_Literal
                (AMF.UML.Enumeration_Literals.UML_Enumeration_Literal_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Enum_Literal_Exps.OCL_Enum_Literal_Exp_Access
@@ -8253,28 +8253,28 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Expression_In_Ocl_Set is
       begin
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression then
             --  OpaqueExpression::behavior : Behavior
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Behavior
                (AMF.UML.Behaviors.UML_Behavior_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Body_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Body_Expression_A_Top_Expression then
             --  ExpressionInOcl::bodyExpression : OclExpression
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Body_Expression
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Context_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Context_Variable_A_Self_Owner then
             --  ExpressionInOcl::contextVariable : Variable
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Context_Variable
                (AMF.OCL.Variables.OCL_Variable_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Generated_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Generated_Type_A_Owning_Classifier then
             --  ExpressionInOcl::generatedType : Classifier
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
@@ -8288,35 +8288,35 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Result_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Expression_In_Ocl_Result_Variable_A_Result_Owner then
             --  ExpressionInOcl::resultVariable : Variable
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Result_Variable
                (AMF.OCL.Variables.OCL_Variable_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Expression_In_Ocls.OCL_Expression_In_Ocl_Access
@@ -8348,14 +8348,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_If_Exp_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Condition then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Condition_A_If_Owner then
             --  IfExp::condition : OclExpression
 
             AMF.OCL.If_Exps.OCL_If_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Condition
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Else_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Else_Expression_A_Else_Owner then
             --  IfExp::elseExpression : OclExpression
 
             AMF.OCL.If_Exps.OCL_If_Exp_Access
@@ -8369,21 +8369,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.If_Exps.OCL_If_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Then_Expression then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_If_Exp_Then_Expression_A_Then_Owner then
             --  IfExp::thenExpression : OclExpression
 
             AMF.OCL.If_Exps.OCL_If_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Then_Expression
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.If_Exps.OCL_If_Exp_Access
@@ -8422,14 +8422,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Integer_Literal_Exps.OCL_Integer_Literal_Exp_Access
@@ -8461,14 +8461,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Invalid_Literal_Exps.OCL_Invalid_Literal_Exp_Access
@@ -8521,56 +8521,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Invalid_Types.OCL_Invalid_Type_Access
@@ -8602,7 +8602,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Iterate_Exp_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body_A_Loop_Body_Owner then
             --  LoopExp::body : OclExpression
 
             AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
@@ -8616,28 +8616,28 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Iterate_Exp_Result then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Iterate_Exp_Result_A_Base_Exp then
             --  IterateExp::result : Variable
 
             AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Result
                (AMF.OCL.Variables.OCL_Variable_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Source
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Iterate_Exps.OCL_Iterate_Exp_Access
@@ -8662,7 +8662,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Iterator_Exp_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Loop_Exp_Body_A_Loop_Body_Owner then
             --  LoopExp::body : OclExpression
 
             AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
@@ -8676,21 +8676,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Source
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Iterator_Exps.OCL_Iterator_Exp_Access
@@ -8715,7 +8715,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Let_Exp_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_In then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_In_A_Exp4 then
             --  LetExp::in : OclExpression
 
             AMF.OCL.Let_Exps.OCL_Let_Exp_Access
@@ -8729,21 +8729,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Let_Exps.OCL_Let_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Let_Exps.OCL_Let_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Type
                (AMF.UML.Types.UML_Type_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Let_Exp_Variable_A_Exp5 then
             --  LetExp::variable : Variable
 
             AMF.OCL.Let_Exps.OCL_Let_Exp_Access
@@ -8768,7 +8768,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Message_Exp_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Called_Operation then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Called_Operation_A_Exp6 then
             --  MessageExp::calledOperation : CallOperationAction
 
             AMF.OCL.Message_Exps.OCL_Message_Exp_Access
@@ -8782,28 +8782,28 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Message_Exps.OCL_Message_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Sent_Signal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Sent_Signal_A_Exp7 then
             --  MessageExp::sentSignal : SendSignalAction
 
             AMF.OCL.Message_Exps.OCL_Message_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Sent_Signal
                (AMF.UML.Send_Signal_Actions.UML_Send_Signal_Action_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Target then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Exp_Target_A_Exp8 then
             --  MessageExp::target : OclExpression
 
             AMF.OCL.Message_Exps.OCL_Message_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Target
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Message_Exps.OCL_Message_Exp_Access
@@ -8856,70 +8856,70 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Operation then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Operation_A_Type2 then
             --  MessageType::referredOperation : Operation
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Operation
                (AMF.UML.Operations.UML_Operation_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Signal then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Message_Type_Referred_Signal_A_Type3 then
             --  MessageType::referredSignal : Signal
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Signal
                (AMF.UML.Signals.UML_Signal_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Message_Types.OCL_Message_Type_Access
@@ -8958,14 +8958,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Null_Literal_Exps.OCL_Null_Literal_Exp_Access
@@ -8997,28 +8997,28 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Referred_Operation then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Operation_Call_Exp_Referred_Operation_A_Refering_Exp then
             --  OperationCallExp::referredOperation : Operation
 
             AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Operation
                (AMF.UML.Operations.UML_Operation_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Source
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Operation_Call_Exps.OCL_Operation_Call_Exp_Access
@@ -9043,7 +9043,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Ordered_Set_Type_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
@@ -9078,56 +9078,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Ordered_Set_Types.OCL_Ordered_Set_Type_Access
@@ -9166,35 +9166,35 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Navigation_Call_Exp_Navigation_Source_A_Exp9 then
             --  NavigationCallExp::navigationSource : Property
 
             AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Navigation_Source
                (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Property_Call_Exp_Referred_Property then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Property_Call_Exp_Referred_Property_A_Refering_Exp then
             --  PropertyCallExp::referredProperty : Property
 
             AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Property
                (AMF.UML.Properties.UML_Property_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Call_Exp_Source_A_Applied_Element then
             --  CallExp::source : OclExpression
 
             AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Source
                (AMF.OCL.Ocl_Expressions.OCL_Ocl_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Property_Call_Exps.OCL_Property_Call_Exp_Access
@@ -9226,7 +9226,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
@@ -9240,7 +9240,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Real_Symbol
                (AMF.Holders.Reals.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Real_Literal_Exps.OCL_Real_Literal_Exp_Access
@@ -9265,7 +9265,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Sequence_Type_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
@@ -9300,56 +9300,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Sequence_Types.OCL_Sequence_Type_Access
@@ -9381,7 +9381,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Set_Type_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Collection_Type_Element_Type_A_Type1 then
             --  CollectionType::elementType : Classifier
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
@@ -9416,56 +9416,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Set_Types.OCL_Set_Type_Access
@@ -9504,21 +9504,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.State_Exps.OCL_State_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_State_Exp_Referred_State then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_State_Exp_Referred_State_A_Exp9 then
             --  StateExp::referredState : State
 
             AMF.OCL.State_Exps.OCL_State_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_State
                (AMF.UML.States.UML_State_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.State_Exps.OCL_State_Exp_Access
@@ -9550,7 +9550,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
@@ -9564,7 +9564,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_String_Symbol
                (League.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.String_Literal_Exps.OCL_String_Literal_Exp_Access
@@ -9617,42 +9617,42 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
@@ -9666,14 +9666,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Specification
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Template_Parameter_Types.OCL_Template_Parameter_Type_Access
@@ -9712,14 +9712,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Tuple_Literal_Exps.OCL_Tuple_Literal_Exp_Access
@@ -9744,7 +9744,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Tuple_Literal_Part_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Tuple_Literal_Part_Attribute_A_Part2 then
             --  TupleLiteralPart::attribute : Property
 
             AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
@@ -9758,14 +9758,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Tuple_Literal_Parts.OCL_Tuple_Literal_Part_Access
@@ -9818,56 +9818,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Tuple_Types.OCL_Tuple_Type_Access
@@ -9906,21 +9906,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Type_Exps.OCL_Type_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Type_Exp_Referred_Type then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Type_Exp_Referred_Type_A_Exp11 then
             --  TypeExp::referredType : Classifier
 
             AMF.OCL.Type_Exps.OCL_Type_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Type
                (AMF.UML.Classifiers.UML_Classifier_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Type_Exps.OCL_Type_Exp_Access
@@ -9952,14 +9952,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Unlimited_Natural_Literal_Exps.OCL_Unlimited_Natural_Literal_Exp_Access
@@ -9998,14 +9998,14 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Unspecified_Value_Exps.OCL_Unspecified_Value_Exp_Access
@@ -10030,7 +10030,7 @@ package body AMF.Internals.Tables.OCL_Reflection is
 
       procedure OCL_Variable_Set is
       begin
-         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Init_Expression then
+         if Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Init_Expression_A_Initialized_Element then
             --  Variable::initExpression : OclExpression
 
             AMF.OCL.Variables.OCL_Variable_Access
@@ -10044,21 +10044,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Variables.OCL_Variable_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Represented_Parameter then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Represented_Parameter_A_Variable then
             --  Variable::representedParameter : Parameter
 
             AMF.OCL.Variables.OCL_Variable_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Represented_Parameter
                (AMF.UML.Parameters.UML_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Variables.OCL_Variable_Access
@@ -10090,21 +10090,21 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Exp_Referred_Variable then
+         elsif Property = AMF.Internals.Tables.OCL_Metamodel.MP_OCL_Variable_Exp_Referred_Variable_A_Refering_Exp then
             --  VariableExp::referredVariable : Variable
 
             AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Referred_Variable
                (AMF.OCL.Variables.OCL_Variable_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Typed_Element_Type_A_Typed_Element then
             --  TypedElement::type : Type
 
             AMF.OCL.Variable_Exps.OCL_Variable_Exp_Access
@@ -10157,56 +10157,56 @@ package body AMF.Internals.Tables.OCL_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name
                (AMF.Holders.Element (Value));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             --  NamedElement::nameExpression : StringExpression
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Name_Expression
                (AMF.UML.String_Expressions.UML_String_Expression_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
             --  Classifier::ownedTemplateSignature : RedefinableTemplateSignature
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             --  TemplateableElement::ownedTemplateSignature : TemplateSignature
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owned_Template_Signature
                (AMF.UML.Template_Signatures.UML_Template_Signature_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             --  ParameterableElement::owningTemplateParameter : TemplateParameter
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Template_Parameter
                (AMF.UML.Template_Parameters.UML_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Type_Package_Package_Owned_Type then
             --  Type::package : Package
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Package
                (AMF.UML.Packages.UML_Package_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Representation_A_Classifier then
             --  Classifier::representation : CollaborationUse
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Representation
                (AMF.UML.Collaboration_Uses.UML_Collaboration_Use_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
             --  Classifier::templateParameter : ClassifierTemplateParameter
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Template_Parameter
                (AMF.UML.Classifier_Template_Parameters.UML_Classifier_Template_Parameter_Access (AMF.Holders.Elements.Element (Value)));
 
-         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter then
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element then
             --  ParameterableElement::templateParameter : TemplateParameter
 
             AMF.OCL.Void_Types.OCL_Void_Type_Access

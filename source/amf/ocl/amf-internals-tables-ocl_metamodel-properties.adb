@@ -243,7 +243,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 1,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 1, (False, AMF.CMOF.Public_Visibility));
    end Initialize_1;
 
@@ -255,7 +255,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 2,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0046'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 2, (False, AMF.CMOF.Public_Visibility));
    end Initialize_2;
 
@@ -267,7 +267,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 3,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0035'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 3, (False, AMF.CMOF.Public_Visibility));
    end Initialize_3;
 
@@ -292,7 +292,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 5, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 5,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0072'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0080'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 5, (False, AMF.CMOF.Public_Visibility));
    end Initialize_5;
 
@@ -304,7 +304,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 6,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0044'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 6, (False, AMF.CMOF.Public_Visibility));
    end Initialize_6;
 
@@ -316,7 +316,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 7,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0039'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 7, (False, AMF.CMOF.Public_Visibility));
    end Initialize_7;
 
@@ -329,7 +329,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 8, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 8,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0030'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 8, (False, AMF.CMOF.Public_Visibility));
    end Initialize_8;
 
@@ -341,7 +341,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 9,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0017'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 9, (False, AMF.CMOF.Public_Visibility));
    end Initialize_9;
 
@@ -353,7 +353,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 10,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0045'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 10, (False, AMF.CMOF.Public_Visibility));
    end Initialize_10;
 
@@ -365,7 +365,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 11,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 11, (False, AMF.CMOF.Public_Visibility));
    end Initialize_11;
 
@@ -377,7 +377,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 12,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0020'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0023'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 12, (False, AMF.CMOF.Public_Visibility));
    end Initialize_12;
 
@@ -390,7 +390,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 13, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 13,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0040'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 13, (False, AMF.CMOF.Public_Visibility));
    end Initialize_13;
 
@@ -402,7 +402,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 14,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0040'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0048'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 14, (False, AMF.CMOF.Public_Visibility));
    end Initialize_14;
 
@@ -414,7 +414,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 15,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0036'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 15, (False, AMF.CMOF.Public_Visibility));
    end Initialize_15;
 
@@ -426,7 +426,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 16,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0020'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 16, (False, AMF.CMOF.Public_Visibility));
    end Initialize_16;
 
@@ -438,7 +438,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 17,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0009'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 17, (False, AMF.CMOF.Public_Visibility));
    end Initialize_17;
 
@@ -450,7 +450,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 18,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0032'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 18, (False, AMF.CMOF.Public_Visibility));
    end Initialize_18;
 
@@ -462,7 +462,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 19,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0069'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0074'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 19, (False, AMF.CMOF.Public_Visibility));
    end Initialize_19;
 
@@ -474,7 +474,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 20,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0062'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 20, (False, AMF.CMOF.Public_Visibility));
    end Initialize_20;
 
@@ -500,7 +500,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 22, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 22,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0079'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 22, (False, AMF.CMOF.Public_Visibility));
    end Initialize_22;
 
@@ -512,7 +512,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 23,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 23, (False, AMF.CMOF.Public_Visibility));
    end Initialize_23;
 
@@ -524,7 +524,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 24,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0029'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 24, (False, AMF.CMOF.Public_Visibility));
    end Initialize_24;
 
@@ -537,7 +537,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 25, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 25,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0043'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 25, (False, AMF.CMOF.Public_Visibility));
    end Initialize_25;
 
@@ -549,7 +549,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 26,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0026'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0029'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 26, (False, AMF.CMOF.Public_Visibility));
    end Initialize_26;
 
@@ -562,7 +562,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 27, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 27,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0065'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 27, (False, AMF.CMOF.Public_Visibility));
    end Initialize_27;
 
@@ -575,7 +575,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 28, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 28,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0041'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0049'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 28, (False, AMF.CMOF.Public_Visibility));
    end Initialize_28;
 
@@ -587,7 +587,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 29,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0054'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 29, (False, AMF.CMOF.Public_Visibility));
    end Initialize_29;
 
@@ -599,7 +599,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 30,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0041'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 30, (False, AMF.CMOF.Public_Visibility));
    end Initialize_30;
 
@@ -612,7 +612,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Abstract (Base + 31, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 31,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0055'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 31, (False, AMF.CMOF.Public_Visibility));
    end Initialize_31;
 
@@ -624,7 +624,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 32,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 32, (False, AMF.CMOF.Public_Visibility));
    end Initialize_32;
 
@@ -636,7 +636,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 33,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0050'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0058'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 33, (False, AMF.CMOF.Public_Visibility));
    end Initialize_33;
 
@@ -648,7 +648,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 34,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0068'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0073'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 34, (False, AMF.CMOF.Public_Visibility));
    end Initialize_34;
 
@@ -660,7 +660,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 35,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0073'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0081'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 35, (False, AMF.CMOF.Public_Visibility));
    end Initialize_35;
 
@@ -672,7 +672,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 36,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0049'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0051'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 36, (False, AMF.CMOF.Public_Visibility));
    end Initialize_36;
 
@@ -684,7 +684,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 37,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0058'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0060'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 37, (False, AMF.CMOF.Public_Visibility));
    end Initialize_37;
 
@@ -696,7 +696,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 38,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0059'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0061'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 38, (False, AMF.CMOF.Public_Visibility));
    end Initialize_38;
 
@@ -708,7 +708,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 39,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0054'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 39, (False, AMF.CMOF.Public_Visibility));
    end Initialize_39;
 
@@ -720,7 +720,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 40,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0016'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0019'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 40, (False, AMF.CMOF.Public_Visibility));
    end Initialize_40;
 
@@ -732,7 +732,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 41,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0052'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 41, (False, AMF.CMOF.Public_Visibility));
    end Initialize_41;
 
@@ -756,7 +756,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 43,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0075'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 43, (False, AMF.CMOF.Public_Visibility));
    end Initialize_43;
 
@@ -768,7 +768,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 44,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0056'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 44, (False, AMF.CMOF.Public_Visibility));
    end Initialize_44;
 
@@ -780,7 +780,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 45,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0011'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 45, (False, AMF.CMOF.Public_Visibility));
    end Initialize_45;
 
@@ -792,7 +792,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 46,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 46, (False, AMF.CMOF.Public_Visibility));
    end Initialize_46;
 
@@ -804,7 +804,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 47,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0034'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0039'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 47, (False, AMF.CMOF.Public_Visibility));
    end Initialize_47;
 
@@ -819,7 +819,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 48, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 48,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0065'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 48, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 48, (False, AMF.CMOF.Public_Visibility));
    end Initialize_48;
@@ -835,7 +835,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 49, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 49,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0032'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0036'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 49, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 49, (False, AMF.CMOF.Public_Visibility));
    end Initialize_49;
@@ -851,7 +851,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 50, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 50,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0057'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 50, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 50, (False, AMF.CMOF.Public_Visibility));
    end Initialize_50;
@@ -867,7 +867,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 51, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 51,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0011'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0013'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 51, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 51, (False, AMF.CMOF.Public_Visibility));
    end Initialize_51;
@@ -883,7 +883,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 52, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 52,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0061'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 52, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 52, (False, AMF.CMOF.Public_Visibility));
    end Initialize_52;
@@ -899,7 +899,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 53, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 53,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0011'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0013'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 53, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 53, (False, AMF.CMOF.Public_Visibility));
    end Initialize_53;
@@ -915,7 +915,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 54, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 54,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0065'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 54, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 54, (False, AMF.CMOF.Public_Visibility));
    end Initialize_54;
@@ -941,7 +941,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 56,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 56, (False, AMF.CMOF.Public_Visibility));
    end Initialize_56;
 
@@ -955,7 +955,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 57, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 57,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0070'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 57, (False, AMF.CMOF.Public_Visibility));
    end Initialize_57;
 
@@ -968,7 +968,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 58, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 58,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0014'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0016'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 58, (False, AMF.CMOF.Public_Visibility));
    end Initialize_58;
 
@@ -980,7 +980,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 59,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0057'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 59, (False, AMF.CMOF.Public_Visibility));
    end Initialize_59;
 
@@ -993,7 +993,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 60, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 60,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0064'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 60, (False, AMF.CMOF.Public_Visibility));
    end Initialize_60;
 
@@ -1006,7 +1006,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 61, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 61,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0063'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 61, (False, AMF.CMOF.Public_Visibility));
    end Initialize_61;
 
@@ -1018,7 +1018,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 62,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0064'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 62, (False, AMF.CMOF.Public_Visibility));
    end Initialize_62;
 
@@ -1031,7 +1031,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 63, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 63,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0074'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0083'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 63, (False, AMF.CMOF.Public_Visibility));
    end Initialize_63;
 
@@ -1044,7 +1044,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 64, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 64,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0022'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 64, (False, AMF.CMOF.Public_Visibility));
    end Initialize_64;
 
@@ -1058,7 +1058,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 65, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 65,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003C'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0044'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 65, (False, AMF.CMOF.Public_Visibility));
    end Initialize_65;
 
@@ -1072,7 +1072,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 66, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 66,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002A'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 66, (False, AMF.CMOF.Public_Visibility));
    end Initialize_66;
 
@@ -1086,7 +1086,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 67, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 67,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0022'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0025'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 67, (False, AMF.CMOF.Public_Visibility));
    end Initialize_67;
 
@@ -1099,7 +1099,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 68, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 68,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0030'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0034'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 68, (False, AMF.CMOF.Public_Visibility));
    end Initialize_68;
 
@@ -1112,7 +1112,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 69, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 69,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0037'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 69, (False, AMF.CMOF.Public_Visibility));
    end Initialize_69;
 
@@ -1125,7 +1125,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 70, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 70,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0025'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0028'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 70, (False, AMF.CMOF.Public_Visibility));
    end Initialize_70;
 
@@ -1137,7 +1137,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 71,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0018'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 71, (False, AMF.CMOF.Public_Visibility));
    end Initialize_71;
 
@@ -1151,7 +1151,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 72, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 72,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0023'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0026'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 72, (False, AMF.CMOF.Public_Visibility));
    end Initialize_72;
 
@@ -1164,7 +1164,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 73, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 73,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0047'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 73, (False, AMF.CMOF.Public_Visibility));
    end Initialize_73;
 
@@ -1177,7 +1177,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 74, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 74,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0053'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 74, (False, AMF.CMOF.Public_Visibility));
    end Initialize_74;
 
@@ -1190,7 +1190,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 75, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 75,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0056'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 75, (False, AMF.CMOF.Public_Visibility));
    end Initialize_75;
 
@@ -1218,7 +1218,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 77, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 77,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0053'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 77, (False, AMF.CMOF.Public_Visibility));
    end Initialize_77;
 
@@ -1231,7 +1231,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 78, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 78,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0038'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 78, (False, AMF.CMOF.Public_Visibility));
    end Initialize_78;
 
@@ -1244,7 +1244,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 79, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 79,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0019'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 79, (False, AMF.CMOF.Public_Visibility));
    end Initialize_79;
 
@@ -1257,7 +1257,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 80, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 80,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0010'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0012'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 80, (False, AMF.CMOF.Public_Visibility));
    end Initialize_80;
 
@@ -1270,7 +1270,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 81, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 81,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0031'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 81, (False, AMF.CMOF.Public_Visibility));
    end Initialize_81;
 
@@ -1283,7 +1283,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 82, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 82,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0019'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 82, (False, AMF.CMOF.Public_Visibility));
    end Initialize_82;
 
@@ -1296,7 +1296,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 83, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 83,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0015'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0017'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 83, (False, AMF.CMOF.Public_Visibility));
    end Initialize_83;
 
@@ -1308,7 +1308,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 84,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0010'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 84, (False, AMF.CMOF.Public_Visibility));
    end Initialize_84;
 
@@ -1321,7 +1321,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 85, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 85,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0068'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 85, (False, AMF.CMOF.Public_Visibility));
    end Initialize_85;
 
@@ -1333,7 +1333,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 86,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_001E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 86, (False, AMF.CMOF.Public_Visibility));
    end Initialize_86;
 
@@ -1346,7 +1346,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 87, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 87,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0033'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0038'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 87, (False, AMF.CMOF.Public_Visibility));
    end Initialize_87;
 
@@ -1359,7 +1359,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 88, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 88,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0027'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 88, (False, AMF.CMOF.Public_Visibility));
    end Initialize_88;
 
@@ -1372,7 +1372,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 89, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 89,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_004D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0055'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 89, (False, AMF.CMOF.Public_Visibility));
    end Initialize_89;
 
@@ -1384,7 +1384,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 90,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0045'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 90, (False, AMF.CMOF.Public_Visibility));
    end Initialize_90;
 
@@ -1398,7 +1398,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 91, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 91,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0024'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0027'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 91, (False, AMF.CMOF.Public_Visibility));
    end Initialize_91;
 
@@ -1411,7 +1411,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 92, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 92,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 92, (False, AMF.CMOF.Public_Visibility));
    end Initialize_92;
 
@@ -1424,7 +1424,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 93, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 93,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 93, (False, AMF.CMOF.Public_Visibility));
    end Initialize_93;
 
@@ -1790,7 +1790,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
         AMF.Internals.Tables.OCL_String_Data_00.MS_0002'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Uri
        (Base + 133,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_003E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0047'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 133, (False, AMF.CMOF.Public_Visibility));
    end Initialize_133;
 
@@ -1803,7 +1803,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 134, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 134,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_002B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 134, (False, AMF.CMOF.Public_Visibility));
    end Initialize_134;
 
@@ -1815,7 +1815,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 135,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0021'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0024'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 135, (False, AMF.CMOF.Public_Visibility));
    end Initialize_135;
 
@@ -1827,7 +1827,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 136,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005D'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0066'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 136, (False, AMF.CMOF.Public_Visibility));
    end Initialize_136;
 
@@ -1839,7 +1839,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 137,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0075'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0084'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 137, (False, AMF.CMOF.Public_Visibility));
    end Initialize_137;
 
@@ -1851,7 +1851,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 138,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0046'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 138, (False, AMF.CMOF.Public_Visibility));
    end Initialize_138;
 
@@ -1863,7 +1863,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 139,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_001E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0021'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 139, (False, AMF.CMOF.Public_Visibility));
    end Initialize_139;
 
@@ -1875,7 +1875,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 140,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0052'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 140, (False, AMF.CMOF.Public_Visibility));
    end Initialize_140;
 
@@ -1902,7 +1902,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 142, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 142,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0062'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 142, (False, AMF.CMOF.Public_Visibility));
    end Initialize_142;
 
@@ -1915,7 +1915,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 143, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 143,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0012'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0014'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 143, (False, AMF.CMOF.Public_Visibility));
    end Initialize_143;
 
@@ -1928,7 +1928,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 144, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 144,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_005F'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0069'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 144, (False, AMF.CMOF.Public_Visibility));
    end Initialize_144;
 
@@ -1939,6 +1939,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_145 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 145, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 145,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0043'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 145, (False, AMF.CMOF.Public_Visibility));
    end Initialize_145;
 
@@ -1949,6 +1952,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_146 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 146, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 146,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0082'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 146, (False, AMF.CMOF.Public_Visibility));
    end Initialize_146;
 
@@ -1961,7 +1967,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 147, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 147,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006E'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 147, (False, AMF.CMOF.Public_Visibility));
    end Initialize_147;
 
@@ -1974,7 +1980,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 148, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 148,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0053'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 148, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 148, (False, AMF.CMOF.Public_Visibility));
    end Initialize_148;
@@ -1988,7 +1994,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 149, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 149,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0071'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 149, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 149, (False, AMF.CMOF.Public_Visibility));
    end Initialize_149;
@@ -2002,7 +2008,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 150, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 150,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0071'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 150, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 150, (False, AMF.CMOF.Public_Visibility));
    end Initialize_150;
@@ -2014,6 +2020,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_151 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 151, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 151,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0018'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 151, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 151, (False, AMF.CMOF.Public_Visibility));
    end Initialize_151;
@@ -2027,7 +2036,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 152, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 152,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0051'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0059'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 152, (False, AMF.CMOF.Public_Visibility));
    end Initialize_152;
 
@@ -2040,7 +2049,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 153, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 153,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0042'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_004A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 153, (False, AMF.CMOF.Public_Visibility));
    end Initialize_153;
 
@@ -2066,7 +2075,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 155, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 155,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0071'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 155, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 155, (False, AMF.CMOF.Public_Visibility));
    end Initialize_155;
@@ -2080,7 +2089,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 156, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 156,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0066'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0070'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 156, (False, AMF.CMOF.Public_Visibility));
    end Initialize_156;
 
@@ -2090,6 +2099,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
 
    procedure Initialize_157 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 157,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0009'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 157, (False, AMF.CMOF.Public_Visibility));
    end Initialize_157;
 
@@ -2100,6 +2112,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_158 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 158, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 158,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0042'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 158, (False, AMF.CMOF.Private_Visibility));
    end Initialize_158;
 
@@ -2112,7 +2127,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 159, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 159,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0031'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0035'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 159, (False, AMF.CMOF.Public_Visibility));
    end Initialize_159;
 
@@ -2125,7 +2140,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 160, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 160,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0067'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0072'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 160, (False, AMF.CMOF.Public_Visibility));
    end Initialize_160;
 
@@ -2136,6 +2151,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_161 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 161, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 161,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_003F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 161, (False, AMF.CMOF.Public_Visibility));
    end Initialize_161;
 
@@ -2148,7 +2166,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 162, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 162,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0048'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0050'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 162, (False, AMF.CMOF.Public_Visibility));
    end Initialize_162;
 
@@ -2161,7 +2179,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 163, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 163,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_006B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0078'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 163, (False, AMF.CMOF.Public_Visibility));
    end Initialize_163;
 
@@ -2187,7 +2205,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 165, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 165,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0028'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_002B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 165, (False, AMF.CMOF.Public_Visibility));
    end Initialize_165;
 
@@ -2200,7 +2218,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 166, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 166,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0013'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0015'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 166, (False, AMF.CMOF.Public_Visibility));
    end Initialize_166;
 
@@ -2211,6 +2229,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_167 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 167, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 167,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0071'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 167, (False, AMF.CMOF.Public_Visibility));
    end Initialize_167;
 
@@ -2223,7 +2244,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 168, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 168,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_0060'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_006A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 168, (False, AMF.CMOF.Public_Visibility));
    end Initialize_168;
 
@@ -2234,6 +2255,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_169 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 169, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 169,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 169, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 169, (False, AMF.CMOF.Public_Visibility));
    end Initialize_169;
@@ -2247,7 +2271,7 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 170, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 170,
-        AMF.Internals.Tables.OCL_String_Data_00.MS_000B'Access);
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 170, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 170, (False, AMF.CMOF.Public_Visibility));
    end Initialize_170;
@@ -2259,6 +2283,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_171 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 171, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 171,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_007C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 171, (False, AMF.CMOF.Public_Visibility));
    end Initialize_171;
 
@@ -2269,6 +2296,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_172 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 172, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 172,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0037'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 172, (False, AMF.CMOF.Public_Visibility));
    end Initialize_172;
 
@@ -2279,6 +2309,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_173 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 173, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 173,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0063'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 173, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 173, (False, AMF.CMOF.Public_Visibility));
    end Initialize_173;
@@ -2290,6 +2323,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_174 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 174, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 174,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0076'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 174, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 174, (False, AMF.CMOF.Public_Visibility));
    end Initialize_174;
@@ -2301,6 +2337,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_175 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 175, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 175,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_000B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 175, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 175, (False, AMF.CMOF.Public_Visibility));
    end Initialize_175;
@@ -2312,6 +2351,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_176 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 176, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 176,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0033'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 176, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 176, (False, AMF.CMOF.Public_Visibility));
    end Initialize_176;
@@ -2323,6 +2365,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_177 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 177, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 177,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0077'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 177, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 177, (False, AMF.CMOF.Public_Visibility));
    end Initialize_177;
@@ -2334,6 +2379,9 @@ package body AMF.Internals.Tables.OCL_Metamodel.Properties is
    procedure Initialize_178 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 178, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
+       (Base + 178,
+        AMF.Internals.Tables.OCL_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 178, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 178, (False, AMF.CMOF.Public_Visibility));
    end Initialize_178;
