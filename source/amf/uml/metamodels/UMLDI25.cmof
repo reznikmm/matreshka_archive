@@ -1796,5 +1796,6 @@ or (       modelElement-&gt;asSequence()-&gt;first().oclIsKindOf(InstanceSpecifi
    <cmof:Tag xmi:type="cmof:Tag"
              xmi:id="_100"
              name="org.omg.xmi.nsPrefix"
-             value="umldi"/>
+             value="umldi"
+             element="_0"/>
 </xmi:XMI>
