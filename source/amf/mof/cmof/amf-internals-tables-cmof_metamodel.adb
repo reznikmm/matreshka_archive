@@ -1648,77 +1648,77 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 775;
    end MP_CMOF_Imported_Package_Package_Import;
 
-   -----------------------------------------------------------------
-   -- MA_CMOF_Packageable_Element_Imported_Element_Element_Import --
-   -----------------------------------------------------------------
+   ------------------------------------------------------------
+   -- MA_CMOF_Element_Import_Imported_Element_Element_Import --
+   ------------------------------------------------------------
 
-   function MA_CMOF_Packageable_Element_Imported_Element_Element_Import return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Element_Import_Imported_Element_Element_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 136;
-   end MA_CMOF_Packageable_Element_Imported_Element_Element_Import;
+   end MA_CMOF_Element_Import_Imported_Element_Element_Import;
 
-   ---------------------------------------------------------------
-   -- MA_CMOF_Element_Import_Element_Import_Importing_Namespace --
-   ---------------------------------------------------------------
+   ----------------------------------------------------------
+   -- MA_CMOF_Namespace_Element_Import_Importing_Namespace --
+   ----------------------------------------------------------
 
-   function MA_CMOF_Element_Import_Element_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Element_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 137;
-   end MA_CMOF_Element_Import_Element_Import_Importing_Namespace;
+   end MA_CMOF_Namespace_Element_Import_Importing_Namespace;
 
-   ---------------------------------------------------------------
-   -- MA_CMOF_Package_Import_Package_Import_Importing_Namespace --
-   ---------------------------------------------------------------
+   ----------------------------------------------------------
+   -- MA_CMOF_Namespace_Package_Import_Importing_Namespace --
+   ----------------------------------------------------------
 
-   function MA_CMOF_Package_Import_Package_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Package_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 138;
-   end MA_CMOF_Package_Import_Package_Import_Importing_Namespace;
+   end MA_CMOF_Namespace_Package_Import_Importing_Namespace;
 
-   -----------------------------------------------------------------
-   -- MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package --
-   -----------------------------------------------------------------
+   -----------------------------------------------------
+   -- MA_CMOF_Package_Packaged_Element_Owning_Package --
+   -----------------------------------------------------
 
-   function MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Package_Packaged_Element_Owning_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 139;
-   end MA_CMOF_Packageable_Element_Packaged_Element_Owning_Package;
+   end MA_CMOF_Package_Packaged_Element_Owning_Package;
 
-   ---------------------------------
-   -- MA_CMOF_Element_Element_Tag --
-   ---------------------------------
+   -----------------------------
+   -- MA_CMOF_Tag_Element_Tag --
+   -----------------------------
 
-   function MA_CMOF_Element_Element_Tag return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Tag_Element_Tag return AMF.Internals.CMOF_Element is
    begin
       return Base + 140;
-   end MA_CMOF_Element_Element_Tag;
+   end MA_CMOF_Tag_Element_Tag;
 
-   -------------------------------------
-   -- MA_CMOF_Type_Owned_Type_Package --
-   -------------------------------------
+   ----------------------------------------
+   -- MA_CMOF_Package_Owned_Type_Package --
+   ----------------------------------------
 
-   function MA_CMOF_Type_Owned_Type_Package return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Package_Owned_Type_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 141;
-   end MA_CMOF_Type_Owned_Type_Package;
+   end MA_CMOF_Package_Owned_Type_Package;
 
-   -----------------------------------------
-   -- MA_CMOF_Element_Tag_Owner_Owned_Tag --
-   -----------------------------------------
+   -------------------------------------
+   -- MA_CMOF_Tag_Tag_Owner_Owned_Tag --
+   -------------------------------------
 
-   function MA_CMOF_Element_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Tag_Tag_Owner_Owned_Tag return AMF.Internals.CMOF_Element is
    begin
       return Base + 142;
-   end MA_CMOF_Element_Tag_Owner_Owned_Tag;
+   end MA_CMOF_Tag_Tag_Owner_Owned_Tag;
 
-   ---------------------------------------------
-   -- MA_CMOF_Property_Member_End_Association --
-   ---------------------------------------------
+   ------------------------------------------------
+   -- MA_CMOF_Association_Member_End_Association --
+   ------------------------------------------------
 
-   function MA_CMOF_Property_Member_End_Association return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Association_Member_End_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 143;
-   end MA_CMOF_Property_Member_End_Association;
+   end MA_CMOF_Association_Member_End_Association;
 
    ----------------------------------------------------
    -- MA_CMOF_Package_Nested_Package_Nesting_Package --
@@ -1729,32 +1729,32 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 144;
    end MA_CMOF_Package_Nested_Package_Nesting_Package;
 
-   ---------------------------------
-   -- MA_CMOF_Type_Type_Operation --
-   ---------------------------------
+   --------------------------------------
+   -- MA_CMOF_Operation_Type_Operation --
+   --------------------------------------
 
-   function MA_CMOF_Type_Type_Operation return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Type_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 145;
-   end MA_CMOF_Type_Type_Operation;
+   end MA_CMOF_Operation_Type_Operation;
 
-   -----------------------------------------------------------
-   -- MA_CMOF_Package_Merge_Package_Merge_Receiving_Package --
-   -----------------------------------------------------------
+   -----------------------------------------------------
+   -- MA_CMOF_Package_Package_Merge_Receiving_Package --
+   -----------------------------------------------------
 
-   function MA_CMOF_Package_Merge_Package_Merge_Receiving_Package return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Package_Package_Merge_Receiving_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 146;
-   end MA_CMOF_Package_Merge_Package_Merge_Receiving_Package;
+   end MA_CMOF_Package_Package_Merge_Receiving_Package;
 
-   --------------------------------------------------
-   -- MA_CMOF_Package_Merged_Package_Package_Merge --
-   --------------------------------------------------
+   --------------------------------------------------------
+   -- MA_CMOF_Package_Merge_Merged_Package_Package_Merge --
+   --------------------------------------------------------
 
-   function MA_CMOF_Package_Merged_Package_Package_Merge return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Package_Merge_Merged_Package_Package_Merge return AMF.Internals.CMOF_Element is
    begin
       return Base + 147;
-   end MA_CMOF_Package_Merged_Package_Package_Merge;
+   end MA_CMOF_Package_Merge_Merged_Package_Package_Merge;
 
    -----------------------------------------
    -- MA_CMOF_Element_Owned_Element_Owner --
@@ -1766,76 +1766,76 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
    end MA_CMOF_Element_Owned_Element_Owner;
 
    -----------------------------------------------
-   -- MA_CMOF_Element_Annotated_Element_Comment --
+   -- MA_CMOF_Comment_Annotated_Element_Comment --
    -----------------------------------------------
 
-   function MA_CMOF_Element_Annotated_Element_Comment return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Comment_Annotated_Element_Comment return AMF.Internals.CMOF_Element is
    begin
       return Base + 149;
-   end MA_CMOF_Element_Annotated_Element_Comment;
+   end MA_CMOF_Comment_Annotated_Element_Comment;
 
-   --------------------------------------------------
-   -- MA_CMOF_Element_Related_Element_Relationship --
-   --------------------------------------------------
+   -------------------------------------------------------
+   -- MA_CMOF_Relationship_Related_Element_Relationship --
+   -------------------------------------------------------
 
-   function MA_CMOF_Element_Related_Element_Relationship return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Relationship_Related_Element_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 150;
-   end MA_CMOF_Element_Related_Element_Relationship;
+   end MA_CMOF_Relationship_Related_Element_Relationship;
 
-   --------------------------------------------------
-   -- MA_CMOF_Element_Source_Directed_Relationship --
-   --------------------------------------------------
+   ----------------------------------------------------------------
+   -- MA_CMOF_Directed_Relationship_Source_Directed_Relationship --
+   ----------------------------------------------------------------
 
-   function MA_CMOF_Element_Source_Directed_Relationship return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Directed_Relationship_Source_Directed_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 151;
-   end MA_CMOF_Element_Source_Directed_Relationship;
+   end MA_CMOF_Directed_Relationship_Source_Directed_Relationship;
 
-   --------------------------------------------------
-   -- MA_CMOF_Element_Target_Directed_Relationship --
-   --------------------------------------------------
+   ----------------------------------------------------------------
+   -- MA_CMOF_Directed_Relationship_Target_Directed_Relationship --
+   ----------------------------------------------------------------
 
-   function MA_CMOF_Element_Target_Directed_Relationship return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Directed_Relationship_Target_Directed_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 152;
-   end MA_CMOF_Element_Target_Directed_Relationship;
+   end MA_CMOF_Directed_Relationship_Target_Directed_Relationship;
 
-   -------------------------------------
-   -- MA_CMOF_Type_Type_Typed_Element --
-   -------------------------------------
+   ----------------------------------------------
+   -- MA_CMOF_Typed_Element_Type_Typed_Element --
+   ----------------------------------------------
 
-   function MA_CMOF_Type_Type_Typed_Element return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Typed_Element_Type_Typed_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 153;
-   end MA_CMOF_Type_Type_Typed_Element;
+   end MA_CMOF_Typed_Element_Type_Typed_Element;
 
-   -----------------------------------------------------------------
-   -- MA_CMOF_Classifier_Redefinition_Context_Redefinable_Element --
-   -----------------------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MA_CMOF_Redefinable_Element_Redefinition_Context_Redefinable_Element --
+   --------------------------------------------------------------------------
 
-   function MA_CMOF_Classifier_Redefinition_Context_Redefinable_Element return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Redefinable_Element_Redefinition_Context_Redefinable_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 154;
-   end MA_CMOF_Classifier_Redefinition_Context_Redefinable_Element;
+   end MA_CMOF_Redefinable_Element_Redefinition_Context_Redefinable_Element;
 
-   --------------------------------------------
-   -- MA_CMOF_Property_Owned_Attribute_Class --
-   --------------------------------------------
+   -----------------------------------------
+   -- MA_CMOF_Class_Owned_Attribute_Class --
+   -----------------------------------------
 
-   function MA_CMOF_Property_Owned_Attribute_Class return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Class_Owned_Attribute_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 155;
-   end MA_CMOF_Property_Owned_Attribute_Class;
+   end MA_CMOF_Class_Owned_Attribute_Class;
 
-   ---------------------------------------------
-   -- MA_CMOF_Operation_Owned_Operation_Class --
-   ---------------------------------------------
+   -----------------------------------------
+   -- MA_CMOF_Class_Owned_Operation_Class --
+   -----------------------------------------
 
-   function MA_CMOF_Operation_Owned_Operation_Class return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Class_Owned_Operation_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 156;
-   end MA_CMOF_Operation_Owned_Operation_Class;
+   end MA_CMOF_Class_Owned_Operation_Class;
 
    -----------------------------------------------------------------------
    -- MA_CMOF_Redefinable_Element_Redefined_Element_Redefinable_Element --
@@ -1846,41 +1846,41 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 157;
    end MA_CMOF_Redefinable_Element_Redefined_Element_Redefinable_Element;
 
-   ---------------------------------------------------
-   -- MA_CMOF_Property_Owned_End_Owning_Association --
-   ---------------------------------------------------
+   ------------------------------------------------------
+   -- MA_CMOF_Association_Owned_End_Owning_Association --
+   ------------------------------------------------------
 
-   function MA_CMOF_Property_Owned_End_Owning_Association return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Association_Owned_End_Owning_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 158;
-   end MA_CMOF_Property_Owned_End_Owning_Association;
+   end MA_CMOF_Association_Owned_End_Owning_Association;
 
-   -------------------------------------------
-   -- MA_CMOF_Property_Attribute_Classifier --
-   -------------------------------------------
+   ---------------------------------------------
+   -- MA_CMOF_Classifier_Attribute_Classifier --
+   ---------------------------------------------
 
-   function MA_CMOF_Property_Attribute_Classifier return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Classifier_Attribute_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 159;
-   end MA_CMOF_Property_Attribute_Classifier;
+   end MA_CMOF_Classifier_Attribute_Classifier;
 
-   --------------------------------------------------
-   -- MA_CMOF_Feature_Feature_Featuring_Classifier --
-   --------------------------------------------------
+   -----------------------------------------------------
+   -- MA_CMOF_Classifier_Feature_Featuring_Classifier --
+   -----------------------------------------------------
 
-   function MA_CMOF_Feature_Feature_Featuring_Classifier return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Classifier_Feature_Featuring_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 160;
-   end MA_CMOF_Feature_Feature_Featuring_Classifier;
+   end MA_CMOF_Classifier_Feature_Featuring_Classifier;
 
-   ----------------------------------------------------
-   -- MA_CMOF_Element_Constrained_Element_Constraint --
-   ----------------------------------------------------
+   -------------------------------------------------------
+   -- MA_CMOF_Constraint_Constrained_Element_Constraint --
+   -------------------------------------------------------
 
-   function MA_CMOF_Element_Constrained_Element_Constraint return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Constraint_Constrained_Element_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 161;
-   end MA_CMOF_Element_Constrained_Element_Constraint;
+   end MA_CMOF_Constraint_Constrained_Element_Constraint;
 
    --------------------------------------------------
    -- MA_CMOF_Property_Redefined_Property_Property --
@@ -1891,14 +1891,14 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 162;
    end MA_CMOF_Property_Redefined_Property_Property;
 
-   -----------------------------------------------------------------
-   -- MA_CMOF_Value_Specification_Specification_Owning_Constraint --
-   -----------------------------------------------------------------
+   --------------------------------------------------------
+   -- MA_CMOF_Constraint_Specification_Owning_Constraint --
+   --------------------------------------------------------
 
-   function MA_CMOF_Value_Specification_Specification_Owning_Constraint return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Constraint_Specification_Owning_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 163;
-   end MA_CMOF_Value_Specification_Specification_Owning_Constraint;
+   end MA_CMOF_Constraint_Specification_Owning_Constraint;
 
    --------------------------------------------------
    -- MA_CMOF_Property_Subsetted_Property_Property --
@@ -1927,14 +1927,14 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 166;
    end MA_CMOF_Property_Opposite_Property;
 
-   --------------------------------------------------
-   -- MA_CMOF_Named_Element_Owned_Member_Namespace --
-   --------------------------------------------------
+   ----------------------------------------------
+   -- MA_CMOF_Namespace_Owned_Member_Namespace --
+   ----------------------------------------------
 
-   function MA_CMOF_Named_Element_Owned_Member_Namespace return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Owned_Member_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 167;
-   end MA_CMOF_Named_Element_Owned_Member_Namespace;
+   end MA_CMOF_Namespace_Owned_Member_Namespace;
 
    -------------------------------------
    -- MA_CMOF_Class_Super_Class_Class --
@@ -1945,95 +1945,95 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 168;
    end MA_CMOF_Class_Super_Class_Class;
 
-   --------------------------------------------
-   -- MA_CMOF_Named_Element_Member_Namespace --
-   --------------------------------------------
+   ----------------------------------------
+   -- MA_CMOF_Namespace_Member_Namespace --
+   ----------------------------------------
 
-   function MA_CMOF_Named_Element_Member_Namespace return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Member_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 169;
-   end MA_CMOF_Named_Element_Member_Namespace;
+   end MA_CMOF_Namespace_Member_Namespace;
 
-   ---------------------------------------
-   -- MA_CMOF_Type_End_Type_Association --
-   ---------------------------------------
+   ----------------------------------------------
+   -- MA_CMOF_Association_End_Type_Association --
+   ----------------------------------------------
 
-   function MA_CMOF_Type_End_Type_Association return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Association_End_Type_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 170;
-   end MA_CMOF_Type_End_Type_Association;
+   end MA_CMOF_Association_End_Type_Association;
 
-   ----------------------------------------------------
-   -- MA_CMOF_Value_Specification_Operand_Expression --
-   ----------------------------------------------------
+   -------------------------------------------
+   -- MA_CMOF_Expression_Operand_Expression --
+   -------------------------------------------
 
-   function MA_CMOF_Value_Specification_Operand_Expression return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Expression_Operand_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 171;
-   end MA_CMOF_Value_Specification_Operand_Expression;
+   end MA_CMOF_Expression_Operand_Expression;
 
-   -----------------------------------------------------------
-   -- MA_CMOF_Enumeration_Literal_Owned_Literal_Enumeration --
-   -----------------------------------------------------------
+   ---------------------------------------------------
+   -- MA_CMOF_Enumeration_Owned_Literal_Enumeration --
+   ---------------------------------------------------
 
-   function MA_CMOF_Enumeration_Literal_Owned_Literal_Enumeration return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Enumeration_Owned_Literal_Enumeration return AMF.Internals.CMOF_Element is
    begin
       return Base + 172;
-   end MA_CMOF_Enumeration_Literal_Owned_Literal_Enumeration;
+   end MA_CMOF_Enumeration_Owned_Literal_Enumeration;
 
-   ------------------------------------------------------
-   -- MA_CMOF_Property_Navigable_Owned_End_Association --
-   ------------------------------------------------------
+   ---------------------------------------------------------
+   -- MA_CMOF_Association_Navigable_Owned_End_Association --
+   ---------------------------------------------------------
 
-   function MA_CMOF_Property_Navigable_Owned_End_Association return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Association_Navigable_Owned_End_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 173;
-   end MA_CMOF_Property_Navigable_Owned_End_Association;
+   end MA_CMOF_Association_Navigable_Owned_End_Association;
 
-   -----------------------------------------------
-   -- MA_CMOF_Property_Owned_Attribute_Datatype --
-   -----------------------------------------------
+   ------------------------------------------------
+   -- MA_CMOF_Data_Type_Owned_Attribute_Datatype --
+   ------------------------------------------------
 
-   function MA_CMOF_Property_Owned_Attribute_Datatype return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Data_Type_Owned_Attribute_Datatype return AMF.Internals.CMOF_Element is
    begin
       return Base + 174;
-   end MA_CMOF_Property_Owned_Attribute_Datatype;
+   end MA_CMOF_Data_Type_Owned_Attribute_Datatype;
 
    ------------------------------------------------
-   -- MA_CMOF_Operation_Owned_Operation_Datatype --
+   -- MA_CMOF_Data_Type_Owned_Operation_Datatype --
    ------------------------------------------------
 
-   function MA_CMOF_Operation_Owned_Operation_Datatype return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Data_Type_Owned_Operation_Datatype return AMF.Internals.CMOF_Element is
    begin
       return Base + 175;
-   end MA_CMOF_Operation_Owned_Operation_Datatype;
+   end MA_CMOF_Data_Type_Owned_Operation_Datatype;
 
    -------------------------------------------------
-   -- MA_CMOF_Parameter_Owned_Parameter_Operation --
+   -- MA_CMOF_Operation_Owned_Parameter_Operation --
    -------------------------------------------------
 
-   function MA_CMOF_Parameter_Owned_Parameter_Operation return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Owned_Parameter_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 176;
-   end MA_CMOF_Parameter_Owned_Parameter_Operation;
+   end MA_CMOF_Operation_Owned_Parameter_Operation;
 
-   ---------------------------------------------
-   -- MA_CMOF_Type_Raised_Exception_Operation --
-   ---------------------------------------------
+   --------------------------------------------------
+   -- MA_CMOF_Operation_Raised_Exception_Operation --
+   --------------------------------------------------
 
-   function MA_CMOF_Type_Raised_Exception_Operation return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Raised_Exception_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 177;
-   end MA_CMOF_Type_Raised_Exception_Operation;
+   end MA_CMOF_Operation_Raised_Exception_Operation;
 
    --------------------------------------------------
-   -- MA_CMOF_Comment_Owned_Comment_Owning_Element --
+   -- MA_CMOF_Element_Owned_Comment_Owning_Element --
    --------------------------------------------------
 
-   function MA_CMOF_Comment_Owned_Comment_Owning_Element return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Element_Owned_Comment_Owning_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 178;
-   end MA_CMOF_Comment_Owned_Comment_Owning_Element;
+   end MA_CMOF_Element_Owned_Comment_Owning_Element;
 
    -----------------------------------------------------
    -- MA_CMOF_Operation_Redefined_Operation_Operation --
@@ -2044,86 +2044,86 @@ package body AMF.Internals.Tables.CMOF_Metamodel is
       return Base + 179;
    end MA_CMOF_Operation_Redefined_Operation_Operation;
 
-   -------------------------------------------------------
-   -- MA_CMOF_Named_Element_Inherited_Member_Classifier --
-   -------------------------------------------------------
+   ----------------------------------------------------
+   -- MA_CMOF_Classifier_Inherited_Member_Classifier --
+   ----------------------------------------------------
 
-   function MA_CMOF_Named_Element_Inherited_Member_Classifier return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Classifier_Inherited_Member_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 180;
-   end MA_CMOF_Named_Element_Inherited_Member_Classifier;
+   end MA_CMOF_Classifier_Inherited_Member_Classifier;
 
-   ----------------------------------------------------------
-   -- MA_CMOF_Parameter_Owned_Parameter_Owner_Formal_Param --
-   ----------------------------------------------------------
+   -------------------------------------------------------------------
+   -- MA_CMOF_Behavioral_Feature_Owned_Parameter_Owner_Formal_Param --
+   -------------------------------------------------------------------
 
-   function MA_CMOF_Parameter_Owned_Parameter_Owner_Formal_Param return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Behavioral_Feature_Owned_Parameter_Owner_Formal_Param return AMF.Internals.CMOF_Element is
    begin
       return Base + 181;
-   end MA_CMOF_Parameter_Owned_Parameter_Owner_Formal_Param;
+   end MA_CMOF_Behavioral_Feature_Owned_Parameter_Owner_Formal_Param;
 
-   -------------------------------------------------
-   -- MA_CMOF_Constraint_Precondition_Pre_Context --
-   -------------------------------------------------
+   ------------------------------------------------
+   -- MA_CMOF_Operation_Precondition_Pre_Context --
+   ------------------------------------------------
 
-   function MA_CMOF_Constraint_Precondition_Pre_Context return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Precondition_Pre_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 182;
-   end MA_CMOF_Constraint_Precondition_Pre_Context;
+   end MA_CMOF_Operation_Precondition_Pre_Context;
 
-   ------------------------------------------------------
-   -- MA_CMOF_Type_Raised_Exception_Behavioral_Feature --
-   ------------------------------------------------------
+   --------------------------------------------------------------------
+   -- MA_CMOF_Behavioral_Feature_Raised_Exception_Behavioral_Feature --
+   --------------------------------------------------------------------
 
-   function MA_CMOF_Type_Raised_Exception_Behavioral_Feature return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Behavioral_Feature_Raised_Exception_Behavioral_Feature return AMF.Internals.CMOF_Element is
    begin
       return Base + 183;
-   end MA_CMOF_Type_Raised_Exception_Behavioral_Feature;
+   end MA_CMOF_Behavioral_Feature_Raised_Exception_Behavioral_Feature;
 
-   ---------------------------------------------------
-   -- MA_CMOF_Constraint_Postcondition_Post_Context --
-   ---------------------------------------------------
+   --------------------------------------------------
+   -- MA_CMOF_Operation_Postcondition_Post_Context --
+   --------------------------------------------------
 
-   function MA_CMOF_Constraint_Postcondition_Post_Context return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Postcondition_Post_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 184;
-   end MA_CMOF_Constraint_Postcondition_Post_Context;
+   end MA_CMOF_Operation_Postcondition_Post_Context;
 
-   -----------------------------------------------------------
-   -- MA_CMOF_Packageable_Element_Imported_Member_Namespace --
-   -----------------------------------------------------------
+   -------------------------------------------------
+   -- MA_CMOF_Namespace_Imported_Member_Namespace --
+   -------------------------------------------------
 
-   function MA_CMOF_Packageable_Element_Imported_Member_Namespace return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Imported_Member_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 185;
-   end MA_CMOF_Packageable_Element_Imported_Member_Namespace;
+   end MA_CMOF_Namespace_Imported_Member_Namespace;
 
-   ----------------------------------------------------
-   -- MA_CMOF_Constraint_Body_Condition_Body_Context --
-   ----------------------------------------------------
+   ---------------------------------------------------
+   -- MA_CMOF_Operation_Body_Condition_Body_Context --
+   ---------------------------------------------------
 
-   function MA_CMOF_Constraint_Body_Condition_Body_Context return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Operation_Body_Condition_Body_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 186;
-   end MA_CMOF_Constraint_Body_Condition_Body_Context;
+   end MA_CMOF_Operation_Body_Condition_Body_Context;
 
-   -----------------------------------------------------
-   -- MA_CMOF_Package_Imported_Package_Package_Import --
-   -----------------------------------------------------
+   ------------------------------------------------------------
+   -- MA_CMOF_Package_Import_Imported_Package_Package_Import --
+   ------------------------------------------------------------
 
-   function MA_CMOF_Package_Imported_Package_Package_Import return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Package_Import_Imported_Package_Package_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 187;
-   end MA_CMOF_Package_Imported_Package_Package_Import;
+   end MA_CMOF_Package_Import_Imported_Package_Package_Import;
 
-   -------------------------------------------
-   -- MA_CMOF_Constraint_Owned_Rule_Context --
-   -------------------------------------------
+   ------------------------------------------
+   -- MA_CMOF_Namespace_Owned_Rule_Context --
+   ------------------------------------------
 
-   function MA_CMOF_Constraint_Owned_Rule_Context return AMF.Internals.CMOF_Element is
+   function MA_CMOF_Namespace_Owned_Rule_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 188;
-   end MA_CMOF_Constraint_Owned_Rule_Context;
+   end MA_CMOF_Namespace_Owned_Rule_Context;
 
    -------------
    -- MB_CMOF --

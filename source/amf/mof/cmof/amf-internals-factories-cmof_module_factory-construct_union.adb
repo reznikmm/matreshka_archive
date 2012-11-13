@@ -80,7 +80,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -94,21 +94,21 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -122,12 +122,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -141,7 +141,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Owned_Literal then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -153,33 +153,33 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -195,7 +195,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -209,21 +209,21 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -237,12 +237,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -261,33 +261,33 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -303,7 +303,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Enumeration_Literal_Enumeration then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -326,7 +326,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -340,21 +340,21 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -368,12 +368,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -392,33 +392,33 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -434,7 +434,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Constraint_Context then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -464,14 +464,14 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Imported_Element then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Target_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Target_Directed_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Element_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Source_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Source_Directed_Relationship,
               Element,
               Opposite,
               Link);
@@ -490,14 +490,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
@@ -506,24 +506,24 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Class then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Opposite,
               Element,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Datatype then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Opposite,
               Element,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -544,12 +544,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Owning_Association then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Opposite,
               Element,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -565,14 +565,14 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Import_Imported_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Target_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Target_Directed_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Source_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Source_Directed_Relationship,
               Element,
               Opposite,
               Link);
@@ -591,14 +591,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
@@ -623,7 +623,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -637,35 +637,35 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_End_Type then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Member_End then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -686,12 +686,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Association_Owned_End then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -703,21 +703,21 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -733,7 +733,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Merge_Merged_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Target_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Target_Directed_Relationship,
               Element,
               Opposite,
               Link);
@@ -747,7 +747,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Merge_Receiving_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Source_Directed_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Directed_Relationship_Source_Directed_Relationship,
               Element,
               Opposite,
               Link);
@@ -759,14 +759,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Source then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Directed_Relationship_Target then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Related_Element_Relationship,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Relationship_Related_Element_Relationship,
               Element,
               Opposite,
               Link);
@@ -775,34 +775,34 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Class then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Redefinition_Context_Redefinable_Element,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Redefinable_Element_Redefinition_Context_Redefinable_Element,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Opposite,
               Element,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Datatype then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Redefinition_Context_Redefinable_Element,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Redefinable_Element_Redefinition_Context_Redefinable_Element,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Opposite,
               Element,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -816,7 +816,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -842,21 +842,21 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Owned_Parameter then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -909,7 +909,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -923,7 +923,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Nesting_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -942,14 +942,14 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -970,7 +970,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Package_Packaged_Element then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -988,7 +988,7 @@ begin
       when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
          if Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1002,21 +1002,21 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1030,12 +1030,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1054,33 +1054,33 @@ begin
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Type_Package then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
@@ -1103,7 +1103,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Parameter_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
               Opposite,
               Element,
               Link);
