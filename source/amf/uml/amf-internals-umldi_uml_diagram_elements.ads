@@ -41,18 +41,22 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Packageable_Elements;
-with AMF.Internals.UMLDI_UML_Diagram_Elements;
-with AMF.UMLDI.UML_Diagrams;
+with AMF.Elements;
+with AMF.Internals.UML_Elements;
+with AMF.UMLDI.UML_Diagram_Elements;
 
-package AMF.Internals.UMLDI_UML_Diagrams is
+generic
+   type Element_Proxy is
+     abstract new AMF.Internals.UML_Elements.UML_Element_Base with private;
 
-   package Diagram_Elements is
-     new AMF.Internals.UMLDI_UML_Diagram_Elements
-          (AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy);
+package AMF.Internals.UMLDI_UML_Diagram_Elements is
 
-   type UMLDI_UML_Diagram_Proxy is
-     abstract limited new Diagram_Elements.UMLDI_UML_Diagram_Element_Proxy
-       and AMF.UMLDI.UML_Diagrams.UMLDI_UML_Diagram with null record;
+   type UMLDI_UML_Diagram_Element_Proxy is
+     abstract limited new Element_Proxy
+       and AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element with null record;
 
-end AMF.Internals.UMLDI_UML_Diagrams;
+   overriding function Container
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.Elements.Element_Access;
+
+end AMF.Internals.UMLDI_UML_Diagram_Elements;

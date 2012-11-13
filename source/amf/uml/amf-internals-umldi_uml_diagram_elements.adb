@@ -41,18 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.Internals.UML_Packageable_Elements;
-with AMF.Internals.UMLDI_UML_Diagram_Elements;
-with AMF.UMLDI.UML_Diagrams;
+with AMF.DI.Diagram_Elements;
 
-package AMF.Internals.UMLDI_UML_Diagrams is
+package body AMF.Internals.UMLDI_UML_Diagram_Elements is
 
-   package Diagram_Elements is
-     new AMF.Internals.UMLDI_UML_Diagram_Elements
-          (AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy);
+   ---------------
+   -- Container --
+   ---------------
 
-   type UMLDI_UML_Diagram_Proxy is
-     abstract limited new Diagram_Elements.UMLDI_UML_Diagram_Element_Proxy
-       and AMF.UMLDI.UML_Diagrams.UMLDI_UML_Diagram with null record;
+   overriding function Container
+    (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
+       return AMF.Elements.Element_Access
+   is
+      use type AMF.DI.Diagram_Elements.DI_Diagram_Element_Access;
 
-end AMF.Internals.UMLDI_UML_Diagrams;
+      Owning_Element : constant
+        AMF.DI.Diagram_Elements.DI_Diagram_Element_Access
+          := UMLDI_UML_Diagram_Element_Proxy'Class (Self.all).Get_Owning_Element;
+
+   begin
+      if Owning_Element /= null then
+         --  Returns owingElement when it is defined, this is most common case
+         --  for classes of UMLDI metamodel.
+
+         return AMF.Elements.Element_Access (Owning_Element);
+
+      else
+         --  Use Container subprogram of parent tagged type to retrieve
+         --  possible container. For UMLDI classes inherited from
+         --  UML::Packageabe this implementation returns value of
+         --  Element::owner attribute.
+
+         return Element_Proxy (Self.all).Container;
+      end if;
+   end Container;
+
+end AMF.Internals.UMLDI_UML_Diagram_Elements;
