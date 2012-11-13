@@ -89,22 +89,6 @@ package AMF.Internals.UMLDI_UML_Styles is
    --
    --  Size of a font for rendering strings, given in typographical points.
 
-   overriding function Get_Visibility
-    (Self : not null access constant UMLDI_UML_Style_Proxy)
-       return AMF.UML.UML_Visibility_Kind;
-   --  Getter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility, 
-   --  i.e., visibility is not optional.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UMLDI_UML_Style_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind);
-   --  Setter of PackageableElement::visibility.
-   --
-   --  Indicates that packageable elements must always have a visibility, 
-   --  i.e., visibility is not optional.
-
    overriding function Get_Client_Dependency
     (Self : not null access constant UMLDI_UML_Style_Proxy)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;
@@ -156,22 +140,6 @@ package AMF.Internals.UMLDI_UML_Styles is
    --  hierarchy of nested Namespaces. It is constructed from the names of the 
    --  containing namespaces starting at the root of the hierarchy and ending 
    --  with the name of the NamedElement itself.
-
-   overriding function Get_Visibility
-    (Self : not null access constant UMLDI_UML_Style_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind;
-   --  Getter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces 
-   --  within the overall model, and its accessibility.
-
-   overriding procedure Set_Visibility
-    (Self : not null access UMLDI_UML_Style_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind);
-   --  Setter of NamedElement::visibility.
-   --
-   --  Determines where the NamedElement appears within different Namespaces 
-   --  within the overall model, and its accessibility.
 
    overriding function Get_Owned_Comment
     (Self : not null access constant UMLDI_UML_Style_Proxy)

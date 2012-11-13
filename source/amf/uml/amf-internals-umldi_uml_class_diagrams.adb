@@ -268,7 +268,7 @@ package body AMF.Internals.UMLDI_UML_Class_Diagrams is
     (Self : not null access constant UMLDI_UML_Class_Diagram_Proxy)
        return AMF.UML.Elements.Collections.Set_Of_UML_Element is
    begin
-      raise Program_Error;
+--      raise Program_Error;
       return X : AMF.UML.Elements.Collections.Set_Of_UML_Element;
 --      return
 --        AMF.UML.Elements.Collections.Wrap
@@ -330,7 +330,7 @@ package body AMF.Internals.UMLDI_UML_Class_Diagrams is
     (Self : not null access constant UMLDI_UML_Class_Diagram_Proxy)
        return AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style is
    begin
-      raise Program_Error;
+--      raise Program_Error;
       return X : AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style;
 --      return
 --        AMF.UMLDI.UML_Styles.Collections.Wrap
@@ -546,31 +546,6 @@ package body AMF.Internals.UMLDI_UML_Class_Diagrams is
        (Self.Element, To);
    end Set_Bounds;
 
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UMLDI_UML_Class_Diagram_Proxy)
-       return AMF.UML.UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UMLDI_UML_Class_Diagram_Proxy;
-     To   : AMF.UML.UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
-
    ---------------------------
    -- Get_Client_Dependency --
    ---------------------------
@@ -696,31 +671,6 @@ package body AMF.Internals.UMLDI_UML_Class_Diagrams is
          end if;
       end;
    end Get_Qualified_Name;
-
-   --------------------
-   -- Get_Visibility --
-   --------------------
-
-   overriding function Get_Visibility
-    (Self : not null access constant UMLDI_UML_Class_Diagram_Proxy)
-       return AMF.UML.Optional_UML_Visibility_Kind is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Visibility
-         (Self.Element);
-   end Get_Visibility;
-
-   --------------------
-   -- Set_Visibility --
-   --------------------
-
-   overriding procedure Set_Visibility
-    (Self : not null access UMLDI_UML_Class_Diagram_Proxy;
-     To   : AMF.UML.Optional_UML_Visibility_Kind) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Visibility
-       (Self.Element, To);
-   end Set_Visibility;
 
    -----------------------
    -- Get_Owned_Comment --
