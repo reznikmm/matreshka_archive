@@ -11619,23 +11619,10 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      raise Program_Error;
-      return 0;
---      return
---        AMF.Internals.Links.Opposite_Element
---         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Collection, Self);
+      return
+        AMF.Internals.Links.Opposite_Element
+         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Link, Self);
    end Internal_Get_Shared_Style;
-
-   -------------------------------
-   -- Internal_Set_Shared_Style --
-   -------------------------------
-
-   procedure Internal_Set_Shared_Style
-    (Self : AMF.Internals.AMF_Element;
-     To   : AMF.Internals.AMF_Element) is
-   begin
-      raise Program_Error;
-   end Internal_Set_Shared_Style;
 
    -------------------------
    -- Internal_Get_Signal --
@@ -21684,6 +21671,182 @@ package body AMF.Internals.Tables.UML_Attributes is
       AMF.Internals.Tables.Primitive_Types_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.UML_Metamodel.MP_UML_Continuation_Setting, Old, To);
    end Internal_Set_Setting;
+
+   -------------------------------
+   -- Internal_Set_Shared_Style --
+   -------------------------------
+
+   procedure Internal_Set_Shared_Style
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      case AMF.Internals.Tables.UML_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Classifier_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartment =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Shape =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Shared_Style_Styled_Element,
+              Self,
+              To);
+
+         when others =>
+            raise Program_Error;
+      end case;
+   end Internal_Set_Shared_Style;
 
    -------------------------
    -- Internal_Set_Signal --

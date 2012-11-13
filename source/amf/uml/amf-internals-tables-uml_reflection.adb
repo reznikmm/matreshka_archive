@@ -364,7 +364,7 @@ with AMF.UMLDI.UML_Shapes;
 with AMF.UMLDI.UML_State_Machine_Diagrams;
 with AMF.UMLDI.UML_State_Shapes;
 with AMF.UMLDI.UML_Stereotype_Property_Value_Labels;
-with AMF.UMLDI.UML_Styles.Collections;
+with AMF.UMLDI.UML_Styles;
 with AMF.UMLDI.UML_Typed_Element_Labels;
 with AMF.UMLDI.UML_Use_Case_Diagrams;
 with League.Holders.Booleans;
@@ -13669,9 +13669,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -13816,9 +13817,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -13945,9 +13947,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -14207,9 +14210,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -14378,9 +14382,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -14491,9 +14496,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -14612,9 +14618,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -14850,9 +14857,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -15137,9 +15145,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -15400,9 +15409,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -15530,9 +15540,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -15838,9 +15849,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -15984,9 +15996,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16105,9 +16118,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16226,9 +16240,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16356,9 +16371,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16486,9 +16502,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16732,9 +16749,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -16995,9 +17013,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -17258,9 +17277,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -17405,9 +17425,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -17526,9 +17547,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -17806,9 +17828,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -17968,9 +17991,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -18090,9 +18114,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -18348,9 +18373,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -18603,9 +18629,10 @@ package body AMF.Internals.Tables.UML_Reflection is
             --  UMLDiagramElement::sharedStyle : UMLStyle
 
             return
-              AMF.UMLDI.UML_Styles.Collections.UMLDI_UML_Style_Collections.Internals.To_Holder
-               (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
-                 (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style);
+              AMF.Internals.Holders.UMLDI_Holders.To_Holder
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access'
+                 (AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+                   (AMF.Internals.Helpers.To_Element (Self)).Get_Shared_Style));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -57812,6 +57839,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Activity_Diagrams.UMLDI_UML_Activity_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -57893,6 +57927,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Association_End_Labels.UMLDI_UML_Association_End_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -57959,6 +58000,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Association_Or_Connector_Or_Link_Shapes.UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -58097,6 +58145,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Class_Diagrams.UMLDI_UML_Class_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -58192,6 +58247,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Classifier_Shapes.UMLDI_UML_Classifier_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -58237,6 +58299,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Compartments.UMLDI_UML_Compartment_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -58290,6 +58359,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Compartmentable_Shapes.UMLDI_UML_Compartmentable_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -58406,6 +58482,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Component_Diagrams.UMLDI_UML_Component_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -58565,6 +58648,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Composite_Structure_Diagrams.UMLDI_UML_Composite_Structure_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -58702,6 +58792,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Deployment_Diagrams.UMLDI_UML_Deployment_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -58768,6 +58865,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Edges.UMLDI_UML_Edge_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -58920,6 +59024,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Interaction_Diagrams.UMLDI_UML_Interaction_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59001,6 +59112,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Interaction_Table_Labels.UMLDI_UML_Interaction_Table_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59061,6 +59179,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Keyword_Labels.UMLDI_UML_Keyword_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59120,6 +59245,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Labels.UMLDI_UML_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -59188,6 +59320,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Multiplicity_Labels.UMLDI_UML_Multiplicity_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59254,6 +59393,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Name_Labels.UMLDI_UML_Name_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -59377,6 +59523,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Object_Diagrams.UMLDI_UML_Object_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -59515,6 +59668,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59652,6 +59812,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Profile_Diagrams.UMLDI_UML_Profile_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59733,6 +59900,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Redefines_Labels.UMLDI_UML_Redefines_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -59792,6 +59966,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Shapes.UMLDI_UML_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -59944,6 +60125,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_State_Machine_Diagrams.UMLDI_UML_State_Machine_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -60025,6 +60213,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_State_Shapes.UMLDI_UML_State_Shape_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -60084,6 +60279,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Stereotype_Property_Value_Labels.UMLDI_UML_Stereotype_Property_Value_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
@@ -60219,6 +60421,13 @@ package body AMF.Internals.Tables.UML_Reflection is
              (AMF.Internals.Helpers.To_Element (Self)).Set_Owning_Element
                (AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access (AMF.Holders.Elements.Element (Value)));
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Typed_Element_Labels.UMLDI_UML_Typed_Element_Label_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
+
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style
 
@@ -60348,6 +60557,13 @@ package body AMF.Internals.Tables.UML_Reflection is
             AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
              (AMF.Internals.Helpers.To_Element (Self)).Set_Resolution
                (AMF.Holders.Reals.Element (Value));
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            --  UMLDiagramElement::sharedStyle : UMLStyle
+
+            AMF.UMLDI.UML_Use_Case_Diagrams.UMLDI_UML_Use_Case_Diagram_Access
+             (AMF.Internals.Helpers.To_Element (Self)).Set_Shared_Style
+               (AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access (AMF.Holders.Elements.Element (Value)));
 
          elsif Property = AMF.Internals.Tables.DI_Metamodel.MP_DI_Diagram_Element_Shared_Style_A_Styled_Element then
             --  DiagramElement::sharedStyle : Style

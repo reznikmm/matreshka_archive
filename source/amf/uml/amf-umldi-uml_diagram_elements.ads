@@ -48,7 +48,7 @@
 with AMF.DI.Diagram_Elements;
 limited with AMF.UML.Elements.Collections;
 limited with AMF.UMLDI.UML_Diagram_Elements.Collections;
-limited with AMF.UMLDI.UML_Styles.Collections;
+limited with AMF.UMLDI.UML_Styles;
 
 package AMF.UMLDI.UML_Diagram_Elements is
 
@@ -130,8 +130,15 @@ package AMF.UMLDI.UML_Diagram_Elements is
 
    not overriding function Get_Shared_Style
     (Self : not null access constant UMLDI_UML_Diagram_Element)
-       return AMF.UMLDI.UML_Styles.Collections.Set_Of_UMLDI_UML_Style is abstract;
+       return AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access is abstract;
    --  Getter of UMLDiagramElement::sharedStyle.
+   --
+   --  Restricts shared styles to UMLStyles.
+
+   not overriding procedure Set_Shared_Style
+    (Self : not null access UMLDI_UML_Diagram_Element;
+     To   : AMF.UMLDI.UML_Styles.UMLDI_UML_Style_Access) is abstract;
+   --  Setter of UMLDiagramElement::sharedStyle.
    --
    --  Restricts shared styles to UMLStyles.
 

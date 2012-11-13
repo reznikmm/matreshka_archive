@@ -1079,10 +1079,10 @@ package body AMF.Internals.Tables.UMLDI_Metamodel.Properties is
 
    procedure Initialize_55 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 55, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 55,
         AMF.Internals.Tables.UMLDI_String_Data_00.MS_0093'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 55, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 55, (False, AMF.CMOF.Public_Visibility));
    end Initialize_55;
 

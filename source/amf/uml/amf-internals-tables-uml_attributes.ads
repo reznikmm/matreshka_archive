@@ -3729,11 +3729,17 @@ package AMF.Internals.Tables.UML_Attributes is
    function Internal_Get_Mode_Element
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Mode_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  UMLNameLabel => UMLNameLabel::modeElement
 
    function Internal_Get_Model_Element
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Model_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  UMLActivityDiagram => UMLActivityDiagram::modelElement
    --  UMLAssociationEndLabel => UMLAssociationEndLabel::modelElement
    --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::modelElement
@@ -5660,6 +5666,9 @@ package AMF.Internals.Tables.UML_Attributes is
    function Internal_Get_Owning_Element
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element;
+   procedure Internal_Set_Owning_Element
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element);
    --  UMLActivityDiagram => UMLDiagramElement::owningElement
    --  UMLAssociationEndLabel => UMLDiagramElement::owningElement
    --  UMLAssociationOrConnectorOrLinkShape => UMLDiagramElement::owningElement
