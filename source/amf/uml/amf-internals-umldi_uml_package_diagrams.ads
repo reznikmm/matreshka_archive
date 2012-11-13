@@ -41,13 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 with AMF.DC;
 with AMF.DI.Diagram_Elements.Collections;
 with AMF.DI.Styles;
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UMLDI_UML_Diagrams;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
@@ -67,7 +65,7 @@ with League.Strings;
 package AMF.Internals.UMLDI_UML_Package_Diagrams is
 
    type UMLDI_UML_Package_Diagram_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UMLDI_UML_Diagrams.UMLDI_UML_Diagram_Proxy
        and AMF.UMLDI.UML_Package_Diagrams.UMLDI_UML_Package_Diagram with null record;
 
    overriding function Get_Heading
