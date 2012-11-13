@@ -235,6 +235,25 @@ package body AMF.Internals.Tables.DC_Notification is
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.Optional_DC_Bounds;
+     New_Value : AMF.DC.Optional_DC_Bounds) is
+   begin
+      AMF.Internals.Listener_Registry.Notify_Attribute_Set
+       (AMF.Internals.Helpers.To_Element (Element),
+        AMF.CMOF.Properties.CMOF_Property_Access
+         (AMF.Internals.Helpers.To_Element (Property)),
+        (Is_Empty => True),
+        AMF.DC.Holders.To_Holder (Old_Value),
+        AMF.DC.Holders.To_Holder (New_Value));
+   end Notify_Attribute_Set;
+
+   --------------------------
+   -- Notify_Attribute_Set --
+   --------------------------
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.DC.DC_Point;
      New_Value : AMF.DC.DC_Point) is
    begin

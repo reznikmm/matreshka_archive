@@ -100,6 +100,12 @@ package AMF.Internals.Tables.DC_Notification is
    procedure Notify_Attribute_Set
     (Element   : AMF.Internals.AMF_Element;
      Property  : AMF.Internals.CMOF_Element;
+     Old_Value : AMF.DC.Optional_DC_Bounds;
+     New_Value : AMF.DC.Optional_DC_Bounds);
+
+   procedure Notify_Attribute_Set
+    (Element   : AMF.Internals.AMF_Element;
+     Property  : AMF.Internals.CMOF_Element;
      Old_Value : AMF.DC.DC_Point;
      New_Value : AMF.DC.DC_Point);
 
