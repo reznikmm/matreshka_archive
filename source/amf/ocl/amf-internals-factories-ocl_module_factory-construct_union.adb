@@ -106,7 +106,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Collection_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -127,7 +127,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -139,14 +139,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -165,12 +165,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -184,7 +184,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -196,19 +196,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -222,7 +222,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -287,7 +287,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Bag_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -308,7 +308,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -320,14 +320,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -346,12 +346,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -365,7 +365,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -377,19 +377,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -403,7 +403,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -510,7 +510,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Void_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -531,7 +531,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -543,14 +543,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -576,7 +576,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -588,7 +588,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -602,7 +602,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -646,7 +646,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Tuple_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -667,7 +667,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -679,14 +679,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -705,12 +705,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -724,7 +724,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -736,19 +736,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -762,7 +762,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -806,7 +806,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Set_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -827,7 +827,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -839,14 +839,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -865,12 +865,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -884,7 +884,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -896,19 +896,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -922,7 +922,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1008,7 +1008,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Sequence_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1029,7 +1029,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1041,14 +1041,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1067,12 +1067,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1086,7 +1086,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1098,19 +1098,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1124,7 +1124,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1196,7 +1196,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Ordered_Set_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1217,7 +1217,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1229,14 +1229,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1255,12 +1255,12 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Property_Attribute_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1274,7 +1274,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1286,19 +1286,19 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Data_Type_Owned_Operation then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1312,7 +1312,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1356,7 +1356,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Invalid_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1377,7 +1377,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1389,14 +1389,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1422,7 +1422,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1434,7 +1434,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1448,7 +1448,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1492,7 +1492,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Template_Parameter_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1513,7 +1513,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1525,14 +1525,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1558,7 +1558,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1570,7 +1570,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1584,7 +1584,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1628,7 +1628,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Any_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1649,7 +1649,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1661,14 +1661,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1694,7 +1694,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1706,7 +1706,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1720,7 +1720,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1764,7 +1764,7 @@ begin
       when AMF.Internals.Tables.OCL_Types.E_OCL_Message_Type =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Feature_Feature_Featuring_Classifier,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Feature_Featuring_Classifier,
               Element,
               Opposite,
               Link);
@@ -1785,7 +1785,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1797,14 +1797,14 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Imported_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Inherited_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1830,7 +1830,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Member_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1842,7 +1842,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);
@@ -1856,7 +1856,7 @@ begin
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Use_Case then
             AMF.Internals.Links.Create_Link
-             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Named_Element_Owned_Member_Namespace,
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Element,
               Opposite,
               Link);

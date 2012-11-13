@@ -901,356 +901,356 @@ package body AMF.Internals.Tables.OCL_Metamodel is
       return Base + 93;
    end MP_OCL_Variable_Exp_Referred_Variable;
 
-   ---------------------------------------------
-   -- MA_OCL_Ocl_Expression_First_First_Owner --
-   ---------------------------------------------
+   -----------------------------------------------
+   -- MA_OCL_Collection_Range_First_First_Owner --
+   -----------------------------------------------
 
-   function MA_OCL_Ocl_Expression_First_First_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Collection_Range_First_First_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 94;
-   end MA_OCL_Ocl_Expression_First_First_Owner;
+   end MA_OCL_Collection_Range_First_First_Owner;
 
-   -------------------------------------------
-   -- MA_OCL_State_Referred_State_State_Exp --
-   -------------------------------------------
+   ---------------------------------------
+   -- MA_OCL_State_Exp_Referred_State_A --
+   ---------------------------------------
 
-   function MA_OCL_State_Referred_State_State_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_State_Exp_Referred_State_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 95;
-   end MA_OCL_State_Referred_State_State_Exp;
+   end MA_OCL_State_Exp_Referred_State_A;
 
-   -------------------------------------------
-   -- MA_OCL_Ocl_Expression_Last_Last_Owner --
-   -------------------------------------------
+   ---------------------------------------------
+   -- MA_OCL_Collection_Range_Last_Last_Owner --
+   ---------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Last_Last_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Collection_Range_Last_Last_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 96;
-   end MA_OCL_Ocl_Expression_Last_Last_Owner;
+   end MA_OCL_Collection_Range_Last_Last_Owner;
 
-   ----------------------------------------------------
-   -- MA_OCL_Property_Referred_Property_Refering_Exp --
-   ----------------------------------------------------
+   -------------------------------------------------------------
+   -- MA_OCL_Property_Call_Exp_Referred_Property_Refering_Exp --
+   -------------------------------------------------------------
 
-   function MA_OCL_Property_Referred_Property_Refering_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Property_Call_Exp_Referred_Property_Refering_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 97;
-   end MA_OCL_Property_Referred_Property_Refering_Exp;
+   end MA_OCL_Property_Call_Exp_Referred_Property_Refering_Exp;
 
-   ----------------------------------------------------
-   -- MA_OCL_Classifier_Element_Type_Collection_Type --
-   ----------------------------------------------------
+   -------------------------------------------
+   -- MA_OCL_Collection_Type_Element_Type_A --
+   -------------------------------------------
 
-   function MA_OCL_Classifier_Element_Type_Collection_Type return AMF.Internals.CMOF_Element is
+   function MA_OCL_Collection_Type_Element_Type_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 98;
-   end MA_OCL_Classifier_Element_Type_Collection_Type;
+   end MA_OCL_Collection_Type_Element_Type_A;
 
-   ------------------------------------------------------
-   -- MA_OCL_Tuple_Literal_Part_Part_Tuple_Literal_Exp --
-   ------------------------------------------------------
+   -------------------------------------
+   -- MA_OCL_Tuple_Literal_Exp_Part_A --
+   -------------------------------------
 
-   function MA_OCL_Tuple_Literal_Part_Part_Tuple_Literal_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Tuple_Literal_Exp_Part_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 99;
-   end MA_OCL_Tuple_Literal_Part_Part_Tuple_Literal_Exp;
+   end MA_OCL_Tuple_Literal_Exp_Part_A;
 
-   ----------------------------------------------------
-   -- MA_OCL_Variable_Referred_Variable_Refering_Exp --
-   ----------------------------------------------------
+   --------------------------------------------------------
+   -- MA_OCL_Variable_Exp_Referred_Variable_Refering_Exp --
+   --------------------------------------------------------
 
-   function MA_OCL_Variable_Referred_Variable_Refering_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Variable_Exp_Referred_Variable_Refering_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 100;
-   end MA_OCL_Variable_Referred_Variable_Refering_Exp;
+   end MA_OCL_Variable_Exp_Referred_Variable_Refering_Exp;
 
-   ----------------------------------------------
-   -- MA_OCL_Classifier_Referred_Type_Type_Exp --
-   ----------------------------------------------
+   -------------------------------------
+   -- MA_OCL_Type_Exp_Referred_Type_A --
+   -------------------------------------
 
-   function MA_OCL_Classifier_Referred_Type_Type_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Type_Exp_Referred_Type_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 101;
-   end MA_OCL_Classifier_Referred_Type_Type_Exp;
+   end MA_OCL_Type_Exp_Referred_Type_A;
 
-   --------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Source_Applied_Element --
-   --------------------------------------------------
+   --------------------------------------------
+   -- MA_OCL_Call_Exp_Source_Applied_Element --
+   --------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Source_Applied_Element return AMF.Internals.CMOF_Element is
+   function MA_OCL_Call_Exp_Source_Applied_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 102;
-   end MA_OCL_Ocl_Expression_Source_Applied_Element;
+   end MA_OCL_Call_Exp_Source_Applied_Element;
 
-   ----------------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Body_Expression_Top_Expression --
-   ----------------------------------------------------------
+   -------------------------------------------------------------
+   -- MA_OCL_Expression_In_Ocl_Body_Expression_Top_Expression --
+   -------------------------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Body_Expression_Top_Expression return AMF.Internals.CMOF_Element is
+   function MA_OCL_Expression_In_Ocl_Body_Expression_Top_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 103;
-   end MA_OCL_Ocl_Expression_Body_Expression_Top_Expression;
+   end MA_OCL_Expression_In_Ocl_Body_Expression_Top_Expression;
 
-   ------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Body_Loop_Body_Owner --
-   ------------------------------------------------
+   ------------------------------------------
+   -- MA_OCL_Loop_Exp_Body_Loop_Body_Owner --
+   ------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Body_Loop_Body_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Loop_Exp_Body_Loop_Body_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 104;
-   end MA_OCL_Ocl_Expression_Body_Loop_Body_Owner;
+   end MA_OCL_Loop_Exp_Body_Loop_Body_Owner;
 
-   -------------------------------------------------
-   -- MA_OCL_Variable_Context_Variable_Self_Owner --
-   -------------------------------------------------
+   ----------------------------------------------------------
+   -- MA_OCL_Expression_In_Ocl_Context_Variable_Self_Owner --
+   ----------------------------------------------------------
 
-   function MA_OCL_Variable_Context_Variable_Self_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Expression_In_Ocl_Context_Variable_Self_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 105;
-   end MA_OCL_Variable_Context_Variable_Self_Owner;
+   end MA_OCL_Expression_In_Ocl_Context_Variable_Self_Owner;
 
    ---------------------------------------
-   -- MA_OCL_Variable_Iterator_Loop_Exp --
+   -- MA_OCL_Loop_Exp_Iterator_Loop_Exp --
    ---------------------------------------
 
-   function MA_OCL_Variable_Iterator_Loop_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Loop_Exp_Iterator_Loop_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 106;
-   end MA_OCL_Variable_Iterator_Loop_Exp;
+   end MA_OCL_Loop_Exp_Iterator_Loop_Exp;
 
-   ------------------------------------------------
-   -- MA_OCL_Signal_Referred_Signal_Message_Type --
-   ------------------------------------------------
+   -------------------------------------------
+   -- MA_OCL_Message_Type_Referred_Signal_A --
+   -------------------------------------------
 
-   function MA_OCL_Signal_Referred_Signal_Message_Type return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Type_Referred_Signal_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 107;
-   end MA_OCL_Signal_Referred_Signal_Message_Type;
+   end MA_OCL_Message_Type_Referred_Signal_A;
 
-   --------------------------------------------------
-   -- MA_OCL_Variable_Result_Variable_Result_Owner --
-   --------------------------------------------------
+   -----------------------------------------------------------
+   -- MA_OCL_Expression_In_Ocl_Result_Variable_Result_Owner --
+   -----------------------------------------------------------
 
-   function MA_OCL_Variable_Result_Variable_Result_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Expression_In_Ocl_Result_Variable_Result_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 108;
-   end MA_OCL_Variable_Result_Variable_Result_Owner;
+   end MA_OCL_Expression_In_Ocl_Result_Variable_Result_Owner;
 
-   ------------------------------------------------------
-   -- MA_OCL_Operation_Referred_Operation_Message_Type --
-   ------------------------------------------------------
+   ----------------------------------------------
+   -- MA_OCL_Message_Type_Referred_Operation_A --
+   ----------------------------------------------
 
-   function MA_OCL_Operation_Referred_Operation_Message_Type return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Type_Referred_Operation_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 109;
-   end MA_OCL_Operation_Referred_Operation_Message_Type;
+   end MA_OCL_Message_Type_Referred_Operation_A;
 
-   --------------------------------------------------
-   -- MA_OCL_Variable_Parameter_Variable_Var_Owner --
-   --------------------------------------------------
+   -----------------------------------------------------------
+   -- MA_OCL_Expression_In_Ocl_Parameter_Variable_Var_Owner --
+   -----------------------------------------------------------
 
-   function MA_OCL_Variable_Parameter_Variable_Var_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_Expression_In_Ocl_Parameter_Variable_Var_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 110;
-   end MA_OCL_Variable_Parameter_Variable_Var_Owner;
+   end MA_OCL_Expression_In_Ocl_Parameter_Variable_Var_Owner;
 
-   --------------------------------------------------------
-   -- MA_OCL_Classifier_Generated_Type_Owning_Classifier --
-   --------------------------------------------------------
+   ---------------------------------------------------------------
+   -- MA_OCL_Expression_In_Ocl_Generated_Type_Owning_Classifier --
+   ---------------------------------------------------------------
 
-   function MA_OCL_Classifier_Generated_Type_Owning_Classifier return AMF.Internals.CMOF_Element is
+   function MA_OCL_Expression_In_Ocl_Generated_Type_Owning_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 111;
-   end MA_OCL_Classifier_Generated_Type_Owning_Classifier;
+   end MA_OCL_Expression_In_Ocl_Generated_Type_Owning_Classifier;
 
-   ------------------------------------------------------------------
-   -- MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp --
-   ------------------------------------------------------------------
+   ---------------------------------------------------------------
+   -- MA_OCL_Enum_Literal_Exp_Referred_Enum_Literal_Literal_Exp --
+   ---------------------------------------------------------------
 
-   function MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Enum_Literal_Exp_Referred_Enum_Literal_Literal_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 112;
-   end MA_OCL_Enumeration_Literal_Referred_Enum_Literal_Literal_Exp;
+   end MA_OCL_Enum_Literal_Exp_Referred_Enum_Literal_Literal_Exp;
 
-   --------------------------------------------------
-   -- MA_OCL_Property_Attribute_Tuple_Literal_Part --
-   --------------------------------------------------
+   -------------------------------------------
+   -- MA_OCL_Tuple_Literal_Part_Attribute_A --
+   -------------------------------------------
 
-   function MA_OCL_Property_Attribute_Tuple_Literal_Part return AMF.Internals.CMOF_Element is
+   function MA_OCL_Tuple_Literal_Part_Attribute_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 113;
-   end MA_OCL_Property_Attribute_Tuple_Literal_Part;
+   end MA_OCL_Tuple_Literal_Part_Attribute_A;
 
-   ------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Qualifier_Parent_Nav --
-   ------------------------------------------------
+   -----------------------------------------------------
+   -- MA_OCL_Navigation_Call_Exp_Qualifier_Parent_Nav --
+   -----------------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Qualifier_Parent_Nav return AMF.Internals.CMOF_Element is
+   function MA_OCL_Navigation_Call_Exp_Qualifier_Parent_Nav return AMF.Internals.CMOF_Element is
    begin
       return Base + 114;
-   end MA_OCL_Ocl_Expression_Qualifier_Parent_Nav;
+   end MA_OCL_Navigation_Call_Exp_Qualifier_Parent_Nav;
 
-   ------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Argument_Parent_Call --
-   ------------------------------------------------
+   ----------------------------------------------------
+   -- MA_OCL_Operation_Call_Exp_Argument_Parent_Call --
+   ----------------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Argument_Parent_Call return AMF.Internals.CMOF_Element is
+   function MA_OCL_Operation_Call_Exp_Argument_Parent_Call return AMF.Internals.CMOF_Element is
    begin
       return Base + 115;
-   end MA_OCL_Ocl_Expression_Argument_Parent_Call;
+   end MA_OCL_Operation_Call_Exp_Argument_Parent_Call;
 
-   -----------------------------------------------------------
-   -- MA_OCL_Property_Navigation_Source_Navigation_Call_Exp --
-   -----------------------------------------------------------
+   ----------------------------------------------------
+   -- MA_OCL_Navigation_Call_Exp_Navigation_Source_A --
+   ----------------------------------------------------
 
-   function MA_OCL_Property_Navigation_Source_Navigation_Call_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Navigation_Call_Exp_Navigation_Source_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 116;
-   end MA_OCL_Property_Navigation_Source_Navigation_Call_Exp;
+   end MA_OCL_Navigation_Call_Exp_Navigation_Source_A;
 
-   ------------------------------------------------------
-   -- MA_OCL_Operation_Referred_Operation_Refering_Exp --
-   ------------------------------------------------------
+   ---------------------------------------------------------------
+   -- MA_OCL_Operation_Call_Exp_Referred_Operation_Refering_Exp --
+   ---------------------------------------------------------------
 
-   function MA_OCL_Operation_Referred_Operation_Refering_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Operation_Call_Exp_Referred_Operation_Refering_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 117;
-   end MA_OCL_Operation_Referred_Operation_Refering_Exp;
+   end MA_OCL_Operation_Call_Exp_Referred_Operation_Refering_Exp;
 
-   ----------------------------------------------
-   -- MA_OCL_Ocl_Expression_Condition_If_Owner --
-   ----------------------------------------------
+   --------------------------------------
+   -- MA_OCL_If_Exp_Condition_If_Owner --
+   --------------------------------------
 
-   function MA_OCL_Ocl_Expression_Condition_If_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_If_Exp_Condition_If_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 118;
-   end MA_OCL_Ocl_Expression_Condition_If_Owner;
+   end MA_OCL_If_Exp_Condition_If_Owner;
 
-   ------------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Then_Expression_Then_Owner --
-   ------------------------------------------------------
+   ----------------------------------------------
+   -- MA_OCL_If_Exp_Then_Expression_Then_Owner --
+   ----------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Then_Expression_Then_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_If_Exp_Then_Expression_Then_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 119;
-   end MA_OCL_Ocl_Expression_Then_Expression_Then_Owner;
+   end MA_OCL_If_Exp_Then_Expression_Then_Owner;
 
-   -----------------------------------------------------------------------
-   -- MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp --
-   -----------------------------------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MA_OCL_Association_Class_Call_Exp_Referred_Association_Class_Referring_Exp --
+   --------------------------------------------------------------------------------
 
-   function MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Association_Class_Call_Exp_Referred_Association_Class_Referring_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 120;
-   end MA_OCL_Association_Class_Referred_Association_Class_Referring_Exp;
+   end MA_OCL_Association_Class_Call_Exp_Referred_Association_Class_Referring_Exp;
 
-   ------------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Else_Expression_Else_Owner --
-   ------------------------------------------------------
+   ----------------------------------------------
+   -- MA_OCL_If_Exp_Else_Expression_Else_Owner --
+   ----------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Else_Expression_Else_Owner return AMF.Internals.CMOF_Element is
+   function MA_OCL_If_Exp_Else_Expression_Else_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 121;
-   end MA_OCL_Ocl_Expression_Else_Expression_Else_Owner;
+   end MA_OCL_If_Exp_Else_Expression_Else_Owner;
 
-   -------------------------------------
-   -- MA_OCL_Variable_Result_Base_Exp --
-   -------------------------------------
+   ----------------------------------------
+   -- MA_OCL_Iterate_Exp_Result_Base_Exp --
+   ----------------------------------------
 
-   function MA_OCL_Variable_Result_Base_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Iterate_Exp_Result_Base_Exp return AMF.Internals.CMOF_Element is
    begin
       return Base + 122;
-   end MA_OCL_Variable_Result_Base_Exp;
+   end MA_OCL_Iterate_Exp_Result_Base_Exp;
 
-   --------------------------------------
-   -- MA_OCL_Ocl_Expression_In_Let_Exp --
-   --------------------------------------
+   -------------------------
+   -- MA_OCL_Let_Exp_In_A --
+   -------------------------
 
-   function MA_OCL_Ocl_Expression_In_Let_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Let_Exp_In_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 123;
-   end MA_OCL_Ocl_Expression_In_Let_Exp;
+   end MA_OCL_Let_Exp_In_A;
 
-   ----------------------------------------------
-   -- MA_OCL_Ocl_Expression_Target_Message_Exp --
-   ----------------------------------------------
+   ---------------------------------
+   -- MA_OCL_Message_Exp_Target_A --
+   ---------------------------------
 
-   function MA_OCL_Ocl_Expression_Target_Message_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Exp_Target_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 124;
-   end MA_OCL_Ocl_Expression_Target_Message_Exp;
+   end MA_OCL_Message_Exp_Target_A;
 
-   ----------------------------------------------------------------
-   -- MA_OCL_Collection_Literal_Part_Part_Collection_Literal_Exp --
-   ----------------------------------------------------------------
+   ------------------------------------------
+   -- MA_OCL_Collection_Literal_Exp_Part_A --
+   ------------------------------------------
 
-   function MA_OCL_Collection_Literal_Part_Part_Collection_Literal_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Collection_Literal_Exp_Part_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 125;
-   end MA_OCL_Collection_Literal_Part_Part_Collection_Literal_Exp;
+   end MA_OCL_Collection_Literal_Exp_Part_A;
 
-   ------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Argument_Message_Exp --
-   ------------------------------------------------
+   -----------------------------------
+   -- MA_OCL_Message_Exp_Argument_A --
+   -----------------------------------
 
-   function MA_OCL_Ocl_Expression_Argument_Message_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Exp_Argument_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 126;
-   end MA_OCL_Ocl_Expression_Argument_Message_Exp;
+   end MA_OCL_Message_Exp_Argument_A;
 
-   --------------------------------------
-   -- MA_OCL_Variable_Variable_Let_Exp --
-   --------------------------------------
+   -------------------------------
+   -- MA_OCL_Let_Exp_Variable_A --
+   -------------------------------
 
-   function MA_OCL_Variable_Variable_Let_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Let_Exp_Variable_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 127;
-   end MA_OCL_Variable_Variable_Let_Exp;
+   end MA_OCL_Let_Exp_Variable_A;
 
-   ---------------------------------------------------------------
-   -- MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp --
-   ---------------------------------------------------------------
+   -------------------------------------------
+   -- MA_OCL_Message_Exp_Called_Operation_A --
+   -------------------------------------------
 
-   function MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Exp_Called_Operation_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 128;
-   end MA_OCL_Call_Operation_Action_Called_Operation_Message_Exp;
+   end MA_OCL_Message_Exp_Called_Operation_A;
 
-   ------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Item_Collection_Item --
-   ------------------------------------------------
+   -----------------------------------
+   -- MA_OCL_Collection_Item_Item_A --
+   -----------------------------------
 
-   function MA_OCL_Ocl_Expression_Item_Collection_Item return AMF.Internals.CMOF_Element is
+   function MA_OCL_Collection_Item_Item_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 129;
-   end MA_OCL_Ocl_Expression_Item_Collection_Item;
+   end MA_OCL_Collection_Item_Item_A;
 
-   ---------------------------------------------------------------
-   -- MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element --
-   ---------------------------------------------------------------
+   ---------------------------------------------------------
+   -- MA_OCL_Variable_Init_Expression_Initialized_Element --
+   ---------------------------------------------------------
 
-   function MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element return AMF.Internals.CMOF_Element is
+   function MA_OCL_Variable_Init_Expression_Initialized_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 130;
-   end MA_OCL_Ocl_Expression_Init_Expression_Initialized_Element;
+   end MA_OCL_Variable_Init_Expression_Initialized_Element;
 
-   -------------------------------------------------------
-   -- MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp --
-   -------------------------------------------------------
+   --------------------------------------
+   -- MA_OCL_Message_Exp_Sent_Signal_A --
+   --------------------------------------
 
-   function MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp return AMF.Internals.CMOF_Element is
+   function MA_OCL_Message_Exp_Sent_Signal_A return AMF.Internals.CMOF_Element is
    begin
       return Base + 131;
-   end MA_OCL_Send_Signal_Action_Sent_Signal_Message_Exp;
+   end MA_OCL_Message_Exp_Sent_Signal_A;
 
-   -----------------------------------------------------
-   -- MA_OCL_Parameter_Represented_Parameter_Variable --
-   -----------------------------------------------------
+   ----------------------------------------------------
+   -- MA_OCL_Variable_Represented_Parameter_Variable --
+   ----------------------------------------------------
 
-   function MA_OCL_Parameter_Represented_Parameter_Variable return AMF.Internals.CMOF_Element is
+   function MA_OCL_Variable_Represented_Parameter_Variable return AMF.Internals.CMOF_Element is
    begin
       return Base + 132;
-   end MA_OCL_Parameter_Represented_Parameter_Variable;
+   end MA_OCL_Variable_Represented_Parameter_Variable;
 
    ------------
    -- MB_OCL --
