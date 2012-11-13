@@ -7086,10 +7086,12 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Conditional_Nodes.UML_Conditional_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  inActivity
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           15     => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -11553,10 +11555,12 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Expansion_Regions.UML_Expansion_Region_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  inActivity
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -16521,12 +16525,14 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Loop_Nodes.UML_Loop_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
           15     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  decider
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  inActivity
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -22974,8 +22980,6 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Redefinable_Template_Signatures.UML_Redefinable_Template_Signature_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
-                       --  classifier
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
                        --  isLeaf
           2      => (AMF.Internals.Tables.UML_Types.M_String, null),
@@ -22988,6 +22992,8 @@ package body AMF.Internals.Tables.UML_Constructors is
                        --  owner
           5      => (AMF.Internals.Tables.UML_Types.M_String, null),
                        --  qualifiedName
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  template
           6      => (AMF.Internals.Tables.UML_Types.M_Visibility_Kind_Holder, (Is_Empty => True)),
                        --  visibility
           others => (Kind => AMF.Internals.Tables.UML_Types.M_None)));
@@ -24239,10 +24245,12 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Sequence_Nodes.UML_Sequence_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  inActivity
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
@@ -26198,10 +26206,12 @@ package body AMF.Internals.Tables.UML_Constructors is
           new AMF.Internals.UML_Structured_Activity_Nodes.UML_Structured_Activity_Node_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.UML_Types.M_None),
-          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+          8      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  activity
           10     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  context
+          12     => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                       --  inActivity
           9      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
                        --  inStructuredNode
           7      => (AMF.Internals.Tables.UML_Types.M_Boolean, False),
