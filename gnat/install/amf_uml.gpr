@@ -44,6 +44,7 @@
 with "matreshka/matreshka_config.gpr";
 with "league.gpr";
 with "amf.gpr";
+with "amf_dd.gpr";
 
 library project AMF_UML is
 

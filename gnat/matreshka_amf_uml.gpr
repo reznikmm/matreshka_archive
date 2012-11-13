@@ -45,6 +45,7 @@ with "matreshka_common";
 with "matreshka_config";
 with "matreshka_league";
 with "matreshka_amf";
+with "matreshka_amf_dd";
 
 library project Matreshka_AMF_UML is
 
