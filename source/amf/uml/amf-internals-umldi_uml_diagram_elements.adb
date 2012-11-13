@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.DI.Diagram_Elements;
 
 package body AMF.Internals.UMLDI_UML_Diagram_Elements is
 
@@ -53,10 +52,10 @@ package body AMF.Internals.UMLDI_UML_Diagram_Elements is
     (Self : not null access constant UMLDI_UML_Diagram_Element_Proxy)
        return AMF.Elements.Element_Access
    is
-      use type AMF.DI.Diagram_Elements.DI_Diagram_Element_Access;
+      use type AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access;
 
       Owning_Element : constant
-        AMF.DI.Diagram_Elements.DI_Diagram_Element_Access
+        AMF.UMLDI.UML_Diagram_Elements.UMLDI_UML_Diagram_Element_Access
           := UMLDI_UML_Diagram_Element_Proxy'Class (Self.all).Get_Owning_Element;
 
    begin

@@ -41,13 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
 with AMF.DC;
 with AMF.DI.Diagram_Elements.Collections;
 with AMF.DI.Styles;
 with AMF.Internals.UML_Elements;
+with AMF.Internals.UMLDI_UML_Diagram_Elements;
 with AMF.UML.Elements.Collections;
 with AMF.UMLDI.UML_Diagram_Elements.Collections;
 with AMF.UMLDI.UML_Edges;
@@ -56,8 +55,12 @@ with AMF.Visitors;
 
 package AMF.Internals.UMLDI_UML_Edges is
 
+   package Diagram_Elements is
+     new AMF.Internals.UMLDI_UML_Diagram_Elements
+          (AMF.Internals.UML_Elements.UML_Element_Base);
+
    type UMLDI_UML_Edge_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new Diagram_Elements.UMLDI_UML_Diagram_Element_Proxy
        and AMF.UMLDI.UML_Edges.UMLDI_UML_Edge with null record;
 
    overriding function Get_Source
