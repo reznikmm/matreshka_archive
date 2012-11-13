@@ -2350,23 +2350,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 242;
    end MC_UML_Write_Variable_Action;
 
-   --------------------------------
-   -- MP_UML_Abstraction_Mapping --
-   --------------------------------
+   ----------------------------------------------
+   -- MP_UML_Abstraction_Mapping_A_Abstraction --
+   ----------------------------------------------
 
-   function MP_UML_Abstraction_Mapping return AMF.Internals.CMOF_Element is
+   function MP_UML_Abstraction_Mapping_A_Abstraction return AMF.Internals.CMOF_Element is
    begin
       return Base + 491;
-   end MP_UML_Abstraction_Mapping;
+   end MP_UML_Abstraction_Mapping_A_Abstraction;
 
-   --------------------------------------------------
-   -- MP_UML_Accept_Call_Action_Return_Information --
-   --------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Accept_Call_Action_Return_Information_A_Accept_Call_Action --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Accept_Call_Action_Return_Information return AMF.Internals.CMOF_Element is
+   function MP_UML_Accept_Call_Action_Return_Information_A_Accept_Call_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 492;
-   end MP_UML_Accept_Call_Action_Return_Information;
+   end MP_UML_Accept_Call_Action_Return_Information_A_Accept_Call_Action;
 
    ----------------------------------------------
    -- MP_UML_Accept_Event_Action_Is_Unmarshall --
@@ -2377,41 +2377,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 493;
    end MP_UML_Accept_Event_Action_Is_Unmarshall;
 
-   ---------------------------------------
-   -- MP_UML_Accept_Event_Action_Result --
-   ---------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Accept_Event_Action_Result_A_Accept_Event_Action --
+   -------------------------------------------------------------
 
-   function MP_UML_Accept_Event_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Accept_Event_Action_Result_A_Accept_Event_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 243;
-   end MP_UML_Accept_Event_Action_Result;
+   end MP_UML_Accept_Event_Action_Result_A_Accept_Event_Action;
 
-   ----------------------------------------
-   -- MP_UML_Accept_Event_Action_Trigger --
-   ----------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Accept_Event_Action_Trigger_A_Accept_Event_Action --
+   --------------------------------------------------------------
 
-   function MP_UML_Accept_Event_Action_Trigger return AMF.Internals.CMOF_Element is
+   function MP_UML_Accept_Event_Action_Trigger_A_Accept_Event_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 244;
-   end MP_UML_Accept_Event_Action_Trigger;
+   end MP_UML_Accept_Event_Action_Trigger_A_Accept_Event_Action;
 
-   ---------------------------
-   -- MP_UML_Action_Context --
-   ---------------------------
+   ------------------------------------
+   -- MP_UML_Action_Context_A_Action --
+   ------------------------------------
 
-   function MP_UML_Action_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Context_A_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 494;
-   end MP_UML_Action_Context;
+   end MP_UML_Action_Context_A_Action;
 
-   -------------------------
-   -- MP_UML_Action_Input --
-   -------------------------
+   ----------------------------------
+   -- MP_UML_Action_Input_A_Action --
+   ----------------------------------
 
-   function MP_UML_Action_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Input_A_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 245;
-   end MP_UML_Action_Input;
+   end MP_UML_Action_Input_A_Action;
 
    ----------------------------------------
    -- MP_UML_Action_Is_Locally_Reentrant --
@@ -2422,68 +2422,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 495;
    end MP_UML_Action_Is_Locally_Reentrant;
 
-   ---------------------------------------
-   -- MP_UML_Action_Local_Postcondition --
-   ---------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Action_Local_Postcondition_A_Action --
+   ------------------------------------------------
 
-   function MP_UML_Action_Local_Postcondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Local_Postcondition_A_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 246;
-   end MP_UML_Action_Local_Postcondition;
+   end MP_UML_Action_Local_Postcondition_A_Action;
 
-   --------------------------------------
-   -- MP_UML_Action_Local_Precondition --
-   --------------------------------------
+   -----------------------------------------------
+   -- MP_UML_Action_Local_Precondition_A_Action --
+   -----------------------------------------------
 
-   function MP_UML_Action_Local_Precondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Local_Precondition_A_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 247;
-   end MP_UML_Action_Local_Precondition;
+   end MP_UML_Action_Local_Precondition_A_Action;
 
-   --------------------------
-   -- MP_UML_Action_Output --
-   --------------------------
+   -----------------------------------
+   -- MP_UML_Action_Output_A_Action --
+   -----------------------------------
 
-   function MP_UML_Action_Output return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Output_A_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 248;
-   end MP_UML_Action_Output;
+   end MP_UML_Action_Output_A_Action;
 
-   --------------------------------------------------
-   -- MP_UML_Action_Execution_Specification_Action --
-   --------------------------------------------------
+   -----------------------------------------------------------------------------------
+   -- MP_UML_Action_Execution_Specification_Action_A_Action_Execution_Specification --
+   -----------------------------------------------------------------------------------
 
-   function MP_UML_Action_Execution_Specification_Action return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Execution_Specification_Action_A_Action_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 496;
-   end MP_UML_Action_Execution_Specification_Action;
+   end MP_UML_Action_Execution_Specification_Action_A_Action_Execution_Specification;
 
-   -----------------------------------------
-   -- MP_UML_Action_Input_Pin_From_Action --
-   -----------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Action_Input_Pin_From_Action_A_Action_Input_Pin --
+   ------------------------------------------------------------
 
-   function MP_UML_Action_Input_Pin_From_Action return AMF.Internals.CMOF_Element is
+   function MP_UML_Action_Input_Pin_From_Action_A_Action_Input_Pin return AMF.Internals.CMOF_Element is
    begin
       return Base + 497;
-   end MP_UML_Action_Input_Pin_From_Action;
+   end MP_UML_Action_Input_Pin_From_Action_A_Action_Input_Pin;
 
-   --------------------------
-   -- MP_UML_Activity_Edge --
-   --------------------------
+   -------------------------------------------------
+   -- MP_UML_Activity_Edge_Activity_Edge_Activity --
+   -------------------------------------------------
 
-   function MP_UML_Activity_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Activity_Edge_Activity return AMF.Internals.CMOF_Element is
    begin
       return Base + 249;
-   end MP_UML_Activity_Edge;
+   end MP_UML_Activity_Edge_Activity_Edge_Activity;
 
-   ---------------------------
-   -- MP_UML_Activity_Group --
-   ---------------------------
+   ------------------------------------------------------
+   -- MP_UML_Activity_Group_Activity_Group_In_Activity --
+   ------------------------------------------------------
 
-   function MP_UML_Activity_Group return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_Activity_Group_In_Activity return AMF.Internals.CMOF_Element is
    begin
       return Base + 250;
-   end MP_UML_Activity_Group;
+   end MP_UML_Activity_Group_Activity_Group_In_Activity;
 
    ----------------------------------
    -- MP_UML_Activity_Is_Read_Only --
@@ -2503,266 +2503,266 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 499;
    end MP_UML_Activity_Is_Single_Execution;
 
-   --------------------------
-   -- MP_UML_Activity_Node --
-   --------------------------
+   -------------------------------------------------
+   -- MP_UML_Activity_Node_Activity_Node_Activity --
+   -------------------------------------------------
 
-   function MP_UML_Activity_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_Activity_Node_Activity return AMF.Internals.CMOF_Element is
    begin
       return Base + 251;
-   end MP_UML_Activity_Node;
+   end MP_UML_Activity_Node_Activity_Node_Activity;
 
-   -------------------------------
-   -- MP_UML_Activity_Partition --
-   -------------------------------
+   ------------------------------------------
+   -- MP_UML_Activity_Partition_A_Activity --
+   ------------------------------------------
 
-   function MP_UML_Activity_Partition return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_A_Activity return AMF.Internals.CMOF_Element is
    begin
       return Base + 252;
-   end MP_UML_Activity_Partition;
+   end MP_UML_Activity_Partition_A_Activity;
 
-   -------------------------------------
-   -- MP_UML_Activity_Structured_Node --
-   -------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Activity_Structured_Node_Structured_Activity_Node_Activity --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Activity_Structured_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Structured_Node_Structured_Activity_Node_Activity return AMF.Internals.CMOF_Element is
    begin
       return Base + 253;
-   end MP_UML_Activity_Structured_Node;
+   end MP_UML_Activity_Structured_Node_Structured_Activity_Node_Activity;
 
-   ------------------------------
-   -- MP_UML_Activity_Variable --
-   ------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Activity_Variable_Variable_Activity_Scope --
+   ------------------------------------------------------
 
-   function MP_UML_Activity_Variable return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Variable_Variable_Activity_Scope return AMF.Internals.CMOF_Element is
    begin
       return Base + 254;
-   end MP_UML_Activity_Variable;
+   end MP_UML_Activity_Variable_Variable_Activity_Scope;
 
-   -----------------------------------
-   -- MP_UML_Activity_Edge_Activity --
-   -----------------------------------
+   -------------------------------------------------
+   -- MP_UML_Activity_Edge_Activity_Activity_Edge --
+   -------------------------------------------------
 
-   function MP_UML_Activity_Edge_Activity return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Activity_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 500;
-   end MP_UML_Activity_Edge_Activity;
+   end MP_UML_Activity_Edge_Activity_Activity_Edge;
 
-   --------------------------------
-   -- MP_UML_Activity_Edge_Guard --
-   --------------------------------
+   ------------------------------------------------
+   -- MP_UML_Activity_Edge_Guard_A_Activity_Edge --
+   ------------------------------------------------
 
-   function MP_UML_Activity_Edge_Guard return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Guard_A_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 501;
-   end MP_UML_Activity_Edge_Guard;
+   end MP_UML_Activity_Edge_Guard_A_Activity_Edge;
 
-   -----------------------------------
-   -- MP_UML_Activity_Edge_In_Group --
-   -----------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Activity_Edge_In_Group_Activity_Group_Contained_Edge --
+   -----------------------------------------------------------------
 
-   function MP_UML_Activity_Edge_In_Group return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_In_Group_Activity_Group_Contained_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 255;
-   end MP_UML_Activity_Edge_In_Group;
+   end MP_UML_Activity_Edge_In_Group_Activity_Group_Contained_Edge;
 
-   ---------------------------------------
-   -- MP_UML_Activity_Edge_In_Partition --
-   ---------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Edge_In_Partition_Activity_Partition_Edge --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Edge_In_Partition return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_In_Partition_Activity_Partition_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 256;
-   end MP_UML_Activity_Edge_In_Partition;
+   end MP_UML_Activity_Edge_In_Partition_Activity_Partition_Edge;
 
-   ---------------------------------------------
-   -- MP_UML_Activity_Edge_In_Structured_Node --
-   ---------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Activity_Edge_In_Structured_Node_Structured_Activity_Node_Edge --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Activity_Edge_In_Structured_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_In_Structured_Node_Structured_Activity_Node_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 502;
-   end MP_UML_Activity_Edge_In_Structured_Node;
+   end MP_UML_Activity_Edge_In_Structured_Node_Structured_Activity_Node_Edge;
 
-   -------------------------------------
-   -- MP_UML_Activity_Edge_Interrupts --
-   -------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Activity_Edge_Interrupts_Interruptible_Activity_Region_Interrupting_Edge --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Activity_Edge_Interrupts return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Interrupts_Interruptible_Activity_Region_Interrupting_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 503;
-   end MP_UML_Activity_Edge_Interrupts;
+   end MP_UML_Activity_Edge_Interrupts_Interruptible_Activity_Region_Interrupting_Edge;
 
-   -----------------------------------------
-   -- MP_UML_Activity_Edge_Redefined_Edge --
-   -----------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Activity_Edge_Redefined_Edge_A_Activity_Edge --
+   ---------------------------------------------------------
 
-   function MP_UML_Activity_Edge_Redefined_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Redefined_Edge_A_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 257;
-   end MP_UML_Activity_Edge_Redefined_Edge;
+   end MP_UML_Activity_Edge_Redefined_Edge_A_Activity_Edge;
 
-   ---------------------------------
-   -- MP_UML_Activity_Edge_Source --
-   ---------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Activity_Edge_Source_Activity_Node_Outgoing --
+   --------------------------------------------------------
 
-   function MP_UML_Activity_Edge_Source return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Source_Activity_Node_Outgoing return AMF.Internals.CMOF_Element is
    begin
       return Base + 504;
-   end MP_UML_Activity_Edge_Source;
+   end MP_UML_Activity_Edge_Source_Activity_Node_Outgoing;
 
-   ---------------------------------
-   -- MP_UML_Activity_Edge_Target --
-   ---------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Activity_Edge_Target_Activity_Node_Incoming --
+   --------------------------------------------------------
 
-   function MP_UML_Activity_Edge_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Target_Activity_Node_Incoming return AMF.Internals.CMOF_Element is
    begin
       return Base + 505;
-   end MP_UML_Activity_Edge_Target;
+   end MP_UML_Activity_Edge_Target_Activity_Node_Incoming;
 
-   ---------------------------------
-   -- MP_UML_Activity_Edge_Weight --
-   ---------------------------------
+   -------------------------------------------------
+   -- MP_UML_Activity_Edge_Weight_A_Activity_Edge --
+   -------------------------------------------------
 
-   function MP_UML_Activity_Edge_Weight return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Edge_Weight_A_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 506;
-   end MP_UML_Activity_Edge_Weight;
+   end MP_UML_Activity_Edge_Weight_A_Activity_Edge;
 
-   ------------------------------------------
-   -- MP_UML_Activity_Group_Contained_Edge --
-   ------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Activity_Group_Contained_Edge_Activity_Edge_In_Group --
+   -----------------------------------------------------------------
 
-   function MP_UML_Activity_Group_Contained_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_Contained_Edge_Activity_Edge_In_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 258;
-   end MP_UML_Activity_Group_Contained_Edge;
+   end MP_UML_Activity_Group_Contained_Edge_Activity_Edge_In_Group;
 
-   ------------------------------------------
-   -- MP_UML_Activity_Group_Contained_Node --
-   ------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Activity_Group_Contained_Node_Activity_Node_In_Group --
+   -----------------------------------------------------------------
 
-   function MP_UML_Activity_Group_Contained_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_Contained_Node_Activity_Node_In_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 259;
-   end MP_UML_Activity_Group_Contained_Node;
+   end MP_UML_Activity_Group_Contained_Node_Activity_Node_In_Group;
 
-   ---------------------------------------
-   -- MP_UML_Activity_Group_In_Activity --
-   ---------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Activity_Group_In_Activity_Activity_Group --
+   ------------------------------------------------------
 
-   function MP_UML_Activity_Group_In_Activity return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_In_Activity_Activity_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 507;
-   end MP_UML_Activity_Group_In_Activity;
+   end MP_UML_Activity_Group_In_Activity_Activity_Group;
 
-   ------------------------------------
-   -- MP_UML_Activity_Group_Subgroup --
-   ------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Group_Subgroup_Activity_Group_Super_Group --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Group_Subgroup return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_Subgroup_Activity_Group_Super_Group return AMF.Internals.CMOF_Element is
    begin
       return Base + 260;
-   end MP_UML_Activity_Group_Subgroup;
+   end MP_UML_Activity_Group_Subgroup_Activity_Group_Super_Group;
 
-   ---------------------------------------
-   -- MP_UML_Activity_Group_Super_Group --
-   ---------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Group_Super_Group_Activity_Group_Subgroup --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Group_Super_Group return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Group_Super_Group_Activity_Group_Subgroup return AMF.Internals.CMOF_Element is
    begin
       return Base + 508;
-   end MP_UML_Activity_Group_Super_Group;
+   end MP_UML_Activity_Group_Super_Group_Activity_Group_Subgroup;
 
-   -----------------------------------
-   -- MP_UML_Activity_Node_Activity --
-   -----------------------------------
+   -------------------------------------------------
+   -- MP_UML_Activity_Node_Activity_Activity_Node --
+   -------------------------------------------------
 
-   function MP_UML_Activity_Node_Activity return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_Activity_Activity_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 509;
-   end MP_UML_Activity_Node_Activity;
+   end MP_UML_Activity_Node_Activity_Activity_Node;
 
-   -----------------------------------
-   -- MP_UML_Activity_Node_In_Group --
-   -----------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Activity_Node_In_Group_Activity_Group_Contained_Node --
+   -----------------------------------------------------------------
 
-   function MP_UML_Activity_Node_In_Group return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_In_Group_Activity_Group_Contained_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 261;
-   end MP_UML_Activity_Node_In_Group;
+   end MP_UML_Activity_Node_In_Group_Activity_Group_Contained_Node;
 
-   --------------------------------------------------
-   -- MP_UML_Activity_Node_In_Interruptible_Region --
-   --------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Activity_Node_In_Interruptible_Region_Interruptible_Activity_Region_Node --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Activity_Node_In_Interruptible_Region return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_In_Interruptible_Region_Interruptible_Activity_Region_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 262;
-   end MP_UML_Activity_Node_In_Interruptible_Region;
+   end MP_UML_Activity_Node_In_Interruptible_Region_Interruptible_Activity_Region_Node;
 
-   ---------------------------------------
-   -- MP_UML_Activity_Node_In_Partition --
-   ---------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Node_In_Partition_Activity_Partition_Node --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Node_In_Partition return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_In_Partition_Activity_Partition_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 263;
-   end MP_UML_Activity_Node_In_Partition;
+   end MP_UML_Activity_Node_In_Partition_Activity_Partition_Node;
 
-   ---------------------------------------------
-   -- MP_UML_Activity_Node_In_Structured_Node --
-   ---------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Activity_Node_In_Structured_Node_Structured_Activity_Node_Node --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Activity_Node_In_Structured_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_In_Structured_Node_Structured_Activity_Node_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 510;
-   end MP_UML_Activity_Node_In_Structured_Node;
+   end MP_UML_Activity_Node_In_Structured_Node_Structured_Activity_Node_Node;
 
-   -----------------------------------
-   -- MP_UML_Activity_Node_Incoming --
-   -----------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Activity_Node_Incoming_Activity_Edge_Target --
+   --------------------------------------------------------
 
-   function MP_UML_Activity_Node_Incoming return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_Incoming_Activity_Edge_Target return AMF.Internals.CMOF_Element is
    begin
       return Base + 264;
-   end MP_UML_Activity_Node_Incoming;
+   end MP_UML_Activity_Node_Incoming_Activity_Edge_Target;
 
-   -----------------------------------
-   -- MP_UML_Activity_Node_Outgoing --
-   -----------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Activity_Node_Outgoing_Activity_Edge_Source --
+   --------------------------------------------------------
 
-   function MP_UML_Activity_Node_Outgoing return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_Outgoing_Activity_Edge_Source return AMF.Internals.CMOF_Element is
    begin
       return Base + 265;
-   end MP_UML_Activity_Node_Outgoing;
+   end MP_UML_Activity_Node_Outgoing_Activity_Edge_Source;
 
-   -----------------------------------------
-   -- MP_UML_Activity_Node_Redefined_Node --
-   -----------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Activity_Node_Redefined_Node_A_Activity_Node --
+   ---------------------------------------------------------
 
-   function MP_UML_Activity_Node_Redefined_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Node_Redefined_Node_A_Activity_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 266;
-   end MP_UML_Activity_Node_Redefined_Node;
+   end MP_UML_Activity_Node_Redefined_Node_A_Activity_Node;
 
-   ----------------------------------------------
-   -- MP_UML_Activity_Parameter_Node_Parameter --
-   ----------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Activity_Parameter_Node_Parameter_A_Activity_Parameter_Node --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Activity_Parameter_Node_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Parameter_Node_Parameter_A_Activity_Parameter_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 511;
-   end MP_UML_Activity_Parameter_Node_Parameter;
+   end MP_UML_Activity_Parameter_Node_Parameter_A_Activity_Parameter_Node;
 
-   ------------------------------------
-   -- MP_UML_Activity_Partition_Edge --
-   ------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Partition_Edge_Activity_Edge_In_Partition --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Partition_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_Edge_Activity_Edge_In_Partition return AMF.Internals.CMOF_Element is
    begin
       return Base + 267;
-   end MP_UML_Activity_Partition_Edge;
+   end MP_UML_Activity_Partition_Edge_Activity_Edge_In_Partition;
 
    --------------------------------------------
    -- MP_UML_Activity_Partition_Is_Dimension --
@@ -2782,50 +2782,50 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 513;
    end MP_UML_Activity_Partition_Is_External;
 
-   ------------------------------------
-   -- MP_UML_Activity_Partition_Node --
-   ------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Partition_Node_Activity_Node_In_Partition --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Partition_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_Node_Activity_Node_In_Partition return AMF.Internals.CMOF_Element is
    begin
       return Base + 268;
-   end MP_UML_Activity_Partition_Node;
+   end MP_UML_Activity_Partition_Node_Activity_Node_In_Partition;
 
-   ------------------------------------------
-   -- MP_UML_Activity_Partition_Represents --
-   ------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Activity_Partition_Represents_A_Activity_Partition --
+   ---------------------------------------------------------------
 
-   function MP_UML_Activity_Partition_Represents return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_Represents_A_Activity_Partition return AMF.Internals.CMOF_Element is
    begin
       return Base + 514;
-   end MP_UML_Activity_Partition_Represents;
+   end MP_UML_Activity_Partition_Represents_A_Activity_Partition;
 
-   --------------------------------------------
-   -- MP_UML_Activity_Partition_Subpartition --
-   --------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Activity_Partition_Subpartition_Activity_Partition_Super_Partition --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Activity_Partition_Subpartition return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_Subpartition_Activity_Partition_Super_Partition return AMF.Internals.CMOF_Element is
    begin
       return Base + 269;
-   end MP_UML_Activity_Partition_Subpartition;
+   end MP_UML_Activity_Partition_Subpartition_Activity_Partition_Super_Partition;
 
-   -----------------------------------------------
-   -- MP_UML_Activity_Partition_Super_Partition --
-   -----------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Activity_Partition_Super_Partition_Activity_Partition_Subpartition --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Activity_Partition_Super_Partition return AMF.Internals.CMOF_Element is
+   function MP_UML_Activity_Partition_Super_Partition_Activity_Partition_Subpartition return AMF.Internals.CMOF_Element is
    begin
       return Base + 515;
-   end MP_UML_Activity_Partition_Super_Partition;
+   end MP_UML_Activity_Partition_Super_Partition_Activity_Partition_Subpartition;
 
-   ----------------------------------------------------------
-   -- MP_UML_Add_Structural_Feature_Value_Action_Insert_At --
-   ----------------------------------------------------------
+   ------------------------------------------------------------------------------------------------
+   -- MP_UML_Add_Structural_Feature_Value_Action_Insert_At_A_Add_Structural_Feature_Value_Action --
+   ------------------------------------------------------------------------------------------------
 
-   function MP_UML_Add_Structural_Feature_Value_Action_Insert_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Add_Structural_Feature_Value_Action_Insert_At_A_Add_Structural_Feature_Value_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 516;
-   end MP_UML_Add_Structural_Feature_Value_Action_Insert_At;
+   end MP_UML_Add_Structural_Feature_Value_Action_Insert_At_A_Add_Structural_Feature_Value_Action;
 
    ---------------------------------------------------------------
    -- MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All --
@@ -2836,14 +2836,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 517;
    end MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All;
 
-   ------------------------------------------------
-   -- MP_UML_Add_Variable_Value_Action_Insert_At --
-   ------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Add_Variable_Value_Action_Insert_At_A_Add_Variable_Value_Action --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Add_Variable_Value_Action_Insert_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Add_Variable_Value_Action_Insert_At_A_Add_Variable_Value_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 518;
-   end MP_UML_Add_Variable_Value_Action_Insert_At;
+   end MP_UML_Add_Variable_Value_Action_Insert_At_A_Add_Variable_Value_Action;
 
    -----------------------------------------------------
    -- MP_UML_Add_Variable_Value_Action_Is_Replace_All --
@@ -2863,50 +2863,50 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 520;
    end MP_UML_Artifact_File_Name;
 
-   -----------------------------------
-   -- MP_UML_Artifact_Manifestation --
-   -----------------------------------
+   ----------------------------------------------
+   -- MP_UML_Artifact_Manifestation_A_Artifact --
+   ----------------------------------------------
 
-   function MP_UML_Artifact_Manifestation return AMF.Internals.CMOF_Element is
+   function MP_UML_Artifact_Manifestation_A_Artifact return AMF.Internals.CMOF_Element is
    begin
       return Base + 270;
-   end MP_UML_Artifact_Manifestation;
+   end MP_UML_Artifact_Manifestation_A_Artifact;
 
-   -------------------------------------
-   -- MP_UML_Artifact_Nested_Artifact --
-   -------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Artifact_Nested_Artifact_A_Artifact --
+   ------------------------------------------------
 
-   function MP_UML_Artifact_Nested_Artifact return AMF.Internals.CMOF_Element is
+   function MP_UML_Artifact_Nested_Artifact_A_Artifact return AMF.Internals.CMOF_Element is
    begin
       return Base + 271;
-   end MP_UML_Artifact_Nested_Artifact;
+   end MP_UML_Artifact_Nested_Artifact_A_Artifact;
 
-   -------------------------------------
-   -- MP_UML_Artifact_Owned_Attribute --
-   -------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Artifact_Owned_Attribute_A_Artifact --
+   ------------------------------------------------
 
-   function MP_UML_Artifact_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Artifact_Owned_Attribute_A_Artifact return AMF.Internals.CMOF_Element is
    begin
       return Base + 272;
-   end MP_UML_Artifact_Owned_Attribute;
+   end MP_UML_Artifact_Owned_Attribute_A_Artifact;
 
-   -------------------------------------
-   -- MP_UML_Artifact_Owned_Operation --
-   -------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Artifact_Owned_Operation_A_Artifact --
+   ------------------------------------------------
 
-   function MP_UML_Artifact_Owned_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Artifact_Owned_Operation_A_Artifact return AMF.Internals.CMOF_Element is
    begin
       return Base + 273;
-   end MP_UML_Artifact_Owned_Operation;
+   end MP_UML_Artifact_Owned_Operation_A_Artifact;
 
-   ---------------------------------
-   -- MP_UML_Association_End_Type --
-   ---------------------------------
+   -----------------------------------------------
+   -- MP_UML_Association_End_Type_A_Association --
+   -----------------------------------------------
 
-   function MP_UML_Association_End_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Association_End_Type_A_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 274;
-   end MP_UML_Association_End_Type;
+   end MP_UML_Association_End_Type_A_Association;
 
    -----------------------------------
    -- MP_UML_Association_Is_Derived --
@@ -2917,41 +2917,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 521;
    end MP_UML_Association_Is_Derived;
 
-   -----------------------------------
-   -- MP_UML_Association_Member_End --
-   -----------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Association_Member_End_Property_Association --
+   --------------------------------------------------------
 
-   function MP_UML_Association_Member_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Association_Member_End_Property_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 275;
-   end MP_UML_Association_Member_End;
+   end MP_UML_Association_Member_End_Property_Association;
 
-   --------------------------------------------
-   -- MP_UML_Association_Navigable_Owned_End --
-   --------------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Association_Navigable_Owned_End_A_Association --
+   ----------------------------------------------------------
 
-   function MP_UML_Association_Navigable_Owned_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Association_Navigable_Owned_End_A_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 276;
-   end MP_UML_Association_Navigable_Owned_End;
+   end MP_UML_Association_Navigable_Owned_End_A_Association;
 
-   ----------------------------------
-   -- MP_UML_Association_Owned_End --
-   ----------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Association_Owned_End_Property_Owning_Association --
+   --------------------------------------------------------------
 
-   function MP_UML_Association_Owned_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Association_Owned_End_Property_Owning_Association return AMF.Internals.CMOF_Element is
    begin
       return Base + 277;
-   end MP_UML_Association_Owned_End;
+   end MP_UML_Association_Owned_End_Property_Owning_Association;
 
-   -----------------------------
-   -- MP_UML_Behavior_Context --
-   -----------------------------
+   ----------------------------------------
+   -- MP_UML_Behavior_Context_A_Behavior --
+   ----------------------------------------
 
-   function MP_UML_Behavior_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Context_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 522;
-   end MP_UML_Behavior_Context;
+   end MP_UML_Behavior_Context_A_Behavior;
 
    ----------------------------------
    -- MP_UML_Behavior_Is_Reentrant --
@@ -2962,68 +2962,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 523;
    end MP_UML_Behavior_Is_Reentrant;
 
-   -------------------------------------
-   -- MP_UML_Behavior_Owned_Parameter --
-   -------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Behavior_Owned_Parameter_A_Behavior --
+   ------------------------------------------------
 
-   function MP_UML_Behavior_Owned_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Owned_Parameter_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 278;
-   end MP_UML_Behavior_Owned_Parameter;
+   end MP_UML_Behavior_Owned_Parameter_A_Behavior;
 
-   -----------------------------------------
-   -- MP_UML_Behavior_Owned_Parameter_Set --
-   -----------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Behavior_Owned_Parameter_Set_A_Behavior --
+   ----------------------------------------------------
 
-   function MP_UML_Behavior_Owned_Parameter_Set return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Owned_Parameter_Set_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 279;
-   end MP_UML_Behavior_Owned_Parameter_Set;
+   end MP_UML_Behavior_Owned_Parameter_Set_A_Behavior;
 
-   -----------------------------------
-   -- MP_UML_Behavior_Postcondition --
-   -----------------------------------
+   ----------------------------------------------
+   -- MP_UML_Behavior_Postcondition_A_Behavior --
+   ----------------------------------------------
 
-   function MP_UML_Behavior_Postcondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Postcondition_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 280;
-   end MP_UML_Behavior_Postcondition;
+   end MP_UML_Behavior_Postcondition_A_Behavior;
 
-   ----------------------------------
-   -- MP_UML_Behavior_Precondition --
-   ----------------------------------
+   ---------------------------------------------
+   -- MP_UML_Behavior_Precondition_A_Behavior --
+   ---------------------------------------------
 
-   function MP_UML_Behavior_Precondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Precondition_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 281;
-   end MP_UML_Behavior_Precondition;
+   end MP_UML_Behavior_Precondition_A_Behavior;
 
-   ----------------------------------------
-   -- MP_UML_Behavior_Redefined_Behavior --
-   ----------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Behavior_Redefined_Behavior_A_Behavior --
+   ---------------------------------------------------
 
-   function MP_UML_Behavior_Redefined_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Redefined_Behavior_A_Behavior return AMF.Internals.CMOF_Element is
    begin
       return Base + 282;
-   end MP_UML_Behavior_Redefined_Behavior;
+   end MP_UML_Behavior_Redefined_Behavior_A_Behavior;
 
-   -----------------------------------
-   -- MP_UML_Behavior_Specification --
-   -----------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Behavior_Specification_Behavioral_Feature_Method --
+   -------------------------------------------------------------
 
-   function MP_UML_Behavior_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Specification_Behavioral_Feature_Method return AMF.Internals.CMOF_Element is
    begin
       return Base + 524;
-   end MP_UML_Behavior_Specification;
+   end MP_UML_Behavior_Specification_Behavioral_Feature_Method;
 
-   ------------------------------------------------------
-   -- MP_UML_Behavior_Execution_Specification_Behavior --
-   ------------------------------------------------------
+   -----------------------------------------------------------------------------------------
+   -- MP_UML_Behavior_Execution_Specification_Behavior_A_Behavior_Execution_Specification --
+   -----------------------------------------------------------------------------------------
 
-   function MP_UML_Behavior_Execution_Specification_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavior_Execution_Specification_Behavior_A_Behavior_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 525;
-   end MP_UML_Behavior_Execution_Specification_Behavior;
+   end MP_UML_Behavior_Execution_Specification_Behavior_A_Behavior_Execution_Specification;
 
    -------------------------------------------
    -- MP_UML_Behavioral_Feature_Concurrency --
@@ -3043,77 +3043,77 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 527;
    end MP_UML_Behavioral_Feature_Is_Abstract;
 
-   --------------------------------------
-   -- MP_UML_Behavioral_Feature_Method --
-   --------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Behavioral_Feature_Method_Behavior_Specification --
+   -------------------------------------------------------------
 
-   function MP_UML_Behavioral_Feature_Method return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavioral_Feature_Method_Behavior_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 283;
-   end MP_UML_Behavioral_Feature_Method;
+   end MP_UML_Behavioral_Feature_Method_Behavior_Specification;
 
-   -----------------------------------------------
-   -- MP_UML_Behavioral_Feature_Owned_Parameter --
-   -----------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Behavioral_Feature_Owned_Parameter_A_Owner_Formal_Param --
+   --------------------------------------------------------------------
 
-   function MP_UML_Behavioral_Feature_Owned_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavioral_Feature_Owned_Parameter_A_Owner_Formal_Param return AMF.Internals.CMOF_Element is
    begin
       return Base + 284;
-   end MP_UML_Behavioral_Feature_Owned_Parameter;
+   end MP_UML_Behavioral_Feature_Owned_Parameter_A_Owner_Formal_Param;
 
-   ---------------------------------------------------
-   -- MP_UML_Behavioral_Feature_Owned_Parameter_Set --
-   ---------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Behavioral_Feature_Owned_Parameter_Set_A_Behavioral_Feature --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Behavioral_Feature_Owned_Parameter_Set return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavioral_Feature_Owned_Parameter_Set_A_Behavioral_Feature return AMF.Internals.CMOF_Element is
    begin
       return Base + 285;
-   end MP_UML_Behavioral_Feature_Owned_Parameter_Set;
+   end MP_UML_Behavioral_Feature_Owned_Parameter_Set_A_Behavioral_Feature;
 
-   ------------------------------------------------
-   -- MP_UML_Behavioral_Feature_Raised_Exception --
-   ------------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Behavioral_Feature_Raised_Exception_A_Behavioral_Feature --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Behavioral_Feature_Raised_Exception return AMF.Internals.CMOF_Element is
+   function MP_UML_Behavioral_Feature_Raised_Exception_A_Behavioral_Feature return AMF.Internals.CMOF_Element is
    begin
       return Base + 286;
-   end MP_UML_Behavioral_Feature_Raised_Exception;
+   end MP_UML_Behavioral_Feature_Raised_Exception_A_Behavioral_Feature;
 
-   ------------------------------------------------------
-   -- MP_UML_Behaviored_Classifier_Classifier_Behavior --
-   ------------------------------------------------------
+   ------------------------------------------------------------------------------
+   -- MP_UML_Behaviored_Classifier_Classifier_Behavior_A_Behaviored_Classifier --
+   ------------------------------------------------------------------------------
 
-   function MP_UML_Behaviored_Classifier_Classifier_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Behaviored_Classifier_Classifier_Behavior_A_Behaviored_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 528;
-   end MP_UML_Behaviored_Classifier_Classifier_Behavior;
+   end MP_UML_Behaviored_Classifier_Classifier_Behavior_A_Behaviored_Classifier;
 
-   --------------------------------------------------------
-   -- MP_UML_Behaviored_Classifier_Interface_Realization --
-   --------------------------------------------------------
+   ------------------------------------------------------------------------------------------------------
+   -- MP_UML_Behaviored_Classifier_Interface_Realization_Interface_Realization_Implementing_Classifier --
+   ------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Behaviored_Classifier_Interface_Realization return AMF.Internals.CMOF_Element is
+   function MP_UML_Behaviored_Classifier_Interface_Realization_Interface_Realization_Implementing_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 287;
-   end MP_UML_Behaviored_Classifier_Interface_Realization;
+   end MP_UML_Behaviored_Classifier_Interface_Realization_Interface_Realization_Implementing_Classifier;
 
-   -------------------------------------------------
-   -- MP_UML_Behaviored_Classifier_Owned_Behavior --
-   -------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Behaviored_Classifier_Owned_Behavior_A_Behaviored_Classifier --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Behaviored_Classifier_Owned_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Behaviored_Classifier_Owned_Behavior_A_Behaviored_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 288;
-   end MP_UML_Behaviored_Classifier_Owned_Behavior;
+   end MP_UML_Behaviored_Classifier_Owned_Behavior_A_Behaviored_Classifier;
 
-   -------------------------------------------
-   -- MP_UML_Broadcast_Signal_Action_Signal --
-   -------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Broadcast_Signal_Action_Signal_A_Broadcast_Signal_Action --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Broadcast_Signal_Action_Signal return AMF.Internals.CMOF_Element is
+   function MP_UML_Broadcast_Signal_Action_Signal_A_Broadcast_Signal_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 529;
-   end MP_UML_Broadcast_Signal_Action_Signal;
+   end MP_UML_Broadcast_Signal_Action_Signal_A_Broadcast_Signal_Action;
 
    ---------------------------------------
    -- MP_UML_Call_Action_Is_Synchronous --
@@ -3124,68 +3124,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 530;
    end MP_UML_Call_Action_Is_Synchronous;
 
-   -------------------------------
-   -- MP_UML_Call_Action_Result --
-   -------------------------------
+   ---------------------------------------------
+   -- MP_UML_Call_Action_Result_A_Call_Action --
+   ---------------------------------------------
 
-   function MP_UML_Call_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Call_Action_Result_A_Call_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 289;
-   end MP_UML_Call_Action_Result;
+   end MP_UML_Call_Action_Result_A_Call_Action;
 
-   ------------------------------------------
-   -- MP_UML_Call_Behavior_Action_Behavior --
-   ------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Call_Behavior_Action_Behavior_A_Call_Behavior_Action --
+   -----------------------------------------------------------------
 
-   function MP_UML_Call_Behavior_Action_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Call_Behavior_Action_Behavior_A_Call_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 531;
-   end MP_UML_Call_Behavior_Action_Behavior;
+   end MP_UML_Call_Behavior_Action_Behavior_A_Call_Behavior_Action;
 
-   ---------------------------------
-   -- MP_UML_Call_Event_Operation --
-   ---------------------------------
+   ----------------------------------------------
+   -- MP_UML_Call_Event_Operation_A_Call_Event --
+   ----------------------------------------------
 
-   function MP_UML_Call_Event_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Call_Event_Operation_A_Call_Event return AMF.Internals.CMOF_Element is
    begin
       return Base + 532;
-   end MP_UML_Call_Event_Operation;
+   end MP_UML_Call_Event_Operation_A_Call_Event;
 
-   --------------------------------------------
-   -- MP_UML_Call_Operation_Action_Operation --
-   --------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Call_Operation_Action_Operation_A_Call_Operation_Action --
+   --------------------------------------------------------------------
 
-   function MP_UML_Call_Operation_Action_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Call_Operation_Action_Operation_A_Call_Operation_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 533;
-   end MP_UML_Call_Operation_Action_Operation;
+   end MP_UML_Call_Operation_Action_Operation_A_Call_Operation_Action;
 
-   -----------------------------------------
-   -- MP_UML_Call_Operation_Action_Target --
-   -----------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Call_Operation_Action_Target_A_Call_Operation_Action --
+   -----------------------------------------------------------------
 
-   function MP_UML_Call_Operation_Action_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Call_Operation_Action_Target_A_Call_Operation_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 534;
-   end MP_UML_Call_Operation_Action_Target;
+   end MP_UML_Call_Operation_Action_Target_A_Call_Operation_Action;
 
-   -------------------------------------------
-   -- MP_UML_Change_Event_Change_Expression --
-   -------------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Change_Event_Change_Expression_A_Change_Event --
+   ----------------------------------------------------------
 
-   function MP_UML_Change_Event_Change_Expression return AMF.Internals.CMOF_Element is
+   function MP_UML_Change_Event_Change_Expression_A_Change_Event return AMF.Internals.CMOF_Element is
    begin
       return Base + 535;
-   end MP_UML_Change_Event_Change_Expression;
+   end MP_UML_Change_Event_Change_Expression_A_Change_Event;
 
-   ----------------------------
-   -- MP_UML_Class_Extension --
-   ----------------------------
+   ------------------------------------------------
+   -- MP_UML_Class_Extension_Extension_Metaclass --
+   ------------------------------------------------
 
-   function MP_UML_Class_Extension return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Extension_Extension_Metaclass return AMF.Internals.CMOF_Element is
    begin
       return Base + 290;
-   end MP_UML_Class_Extension;
+   end MP_UML_Class_Extension_Extension_Metaclass;
 
    ------------------------------
    -- MP_UML_Class_Is_Abstract --
@@ -3205,104 +3205,104 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 537;
    end MP_UML_Class_Is_Active;
 
-   ------------------------------------
-   -- MP_UML_Class_Nested_Classifier --
-   ------------------------------------
+   --------------------------------------------
+   -- MP_UML_Class_Nested_Classifier_A_Class --
+   --------------------------------------------
 
-   function MP_UML_Class_Nested_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Nested_Classifier_A_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 291;
-   end MP_UML_Class_Nested_Classifier;
+   end MP_UML_Class_Nested_Classifier_A_Class;
 
-   ----------------------------------
-   -- MP_UML_Class_Owned_Attribute --
-   ----------------------------------
+   -------------------------------------------------
+   -- MP_UML_Class_Owned_Attribute_Property_Class --
+   -------------------------------------------------
 
-   function MP_UML_Class_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Owned_Attribute_Property_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 292;
-   end MP_UML_Class_Owned_Attribute;
+   end MP_UML_Class_Owned_Attribute_Property_Class;
 
-   ----------------------------------
-   -- MP_UML_Class_Owned_Operation --
-   ----------------------------------
+   --------------------------------------------------
+   -- MP_UML_Class_Owned_Operation_Operation_Class --
+   --------------------------------------------------
 
-   function MP_UML_Class_Owned_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Owned_Operation_Operation_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 293;
-   end MP_UML_Class_Owned_Operation;
+   end MP_UML_Class_Owned_Operation_Operation_Class;
 
-   ----------------------------------
-   -- MP_UML_Class_Owned_Reception --
-   ----------------------------------
+   ------------------------------------------
+   -- MP_UML_Class_Owned_Reception_A_Class --
+   ------------------------------------------
 
-   function MP_UML_Class_Owned_Reception return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Owned_Reception_A_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 294;
-   end MP_UML_Class_Owned_Reception;
+   end MP_UML_Class_Owned_Reception_A_Class;
 
-   ------------------------------
-   -- MP_UML_Class_Super_Class --
-   ------------------------------
+   --------------------------------------
+   -- MP_UML_Class_Super_Class_A_Class --
+   --------------------------------------
 
-   function MP_UML_Class_Super_Class return AMF.Internals.CMOF_Element is
+   function MP_UML_Class_Super_Class_A_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 295;
-   end MP_UML_Class_Super_Class;
+   end MP_UML_Class_Super_Class_A_Class;
 
-   ---------------------------------
-   -- MP_UML_Classifier_Attribute --
-   ---------------------------------
+   ----------------------------------------------
+   -- MP_UML_Classifier_Attribute_A_Classifier --
+   ----------------------------------------------
 
-   function MP_UML_Classifier_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Attribute_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 296;
-   end MP_UML_Classifier_Attribute;
+   end MP_UML_Classifier_Attribute_A_Classifier;
 
-   -----------------------------------------
-   -- MP_UML_Classifier_Collaboration_Use --
-   -----------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Classifier_Collaboration_Use_A_Classifier --
+   ------------------------------------------------------
 
-   function MP_UML_Classifier_Collaboration_Use return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Collaboration_Use_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 297;
-   end MP_UML_Classifier_Collaboration_Use;
+   end MP_UML_Classifier_Collaboration_Use_A_Classifier;
 
-   -------------------------------
-   -- MP_UML_Classifier_Feature --
-   -------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Classifier_Feature_Feature_Featuring_Classifier --
+   ------------------------------------------------------------
 
-   function MP_UML_Classifier_Feature return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Feature_Feature_Featuring_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 298;
-   end MP_UML_Classifier_Feature;
+   end MP_UML_Classifier_Feature_Feature_Featuring_Classifier;
 
-   -------------------------------
-   -- MP_UML_Classifier_General --
-   -------------------------------
+   --------------------------------------------
+   -- MP_UML_Classifier_General_A_Classifier --
+   --------------------------------------------
 
-   function MP_UML_Classifier_General return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_General_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 299;
-   end MP_UML_Classifier_General;
+   end MP_UML_Classifier_General_A_Classifier;
 
-   --------------------------------------
-   -- MP_UML_Classifier_Generalization --
-   --------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Classifier_Generalization_Generalization_Specific --
+   --------------------------------------------------------------
 
-   function MP_UML_Classifier_Generalization return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Generalization_Generalization_Specific return AMF.Internals.CMOF_Element is
    begin
       return Base + 300;
-   end MP_UML_Classifier_Generalization;
+   end MP_UML_Classifier_Generalization_Generalization_Specific;
 
-   ----------------------------------------
-   -- MP_UML_Classifier_Inherited_Member --
-   ----------------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Classifier_Inherited_Member_A_Classifier --
+   -----------------------------------------------------
 
-   function MP_UML_Classifier_Inherited_Member return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Inherited_Member_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 301;
-   end MP_UML_Classifier_Inherited_Member;
+   end MP_UML_Classifier_Inherited_Member_A_Classifier;
 
    -----------------------------------
    -- MP_UML_Classifier_Is_Abstract --
@@ -3322,77 +3322,77 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 539;
    end MP_UML_Classifier_Is_Final_Specialization;
 
-   ------------------------------------------------
-   -- MP_UML_Classifier_Owned_Template_Signature --
-   ------------------------------------------------
+   ------------------------------------------------------------------------------------------
+   -- MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier --
+   ------------------------------------------------------------------------------------------
 
-   function MP_UML_Classifier_Owned_Template_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 540;
-   end MP_UML_Classifier_Owned_Template_Signature;
+   end MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier;
 
-   --------------------------------------
-   -- MP_UML_Classifier_Owned_Use_Case --
-   --------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Classifier_Owned_Use_Case_A_Classifier --
+   ---------------------------------------------------
 
-   function MP_UML_Classifier_Owned_Use_Case return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Owned_Use_Case_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 302;
-   end MP_UML_Classifier_Owned_Use_Case;
+   end MP_UML_Classifier_Owned_Use_Case_A_Classifier;
 
-   ----------------------------------------
-   -- MP_UML_Classifier_Powertype_Extent --
-   ----------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Classifier_Powertype_Extent return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype return AMF.Internals.CMOF_Element is
    begin
       return Base + 303;
-   end MP_UML_Classifier_Powertype_Extent;
+   end MP_UML_Classifier_Powertype_Extent_Generalization_Set_Powertype;
 
-   --------------------------------------------
-   -- MP_UML_Classifier_Redefined_Classifier --
-   --------------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Classifier_Redefined_Classifier_A_Classifier --
+   ---------------------------------------------------------
 
-   function MP_UML_Classifier_Redefined_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Redefined_Classifier_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 304;
-   end MP_UML_Classifier_Redefined_Classifier;
+   end MP_UML_Classifier_Redefined_Classifier_A_Classifier;
 
-   --------------------------------------
-   -- MP_UML_Classifier_Representation --
-   --------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Classifier_Representation_A_Classifier --
+   ---------------------------------------------------
 
-   function MP_UML_Classifier_Representation return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Representation_A_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 541;
-   end MP_UML_Classifier_Representation;
+   end MP_UML_Classifier_Representation_A_Classifier;
 
-   ------------------------------------
-   -- MP_UML_Classifier_Substitution --
-   ------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Classifier_Substitution return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 305;
-   end MP_UML_Classifier_Substitution;
+   end MP_UML_Classifier_Substitution_Substitution_Substituting_Classifier;
 
-   ------------------------------------------
-   -- MP_UML_Classifier_Template_Parameter --
-   ------------------------------------------
+   --------------------------------------------------------------------------------------------
+   -- MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element --
+   --------------------------------------------------------------------------------------------
 
-   function MP_UML_Classifier_Template_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 542;
-   end MP_UML_Classifier_Template_Parameter;
+   end MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element;
 
-   --------------------------------
-   -- MP_UML_Classifier_Use_Case --
-   --------------------------------
+   -------------------------------------------------
+   -- MP_UML_Classifier_Use_Case_Use_Case_Subject --
+   -------------------------------------------------
 
-   function MP_UML_Classifier_Use_Case return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Use_Case_Use_Case_Subject return AMF.Internals.CMOF_Element is
    begin
       return Base + 306;
-   end MP_UML_Classifier_Use_Case;
+   end MP_UML_Classifier_Use_Case_Use_Case_Subject;
 
    --------------------------------------------------------------
    -- MP_UML_Classifier_Template_Parameter_Allow_Substitutable --
@@ -3403,140 +3403,140 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 543;
    end MP_UML_Classifier_Template_Parameter_Allow_Substitutable;
 
-   ------------------------------------------------------------------
-   -- MP_UML_Classifier_Template_Parameter_Constraining_Classifier --
-   ------------------------------------------------------------------
+   --------------------------------------------------------------------------------------------------
+   -- MP_UML_Classifier_Template_Parameter_Constraining_Classifier_A_Classifier_Template_Parameter --
+   --------------------------------------------------------------------------------------------------
 
-   function MP_UML_Classifier_Template_Parameter_Constraining_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Template_Parameter_Constraining_Classifier_A_Classifier_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 307;
-   end MP_UML_Classifier_Template_Parameter_Constraining_Classifier;
+   end MP_UML_Classifier_Template_Parameter_Constraining_Classifier_A_Classifier_Template_Parameter;
 
-   --------------------------------------------------------------
-   -- MP_UML_Classifier_Template_Parameter_Parametered_Element --
-   --------------------------------------------------------------
+   --------------------------------------------------------------------------------------------
+   -- MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter --
+   --------------------------------------------------------------------------------------------
 
-   function MP_UML_Classifier_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 544;
-   end MP_UML_Classifier_Template_Parameter_Parametered_Element;
+   end MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter;
 
-   ------------------------
-   -- MP_UML_Clause_Body --
-   ------------------------
+   ---------------------------------
+   -- MP_UML_Clause_Body_A_Clause --
+   ---------------------------------
 
-   function MP_UML_Clause_Body return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Body_A_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 308;
-   end MP_UML_Clause_Body;
+   end MP_UML_Clause_Body_A_Clause;
 
-   -------------------------------
-   -- MP_UML_Clause_Body_Output --
-   -------------------------------
+   ----------------------------------------
+   -- MP_UML_Clause_Body_Output_A_Clause --
+   ----------------------------------------
 
-   function MP_UML_Clause_Body_Output return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Body_Output_A_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 309;
-   end MP_UML_Clause_Body_Output;
+   end MP_UML_Clause_Body_Output_A_Clause;
 
-   ---------------------------
-   -- MP_UML_Clause_Decider --
-   ---------------------------
+   ------------------------------------
+   -- MP_UML_Clause_Decider_A_Clause --
+   ------------------------------------
 
-   function MP_UML_Clause_Decider return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Decider_A_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 545;
-   end MP_UML_Clause_Decider;
+   end MP_UML_Clause_Decider_A_Clause;
 
-   --------------------------------------
-   -- MP_UML_Clause_Predecessor_Clause --
-   --------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Clause_Predecessor_Clause_Clause_Successor_Clause --
+   --------------------------------------------------------------
 
-   function MP_UML_Clause_Predecessor_Clause return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Predecessor_Clause_Clause_Successor_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 310;
-   end MP_UML_Clause_Predecessor_Clause;
+   end MP_UML_Clause_Predecessor_Clause_Clause_Successor_Clause;
 
-   ------------------------------------
-   -- MP_UML_Clause_Successor_Clause --
-   ------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Clause_Successor_Clause_Clause_Predecessor_Clause --
+   --------------------------------------------------------------
 
-   function MP_UML_Clause_Successor_Clause return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Successor_Clause_Clause_Predecessor_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 311;
-   end MP_UML_Clause_Successor_Clause;
+   end MP_UML_Clause_Successor_Clause_Clause_Predecessor_Clause;
 
-   ------------------------
-   -- MP_UML_Clause_Test --
-   ------------------------
+   ---------------------------------
+   -- MP_UML_Clause_Test_A_Clause --
+   ---------------------------------
 
-   function MP_UML_Clause_Test return AMF.Internals.CMOF_Element is
+   function MP_UML_Clause_Test_A_Clause return AMF.Internals.CMOF_Element is
    begin
       return Base + 312;
-   end MP_UML_Clause_Test;
+   end MP_UML_Clause_Test_A_Clause;
 
-   -------------------------------------------------
-   -- MP_UML_Clear_Association_Action_Association --
-   -------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Clear_Association_Action_Association_A_Clear_Association_Action --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Clear_Association_Action_Association return AMF.Internals.CMOF_Element is
+   function MP_UML_Clear_Association_Action_Association_A_Clear_Association_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 546;
-   end MP_UML_Clear_Association_Action_Association;
+   end MP_UML_Clear_Association_Action_Association_A_Clear_Association_Action;
 
-   --------------------------------------------
-   -- MP_UML_Clear_Association_Action_Object --
-   --------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Clear_Association_Action_Object_A_Clear_Association_Action --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Clear_Association_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Clear_Association_Action_Object_A_Clear_Association_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 547;
-   end MP_UML_Clear_Association_Action_Object;
+   end MP_UML_Clear_Association_Action_Object_A_Clear_Association_Action;
 
-   ---------------------------------------------------
-   -- MP_UML_Clear_Structural_Feature_Action_Result --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Clear_Structural_Feature_Action_Result_A_Clear_Structural_Feature_Action --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Clear_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Clear_Structural_Feature_Action_Result_A_Clear_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 548;
-   end MP_UML_Clear_Structural_Feature_Action_Result;
+   end MP_UML_Clear_Structural_Feature_Action_Result_A_Clear_Structural_Feature_Action;
 
-   ---------------------------------------------
-   -- MP_UML_Collaboration_Collaboration_Role --
-   ---------------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Collaboration_Collaboration_Role_A_Collaboration --
+   -------------------------------------------------------------
 
-   function MP_UML_Collaboration_Collaboration_Role return AMF.Internals.CMOF_Element is
+   function MP_UML_Collaboration_Collaboration_Role_A_Collaboration return AMF.Internals.CMOF_Element is
    begin
       return Base + 313;
-   end MP_UML_Collaboration_Collaboration_Role;
+   end MP_UML_Collaboration_Collaboration_Role_A_Collaboration;
 
-   -------------------------------------------
-   -- MP_UML_Collaboration_Use_Role_Binding --
-   -------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Collaboration_Use_Role_Binding_A_Collaboration_Use --
+   ---------------------------------------------------------------
 
-   function MP_UML_Collaboration_Use_Role_Binding return AMF.Internals.CMOF_Element is
+   function MP_UML_Collaboration_Use_Role_Binding_A_Collaboration_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 314;
-   end MP_UML_Collaboration_Use_Role_Binding;
+   end MP_UML_Collaboration_Use_Role_Binding_A_Collaboration_Use;
 
-   -----------------------------------
-   -- MP_UML_Collaboration_Use_Type --
-   -----------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Collaboration_Use_Type_A_Collaboration_Use --
+   -------------------------------------------------------
 
-   function MP_UML_Collaboration_Use_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Collaboration_Use_Type_A_Collaboration_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 549;
-   end MP_UML_Collaboration_Use_Type;
+   end MP_UML_Collaboration_Use_Type_A_Collaboration_Use;
 
-   ---------------------------------------------
-   -- MP_UML_Combined_Fragment_Cfragment_Gate --
-   ---------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Combined_Fragment_Cfragment_Gate_A_Combined_Fragment --
+   -----------------------------------------------------------------
 
-   function MP_UML_Combined_Fragment_Cfragment_Gate return AMF.Internals.CMOF_Element is
+   function MP_UML_Combined_Fragment_Cfragment_Gate_A_Combined_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 315;
-   end MP_UML_Combined_Fragment_Cfragment_Gate;
+   end MP_UML_Combined_Fragment_Cfragment_Gate_A_Combined_Fragment;
 
    ---------------------------------------------------
    -- MP_UML_Combined_Fragment_Interaction_Operator --
@@ -3547,23 +3547,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 550;
    end MP_UML_Combined_Fragment_Interaction_Operator;
 
-   --------------------------------------
-   -- MP_UML_Combined_Fragment_Operand --
-   --------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Combined_Fragment_Operand_A_Combined_Fragment --
+   ----------------------------------------------------------
 
-   function MP_UML_Combined_Fragment_Operand return AMF.Internals.CMOF_Element is
+   function MP_UML_Combined_Fragment_Operand_A_Combined_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 316;
-   end MP_UML_Combined_Fragment_Operand;
+   end MP_UML_Combined_Fragment_Operand_A_Combined_Fragment;
 
-   --------------------------------------
-   -- MP_UML_Comment_Annotated_Element --
-   --------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Comment_Annotated_Element_A_Comment --
+   ------------------------------------------------
 
-   function MP_UML_Comment_Annotated_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Comment_Annotated_Element_A_Comment return AMF.Internals.CMOF_Element is
    begin
       return Base + 317;
-   end MP_UML_Comment_Annotated_Element;
+   end MP_UML_Comment_Annotated_Element_A_Comment;
 
    -------------------------
    -- MP_UML_Comment_Body --
@@ -3583,68 +3583,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 552;
    end MP_UML_Component_Is_Indirectly_Instantiated;
 
-   ---------------------------------------
-   -- MP_UML_Component_Packaged_Element --
-   ---------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Component_Packaged_Element_A_Component --
+   ---------------------------------------------------
 
-   function MP_UML_Component_Packaged_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Packaged_Element_A_Component return AMF.Internals.CMOF_Element is
    begin
       return Base + 318;
-   end MP_UML_Component_Packaged_Element;
+   end MP_UML_Component_Packaged_Element_A_Component;
 
-   -------------------------------
-   -- MP_UML_Component_Provided --
-   -------------------------------
+   -------------------------------------------
+   -- MP_UML_Component_Provided_A_Component --
+   -------------------------------------------
 
-   function MP_UML_Component_Provided return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Provided_A_Component return AMF.Internals.CMOF_Element is
    begin
       return Base + 319;
-   end MP_UML_Component_Provided;
+   end MP_UML_Component_Provided_A_Component;
 
-   ----------------------------------
-   -- MP_UML_Component_Realization --
-   ----------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Component_Realization_Component_Realization_Abstraction --
+   --------------------------------------------------------------------
 
-   function MP_UML_Component_Realization return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Realization_Component_Realization_Abstraction return AMF.Internals.CMOF_Element is
    begin
       return Base + 320;
-   end MP_UML_Component_Realization;
+   end MP_UML_Component_Realization_Component_Realization_Abstraction;
 
-   -------------------------------
-   -- MP_UML_Component_Required --
-   -------------------------------
+   -------------------------------------------
+   -- MP_UML_Component_Required_A_Component --
+   -------------------------------------------
 
-   function MP_UML_Component_Required return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Required_A_Component return AMF.Internals.CMOF_Element is
    begin
       return Base + 321;
-   end MP_UML_Component_Required;
+   end MP_UML_Component_Required_A_Component;
 
-   ----------------------------------------------
-   -- MP_UML_Component_Realization_Abstraction --
-   ----------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Component_Realization_Abstraction_Component_Realization --
+   --------------------------------------------------------------------
 
-   function MP_UML_Component_Realization_Abstraction return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Realization_Abstraction_Component_Realization return AMF.Internals.CMOF_Element is
    begin
       return Base + 553;
-   end MP_UML_Component_Realization_Abstraction;
+   end MP_UML_Component_Realization_Abstraction_Component_Realization;
 
-   -------------------------------------------------------
-   -- MP_UML_Component_Realization_Realizing_Classifier --
-   -------------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Component_Realization_Realizing_Classifier_A_Component_Realization --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Component_Realization_Realizing_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Component_Realization_Realizing_Classifier_A_Component_Realization return AMF.Internals.CMOF_Element is
    begin
       return Base + 322;
-   end MP_UML_Component_Realization_Realizing_Classifier;
+   end MP_UML_Component_Realization_Realizing_Classifier_A_Component_Realization;
 
-   ------------------------------------
-   -- MP_UML_Conditional_Node_Clause --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Conditional_Node_Clause_A_Conditional_Node --
+   -------------------------------------------------------
 
-   function MP_UML_Conditional_Node_Clause return AMF.Internals.CMOF_Element is
+   function MP_UML_Conditional_Node_Clause_A_Conditional_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 323;
-   end MP_UML_Conditional_Node_Clause;
+   end MP_UML_Conditional_Node_Clause_A_Conditional_Node;
 
    ----------------------------------------
    -- MP_UML_Conditional_Node_Is_Assured --
@@ -3664,86 +3664,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 555;
    end MP_UML_Conditional_Node_Is_Determinate;
 
-   ------------------------------------
-   -- MP_UML_Conditional_Node_Result --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Conditional_Node_Result_A_Conditional_Node --
+   -------------------------------------------------------
 
-   function MP_UML_Conditional_Node_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Conditional_Node_Result_A_Conditional_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 324;
-   end MP_UML_Conditional_Node_Result;
+   end MP_UML_Conditional_Node_Result_A_Conditional_Node;
 
-   ------------------------------------
-   -- MP_UML_Connectable_Element_End --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Connectable_Element_End_Connector_End_Role --
+   -------------------------------------------------------
 
-   function MP_UML_Connectable_Element_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Connectable_Element_End_Connector_End_Role return AMF.Internals.CMOF_Element is
    begin
       return Base + 325;
-   end MP_UML_Connectable_Element_End;
+   end MP_UML_Connectable_Element_End_Connector_End_Role;
 
-   ---------------------------------------------------
-   -- MP_UML_Connectable_Element_Template_Parameter --
-   ---------------------------------------------------
+   --------------------------------------------------------------------------------------------------------------
+   -- MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element --
+   --------------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Connectable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 556;
-   end MP_UML_Connectable_Element_Template_Parameter;
+   end MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element;
 
-   -----------------------------------------------------------------------
-   -- MP_UML_Connectable_Element_Template_Parameter_Parametered_Element --
-   -----------------------------------------------------------------------
+   --------------------------------------------------------------------------------------------------------------
+   -- MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter --
+   --------------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Connectable_Element_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 557;
-   end MP_UML_Connectable_Element_Template_Parameter_Parametered_Element;
+   end MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter;
 
-   ---------------------------------------------
-   -- MP_UML_Connection_Point_Reference_Entry --
-   ---------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Connection_Point_Reference_Entry_A_Connection_Point_Reference --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Connection_Point_Reference_Entry return AMF.Internals.CMOF_Element is
+   function MP_UML_Connection_Point_Reference_Entry_A_Connection_Point_Reference return AMF.Internals.CMOF_Element is
    begin
       return Base + 326;
-   end MP_UML_Connection_Point_Reference_Entry;
+   end MP_UML_Connection_Point_Reference_Entry_A_Connection_Point_Reference;
 
-   --------------------------------------------
-   -- MP_UML_Connection_Point_Reference_Exit --
-   --------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Connection_Point_Reference_Exit_A_Connection_Point_Reference --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Connection_Point_Reference_Exit return AMF.Internals.CMOF_Element is
+   function MP_UML_Connection_Point_Reference_Exit_A_Connection_Point_Reference return AMF.Internals.CMOF_Element is
    begin
       return Base + 327;
-   end MP_UML_Connection_Point_Reference_Exit;
+   end MP_UML_Connection_Point_Reference_Exit_A_Connection_Point_Reference;
 
-   ---------------------------------------------
-   -- MP_UML_Connection_Point_Reference_State --
-   ---------------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Connection_Point_Reference_State_State_Connection --
+   --------------------------------------------------------------
 
-   function MP_UML_Connection_Point_Reference_State return AMF.Internals.CMOF_Element is
+   function MP_UML_Connection_Point_Reference_State_State_Connection return AMF.Internals.CMOF_Element is
    begin
       return Base + 558;
-   end MP_UML_Connection_Point_Reference_State;
+   end MP_UML_Connection_Point_Reference_State_State_Connection;
 
-   -------------------------------
-   -- MP_UML_Connector_Contract --
-   -------------------------------
+   -------------------------------------------
+   -- MP_UML_Connector_Contract_A_Connector --
+   -------------------------------------------
 
-   function MP_UML_Connector_Contract return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_Contract_A_Connector return AMF.Internals.CMOF_Element is
    begin
       return Base + 328;
-   end MP_UML_Connector_Contract;
+   end MP_UML_Connector_Contract_A_Connector;
 
-   --------------------------
-   -- MP_UML_Connector_End --
-   --------------------------
+   --------------------------------------
+   -- MP_UML_Connector_End_A_Connector --
+   --------------------------------------
 
-   function MP_UML_Connector_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_End_A_Connector return AMF.Internals.CMOF_Element is
    begin
       return Base + 329;
-   end MP_UML_Connector_End;
+   end MP_UML_Connector_End_A_Connector;
 
    ---------------------------
    -- MP_UML_Connector_Kind --
@@ -3754,86 +3754,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 559;
    end MP_UML_Connector_Kind;
 
-   ------------------------------------------
-   -- MP_UML_Connector_Redefined_Connector --
-   ------------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Connector_Redefined_Connector_A_Connector --
+   ------------------------------------------------------
 
-   function MP_UML_Connector_Redefined_Connector return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_Redefined_Connector_A_Connector return AMF.Internals.CMOF_Element is
    begin
       return Base + 330;
-   end MP_UML_Connector_Redefined_Connector;
+   end MP_UML_Connector_Redefined_Connector_A_Connector;
 
-   ---------------------------
-   -- MP_UML_Connector_Type --
-   ---------------------------
+   ---------------------------------------
+   -- MP_UML_Connector_Type_A_Connector --
+   ---------------------------------------
 
-   function MP_UML_Connector_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_Type_A_Connector return AMF.Internals.CMOF_Element is
    begin
       return Base + 560;
-   end MP_UML_Connector_Type;
+   end MP_UML_Connector_Type_A_Connector;
 
-   ---------------------------------------
-   -- MP_UML_Connector_End_Defining_End --
-   ---------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Connector_End_Defining_End_A_Connector_End --
+   -------------------------------------------------------
 
-   function MP_UML_Connector_End_Defining_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_End_Defining_End_A_Connector_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 561;
-   end MP_UML_Connector_End_Defining_End;
+   end MP_UML_Connector_End_Defining_End_A_Connector_End;
 
-   -----------------------------------------
-   -- MP_UML_Connector_End_Part_With_Port --
-   -----------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Connector_End_Part_With_Port_A_Connector_End --
+   ---------------------------------------------------------
 
-   function MP_UML_Connector_End_Part_With_Port return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_End_Part_With_Port_A_Connector_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 562;
-   end MP_UML_Connector_End_Part_With_Port;
+   end MP_UML_Connector_End_Part_With_Port_A_Connector_End;
 
-   -------------------------------
-   -- MP_UML_Connector_End_Role --
-   -------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Connector_End_Role_Connectable_Element_End --
+   -------------------------------------------------------
 
-   function MP_UML_Connector_End_Role return AMF.Internals.CMOF_Element is
+   function MP_UML_Connector_End_Role_Connectable_Element_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 563;
-   end MP_UML_Connector_End_Role;
+   end MP_UML_Connector_End_Role_Connectable_Element_End;
 
-   ---------------------------------------------
-   -- MP_UML_Consider_Ignore_Fragment_Message --
-   ---------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Consider_Ignore_Fragment_Message_A_Consider_Ignore_Fragment --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Consider_Ignore_Fragment_Message return AMF.Internals.CMOF_Element is
+   function MP_UML_Consider_Ignore_Fragment_Message_A_Consider_Ignore_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 331;
-   end MP_UML_Consider_Ignore_Fragment_Message;
+   end MP_UML_Consider_Ignore_Fragment_Message_A_Consider_Ignore_Fragment;
 
-   -------------------------------------------
-   -- MP_UML_Constraint_Constrained_Element --
-   -------------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Constraint_Constrained_Element_A_Constraint --
+   --------------------------------------------------------
 
-   function MP_UML_Constraint_Constrained_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Constraint_Constrained_Element_A_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 332;
-   end MP_UML_Constraint_Constrained_Element;
+   end MP_UML_Constraint_Constrained_Element_A_Constraint;
 
-   -------------------------------
-   -- MP_UML_Constraint_Context --
-   -------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Constraint_Context_Namespace_Owned_Rule --
+   ----------------------------------------------------
 
-   function MP_UML_Constraint_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Constraint_Context_Namespace_Owned_Rule return AMF.Internals.CMOF_Element is
    begin
       return Base + 564;
-   end MP_UML_Constraint_Context;
+   end MP_UML_Constraint_Context_Namespace_Owned_Rule;
 
-   -------------------------------------
-   -- MP_UML_Constraint_Specification --
-   -------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Constraint_Specification_A_Owning_Constraint --
+   ---------------------------------------------------------
 
-   function MP_UML_Constraint_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Constraint_Specification_A_Owning_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 565;
-   end MP_UML_Constraint_Specification;
+   end MP_UML_Constraint_Specification_A_Owning_Constraint;
 
    ---------------------------------
    -- MP_UML_Continuation_Setting --
@@ -3844,131 +3844,131 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 566;
    end MP_UML_Continuation_Setting;
 
-   ----------------------------------------
-   -- MP_UML_Create_Link_Action_End_Data --
-   ----------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Create_Link_Action_End_Data_A_Create_Link_Action --
+   -------------------------------------------------------------
 
-   function MP_UML_Create_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   function MP_UML_Create_Link_Action_End_Data_A_Create_Link_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 333;
-   end MP_UML_Create_Link_Action_End_Data;
+   end MP_UML_Create_Link_Action_End_Data_A_Create_Link_Action;
 
-   ---------------------------------------------
-   -- MP_UML_Create_Link_Object_Action_Result --
-   ---------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Create_Link_Object_Action_Result_A_Create_Link_Object_Action --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Create_Link_Object_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Create_Link_Object_Action_Result_A_Create_Link_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 567;
-   end MP_UML_Create_Link_Object_Action_Result;
+   end MP_UML_Create_Link_Object_Action_Result_A_Create_Link_Object_Action;
 
-   --------------------------------------------
-   -- MP_UML_Create_Object_Action_Classifier --
-   --------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Create_Object_Action_Classifier_A_Create_Object_Action --
+   -------------------------------------------------------------------
 
-   function MP_UML_Create_Object_Action_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Create_Object_Action_Classifier_A_Create_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 568;
-   end MP_UML_Create_Object_Action_Classifier;
+   end MP_UML_Create_Object_Action_Classifier_A_Create_Object_Action;
 
-   ----------------------------------------
-   -- MP_UML_Create_Object_Action_Result --
-   ----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Create_Object_Action_Result_A_Create_Object_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Create_Object_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Create_Object_Action_Result_A_Create_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 569;
-   end MP_UML_Create_Object_Action_Result;
+   end MP_UML_Create_Object_Action_Result_A_Create_Object_Action;
 
-   --------------------------------------
-   -- MP_UML_Data_Type_Owned_Attribute --
-   --------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Data_Type_Owned_Attribute_Property_Datatype --
+   --------------------------------------------------------
 
-   function MP_UML_Data_Type_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Data_Type_Owned_Attribute_Property_Datatype return AMF.Internals.CMOF_Element is
    begin
       return Base + 334;
-   end MP_UML_Data_Type_Owned_Attribute;
+   end MP_UML_Data_Type_Owned_Attribute_Property_Datatype;
 
-   --------------------------------------
-   -- MP_UML_Data_Type_Owned_Operation --
-   --------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Data_Type_Owned_Operation_Operation_Datatype --
+   ---------------------------------------------------------
 
-   function MP_UML_Data_Type_Owned_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Data_Type_Owned_Operation_Operation_Datatype return AMF.Internals.CMOF_Element is
    begin
       return Base + 335;
-   end MP_UML_Data_Type_Owned_Operation;
+   end MP_UML_Data_Type_Owned_Operation_Operation_Datatype;
 
-   -----------------------------------------
-   -- MP_UML_Decision_Node_Decision_Input --
-   -----------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Decision_Node_Decision_Input_A_Decision_Node --
+   ---------------------------------------------------------
 
-   function MP_UML_Decision_Node_Decision_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Decision_Node_Decision_Input_A_Decision_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 570;
-   end MP_UML_Decision_Node_Decision_Input;
+   end MP_UML_Decision_Node_Decision_Input_A_Decision_Node;
 
-   ----------------------------------------------
-   -- MP_UML_Decision_Node_Decision_Input_Flow --
-   ----------------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Decision_Node_Decision_Input_Flow_A_Decision_Node --
+   --------------------------------------------------------------
 
-   function MP_UML_Decision_Node_Decision_Input_Flow return AMF.Internals.CMOF_Element is
+   function MP_UML_Decision_Node_Decision_Input_Flow_A_Decision_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 571;
-   end MP_UML_Decision_Node_Decision_Input_Flow;
+   end MP_UML_Decision_Node_Decision_Input_Flow_A_Decision_Node;
 
-   ------------------------------
-   -- MP_UML_Dependency_Client --
-   ------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Dependency_Client_Named_Element_Client_Dependency --
+   --------------------------------------------------------------
 
-   function MP_UML_Dependency_Client return AMF.Internals.CMOF_Element is
+   function MP_UML_Dependency_Client_Named_Element_Client_Dependency return AMF.Internals.CMOF_Element is
    begin
       return Base + 336;
-   end MP_UML_Dependency_Client;
+   end MP_UML_Dependency_Client_Named_Element_Client_Dependency;
 
-   --------------------------------
-   -- MP_UML_Dependency_Supplier --
-   --------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Dependency_Supplier_A_Supplier_Dependency --
+   ------------------------------------------------------
 
-   function MP_UML_Dependency_Supplier return AMF.Internals.CMOF_Element is
+   function MP_UML_Dependency_Supplier_A_Supplier_Dependency return AMF.Internals.CMOF_Element is
    begin
       return Base + 337;
-   end MP_UML_Dependency_Supplier;
+   end MP_UML_Dependency_Supplier_A_Supplier_Dependency;
 
-   -------------------------------------
-   -- MP_UML_Deployment_Configuration --
-   -------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Deployment_Configuration_Deployment_Specification_Deployment --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Deployment_Configuration return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Configuration_Deployment_Specification_Deployment return AMF.Internals.CMOF_Element is
    begin
       return Base + 338;
-   end MP_UML_Deployment_Configuration;
+   end MP_UML_Deployment_Configuration_Deployment_Specification_Deployment;
 
-   -----------------------------------------
-   -- MP_UML_Deployment_Deployed_Artifact --
-   -----------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Deployment_Deployed_Artifact_A_Deployment --
+   ------------------------------------------------------
 
-   function MP_UML_Deployment_Deployed_Artifact return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Deployed_Artifact_A_Deployment return AMF.Internals.CMOF_Element is
    begin
       return Base + 339;
-   end MP_UML_Deployment_Deployed_Artifact;
+   end MP_UML_Deployment_Deployed_Artifact_A_Deployment;
 
-   --------------------------------
-   -- MP_UML_Deployment_Location --
-   --------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Deployment_Location_Deployment_Target_Deployment --
+   -------------------------------------------------------------
 
-   function MP_UML_Deployment_Location return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Location_Deployment_Target_Deployment return AMF.Internals.CMOF_Element is
    begin
       return Base + 572;
-   end MP_UML_Deployment_Location;
+   end MP_UML_Deployment_Location_Deployment_Target_Deployment;
 
-   ------------------------------------------------
-   -- MP_UML_Deployment_Specification_Deployment --
-   ------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Deployment_Specification_Deployment_Deployment_Configuration --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Deployment_Specification_Deployment return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Specification_Deployment_Deployment_Configuration return AMF.Internals.CMOF_Element is
    begin
       return Base + 573;
-   end MP_UML_Deployment_Specification_Deployment;
+   end MP_UML_Deployment_Specification_Deployment_Deployment_Configuration;
 
    ---------------------------------------------------------
    -- MP_UML_Deployment_Specification_Deployment_Location --
@@ -3988,32 +3988,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 575;
    end MP_UML_Deployment_Specification_Execution_Location;
 
-   -----------------------------------------------
-   -- MP_UML_Deployment_Target_Deployed_Element --
-   -----------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Deployment_Target_Deployed_Element_A_Deployment_Target --
+   -------------------------------------------------------------------
 
-   function MP_UML_Deployment_Target_Deployed_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Target_Deployed_Element_A_Deployment_Target return AMF.Internals.CMOF_Element is
    begin
       return Base + 340;
-   end MP_UML_Deployment_Target_Deployed_Element;
+   end MP_UML_Deployment_Target_Deployed_Element_A_Deployment_Target;
 
-   -----------------------------------------
-   -- MP_UML_Deployment_Target_Deployment --
-   -----------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Deployment_Target_Deployment_Deployment_Location --
+   -------------------------------------------------------------
 
-   function MP_UML_Deployment_Target_Deployment return AMF.Internals.CMOF_Element is
+   function MP_UML_Deployment_Target_Deployment_Deployment_Location return AMF.Internals.CMOF_Element is
    begin
       return Base + 341;
-   end MP_UML_Deployment_Target_Deployment;
+   end MP_UML_Deployment_Target_Deployment_Deployment_Location;
 
-   -----------------------------------------
-   -- MP_UML_Destroy_Link_Action_End_Data --
-   -----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Destroy_Link_Action_End_Data_A_Destroy_Link_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Destroy_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   function MP_UML_Destroy_Link_Action_End_Data_A_Destroy_Link_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 342;
-   end MP_UML_Destroy_Link_Action_End_Data;
+   end MP_UML_Destroy_Link_Action_End_Data_A_Destroy_Link_Action;
 
    ---------------------------------------------------
    -- MP_UML_Destroy_Object_Action_Is_Destroy_Links --
@@ -4033,50 +4033,50 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 577;
    end MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects;
 
-   -----------------------------------------
-   -- MP_UML_Destroy_Object_Action_Target --
-   -----------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Destroy_Object_Action_Target_A_Destroy_Object_Action --
+   -----------------------------------------------------------------
 
-   function MP_UML_Destroy_Object_Action_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Destroy_Object_Action_Target_A_Destroy_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 578;
-   end MP_UML_Destroy_Object_Action_Target;
+   end MP_UML_Destroy_Object_Action_Target_A_Destroy_Object_Action;
 
-   -----------------------------------------
-   -- MP_UML_Directed_Relationship_Source --
-   -----------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Directed_Relationship_Source_A_Directed_Relationship --
+   -----------------------------------------------------------------
 
-   function MP_UML_Directed_Relationship_Source return AMF.Internals.CMOF_Element is
+   function MP_UML_Directed_Relationship_Source_A_Directed_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 343;
-   end MP_UML_Directed_Relationship_Source;
+   end MP_UML_Directed_Relationship_Source_A_Directed_Relationship;
 
-   -----------------------------------------
-   -- MP_UML_Directed_Relationship_Target --
-   -----------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Directed_Relationship_Target_A_Directed_Relationship --
+   -----------------------------------------------------------------
 
-   function MP_UML_Directed_Relationship_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Directed_Relationship_Target_A_Directed_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 344;
-   end MP_UML_Directed_Relationship_Target;
+   end MP_UML_Directed_Relationship_Target_A_Directed_Relationship;
 
-   --------------------------
-   -- MP_UML_Duration_Expr --
-   --------------------------
+   -------------------------------------
+   -- MP_UML_Duration_Expr_A_Duration --
+   -------------------------------------
 
-   function MP_UML_Duration_Expr return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Expr_A_Duration return AMF.Internals.CMOF_Element is
    begin
       return Base + 579;
-   end MP_UML_Duration_Expr;
+   end MP_UML_Duration_Expr_A_Duration;
 
-   ---------------------------------
-   -- MP_UML_Duration_Observation --
-   ---------------------------------
+   --------------------------------------------
+   -- MP_UML_Duration_Observation_A_Duration --
+   --------------------------------------------
 
-   function MP_UML_Duration_Observation return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Observation_A_Duration return AMF.Internals.CMOF_Element is
    begin
       return Base + 345;
-   end MP_UML_Duration_Observation;
+   end MP_UML_Duration_Observation_A_Duration;
 
    --------------------------------------------
    -- MP_UML_Duration_Constraint_First_Event --
@@ -4087,41 +4087,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 580;
    end MP_UML_Duration_Constraint_First_Event;
 
-   ----------------------------------------------
-   -- MP_UML_Duration_Constraint_Specification --
-   ----------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Duration_Constraint_Specification_A_Duration_Constraint --
+   --------------------------------------------------------------------
 
-   function MP_UML_Duration_Constraint_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Constraint_Specification_A_Duration_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 581;
-   end MP_UML_Duration_Constraint_Specification;
+   end MP_UML_Duration_Constraint_Specification_A_Duration_Constraint;
 
-   ----------------------------------
-   -- MP_UML_Duration_Interval_Max --
-   ----------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Duration_Interval_Max_A_Duration_Interval --
+   ------------------------------------------------------
 
-   function MP_UML_Duration_Interval_Max return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Interval_Max_A_Duration_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 582;
-   end MP_UML_Duration_Interval_Max;
+   end MP_UML_Duration_Interval_Max_A_Duration_Interval;
 
-   ----------------------------------
-   -- MP_UML_Duration_Interval_Min --
-   ----------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Duration_Interval_Min_A_Duration_Interval --
+   ------------------------------------------------------
 
-   function MP_UML_Duration_Interval_Min return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Interval_Min_A_Duration_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 583;
-   end MP_UML_Duration_Interval_Min;
+   end MP_UML_Duration_Interval_Min_A_Duration_Interval;
 
-   ---------------------------------------
-   -- MP_UML_Duration_Observation_Event --
-   ---------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Duration_Observation_Event_A_Duration_Observation --
+   --------------------------------------------------------------
 
-   function MP_UML_Duration_Observation_Event return AMF.Internals.CMOF_Element is
+   function MP_UML_Duration_Observation_Event_A_Duration_Observation return AMF.Internals.CMOF_Element is
    begin
       return Base + 346;
-   end MP_UML_Duration_Observation_Event;
+   end MP_UML_Duration_Observation_Event_A_Duration_Observation;
 
    ---------------------------------------------
    -- MP_UML_Duration_Observation_First_Event --
@@ -4132,32 +4132,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 584;
    end MP_UML_Duration_Observation_First_Event;
 
-   ----------------------------------
-   -- MP_UML_Element_Owned_Comment --
-   ----------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Element_Owned_Comment_A_Owning_Element --
+   ---------------------------------------------------
 
-   function MP_UML_Element_Owned_Comment return AMF.Internals.CMOF_Element is
+   function MP_UML_Element_Owned_Comment_A_Owning_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 347;
-   end MP_UML_Element_Owned_Comment;
+   end MP_UML_Element_Owned_Comment_A_Owning_Element;
 
-   ----------------------------------
-   -- MP_UML_Element_Owned_Element --
-   ----------------------------------
+   ------------------------------------------------
+   -- MP_UML_Element_Owned_Element_Element_Owner --
+   ------------------------------------------------
 
-   function MP_UML_Element_Owned_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Element_Owned_Element_Element_Owner return AMF.Internals.CMOF_Element is
    begin
       return Base + 348;
-   end MP_UML_Element_Owned_Element;
+   end MP_UML_Element_Owned_Element_Element_Owner;
 
-   --------------------------
-   -- MP_UML_Element_Owner --
-   --------------------------
+   ------------------------------------------------
+   -- MP_UML_Element_Owner_Element_Owned_Element --
+   ------------------------------------------------
 
-   function MP_UML_Element_Owner return AMF.Internals.CMOF_Element is
+   function MP_UML_Element_Owner_Element_Owned_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 585;
-   end MP_UML_Element_Owner;
+   end MP_UML_Element_Owner_Element_Owned_Element;
 
    ---------------------------------
    -- MP_UML_Element_Import_Alias --
@@ -4168,23 +4168,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 586;
    end MP_UML_Element_Import_Alias;
 
-   --------------------------------------------
-   -- MP_UML_Element_Import_Imported_Element --
-   --------------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Element_Import_Imported_Element_A_Element_Import --
+   -------------------------------------------------------------
 
-   function MP_UML_Element_Import_Imported_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Element_Import_Imported_Element_A_Element_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 587;
-   end MP_UML_Element_Import_Imported_Element;
+   end MP_UML_Element_Import_Imported_Element_A_Element_Import;
 
-   -----------------------------------------------
-   -- MP_UML_Element_Import_Importing_Namespace --
-   -----------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Element_Import_Importing_Namespace_Namespace_Element_Import --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Element_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
+   function MP_UML_Element_Import_Importing_Namespace_Namespace_Element_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 588;
-   end MP_UML_Element_Import_Importing_Namespace;
+   end MP_UML_Element_Import_Importing_Namespace_Namespace_Element_Import;
 
    --------------------------------------
    -- MP_UML_Element_Import_Visibility --
@@ -4195,140 +4195,140 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 589;
    end MP_UML_Element_Import_Visibility;
 
-   -----------------------------------------------
-   -- MP_UML_Encapsulated_Classifier_Owned_Port --
-   -----------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Encapsulated_Classifier_Owned_Port_A_Encapsulated_Classifier --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Encapsulated_Classifier_Owned_Port return AMF.Internals.CMOF_Element is
+   function MP_UML_Encapsulated_Classifier_Owned_Port_A_Encapsulated_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 349;
-   end MP_UML_Encapsulated_Classifier_Owned_Port;
+   end MP_UML_Encapsulated_Classifier_Owned_Port_A_Encapsulated_Classifier;
 
-   --------------------------------------
-   -- MP_UML_Enumeration_Owned_Literal --
-   --------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Enumeration_Owned_Literal_Enumeration_Literal_Enumeration --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Enumeration_Owned_Literal return AMF.Internals.CMOF_Element is
+   function MP_UML_Enumeration_Owned_Literal_Enumeration_Literal_Enumeration return AMF.Internals.CMOF_Element is
    begin
       return Base + 350;
-   end MP_UML_Enumeration_Owned_Literal;
+   end MP_UML_Enumeration_Owned_Literal_Enumeration_Literal_Enumeration;
 
-   -------------------------------------------
-   -- MP_UML_Enumeration_Literal_Classifier --
-   -------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal --
+   -----------------------------------------------------------------
 
-   function MP_UML_Enumeration_Literal_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal return AMF.Internals.CMOF_Element is
    begin
       return Base + 351;
-   end MP_UML_Enumeration_Literal_Classifier;
+   end MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal;
 
-   --------------------------------------------
-   -- MP_UML_Enumeration_Literal_Enumeration --
-   --------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Enumeration_Literal_Enumeration_Enumeration_Owned_Literal --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Enumeration_Literal_Enumeration return AMF.Internals.CMOF_Element is
+   function MP_UML_Enumeration_Literal_Enumeration_Enumeration_Owned_Literal return AMF.Internals.CMOF_Element is
    begin
       return Base + 590;
-   end MP_UML_Enumeration_Literal_Enumeration;
+   end MP_UML_Enumeration_Literal_Enumeration_Enumeration_Owned_Literal;
 
-   ----------------------------------------------
-   -- MP_UML_Exception_Handler_Exception_Input --
-   ----------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Exception_Handler_Exception_Input_A_Exception_Handler --
+   ------------------------------------------------------------------
 
-   function MP_UML_Exception_Handler_Exception_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Exception_Handler_Exception_Input_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
       return Base + 591;
-   end MP_UML_Exception_Handler_Exception_Input;
+   end MP_UML_Exception_Handler_Exception_Input_A_Exception_Handler;
 
-   ---------------------------------------------
-   -- MP_UML_Exception_Handler_Exception_Type --
-   ---------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_Exception_Handler_Exception_Type_A_Exception_Handler --
+   -----------------------------------------------------------------
 
-   function MP_UML_Exception_Handler_Exception_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Exception_Handler_Exception_Type_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
       return Base + 352;
-   end MP_UML_Exception_Handler_Exception_Type;
+   end MP_UML_Exception_Handler_Exception_Type_A_Exception_Handler;
 
-   -------------------------------------------
-   -- MP_UML_Exception_Handler_Handler_Body --
-   -------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Exception_Handler_Handler_Body_A_Exception_Handler --
+   ---------------------------------------------------------------
 
-   function MP_UML_Exception_Handler_Handler_Body return AMF.Internals.CMOF_Element is
+   function MP_UML_Exception_Handler_Handler_Body_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
       return Base + 592;
-   end MP_UML_Exception_Handler_Handler_Body;
+   end MP_UML_Exception_Handler_Handler_Body_A_Exception_Handler;
 
-   ---------------------------------------------
-   -- MP_UML_Exception_Handler_Protected_Node --
-   ---------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Exception_Handler_Protected_Node_Executable_Node_Handler --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Exception_Handler_Protected_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Exception_Handler_Protected_Node_Executable_Node_Handler return AMF.Internals.CMOF_Element is
    begin
       return Base + 593;
-   end MP_UML_Exception_Handler_Protected_Node;
+   end MP_UML_Exception_Handler_Protected_Node_Executable_Node_Handler;
 
-   ------------------------------------
-   -- MP_UML_Executable_Node_Handler --
-   ------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Executable_Node_Handler_Exception_Handler_Protected_Node --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Executable_Node_Handler return AMF.Internals.CMOF_Element is
+   function MP_UML_Executable_Node_Handler_Exception_Handler_Protected_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 353;
-   end MP_UML_Executable_Node_Handler;
+   end MP_UML_Executable_Node_Handler_Exception_Handler_Protected_Node;
 
-   ---------------------------------------------------------
-   -- MP_UML_Execution_Occurrence_Specification_Execution --
-   ---------------------------------------------------------
+   ----------------------------------------------------------------------------------------------
+   -- MP_UML_Execution_Occurrence_Specification_Execution_A_Execution_Occurrence_Specification --
+   ----------------------------------------------------------------------------------------------
 
-   function MP_UML_Execution_Occurrence_Specification_Execution return AMF.Internals.CMOF_Element is
+   function MP_UML_Execution_Occurrence_Specification_Execution_A_Execution_Occurrence_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 594;
-   end MP_UML_Execution_Occurrence_Specification_Execution;
+   end MP_UML_Execution_Occurrence_Specification_Execution_A_Execution_Occurrence_Specification;
 
-   -------------------------------------------
-   -- MP_UML_Execution_Specification_Finish --
-   -------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Execution_Specification_Finish_A_Execution_Specification --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Execution_Specification_Finish return AMF.Internals.CMOF_Element is
+   function MP_UML_Execution_Specification_Finish_A_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 595;
-   end MP_UML_Execution_Specification_Finish;
+   end MP_UML_Execution_Specification_Finish_A_Execution_Specification;
 
-   ------------------------------------------
-   -- MP_UML_Execution_Specification_Start --
-   ------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Execution_Specification_Start_A_Execution_Specification --
+   --------------------------------------------------------------------
 
-   function MP_UML_Execution_Specification_Start return AMF.Internals.CMOF_Element is
+   function MP_UML_Execution_Specification_Start_A_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 596;
-   end MP_UML_Execution_Specification_Start;
+   end MP_UML_Execution_Specification_Start_A_Execution_Specification;
 
-   -------------------------------------------
-   -- MP_UML_Expansion_Node_Region_As_Input --
-   -------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Expansion_Node_Region_As_Input_Expansion_Region_Input_Element --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Expansion_Node_Region_As_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Expansion_Node_Region_As_Input_Expansion_Region_Input_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 597;
-   end MP_UML_Expansion_Node_Region_As_Input;
+   end MP_UML_Expansion_Node_Region_As_Input_Expansion_Region_Input_Element;
 
-   --------------------------------------------
-   -- MP_UML_Expansion_Node_Region_As_Output --
-   --------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Expansion_Node_Region_As_Output_Expansion_Region_Output_Element --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Expansion_Node_Region_As_Output return AMF.Internals.CMOF_Element is
+   function MP_UML_Expansion_Node_Region_As_Output_Expansion_Region_Output_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 598;
-   end MP_UML_Expansion_Node_Region_As_Output;
+   end MP_UML_Expansion_Node_Region_As_Output_Expansion_Region_Output_Element;
 
-   -------------------------------------------
-   -- MP_UML_Expansion_Region_Input_Element --
-   -------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Expansion_Region_Input_Element_Expansion_Node_Region_As_Input --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Expansion_Region_Input_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Expansion_Region_Input_Element_Expansion_Node_Region_As_Input return AMF.Internals.CMOF_Element is
    begin
       return Base + 354;
-   end MP_UML_Expansion_Region_Input_Element;
+   end MP_UML_Expansion_Region_Input_Element_Expansion_Node_Region_As_Input;
 
    ----------------------------------
    -- MP_UML_Expansion_Region_Mode --
@@ -4339,23 +4339,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 599;
    end MP_UML_Expansion_Region_Mode;
 
-   --------------------------------------------
-   -- MP_UML_Expansion_Region_Output_Element --
-   --------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Expansion_Region_Output_Element_Expansion_Node_Region_As_Output --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Expansion_Region_Output_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Expansion_Region_Output_Element_Expansion_Node_Region_As_Output return AMF.Internals.CMOF_Element is
    begin
       return Base + 355;
-   end MP_UML_Expansion_Region_Output_Element;
+   end MP_UML_Expansion_Region_Output_Element_Expansion_Node_Region_As_Output;
 
-   -------------------------------
-   -- MP_UML_Expression_Operand --
-   -------------------------------
+   --------------------------------------------
+   -- MP_UML_Expression_Operand_A_Expression --
+   --------------------------------------------
 
-   function MP_UML_Expression_Operand return AMF.Internals.CMOF_Element is
+   function MP_UML_Expression_Operand_A_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 356;
-   end MP_UML_Expression_Operand;
+   end MP_UML_Expression_Operand_A_Expression;
 
    ------------------------------
    -- MP_UML_Expression_Symbol --
@@ -4366,41 +4366,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 600;
    end MP_UML_Expression_Symbol;
 
-   -----------------------------
-   -- MP_UML_Extend_Condition --
-   -----------------------------
+   --------------------------------------
+   -- MP_UML_Extend_Condition_A_Extend --
+   --------------------------------------
 
-   function MP_UML_Extend_Condition return AMF.Internals.CMOF_Element is
+   function MP_UML_Extend_Condition_A_Extend return AMF.Internals.CMOF_Element is
    begin
       return Base + 601;
-   end MP_UML_Extend_Condition;
+   end MP_UML_Extend_Condition_A_Extend;
 
-   ---------------------------------
-   -- MP_UML_Extend_Extended_Case --
-   ---------------------------------
+   ------------------------------------------
+   -- MP_UML_Extend_Extended_Case_A_Extend --
+   ------------------------------------------
 
-   function MP_UML_Extend_Extended_Case return AMF.Internals.CMOF_Element is
+   function MP_UML_Extend_Extended_Case_A_Extend return AMF.Internals.CMOF_Element is
    begin
       return Base + 602;
-   end MP_UML_Extend_Extended_Case;
+   end MP_UML_Extend_Extended_Case_A_Extend;
 
-   -----------------------------
-   -- MP_UML_Extend_Extension --
-   -----------------------------
+   ---------------------------------------------
+   -- MP_UML_Extend_Extension_Use_Case_Extend --
+   ---------------------------------------------
 
-   function MP_UML_Extend_Extension return AMF.Internals.CMOF_Element is
+   function MP_UML_Extend_Extension_Use_Case_Extend return AMF.Internals.CMOF_Element is
    begin
       return Base + 603;
-   end MP_UML_Extend_Extension;
+   end MP_UML_Extend_Extension_Use_Case_Extend;
 
-   --------------------------------------
-   -- MP_UML_Extend_Extension_Location --
-   --------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Extend_Extension_Location_A_Extension --
+   --------------------------------------------------
 
-   function MP_UML_Extend_Extension_Location return AMF.Internals.CMOF_Element is
+   function MP_UML_Extend_Extension_Location_A_Extension return AMF.Internals.CMOF_Element is
    begin
       return Base + 357;
-   end MP_UML_Extend_Extension_Location;
+   end MP_UML_Extend_Extension_Location_A_Extension;
 
    ----------------------------------
    -- MP_UML_Extension_Is_Required --
@@ -4411,23 +4411,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 604;
    end MP_UML_Extension_Is_Required;
 
-   --------------------------------
-   -- MP_UML_Extension_Metaclass --
-   --------------------------------
+   ------------------------------------------------
+   -- MP_UML_Extension_Metaclass_Class_Extension --
+   ------------------------------------------------
 
-   function MP_UML_Extension_Metaclass return AMF.Internals.CMOF_Element is
+   function MP_UML_Extension_Metaclass_Class_Extension return AMF.Internals.CMOF_Element is
    begin
       return Base + 605;
-   end MP_UML_Extension_Metaclass;
+   end MP_UML_Extension_Metaclass_Class_Extension;
 
-   --------------------------------
-   -- MP_UML_Extension_Owned_End --
-   --------------------------------
+   --------------------------------------------
+   -- MP_UML_Extension_Owned_End_A_Extension --
+   --------------------------------------------
 
-   function MP_UML_Extension_Owned_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Extension_Owned_End_A_Extension return AMF.Internals.CMOF_Element is
    begin
       return Base + 358;
-   end MP_UML_Extension_Owned_End;
+   end MP_UML_Extension_Owned_End_A_Extension;
 
    --------------------------------
    -- MP_UML_Extension_End_Lower --
@@ -4438,32 +4438,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 606;
    end MP_UML_Extension_End_Lower;
 
-   -------------------------------
-   -- MP_UML_Extension_End_Type --
-   -------------------------------
+   -----------------------------------------------
+   -- MP_UML_Extension_End_Type_A_Extension_End --
+   -----------------------------------------------
 
-   function MP_UML_Extension_End_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Extension_End_Type_A_Extension_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 607;
-   end MP_UML_Extension_End_Type;
+   end MP_UML_Extension_End_Type_A_Extension_End;
 
-   -------------------------------------
-   -- MP_UML_Extension_Point_Use_Case --
-   -------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Extension_Point_Use_Case_Use_Case_Extension_Point --
+   --------------------------------------------------------------
 
-   function MP_UML_Extension_Point_Use_Case return AMF.Internals.CMOF_Element is
+   function MP_UML_Extension_Point_Use_Case_Use_Case_Extension_Point return AMF.Internals.CMOF_Element is
    begin
       return Base + 608;
-   end MP_UML_Extension_Point_Use_Case;
+   end MP_UML_Extension_Point_Use_Case_Use_Case_Extension_Point;
 
-   -----------------------------------------
-   -- MP_UML_Feature_Featuring_Classifier --
-   -----------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Feature_Featuring_Classifier_Classifier_Feature --
+   ------------------------------------------------------------
 
-   function MP_UML_Feature_Featuring_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Feature_Featuring_Classifier_Classifier_Feature return AMF.Internals.CMOF_Element is
    begin
       return Base + 359;
-   end MP_UML_Feature_Featuring_Classifier;
+   end MP_UML_Feature_Featuring_Classifier_Classifier_Feature;
 
    ------------------------------
    -- MP_UML_Feature_Is_Static --
@@ -4474,41 +4474,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 609;
    end MP_UML_Feature_Is_Static;
 
-   -----------------------------------
-   -- MP_UML_General_Ordering_After --
-   -----------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_General_Ordering_After_Occurrence_Specification_To_Before --
+   ----------------------------------------------------------------------
 
-   function MP_UML_General_Ordering_After return AMF.Internals.CMOF_Element is
+   function MP_UML_General_Ordering_After_Occurrence_Specification_To_Before return AMF.Internals.CMOF_Element is
    begin
       return Base + 610;
-   end MP_UML_General_Ordering_After;
+   end MP_UML_General_Ordering_After_Occurrence_Specification_To_Before;
 
-   ------------------------------------
-   -- MP_UML_General_Ordering_Before --
-   ------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_General_Ordering_Before_Occurrence_Specification_To_After --
+   ----------------------------------------------------------------------
 
-   function MP_UML_General_Ordering_Before return AMF.Internals.CMOF_Element is
+   function MP_UML_General_Ordering_Before_Occurrence_Specification_To_After return AMF.Internals.CMOF_Element is
    begin
       return Base + 611;
-   end MP_UML_General_Ordering_Before;
+   end MP_UML_General_Ordering_Before_Occurrence_Specification_To_After;
 
-   -----------------------------------
-   -- MP_UML_Generalization_General --
-   -----------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Generalization_General_A_Generalization --
+   ----------------------------------------------------
 
-   function MP_UML_Generalization_General return AMF.Internals.CMOF_Element is
+   function MP_UML_Generalization_General_A_Generalization return AMF.Internals.CMOF_Element is
    begin
       return Base + 612;
-   end MP_UML_Generalization_General;
+   end MP_UML_Generalization_General_A_Generalization;
 
-   ----------------------------------------------
-   -- MP_UML_Generalization_Generalization_Set --
-   ----------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_UML_Generalization_Generalization_Set_Generalization_Set_Generalization --
+   --------------------------------------------------------------------------------
 
-   function MP_UML_Generalization_Generalization_Set return AMF.Internals.CMOF_Element is
+   function MP_UML_Generalization_Generalization_Set_Generalization_Set_Generalization return AMF.Internals.CMOF_Element is
    begin
       return Base + 360;
-   end MP_UML_Generalization_Generalization_Set;
+   end MP_UML_Generalization_Generalization_Set_Generalization_Set_Generalization;
 
    --------------------------------------------
    -- MP_UML_Generalization_Is_Substitutable --
@@ -4519,23 +4519,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 613;
    end MP_UML_Generalization_Is_Substitutable;
 
-   ------------------------------------
-   -- MP_UML_Generalization_Specific --
-   ------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Generalization_Specific_Classifier_Generalization --
+   --------------------------------------------------------------
 
-   function MP_UML_Generalization_Specific return AMF.Internals.CMOF_Element is
+   function MP_UML_Generalization_Specific_Classifier_Generalization return AMF.Internals.CMOF_Element is
    begin
       return Base + 614;
-   end MP_UML_Generalization_Specific;
+   end MP_UML_Generalization_Specific_Classifier_Generalization;
 
-   ----------------------------------------------
-   -- MP_UML_Generalization_Set_Generalization --
-   ----------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_UML_Generalization_Set_Generalization_Generalization_Generalization_Set --
+   --------------------------------------------------------------------------------
 
-   function MP_UML_Generalization_Set_Generalization return AMF.Internals.CMOF_Element is
+   function MP_UML_Generalization_Set_Generalization_Generalization_Generalization_Set return AMF.Internals.CMOF_Element is
    begin
       return Base + 361;
-   end MP_UML_Generalization_Set_Generalization;
+   end MP_UML_Generalization_Set_Generalization_Generalization_Generalization_Set;
 
    -------------------------------------------
    -- MP_UML_Generalization_Set_Is_Covering --
@@ -4555,14 +4555,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 616;
    end MP_UML_Generalization_Set_Is_Disjoint;
 
-   -----------------------------------------
-   -- MP_UML_Generalization_Set_Powertype --
-   -----------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Generalization_Set_Powertype_Classifier_Powertype_Extent --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Generalization_Set_Powertype return AMF.Internals.CMOF_Element is
+   function MP_UML_Generalization_Set_Powertype_Classifier_Powertype_Extent return AMF.Internals.CMOF_Element is
    begin
       return Base + 617;
-   end MP_UML_Generalization_Set_Powertype;
+   end MP_UML_Generalization_Set_Powertype_Classifier_Powertype_Extent;
 
    --------------------------
    -- MP_UML_Image_Content --
@@ -4591,428 +4591,428 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 620;
    end MP_UML_Image_Location;
 
-   -----------------------------
-   -- MP_UML_Include_Addition --
-   -----------------------------
+   ---------------------------------------
+   -- MP_UML_Include_Addition_A_Include --
+   ---------------------------------------
 
-   function MP_UML_Include_Addition return AMF.Internals.CMOF_Element is
+   function MP_UML_Include_Addition_A_Include return AMF.Internals.CMOF_Element is
    begin
       return Base + 621;
-   end MP_UML_Include_Addition;
+   end MP_UML_Include_Addition_A_Include;
 
-   -----------------------------------
-   -- MP_UML_Include_Including_Case --
-   -----------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Include_Including_Case_Use_Case_Include --
+   ----------------------------------------------------
 
-   function MP_UML_Include_Including_Case return AMF.Internals.CMOF_Element is
+   function MP_UML_Include_Including_Case_Use_Case_Include return AMF.Internals.CMOF_Element is
    begin
       return Base + 622;
-   end MP_UML_Include_Including_Case;
+   end MP_UML_Include_Including_Case_Use_Case_Include;
 
-   --------------------------------------
-   -- MP_UML_Information_Flow_Conveyed --
-   --------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Information_Flow_Conveyed_A_Information_Flow --
+   ---------------------------------------------------------
 
-   function MP_UML_Information_Flow_Conveyed return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Conveyed_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 362;
-   end MP_UML_Information_Flow_Conveyed;
+   end MP_UML_Information_Flow_Conveyed_A_Information_Flow;
 
-   ------------------------------------------------
-   -- MP_UML_Information_Flow_Information_Source --
-   ------------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Information_Flow_Information_Source_A_Information_Flow --
+   -------------------------------------------------------------------
 
-   function MP_UML_Information_Flow_Information_Source return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Information_Source_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 363;
-   end MP_UML_Information_Flow_Information_Source;
+   end MP_UML_Information_Flow_Information_Source_A_Information_Flow;
 
-   ------------------------------------------------
-   -- MP_UML_Information_Flow_Information_Target --
-   ------------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Information_Flow_Information_Target_A_Information_Flow --
+   -------------------------------------------------------------------
 
-   function MP_UML_Information_Flow_Information_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Information_Target_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 364;
-   end MP_UML_Information_Flow_Information_Target;
+   end MP_UML_Information_Flow_Information_Target_A_Information_Flow;
 
-   -----------------------------------------
-   -- MP_UML_Information_Flow_Realization --
-   -----------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Information_Flow_Realization_A_Abstraction --
+   -------------------------------------------------------
 
-   function MP_UML_Information_Flow_Realization return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Realization_A_Abstraction return AMF.Internals.CMOF_Element is
    begin
       return Base + 365;
-   end MP_UML_Information_Flow_Realization;
+   end MP_UML_Information_Flow_Realization_A_Abstraction;
 
-   -----------------------------------------------------
-   -- MP_UML_Information_Flow_Realizing_Activity_Edge --
-   -----------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Information_Flow_Realizing_Activity_Edge_A_Information_Flow --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Information_Flow_Realizing_Activity_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Realizing_Activity_Edge_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 366;
-   end MP_UML_Information_Flow_Realizing_Activity_Edge;
+   end MP_UML_Information_Flow_Realizing_Activity_Edge_A_Information_Flow;
 
-   -------------------------------------------------
-   -- MP_UML_Information_Flow_Realizing_Connector --
-   -------------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Information_Flow_Realizing_Connector_A_Information_Flow --
+   --------------------------------------------------------------------
 
-   function MP_UML_Information_Flow_Realizing_Connector return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Realizing_Connector_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 367;
-   end MP_UML_Information_Flow_Realizing_Connector;
+   end MP_UML_Information_Flow_Realizing_Connector_A_Information_Flow;
 
-   -----------------------------------------------
-   -- MP_UML_Information_Flow_Realizing_Message --
-   -----------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Information_Flow_Realizing_Message_A_Information_Flow --
+   ------------------------------------------------------------------
 
-   function MP_UML_Information_Flow_Realizing_Message return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Flow_Realizing_Message_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 368;
-   end MP_UML_Information_Flow_Realizing_Message;
+   end MP_UML_Information_Flow_Realizing_Message_A_Information_Flow;
 
-   -----------------------------------------
-   -- MP_UML_Information_Item_Represented --
-   -----------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Information_Item_Represented_A_Representation --
+   ----------------------------------------------------------
 
-   function MP_UML_Information_Item_Represented return AMF.Internals.CMOF_Element is
+   function MP_UML_Information_Item_Represented_A_Representation return AMF.Internals.CMOF_Element is
    begin
       return Base + 369;
-   end MP_UML_Information_Item_Represented;
+   end MP_UML_Information_Item_Represented_A_Representation;
 
-   ----------------------------------------------
-   -- MP_UML_Instance_Specification_Classifier --
-   ----------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Instance_Specification_Classifier_A_Instance_Specification --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Instance_Specification_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Instance_Specification_Classifier_A_Instance_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 370;
-   end MP_UML_Instance_Specification_Classifier;
+   end MP_UML_Instance_Specification_Classifier_A_Instance_Specification;
 
-   ----------------------------------------
-   -- MP_UML_Instance_Specification_Slot --
-   ----------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Instance_Specification_Slot_Slot_Owning_Instance --
+   -------------------------------------------------------------
 
-   function MP_UML_Instance_Specification_Slot return AMF.Internals.CMOF_Element is
+   function MP_UML_Instance_Specification_Slot_Slot_Owning_Instance return AMF.Internals.CMOF_Element is
    begin
       return Base + 371;
-   end MP_UML_Instance_Specification_Slot;
+   end MP_UML_Instance_Specification_Slot_Slot_Owning_Instance;
 
-   -------------------------------------------------
-   -- MP_UML_Instance_Specification_Specification --
-   -------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Instance_Specification_Specification_A_Owning_Instance_Spec --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Instance_Specification_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Instance_Specification_Specification_A_Owning_Instance_Spec return AMF.Internals.CMOF_Element is
    begin
       return Base + 623;
-   end MP_UML_Instance_Specification_Specification;
+   end MP_UML_Instance_Specification_Specification_A_Owning_Instance_Spec;
 
-   ------------------------------------
-   -- MP_UML_Instance_Value_Instance --
-   ------------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Instance_Value_Instance_A_Instance_Value --
+   -----------------------------------------------------
 
-   function MP_UML_Instance_Value_Instance return AMF.Internals.CMOF_Element is
+   function MP_UML_Instance_Value_Instance_A_Instance_Value return AMF.Internals.CMOF_Element is
    begin
       return Base + 624;
-   end MP_UML_Instance_Value_Instance;
+   end MP_UML_Instance_Value_Instance_A_Instance_Value;
 
-   -------------------------------
-   -- MP_UML_Interaction_Action --
-   -------------------------------
+   ---------------------------------------------
+   -- MP_UML_Interaction_Action_A_Interaction --
+   ---------------------------------------------
 
-   function MP_UML_Interaction_Action return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Action_A_Interaction return AMF.Internals.CMOF_Element is
    begin
       return Base + 372;
-   end MP_UML_Interaction_Action;
+   end MP_UML_Interaction_Action_A_Interaction;
 
-   ------------------------------------
-   -- MP_UML_Interaction_Formal_Gate --
-   ------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Interaction_Formal_Gate_A_Interaction --
+   --------------------------------------------------
 
-   function MP_UML_Interaction_Formal_Gate return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Formal_Gate_A_Interaction return AMF.Internals.CMOF_Element is
    begin
       return Base + 373;
-   end MP_UML_Interaction_Formal_Gate;
+   end MP_UML_Interaction_Formal_Gate_A_Interaction;
 
-   ---------------------------------
-   -- MP_UML_Interaction_Fragment --
-   ---------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Interaction_Fragment_Interaction_Fragment_Enclosing_Interaction --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Interaction_Fragment return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Fragment_Interaction_Fragment_Enclosing_Interaction return AMF.Internals.CMOF_Element is
    begin
       return Base + 374;
-   end MP_UML_Interaction_Fragment;
+   end MP_UML_Interaction_Fragment_Interaction_Fragment_Enclosing_Interaction;
 
-   ---------------------------------
-   -- MP_UML_Interaction_Lifeline --
-   ---------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Interaction_Lifeline_Lifeline_Interaction --
+   ------------------------------------------------------
 
-   function MP_UML_Interaction_Lifeline return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Lifeline_Lifeline_Interaction return AMF.Internals.CMOF_Element is
    begin
       return Base + 375;
-   end MP_UML_Interaction_Lifeline;
+   end MP_UML_Interaction_Lifeline_Lifeline_Interaction;
 
-   --------------------------------
-   -- MP_UML_Interaction_Message --
-   --------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Interaction_Message_Message_Interaction --
+   ----------------------------------------------------
 
-   function MP_UML_Interaction_Message return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Message_Message_Interaction return AMF.Internals.CMOF_Element is
    begin
       return Base + 376;
-   end MP_UML_Interaction_Message;
+   end MP_UML_Interaction_Message_Message_Interaction;
 
-   ------------------------------------------
-   -- MP_UML_Interaction_Constraint_Maxint --
-   ------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Interaction_Constraint_Maxint_A_Interaction_Constraint --
+   -------------------------------------------------------------------
 
-   function MP_UML_Interaction_Constraint_Maxint return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Constraint_Maxint_A_Interaction_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 625;
-   end MP_UML_Interaction_Constraint_Maxint;
+   end MP_UML_Interaction_Constraint_Maxint_A_Interaction_Constraint;
 
-   ------------------------------------------
-   -- MP_UML_Interaction_Constraint_Minint --
-   ------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Interaction_Constraint_Minint_A_Interaction_Constraint --
+   -------------------------------------------------------------------
 
-   function MP_UML_Interaction_Constraint_Minint return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Constraint_Minint_A_Interaction_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 626;
-   end MP_UML_Interaction_Constraint_Minint;
+   end MP_UML_Interaction_Constraint_Minint_A_Interaction_Constraint;
 
-   -----------------------------------------
-   -- MP_UML_Interaction_Fragment_Covered --
-   -----------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Interaction_Fragment_Covered_Lifeline_Covered_By --
+   -------------------------------------------------------------
 
-   function MP_UML_Interaction_Fragment_Covered return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Fragment_Covered_Lifeline_Covered_By return AMF.Internals.CMOF_Element is
    begin
       return Base + 377;
-   end MP_UML_Interaction_Fragment_Covered;
+   end MP_UML_Interaction_Fragment_Covered_Lifeline_Covered_By;
 
-   -------------------------------------------------------
-   -- MP_UML_Interaction_Fragment_Enclosing_Interaction --
-   -------------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Interaction_Fragment_Enclosing_Interaction return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 627;
-   end MP_UML_Interaction_Fragment_Enclosing_Interaction;
+   end MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment;
 
-   ---------------------------------------------------
-   -- MP_UML_Interaction_Fragment_Enclosing_Operand --
-   ---------------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_UML_Interaction_Fragment_Enclosing_Operand_Interaction_Operand_Fragment --
+   --------------------------------------------------------------------------------
 
-   function MP_UML_Interaction_Fragment_Enclosing_Operand return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Fragment_Enclosing_Operand_Interaction_Operand_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 628;
-   end MP_UML_Interaction_Fragment_Enclosing_Operand;
+   end MP_UML_Interaction_Fragment_Enclosing_Operand_Interaction_Operand_Fragment;
 
-   --------------------------------------------------
-   -- MP_UML_Interaction_Fragment_General_Ordering --
-   --------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Interaction_Fragment_General_Ordering_A_Interaction_Fragment --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Interaction_Fragment_General_Ordering return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Fragment_General_Ordering_A_Interaction_Fragment return AMF.Internals.CMOF_Element is
    begin
       return Base + 378;
-   end MP_UML_Interaction_Fragment_General_Ordering;
+   end MP_UML_Interaction_Fragment_General_Ordering_A_Interaction_Fragment;
 
-   -----------------------------------------
-   -- MP_UML_Interaction_Operand_Fragment --
-   -----------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_UML_Interaction_Operand_Fragment_Interaction_Fragment_Enclosing_Operand --
+   --------------------------------------------------------------------------------
 
-   function MP_UML_Interaction_Operand_Fragment return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Operand_Fragment_Interaction_Fragment_Enclosing_Operand return AMF.Internals.CMOF_Element is
    begin
       return Base + 379;
-   end MP_UML_Interaction_Operand_Fragment;
+   end MP_UML_Interaction_Operand_Fragment_Interaction_Fragment_Enclosing_Operand;
 
-   --------------------------------------
-   -- MP_UML_Interaction_Operand_Guard --
-   --------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Interaction_Operand_Guard_A_Interaction_Operand --
+   ------------------------------------------------------------
 
-   function MP_UML_Interaction_Operand_Guard return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Operand_Guard_A_Interaction_Operand return AMF.Internals.CMOF_Element is
    begin
       return Base + 629;
-   end MP_UML_Interaction_Operand_Guard;
+   end MP_UML_Interaction_Operand_Guard_A_Interaction_Operand;
 
-   ----------------------------------------
-   -- MP_UML_Interaction_Use_Actual_Gate --
-   ----------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Interaction_Use_Actual_Gate_A_Interaction_Use --
+   ----------------------------------------------------------
 
-   function MP_UML_Interaction_Use_Actual_Gate return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Use_Actual_Gate_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 380;
-   end MP_UML_Interaction_Use_Actual_Gate;
+   end MP_UML_Interaction_Use_Actual_Gate_A_Interaction_Use;
 
-   -------------------------------------
-   -- MP_UML_Interaction_Use_Argument --
-   -------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Interaction_Use_Argument_A_Interaction_Use --
+   -------------------------------------------------------
 
-   function MP_UML_Interaction_Use_Argument return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Use_Argument_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 381;
-   end MP_UML_Interaction_Use_Argument;
+   end MP_UML_Interaction_Use_Argument_A_Interaction_Use;
 
-   --------------------------------------
-   -- MP_UML_Interaction_Use_Refers_To --
-   --------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Interaction_Use_Refers_To_A_Interaction_Use --
+   --------------------------------------------------------
 
-   function MP_UML_Interaction_Use_Refers_To return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Use_Refers_To_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 630;
-   end MP_UML_Interaction_Use_Refers_To;
+   end MP_UML_Interaction_Use_Refers_To_A_Interaction_Use;
 
-   -----------------------------------------
-   -- MP_UML_Interaction_Use_Return_Value --
-   -----------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Interaction_Use_Return_Value_A_Interaction_Use --
+   -----------------------------------------------------------
 
-   function MP_UML_Interaction_Use_Return_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Use_Return_Value_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 631;
-   end MP_UML_Interaction_Use_Return_Value;
+   end MP_UML_Interaction_Use_Return_Value_A_Interaction_Use;
 
-   ---------------------------------------------------
-   -- MP_UML_Interaction_Use_Return_Value_Recipient --
-   ---------------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Interaction_Use_Return_Value_Recipient_A_Interaction_Use --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Interaction_Use_Return_Value_Recipient return AMF.Internals.CMOF_Element is
+   function MP_UML_Interaction_Use_Return_Value_Recipient_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
       return Base + 632;
-   end MP_UML_Interaction_Use_Return_Value_Recipient;
+   end MP_UML_Interaction_Use_Return_Value_Recipient_A_Interaction_Use;
 
-   ----------------------------------------
-   -- MP_UML_Interface_Nested_Classifier --
-   ----------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Interface_Nested_Classifier_A_Interface --
+   ----------------------------------------------------
 
-   function MP_UML_Interface_Nested_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Nested_Classifier_A_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 382;
-   end MP_UML_Interface_Nested_Classifier;
+   end MP_UML_Interface_Nested_Classifier_A_Interface;
 
-   --------------------------------------
-   -- MP_UML_Interface_Owned_Attribute --
-   --------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Interface_Owned_Attribute_Property_Interface --
+   ---------------------------------------------------------
 
-   function MP_UML_Interface_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Owned_Attribute_Property_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 383;
-   end MP_UML_Interface_Owned_Attribute;
+   end MP_UML_Interface_Owned_Attribute_Property_Interface;
 
-   --------------------------------------
-   -- MP_UML_Interface_Owned_Operation --
-   --------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Interface_Owned_Operation_Operation_Interface --
+   ----------------------------------------------------------
 
-   function MP_UML_Interface_Owned_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Owned_Operation_Operation_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 384;
-   end MP_UML_Interface_Owned_Operation;
+   end MP_UML_Interface_Owned_Operation_Operation_Interface;
 
-   --------------------------------------
-   -- MP_UML_Interface_Owned_Reception --
-   --------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Interface_Owned_Reception_A_Interface --
+   --------------------------------------------------
 
-   function MP_UML_Interface_Owned_Reception return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Owned_Reception_A_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 385;
-   end MP_UML_Interface_Owned_Reception;
+   end MP_UML_Interface_Owned_Reception_A_Interface;
 
-   -------------------------------
-   -- MP_UML_Interface_Protocol --
-   -------------------------------
+   -------------------------------------------
+   -- MP_UML_Interface_Protocol_A_Interface --
+   -------------------------------------------
 
-   function MP_UML_Interface_Protocol return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Protocol_A_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 633;
-   end MP_UML_Interface_Protocol;
+   end MP_UML_Interface_Protocol_A_Interface;
 
-   ------------------------------------------
-   -- MP_UML_Interface_Redefined_Interface --
-   ------------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Interface_Redefined_Interface_A_Interface --
+   ------------------------------------------------------
 
-   function MP_UML_Interface_Redefined_Interface return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Redefined_Interface_A_Interface return AMF.Internals.CMOF_Element is
    begin
       return Base + 386;
-   end MP_UML_Interface_Redefined_Interface;
+   end MP_UML_Interface_Redefined_Interface_A_Interface;
 
-   -------------------------------------------
-   -- MP_UML_Interface_Realization_Contract --
-   -------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Interface_Realization_Contract_A_Interface_Realization --
+   -------------------------------------------------------------------
 
-   function MP_UML_Interface_Realization_Contract return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Realization_Contract_A_Interface_Realization return AMF.Internals.CMOF_Element is
    begin
       return Base + 634;
-   end MP_UML_Interface_Realization_Contract;
+   end MP_UML_Interface_Realization_Contract_A_Interface_Realization;
 
-   ----------------------------------------------------------
-   -- MP_UML_Interface_Realization_Implementing_Classifier --
-   ----------------------------------------------------------
+   ------------------------------------------------------------------------------------------------------
+   -- MP_UML_Interface_Realization_Implementing_Classifier_Behaviored_Classifier_Interface_Realization --
+   ------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Interface_Realization_Implementing_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Interface_Realization_Implementing_Classifier_Behaviored_Classifier_Interface_Realization return AMF.Internals.CMOF_Element is
    begin
       return Base + 635;
-   end MP_UML_Interface_Realization_Implementing_Classifier;
+   end MP_UML_Interface_Realization_Implementing_Classifier_Behaviored_Classifier_Interface_Realization;
 
-   ------------------------------------------------------------
-   -- MP_UML_Interruptible_Activity_Region_Interrupting_Edge --
-   ------------------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Interruptible_Activity_Region_Interrupting_Edge_Activity_Edge_Interrupts --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Interruptible_Activity_Region_Interrupting_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Interruptible_Activity_Region_Interrupting_Edge_Activity_Edge_Interrupts return AMF.Internals.CMOF_Element is
    begin
       return Base + 387;
-   end MP_UML_Interruptible_Activity_Region_Interrupting_Edge;
+   end MP_UML_Interruptible_Activity_Region_Interrupting_Edge_Activity_Edge_Interrupts;
 
-   -----------------------------------------------
-   -- MP_UML_Interruptible_Activity_Region_Node --
-   -----------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Interruptible_Activity_Region_Node_Activity_Node_In_Interruptible_Region --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Interruptible_Activity_Region_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Interruptible_Activity_Region_Node_Activity_Node_In_Interruptible_Region return AMF.Internals.CMOF_Element is
    begin
       return Base + 388;
-   end MP_UML_Interruptible_Activity_Region_Node;
+   end MP_UML_Interruptible_Activity_Region_Node_Activity_Node_In_Interruptible_Region;
 
-   -------------------------
-   -- MP_UML_Interval_Max --
-   -------------------------
+   ------------------------------------
+   -- MP_UML_Interval_Max_A_Interval --
+   ------------------------------------
 
-   function MP_UML_Interval_Max return AMF.Internals.CMOF_Element is
+   function MP_UML_Interval_Max_A_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 636;
-   end MP_UML_Interval_Max;
+   end MP_UML_Interval_Max_A_Interval;
 
-   -------------------------
-   -- MP_UML_Interval_Min --
-   -------------------------
+   ------------------------------------
+   -- MP_UML_Interval_Min_A_Interval --
+   ------------------------------------
 
-   function MP_UML_Interval_Min return AMF.Internals.CMOF_Element is
+   function MP_UML_Interval_Min_A_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 637;
-   end MP_UML_Interval_Min;
+   end MP_UML_Interval_Min_A_Interval;
 
-   ----------------------------------------------
-   -- MP_UML_Interval_Constraint_Specification --
-   ----------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Interval_Constraint_Specification_A_Interval_Constraint --
+   --------------------------------------------------------------------
 
-   function MP_UML_Interval_Constraint_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Interval_Constraint_Specification_A_Interval_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 638;
-   end MP_UML_Interval_Constraint_Specification;
+   end MP_UML_Interval_Constraint_Specification_A_Interval_Constraint;
 
-   ---------------------------------------
-   -- MP_UML_Invocation_Action_Argument --
-   ---------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Invocation_Action_Argument_A_Invocation_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Invocation_Action_Argument return AMF.Internals.CMOF_Element is
+   function MP_UML_Invocation_Action_Argument_A_Invocation_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 389;
-   end MP_UML_Invocation_Action_Argument;
+   end MP_UML_Invocation_Action_Argument_A_Invocation_Action;
 
-   --------------------------------------
-   -- MP_UML_Invocation_Action_On_Port --
-   --------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Invocation_Action_On_Port_A_Invocation_Action --
+   ----------------------------------------------------------
 
-   function MP_UML_Invocation_Action_On_Port return AMF.Internals.CMOF_Element is
+   function MP_UML_Invocation_Action_On_Port_A_Invocation_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 639;
-   end MP_UML_Invocation_Action_On_Port;
+   end MP_UML_Invocation_Action_On_Port_A_Invocation_Action;
 
    -------------------------------------------
    -- MP_UML_Join_Node_Is_Combine_Duplicate --
@@ -5023,86 +5023,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 640;
    end MP_UML_Join_Node_Is_Combine_Duplicate;
 
-   --------------------------------
-   -- MP_UML_Join_Node_Join_Spec --
-   --------------------------------
+   --------------------------------------------
+   -- MP_UML_Join_Node_Join_Spec_A_Join_Node --
+   --------------------------------------------
 
-   function MP_UML_Join_Node_Join_Spec return AMF.Internals.CMOF_Element is
+   function MP_UML_Join_Node_Join_Spec_A_Join_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 641;
-   end MP_UML_Join_Node_Join_Spec;
+   end MP_UML_Join_Node_Join_Spec_A_Join_Node;
 
-   --------------------------------
-   -- MP_UML_Lifeline_Covered_By --
-   --------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Lifeline_Covered_By_Interaction_Fragment_Covered --
+   -------------------------------------------------------------
 
-   function MP_UML_Lifeline_Covered_By return AMF.Internals.CMOF_Element is
+   function MP_UML_Lifeline_Covered_By_Interaction_Fragment_Covered return AMF.Internals.CMOF_Element is
    begin
       return Base + 390;
-   end MP_UML_Lifeline_Covered_By;
+   end MP_UML_Lifeline_Covered_By_Interaction_Fragment_Covered;
 
-   -----------------------------------
-   -- MP_UML_Lifeline_Decomposed_As --
-   -----------------------------------
+   ----------------------------------------------
+   -- MP_UML_Lifeline_Decomposed_As_A_Lifeline --
+   ----------------------------------------------
 
-   function MP_UML_Lifeline_Decomposed_As return AMF.Internals.CMOF_Element is
+   function MP_UML_Lifeline_Decomposed_As_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
       return Base + 642;
-   end MP_UML_Lifeline_Decomposed_As;
+   end MP_UML_Lifeline_Decomposed_As_A_Lifeline;
 
-   ---------------------------------
-   -- MP_UML_Lifeline_Interaction --
-   ---------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Lifeline_Interaction_Interaction_Lifeline --
+   ------------------------------------------------------
 
-   function MP_UML_Lifeline_Interaction return AMF.Internals.CMOF_Element is
+   function MP_UML_Lifeline_Interaction_Interaction_Lifeline return AMF.Internals.CMOF_Element is
    begin
       return Base + 643;
-   end MP_UML_Lifeline_Interaction;
+   end MP_UML_Lifeline_Interaction_Interaction_Lifeline;
 
-   --------------------------------
-   -- MP_UML_Lifeline_Represents --
-   --------------------------------
+   -------------------------------------------
+   -- MP_UML_Lifeline_Represents_A_Lifeline --
+   -------------------------------------------
 
-   function MP_UML_Lifeline_Represents return AMF.Internals.CMOF_Element is
+   function MP_UML_Lifeline_Represents_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
       return Base + 644;
-   end MP_UML_Lifeline_Represents;
+   end MP_UML_Lifeline_Represents_A_Lifeline;
 
-   ------------------------------
-   -- MP_UML_Lifeline_Selector --
-   ------------------------------
+   -----------------------------------------
+   -- MP_UML_Lifeline_Selector_A_Lifeline --
+   -----------------------------------------
 
-   function MP_UML_Lifeline_Selector return AMF.Internals.CMOF_Element is
+   function MP_UML_Lifeline_Selector_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
       return Base + 645;
-   end MP_UML_Lifeline_Selector;
+   end MP_UML_Lifeline_Selector_A_Lifeline;
 
-   ---------------------------------
-   -- MP_UML_Link_Action_End_Data --
-   ---------------------------------
+   -----------------------------------------------
+   -- MP_UML_Link_Action_End_Data_A_Link_Action --
+   -----------------------------------------------
 
-   function MP_UML_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_Action_End_Data_A_Link_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 391;
-   end MP_UML_Link_Action_End_Data;
+   end MP_UML_Link_Action_End_Data_A_Link_Action;
 
-   ------------------------------------
-   -- MP_UML_Link_Action_Input_Value --
-   ------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Link_Action_Input_Value_A_Link_Action --
+   --------------------------------------------------
 
-   function MP_UML_Link_Action_Input_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_Action_Input_Value_A_Link_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 392;
-   end MP_UML_Link_Action_Input_Value;
+   end MP_UML_Link_Action_Input_Value_A_Link_Action;
 
-   ---------------------------------------------
-   -- MP_UML_Link_End_Creation_Data_Insert_At --
-   ---------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Link_End_Creation_Data_Insert_At_A_Link_End_Creation_Data --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Link_End_Creation_Data_Insert_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_End_Creation_Data_Insert_At_A_Link_End_Creation_Data return AMF.Internals.CMOF_Element is
    begin
       return Base + 646;
-   end MP_UML_Link_End_Creation_Data_Insert_At;
+   end MP_UML_Link_End_Creation_Data_Insert_At_A_Link_End_Creation_Data;
 
    --------------------------------------------------
    -- MP_UML_Link_End_Creation_Data_Is_Replace_All --
@@ -5113,41 +5113,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 647;
    end MP_UML_Link_End_Creation_Data_Is_Replace_All;
 
-   ------------------------------
-   -- MP_UML_Link_End_Data_End --
-   ------------------------------
+   ----------------------------------------------
+   -- MP_UML_Link_End_Data_End_A_Link_End_Data --
+   ----------------------------------------------
 
-   function MP_UML_Link_End_Data_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_End_Data_End_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
       return Base + 648;
-   end MP_UML_Link_End_Data_End;
+   end MP_UML_Link_End_Data_End_A_Link_End_Data;
 
-   ------------------------------------
-   -- MP_UML_Link_End_Data_Qualifier --
-   ------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Link_End_Data_Qualifier_A_Link_End_Data --
+   ----------------------------------------------------
 
-   function MP_UML_Link_End_Data_Qualifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_End_Data_Qualifier_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
       return Base + 393;
-   end MP_UML_Link_End_Data_Qualifier;
+   end MP_UML_Link_End_Data_Qualifier_A_Link_End_Data;
 
-   --------------------------------
-   -- MP_UML_Link_End_Data_Value --
-   --------------------------------
+   ------------------------------------------------
+   -- MP_UML_Link_End_Data_Value_A_Link_End_Data --
+   ------------------------------------------------
 
-   function MP_UML_Link_End_Data_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_End_Data_Value_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
       return Base + 649;
-   end MP_UML_Link_End_Data_Value;
+   end MP_UML_Link_End_Data_Value_A_Link_End_Data;
 
-   -------------------------------------------------
-   -- MP_UML_Link_End_Destruction_Data_Destroy_At --
-   -------------------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_UML_Link_End_Destruction_Data_Destroy_At_A_Link_End_Destruction_Data --
+   -----------------------------------------------------------------------------
 
-   function MP_UML_Link_End_Destruction_Data_Destroy_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Link_End_Destruction_Data_Destroy_At_A_Link_End_Destruction_Data return AMF.Internals.CMOF_Element is
    begin
       return Base + 650;
-   end MP_UML_Link_End_Destruction_Data_Destroy_At;
+   end MP_UML_Link_End_Destruction_Data_Destroy_At_A_Link_End_Destruction_Data;
 
    ------------------------------------------------------------
    -- MP_UML_Link_End_Destruction_Data_Is_Destroy_Duplicates --
@@ -5203,32 +5203,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 656;
    end MP_UML_Literal_Unlimited_Natural_Value;
 
-   ----------------------------------
-   -- MP_UML_Loop_Node_Body_Output --
-   ----------------------------------
+   ----------------------------------------------
+   -- MP_UML_Loop_Node_Body_Output_A_Loop_Node --
+   ----------------------------------------------
 
-   function MP_UML_Loop_Node_Body_Output return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Body_Output_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 394;
-   end MP_UML_Loop_Node_Body_Output;
+   end MP_UML_Loop_Node_Body_Output_A_Loop_Node;
 
-   --------------------------------
-   -- MP_UML_Loop_Node_Body_Part --
-   --------------------------------
+   --------------------------------------------
+   -- MP_UML_Loop_Node_Body_Part_A_Loop_Node --
+   --------------------------------------------
 
-   function MP_UML_Loop_Node_Body_Part return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Body_Part_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 395;
-   end MP_UML_Loop_Node_Body_Part;
+   end MP_UML_Loop_Node_Body_Part_A_Loop_Node;
 
-   ------------------------------
-   -- MP_UML_Loop_Node_Decider --
-   ------------------------------
+   ------------------------------------------
+   -- MP_UML_Loop_Node_Decider_A_Loop_Node --
+   ------------------------------------------
 
-   function MP_UML_Loop_Node_Decider return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Decider_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 657;
-   end MP_UML_Loop_Node_Decider;
+   end MP_UML_Loop_Node_Decider_A_Loop_Node;
 
    --------------------------------------
    -- MP_UML_Loop_Node_Is_Tested_First --
@@ -5239,86 +5239,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 658;
    end MP_UML_Loop_Node_Is_Tested_First;
 
-   ------------------------------------
-   -- MP_UML_Loop_Node_Loop_Variable --
-   ------------------------------------
+   ------------------------------------------------
+   -- MP_UML_Loop_Node_Loop_Variable_A_Loop_Node --
+   ------------------------------------------------
 
-   function MP_UML_Loop_Node_Loop_Variable return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Loop_Variable_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 396;
-   end MP_UML_Loop_Node_Loop_Variable;
+   end MP_UML_Loop_Node_Loop_Variable_A_Loop_Node;
 
-   ------------------------------------------
-   -- MP_UML_Loop_Node_Loop_Variable_Input --
-   ------------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node --
+   ------------------------------------------------------
 
-   function MP_UML_Loop_Node_Loop_Variable_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 397;
-   end MP_UML_Loop_Node_Loop_Variable_Input;
+   end MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node;
 
-   -----------------------------
-   -- MP_UML_Loop_Node_Result --
-   -----------------------------
+   -----------------------------------------
+   -- MP_UML_Loop_Node_Result_A_Loop_Node --
+   -----------------------------------------
 
-   function MP_UML_Loop_Node_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Result_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 398;
-   end MP_UML_Loop_Node_Result;
+   end MP_UML_Loop_Node_Result_A_Loop_Node;
 
-   ---------------------------------
-   -- MP_UML_Loop_Node_Setup_Part --
-   ---------------------------------
+   ---------------------------------------------
+   -- MP_UML_Loop_Node_Setup_Part_A_Loop_Node --
+   ---------------------------------------------
 
-   function MP_UML_Loop_Node_Setup_Part return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Setup_Part_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 399;
-   end MP_UML_Loop_Node_Setup_Part;
+   end MP_UML_Loop_Node_Setup_Part_A_Loop_Node;
 
-   ---------------------------
-   -- MP_UML_Loop_Node_Test --
-   ---------------------------
+   ---------------------------------------
+   -- MP_UML_Loop_Node_Test_A_Loop_Node --
+   ---------------------------------------
 
-   function MP_UML_Loop_Node_Test return AMF.Internals.CMOF_Element is
+   function MP_UML_Loop_Node_Test_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 400;
-   end MP_UML_Loop_Node_Test;
+   end MP_UML_Loop_Node_Test_A_Loop_Node;
 
-   -------------------------------------------
-   -- MP_UML_Manifestation_Utilized_Element --
-   -------------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Manifestation_Utilized_Element_A_Manifestation --
+   -----------------------------------------------------------
 
-   function MP_UML_Manifestation_Utilized_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Manifestation_Utilized_Element_A_Manifestation return AMF.Internals.CMOF_Element is
    begin
       return Base + 659;
-   end MP_UML_Manifestation_Utilized_Element;
+   end MP_UML_Manifestation_Utilized_Element_A_Manifestation;
 
-   -----------------------------
-   -- MP_UML_Message_Argument --
-   -----------------------------
+   ---------------------------------------
+   -- MP_UML_Message_Argument_A_Message --
+   ---------------------------------------
 
-   function MP_UML_Message_Argument return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Argument_A_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 401;
-   end MP_UML_Message_Argument;
+   end MP_UML_Message_Argument_A_Message;
 
-   ------------------------------
-   -- MP_UML_Message_Connector --
-   ------------------------------
+   ----------------------------------------
+   -- MP_UML_Message_Connector_A_Message --
+   ----------------------------------------
 
-   function MP_UML_Message_Connector return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Connector_A_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 660;
-   end MP_UML_Message_Connector;
+   end MP_UML_Message_Connector_A_Message;
 
-   --------------------------------
-   -- MP_UML_Message_Interaction --
-   --------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Message_Interaction_Interaction_Message --
+   ----------------------------------------------------
 
-   function MP_UML_Message_Interaction return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Interaction_Interaction_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 661;
-   end MP_UML_Message_Interaction;
+   end MP_UML_Message_Interaction_Interaction_Message;
 
    ---------------------------------
    -- MP_UML_Message_Message_Kind --
@@ -5338,41 +5338,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 663;
    end MP_UML_Message_Message_Sort;
 
-   ----------------------------------
-   -- MP_UML_Message_Receive_Event --
-   ----------------------------------
+   ------------------------------------------------
+   -- MP_UML_Message_Receive_Event_A_End_Message --
+   ------------------------------------------------
 
-   function MP_UML_Message_Receive_Event return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Receive_Event_A_End_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 664;
-   end MP_UML_Message_Receive_Event;
+   end MP_UML_Message_Receive_Event_A_End_Message;
 
-   -------------------------------
-   -- MP_UML_Message_Send_Event --
-   -------------------------------
+   ---------------------------------------------
+   -- MP_UML_Message_Send_Event_A_End_Message --
+   ---------------------------------------------
 
-   function MP_UML_Message_Send_Event return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Send_Event_A_End_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 665;
-   end MP_UML_Message_Send_Event;
+   end MP_UML_Message_Send_Event_A_End_Message;
 
-   ------------------------------
-   -- MP_UML_Message_Signature --
-   ------------------------------
+   ----------------------------------------
+   -- MP_UML_Message_Signature_A_Message --
+   ----------------------------------------
 
-   function MP_UML_Message_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_Signature_A_Message return AMF.Internals.CMOF_Element is
    begin
       return Base + 666;
-   end MP_UML_Message_Signature;
+   end MP_UML_Message_Signature_A_Message;
 
-   --------------------------------
-   -- MP_UML_Message_End_Message --
-   --------------------------------
+   ----------------------------------------------
+   -- MP_UML_Message_End_Message_A_Message_End --
+   ----------------------------------------------
 
-   function MP_UML_Message_End_Message return AMF.Internals.CMOF_Element is
+   function MP_UML_Message_End_Message_A_Message_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 667;
-   end MP_UML_Message_End_Message;
+   end MP_UML_Message_End_Message_A_Message_End;
 
    ----------------------------
    -- MP_UML_Model_Viewpoint --
@@ -5410,14 +5410,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 671;
    end MP_UML_Multiplicity_Element_Lower;
 
-   ---------------------------------------------
-   -- MP_UML_Multiplicity_Element_Lower_Value --
-   ---------------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Multiplicity_Element_Lower_Value_A_Owning_Lower --
+   ------------------------------------------------------------
 
-   function MP_UML_Multiplicity_Element_Lower_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Multiplicity_Element_Lower_Value_A_Owning_Lower return AMF.Internals.CMOF_Element is
    begin
       return Base + 672;
-   end MP_UML_Multiplicity_Element_Lower_Value;
+   end MP_UML_Multiplicity_Element_Lower_Value_A_Owning_Lower;
 
    ---------------------------------------
    -- MP_UML_Multiplicity_Element_Upper --
@@ -5428,23 +5428,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 673;
    end MP_UML_Multiplicity_Element_Upper;
 
-   ---------------------------------------------
-   -- MP_UML_Multiplicity_Element_Upper_Value --
-   ---------------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper --
+   ------------------------------------------------------------
 
-   function MP_UML_Multiplicity_Element_Upper_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper return AMF.Internals.CMOF_Element is
    begin
       return Base + 674;
-   end MP_UML_Multiplicity_Element_Upper_Value;
+   end MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper;
 
-   --------------------------------------------
-   -- MP_UML_Named_Element_Client_Dependency --
-   --------------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Named_Element_Client_Dependency_Dependency_Client --
+   --------------------------------------------------------------
 
-   function MP_UML_Named_Element_Client_Dependency return AMF.Internals.CMOF_Element is
+   function MP_UML_Named_Element_Client_Dependency_Dependency_Client return AMF.Internals.CMOF_Element is
    begin
       return Base + 402;
-   end MP_UML_Named_Element_Client_Dependency;
+   end MP_UML_Named_Element_Client_Dependency_Dependency_Client;
 
    -------------------------------
    -- MP_UML_Named_Element_Name --
@@ -5455,23 +5455,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 675;
    end MP_UML_Named_Element_Name;
 
-   ------------------------------------------
-   -- MP_UML_Named_Element_Name_Expression --
-   ------------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Named_Element_Name_Expression_A_Named_Element --
+   ----------------------------------------------------------
 
-   function MP_UML_Named_Element_Name_Expression return AMF.Internals.CMOF_Element is
+   function MP_UML_Named_Element_Name_Expression_A_Named_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 676;
-   end MP_UML_Named_Element_Name_Expression;
+   end MP_UML_Named_Element_Name_Expression_A_Named_Element;
 
-   ------------------------------------
-   -- MP_UML_Named_Element_Namespace --
-   ------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Named_Element_Namespace_Namespace_Owned_Member --
+   -----------------------------------------------------------
 
-   function MP_UML_Named_Element_Namespace return AMF.Internals.CMOF_Element is
+   function MP_UML_Named_Element_Namespace_Namespace_Owned_Member return AMF.Internals.CMOF_Element is
    begin
       return Base + 677;
-   end MP_UML_Named_Element_Namespace;
+   end MP_UML_Named_Element_Namespace_Namespace_Owned_Member;
 
    -----------------------------------------
    -- MP_UML_Named_Element_Qualified_Name --
@@ -5491,68 +5491,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 679;
    end MP_UML_Named_Element_Visibility;
 
-   -------------------------------------
-   -- MP_UML_Namespace_Element_Import --
-   -------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Namespace_Element_Import return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 403;
-   end MP_UML_Namespace_Element_Import;
+   end MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace;
 
-   --------------------------------------
-   -- MP_UML_Namespace_Imported_Member --
-   --------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Namespace_Imported_Member_A_Namespace --
+   --------------------------------------------------
 
-   function MP_UML_Namespace_Imported_Member return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Imported_Member_A_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 404;
-   end MP_UML_Namespace_Imported_Member;
+   end MP_UML_Namespace_Imported_Member_A_Namespace;
 
-   -----------------------------
-   -- MP_UML_Namespace_Member --
-   -----------------------------
+   ------------------------------------------------
+   -- MP_UML_Namespace_Member_A_Member_Namespace --
+   ------------------------------------------------
 
-   function MP_UML_Namespace_Member return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Member_A_Member_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 405;
-   end MP_UML_Namespace_Member;
+   end MP_UML_Namespace_Member_A_Member_Namespace;
 
-   -----------------------------------
-   -- MP_UML_Namespace_Owned_Member --
-   -----------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Namespace_Owned_Member_Named_Element_Namespace --
+   -----------------------------------------------------------
 
-   function MP_UML_Namespace_Owned_Member return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Owned_Member_Named_Element_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 406;
-   end MP_UML_Namespace_Owned_Member;
+   end MP_UML_Namespace_Owned_Member_Named_Element_Namespace;
 
-   ---------------------------------
-   -- MP_UML_Namespace_Owned_Rule --
-   ---------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Namespace_Owned_Rule_Constraint_Context --
+   ----------------------------------------------------
 
-   function MP_UML_Namespace_Owned_Rule return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Owned_Rule_Constraint_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 407;
-   end MP_UML_Namespace_Owned_Rule;
+   end MP_UML_Namespace_Owned_Rule_Constraint_Context;
 
-   -------------------------------------
-   -- MP_UML_Namespace_Package_Import --
-   -------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Namespace_Package_Import return AMF.Internals.CMOF_Element is
+   function MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
       return Base + 408;
-   end MP_UML_Namespace_Package_Import;
+   end MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace;
 
-   -----------------------------
-   -- MP_UML_Node_Nested_Node --
-   -----------------------------
+   ------------------------------------
+   -- MP_UML_Node_Nested_Node_A_Node --
+   ------------------------------------
 
-   function MP_UML_Node_Nested_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Node_Nested_Node_A_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 409;
-   end MP_UML_Node_Nested_Node;
+   end MP_UML_Node_Nested_Node_A_Node;
 
    -------------------------------------
    -- MP_UML_Object_Flow_Is_Multicast --
@@ -5572,32 +5572,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 681;
    end MP_UML_Object_Flow_Is_Multireceive;
 
-   ----------------------------------
-   -- MP_UML_Object_Flow_Selection --
-   ----------------------------------
+   ------------------------------------------------
+   -- MP_UML_Object_Flow_Selection_A_Object_Flow --
+   ------------------------------------------------
 
-   function MP_UML_Object_Flow_Selection return AMF.Internals.CMOF_Element is
+   function MP_UML_Object_Flow_Selection_A_Object_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 682;
-   end MP_UML_Object_Flow_Selection;
+   end MP_UML_Object_Flow_Selection_A_Object_Flow;
 
-   ---------------------------------------
-   -- MP_UML_Object_Flow_Transformation --
-   ---------------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Object_Flow_Transformation_A_Object_Flow --
+   -----------------------------------------------------
 
-   function MP_UML_Object_Flow_Transformation return AMF.Internals.CMOF_Element is
+   function MP_UML_Object_Flow_Transformation_A_Object_Flow return AMF.Internals.CMOF_Element is
    begin
       return Base + 683;
-   end MP_UML_Object_Flow_Transformation;
+   end MP_UML_Object_Flow_Transformation_A_Object_Flow;
 
-   ---------------------------------
-   -- MP_UML_Object_Node_In_State --
-   ---------------------------------
+   -----------------------------------------------
+   -- MP_UML_Object_Node_In_State_A_Object_Node --
+   -----------------------------------------------
 
-   function MP_UML_Object_Node_In_State return AMF.Internals.CMOF_Element is
+   function MP_UML_Object_Node_In_State_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 410;
-   end MP_UML_Object_Node_In_State;
+   end MP_UML_Object_Node_In_State_A_Object_Node;
 
    ----------------------------------------
    -- MP_UML_Object_Node_Is_Control_Type --
@@ -5617,50 +5617,50 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 685;
    end MP_UML_Object_Node_Ordering;
 
-   ----------------------------------
-   -- MP_UML_Object_Node_Selection --
-   ----------------------------------
+   ------------------------------------------------
+   -- MP_UML_Object_Node_Selection_A_Object_Node --
+   ------------------------------------------------
 
-   function MP_UML_Object_Node_Selection return AMF.Internals.CMOF_Element is
+   function MP_UML_Object_Node_Selection_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 686;
-   end MP_UML_Object_Node_Selection;
+   end MP_UML_Object_Node_Selection_A_Object_Node;
 
-   ------------------------------------
-   -- MP_UML_Object_Node_Upper_Bound --
-   ------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Object_Node_Upper_Bound_A_Object_Node --
+   --------------------------------------------------
 
-   function MP_UML_Object_Node_Upper_Bound return AMF.Internals.CMOF_Element is
+   function MP_UML_Object_Node_Upper_Bound_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 687;
-   end MP_UML_Object_Node_Upper_Bound;
+   end MP_UML_Object_Node_Upper_Bound_A_Object_Node;
 
-   ---------------------------------------------
-   -- MP_UML_Occurrence_Specification_Covered --
-   ---------------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Occurrence_Specification_Covered_A_Events --
+   ------------------------------------------------------
 
-   function MP_UML_Occurrence_Specification_Covered return AMF.Internals.CMOF_Element is
+   function MP_UML_Occurrence_Specification_Covered_A_Events return AMF.Internals.CMOF_Element is
    begin
       return Base + 411;
-   end MP_UML_Occurrence_Specification_Covered;
+   end MP_UML_Occurrence_Specification_Covered_A_Events;
 
-   ----------------------------------------------
-   -- MP_UML_Occurrence_Specification_To_After --
-   ----------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Occurrence_Specification_To_After_General_Ordering_Before --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Occurrence_Specification_To_After return AMF.Internals.CMOF_Element is
+   function MP_UML_Occurrence_Specification_To_After_General_Ordering_Before return AMF.Internals.CMOF_Element is
    begin
       return Base + 412;
-   end MP_UML_Occurrence_Specification_To_After;
+   end MP_UML_Occurrence_Specification_To_After_General_Ordering_Before;
 
-   -----------------------------------------------
-   -- MP_UML_Occurrence_Specification_To_Before --
-   -----------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Occurrence_Specification_To_Before_General_Ordering_After --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Occurrence_Specification_To_Before return AMF.Internals.CMOF_Element is
+   function MP_UML_Occurrence_Specification_To_Before_General_Ordering_After return AMF.Internals.CMOF_Element is
    begin
       return Base + 413;
-   end MP_UML_Occurrence_Specification_To_Before;
+   end MP_UML_Occurrence_Specification_To_Before_General_Ordering_After;
 
    -------------------------------
    -- MP_UML_Opaque_Action_Body --
@@ -5671,14 +5671,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 688;
    end MP_UML_Opaque_Action_Body;
 
-   --------------------------------------
-   -- MP_UML_Opaque_Action_Input_Value --
-   --------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Opaque_Action_Input_Value_A_Opaque_Action --
+   ------------------------------------------------------
 
-   function MP_UML_Opaque_Action_Input_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Opaque_Action_Input_Value_A_Opaque_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 414;
-   end MP_UML_Opaque_Action_Input_Value;
+   end MP_UML_Opaque_Action_Input_Value_A_Opaque_Action;
 
    -----------------------------------
    -- MP_UML_Opaque_Action_Language --
@@ -5689,14 +5689,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 689;
    end MP_UML_Opaque_Action_Language;
 
-   ---------------------------------------
-   -- MP_UML_Opaque_Action_Output_Value --
-   ---------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Opaque_Action_Output_Value_A_Opaque_Action --
+   -------------------------------------------------------
 
-   function MP_UML_Opaque_Action_Output_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Opaque_Action_Output_Value_A_Opaque_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 415;
-   end MP_UML_Opaque_Action_Output_Value;
+   end MP_UML_Opaque_Action_Output_Value_A_Opaque_Action;
 
    ---------------------------------
    -- MP_UML_Opaque_Behavior_Body --
@@ -5716,14 +5716,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 691;
    end MP_UML_Opaque_Behavior_Language;
 
-   ---------------------------------------
-   -- MP_UML_Opaque_Expression_Behavior --
-   ---------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression --
+   -----------------------------------------------------------
 
-   function MP_UML_Opaque_Expression_Behavior return AMF.Internals.CMOF_Element is
+   function MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 692;
-   end MP_UML_Opaque_Expression_Behavior;
+   end MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression;
 
    -----------------------------------
    -- MP_UML_Opaque_Expression_Body --
@@ -5743,50 +5743,50 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 694;
    end MP_UML_Opaque_Expression_Language;
 
-   -------------------------------------
-   -- MP_UML_Opaque_Expression_Result --
-   -------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Opaque_Expression_Result_A_Opaque_Expression --
+   ---------------------------------------------------------
 
-   function MP_UML_Opaque_Expression_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Opaque_Expression_Result_A_Opaque_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 695;
-   end MP_UML_Opaque_Expression_Result;
+   end MP_UML_Opaque_Expression_Result_A_Opaque_Expression;
 
-   -------------------------------------
-   -- MP_UML_Operation_Body_Condition --
-   -------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Operation_Body_Condition_A_Body_Context --
+   ----------------------------------------------------
 
-   function MP_UML_Operation_Body_Condition return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Body_Condition_A_Body_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 696;
-   end MP_UML_Operation_Body_Condition;
+   end MP_UML_Operation_Body_Condition_A_Body_Context;
 
-   ----------------------------
-   -- MP_UML_Operation_Class --
-   ----------------------------
+   --------------------------------------------------
+   -- MP_UML_Operation_Class_Class_Owned_Operation --
+   --------------------------------------------------
 
-   function MP_UML_Operation_Class return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Class_Class_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 697;
-   end MP_UML_Operation_Class;
+   end MP_UML_Operation_Class_Class_Owned_Operation;
 
-   -------------------------------
-   -- MP_UML_Operation_Datatype --
-   -------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Operation_Datatype_Data_Type_Owned_Operation --
+   ---------------------------------------------------------
 
-   function MP_UML_Operation_Datatype return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Datatype_Data_Type_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 698;
-   end MP_UML_Operation_Datatype;
+   end MP_UML_Operation_Datatype_Data_Type_Owned_Operation;
 
-   --------------------------------
-   -- MP_UML_Operation_Interface --
-   --------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Operation_Interface_Interface_Owned_Operation --
+   ----------------------------------------------------------
 
-   function MP_UML_Operation_Interface return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Interface_Interface_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 699;
-   end MP_UML_Operation_Interface;
+   end MP_UML_Operation_Interface_Interface_Owned_Operation;
 
    ---------------------------------
    -- MP_UML_Operation_Is_Ordered --
@@ -5824,68 +5824,68 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 703;
    end MP_UML_Operation_Lower;
 
-   --------------------------------------
-   -- MP_UML_Operation_Owned_Parameter --
-   --------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Operation_Owned_Parameter_Parameter_Operation --
+   ----------------------------------------------------------
 
-   function MP_UML_Operation_Owned_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Owned_Parameter_Parameter_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 416;
-   end MP_UML_Operation_Owned_Parameter;
+   end MP_UML_Operation_Owned_Parameter_Parameter_Operation;
 
-   ------------------------------------
-   -- MP_UML_Operation_Postcondition --
-   ------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Operation_Postcondition_A_Post_Context --
+   ---------------------------------------------------
 
-   function MP_UML_Operation_Postcondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Postcondition_A_Post_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 417;
-   end MP_UML_Operation_Postcondition;
+   end MP_UML_Operation_Postcondition_A_Post_Context;
 
-   -----------------------------------
-   -- MP_UML_Operation_Precondition --
-   -----------------------------------
+   -------------------------------------------------
+   -- MP_UML_Operation_Precondition_A_Pre_Context --
+   -------------------------------------------------
 
-   function MP_UML_Operation_Precondition return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Precondition_A_Pre_Context return AMF.Internals.CMOF_Element is
    begin
       return Base + 418;
-   end MP_UML_Operation_Precondition;
+   end MP_UML_Operation_Precondition_A_Pre_Context;
 
-   ---------------------------------------
-   -- MP_UML_Operation_Raised_Exception --
-   ---------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Operation_Raised_Exception_A_Operation --
+   ---------------------------------------------------
 
-   function MP_UML_Operation_Raised_Exception return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Raised_Exception_A_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 419;
-   end MP_UML_Operation_Raised_Exception;
+   end MP_UML_Operation_Raised_Exception_A_Operation;
 
-   ------------------------------------------
-   -- MP_UML_Operation_Redefined_Operation --
-   ------------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Operation_Redefined_Operation_A_Operation --
+   ------------------------------------------------------
 
-   function MP_UML_Operation_Redefined_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Redefined_Operation_A_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 420;
-   end MP_UML_Operation_Redefined_Operation;
+   end MP_UML_Operation_Redefined_Operation_A_Operation;
 
-   -----------------------------------------
-   -- MP_UML_Operation_Template_Parameter --
-   -----------------------------------------
+   ------------------------------------------------------------------------------------------
+   -- MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element --
+   ------------------------------------------------------------------------------------------
 
-   function MP_UML_Operation_Template_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 704;
-   end MP_UML_Operation_Template_Parameter;
+   end MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element;
 
-   ---------------------------
-   -- MP_UML_Operation_Type --
-   ---------------------------
+   ---------------------------------------
+   -- MP_UML_Operation_Type_A_Operation --
+   ---------------------------------------
 
-   function MP_UML_Operation_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Type_A_Operation return AMF.Internals.CMOF_Element is
    begin
       return Base + 705;
-   end MP_UML_Operation_Type;
+   end MP_UML_Operation_Type_A_Operation;
 
    ----------------------------
    -- MP_UML_Operation_Upper --
@@ -5896,14 +5896,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 706;
    end MP_UML_Operation_Upper;
 
-   -------------------------------------------------------------
-   -- MP_UML_Operation_Template_Parameter_Parametered_Element --
-   -------------------------------------------------------------
+   ------------------------------------------------------------------------------------------
+   -- MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter --
+   ------------------------------------------------------------------------------------------
 
-   function MP_UML_Operation_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 707;
-   end MP_UML_Operation_Template_Parameter_Parametered_Element;
+   end MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter;
 
    ------------------------
    -- MP_UML_Package_URI --
@@ -5914,86 +5914,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 708;
    end MP_UML_Package_URI;
 
-   -----------------------------------
-   -- MP_UML_Package_Nested_Package --
-   -----------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Package_Nested_Package_Package_Nesting_Package --
+   -----------------------------------------------------------
 
-   function MP_UML_Package_Nested_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Nested_Package_Package_Nesting_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 421;
-   end MP_UML_Package_Nested_Package;
+   end MP_UML_Package_Nested_Package_Package_Nesting_Package;
 
-   ------------------------------------
-   -- MP_UML_Package_Nesting_Package --
-   ------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Package_Nesting_Package_Package_Nested_Package --
+   -----------------------------------------------------------
 
-   function MP_UML_Package_Nesting_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Nesting_Package_Package_Nested_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 709;
-   end MP_UML_Package_Nesting_Package;
+   end MP_UML_Package_Nesting_Package_Package_Nested_Package;
 
-   -------------------------------------
-   -- MP_UML_Package_Owned_Stereotype --
-   -------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Package_Owned_Stereotype_A_Owning_Package --
+   ------------------------------------------------------
 
-   function MP_UML_Package_Owned_Stereotype return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Owned_Stereotype_A_Owning_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 422;
-   end MP_UML_Package_Owned_Stereotype;
+   end MP_UML_Package_Owned_Stereotype_A_Owning_Package;
 
-   -------------------------------
-   -- MP_UML_Package_Owned_Type --
-   -------------------------------
+   --------------------------------------------
+   -- MP_UML_Package_Owned_Type_Type_Package --
+   --------------------------------------------
 
-   function MP_UML_Package_Owned_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Owned_Type_Type_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 423;
-   end MP_UML_Package_Owned_Type;
+   end MP_UML_Package_Owned_Type_Type_Package;
 
-   ----------------------------------
-   -- MP_UML_Package_Package_Merge --
-   ----------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Package_Package_Merge_Package_Merge_Receiving_Package --
+   ------------------------------------------------------------------
 
-   function MP_UML_Package_Package_Merge return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Package_Merge_Package_Merge_Receiving_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 424;
-   end MP_UML_Package_Package_Merge;
+   end MP_UML_Package_Package_Merge_Package_Merge_Receiving_Package;
 
-   -------------------------------------
-   -- MP_UML_Package_Packaged_Element --
-   -------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Package_Packaged_Element_A_Owning_Package --
+   ------------------------------------------------------
 
-   function MP_UML_Package_Packaged_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Packaged_Element_A_Owning_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 425;
-   end MP_UML_Package_Packaged_Element;
+   end MP_UML_Package_Packaged_Element_A_Owning_Package;
 
-   ----------------------------------------
-   -- MP_UML_Package_Profile_Application --
-   ----------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_UML_Package_Profile_Application_Profile_Application_Applying_Package --
+   -----------------------------------------------------------------------------
 
-   function MP_UML_Package_Profile_Application return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Profile_Application_Profile_Application_Applying_Package return AMF.Internals.CMOF_Element is
    begin
       return Base + 426;
-   end MP_UML_Package_Profile_Application;
+   end MP_UML_Package_Profile_Application_Profile_Application_Applying_Package;
 
-   --------------------------------------------
-   -- MP_UML_Package_Import_Imported_Package --
-   --------------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Package_Import_Imported_Package_A_Package_Import --
+   -------------------------------------------------------------
 
-   function MP_UML_Package_Import_Imported_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Import_Imported_Package_A_Package_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 710;
-   end MP_UML_Package_Import_Imported_Package;
+   end MP_UML_Package_Import_Imported_Package_A_Package_Import;
 
-   -----------------------------------------------
-   -- MP_UML_Package_Import_Importing_Namespace --
-   -----------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Package_Import_Importing_Namespace_Namespace_Package_Import --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Package_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Import_Importing_Namespace_Namespace_Package_Import return AMF.Internals.CMOF_Element is
    begin
       return Base + 711;
-   end MP_UML_Package_Import_Importing_Namespace;
+   end MP_UML_Package_Import_Importing_Namespace_Namespace_Package_Import;
 
    --------------------------------------
    -- MP_UML_Package_Import_Visibility --
@@ -6004,23 +6004,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 712;
    end MP_UML_Package_Import_Visibility;
 
-   -----------------------------------------
-   -- MP_UML_Package_Merge_Merged_Package --
-   -----------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Package_Merge_Merged_Package_A_Package_Merge --
+   ---------------------------------------------------------
 
-   function MP_UML_Package_Merge_Merged_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Merge_Merged_Package_A_Package_Merge return AMF.Internals.CMOF_Element is
    begin
       return Base + 713;
-   end MP_UML_Package_Merge_Merged_Package;
+   end MP_UML_Package_Merge_Merged_Package_A_Package_Merge;
 
-   --------------------------------------------
-   -- MP_UML_Package_Merge_Receiving_Package --
-   --------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Package_Merge_Receiving_Package_Package_Package_Merge --
+   ------------------------------------------------------------------
 
-   function MP_UML_Package_Merge_Receiving_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Package_Merge_Receiving_Package_Package_Package_Merge return AMF.Internals.CMOF_Element is
    begin
       return Base + 714;
-   end MP_UML_Package_Merge_Receiving_Package;
+   end MP_UML_Package_Merge_Receiving_Package_Package_Package_Merge;
 
    -------------------------------------------
    -- MP_UML_Packageable_Element_Visibility --
@@ -6040,14 +6040,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 716;
    end MP_UML_Parameter_Default;
 
-   ------------------------------------
-   -- MP_UML_Parameter_Default_Value --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Parameter_Default_Value_A_Owning_Parameter --
+   -------------------------------------------------------
 
-   function MP_UML_Parameter_Default_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameter_Default_Value_A_Owning_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 717;
-   end MP_UML_Parameter_Default_Value;
+   end MP_UML_Parameter_Default_Value_A_Owning_Parameter;
 
    --------------------------------
    -- MP_UML_Parameter_Direction --
@@ -6085,59 +6085,59 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 721;
    end MP_UML_Parameter_Is_Stream;
 
-   --------------------------------
-   -- MP_UML_Parameter_Operation --
-   --------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Parameter_Operation_Operation_Owned_Parameter --
+   ----------------------------------------------------------
 
-   function MP_UML_Parameter_Operation return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameter_Operation_Operation_Owned_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 722;
-   end MP_UML_Parameter_Operation;
+   end MP_UML_Parameter_Operation_Operation_Owned_Parameter;
 
-   ------------------------------------
-   -- MP_UML_Parameter_Parameter_Set --
-   ------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Parameter_Parameter_Set_Parameter_Set_Parameter --
+   ------------------------------------------------------------
 
-   function MP_UML_Parameter_Parameter_Set return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameter_Parameter_Set_Parameter_Set_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 427;
-   end MP_UML_Parameter_Parameter_Set;
+   end MP_UML_Parameter_Parameter_Set_Parameter_Set_Parameter;
 
-   ------------------------------------
-   -- MP_UML_Parameter_Set_Condition --
-   ------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Parameter_Set_Condition_A_Parameter_Set --
+   ----------------------------------------------------
 
-   function MP_UML_Parameter_Set_Condition return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameter_Set_Condition_A_Parameter_Set return AMF.Internals.CMOF_Element is
    begin
       return Base + 428;
-   end MP_UML_Parameter_Set_Condition;
+   end MP_UML_Parameter_Set_Condition_A_Parameter_Set;
 
-   ------------------------------------
-   -- MP_UML_Parameter_Set_Parameter --
-   ------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Parameter_Set_Parameter_Parameter_Parameter_Set --
+   ------------------------------------------------------------
 
-   function MP_UML_Parameter_Set_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameter_Set_Parameter_Parameter_Parameter_Set return AMF.Internals.CMOF_Element is
    begin
       return Base + 429;
-   end MP_UML_Parameter_Set_Parameter;
+   end MP_UML_Parameter_Set_Parameter_Parameter_Parameter_Set;
 
-   ------------------------------------------------------------
-   -- MP_UML_Parameterable_Element_Owning_Template_Parameter --
-   ------------------------------------------------------------
+   ---------------------------------------------------------------------------------------------------------
+   -- MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element --
+   ---------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Parameterable_Element_Owning_Template_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 723;
-   end MP_UML_Parameterable_Element_Owning_Template_Parameter;
+   end MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element;
 
-   -----------------------------------------------------
-   -- MP_UML_Parameterable_Element_Template_Parameter --
-   -----------------------------------------------------
+   --------------------------------------------------------------------------------------------
+   -- MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element --
+   --------------------------------------------------------------------------------------------
 
-   function MP_UML_Parameterable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 724;
-   end MP_UML_Parameterable_Element_Template_Parameter;
+   end MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element;
 
    ---------------------------
    -- MP_UML_Pin_Is_Control --
@@ -6175,77 +6175,77 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 728;
    end MP_UML_Port_Is_Service;
 
-   --------------------------
-   -- MP_UML_Port_Protocol --
-   --------------------------
+   ---------------------------------
+   -- MP_UML_Port_Protocol_A_Port --
+   ---------------------------------
 
-   function MP_UML_Port_Protocol return AMF.Internals.CMOF_Element is
+   function MP_UML_Port_Protocol_A_Port return AMF.Internals.CMOF_Element is
    begin
       return Base + 729;
-   end MP_UML_Port_Protocol;
+   end MP_UML_Port_Protocol_A_Port;
 
-   --------------------------
-   -- MP_UML_Port_Provided --
-   --------------------------
+   ---------------------------------
+   -- MP_UML_Port_Provided_A_Port --
+   ---------------------------------
 
-   function MP_UML_Port_Provided return AMF.Internals.CMOF_Element is
+   function MP_UML_Port_Provided_A_Port return AMF.Internals.CMOF_Element is
    begin
       return Base + 430;
-   end MP_UML_Port_Provided;
+   end MP_UML_Port_Provided_A_Port;
 
-   --------------------------------
-   -- MP_UML_Port_Redefined_Port --
-   --------------------------------
+   ---------------------------------------
+   -- MP_UML_Port_Redefined_Port_A_Port --
+   ---------------------------------------
 
-   function MP_UML_Port_Redefined_Port return AMF.Internals.CMOF_Element is
+   function MP_UML_Port_Redefined_Port_A_Port return AMF.Internals.CMOF_Element is
    begin
       return Base + 431;
-   end MP_UML_Port_Redefined_Port;
+   end MP_UML_Port_Redefined_Port_A_Port;
 
-   --------------------------
-   -- MP_UML_Port_Required --
-   --------------------------
+   ---------------------------------
+   -- MP_UML_Port_Required_A_Port --
+   ---------------------------------
 
-   function MP_UML_Port_Required return AMF.Internals.CMOF_Element is
+   function MP_UML_Port_Required_A_Port return AMF.Internals.CMOF_Element is
    begin
       return Base + 432;
-   end MP_UML_Port_Required;
+   end MP_UML_Port_Required_A_Port;
 
-   ----------------------------------------
-   -- MP_UML_Profile_Metaclass_Reference --
-   ----------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Profile_Metaclass_Reference_A_Profile --
+   --------------------------------------------------
 
-   function MP_UML_Profile_Metaclass_Reference return AMF.Internals.CMOF_Element is
+   function MP_UML_Profile_Metaclass_Reference_A_Profile return AMF.Internals.CMOF_Element is
    begin
       return Base + 433;
-   end MP_UML_Profile_Metaclass_Reference;
+   end MP_UML_Profile_Metaclass_Reference_A_Profile;
 
-   ----------------------------------------
-   -- MP_UML_Profile_Metamodel_Reference --
-   ----------------------------------------
+   --------------------------------------------------
+   -- MP_UML_Profile_Metamodel_Reference_A_Profile --
+   --------------------------------------------------
 
-   function MP_UML_Profile_Metamodel_Reference return AMF.Internals.CMOF_Element is
+   function MP_UML_Profile_Metamodel_Reference_A_Profile return AMF.Internals.CMOF_Element is
    begin
       return Base + 434;
-   end MP_UML_Profile_Metamodel_Reference;
+   end MP_UML_Profile_Metamodel_Reference_A_Profile;
 
-   ------------------------------------------------
-   -- MP_UML_Profile_Application_Applied_Profile --
-   ------------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Profile_Application_Applied_Profile_A_Profile_Application --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Profile_Application_Applied_Profile return AMF.Internals.CMOF_Element is
+   function MP_UML_Profile_Application_Applied_Profile_A_Profile_Application return AMF.Internals.CMOF_Element is
    begin
       return Base + 730;
-   end MP_UML_Profile_Application_Applied_Profile;
+   end MP_UML_Profile_Application_Applied_Profile_A_Profile_Application;
 
-   -------------------------------------------------
-   -- MP_UML_Profile_Application_Applying_Package --
-   -------------------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_UML_Profile_Application_Applying_Package_Package_Profile_Application --
+   -----------------------------------------------------------------------------
 
-   function MP_UML_Profile_Application_Applying_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Profile_Application_Applying_Package_Package_Profile_Application return AMF.Internals.CMOF_Element is
    begin
       return Base + 731;
-   end MP_UML_Profile_Application_Applying_Package;
+   end MP_UML_Profile_Application_Applying_Package_Package_Profile_Application;
 
    ------------------------------------------
    -- MP_UML_Profile_Application_Is_Strict --
@@ -6265,41 +6265,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 733;
    end MP_UML_Property_Aggregation;
 
-   ---------------------------------
-   -- MP_UML_Property_Association --
-   ---------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Property_Association_Association_Member_End --
+   --------------------------------------------------------
 
-   function MP_UML_Property_Association return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Association_Association_Member_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 734;
-   end MP_UML_Property_Association;
+   end MP_UML_Property_Association_Association_Member_End;
 
-   -------------------------------------
-   -- MP_UML_Property_Association_End --
-   -------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Property_Association_End_Property_Qualifier --
+   --------------------------------------------------------
 
-   function MP_UML_Property_Association_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Association_End_Property_Qualifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 735;
-   end MP_UML_Property_Association_End;
+   end MP_UML_Property_Association_End_Property_Qualifier;
 
-   ---------------------------
-   -- MP_UML_Property_Class --
-   ---------------------------
+   -------------------------------------------------
+   -- MP_UML_Property_Class_Class_Owned_Attribute --
+   -------------------------------------------------
 
-   function MP_UML_Property_Class return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Class_Class_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
       return Base + 736;
-   end MP_UML_Property_Class;
+   end MP_UML_Property_Class_Class_Owned_Attribute;
 
-   ------------------------------
-   -- MP_UML_Property_Datatype --
-   ------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Property_Datatype_Data_Type_Owned_Attribute --
+   --------------------------------------------------------
 
-   function MP_UML_Property_Datatype return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Datatype_Data_Type_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
       return Base + 737;
-   end MP_UML_Property_Datatype;
+   end MP_UML_Property_Datatype_Data_Type_Owned_Attribute;
 
    -----------------------------
    -- MP_UML_Property_Default --
@@ -6310,23 +6310,23 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 738;
    end MP_UML_Property_Default;
 
-   -----------------------------------
-   -- MP_UML_Property_Default_Value --
-   -----------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Property_Default_Value_A_Owning_Property --
+   -----------------------------------------------------
 
-   function MP_UML_Property_Default_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Default_Value_A_Owning_Property return AMF.Internals.CMOF_Element is
    begin
       return Base + 739;
-   end MP_UML_Property_Default_Value;
+   end MP_UML_Property_Default_Value_A_Owning_Property;
 
-   -------------------------------
-   -- MP_UML_Property_Interface --
-   -------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Property_Interface_Interface_Owned_Attribute --
+   ---------------------------------------------------------
 
-   function MP_UML_Property_Interface return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Interface_Interface_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
       return Base + 740;
-   end MP_UML_Property_Interface;
+   end MP_UML_Property_Interface_Interface_Owned_Attribute;
 
    ----------------------------------
    -- MP_UML_Property_Is_Composite --
@@ -6373,104 +6373,104 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 745;
    end MP_UML_Property_Is_Read_Only;
 
-   ------------------------------
-   -- MP_UML_Property_Opposite --
-   ------------------------------
+   -----------------------------------------
+   -- MP_UML_Property_Opposite_A_Property --
+   -----------------------------------------
 
-   function MP_UML_Property_Opposite return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Opposite_A_Property return AMF.Internals.CMOF_Element is
    begin
       return Base + 746;
-   end MP_UML_Property_Opposite;
+   end MP_UML_Property_Opposite_A_Property;
 
-   ----------------------------------------
-   -- MP_UML_Property_Owning_Association --
-   ----------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Property_Owning_Association_Association_Owned_End --
+   --------------------------------------------------------------
 
-   function MP_UML_Property_Owning_Association return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Owning_Association_Association_Owned_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 747;
-   end MP_UML_Property_Owning_Association;
+   end MP_UML_Property_Owning_Association_Association_Owned_End;
 
-   -------------------------------
-   -- MP_UML_Property_Qualifier --
-   -------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Property_Qualifier_Property_Association_End --
+   --------------------------------------------------------
 
-   function MP_UML_Property_Qualifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Qualifier_Property_Association_End return AMF.Internals.CMOF_Element is
    begin
       return Base + 435;
-   end MP_UML_Property_Qualifier;
+   end MP_UML_Property_Qualifier_Property_Association_End;
 
-   ----------------------------------------
-   -- MP_UML_Property_Redefined_Property --
-   ----------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Property_Redefined_Property_A_Property --
+   ---------------------------------------------------
 
-   function MP_UML_Property_Redefined_Property return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Redefined_Property_A_Property return AMF.Internals.CMOF_Element is
    begin
       return Base + 436;
-   end MP_UML_Property_Redefined_Property;
+   end MP_UML_Property_Redefined_Property_A_Property;
 
-   ----------------------------------------
-   -- MP_UML_Property_Subsetted_Property --
-   ----------------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Property_Subsetted_Property_A_Property --
+   ---------------------------------------------------
 
-   function MP_UML_Property_Subsetted_Property return AMF.Internals.CMOF_Element is
+   function MP_UML_Property_Subsetted_Property_A_Property return AMF.Internals.CMOF_Element is
    begin
       return Base + 437;
-   end MP_UML_Property_Subsetted_Property;
+   end MP_UML_Property_Subsetted_Property_A_Property;
 
-   -------------------------------------------------
-   -- MP_UML_Protocol_Conformance_General_Machine --
-   -------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Protocol_Conformance_General_Machine_A_Protocol_Conformance --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Protocol_Conformance_General_Machine return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_Conformance_General_Machine_A_Protocol_Conformance return AMF.Internals.CMOF_Element is
    begin
       return Base + 748;
-   end MP_UML_Protocol_Conformance_General_Machine;
+   end MP_UML_Protocol_Conformance_General_Machine_A_Protocol_Conformance;
 
-   --------------------------------------------------
-   -- MP_UML_Protocol_Conformance_Specific_Machine --
-   --------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Protocol_Conformance_Specific_Machine_Protocol_State_Machine_Conformance --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Protocol_Conformance_Specific_Machine return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_Conformance_Specific_Machine_Protocol_State_Machine_Conformance return AMF.Internals.CMOF_Element is
    begin
       return Base + 749;
-   end MP_UML_Protocol_Conformance_Specific_Machine;
+   end MP_UML_Protocol_Conformance_Specific_Machine_Protocol_State_Machine_Conformance;
 
-   -----------------------------------------------
-   -- MP_UML_Protocol_State_Machine_Conformance --
-   -----------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Protocol_State_Machine_Conformance_Protocol_Conformance_Specific_Machine --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Protocol_State_Machine_Conformance return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_State_Machine_Conformance_Protocol_Conformance_Specific_Machine return AMF.Internals.CMOF_Element is
    begin
       return Base + 438;
-   end MP_UML_Protocol_State_Machine_Conformance;
+   end MP_UML_Protocol_State_Machine_Conformance_Protocol_Conformance_Specific_Machine;
 
-   -----------------------------------------------
-   -- MP_UML_Protocol_Transition_Post_Condition --
-   -----------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_UML_Protocol_Transition_Post_Condition_A_Owning_Transition --
+   -------------------------------------------------------------------
 
-   function MP_UML_Protocol_Transition_Post_Condition return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_Transition_Post_Condition_A_Owning_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 750;
-   end MP_UML_Protocol_Transition_Post_Condition;
+   end MP_UML_Protocol_Transition_Post_Condition_A_Owning_Transition;
 
-   ----------------------------------------------
-   -- MP_UML_Protocol_Transition_Pre_Condition --
-   ----------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_UML_Protocol_Transition_Pre_Condition_A_Protocol_Transition --
+   --------------------------------------------------------------------
 
-   function MP_UML_Protocol_Transition_Pre_Condition return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_Transition_Pre_Condition_A_Protocol_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 751;
-   end MP_UML_Protocol_Transition_Pre_Condition;
+   end MP_UML_Protocol_Transition_Pre_Condition_A_Protocol_Transition;
 
-   -----------------------------------------
-   -- MP_UML_Protocol_Transition_Referred --
-   -----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Protocol_Transition_Referred_A_Protocol_Transition --
+   ---------------------------------------------------------------
 
-   function MP_UML_Protocol_Transition_Referred return AMF.Internals.CMOF_Element is
+   function MP_UML_Protocol_Transition_Referred_A_Protocol_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 439;
-   end MP_UML_Protocol_Transition_Referred;
+   end MP_UML_Protocol_Transition_Referred_A_Protocol_Transition;
 
    -----------------------------
    -- MP_UML_Pseudostate_Kind --
@@ -6481,77 +6481,77 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 752;
    end MP_UML_Pseudostate_Kind;
 
-   ------------------------------
-   -- MP_UML_Pseudostate_State --
-   ------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Pseudostate_State_State_Connection_Point --
+   -----------------------------------------------------
 
-   function MP_UML_Pseudostate_State return AMF.Internals.CMOF_Element is
+   function MP_UML_Pseudostate_State_State_Connection_Point return AMF.Internals.CMOF_Element is
    begin
       return Base + 753;
-   end MP_UML_Pseudostate_State;
+   end MP_UML_Pseudostate_State_State_Connection_Point;
 
-   --------------------------------------
-   -- MP_UML_Pseudostate_State_Machine --
-   --------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_Pseudostate_State_Machine_State_Machine_Connection_Point --
+   ---------------------------------------------------------------------
 
-   function MP_UML_Pseudostate_State_Machine return AMF.Internals.CMOF_Element is
+   function MP_UML_Pseudostate_State_Machine_State_Machine_Connection_Point return AMF.Internals.CMOF_Element is
    begin
       return Base + 754;
-   end MP_UML_Pseudostate_State_Machine;
+   end MP_UML_Pseudostate_State_Machine_State_Machine_Connection_Point;
 
-   --------------------------------------
-   -- MP_UML_Qualifier_Value_Qualifier --
-   --------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Qualifier_Value_Qualifier_A_Qualifier_Value --
+   --------------------------------------------------------
 
-   function MP_UML_Qualifier_Value_Qualifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Qualifier_Value_Qualifier_A_Qualifier_Value return AMF.Internals.CMOF_Element is
    begin
       return Base + 755;
-   end MP_UML_Qualifier_Value_Qualifier;
+   end MP_UML_Qualifier_Value_Qualifier_A_Qualifier_Value;
 
-   ----------------------------------
-   -- MP_UML_Qualifier_Value_Value --
-   ----------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Qualifier_Value_Value_A_Qualifier_Value --
+   ----------------------------------------------------
 
-   function MP_UML_Qualifier_Value_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Qualifier_Value_Value_A_Qualifier_Value return AMF.Internals.CMOF_Element is
    begin
       return Base + 756;
-   end MP_UML_Qualifier_Value_Value;
+   end MP_UML_Qualifier_Value_Value_A_Qualifier_Value;
 
-   ---------------------------------------------
-   -- MP_UML_Raise_Exception_Action_Exception --
-   ---------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UML_Raise_Exception_Action_Exception_A_Raise_Exception_Action --
+   ----------------------------------------------------------------------
 
-   function MP_UML_Raise_Exception_Action_Exception return AMF.Internals.CMOF_Element is
+   function MP_UML_Raise_Exception_Action_Exception_A_Raise_Exception_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 757;
-   end MP_UML_Raise_Exception_Action_Exception;
+   end MP_UML_Raise_Exception_Action_Exception_A_Raise_Exception_Action;
 
-   ------------------------------------------
-   -- MP_UML_Read_Extent_Action_Classifier --
-   ------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Read_Extent_Action_Classifier_A_Read_Extent_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Read_Extent_Action_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Extent_Action_Classifier_A_Read_Extent_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 758;
-   end MP_UML_Read_Extent_Action_Classifier;
+   end MP_UML_Read_Extent_Action_Classifier_A_Read_Extent_Action;
 
-   --------------------------------------
-   -- MP_UML_Read_Extent_Action_Result --
-   --------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Read_Extent_Action_Result_A_Read_Extent_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Read_Extent_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Extent_Action_Result_A_Read_Extent_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 759;
-   end MP_UML_Read_Extent_Action_Result;
+   end MP_UML_Read_Extent_Action_Result_A_Read_Extent_Action;
 
-   --------------------------------------------------------
-   -- MP_UML_Read_Is_Classified_Object_Action_Classifier --
-   --------------------------------------------------------
+   -------------------------------------------------------------------------------------------
+   -- MP_UML_Read_Is_Classified_Object_Action_Classifier_A_Read_Is_Classified_Object_Action --
+   -------------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Is_Classified_Object_Action_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Is_Classified_Object_Action_Classifier_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 760;
-   end MP_UML_Read_Is_Classified_Object_Action_Classifier;
+   end MP_UML_Read_Is_Classified_Object_Action_Classifier_A_Read_Is_Classified_Object_Action;
 
    -------------------------------------------------------
    -- MP_UML_Read_Is_Classified_Object_Action_Is_Direct --
@@ -6562,122 +6562,122 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 761;
    end MP_UML_Read_Is_Classified_Object_Action_Is_Direct;
 
-   ----------------------------------------------------
-   -- MP_UML_Read_Is_Classified_Object_Action_Object --
-   ----------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_Read_Is_Classified_Object_Action_Object_A_Read_Is_Classified_Object_Action --
+   ---------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Is_Classified_Object_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Is_Classified_Object_Action_Object_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 762;
-   end MP_UML_Read_Is_Classified_Object_Action_Object;
+   end MP_UML_Read_Is_Classified_Object_Action_Object_A_Read_Is_Classified_Object_Action;
 
-   ----------------------------------------------------
-   -- MP_UML_Read_Is_Classified_Object_Action_Result --
-   ----------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_Read_Is_Classified_Object_Action_Result_A_Read_Is_Classified_Object_Action --
+   ---------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Is_Classified_Object_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Is_Classified_Object_Action_Result_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 763;
-   end MP_UML_Read_Is_Classified_Object_Action_Result;
+   end MP_UML_Read_Is_Classified_Object_Action_Result_A_Read_Is_Classified_Object_Action;
 
-   ------------------------------------
-   -- MP_UML_Read_Link_Action_Result --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Read_Link_Action_Result_A_Read_Link_Action --
+   -------------------------------------------------------
 
-   function MP_UML_Read_Link_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Action_Result_A_Read_Link_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 764;
-   end MP_UML_Read_Link_Action_Result;
+   end MP_UML_Read_Link_Action_Result_A_Read_Link_Action;
 
-   --------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Action_End --
-   --------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Action_End_A_Read_Link_Object_End_Action --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Action_End return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Action_End_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 765;
-   end MP_UML_Read_Link_Object_End_Action_End;
+   end MP_UML_Read_Link_Object_End_Action_End_A_Read_Link_Object_End_Action;
 
-   -----------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Action_Object --
-   -----------------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Action_Object_A_Read_Link_Object_End_Action --
+   -----------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Action_Object_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 766;
-   end MP_UML_Read_Link_Object_End_Action_Object;
+   end MP_UML_Read_Link_Object_End_Action_Object_A_Read_Link_Object_End_Action;
 
-   -----------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Action_Result --
-   -----------------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Action_Result_A_Read_Link_Object_End_Action --
+   -----------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Action_Result_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 767;
-   end MP_UML_Read_Link_Object_End_Action_Result;
+   end MP_UML_Read_Link_Object_End_Action_Result_A_Read_Link_Object_End_Action;
 
-   ---------------------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Object --
-   ---------------------------------------------------------
+   -------------------------------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Object_A_Read_Link_Object_End_Qualifier_Action --
+   -------------------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Qualifier_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Qualifier_Action_Object_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 768;
-   end MP_UML_Read_Link_Object_End_Qualifier_Action_Object;
+   end MP_UML_Read_Link_Object_End_Qualifier_Action_Object_A_Read_Link_Object_End_Qualifier_Action;
 
-   ------------------------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier --
-   ------------------------------------------------------------
+   ----------------------------------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier_A_Read_Link_Object_End_Qualifier_Action --
+   ----------------------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 769;
-   end MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier;
+   end MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier_A_Read_Link_Object_End_Qualifier_Action;
 
-   ---------------------------------------------------------
-   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Result --
-   ---------------------------------------------------------
+   -------------------------------------------------------------------------------------------------
+   -- MP_UML_Read_Link_Object_End_Qualifier_Action_Result_A_Read_Link_Object_End_Qualifier_Action --
+   -------------------------------------------------------------------------------------------------
 
-   function MP_UML_Read_Link_Object_End_Qualifier_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Link_Object_End_Qualifier_Action_Result_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 770;
-   end MP_UML_Read_Link_Object_End_Qualifier_Action_Result;
+   end MP_UML_Read_Link_Object_End_Qualifier_Action_Result_A_Read_Link_Object_End_Qualifier_Action;
 
-   ------------------------------------
-   -- MP_UML_Read_Self_Action_Result --
-   ------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Read_Self_Action_Result_A_Read_Self_Action --
+   -------------------------------------------------------
 
-   function MP_UML_Read_Self_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Self_Action_Result_A_Read_Self_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 771;
-   end MP_UML_Read_Self_Action_Result;
+   end MP_UML_Read_Self_Action_Result_A_Read_Self_Action;
 
-   --------------------------------------------------
-   -- MP_UML_Read_Structural_Feature_Action_Result --
-   --------------------------------------------------
+   -----------------------------------------------------------------------------------
+   -- MP_UML_Read_Structural_Feature_Action_Result_A_Read_Structural_Feature_Action --
+   -----------------------------------------------------------------------------------
 
-   function MP_UML_Read_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Structural_Feature_Action_Result_A_Read_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 772;
-   end MP_UML_Read_Structural_Feature_Action_Result;
+   end MP_UML_Read_Structural_Feature_Action_Result_A_Read_Structural_Feature_Action;
 
-   ----------------------------------------
-   -- MP_UML_Read_Variable_Action_Result --
-   ----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Read_Variable_Action_Result_A_Read_Variable_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Read_Variable_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Read_Variable_Action_Result_A_Read_Variable_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 773;
-   end MP_UML_Read_Variable_Action_Result;
+   end MP_UML_Read_Variable_Action_Result_A_Read_Variable_Action;
 
-   -----------------------------
-   -- MP_UML_Reception_Signal --
-   -----------------------------
+   -----------------------------------------
+   -- MP_UML_Reception_Signal_A_Reception --
+   -----------------------------------------
 
-   function MP_UML_Reception_Signal return AMF.Internals.CMOF_Element is
+   function MP_UML_Reception_Signal_A_Reception return AMF.Internals.CMOF_Element is
    begin
       return Base + 774;
-   end MP_UML_Reception_Signal;
+   end MP_UML_Reception_Signal_A_Reception;
 
    ----------------------------------------------------
    -- MP_UML_Reclassify_Object_Action_Is_Replace_All --
@@ -6688,32 +6688,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 775;
    end MP_UML_Reclassify_Object_Action_Is_Replace_All;
 
-   ----------------------------------------------------
-   -- MP_UML_Reclassify_Object_Action_New_Classifier --
-   ----------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Reclassify_Object_Action_New_Classifier_A_Reclassify_Object_Action --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Reclassify_Object_Action_New_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Reclassify_Object_Action_New_Classifier_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 440;
-   end MP_UML_Reclassify_Object_Action_New_Classifier;
+   end MP_UML_Reclassify_Object_Action_New_Classifier_A_Reclassify_Object_Action;
 
-   --------------------------------------------
-   -- MP_UML_Reclassify_Object_Action_Object --
-   --------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Reclassify_Object_Action_Object_A_Reclassify_Object_Action --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Reclassify_Object_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Reclassify_Object_Action_Object_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 776;
-   end MP_UML_Reclassify_Object_Action_Object;
+   end MP_UML_Reclassify_Object_Action_Object_A_Reclassify_Object_Action;
 
-   ----------------------------------------------------
-   -- MP_UML_Reclassify_Object_Action_Old_Classifier --
-   ----------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Reclassify_Object_Action_Old_Classifier_A_Reclassify_Object_Action --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Reclassify_Object_Action_Old_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Reclassify_Object_Action_Old_Classifier_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 441;
-   end MP_UML_Reclassify_Object_Action_Old_Classifier;
+   end MP_UML_Reclassify_Object_Action_Old_Classifier_A_Reclassify_Object_Action;
 
    ----------------------------------------
    -- MP_UML_Redefinable_Element_Is_Leaf --
@@ -6724,59 +6724,59 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 777;
    end MP_UML_Redefinable_Element_Is_Leaf;
 
-   --------------------------------------------------
-   -- MP_UML_Redefinable_Element_Redefined_Element --
-   --------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element --
+   ------------------------------------------------------------------------
 
-   function MP_UML_Redefinable_Element_Redefined_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 442;
-   end MP_UML_Redefinable_Element_Redefined_Element;
+   end MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element;
 
-   -----------------------------------------------------
-   -- MP_UML_Redefinable_Element_Redefinition_Context --
-   -----------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Redefinable_Element_Redefinition_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 443;
-   end MP_UML_Redefinable_Element_Redefinition_Context;
+   end MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element;
 
-   ------------------------------------------------------
-   -- MP_UML_Redefinable_Template_Signature_Classifier --
-   ------------------------------------------------------
+   ------------------------------------------------------------------------------------------
+   -- MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature --
+   ------------------------------------------------------------------------------------------
 
-   function MP_UML_Redefinable_Template_Signature_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 778;
-   end MP_UML_Redefinable_Template_Signature_Classifier;
+   end MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature;
 
-   --------------------------------------------------------------
-   -- MP_UML_Redefinable_Template_Signature_Extended_Signature --
-   --------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------
+   -- MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature --
+   -----------------------------------------------------------------------------------------------
 
-   function MP_UML_Redefinable_Template_Signature_Extended_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 444;
-   end MP_UML_Redefinable_Template_Signature_Extended_Signature;
+   end MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature;
 
-   ---------------------------------------------------------------
-   -- MP_UML_Redefinable_Template_Signature_Inherited_Parameter --
-   ---------------------------------------------------------------
+   ------------------------------------------------------------------------------------------------
+   -- MP_UML_Redefinable_Template_Signature_Inherited_Parameter_A_Redefinable_Template_Signature --
+   ------------------------------------------------------------------------------------------------
 
-   function MP_UML_Redefinable_Template_Signature_Inherited_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Redefinable_Template_Signature_Inherited_Parameter_A_Redefinable_Template_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 445;
-   end MP_UML_Redefinable_Template_Signature_Inherited_Parameter;
+   end MP_UML_Redefinable_Template_Signature_Inherited_Parameter_A_Redefinable_Template_Signature;
 
-   -------------------------------------
-   -- MP_UML_Reduce_Action_Collection --
-   -------------------------------------
+   -----------------------------------------------------
+   -- MP_UML_Reduce_Action_Collection_A_Reduce_Action --
+   -----------------------------------------------------
 
-   function MP_UML_Reduce_Action_Collection return AMF.Internals.CMOF_Element is
+   function MP_UML_Reduce_Action_Collection_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 779;
-   end MP_UML_Reduce_Action_Collection;
+   end MP_UML_Reduce_Action_Collection_A_Reduce_Action;
 
    -------------------------------------
    -- MP_UML_Reduce_Action_Is_Ordered --
@@ -6787,86 +6787,86 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 780;
    end MP_UML_Reduce_Action_Is_Ordered;
 
-   ----------------------------------
-   -- MP_UML_Reduce_Action_Reducer --
-   ----------------------------------
+   --------------------------------------------------
+   -- MP_UML_Reduce_Action_Reducer_A_Reduce_Action --
+   --------------------------------------------------
 
-   function MP_UML_Reduce_Action_Reducer return AMF.Internals.CMOF_Element is
+   function MP_UML_Reduce_Action_Reducer_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 781;
-   end MP_UML_Reduce_Action_Reducer;
+   end MP_UML_Reduce_Action_Reducer_A_Reduce_Action;
 
-   ---------------------------------
-   -- MP_UML_Reduce_Action_Result --
-   ---------------------------------
+   -------------------------------------------------
+   -- MP_UML_Reduce_Action_Result_A_Reduce_Action --
+   -------------------------------------------------
 
-   function MP_UML_Reduce_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Reduce_Action_Result_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 782;
-   end MP_UML_Reduce_Action_Result;
+   end MP_UML_Reduce_Action_Result_A_Reduce_Action;
 
-   -----------------------------------
-   -- MP_UML_Region_Extended_Region --
-   -----------------------------------
+   --------------------------------------------
+   -- MP_UML_Region_Extended_Region_A_Region --
+   --------------------------------------------
 
-   function MP_UML_Region_Extended_Region return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_Extended_Region_A_Region return AMF.Internals.CMOF_Element is
    begin
       return Base + 783;
-   end MP_UML_Region_Extended_Region;
+   end MP_UML_Region_Extended_Region_A_Region;
 
-   ----------------------------------------
-   -- MP_UML_Region_Redefinition_Context --
-   ----------------------------------------
+   -------------------------------------------------
+   -- MP_UML_Region_Redefinition_Context_A_Region --
+   -------------------------------------------------
 
-   function MP_UML_Region_Redefinition_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_Redefinition_Context_A_Region return AMF.Internals.CMOF_Element is
    begin
       return Base + 446;
-   end MP_UML_Region_Redefinition_Context;
+   end MP_UML_Region_Redefinition_Context_A_Region;
 
-   -------------------------
-   -- MP_UML_Region_State --
-   -------------------------
+   --------------------------------------
+   -- MP_UML_Region_State_State_Region --
+   --------------------------------------
 
-   function MP_UML_Region_State return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_State_State_Region return AMF.Internals.CMOF_Element is
    begin
       return Base + 784;
-   end MP_UML_Region_State;
+   end MP_UML_Region_State_State_Region;
 
-   ---------------------------------
-   -- MP_UML_Region_State_Machine --
-   ---------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Region_State_Machine_State_Machine_Region --
+   ------------------------------------------------------
 
-   function MP_UML_Region_State_Machine return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_State_Machine_State_Machine_Region return AMF.Internals.CMOF_Element is
    begin
       return Base + 785;
-   end MP_UML_Region_State_Machine;
+   end MP_UML_Region_State_Machine_State_Machine_Region;
 
-   -----------------------------
-   -- MP_UML_Region_Subvertex --
-   -----------------------------
+   ----------------------------------------------
+   -- MP_UML_Region_Subvertex_Vertex_Container --
+   ----------------------------------------------
 
-   function MP_UML_Region_Subvertex return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_Subvertex_Vertex_Container return AMF.Internals.CMOF_Element is
    begin
       return Base + 447;
-   end MP_UML_Region_Subvertex;
+   end MP_UML_Region_Subvertex_Vertex_Container;
 
-   ------------------------------
-   -- MP_UML_Region_Transition --
-   ------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Region_Transition_Transition_Container --
+   ---------------------------------------------------
 
-   function MP_UML_Region_Transition return AMF.Internals.CMOF_Element is
+   function MP_UML_Region_Transition_Transition_Container return AMF.Internals.CMOF_Element is
    begin
       return Base + 448;
-   end MP_UML_Region_Transition;
+   end MP_UML_Region_Transition_Transition_Container;
 
-   -----------------------------------------
-   -- MP_UML_Relationship_Related_Element --
-   -----------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_Relationship_Related_Element_A_Relationship --
+   --------------------------------------------------------
 
-   function MP_UML_Relationship_Related_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Relationship_Related_Element_A_Relationship return AMF.Internals.CMOF_Element is
    begin
       return Base + 449;
-   end MP_UML_Relationship_Related_Element;
+   end MP_UML_Relationship_Related_Element_A_Relationship;
 
    ------------------------------------------------------------------------
    -- MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates --
@@ -6877,14 +6877,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 786;
    end MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates;
 
-   -------------------------------------------------------------
-   -- MP_UML_Remove_Structural_Feature_Value_Action_Remove_At --
-   -------------------------------------------------------------
+   ------------------------------------------------------------------------------------------------------
+   -- MP_UML_Remove_Structural_Feature_Value_Action_Remove_At_A_Remove_Structural_Feature_Value_Action --
+   ------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Remove_Structural_Feature_Value_Action_Remove_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Remove_Structural_Feature_Value_Action_Remove_At_A_Remove_Structural_Feature_Value_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 787;
-   end MP_UML_Remove_Structural_Feature_Value_Action_Remove_At;
+   end MP_UML_Remove_Structural_Feature_Value_Action_Remove_At_A_Remove_Structural_Feature_Value_Action;
 
    --------------------------------------------------------------
    -- MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates --
@@ -6895,203 +6895,203 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 788;
    end MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates;
 
-   ---------------------------------------------------
-   -- MP_UML_Remove_Variable_Value_Action_Remove_At --
-   ---------------------------------------------------
+   ----------------------------------------------------------------------------------
+   -- MP_UML_Remove_Variable_Value_Action_Remove_At_A_Remove_Variable_Value_Action --
+   ----------------------------------------------------------------------------------
 
-   function MP_UML_Remove_Variable_Value_Action_Remove_At return AMF.Internals.CMOF_Element is
+   function MP_UML_Remove_Variable_Value_Action_Remove_At_A_Remove_Variable_Value_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 789;
-   end MP_UML_Remove_Variable_Value_Action_Remove_At;
+   end MP_UML_Remove_Variable_Value_Action_Remove_At_A_Remove_Variable_Value_Action;
 
-   ---------------------------------------
-   -- MP_UML_Reply_Action_Reply_To_Call --
-   ---------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Reply_Action_Reply_To_Call_A_Reply_Action --
+   ------------------------------------------------------
 
-   function MP_UML_Reply_Action_Reply_To_Call return AMF.Internals.CMOF_Element is
+   function MP_UML_Reply_Action_Reply_To_Call_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 790;
-   end MP_UML_Reply_Action_Reply_To_Call;
+   end MP_UML_Reply_Action_Reply_To_Call_A_Reply_Action;
 
-   -------------------------------------
-   -- MP_UML_Reply_Action_Reply_Value --
-   -------------------------------------
+   ----------------------------------------------------
+   -- MP_UML_Reply_Action_Reply_Value_A_Reply_Action --
+   ----------------------------------------------------
 
-   function MP_UML_Reply_Action_Reply_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Reply_Action_Reply_Value_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 450;
-   end MP_UML_Reply_Action_Reply_Value;
+   end MP_UML_Reply_Action_Reply_Value_A_Reply_Action;
 
-   --------------------------------------------
-   -- MP_UML_Reply_Action_Return_Information --
-   --------------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Reply_Action_Return_Information_A_Reply_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Reply_Action_Return_Information return AMF.Internals.CMOF_Element is
+   function MP_UML_Reply_Action_Return_Information_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 791;
-   end MP_UML_Reply_Action_Return_Information;
+   end MP_UML_Reply_Action_Return_Information_A_Reply_Action;
 
-   ---------------------------------------
-   -- MP_UML_Send_Object_Action_Request --
-   ---------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Send_Object_Action_Request_A_Send_Object_Action --
+   ------------------------------------------------------------
 
-   function MP_UML_Send_Object_Action_Request return AMF.Internals.CMOF_Element is
+   function MP_UML_Send_Object_Action_Request_A_Send_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 451;
-   end MP_UML_Send_Object_Action_Request;
+   end MP_UML_Send_Object_Action_Request_A_Send_Object_Action;
 
-   --------------------------------------
-   -- MP_UML_Send_Object_Action_Target --
-   --------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Send_Object_Action_Target_A_Send_Object_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Send_Object_Action_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Send_Object_Action_Target_A_Send_Object_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 792;
-   end MP_UML_Send_Object_Action_Target;
+   end MP_UML_Send_Object_Action_Target_A_Send_Object_Action;
 
-   --------------------------------------
-   -- MP_UML_Send_Signal_Action_Signal --
-   --------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Send_Signal_Action_Signal_A_Send_Signal_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Send_Signal_Action_Signal return AMF.Internals.CMOF_Element is
+   function MP_UML_Send_Signal_Action_Signal_A_Send_Signal_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 793;
-   end MP_UML_Send_Signal_Action_Signal;
+   end MP_UML_Send_Signal_Action_Signal_A_Send_Signal_Action;
 
-   --------------------------------------
-   -- MP_UML_Send_Signal_Action_Target --
-   --------------------------------------
+   -----------------------------------------------------------
+   -- MP_UML_Send_Signal_Action_Target_A_Send_Signal_Action --
+   -----------------------------------------------------------
 
-   function MP_UML_Send_Signal_Action_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Send_Signal_Action_Target_A_Send_Signal_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 794;
-   end MP_UML_Send_Signal_Action_Target;
+   end MP_UML_Send_Signal_Action_Target_A_Send_Signal_Action;
 
-   ------------------------------------------
-   -- MP_UML_Sequence_Node_Executable_Node --
-   ------------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node --
+   ----------------------------------------------------------
 
-   function MP_UML_Sequence_Node_Executable_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 452;
-   end MP_UML_Sequence_Node_Executable_Node;
+   end MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node;
 
-   -----------------------------------
-   -- MP_UML_Signal_Owned_Attribute --
-   -----------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Signal_Owned_Attribute_A_Owning_Signal --
+   ---------------------------------------------------
 
-   function MP_UML_Signal_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Signal_Owned_Attribute_A_Owning_Signal return AMF.Internals.CMOF_Element is
    begin
       return Base + 453;
-   end MP_UML_Signal_Owned_Attribute;
+   end MP_UML_Signal_Owned_Attribute_A_Owning_Signal;
 
-   --------------------------------
-   -- MP_UML_Signal_Event_Signal --
-   --------------------------------
+   -----------------------------------------------
+   -- MP_UML_Signal_Event_Signal_A_Signal_Event --
+   -----------------------------------------------
 
-   function MP_UML_Signal_Event_Signal return AMF.Internals.CMOF_Element is
+   function MP_UML_Signal_Event_Signal_A_Signal_Event return AMF.Internals.CMOF_Element is
    begin
       return Base + 795;
-   end MP_UML_Signal_Event_Signal;
+   end MP_UML_Signal_Event_Signal_A_Signal_Event;
 
-   ----------------------------------
-   -- MP_UML_Slot_Defining_Feature --
-   ----------------------------------
+   -----------------------------------------
+   -- MP_UML_Slot_Defining_Feature_A_Slot --
+   -----------------------------------------
 
-   function MP_UML_Slot_Defining_Feature return AMF.Internals.CMOF_Element is
+   function MP_UML_Slot_Defining_Feature_A_Slot return AMF.Internals.CMOF_Element is
    begin
       return Base + 796;
-   end MP_UML_Slot_Defining_Feature;
+   end MP_UML_Slot_Defining_Feature_A_Slot;
 
-   ---------------------------------
-   -- MP_UML_Slot_Owning_Instance --
-   ---------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Slot_Owning_Instance_Instance_Specification_Slot --
+   -------------------------------------------------------------
 
-   function MP_UML_Slot_Owning_Instance return AMF.Internals.CMOF_Element is
+   function MP_UML_Slot_Owning_Instance_Instance_Specification_Slot return AMF.Internals.CMOF_Element is
    begin
       return Base + 797;
-   end MP_UML_Slot_Owning_Instance;
+   end MP_UML_Slot_Owning_Instance_Instance_Specification_Slot;
 
-   -----------------------
-   -- MP_UML_Slot_Value --
-   -----------------------
+   -------------------------------------
+   -- MP_UML_Slot_Value_A_Owning_Slot --
+   -------------------------------------
 
-   function MP_UML_Slot_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Slot_Value_A_Owning_Slot return AMF.Internals.CMOF_Element is
    begin
       return Base + 454;
-   end MP_UML_Slot_Value;
+   end MP_UML_Slot_Value_A_Owning_Slot;
 
-   ----------------------------------------------------
-   -- MP_UML_Start_Classifier_Behavior_Action_Object --
-   ----------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_Start_Classifier_Behavior_Action_Object_A_Start_Classifier_Behavior_Action --
+   ---------------------------------------------------------------------------------------
 
-   function MP_UML_Start_Classifier_Behavior_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Start_Classifier_Behavior_Action_Object_A_Start_Classifier_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 798;
-   end MP_UML_Start_Classifier_Behavior_Action_Object;
+   end MP_UML_Start_Classifier_Behavior_Action_Object_A_Start_Classifier_Behavior_Action;
 
-   ------------------------------------------------
-   -- MP_UML_Start_Object_Behavior_Action_Object --
-   ------------------------------------------------
+   -------------------------------------------------------------------------------
+   -- MP_UML_Start_Object_Behavior_Action_Object_A_Start_Object_Behavior_Action --
+   -------------------------------------------------------------------------------
 
-   function MP_UML_Start_Object_Behavior_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Start_Object_Behavior_Action_Object_A_Start_Object_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 799;
-   end MP_UML_Start_Object_Behavior_Action_Object;
+   end MP_UML_Start_Object_Behavior_Action_Object_A_Start_Object_Behavior_Action;
 
-   -----------------------------
-   -- MP_UML_State_Connection --
-   -----------------------------
+   --------------------------------------------------------------
+   -- MP_UML_State_Connection_Connection_Point_Reference_State --
+   --------------------------------------------------------------
 
-   function MP_UML_State_Connection return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Connection_Connection_Point_Reference_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 455;
-   end MP_UML_State_Connection;
+   end MP_UML_State_Connection_Connection_Point_Reference_State;
 
-   -----------------------------------
-   -- MP_UML_State_Connection_Point --
-   -----------------------------------
+   -----------------------------------------------------
+   -- MP_UML_State_Connection_Point_Pseudostate_State --
+   -----------------------------------------------------
 
-   function MP_UML_State_Connection_Point return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Connection_Point_Pseudostate_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 456;
-   end MP_UML_State_Connection_Point;
+   end MP_UML_State_Connection_Point_Pseudostate_State;
 
-   -------------------------------------
-   -- MP_UML_State_Deferrable_Trigger --
-   -------------------------------------
+   ---------------------------------------------
+   -- MP_UML_State_Deferrable_Trigger_A_State --
+   ---------------------------------------------
 
-   function MP_UML_State_Deferrable_Trigger return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Deferrable_Trigger_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 457;
-   end MP_UML_State_Deferrable_Trigger;
+   end MP_UML_State_Deferrable_Trigger_A_State;
 
-   ------------------------------
-   -- MP_UML_State_Do_Activity --
-   ------------------------------
+   --------------------------------------
+   -- MP_UML_State_Do_Activity_A_State --
+   --------------------------------------
 
-   function MP_UML_State_Do_Activity return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Do_Activity_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 800;
-   end MP_UML_State_Do_Activity;
+   end MP_UML_State_Do_Activity_A_State;
 
-   ------------------------
-   -- MP_UML_State_Entry --
-   ------------------------
+   --------------------------------
+   -- MP_UML_State_Entry_A_State --
+   --------------------------------
 
-   function MP_UML_State_Entry return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Entry_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 801;
-   end MP_UML_State_Entry;
+   end MP_UML_State_Entry_A_State;
 
-   -----------------------
-   -- MP_UML_State_Exit --
-   -----------------------
+   -------------------------------
+   -- MP_UML_State_Exit_A_State --
+   -------------------------------
 
-   function MP_UML_State_Exit return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Exit_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 802;
-   end MP_UML_State_Exit;
+   end MP_UML_State_Exit_A_State;
 
    -------------------------------
    -- MP_UML_State_Is_Composite --
@@ -7129,140 +7129,140 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 806;
    end MP_UML_State_Is_Submachine_State;
 
-   ----------------------------------
-   -- MP_UML_State_Redefined_State --
-   ----------------------------------
+   ------------------------------------------
+   -- MP_UML_State_Redefined_State_A_State --
+   ------------------------------------------
 
-   function MP_UML_State_Redefined_State return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Redefined_State_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 807;
-   end MP_UML_State_Redefined_State;
+   end MP_UML_State_Redefined_State_A_State;
 
-   ---------------------------------------
-   -- MP_UML_State_Redefinition_Context --
-   ---------------------------------------
+   -----------------------------------------------
+   -- MP_UML_State_Redefinition_Context_A_State --
+   -----------------------------------------------
 
-   function MP_UML_State_Redefinition_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Redefinition_Context_A_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 458;
-   end MP_UML_State_Redefinition_Context;
+   end MP_UML_State_Redefinition_Context_A_State;
 
-   -------------------------
-   -- MP_UML_State_Region --
-   -------------------------
+   --------------------------------------
+   -- MP_UML_State_Region_Region_State --
+   --------------------------------------
 
-   function MP_UML_State_Region return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Region_Region_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 459;
-   end MP_UML_State_Region;
+   end MP_UML_State_Region_Region_State;
 
-   ----------------------------------
-   -- MP_UML_State_State_Invariant --
-   ----------------------------------
+   -------------------------------------------------
+   -- MP_UML_State_State_Invariant_A_Owning_State --
+   -------------------------------------------------
 
-   function MP_UML_State_State_Invariant return AMF.Internals.CMOF_Element is
+   function MP_UML_State_State_Invariant_A_Owning_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 808;
-   end MP_UML_State_State_Invariant;
+   end MP_UML_State_State_Invariant_A_Owning_State;
 
-   -----------------------------
-   -- MP_UML_State_Submachine --
-   -----------------------------
+   ------------------------------------------------------------
+   -- MP_UML_State_Submachine_State_Machine_Submachine_State --
+   ------------------------------------------------------------
 
-   function MP_UML_State_Submachine return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Submachine_State_Machine_Submachine_State return AMF.Internals.CMOF_Element is
    begin
       return Base + 809;
-   end MP_UML_State_Submachine;
+   end MP_UML_State_Submachine_State_Machine_Submachine_State;
 
-   ------------------------------------
-   -- MP_UML_State_Invariant_Covered --
-   ------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_State_Invariant_Covered_A_State_Invariant --
+   ------------------------------------------------------
 
-   function MP_UML_State_Invariant_Covered return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Invariant_Covered_A_State_Invariant return AMF.Internals.CMOF_Element is
    begin
       return Base + 460;
-   end MP_UML_State_Invariant_Covered;
+   end MP_UML_State_Invariant_Covered_A_State_Invariant;
 
-   --------------------------------------
-   -- MP_UML_State_Invariant_Invariant --
-   --------------------------------------
+   --------------------------------------------------------
+   -- MP_UML_State_Invariant_Invariant_A_State_Invariant --
+   --------------------------------------------------------
 
-   function MP_UML_State_Invariant_Invariant return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Invariant_Invariant_A_State_Invariant return AMF.Internals.CMOF_Element is
    begin
       return Base + 810;
-   end MP_UML_State_Invariant_Invariant;
+   end MP_UML_State_Invariant_Invariant_A_State_Invariant;
 
-   -------------------------------------------
-   -- MP_UML_State_Machine_Connection_Point --
-   -------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_UML_State_Machine_Connection_Point_Pseudostate_State_Machine --
+   ---------------------------------------------------------------------
 
-   function MP_UML_State_Machine_Connection_Point return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Machine_Connection_Point_Pseudostate_State_Machine return AMF.Internals.CMOF_Element is
    begin
       return Base + 461;
-   end MP_UML_State_Machine_Connection_Point;
+   end MP_UML_State_Machine_Connection_Point_Pseudostate_State_Machine;
 
-   -------------------------------------------------
-   -- MP_UML_State_Machine_Extended_State_Machine --
-   -------------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_UML_State_Machine_Extended_State_Machine_A_State_Machine --
+   -----------------------------------------------------------------
 
-   function MP_UML_State_Machine_Extended_State_Machine return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Machine_Extended_State_Machine_A_State_Machine return AMF.Internals.CMOF_Element is
    begin
       return Base + 462;
-   end MP_UML_State_Machine_Extended_State_Machine;
+   end MP_UML_State_Machine_Extended_State_Machine_A_State_Machine;
 
-   ---------------------------------
-   -- MP_UML_State_Machine_Region --
-   ---------------------------------
+   ------------------------------------------------------
+   -- MP_UML_State_Machine_Region_Region_State_Machine --
+   ------------------------------------------------------
 
-   function MP_UML_State_Machine_Region return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Machine_Region_Region_State_Machine return AMF.Internals.CMOF_Element is
    begin
       return Base + 463;
-   end MP_UML_State_Machine_Region;
+   end MP_UML_State_Machine_Region_Region_State_Machine;
 
-   -------------------------------------------
-   -- MP_UML_State_Machine_Submachine_State --
-   -------------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_State_Machine_Submachine_State_State_Submachine --
+   ------------------------------------------------------------
 
-   function MP_UML_State_Machine_Submachine_State return AMF.Internals.CMOF_Element is
+   function MP_UML_State_Machine_Submachine_State_State_Submachine return AMF.Internals.CMOF_Element is
    begin
       return Base + 464;
-   end MP_UML_State_Machine_Submachine_State;
+   end MP_UML_State_Machine_Submachine_State_State_Submachine;
 
-   ----------------------------
-   -- MP_UML_Stereotype_Icon --
-   ----------------------------
+   -----------------------------------------
+   -- MP_UML_Stereotype_Icon_A_Stereotype --
+   -----------------------------------------
 
-   function MP_UML_Stereotype_Icon return AMF.Internals.CMOF_Element is
+   function MP_UML_Stereotype_Icon_A_Stereotype return AMF.Internals.CMOF_Element is
    begin
       return Base + 465;
-   end MP_UML_Stereotype_Icon;
+   end MP_UML_Stereotype_Icon_A_Stereotype;
 
-   -------------------------------
-   -- MP_UML_Stereotype_Profile --
-   -------------------------------
+   --------------------------------------------
+   -- MP_UML_Stereotype_Profile_A_Stereotype --
+   --------------------------------------------
 
-   function MP_UML_Stereotype_Profile return AMF.Internals.CMOF_Element is
+   function MP_UML_Stereotype_Profile_A_Stereotype return AMF.Internals.CMOF_Element is
    begin
       return Base + 811;
-   end MP_UML_Stereotype_Profile;
+   end MP_UML_Stereotype_Profile_A_Stereotype;
 
-   ------------------------------------------------
-   -- MP_UML_String_Expression_Owning_Expression --
-   ------------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_UML_String_Expression_Owning_Expression_String_Expression_Sub_Expression --
+   ---------------------------------------------------------------------------------
 
-   function MP_UML_String_Expression_Owning_Expression return AMF.Internals.CMOF_Element is
+   function MP_UML_String_Expression_Owning_Expression_String_Expression_Sub_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 812;
-   end MP_UML_String_Expression_Owning_Expression;
+   end MP_UML_String_Expression_Owning_Expression_String_Expression_Sub_Expression;
 
-   ---------------------------------------------
-   -- MP_UML_String_Expression_Sub_Expression --
-   ---------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_UML_String_Expression_Sub_Expression_String_Expression_Owning_Expression --
+   ---------------------------------------------------------------------------------
 
-   function MP_UML_String_Expression_Sub_Expression return AMF.Internals.CMOF_Element is
+   function MP_UML_String_Expression_Sub_Expression_String_Expression_Owning_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 466;
-   end MP_UML_String_Expression_Sub_Expression;
+   end MP_UML_String_Expression_Sub_Expression_String_Expression_Owning_Expression;
 
    --------------------------------------------
    -- MP_UML_Structural_Feature_Is_Read_Only --
@@ -7273,41 +7273,41 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 813;
    end MP_UML_Structural_Feature_Is_Read_Only;
 
-   ---------------------------------------------
-   -- MP_UML_Structural_Feature_Action_Object --
-   ---------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Structural_Feature_Action_Object_A_Structural_Feature_Action --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Structural_Feature_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Structural_Feature_Action_Object_A_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 814;
-   end MP_UML_Structural_Feature_Action_Object;
+   end MP_UML_Structural_Feature_Action_Object_A_Structural_Feature_Action;
 
-   ---------------------------------------------------------
-   -- MP_UML_Structural_Feature_Action_Structural_Feature --
-   ---------------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Structural_Feature_Action_Structural_Feature_A_Structural_Feature_Action --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Structural_Feature_Action_Structural_Feature return AMF.Internals.CMOF_Element is
+   function MP_UML_Structural_Feature_Action_Structural_Feature_A_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 815;
-   end MP_UML_Structural_Feature_Action_Structural_Feature;
+   end MP_UML_Structural_Feature_Action_Structural_Feature_A_Structural_Feature_Action;
 
-   ----------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Activity --
-   ----------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node --
+   -----------------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Activity return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 816;
-   end MP_UML_Structured_Activity_Node_Activity;
+   end MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node;
 
-   ------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Edge --
-   ------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Edge return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 467;
-   end MP_UML_Structured_Activity_Node_Edge;
+   end MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node;
 
    --------------------------------------------------
    -- MP_UML_Structured_Activity_Node_Must_Isolate --
@@ -7318,275 +7318,275 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 817;
    end MP_UML_Structured_Activity_Node_Must_Isolate;
 
-   ------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Node --
-   ------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Node_Activity_Node_In_Structured_Node --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Node return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Node_Activity_Node_In_Structured_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 468;
-   end MP_UML_Structured_Activity_Node_Node;
+   end MP_UML_Structured_Activity_Node_Node_Activity_Node_In_Structured_Node;
 
-   -----------------------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Structured_Node_Input --
-   -----------------------------------------------------------
+   --------------------------------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Structured_Node_Input_A_Structured_Activity_Node --
+   --------------------------------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Structured_Node_Input return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Structured_Node_Input_A_Structured_Activity_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 469;
-   end MP_UML_Structured_Activity_Node_Structured_Node_Input;
+   end MP_UML_Structured_Activity_Node_Structured_Node_Input_A_Structured_Activity_Node;
 
-   ------------------------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Structured_Node_Output --
-   ------------------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Structured_Node_Output_A_Structured_Activity_Node --
+   ---------------------------------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Structured_Node_Output return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Structured_Node_Output_A_Structured_Activity_Node return AMF.Internals.CMOF_Element is
    begin
       return Base + 470;
-   end MP_UML_Structured_Activity_Node_Structured_Node_Output;
+   end MP_UML_Structured_Activity_Node_Structured_Node_Output_A_Structured_Activity_Node;
 
-   ----------------------------------------------
-   -- MP_UML_Structured_Activity_Node_Variable --
-   ----------------------------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Structured_Activity_Node_Variable_Variable_Scope --
+   -------------------------------------------------------------
 
-   function MP_UML_Structured_Activity_Node_Variable return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Activity_Node_Variable_Variable_Scope return AMF.Internals.CMOF_Element is
    begin
       return Base + 471;
-   end MP_UML_Structured_Activity_Node_Variable;
+   end MP_UML_Structured_Activity_Node_Variable_Variable_Scope;
 
-   --------------------------------------------------
-   -- MP_UML_Structured_Classifier_Owned_Attribute --
-   --------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Structured_Classifier_Owned_Attribute return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 472;
-   end MP_UML_Structured_Classifier_Owned_Attribute;
+   end MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier;
 
-   --------------------------------------------------
-   -- MP_UML_Structured_Classifier_Owned_Connector --
-   --------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Structured_Classifier_Owned_Connector_A_Structured_Classifier --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Structured_Classifier_Owned_Connector return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Classifier_Owned_Connector_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 473;
-   end MP_UML_Structured_Classifier_Owned_Connector;
+   end MP_UML_Structured_Classifier_Owned_Connector_A_Structured_Classifier;
 
-   ---------------------------------------
-   -- MP_UML_Structured_Classifier_Part --
-   ---------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Structured_Classifier_Part_A_Structured_Classifier --
+   ---------------------------------------------------------------
 
-   function MP_UML_Structured_Classifier_Part return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Classifier_Part_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 474;
-   end MP_UML_Structured_Classifier_Part;
+   end MP_UML_Structured_Classifier_Part_A_Structured_Classifier;
 
-   ---------------------------------------
-   -- MP_UML_Structured_Classifier_Role --
-   ---------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Structured_Classifier_Role_A_Structured_Classifier --
+   ---------------------------------------------------------------
 
-   function MP_UML_Structured_Classifier_Role return AMF.Internals.CMOF_Element is
+   function MP_UML_Structured_Classifier_Role_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
       return Base + 475;
-   end MP_UML_Structured_Classifier_Role;
+   end MP_UML_Structured_Classifier_Role_A_Structured_Classifier;
 
-   ----------------------------------
-   -- MP_UML_Substitution_Contract --
-   ----------------------------------
+   -------------------------------------------------
+   -- MP_UML_Substitution_Contract_A_Substitution --
+   -------------------------------------------------
 
-   function MP_UML_Substitution_Contract return AMF.Internals.CMOF_Element is
+   function MP_UML_Substitution_Contract_A_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 818;
-   end MP_UML_Substitution_Contract;
+   end MP_UML_Substitution_Contract_A_Substitution;
 
-   -------------------------------------------------
-   -- MP_UML_Substitution_Substituting_Classifier --
-   -------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UML_Substitution_Substituting_Classifier_Classifier_Substitution --
+   -------------------------------------------------------------------------
 
-   function MP_UML_Substitution_Substituting_Classifier return AMF.Internals.CMOF_Element is
+   function MP_UML_Substitution_Substituting_Classifier_Classifier_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 819;
-   end MP_UML_Substitution_Substituting_Classifier;
+   end MP_UML_Substitution_Substituting_Classifier_Classifier_Substitution;
 
-   -------------------------------------------
-   -- MP_UML_Template_Binding_Bound_Element --
-   -------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_UML_Template_Binding_Bound_Element_Templateable_Element_Template_Binding --
+   ---------------------------------------------------------------------------------
 
-   function MP_UML_Template_Binding_Bound_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Binding_Bound_Element_Templateable_Element_Template_Binding return AMF.Internals.CMOF_Element is
    begin
       return Base + 820;
-   end MP_UML_Template_Binding_Bound_Element;
+   end MP_UML_Template_Binding_Bound_Element_Templateable_Element_Template_Binding;
 
-   ----------------------------------------------------
-   -- MP_UML_Template_Binding_Parameter_Substitution --
-   ----------------------------------------------------
+   -----------------------------------------------------------------------------------------------------
+   -- MP_UML_Template_Binding_Parameter_Substitution_Template_Parameter_Substitution_Template_Binding --
+   -----------------------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Binding_Parameter_Substitution return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Binding_Parameter_Substitution_Template_Parameter_Substitution_Template_Binding return AMF.Internals.CMOF_Element is
    begin
       return Base + 476;
-   end MP_UML_Template_Binding_Parameter_Substitution;
+   end MP_UML_Template_Binding_Parameter_Substitution_Template_Parameter_Substitution_Template_Binding;
 
-   ---------------------------------------
-   -- MP_UML_Template_Binding_Signature --
-   ---------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Template_Binding_Signature_A_Template_Binding --
+   ----------------------------------------------------------
 
-   function MP_UML_Template_Binding_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Binding_Signature_A_Template_Binding return AMF.Internals.CMOF_Element is
    begin
       return Base + 821;
-   end MP_UML_Template_Binding_Signature;
+   end MP_UML_Template_Binding_Signature_A_Template_Binding;
 
-   ---------------------------------------
-   -- MP_UML_Template_Parameter_Default --
-   ---------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Default_A_Template_Parameter --
+   ------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Default return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Default_A_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 822;
-   end MP_UML_Template_Parameter_Default;
+   end MP_UML_Template_Parameter_Default_A_Template_Parameter;
 
-   ---------------------------------------------
-   -- MP_UML_Template_Parameter_Owned_Default --
-   ---------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Owned_Default_A_Template_Parameter --
+   ------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Owned_Default return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Owned_Default_A_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 823;
-   end MP_UML_Template_Parameter_Owned_Default;
+   end MP_UML_Template_Parameter_Owned_Default_A_Template_Parameter;
 
-   ---------------------------------------------------------
-   -- MP_UML_Template_Parameter_Owned_Parametered_Element --
-   ---------------------------------------------------------
+   ---------------------------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Owned_Parametered_Element_Parameterable_Element_Owning_Template_Parameter --
+   ---------------------------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Owned_Parametered_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Owned_Parametered_Element_Parameterable_Element_Owning_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 824;
-   end MP_UML_Template_Parameter_Owned_Parametered_Element;
+   end MP_UML_Template_Parameter_Owned_Parametered_Element_Parameterable_Element_Owning_Template_Parameter;
 
-   ---------------------------------------------------
-   -- MP_UML_Template_Parameter_Parametered_Element --
-   ---------------------------------------------------
+   --------------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Parametered_Element_Parameterable_Element_Template_Parameter --
+   --------------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Parametered_Element_Parameterable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 825;
-   end MP_UML_Template_Parameter_Parametered_Element;
+   end MP_UML_Template_Parameter_Parametered_Element_Parameterable_Element_Template_Parameter;
 
-   -----------------------------------------
-   -- MP_UML_Template_Parameter_Signature --
-   -----------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Signature_Template_Signature_Owned_Parameter --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Signature_Template_Signature_Owned_Parameter return AMF.Internals.CMOF_Element is
    begin
       return Base + 826;
-   end MP_UML_Template_Parameter_Signature;
+   end MP_UML_Template_Parameter_Signature_Template_Signature_Owned_Parameter;
 
-   ---------------------------------------------------
-   -- MP_UML_Template_Parameter_Substitution_Actual --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Substitution_Actual_A_Template_Parameter_Substitution --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Substitution_Actual return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Substitution_Actual_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 827;
-   end MP_UML_Template_Parameter_Substitution_Actual;
+   end MP_UML_Template_Parameter_Substitution_Actual_A_Template_Parameter_Substitution;
 
-   ---------------------------------------------------
-   -- MP_UML_Template_Parameter_Substitution_Formal --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Substitution_Formal_A_Template_Parameter_Substitution --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Substitution_Formal return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Substitution_Formal_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 828;
-   end MP_UML_Template_Parameter_Substitution_Formal;
+   end MP_UML_Template_Parameter_Substitution_Formal_A_Template_Parameter_Substitution;
 
-   ---------------------------------------------------------
-   -- MP_UML_Template_Parameter_Substitution_Owned_Actual --
-   ---------------------------------------------------------
+   -------------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Substitution_Owned_Actual_A_Template_Parameter_Substitution --
+   -------------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Substitution_Owned_Actual return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Substitution_Owned_Actual_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 829;
-   end MP_UML_Template_Parameter_Substitution_Owned_Actual;
+   end MP_UML_Template_Parameter_Substitution_Owned_Actual_A_Template_Parameter_Substitution;
 
-   -------------------------------------------------------------
-   -- MP_UML_Template_Parameter_Substitution_Template_Binding --
-   -------------------------------------------------------------
+   -----------------------------------------------------------------------------------------------------
+   -- MP_UML_Template_Parameter_Substitution_Template_Binding_Template_Binding_Parameter_Substitution --
+   -----------------------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Parameter_Substitution_Template_Binding return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Parameter_Substitution_Template_Binding_Template_Binding_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
       return Base + 830;
-   end MP_UML_Template_Parameter_Substitution_Template_Binding;
+   end MP_UML_Template_Parameter_Substitution_Template_Binding_Template_Binding_Parameter_Substitution;
 
-   -----------------------------------------------
-   -- MP_UML_Template_Signature_Owned_Parameter --
-   -----------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UML_Template_Signature_Owned_Parameter_Template_Parameter_Signature --
+   ----------------------------------------------------------------------------
 
-   function MP_UML_Template_Signature_Owned_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Signature_Owned_Parameter_Template_Parameter_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 477;
-   end MP_UML_Template_Signature_Owned_Parameter;
+   end MP_UML_Template_Signature_Owned_Parameter_Template_Parameter_Signature;
 
-   -----------------------------------------
-   -- MP_UML_Template_Signature_Parameter --
-   -----------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Template_Signature_Parameter_A_Template_Signature --
+   --------------------------------------------------------------
 
-   function MP_UML_Template_Signature_Parameter return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Signature_Parameter_A_Template_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 478;
-   end MP_UML_Template_Signature_Parameter;
+   end MP_UML_Template_Signature_Parameter_A_Template_Signature;
 
-   ----------------------------------------
-   -- MP_UML_Template_Signature_Template --
-   ----------------------------------------
+   --------------------------------------------------------------------------------------
+   -- MP_UML_Template_Signature_Template_Templateable_Element_Owned_Template_Signature --
+   --------------------------------------------------------------------------------------
 
-   function MP_UML_Template_Signature_Template return AMF.Internals.CMOF_Element is
+   function MP_UML_Template_Signature_Template_Templateable_Element_Owned_Template_Signature return AMF.Internals.CMOF_Element is
    begin
       return Base + 831;
-   end MP_UML_Template_Signature_Template;
+   end MP_UML_Template_Signature_Template_Templateable_Element_Owned_Template_Signature;
 
-   ----------------------------------------------------------
-   -- MP_UML_Templateable_Element_Owned_Template_Signature --
-   ----------------------------------------------------------
+   --------------------------------------------------------------------------------------
+   -- MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template --
+   --------------------------------------------------------------------------------------
 
-   function MP_UML_Templateable_Element_Owned_Template_Signature return AMF.Internals.CMOF_Element is
+   function MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template return AMF.Internals.CMOF_Element is
    begin
       return Base + 832;
-   end MP_UML_Templateable_Element_Owned_Template_Signature;
+   end MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template;
 
-   --------------------------------------------------
-   -- MP_UML_Templateable_Element_Template_Binding --
-   --------------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element --
+   ---------------------------------------------------------------------------------
 
-   function MP_UML_Templateable_Element_Template_Binding return AMF.Internals.CMOF_Element is
+   function MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 479;
-   end MP_UML_Templateable_Element_Template_Binding;
+   end MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element;
 
-   ---------------------------------------
-   -- MP_UML_Test_Identity_Action_First --
-   ---------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Test_Identity_Action_First_A_Test_Identity_Action --
+   --------------------------------------------------------------
 
-   function MP_UML_Test_Identity_Action_First return AMF.Internals.CMOF_Element is
+   function MP_UML_Test_Identity_Action_First_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 833;
-   end MP_UML_Test_Identity_Action_First;
+   end MP_UML_Test_Identity_Action_First_A_Test_Identity_Action;
 
-   ----------------------------------------
-   -- MP_UML_Test_Identity_Action_Result --
-   ----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Test_Identity_Action_Result_A_Test_Identity_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Test_Identity_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Test_Identity_Action_Result_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 834;
-   end MP_UML_Test_Identity_Action_Result;
+   end MP_UML_Test_Identity_Action_Result_A_Test_Identity_Action;
 
-   ----------------------------------------
-   -- MP_UML_Test_Identity_Action_Second --
-   ----------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UML_Test_Identity_Action_Second_A_Test_Identity_Action --
+   ---------------------------------------------------------------
 
-   function MP_UML_Test_Identity_Action_Second return AMF.Internals.CMOF_Element is
+   function MP_UML_Test_Identity_Action_Second_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 835;
-   end MP_UML_Test_Identity_Action_Second;
+   end MP_UML_Test_Identity_Action_Second_A_Test_Identity_Action;
 
    ----------------------------------------
    -- MP_UML_Time_Constraint_First_Event --
@@ -7597,14 +7597,14 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 836;
    end MP_UML_Time_Constraint_First_Event;
 
-   ------------------------------------------
-   -- MP_UML_Time_Constraint_Specification --
-   ------------------------------------------
+   ------------------------------------------------------------
+   -- MP_UML_Time_Constraint_Specification_A_Time_Constraint --
+   ------------------------------------------------------------
 
-   function MP_UML_Time_Constraint_Specification return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Constraint_Specification_A_Time_Constraint return AMF.Internals.CMOF_Element is
    begin
       return Base + 837;
-   end MP_UML_Time_Constraint_Specification;
+   end MP_UML_Time_Constraint_Specification_A_Time_Constraint;
 
    -----------------------------------
    -- MP_UML_Time_Event_Is_Relative --
@@ -7615,59 +7615,59 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 838;
    end MP_UML_Time_Event_Is_Relative;
 
-   ----------------------------
-   -- MP_UML_Time_Event_When --
-   ----------------------------
+   -----------------------------------------
+   -- MP_UML_Time_Event_When_A_Time_Event --
+   -----------------------------------------
 
-   function MP_UML_Time_Event_When return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Event_When_A_Time_Event return AMF.Internals.CMOF_Element is
    begin
       return Base + 839;
-   end MP_UML_Time_Event_When;
+   end MP_UML_Time_Event_When_A_Time_Event;
 
-   ---------------------------------
-   -- MP_UML_Time_Expression_Expr --
-   ---------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Time_Expression_Expr_A_Time_Expression --
+   ---------------------------------------------------
 
-   function MP_UML_Time_Expression_Expr return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Expression_Expr_A_Time_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 840;
-   end MP_UML_Time_Expression_Expr;
+   end MP_UML_Time_Expression_Expr_A_Time_Expression;
 
-   ----------------------------------------
-   -- MP_UML_Time_Expression_Observation --
-   ----------------------------------------
+   ----------------------------------------------------------
+   -- MP_UML_Time_Expression_Observation_A_Time_Expression --
+   ----------------------------------------------------------
 
-   function MP_UML_Time_Expression_Observation return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Expression_Observation_A_Time_Expression return AMF.Internals.CMOF_Element is
    begin
       return Base + 480;
-   end MP_UML_Time_Expression_Observation;
+   end MP_UML_Time_Expression_Observation_A_Time_Expression;
 
-   ------------------------------
-   -- MP_UML_Time_Interval_Max --
-   ------------------------------
+   ----------------------------------------------
+   -- MP_UML_Time_Interval_Max_A_Time_Interval --
+   ----------------------------------------------
 
-   function MP_UML_Time_Interval_Max return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Interval_Max_A_Time_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 841;
-   end MP_UML_Time_Interval_Max;
+   end MP_UML_Time_Interval_Max_A_Time_Interval;
 
-   ------------------------------
-   -- MP_UML_Time_Interval_Min --
-   ------------------------------
+   ----------------------------------------------
+   -- MP_UML_Time_Interval_Min_A_Time_Interval --
+   ----------------------------------------------
 
-   function MP_UML_Time_Interval_Min return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Interval_Min_A_Time_Interval return AMF.Internals.CMOF_Element is
    begin
       return Base + 842;
-   end MP_UML_Time_Interval_Min;
+   end MP_UML_Time_Interval_Min_A_Time_Interval;
 
-   -----------------------------------
-   -- MP_UML_Time_Observation_Event --
-   -----------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Time_Observation_Event_A_Time_Observation --
+   ------------------------------------------------------
 
-   function MP_UML_Time_Observation_Event return AMF.Internals.CMOF_Element is
+   function MP_UML_Time_Observation_Event_A_Time_Observation return AMF.Internals.CMOF_Element is
    begin
       return Base + 843;
-   end MP_UML_Time_Observation_Event;
+   end MP_UML_Time_Observation_Event_A_Time_Observation;
 
    -----------------------------------------
    -- MP_UML_Time_Observation_First_Event --
@@ -7678,32 +7678,32 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 844;
    end MP_UML_Time_Observation_First_Event;
 
-   ---------------------------------
-   -- MP_UML_Transition_Container --
-   ---------------------------------
+   ---------------------------------------------------
+   -- MP_UML_Transition_Container_Region_Transition --
+   ---------------------------------------------------
 
-   function MP_UML_Transition_Container return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Container_Region_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 845;
-   end MP_UML_Transition_Container;
+   end MP_UML_Transition_Container_Region_Transition;
 
-   ------------------------------
-   -- MP_UML_Transition_Effect --
-   ------------------------------
+   -------------------------------------------
+   -- MP_UML_Transition_Effect_A_Transition --
+   -------------------------------------------
 
-   function MP_UML_Transition_Effect return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Effect_A_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 846;
-   end MP_UML_Transition_Effect;
+   end MP_UML_Transition_Effect_A_Transition;
 
-   -----------------------------
-   -- MP_UML_Transition_Guard --
-   -----------------------------
+   ------------------------------------------
+   -- MP_UML_Transition_Guard_A_Transition --
+   ------------------------------------------
 
-   function MP_UML_Transition_Guard return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Guard_A_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 847;
-   end MP_UML_Transition_Guard;
+   end MP_UML_Transition_Guard_A_Transition;
 
    ----------------------------
    -- MP_UML_Transition_Kind --
@@ -7714,257 +7714,3209 @@ package body AMF.Internals.Tables.UML_Metamodel is
       return Base + 848;
    end MP_UML_Transition_Kind;
 
-   --------------------------------------------
-   -- MP_UML_Transition_Redefined_Transition --
-   --------------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Transition_Redefined_Transition_A_Transition --
+   ---------------------------------------------------------
 
-   function MP_UML_Transition_Redefined_Transition return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Redefined_Transition_A_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 849;
-   end MP_UML_Transition_Redefined_Transition;
+   end MP_UML_Transition_Redefined_Transition_A_Transition;
 
-   --------------------------------------------
-   -- MP_UML_Transition_Redefinition_Context --
-   --------------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Transition_Redefinition_Context_A_Transition --
+   ---------------------------------------------------------
 
-   function MP_UML_Transition_Redefinition_Context return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Redefinition_Context_A_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 481;
-   end MP_UML_Transition_Redefinition_Context;
+   end MP_UML_Transition_Redefinition_Context_A_Transition;
 
-   ------------------------------
-   -- MP_UML_Transition_Source --
-   ------------------------------
+   ----------------------------------------------
+   -- MP_UML_Transition_Source_Vertex_Outgoing --
+   ----------------------------------------------
 
-   function MP_UML_Transition_Source return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Source_Vertex_Outgoing return AMF.Internals.CMOF_Element is
    begin
       return Base + 850;
-   end MP_UML_Transition_Source;
+   end MP_UML_Transition_Source_Vertex_Outgoing;
 
-   ------------------------------
-   -- MP_UML_Transition_Target --
-   ------------------------------
+   ----------------------------------------------
+   -- MP_UML_Transition_Target_Vertex_Incoming --
+   ----------------------------------------------
 
-   function MP_UML_Transition_Target return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Target_Vertex_Incoming return AMF.Internals.CMOF_Element is
    begin
       return Base + 851;
-   end MP_UML_Transition_Target;
+   end MP_UML_Transition_Target_Vertex_Incoming;
 
-   -------------------------------
-   -- MP_UML_Transition_Trigger --
-   -------------------------------
+   --------------------------------------------
+   -- MP_UML_Transition_Trigger_A_Transition --
+   --------------------------------------------
 
-   function MP_UML_Transition_Trigger return AMF.Internals.CMOF_Element is
+   function MP_UML_Transition_Trigger_A_Transition return AMF.Internals.CMOF_Element is
    begin
       return Base + 482;
-   end MP_UML_Transition_Trigger;
+   end MP_UML_Transition_Trigger_A_Transition;
 
-   --------------------------
-   -- MP_UML_Trigger_Event --
-   --------------------------
+   ------------------------------------
+   -- MP_UML_Trigger_Event_A_Trigger --
+   ------------------------------------
 
-   function MP_UML_Trigger_Event return AMF.Internals.CMOF_Element is
+   function MP_UML_Trigger_Event_A_Trigger return AMF.Internals.CMOF_Element is
    begin
       return Base + 852;
-   end MP_UML_Trigger_Event;
+   end MP_UML_Trigger_Event_A_Trigger;
 
-   -------------------------
-   -- MP_UML_Trigger_Port --
-   -------------------------
+   -----------------------------------
+   -- MP_UML_Trigger_Port_A_Trigger --
+   -----------------------------------
 
-   function MP_UML_Trigger_Port return AMF.Internals.CMOF_Element is
+   function MP_UML_Trigger_Port_A_Trigger return AMF.Internals.CMOF_Element is
    begin
       return Base + 483;
-   end MP_UML_Trigger_Port;
+   end MP_UML_Trigger_Port_A_Trigger;
 
-   -------------------------
-   -- MP_UML_Type_Package --
-   -------------------------
+   --------------------------------------------
+   -- MP_UML_Type_Package_Package_Owned_Type --
+   --------------------------------------------
 
-   function MP_UML_Type_Package return AMF.Internals.CMOF_Element is
+   function MP_UML_Type_Package_Package_Owned_Type return AMF.Internals.CMOF_Element is
    begin
       return Base + 853;
-   end MP_UML_Type_Package;
+   end MP_UML_Type_Package_Package_Owned_Type;
 
-   -------------------------------
-   -- MP_UML_Typed_Element_Type --
-   -------------------------------
+   -----------------------------------------------
+   -- MP_UML_Typed_Element_Type_A_Typed_Element --
+   -----------------------------------------------
 
-   function MP_UML_Typed_Element_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Typed_Element_Type_A_Typed_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 854;
-   end MP_UML_Typed_Element_Type;
+   end MP_UML_Typed_Element_Type_A_Typed_Element;
 
-   -------------------------------------
-   -- MP_UML_Unmarshall_Action_Object --
-   -------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Unmarshall_Action_Object_A_Unmarshall_Action --
+   ---------------------------------------------------------
 
-   function MP_UML_Unmarshall_Action_Object return AMF.Internals.CMOF_Element is
+   function MP_UML_Unmarshall_Action_Object_A_Unmarshall_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 855;
-   end MP_UML_Unmarshall_Action_Object;
+   end MP_UML_Unmarshall_Action_Object_A_Unmarshall_Action;
 
-   -------------------------------------
-   -- MP_UML_Unmarshall_Action_Result --
-   -------------------------------------
+   ---------------------------------------------------------
+   -- MP_UML_Unmarshall_Action_Result_A_Unmarshall_Action --
+   ---------------------------------------------------------
 
-   function MP_UML_Unmarshall_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Unmarshall_Action_Result_A_Unmarshall_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 484;
-   end MP_UML_Unmarshall_Action_Result;
+   end MP_UML_Unmarshall_Action_Result_A_Unmarshall_Action;
 
-   ----------------------------------------------
-   -- MP_UML_Unmarshall_Action_Unmarshall_Type --
-   ----------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UML_Unmarshall_Action_Unmarshall_Type_A_Unmarshall_Action --
+   ------------------------------------------------------------------
 
-   function MP_UML_Unmarshall_Action_Unmarshall_Type return AMF.Internals.CMOF_Element is
+   function MP_UML_Unmarshall_Action_Unmarshall_Type_A_Unmarshall_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 856;
-   end MP_UML_Unmarshall_Action_Unmarshall_Type;
+   end MP_UML_Unmarshall_Action_Unmarshall_Type_A_Unmarshall_Action;
 
-   ----------------------------
-   -- MP_UML_Use_Case_Extend --
-   ----------------------------
+   ---------------------------------------------
+   -- MP_UML_Use_Case_Extend_Extend_Extension --
+   ---------------------------------------------
 
-   function MP_UML_Use_Case_Extend return AMF.Internals.CMOF_Element is
+   function MP_UML_Use_Case_Extend_Extend_Extension return AMF.Internals.CMOF_Element is
    begin
       return Base + 485;
-   end MP_UML_Use_Case_Extend;
+   end MP_UML_Use_Case_Extend_Extend_Extension;
 
-   -------------------------------------
-   -- MP_UML_Use_Case_Extension_Point --
-   -------------------------------------
+   --------------------------------------------------------------
+   -- MP_UML_Use_Case_Extension_Point_Extension_Point_Use_Case --
+   --------------------------------------------------------------
 
-   function MP_UML_Use_Case_Extension_Point return AMF.Internals.CMOF_Element is
+   function MP_UML_Use_Case_Extension_Point_Extension_Point_Use_Case return AMF.Internals.CMOF_Element is
    begin
       return Base + 486;
-   end MP_UML_Use_Case_Extension_Point;
+   end MP_UML_Use_Case_Extension_Point_Extension_Point_Use_Case;
 
-   -----------------------------
-   -- MP_UML_Use_Case_Include --
-   -----------------------------
+   ----------------------------------------------------
+   -- MP_UML_Use_Case_Include_Include_Including_Case --
+   ----------------------------------------------------
 
-   function MP_UML_Use_Case_Include return AMF.Internals.CMOF_Element is
+   function MP_UML_Use_Case_Include_Include_Including_Case return AMF.Internals.CMOF_Element is
    begin
       return Base + 487;
-   end MP_UML_Use_Case_Include;
+   end MP_UML_Use_Case_Include_Include_Including_Case;
 
-   -----------------------------
-   -- MP_UML_Use_Case_Subject --
-   -----------------------------
+   -------------------------------------------------
+   -- MP_UML_Use_Case_Subject_Classifier_Use_Case --
+   -------------------------------------------------
 
-   function MP_UML_Use_Case_Subject return AMF.Internals.CMOF_Element is
+   function MP_UML_Use_Case_Subject_Classifier_Use_Case return AMF.Internals.CMOF_Element is
    begin
       return Base + 488;
-   end MP_UML_Use_Case_Subject;
+   end MP_UML_Use_Case_Subject_Classifier_Use_Case;
 
-   ----------------------------
-   -- MP_UML_Value_Pin_Value --
-   ----------------------------
+   ----------------------------------------
+   -- MP_UML_Value_Pin_Value_A_Value_Pin --
+   ----------------------------------------
 
-   function MP_UML_Value_Pin_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Value_Pin_Value_A_Value_Pin return AMF.Internals.CMOF_Element is
    begin
       return Base + 857;
-   end MP_UML_Value_Pin_Value;
+   end MP_UML_Value_Pin_Value_A_Value_Pin;
 
-   ----------------------------------------------
-   -- MP_UML_Value_Specification_Action_Result --
-   ----------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_UML_Value_Specification_Action_Result_A_Value_Specification_Action --
+   ---------------------------------------------------------------------------
 
-   function MP_UML_Value_Specification_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Value_Specification_Action_Result_A_Value_Specification_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 858;
-   end MP_UML_Value_Specification_Action_Result;
+   end MP_UML_Value_Specification_Action_Result_A_Value_Specification_Action;
 
-   ---------------------------------------------
-   -- MP_UML_Value_Specification_Action_Value --
-   ---------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UML_Value_Specification_Action_Value_A_Value_Specification_Action --
+   --------------------------------------------------------------------------
 
-   function MP_UML_Value_Specification_Action_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Value_Specification_Action_Value_A_Value_Specification_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 859;
-   end MP_UML_Value_Specification_Action_Value;
+   end MP_UML_Value_Specification_Action_Value_A_Value_Specification_Action;
 
-   ------------------------------------
-   -- MP_UML_Variable_Activity_Scope --
-   ------------------------------------
+   ------------------------------------------------------
+   -- MP_UML_Variable_Activity_Scope_Activity_Variable --
+   ------------------------------------------------------
 
-   function MP_UML_Variable_Activity_Scope return AMF.Internals.CMOF_Element is
+   function MP_UML_Variable_Activity_Scope_Activity_Variable return AMF.Internals.CMOF_Element is
    begin
       return Base + 860;
-   end MP_UML_Variable_Activity_Scope;
+   end MP_UML_Variable_Activity_Scope_Activity_Variable;
 
-   ---------------------------
-   -- MP_UML_Variable_Scope --
-   ---------------------------
+   -------------------------------------------------------------
+   -- MP_UML_Variable_Scope_Structured_Activity_Node_Variable --
+   -------------------------------------------------------------
 
-   function MP_UML_Variable_Scope return AMF.Internals.CMOF_Element is
+   function MP_UML_Variable_Scope_Structured_Activity_Node_Variable return AMF.Internals.CMOF_Element is
    begin
       return Base + 861;
-   end MP_UML_Variable_Scope;
+   end MP_UML_Variable_Scope_Structured_Activity_Node_Variable;
 
-   -------------------------------------
-   -- MP_UML_Variable_Action_Variable --
-   -------------------------------------
+   -------------------------------------------------------
+   -- MP_UML_Variable_Action_Variable_A_Variable_Action --
+   -------------------------------------------------------
 
-   function MP_UML_Variable_Action_Variable return AMF.Internals.CMOF_Element is
+   function MP_UML_Variable_Action_Variable_A_Variable_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 862;
-   end MP_UML_Variable_Action_Variable;
+   end MP_UML_Variable_Action_Variable_A_Variable_Action;
 
-   -----------------------------
-   -- MP_UML_Vertex_Container --
-   -----------------------------
+   ----------------------------------------------
+   -- MP_UML_Vertex_Container_Region_Subvertex --
+   ----------------------------------------------
 
-   function MP_UML_Vertex_Container return AMF.Internals.CMOF_Element is
+   function MP_UML_Vertex_Container_Region_Subvertex return AMF.Internals.CMOF_Element is
    begin
       return Base + 863;
-   end MP_UML_Vertex_Container;
+   end MP_UML_Vertex_Container_Region_Subvertex;
 
-   ----------------------------
-   -- MP_UML_Vertex_Incoming --
-   ----------------------------
+   ----------------------------------------------
+   -- MP_UML_Vertex_Incoming_Transition_Target --
+   ----------------------------------------------
 
-   function MP_UML_Vertex_Incoming return AMF.Internals.CMOF_Element is
+   function MP_UML_Vertex_Incoming_Transition_Target return AMF.Internals.CMOF_Element is
    begin
       return Base + 489;
-   end MP_UML_Vertex_Incoming;
+   end MP_UML_Vertex_Incoming_Transition_Target;
 
-   ----------------------------
-   -- MP_UML_Vertex_Outgoing --
-   ----------------------------
+   ----------------------------------------------
+   -- MP_UML_Vertex_Outgoing_Transition_Source --
+   ----------------------------------------------
 
-   function MP_UML_Vertex_Outgoing return AMF.Internals.CMOF_Element is
+   function MP_UML_Vertex_Outgoing_Transition_Source return AMF.Internals.CMOF_Element is
    begin
       return Base + 490;
-   end MP_UML_Vertex_Outgoing;
+   end MP_UML_Vertex_Outgoing_Transition_Source;
 
-   ---------------------------------------------------
-   -- MP_UML_Write_Structural_Feature_Action_Result --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------------------
+   -- MP_UML_Write_Structural_Feature_Action_Result_A_Write_Structural_Feature_Action --
+   -------------------------------------------------------------------------------------
 
-   function MP_UML_Write_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   function MP_UML_Write_Structural_Feature_Action_Result_A_Write_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 864;
-   end MP_UML_Write_Structural_Feature_Action_Result;
+   end MP_UML_Write_Structural_Feature_Action_Result_A_Write_Structural_Feature_Action;
 
-   --------------------------------------------------
-   -- MP_UML_Write_Structural_Feature_Action_Value --
-   --------------------------------------------------
+   ------------------------------------------------------------------------------------
+   -- MP_UML_Write_Structural_Feature_Action_Value_A_Write_Structural_Feature_Action --
+   ------------------------------------------------------------------------------------
 
-   function MP_UML_Write_Structural_Feature_Action_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Write_Structural_Feature_Action_Value_A_Write_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 865;
-   end MP_UML_Write_Structural_Feature_Action_Value;
+   end MP_UML_Write_Structural_Feature_Action_Value_A_Write_Structural_Feature_Action;
 
-   ----------------------------------------
-   -- MP_UML_Write_Variable_Action_Value --
-   ----------------------------------------
+   ----------------------------------------------------------------
+   -- MP_UML_Write_Variable_Action_Value_A_Write_Variable_Action --
+   ----------------------------------------------------------------
 
-   function MP_UML_Write_Variable_Action_Value return AMF.Internals.CMOF_Element is
+   function MP_UML_Write_Variable_Action_Value_A_Write_Variable_Action return AMF.Internals.CMOF_Element is
    begin
       return Base + 866;
-   end MP_UML_Write_Variable_Action_Value;
+   end MP_UML_Write_Variable_Action_Value_A_Write_Variable_Action;
+
+   ----------------------------------------
+   -- MP_UML_A_Value_Pin_Value_Pin_Value --
+   ----------------------------------------
+
+   function MP_UML_A_Value_Pin_Value_Pin_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1614;
+   end MP_UML_A_Value_Pin_Value_Pin_Value;
+
+   --------------------------------------------------------------------------
+   -- MP_UML_A_Value_Specification_Action_Value_Specification_Action_Value --
+   --------------------------------------------------------------------------
+
+   function MP_UML_A_Value_Specification_Action_Value_Specification_Action_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1615;
+   end MP_UML_A_Value_Specification_Action_Value_Specification_Action_Value;
+
+   ------------------------------------------------------------------------------------
+   -- MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Value --
+   ------------------------------------------------------------------------------------
+
+   function MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1616;
+   end MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Value;
+
+   ----------------------------------------------------------------
+   -- MP_UML_A_Write_Variable_Action_Write_Variable_Action_Value --
+   ----------------------------------------------------------------
+
+   function MP_UML_A_Write_Variable_Action_Write_Variable_Action_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1617;
+   end MP_UML_A_Write_Variable_Action_Write_Variable_Action_Value;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Variable_Action_Variable_Action_Variable --
+   -------------------------------------------------------
+
+   function MP_UML_A_Variable_Action_Variable_Action_Variable return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1618;
+   end MP_UML_A_Variable_Action_Variable_Action_Variable;
+
+   -------------------------------------------------
+   -- MP_UML_A_Activity_Edge_Activity_Edge_Weight --
+   -------------------------------------------------
+
+   function MP_UML_A_Activity_Edge_Activity_Edge_Weight return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1619;
+   end MP_UML_A_Activity_Edge_Activity_Edge_Weight;
+
+   -----------------------------------------
+   -- MP_UML_A_Time_Event_Time_Event_When --
+   -----------------------------------------
+
+   function MP_UML_A_Time_Event_Time_Event_When return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1620;
+   end MP_UML_A_Time_Event_Time_Event_When;
+
+   -----------------------------------------------------------------------------------
+   -- MP_UML_A_Action_Execution_Specification_Action_Execution_Specification_Action --
+   -----------------------------------------------------------------------------------
+
+   function MP_UML_A_Action_Execution_Specification_Action_Execution_Specification_Action return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1287;
+   end MP_UML_A_Action_Execution_Specification_Action_Execution_Specification_Action;
+
+   ---------------------------------------------
+   -- MP_UML_A_Interaction_Interaction_Action --
+   ---------------------------------------------
+
+   function MP_UML_A_Interaction_Interaction_Action return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1288;
+   end MP_UML_A_Interaction_Interaction_Action;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Interaction_Use_Interaction_Use_Actual_Gate --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Interaction_Use_Interaction_Use_Actual_Gate return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1289;
+   end MP_UML_A_Interaction_Use_Interaction_Use_Actual_Gate;
+
+   -------------------------------------------------------------------------------------
+   -- MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Actual --
+   -------------------------------------------------------------------------------------
+
+   function MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Actual return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1290;
+   end MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Actual;
+
+   ---------------------------------------
+   -- MP_UML_A_Include_Include_Addition --
+   ---------------------------------------
+
+   function MP_UML_A_Include_Include_Addition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1291;
+   end MP_UML_A_Include_Include_Addition;
+
+   ------------------------------------------------
+   -- MP_UML_A_Comment_Comment_Annotated_Element --
+   ------------------------------------------------
+
+   function MP_UML_A_Comment_Comment_Annotated_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1292;
+   end MP_UML_A_Comment_Comment_Annotated_Element;
+
+   ----------------------------------------------------------------------
+   -- MP_UML_A_Profile_Application_Profile_Application_Applied_Profile --
+   ----------------------------------------------------------------------
+
+   function MP_UML_A_Profile_Application_Profile_Application_Applied_Profile return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1293;
+   end MP_UML_A_Profile_Application_Profile_Application_Applied_Profile;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Interaction_Use_Interaction_Use_Argument --
+   -------------------------------------------------------
+
+   function MP_UML_A_Interaction_Use_Interaction_Use_Argument return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1294;
+   end MP_UML_A_Interaction_Use_Interaction_Use_Argument;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Invocation_Action_Invocation_Action_Argument --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Invocation_Action_Invocation_Action_Argument return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1295;
+   end MP_UML_A_Invocation_Action_Invocation_Action_Argument;
+
+   ---------------------------------------
+   -- MP_UML_A_Message_Message_Argument --
+   ---------------------------------------
+
+   function MP_UML_A_Message_Message_Argument return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1296;
+   end MP_UML_A_Message_Message_Argument;
+
+   ----------------------------------------------------------------------------
+   -- MP_UML_A_Clear_Association_Action_Clear_Association_Action_Association --
+   ----------------------------------------------------------------------------
+
+   function MP_UML_A_Clear_Association_Action_Clear_Association_Action_Association return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1297;
+   end MP_UML_A_Clear_Association_Action_Clear_Association_Action_Association;
+
+   ----------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Attribute --
+   ----------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Attribute return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1298;
+   end MP_UML_A_Classifier_Classifier_Attribute;
+
+   -----------------------------------------------------------------------------------------
+   -- MP_UML_A_Behavior_Execution_Specification_Behavior_Execution_Specification_Behavior --
+   -----------------------------------------------------------------------------------------
+
+   function MP_UML_A_Behavior_Execution_Specification_Behavior_Execution_Specification_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1299;
+   end MP_UML_A_Behavior_Execution_Specification_Behavior_Execution_Specification_Behavior;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Call_Behavior_Action_Call_Behavior_Action_Behavior --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Call_Behavior_Action_Call_Behavior_Action_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1300;
+   end MP_UML_A_Call_Behavior_Action_Call_Behavior_Action_Behavior;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Opaque_Expression_Opaque_Expression_Behavior --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Opaque_Expression_Opaque_Expression_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1301;
+   end MP_UML_A_Opaque_Expression_Opaque_Expression_Behavior;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Body_Context_Operation_Body_Condition --
+   ----------------------------------------------------
+
+   function MP_UML_A_Body_Context_Operation_Body_Condition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1302;
+   end MP_UML_A_Body_Context_Operation_Body_Condition;
+
+   ----------------------------------------
+   -- MP_UML_A_Clause_Clause_Body_Output --
+   ----------------------------------------
+
+   function MP_UML_A_Clause_Clause_Body_Output return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1303;
+   end MP_UML_A_Clause_Clause_Body_Output;
+
+   ----------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Body_Output --
+   ----------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Body_Output return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1304;
+   end MP_UML_A_Loop_Node_Loop_Node_Body_Output;
+
+   --------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Body_Part --
+   --------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Body_Part return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1305;
+   end MP_UML_A_Loop_Node_Loop_Node_Body_Part;
+
+   ---------------------------------
+   -- MP_UML_A_Clause_Clause_Body --
+   ---------------------------------
+
+   function MP_UML_A_Clause_Clause_Body return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1306;
+   end MP_UML_A_Clause_Clause_Body;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Combined_Fragment_Combined_Fragment_Cfragment_Gate --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Combined_Fragment_Combined_Fragment_Cfragment_Gate return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1307;
+   end MP_UML_A_Combined_Fragment_Combined_Fragment_Cfragment_Gate;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Change_Event_Change_Event_Change_Expression --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Change_Event_Change_Event_Change_Expression return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1308;
+   end MP_UML_A_Change_Event_Change_Event_Change_Expression;
+
+   ------------------------------------------------------------------------------
+   -- MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Classifier_Behavior --
+   ------------------------------------------------------------------------------
+
+   function MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Classifier_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1309;
+   end MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Classifier_Behavior;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Create_Object_Action_Create_Object_Action_Classifier --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Create_Object_Action_Create_Object_Action_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1310;
+   end MP_UML_A_Create_Object_Action_Create_Object_Action_Classifier;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Enumeration_Literal_Enumeration_Literal_Classifier --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Enumeration_Literal_Enumeration_Literal_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1311;
+   end MP_UML_A_Enumeration_Literal_Enumeration_Literal_Classifier;
+
+   -----------------------------------------------------------------------
+   -- MP_UML_A_Instance_Specification_Instance_Specification_Classifier --
+   -----------------------------------------------------------------------
+
+   function MP_UML_A_Instance_Specification_Instance_Specification_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1312;
+   end MP_UML_A_Instance_Specification_Instance_Specification_Classifier;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Read_Extent_Action_Read_Extent_Action_Classifier --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Read_Extent_Action_Read_Extent_Action_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1313;
+   end MP_UML_A_Read_Extent_Action_Read_Extent_Action_Classifier;
+
+   -------------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Classifier --
+   -------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1314;
+   end MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Classifier;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Conditional_Node_Conditional_Node_Clause --
+   -------------------------------------------------------
+
+   function MP_UML_A_Conditional_Node_Conditional_Node_Clause return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1315;
+   end MP_UML_A_Conditional_Node_Conditional_Node_Clause;
+
+   -------------------------------------------------------------
+   -- MP_UML_A_Collaboration_Collaboration_Collaboration_Role --
+   -------------------------------------------------------------
+
+   function MP_UML_A_Collaboration_Collaboration_Collaboration_Role return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1316;
+   end MP_UML_A_Collaboration_Collaboration_Collaboration_Role;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Collaboration_Use --
+   ------------------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Collaboration_Use return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1317;
+   end MP_UML_A_Classifier_Classifier_Collaboration_Use;
+
+   -----------------------------------------------------
+   -- MP_UML_A_Reduce_Action_Reduce_Action_Collection --
+   -----------------------------------------------------
+
+   function MP_UML_A_Reduce_Action_Reduce_Action_Collection return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1318;
+   end MP_UML_A_Reduce_Action_Reduce_Action_Collection;
+
+   --------------------------------------
+   -- MP_UML_A_Extend_Extend_Condition --
+   --------------------------------------
+
+   function MP_UML_A_Extend_Extend_Condition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1319;
+   end MP_UML_A_Extend_Extend_Condition;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Parameter_Set_Parameter_Set_Condition --
+   ----------------------------------------------------
+
+   function MP_UML_A_Parameter_Set_Parameter_Set_Condition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1320;
+   end MP_UML_A_Parameter_Set_Parameter_Set_Condition;
+
+   ----------------------------------------
+   -- MP_UML_A_Message_Message_Connector --
+   ----------------------------------------
+
+   function MP_UML_A_Message_Message_Connector return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1321;
+   end MP_UML_A_Message_Message_Connector;
+
+   --------------------------------------------------------
+   -- MP_UML_A_Constraint_Constraint_Constrained_Element --
+   --------------------------------------------------------
+
+   function MP_UML_A_Constraint_Constraint_Constrained_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1322;
+   end MP_UML_A_Constraint_Constraint_Constrained_Element;
+
+   --------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Classifier_Template_Parameter_Classifier_Template_Parameter_Constraining_Classifier --
+   --------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Classifier_Template_Parameter_Classifier_Template_Parameter_Constraining_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1323;
+   end MP_UML_A_Classifier_Template_Parameter_Classifier_Template_Parameter_Constraining_Classifier;
+
+   ------------------------------------
+   -- MP_UML_A_Action_Action_Context --
+   ------------------------------------
+
+   function MP_UML_A_Action_Action_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1324;
+   end MP_UML_A_Action_Action_Context;
+
+   ----------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Context --
+   ----------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1325;
+   end MP_UML_A_Behavior_Behavior_Context;
+
+   -------------------------------------------
+   -- MP_UML_A_Connector_Connector_Contract --
+   -------------------------------------------
+
+   function MP_UML_A_Connector_Connector_Contract return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1326;
+   end MP_UML_A_Connector_Connector_Contract;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Interface_Realization_Interface_Realization_Contract --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Interface_Realization_Interface_Realization_Contract return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1327;
+   end MP_UML_A_Interface_Realization_Interface_Realization_Contract;
+
+   -------------------------------------------------
+   -- MP_UML_A_Substitution_Substitution_Contract --
+   -------------------------------------------------
+
+   function MP_UML_A_Substitution_Substitution_Contract return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1328;
+   end MP_UML_A_Substitution_Substitution_Contract;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Conveyed --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Conveyed return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1329;
+   end MP_UML_A_Information_Flow_Information_Flow_Conveyed;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Events_Occurrence_Specification_Covered --
+   ------------------------------------------------------
+
+   function MP_UML_A_Events_Occurrence_Specification_Covered return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1331;
+   end MP_UML_A_Events_Occurrence_Specification_Covered;
+
+   ------------------------------------------------------
+   -- MP_UML_A_State_Invariant_State_Invariant_Covered --
+   ------------------------------------------------------
+
+   function MP_UML_A_State_Invariant_State_Invariant_Covered return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1332;
+   end MP_UML_A_State_Invariant_State_Invariant_Covered;
+
+   ------------------------------------
+   -- MP_UML_A_Clause_Clause_Decider --
+   ------------------------------------
+
+   function MP_UML_A_Clause_Clause_Decider return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1333;
+   end MP_UML_A_Clause_Clause_Decider;
+
+   ------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Decider --
+   ------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Decider return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1334;
+   end MP_UML_A_Loop_Node_Loop_Node_Decider;
+
+   --------------------------------------------------------------
+   -- MP_UML_A_Decision_Node_Decision_Node_Decision_Input_Flow --
+   --------------------------------------------------------------
+
+   function MP_UML_A_Decision_Node_Decision_Node_Decision_Input_Flow return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1335;
+   end MP_UML_A_Decision_Node_Decision_Node_Decision_Input_Flow;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Decision_Node_Decision_Node_Decision_Input --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Decision_Node_Decision_Node_Decision_Input return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1336;
+   end MP_UML_A_Decision_Node_Decision_Node_Decision_Input;
+
+   ----------------------------------------------
+   -- MP_UML_A_Lifeline_Lifeline_Decomposed_As --
+   ----------------------------------------------
+
+   function MP_UML_A_Lifeline_Lifeline_Decomposed_As return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1337;
+   end MP_UML_A_Lifeline_Lifeline_Decomposed_As;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Owning_Parameter_Parameter_Default_Value --
+   -------------------------------------------------------
+
+   function MP_UML_A_Owning_Parameter_Parameter_Default_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1338;
+   end MP_UML_A_Owning_Parameter_Parameter_Default_Value;
+
+   -----------------------------------------------------
+   -- MP_UML_A_Owning_Property_Property_Default_Value --
+   -----------------------------------------------------
+
+   function MP_UML_A_Owning_Property_Property_Default_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1339;
+   end MP_UML_A_Owning_Property_Property_Default_Value;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Template_Parameter_Template_Parameter_Default --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Template_Parameter_Template_Parameter_Default return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1340;
+   end MP_UML_A_Template_Parameter_Template_Parameter_Default;
+
+   ---------------------------------------------
+   -- MP_UML_A_State_State_Deferrable_Trigger --
+   ---------------------------------------------
+
+   function MP_UML_A_State_State_Deferrable_Trigger return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1341;
+   end MP_UML_A_State_State_Deferrable_Trigger;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Connector_End_Connector_End_Defining_End --
+   -------------------------------------------------------
+
+   function MP_UML_A_Connector_End_Connector_End_Defining_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1342;
+   end MP_UML_A_Connector_End_Connector_End_Defining_End;
+
+   -----------------------------------------
+   -- MP_UML_A_Slot_Slot_Defining_Feature --
+   -----------------------------------------
+
+   function MP_UML_A_Slot_Slot_Defining_Feature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1343;
+   end MP_UML_A_Slot_Slot_Defining_Feature;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Deployment_Deployment_Deployed_Artifact --
+   ------------------------------------------------------
+
+   function MP_UML_A_Deployment_Deployment_Deployed_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1344;
+   end MP_UML_A_Deployment_Deployment_Deployed_Artifact;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Deployment_Target_Deployment_Target_Deployed_Element --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Deployment_Target_Deployment_Target_Deployed_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1345;
+   end MP_UML_A_Deployment_Target_Deployment_Target_Deployed_Element;
+
+   -----------------------------------------------------------------------------
+   -- MP_UML_A_Link_End_Destruction_Data_Link_End_Destruction_Data_Destroy_At --
+   -----------------------------------------------------------------------------
+
+   function MP_UML_A_Link_End_Destruction_Data_Link_End_Destruction_Data_Destroy_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1346;
+   end MP_UML_A_Link_End_Destruction_Data_Link_End_Destruction_Data_Destroy_At;
+
+   --------------------------------------
+   -- MP_UML_A_State_State_Do_Activity --
+   --------------------------------------
+
+   function MP_UML_A_State_State_Do_Activity return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1347;
+   end MP_UML_A_State_State_Do_Activity;
+
+   -------------------------------------------
+   -- MP_UML_A_Transition_Transition_Effect --
+   -------------------------------------------
+
+   function MP_UML_A_Transition_Transition_Effect return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1348;
+   end MP_UML_A_Transition_Transition_Effect;
+
+   -------------------------------------------------------------
+   -- MP_UML_A_Create_Link_Action_Create_Link_Action_End_Data --
+   -------------------------------------------------------------
+
+   function MP_UML_A_Create_Link_Action_Create_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1349;
+   end MP_UML_A_Create_Link_Action_Create_Link_Action_End_Data;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Destroy_Link_Action_Destroy_Link_Action_End_Data --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Destroy_Link_Action_Destroy_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1350;
+   end MP_UML_A_Destroy_Link_Action_Destroy_Link_Action_End_Data;
+
+   -----------------------------------------------
+   -- MP_UML_A_Link_Action_Link_Action_End_Data --
+   -----------------------------------------------
+
+   function MP_UML_A_Link_Action_Link_Action_End_Data return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1351;
+   end MP_UML_A_Link_Action_Link_Action_End_Data;
+
+   -----------------------------------------------
+   -- MP_UML_A_Association_Association_End_Type --
+   -----------------------------------------------
+
+   function MP_UML_A_Association_Association_End_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1352;
+   end MP_UML_A_Association_Association_End_Type;
+
+   --------------------------------------
+   -- MP_UML_A_Connector_Connector_End --
+   --------------------------------------
+
+   function MP_UML_A_Connector_Connector_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1353;
+   end MP_UML_A_Connector_Connector_End;
+
+   ----------------------------------------------
+   -- MP_UML_A_Link_End_Data_Link_End_Data_End --
+   ----------------------------------------------
+
+   function MP_UML_A_Link_End_Data_Link_End_Data_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1354;
+   end MP_UML_A_Link_End_Data_Link_End_Data_End;
+
+   --------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_End --
+   --------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1355;
+   end MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_End;
+
+   --------------------------------------------------------------------------
+   -- MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Entry --
+   --------------------------------------------------------------------------
+
+   function MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Entry return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1356;
+   end MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Entry;
+
+   --------------------------------
+   -- MP_UML_A_State_State_Entry --
+   --------------------------------
+
+   function MP_UML_A_State_State_Entry return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1357;
+   end MP_UML_A_State_State_Entry;
+
+   --------------------------------------------------------------
+   -- MP_UML_A_Duration_Observation_Duration_Observation_Event --
+   --------------------------------------------------------------
+
+   function MP_UML_A_Duration_Observation_Duration_Observation_Event return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1358;
+   end MP_UML_A_Duration_Observation_Duration_Observation_Event;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Time_Observation_Time_Observation_Event --
+   ------------------------------------------------------
+
+   function MP_UML_A_Time_Observation_Time_Observation_Event return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1359;
+   end MP_UML_A_Time_Observation_Time_Observation_Event;
+
+   ------------------------------------
+   -- MP_UML_A_Trigger_Trigger_Event --
+   ------------------------------------
+
+   function MP_UML_A_Trigger_Trigger_Event return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1360;
+   end MP_UML_A_Trigger_Trigger_Event;
+
+   ------------------------------------------------------------------
+   -- MP_UML_A_Exception_Handler_Exception_Handler_Exception_Input --
+   ------------------------------------------------------------------
+
+   function MP_UML_A_Exception_Handler_Exception_Handler_Exception_Input return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1361;
+   end MP_UML_A_Exception_Handler_Exception_Handler_Exception_Input;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Exception_Handler_Exception_Handler_Exception_Type --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Exception_Handler_Exception_Handler_Exception_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1362;
+   end MP_UML_A_Exception_Handler_Exception_Handler_Exception_Type;
+
+   ----------------------------------------------------------------------
+   -- MP_UML_A_Raise_Exception_Action_Raise_Exception_Action_Exception --
+   ----------------------------------------------------------------------
+
+   function MP_UML_A_Raise_Exception_Action_Raise_Exception_Action_Exception return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1363;
+   end MP_UML_A_Raise_Exception_Action_Raise_Exception_Action_Exception;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Sequence_Node_Sequence_Node_Executable_Node --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Sequence_Node_Sequence_Node_Executable_Node return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1364;
+   end MP_UML_A_Sequence_Node_Sequence_Node_Executable_Node;
+
+   ----------------------------------------------------------------------------------------------
+   -- MP_UML_A_Execution_Occurrence_Specification_Execution_Occurrence_Specification_Execution --
+   ----------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Execution_Occurrence_Specification_Execution_Occurrence_Specification_Execution return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1365;
+   end MP_UML_A_Execution_Occurrence_Specification_Execution_Occurrence_Specification_Execution;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Exit --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Exit return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1366;
+   end MP_UML_A_Connection_Point_Reference_Connection_Point_Reference_Exit;
+
+   -------------------------------
+   -- MP_UML_A_State_State_Exit --
+   -------------------------------
+
+   function MP_UML_A_State_State_Exit return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1367;
+   end MP_UML_A_State_State_Exit;
+
+   -------------------------------------
+   -- MP_UML_A_Duration_Duration_Expr --
+   -------------------------------------
+
+   function MP_UML_A_Duration_Duration_Expr return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1368;
+   end MP_UML_A_Duration_Duration_Expr;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Time_Expression_Time_Expression_Expr --
+   ---------------------------------------------------
+
+   function MP_UML_A_Time_Expression_Time_Expression_Expr return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1369;
+   end MP_UML_A_Time_Expression_Time_Expression_Expr;
+
+   ------------------------------------------
+   -- MP_UML_A_Extend_Extend_Extended_Case --
+   ------------------------------------------
+
+   function MP_UML_A_Extend_Extend_Extended_Case return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1370;
+   end MP_UML_A_Extend_Extend_Extended_Case;
+
+   --------------------------------------------
+   -- MP_UML_A_Region_Region_Extended_Region --
+   --------------------------------------------
+
+   function MP_UML_A_Region_Region_Extended_Region return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1371;
+   end MP_UML_A_Region_Region_Extended_Region;
+
+   -----------------------------------------------------------------------------------------------
+   -- MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Extended_Signature --
+   -----------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Extended_Signature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1372;
+   end MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Extended_Signature;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_State_Machine_State_Machine_Extended_State_Machine --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_State_Machine_State_Machine_Extended_State_Machine return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1373;
+   end MP_UML_A_State_Machine_State_Machine_Extended_State_Machine;
+
+   --------------------------------------------------
+   -- MP_UML_A_Extension_Extend_Extension_Location --
+   --------------------------------------------------
+
+   function MP_UML_A_Extension_Extend_Extension_Location return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1374;
+   end MP_UML_A_Extension_Extend_Extension_Location;
+
+   ---------------------------------------------------------------------
+   -- MP_UML_A_Execution_Specification_Execution_Specification_Finish --
+   ---------------------------------------------------------------------
+
+   function MP_UML_A_Execution_Specification_Execution_Specification_Finish return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1376;
+   end MP_UML_A_Execution_Specification_Execution_Specification_Finish;
+
+   --------------------------------------------------------------
+   -- MP_UML_A_Test_Identity_Action_Test_Identity_Action_First --
+   --------------------------------------------------------------
+
+   function MP_UML_A_Test_Identity_Action_Test_Identity_Action_First return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1377;
+   end MP_UML_A_Test_Identity_Action_Test_Identity_Action_First;
+
+   --------------------------------------------------
+   -- MP_UML_A_Interaction_Interaction_Formal_Gate --
+   --------------------------------------------------
+
+   function MP_UML_A_Interaction_Interaction_Formal_Gate return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1378;
+   end MP_UML_A_Interaction_Interaction_Formal_Gate;
+
+   -------------------------------------------------------------------------------------
+   -- MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Formal --
+   -------------------------------------------------------------------------------------
+
+   function MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Formal return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1379;
+   end MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Formal;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Action_Input_Pin_Action_Input_Pin_From_Action --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Action_Input_Pin_Action_Input_Pin_From_Action return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1380;
+   end MP_UML_A_Action_Input_Pin_Action_Input_Pin_From_Action;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Protocol_Conformance_Protocol_Conformance_General_Machine --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Protocol_Conformance_Protocol_Conformance_General_Machine return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1381;
+   end MP_UML_A_Protocol_Conformance_Protocol_Conformance_General_Machine;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Interaction_Fragment_Interaction_Fragment_General_Ordering --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Interaction_Fragment_Interaction_Fragment_General_Ordering return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1382;
+   end MP_UML_A_Interaction_Fragment_Interaction_Fragment_General_Ordering;
+
+   --------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_General --
+   --------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_General return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1383;
+   end MP_UML_A_Classifier_Classifier_General;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Generalization_Generalization_General --
+   ----------------------------------------------------
+
+   function MP_UML_A_Generalization_Generalization_General return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1384;
+   end MP_UML_A_Generalization_Generalization_General;
+
+   ------------------------------------------------
+   -- MP_UML_A_Activity_Edge_Activity_Edge_Guard --
+   ------------------------------------------------
+
+   function MP_UML_A_Activity_Edge_Activity_Edge_Guard return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1385;
+   end MP_UML_A_Activity_Edge_Activity_Edge_Guard;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Interaction_Operand_Interaction_Operand_Guard --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Interaction_Operand_Interaction_Operand_Guard return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1386;
+   end MP_UML_A_Interaction_Operand_Interaction_Operand_Guard;
+
+   ------------------------------------------
+   -- MP_UML_A_Transition_Transition_Guard --
+   ------------------------------------------
+
+   function MP_UML_A_Transition_Transition_Guard return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1387;
+   end MP_UML_A_Transition_Transition_Guard;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Exception_Handler_Exception_Handler_Handler_Body --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Exception_Handler_Exception_Handler_Handler_Body return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1388;
+   end MP_UML_A_Exception_Handler_Exception_Handler_Handler_Body;
+
+   -----------------------------------------
+   -- MP_UML_A_Stereotype_Stereotype_Icon --
+   -----------------------------------------
+
+   function MP_UML_A_Stereotype_Stereotype_Icon return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1389;
+   end MP_UML_A_Stereotype_Stereotype_Icon;
+
+   -------------------------------------------------------------
+   -- MP_UML_A_Element_Import_Element_Import_Imported_Element --
+   -------------------------------------------------------------
+
+   function MP_UML_A_Element_Import_Element_Import_Imported_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1390;
+   end MP_UML_A_Element_Import_Element_Import_Imported_Element;
+
+   --------------------------------------------------
+   -- MP_UML_A_Namespace_Namespace_Imported_Member --
+   --------------------------------------------------
+
+   function MP_UML_A_Namespace_Namespace_Imported_Member return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1391;
+   end MP_UML_A_Namespace_Namespace_Imported_Member;
+
+   -------------------------------------------------------------
+   -- MP_UML_A_Package_Import_Package_Import_Imported_Package --
+   -------------------------------------------------------------
+
+   function MP_UML_A_Package_Import_Package_Import_Imported_Package return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1392;
+   end MP_UML_A_Package_Import_Package_Import_Imported_Package;
+
+   -----------------------------------------------
+   -- MP_UML_A_Object_Node_Object_Node_In_State --
+   -----------------------------------------------
+
+   function MP_UML_A_Object_Node_Object_Node_In_State return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1393;
+   end MP_UML_A_Object_Node_Object_Node_In_State;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Information_Source --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Information_Source return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1394;
+   end MP_UML_A_Information_Flow_Information_Flow_Information_Source;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Information_Target --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Information_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1395;
+   end MP_UML_A_Information_Flow_Information_Flow_Information_Target;
+
+   -----------------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Inherited_Member --
+   -----------------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Inherited_Member return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1396;
+   end MP_UML_A_Classifier_Classifier_Inherited_Member;
+
+   ------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Inherited_Parameter --
+   ------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Inherited_Parameter return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1397;
+   end MP_UML_A_Redefinable_Template_Signature_Redefinable_Template_Signature_Inherited_Parameter;
+
+   --------------------------------------------------
+   -- MP_UML_A_Link_Action_Link_Action_Input_Value --
+   --------------------------------------------------
+
+   function MP_UML_A_Link_Action_Link_Action_Input_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1398;
+   end MP_UML_A_Link_Action_Link_Action_Input_Value;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Opaque_Action_Opaque_Action_Input_Value --
+   ------------------------------------------------------
+
+   function MP_UML_A_Opaque_Action_Opaque_Action_Input_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1399;
+   end MP_UML_A_Opaque_Action_Opaque_Action_Input_Value;
+
+   ----------------------------------
+   -- MP_UML_A_Action_Action_Input --
+   ----------------------------------
+
+   function MP_UML_A_Action_Action_Input return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1400;
+   end MP_UML_A_Action_Action_Input;
+
+   ------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Add_Structural_Feature_Value_Action_Add_Structural_Feature_Value_Action_Insert_At --
+   ------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Add_Structural_Feature_Value_Action_Add_Structural_Feature_Value_Action_Insert_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1401;
+   end MP_UML_A_Add_Structural_Feature_Value_Action_Add_Structural_Feature_Value_Action_Insert_At;
+
+   ----------------------------------------------------------------------------
+   -- MP_UML_A_Add_Variable_Value_Action_Add_Variable_Value_Action_Insert_At --
+   ----------------------------------------------------------------------------
+
+   function MP_UML_A_Add_Variable_Value_Action_Add_Variable_Value_Action_Insert_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1402;
+   end MP_UML_A_Add_Variable_Value_Action_Add_Variable_Value_Action_Insert_At;
+
+   ----------------------------------------------------------------------
+   -- MP_UML_A_Link_End_Creation_Data_Link_End_Creation_Data_Insert_At --
+   ----------------------------------------------------------------------
+
+   function MP_UML_A_Link_End_Creation_Data_Link_End_Creation_Data_Insert_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1403;
+   end MP_UML_A_Link_End_Creation_Data_Link_End_Creation_Data_Insert_At;
+
+   -----------------------------------------------------
+   -- MP_UML_A_Instance_Value_Instance_Value_Instance --
+   -----------------------------------------------------
+
+   function MP_UML_A_Instance_Value_Instance_Value_Instance return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1404;
+   end MP_UML_A_Instance_Value_Instance_Value_Instance;
+
+   --------------------------------------------------------
+   -- MP_UML_A_State_Invariant_State_Invariant_Invariant --
+   --------------------------------------------------------
+
+   function MP_UML_A_State_Invariant_State_Invariant_Invariant return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1405;
+   end MP_UML_A_State_Invariant_State_Invariant_Invariant;
+
+   --------------------------------------------
+   -- MP_UML_A_Join_Node_Join_Node_Join_Spec --
+   --------------------------------------------
+
+   function MP_UML_A_Join_Node_Join_Node_Join_Spec return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1406;
+   end MP_UML_A_Join_Node_Join_Node_Join_Spec;
+
+   ------------------------------------------------
+   -- MP_UML_A_Action_Action_Local_Postcondition --
+   ------------------------------------------------
+
+   function MP_UML_A_Action_Action_Local_Postcondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1407;
+   end MP_UML_A_Action_Action_Local_Postcondition;
+
+   -----------------------------------------------
+   -- MP_UML_A_Action_Action_Local_Precondition --
+   -----------------------------------------------
+
+   function MP_UML_A_Action_Action_Local_Precondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1408;
+   end MP_UML_A_Action_Action_Local_Precondition;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Loop_Variable_Input --
+   ------------------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Loop_Variable_Input return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1409;
+   end MP_UML_A_Loop_Node_Loop_Node_Loop_Variable_Input;
+
+   ------------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Loop_Variable --
+   ------------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Loop_Variable return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1410;
+   end MP_UML_A_Loop_Node_Loop_Node_Loop_Variable;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Owning_Lower_Multiplicity_Element_Lower_Value --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Owning_Lower_Multiplicity_Element_Lower_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1411;
+   end MP_UML_A_Owning_Lower_Multiplicity_Element_Lower_Value;
+
+   ----------------------------------------------
+   -- MP_UML_A_Artifact_Artifact_Manifestation --
+   ----------------------------------------------
+
+   function MP_UML_A_Artifact_Artifact_Manifestation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1412;
+   end MP_UML_A_Artifact_Artifact_Manifestation;
+
+   ----------------------------------------------
+   -- MP_UML_A_Abstraction_Abstraction_Mapping --
+   ----------------------------------------------
+
+   function MP_UML_A_Abstraction_Abstraction_Mapping return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1413;
+   end MP_UML_A_Abstraction_Abstraction_Mapping;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Duration_Interval_Duration_Interval_Max --
+   ------------------------------------------------------
+
+   function MP_UML_A_Duration_Interval_Duration_Interval_Max return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1414;
+   end MP_UML_A_Duration_Interval_Duration_Interval_Max;
+
+   ------------------------------------
+   -- MP_UML_A_Interval_Interval_Max --
+   ------------------------------------
+
+   function MP_UML_A_Interval_Interval_Max return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1415;
+   end MP_UML_A_Interval_Interval_Max;
+
+   ----------------------------------------------
+   -- MP_UML_A_Time_Interval_Time_Interval_Max --
+   ----------------------------------------------
+
+   function MP_UML_A_Time_Interval_Time_Interval_Max return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1416;
+   end MP_UML_A_Time_Interval_Time_Interval_Max;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Interaction_Constraint_Interaction_Constraint_Maxint --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Interaction_Constraint_Interaction_Constraint_Maxint return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1417;
+   end MP_UML_A_Interaction_Constraint_Interaction_Constraint_Maxint;
+
+   ------------------------------------------------
+   -- MP_UML_A_Member_Namespace_Namespace_Member --
+   ------------------------------------------------
+
+   function MP_UML_A_Member_Namespace_Namespace_Member return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1418;
+   end MP_UML_A_Member_Namespace_Namespace_Member;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Package_Merge_Package_Merge_Merged_Package --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Package_Merge_Package_Merge_Merged_Package return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1419;
+   end MP_UML_A_Package_Merge_Package_Merge_Merged_Package;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Consider_Ignore_Fragment_Consider_Ignore_Fragment_Message --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Consider_Ignore_Fragment_Consider_Ignore_Fragment_Message return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1420;
+   end MP_UML_A_Consider_Ignore_Fragment_Consider_Ignore_Fragment_Message;
+
+   ----------------------------------------------
+   -- MP_UML_A_Message_End_Message_End_Message --
+   ----------------------------------------------
+
+   function MP_UML_A_Message_End_Message_End_Message return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1421;
+   end MP_UML_A_Message_End_Message_End_Message;
+
+   --------------------------------------------------
+   -- MP_UML_A_Profile_Profile_Metaclass_Reference --
+   --------------------------------------------------
+
+   function MP_UML_A_Profile_Profile_Metaclass_Reference return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1422;
+   end MP_UML_A_Profile_Profile_Metaclass_Reference;
+
+   --------------------------------------------------
+   -- MP_UML_A_Profile_Profile_Metamodel_Reference --
+   --------------------------------------------------
+
+   function MP_UML_A_Profile_Profile_Metamodel_Reference return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1423;
+   end MP_UML_A_Profile_Profile_Metamodel_Reference;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Duration_Interval_Duration_Interval_Min --
+   ------------------------------------------------------
+
+   function MP_UML_A_Duration_Interval_Duration_Interval_Min return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1424;
+   end MP_UML_A_Duration_Interval_Duration_Interval_Min;
+
+   ------------------------------------
+   -- MP_UML_A_Interval_Interval_Min --
+   ------------------------------------
+
+   function MP_UML_A_Interval_Interval_Min return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1425;
+   end MP_UML_A_Interval_Interval_Min;
+
+   ----------------------------------------------
+   -- MP_UML_A_Time_Interval_Time_Interval_Min --
+   ----------------------------------------------
+
+   function MP_UML_A_Time_Interval_Time_Interval_Min return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1426;
+   end MP_UML_A_Time_Interval_Time_Interval_Min;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Interaction_Constraint_Interaction_Constraint_Minint --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Interaction_Constraint_Interaction_Constraint_Minint return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1427;
+   end MP_UML_A_Interaction_Constraint_Interaction_Constraint_Minint;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Named_Element_Named_Element_Name_Expression --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Named_Element_Named_Element_Name_Expression return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1428;
+   end MP_UML_A_Named_Element_Named_Element_Name_Expression;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Association_Association_Navigable_Owned_End --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Association_Association_Navigable_Owned_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1429;
+   end MP_UML_A_Association_Association_Navigable_Owned_End;
+
+   ------------------------------------------------
+   -- MP_UML_A_Artifact_Artifact_Nested_Artifact --
+   ------------------------------------------------
+
+   function MP_UML_A_Artifact_Artifact_Nested_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1430;
+   end MP_UML_A_Artifact_Artifact_Nested_Artifact;
+
+   --------------------------------------------
+   -- MP_UML_A_Class_Class_Nested_Classifier --
+   --------------------------------------------
+
+   function MP_UML_A_Class_Class_Nested_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1431;
+   end MP_UML_A_Class_Class_Nested_Classifier;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Interface_Interface_Nested_Classifier --
+   ----------------------------------------------------
+
+   function MP_UML_A_Interface_Interface_Nested_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1432;
+   end MP_UML_A_Interface_Interface_Nested_Classifier;
+
+   ------------------------------------
+   -- MP_UML_A_Node_Node_Nested_Node --
+   ------------------------------------
+
+   function MP_UML_A_Node_Node_Nested_Node return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1433;
+   end MP_UML_A_Node_Node_Nested_Node;
+
+   -------------------------------------------------------------------------------
+   -- MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_New_Classifier --
+   -------------------------------------------------------------------------------
+
+   function MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_New_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1434;
+   end MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_New_Classifier;
+
+   -----------------------------------------------------------------------
+   -- MP_UML_A_Clear_Association_Action_Clear_Association_Action_Object --
+   -----------------------------------------------------------------------
+
+   function MP_UML_A_Clear_Association_Action_Clear_Association_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1435;
+   end MP_UML_A_Clear_Association_Action_Clear_Association_Action_Object;
+
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Object --
+   ---------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1436;
+   end MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Object;
+
+   -----------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Object --
+   -----------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1437;
+   end MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Object;
+
+   -------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Object --
+   -------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1438;
+   end MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Object;
+
+   -----------------------------------------------------------------------
+   -- MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Object --
+   -----------------------------------------------------------------------
+
+   function MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1439;
+   end MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Object;
+
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_A_Start_Classifier_Behavior_Action_Start_Classifier_Behavior_Action_Object --
+   ---------------------------------------------------------------------------------------
+
+   function MP_UML_A_Start_Classifier_Behavior_Action_Start_Classifier_Behavior_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1440;
+   end MP_UML_A_Start_Classifier_Behavior_Action_Start_Classifier_Behavior_Action_Object;
+
+   -------------------------------------------------------------------------------
+   -- MP_UML_A_Start_Object_Behavior_Action_Start_Object_Behavior_Action_Object --
+   -------------------------------------------------------------------------------
+
+   function MP_UML_A_Start_Object_Behavior_Action_Start_Object_Behavior_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1441;
+   end MP_UML_A_Start_Object_Behavior_Action_Start_Object_Behavior_Action_Object;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Object --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1442;
+   end MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Object;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Unmarshall_Action_Unmarshall_Action_Object --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Unmarshall_Action_Unmarshall_Action_Object return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1443;
+   end MP_UML_A_Unmarshall_Action_Unmarshall_Action_Object;
+
+   --------------------------------------------
+   -- MP_UML_A_Duration_Duration_Observation --
+   --------------------------------------------
+
+   function MP_UML_A_Duration_Duration_Observation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1444;
+   end MP_UML_A_Duration_Duration_Observation;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Time_Expression_Time_Expression_Observation --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Time_Expression_Time_Expression_Observation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1445;
+   end MP_UML_A_Time_Expression_Time_Expression_Observation;
+
+   -------------------------------------------------------------------------------
+   -- MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Old_Classifier --
+   -------------------------------------------------------------------------------
+
+   function MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Old_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1446;
+   end MP_UML_A_Reclassify_Object_Action_Reclassify_Object_Action_Old_Classifier;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Invocation_Action_Invocation_Action_On_Port --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Invocation_Action_Invocation_Action_On_Port return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1447;
+   end MP_UML_A_Invocation_Action_Invocation_Action_On_Port;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Combined_Fragment_Combined_Fragment_Operand --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Combined_Fragment_Combined_Fragment_Operand return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1448;
+   end MP_UML_A_Combined_Fragment_Combined_Fragment_Operand;
+
+   --------------------------------------------
+   -- MP_UML_A_Expression_Expression_Operand --
+   --------------------------------------------
+
+   function MP_UML_A_Expression_Expression_Operand return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1449;
+   end MP_UML_A_Expression_Expression_Operand;
+
+   ----------------------------------------------
+   -- MP_UML_A_Call_Event_Call_Event_Operation --
+   ----------------------------------------------
+
+   function MP_UML_A_Call_Event_Call_Event_Operation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1450;
+   end MP_UML_A_Call_Event_Call_Event_Operation;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Call_Operation_Action_Call_Operation_Action_Operation --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Call_Operation_Action_Call_Operation_Action_Operation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1451;
+   end MP_UML_A_Call_Operation_Action_Call_Operation_Action_Operation;
+
+   -----------------------------------------
+   -- MP_UML_A_Property_Property_Opposite --
+   -----------------------------------------
+
+   function MP_UML_A_Property_Property_Opposite return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1452;
+   end MP_UML_A_Property_Property_Opposite;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Opaque_Action_Opaque_Action_Output_Value --
+   -------------------------------------------------------
+
+   function MP_UML_A_Opaque_Action_Opaque_Action_Output_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1453;
+   end MP_UML_A_Opaque_Action_Opaque_Action_Output_Value;
+
+   -----------------------------------
+   -- MP_UML_A_Action_Action_Output --
+   -----------------------------------
+
+   function MP_UML_A_Action_Action_Output return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1454;
+   end MP_UML_A_Action_Action_Output;
+
+   -------------------------------------------------------------------------------------------
+   -- MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Owned_Actual --
+   -------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Owned_Actual return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1455;
+   end MP_UML_A_Template_Parameter_Substitution_Template_Parameter_Substitution_Owned_Actual;
+
+   ------------------------------------------------
+   -- MP_UML_A_Artifact_Artifact_Owned_Attribute --
+   ------------------------------------------------
+
+   function MP_UML_A_Artifact_Artifact_Owned_Attribute return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1456;
+   end MP_UML_A_Artifact_Artifact_Owned_Attribute;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Owning_Signal_Signal_Owned_Attribute --
+   ---------------------------------------------------
+
+   function MP_UML_A_Owning_Signal_Signal_Owned_Attribute return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1457;
+   end MP_UML_A_Owning_Signal_Signal_Owned_Attribute;
+
+   --------------------------------------------------------------------------
+   -- MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Attribute --
+   --------------------------------------------------------------------------
+
+   function MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Attribute return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1458;
+   end MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Attribute;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Owned_Behavior --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Owned_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1459;
+   end MP_UML_A_Behaviored_Classifier_Behaviored_Classifier_Owned_Behavior;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Owning_Element_Element_Owned_Comment --
+   ---------------------------------------------------
+
+   function MP_UML_A_Owning_Element_Element_Owned_Comment return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1460;
+   end MP_UML_A_Owning_Element_Element_Owned_Comment;
+
+   --------------------------------------------------------------------------
+   -- MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Connector --
+   --------------------------------------------------------------------------
+
+   function MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Connector return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1461;
+   end MP_UML_A_Structured_Classifier_Structured_Classifier_Owned_Connector;
+
+   ------------------------------------------------------------------
+   -- MP_UML_A_Template_Parameter_Template_Parameter_Owned_Default --
+   ------------------------------------------------------------------
+
+   function MP_UML_A_Template_Parameter_Template_Parameter_Owned_Default return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1462;
+   end MP_UML_A_Template_Parameter_Template_Parameter_Owned_Default;
+
+   --------------------------------------------
+   -- MP_UML_A_Extension_Extension_Owned_End --
+   --------------------------------------------
+
+   function MP_UML_A_Extension_Extension_Owned_End return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1463;
+   end MP_UML_A_Extension_Extension_Owned_End;
+
+   ------------------------------------------------
+   -- MP_UML_A_Artifact_Artifact_Owned_Operation --
+   ------------------------------------------------
+
+   function MP_UML_A_Artifact_Artifact_Owned_Operation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1464;
+   end MP_UML_A_Artifact_Artifact_Owned_Operation;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Owned_Parameter_Set --
+   ----------------------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Owned_Parameter_Set return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1465;
+   end MP_UML_A_Behavior_Behavior_Owned_Parameter_Set;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Behavioral_Feature_Behavioral_Feature_Owned_Parameter_Set --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Behavioral_Feature_Behavioral_Feature_Owned_Parameter_Set return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1466;
+   end MP_UML_A_Behavioral_Feature_Behavioral_Feature_Owned_Parameter_Set;
+
+   ------------------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Owned_Parameter --
+   ------------------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Owned_Parameter return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1467;
+   end MP_UML_A_Behavior_Behavior_Owned_Parameter;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Owner_Formal_Param_Behavioral_Feature_Owned_Parameter --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Owner_Formal_Param_Behavioral_Feature_Owned_Parameter return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1468;
+   end MP_UML_A_Owner_Formal_Param_Behavioral_Feature_Owned_Parameter;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Encapsulated_Classifier_Encapsulated_Classifier_Owned_Port --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Encapsulated_Classifier_Encapsulated_Classifier_Owned_Port return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1469;
+   end MP_UML_A_Encapsulated_Classifier_Encapsulated_Classifier_Owned_Port;
+
+   ------------------------------------------
+   -- MP_UML_A_Class_Class_Owned_Reception --
+   ------------------------------------------
+
+   function MP_UML_A_Class_Class_Owned_Reception return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1470;
+   end MP_UML_A_Class_Class_Owned_Reception;
+
+   --------------------------------------------------
+   -- MP_UML_A_Interface_Interface_Owned_Reception --
+   --------------------------------------------------
+
+   function MP_UML_A_Interface_Interface_Owned_Reception return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1471;
+   end MP_UML_A_Interface_Interface_Owned_Reception;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Owning_Package_Package_Owned_Stereotype --
+   ------------------------------------------------------
+
+   function MP_UML_A_Owning_Package_Package_Owned_Stereotype return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1472;
+   end MP_UML_A_Owning_Package_Package_Owned_Stereotype;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Owned_Use_Case --
+   ---------------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Owned_Use_Case return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1473;
+   end MP_UML_A_Classifier_Classifier_Owned_Use_Case;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Component_Component_Packaged_Element --
+   ---------------------------------------------------
+
+   function MP_UML_A_Component_Component_Packaged_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1474;
+   end MP_UML_A_Component_Component_Packaged_Element;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Owning_Package_Package_Packaged_Element --
+   ------------------------------------------------------
+
+   function MP_UML_A_Owning_Package_Package_Packaged_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1475;
+   end MP_UML_A_Owning_Package_Package_Packaged_Element;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Activity_Parameter_Node_Activity_Parameter_Node_Parameter --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Activity_Parameter_Node_Activity_Parameter_Node_Parameter return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1476;
+   end MP_UML_A_Activity_Parameter_Node_Activity_Parameter_Node_Parameter;
+
+   --------------------------------------------------------------
+   -- MP_UML_A_Template_Signature_Template_Signature_Parameter --
+   --------------------------------------------------------------
+
+   function MP_UML_A_Template_Signature_Template_Signature_Parameter return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1477;
+   end MP_UML_A_Template_Signature_Template_Signature_Parameter;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Connector_End_Connector_End_Part_With_Port --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Connector_End_Connector_End_Part_With_Port return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1478;
+   end MP_UML_A_Connector_End_Connector_End_Part_With_Port;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Structured_Classifier_Structured_Classifier_Part --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Structured_Classifier_Structured_Classifier_Part return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1479;
+   end MP_UML_A_Structured_Classifier_Structured_Classifier_Part;
+
+   ------------------------------------------
+   -- MP_UML_A_Activity_Activity_Partition --
+   ------------------------------------------
+
+   function MP_UML_A_Activity_Activity_Partition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1480;
+   end MP_UML_A_Activity_Activity_Partition;
+
+   -----------------------------------
+   -- MP_UML_A_Trigger_Trigger_Port --
+   -----------------------------------
+
+   function MP_UML_A_Trigger_Trigger_Port return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1481;
+   end MP_UML_A_Trigger_Trigger_Port;
+
+   -------------------------------------------------------------------
+   -- MP_UML_A_Owning_Transition_Protocol_Transition_Post_Condition --
+   -------------------------------------------------------------------
+
+   function MP_UML_A_Owning_Transition_Protocol_Transition_Post_Condition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1482;
+   end MP_UML_A_Owning_Transition_Protocol_Transition_Post_Condition;
+
+   ----------------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Postcondition --
+   ----------------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Postcondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1483;
+   end MP_UML_A_Behavior_Behavior_Postcondition;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Post_Context_Operation_Postcondition --
+   ---------------------------------------------------
+
+   function MP_UML_A_Post_Context_Operation_Postcondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1484;
+   end MP_UML_A_Post_Context_Operation_Postcondition;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Protocol_Transition_Protocol_Transition_Pre_Condition --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Protocol_Transition_Protocol_Transition_Pre_Condition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1485;
+   end MP_UML_A_Protocol_Transition_Protocol_Transition_Pre_Condition;
+
+   ---------------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Precondition --
+   ---------------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Precondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1486;
+   end MP_UML_A_Behavior_Behavior_Precondition;
+
+   -------------------------------------------------
+   -- MP_UML_A_Pre_Context_Operation_Precondition --
+   -------------------------------------------------
+
+   function MP_UML_A_Pre_Context_Operation_Precondition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1487;
+   end MP_UML_A_Pre_Context_Operation_Precondition;
+
+   --------------------------------------------
+   -- MP_UML_A_Stereotype_Stereotype_Profile --
+   --------------------------------------------
+
+   function MP_UML_A_Stereotype_Stereotype_Profile return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1488;
+   end MP_UML_A_Stereotype_Stereotype_Profile;
+
+   -------------------------------------------
+   -- MP_UML_A_Interface_Interface_Protocol --
+   -------------------------------------------
+
+   function MP_UML_A_Interface_Interface_Protocol return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1489;
+   end MP_UML_A_Interface_Interface_Protocol;
+
+   ---------------------------------
+   -- MP_UML_A_Port_Port_Protocol --
+   ---------------------------------
+
+   function MP_UML_A_Port_Port_Protocol return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1491;
+   end MP_UML_A_Port_Port_Protocol;
+
+   -------------------------------------------
+   -- MP_UML_A_Component_Component_Provided --
+   -------------------------------------------
+
+   function MP_UML_A_Component_Component_Provided return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1492;
+   end MP_UML_A_Component_Component_Provided;
+
+   ---------------------------------
+   -- MP_UML_A_Port_Port_Provided --
+   ---------------------------------
+
+   function MP_UML_A_Port_Port_Provided return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1493;
+   end MP_UML_A_Port_Port_Provided;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Link_End_Data_Link_End_Data_Qualifier --
+   ----------------------------------------------------
+
+   function MP_UML_A_Link_End_Data_Link_End_Data_Qualifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1494;
+   end MP_UML_A_Link_End_Data_Link_End_Data_Qualifier;
+
+   --------------------------------------------------------
+   -- MP_UML_A_Qualifier_Value_Qualifier_Value_Qualifier --
+   --------------------------------------------------------
+
+   function MP_UML_A_Qualifier_Value_Qualifier_Value_Qualifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1495;
+   end MP_UML_A_Qualifier_Value_Qualifier_Value_Qualifier;
+
+   ----------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Qualifier --
+   ----------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Qualifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1496;
+   end MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Qualifier;
+
+   ---------------------------------------------------------------------
+   -- MP_UML_A_Behavioral_Feature_Behavioral_Feature_Raised_Exception --
+   ---------------------------------------------------------------------
+
+   function MP_UML_A_Behavioral_Feature_Behavioral_Feature_Raised_Exception return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1497;
+   end MP_UML_A_Behavioral_Feature_Behavioral_Feature_Raised_Exception;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Operation_Operation_Raised_Exception --
+   ---------------------------------------------------
+
+   function MP_UML_A_Operation_Operation_Raised_Exception return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1498;
+   end MP_UML_A_Operation_Operation_Raised_Exception;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Abstraction_Information_Flow_Realization --
+   -------------------------------------------------------
+
+   function MP_UML_A_Abstraction_Information_Flow_Realization return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1499;
+   end MP_UML_A_Abstraction_Information_Flow_Realization;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Realizing_Activity_Edge --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Realizing_Activity_Edge return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1500;
+   end MP_UML_A_Information_Flow_Information_Flow_Realizing_Activity_Edge;
+
+   -------------------------------------------------------------------------------
+   -- MP_UML_A_Component_Realization_Component_Realization_Realizing_Classifier --
+   -------------------------------------------------------------------------------
+
+   function MP_UML_A_Component_Realization_Component_Realization_Realizing_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1501;
+   end MP_UML_A_Component_Realization_Component_Realization_Realizing_Classifier;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Realizing_Connector --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Realizing_Connector return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1502;
+   end MP_UML_A_Information_Flow_Information_Flow_Realizing_Connector;
+
+   ------------------------------------------------------------------
+   -- MP_UML_A_Information_Flow_Information_Flow_Realizing_Message --
+   ------------------------------------------------------------------
+
+   function MP_UML_A_Information_Flow_Information_Flow_Realizing_Message return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1503;
+   end MP_UML_A_Information_Flow_Information_Flow_Realizing_Message;
+
+   ------------------------------------------------
+   -- MP_UML_A_End_Message_Message_Receive_Event --
+   ------------------------------------------------
+
+   function MP_UML_A_End_Message_Message_Receive_Event return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1504;
+   end MP_UML_A_End_Message_Message_Receive_Event;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Behavior_Behavior_Redefined_Behavior --
+   ---------------------------------------------------
+
+   function MP_UML_A_Behavior_Behavior_Redefined_Behavior return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1505;
+   end MP_UML_A_Behavior_Behavior_Redefined_Behavior;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Redefined_Classifier --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Redefined_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1506;
+   end MP_UML_A_Classifier_Classifier_Redefined_Classifier;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Connector_Connector_Redefined_Connector --
+   ------------------------------------------------------
+
+   function MP_UML_A_Connector_Connector_Redefined_Connector return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1507;
+   end MP_UML_A_Connector_Connector_Redefined_Connector;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Activity_Edge_Activity_Edge_Redefined_Edge --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Activity_Edge_Activity_Edge_Redefined_Edge return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1508;
+   end MP_UML_A_Activity_Edge_Activity_Edge_Redefined_Edge;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Redefinable_Element_Redefinable_Element_Redefined_Element --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Redefinable_Element_Redefinable_Element_Redefined_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1509;
+   end MP_UML_A_Redefinable_Element_Redefinable_Element_Redefined_Element;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Interface_Interface_Redefined_Interface --
+   ------------------------------------------------------
+
+   function MP_UML_A_Interface_Interface_Redefined_Interface return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1510;
+   end MP_UML_A_Interface_Interface_Redefined_Interface;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Activity_Node_Activity_Node_Redefined_Node --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Activity_Node_Activity_Node_Redefined_Node return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1511;
+   end MP_UML_A_Activity_Node_Activity_Node_Redefined_Node;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Operation_Operation_Redefined_Operation --
+   ------------------------------------------------------
+
+   function MP_UML_A_Operation_Operation_Redefined_Operation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1512;
+   end MP_UML_A_Operation_Operation_Redefined_Operation;
+
+   ---------------------------------------
+   -- MP_UML_A_Port_Port_Redefined_Port --
+   ---------------------------------------
+
+   function MP_UML_A_Port_Port_Redefined_Port return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1513;
+   end MP_UML_A_Port_Port_Redefined_Port;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Property_Property_Redefined_Property --
+   ---------------------------------------------------
+
+   function MP_UML_A_Property_Property_Redefined_Property return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1514;
+   end MP_UML_A_Property_Property_Redefined_Property;
+
+   ------------------------------------------
+   -- MP_UML_A_State_State_Redefined_State --
+   ------------------------------------------
+
+   function MP_UML_A_State_State_Redefined_State return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1515;
+   end MP_UML_A_State_State_Redefined_State;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Transition_Transition_Redefined_Transition --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Transition_Transition_Redefined_Transition return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1516;
+   end MP_UML_A_Transition_Transition_Redefined_Transition;
+
+   ---------------------------------------------------------------------------
+   -- MP_UML_A_Redefinable_Element_Redefinable_Element_Redefinition_Context --
+   ---------------------------------------------------------------------------
+
+   function MP_UML_A_Redefinable_Element_Redefinable_Element_Redefinition_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1517;
+   end MP_UML_A_Redefinable_Element_Redefinable_Element_Redefinition_Context;
+
+   -------------------------------------------------
+   -- MP_UML_A_Region_Region_Redefinition_Context --
+   -------------------------------------------------
+
+   function MP_UML_A_Region_Region_Redefinition_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1518;
+   end MP_UML_A_Region_Region_Redefinition_Context;
+
+   -----------------------------------------------
+   -- MP_UML_A_State_State_Redefinition_Context --
+   -----------------------------------------------
+
+   function MP_UML_A_State_State_Redefinition_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1519;
+   end MP_UML_A_State_State_Redefinition_Context;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Transition_Transition_Redefinition_Context --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Transition_Transition_Redefinition_Context return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1520;
+   end MP_UML_A_Transition_Transition_Redefinition_Context;
+
+   --------------------------------------------------
+   -- MP_UML_A_Reduce_Action_Reduce_Action_Reducer --
+   --------------------------------------------------
+
+   function MP_UML_A_Reduce_Action_Reduce_Action_Reducer return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1521;
+   end MP_UML_A_Reduce_Action_Reduce_Action_Reducer;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Protocol_Transition_Protocol_Transition_Referred --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Protocol_Transition_Protocol_Transition_Referred return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1522;
+   end MP_UML_A_Protocol_Transition_Protocol_Transition_Referred;
+
+   --------------------------------------------------------
+   -- MP_UML_A_Interaction_Use_Interaction_Use_Refers_To --
+   --------------------------------------------------------
+
+   function MP_UML_A_Interaction_Use_Interaction_Use_Refers_To return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1523;
+   end MP_UML_A_Interaction_Use_Interaction_Use_Refers_To;
+
+   --------------------------------------------------------
+   -- MP_UML_A_Relationship_Relationship_Related_Element --
+   --------------------------------------------------------
+
+   function MP_UML_A_Relationship_Relationship_Related_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1524;
+   end MP_UML_A_Relationship_Relationship_Related_Element;
+
+   ------------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Remove_Structural_Feature_Value_Action_Remove_Structural_Feature_Value_Action_Remove_At --
+   ------------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Remove_Structural_Feature_Value_Action_Remove_Structural_Feature_Value_Action_Remove_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1525;
+   end MP_UML_A_Remove_Structural_Feature_Value_Action_Remove_Structural_Feature_Value_Action_Remove_At;
+
+   ----------------------------------------------------------------------------------
+   -- MP_UML_A_Remove_Variable_Value_Action_Remove_Variable_Value_Action_Remove_At --
+   ----------------------------------------------------------------------------------
+
+   function MP_UML_A_Remove_Variable_Value_Action_Remove_Variable_Value_Action_Remove_At return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1526;
+   end MP_UML_A_Remove_Variable_Value_Action_Remove_Variable_Value_Action_Remove_At;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Reply_Action_Reply_Action_Reply_To_Call --
+   ------------------------------------------------------
+
+   function MP_UML_A_Reply_Action_Reply_Action_Reply_To_Call return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1527;
+   end MP_UML_A_Reply_Action_Reply_Action_Reply_To_Call;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Reply_Action_Reply_Action_Reply_Value --
+   ----------------------------------------------------
+
+   function MP_UML_A_Reply_Action_Reply_Action_Reply_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1528;
+   end MP_UML_A_Reply_Action_Reply_Action_Reply_Value;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Classifier_Classifier_Representation --
+   ---------------------------------------------------
+
+   function MP_UML_A_Classifier_Classifier_Representation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1529;
+   end MP_UML_A_Classifier_Classifier_Representation;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Representation_Information_Item_Represented --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Representation_Information_Item_Represented return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1530;
+   end MP_UML_A_Representation_Information_Item_Represented;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Activity_Partition_Activity_Partition_Represents --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Activity_Partition_Activity_Partition_Represents return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1531;
+   end MP_UML_A_Activity_Partition_Activity_Partition_Represents;
+
+   -------------------------------------------
+   -- MP_UML_A_Lifeline_Lifeline_Represents --
+   -------------------------------------------
+
+   function MP_UML_A_Lifeline_Lifeline_Represents return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1533;
+   end MP_UML_A_Lifeline_Lifeline_Represents;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Send_Object_Action_Send_Object_Action_Request --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Send_Object_Action_Send_Object_Action_Request return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1534;
+   end MP_UML_A_Send_Object_Action_Send_Object_Action_Request;
+
+   -------------------------------------------
+   -- MP_UML_A_Component_Component_Required --
+   -------------------------------------------
+
+   function MP_UML_A_Component_Component_Required return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1535;
+   end MP_UML_A_Component_Component_Required;
+
+   ---------------------------------
+   -- MP_UML_A_Port_Port_Required --
+   ---------------------------------
+
+   function MP_UML_A_Port_Port_Required return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1536;
+   end MP_UML_A_Port_Port_Required;
+
+   -------------------------------------------------------------
+   -- MP_UML_A_Accept_Event_Action_Accept_Event_Action_Result --
+   -------------------------------------------------------------
+
+   function MP_UML_A_Accept_Event_Action_Accept_Event_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1537;
+   end MP_UML_A_Accept_Event_Action_Accept_Event_Action_Result;
+
+   ---------------------------------------------
+   -- MP_UML_A_Call_Action_Call_Action_Result --
+   ---------------------------------------------
+
+   function MP_UML_A_Call_Action_Call_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1538;
+   end MP_UML_A_Call_Action_Call_Action_Result;
+
+   -------------------------------------------------------------------------------------
+   -- MP_UML_A_Clear_Structural_Feature_Action_Clear_Structural_Feature_Action_Result --
+   -------------------------------------------------------------------------------------
+
+   function MP_UML_A_Clear_Structural_Feature_Action_Clear_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1539;
+   end MP_UML_A_Clear_Structural_Feature_Action_Clear_Structural_Feature_Action_Result;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Conditional_Node_Conditional_Node_Result --
+   -------------------------------------------------------
+
+   function MP_UML_A_Conditional_Node_Conditional_Node_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1540;
+   end MP_UML_A_Conditional_Node_Conditional_Node_Result;
+
+   -------------------------------------------------------------------------
+   -- MP_UML_A_Create_Link_Object_Action_Create_Link_Object_Action_Result --
+   -------------------------------------------------------------------------
+
+   function MP_UML_A_Create_Link_Object_Action_Create_Link_Object_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1541;
+   end MP_UML_A_Create_Link_Object_Action_Create_Link_Object_Action_Result;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Create_Object_Action_Create_Object_Action_Result --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Create_Object_Action_Create_Object_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1542;
+   end MP_UML_A_Create_Object_Action_Create_Object_Action_Result;
+
+   -----------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Result --
+   -----------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1543;
+   end MP_UML_A_Loop_Node_Loop_Node_Result;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Opaque_Expression_Opaque_Expression_Result --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Opaque_Expression_Opaque_Expression_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1544;
+   end MP_UML_A_Opaque_Expression_Opaque_Expression_Result;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Read_Extent_Action_Read_Extent_Action_Result --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Read_Extent_Action_Read_Extent_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1545;
+   end MP_UML_A_Read_Extent_Action_Read_Extent_Action_Result;
+
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Result --
+   ---------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1546;
+   end MP_UML_A_Read_Is_Classified_Object_Action_Read_Is_Classified_Object_Action_Result;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Read_Link_Action_Read_Link_Action_Result --
+   -------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Action_Read_Link_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1547;
+   end MP_UML_A_Read_Link_Action_Read_Link_Action_Result;
+
+   -----------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Result --
+   -----------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1548;
+   end MP_UML_A_Read_Link_Object_End_Action_Read_Link_Object_End_Action_Result;
+
+   -------------------------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Result --
+   -------------------------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1549;
+   end MP_UML_A_Read_Link_Object_End_Qualifier_Action_Read_Link_Object_End_Qualifier_Action_Result;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Read_Self_Action_Read_Self_Action_Result --
+   -------------------------------------------------------
+
+   function MP_UML_A_Read_Self_Action_Read_Self_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1550;
+   end MP_UML_A_Read_Self_Action_Read_Self_Action_Result;
+
+   -----------------------------------------------------------------------------------
+   -- MP_UML_A_Read_Structural_Feature_Action_Read_Structural_Feature_Action_Result --
+   -----------------------------------------------------------------------------------
+
+   function MP_UML_A_Read_Structural_Feature_Action_Read_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1551;
+   end MP_UML_A_Read_Structural_Feature_Action_Read_Structural_Feature_Action_Result;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Read_Variable_Action_Read_Variable_Action_Result --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Read_Variable_Action_Read_Variable_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1552;
+   end MP_UML_A_Read_Variable_Action_Read_Variable_Action_Result;
+
+   -------------------------------------------------
+   -- MP_UML_A_Reduce_Action_Reduce_Action_Result --
+   -------------------------------------------------
+
+   function MP_UML_A_Reduce_Action_Reduce_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1553;
+   end MP_UML_A_Reduce_Action_Reduce_Action_Result;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Test_Identity_Action_Test_Identity_Action_Result --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Test_Identity_Action_Test_Identity_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1554;
+   end MP_UML_A_Test_Identity_Action_Test_Identity_Action_Result;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Unmarshall_Action_Unmarshall_Action_Result --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Unmarshall_Action_Unmarshall_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1555;
+   end MP_UML_A_Unmarshall_Action_Unmarshall_Action_Result;
+
+   ---------------------------------------------------------------------------
+   -- MP_UML_A_Value_Specification_Action_Value_Specification_Action_Result --
+   ---------------------------------------------------------------------------
+
+   function MP_UML_A_Value_Specification_Action_Value_Specification_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1556;
+   end MP_UML_A_Value_Specification_Action_Value_Specification_Action_Result;
+
+   -------------------------------------------------------------------------------------
+   -- MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Result --
+   -------------------------------------------------------------------------------------
+
+   function MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Result return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1557;
+   end MP_UML_A_Write_Structural_Feature_Action_Write_Structural_Feature_Action_Result;
+
+   -----------------------------------------------------------------------
+   -- MP_UML_A_Accept_Call_Action_Accept_Call_Action_Return_Information --
+   -----------------------------------------------------------------------
+
+   function MP_UML_A_Accept_Call_Action_Accept_Call_Action_Return_Information return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1558;
+   end MP_UML_A_Accept_Call_Action_Accept_Call_Action_Return_Information;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Reply_Action_Reply_Action_Return_Information --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Reply_Action_Reply_Action_Return_Information return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1559;
+   end MP_UML_A_Reply_Action_Reply_Action_Return_Information;
+
+   ---------------------------------------------------------------------
+   -- MP_UML_A_Interaction_Use_Interaction_Use_Return_Value_Recipient --
+   ---------------------------------------------------------------------
+
+   function MP_UML_A_Interaction_Use_Interaction_Use_Return_Value_Recipient return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1560;
+   end MP_UML_A_Interaction_Use_Interaction_Use_Return_Value_Recipient;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Interaction_Use_Interaction_Use_Return_Value --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Interaction_Use_Interaction_Use_Return_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1561;
+   end MP_UML_A_Interaction_Use_Interaction_Use_Return_Value;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Collaboration_Use_Collaboration_Use_Role_Binding --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Collaboration_Use_Collaboration_Use_Role_Binding return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1562;
+   end MP_UML_A_Collaboration_Use_Collaboration_Use_Role_Binding;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Structured_Classifier_Structured_Classifier_Role --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Structured_Classifier_Structured_Classifier_Role return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1563;
+   end MP_UML_A_Structured_Classifier_Structured_Classifier_Role;
+
+   ---------------------------------------------------------------
+   -- MP_UML_A_Test_Identity_Action_Test_Identity_Action_Second --
+   ---------------------------------------------------------------
+
+   function MP_UML_A_Test_Identity_Action_Test_Identity_Action_Second return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1564;
+   end MP_UML_A_Test_Identity_Action_Test_Identity_Action_Second;
+
+   ------------------------------------------------
+   -- MP_UML_A_Object_Flow_Object_Flow_Selection --
+   ------------------------------------------------
+
+   function MP_UML_A_Object_Flow_Object_Flow_Selection return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1565;
+   end MP_UML_A_Object_Flow_Object_Flow_Selection;
+
+   ------------------------------------------------
+   -- MP_UML_A_Object_Node_Object_Node_Selection --
+   ------------------------------------------------
+
+   function MP_UML_A_Object_Node_Object_Node_Selection return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1566;
+   end MP_UML_A_Object_Node_Object_Node_Selection;
+
+   -----------------------------------------
+   -- MP_UML_A_Lifeline_Lifeline_Selector --
+   -----------------------------------------
+
+   function MP_UML_A_Lifeline_Lifeline_Selector return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1567;
+   end MP_UML_A_Lifeline_Lifeline_Selector;
+
+   ---------------------------------------------
+   -- MP_UML_A_End_Message_Message_Send_Event --
+   ---------------------------------------------
+
+   function MP_UML_A_End_Message_Message_Send_Event return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1568;
+   end MP_UML_A_End_Message_Message_Send_Event;
+
+   ---------------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Setup_Part --
+   ---------------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Setup_Part return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1569;
+   end MP_UML_A_Loop_Node_Loop_Node_Setup_Part;
+
+   ---------------------------------------------------------------------
+   -- MP_UML_A_Broadcast_Signal_Action_Broadcast_Signal_Action_Signal --
+   ---------------------------------------------------------------------
+
+   function MP_UML_A_Broadcast_Signal_Action_Broadcast_Signal_Action_Signal return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1570;
+   end MP_UML_A_Broadcast_Signal_Action_Broadcast_Signal_Action_Signal;
+
+   -----------------------------------------
+   -- MP_UML_A_Reception_Reception_Signal --
+   -----------------------------------------
+
+   function MP_UML_A_Reception_Reception_Signal return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1571;
+   end MP_UML_A_Reception_Reception_Signal;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Send_Signal_Action_Send_Signal_Action_Signal --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Send_Signal_Action_Send_Signal_Action_Signal return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1572;
+   end MP_UML_A_Send_Signal_Action_Send_Signal_Action_Signal;
+
+   -----------------------------------------------
+   -- MP_UML_A_Signal_Event_Signal_Event_Signal --
+   -----------------------------------------------
+
+   function MP_UML_A_Signal_Event_Signal_Event_Signal return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1573;
+   end MP_UML_A_Signal_Event_Signal_Event_Signal;
+
+   ----------------------------------------
+   -- MP_UML_A_Message_Message_Signature --
+   ----------------------------------------
+
+   function MP_UML_A_Message_Message_Signature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1574;
+   end MP_UML_A_Message_Message_Signature;
+
+   ----------------------------------------------------------
+   -- MP_UML_A_Template_Binding_Template_Binding_Signature --
+   ----------------------------------------------------------
+
+   function MP_UML_A_Template_Binding_Template_Binding_Signature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1575;
+   end MP_UML_A_Template_Binding_Template_Binding_Signature;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Directed_Relationship_Directed_Relationship_Source --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Directed_Relationship_Directed_Relationship_Source return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1576;
+   end MP_UML_A_Directed_Relationship_Directed_Relationship_Source;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Duration_Constraint_Duration_Constraint_Specification --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Duration_Constraint_Duration_Constraint_Specification return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1577;
+   end MP_UML_A_Duration_Constraint_Duration_Constraint_Specification;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Interval_Constraint_Interval_Constraint_Specification --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Interval_Constraint_Interval_Constraint_Specification return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1578;
+   end MP_UML_A_Interval_Constraint_Interval_Constraint_Specification;
+
+   ---------------------------------------------------------
+   -- MP_UML_A_Owning_Constraint_Constraint_Specification --
+   ---------------------------------------------------------
+
+   function MP_UML_A_Owning_Constraint_Constraint_Specification return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1579;
+   end MP_UML_A_Owning_Constraint_Constraint_Specification;
+
+   ------------------------------------------------------------------------
+   -- MP_UML_A_Owning_Instance_Spec_Instance_Specification_Specification --
+   ------------------------------------------------------------------------
+
+   function MP_UML_A_Owning_Instance_Spec_Instance_Specification_Specification return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1580;
+   end MP_UML_A_Owning_Instance_Spec_Instance_Specification_Specification;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Time_Constraint_Time_Constraint_Specification --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Time_Constraint_Time_Constraint_Specification return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1581;
+   end MP_UML_A_Time_Constraint_Time_Constraint_Specification;
+
+   --------------------------------------------------------------------
+   -- MP_UML_A_Execution_Specification_Execution_Specification_Start --
+   --------------------------------------------------------------------
+
+   function MP_UML_A_Execution_Specification_Execution_Specification_Start return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1583;
+   end MP_UML_A_Execution_Specification_Execution_Specification_Start;
+
+   -------------------------------------------------
+   -- MP_UML_A_Owning_State_State_State_Invariant --
+   -------------------------------------------------
+
+   function MP_UML_A_Owning_State_State_State_Invariant return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1584;
+   end MP_UML_A_Owning_State_State_State_Invariant;
+
+   -------------------------------------------------------------------------------------
+   -- MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Structural_Feature --
+   -------------------------------------------------------------------------------------
+
+   function MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Structural_Feature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1585;
+   end MP_UML_A_Structural_Feature_Action_Structural_Feature_Action_Structural_Feature;
+
+   --------------------------------------------------------------------------------------
+   -- MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Input --
+   --------------------------------------------------------------------------------------
+
+   function MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Input return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1586;
+   end MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Input;
+
+   ---------------------------------------------------------------------------------------
+   -- MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Output --
+   ---------------------------------------------------------------------------------------
+
+   function MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Output return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1587;
+   end MP_UML_A_Structured_Activity_Node_Structured_Activity_Node_Structured_Node_Output;
+
+   ---------------------------------------------------
+   -- MP_UML_A_Property_Property_Subsetted_Property --
+   ---------------------------------------------------
+
+   function MP_UML_A_Property_Property_Subsetted_Property return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1588;
+   end MP_UML_A_Property_Property_Subsetted_Property;
+
+   --------------------------------------
+   -- MP_UML_A_Class_Class_Super_Class --
+   --------------------------------------
+
+   function MP_UML_A_Class_Class_Super_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1589;
+   end MP_UML_A_Class_Class_Super_Class;
+
+   ------------------------------------------------------
+   -- MP_UML_A_Supplier_Dependency_Dependency_Supplier --
+   ------------------------------------------------------
+
+   function MP_UML_A_Supplier_Dependency_Dependency_Supplier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1590;
+   end MP_UML_A_Supplier_Dependency_Dependency_Supplier;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Call_Operation_Action_Call_Operation_Action_Target --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Call_Operation_Action_Call_Operation_Action_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1592;
+   end MP_UML_A_Call_Operation_Action_Call_Operation_Action_Target;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Destroy_Object_Action_Destroy_Object_Action_Target --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Destroy_Object_Action_Destroy_Object_Action_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1593;
+   end MP_UML_A_Destroy_Object_Action_Destroy_Object_Action_Target;
+
+   -----------------------------------------------------------------
+   -- MP_UML_A_Directed_Relationship_Directed_Relationship_Target --
+   -----------------------------------------------------------------
+
+   function MP_UML_A_Directed_Relationship_Directed_Relationship_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1594;
+   end MP_UML_A_Directed_Relationship_Directed_Relationship_Target;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Send_Object_Action_Send_Object_Action_Target --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Send_Object_Action_Send_Object_Action_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1595;
+   end MP_UML_A_Send_Object_Action_Send_Object_Action_Target;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Send_Signal_Action_Send_Signal_Action_Target --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Send_Signal_Action_Send_Signal_Action_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1596;
+   end MP_UML_A_Send_Signal_Action_Send_Signal_Action_Target;
+
+   ---------------------------------
+   -- MP_UML_A_Clause_Clause_Test --
+   ---------------------------------
+
+   function MP_UML_A_Clause_Clause_Test return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1597;
+   end MP_UML_A_Clause_Clause_Test;
+
+   ---------------------------------------
+   -- MP_UML_A_Loop_Node_Loop_Node_Test --
+   ---------------------------------------
+
+   function MP_UML_A_Loop_Node_Loop_Node_Test return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1598;
+   end MP_UML_A_Loop_Node_Loop_Node_Test;
+
+   -----------------------------------------------------
+   -- MP_UML_A_Object_Flow_Object_Flow_Transformation --
+   -----------------------------------------------------
+
+   function MP_UML_A_Object_Flow_Object_Flow_Transformation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1599;
+   end MP_UML_A_Object_Flow_Object_Flow_Transformation;
+
+   --------------------------------------------------------------
+   -- MP_UML_A_Accept_Event_Action_Accept_Event_Action_Trigger --
+   --------------------------------------------------------------
+
+   function MP_UML_A_Accept_Event_Action_Accept_Event_Action_Trigger return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1600;
+   end MP_UML_A_Accept_Event_Action_Accept_Event_Action_Trigger;
+
+   --------------------------------------------
+   -- MP_UML_A_Transition_Transition_Trigger --
+   --------------------------------------------
+
+   function MP_UML_A_Transition_Transition_Trigger return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1601;
+   end MP_UML_A_Transition_Transition_Trigger;
+
+   -------------------------------------------------------
+   -- MP_UML_A_Collaboration_Use_Collaboration_Use_Type --
+   -------------------------------------------------------
+
+   function MP_UML_A_Collaboration_Use_Collaboration_Use_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1602;
+   end MP_UML_A_Collaboration_Use_Collaboration_Use_Type;
+
+   ---------------------------------------
+   -- MP_UML_A_Connector_Connector_Type --
+   ---------------------------------------
+
+   function MP_UML_A_Connector_Connector_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1603;
+   end MP_UML_A_Connector_Connector_Type;
+
+   -----------------------------------------------
+   -- MP_UML_A_Extension_End_Extension_End_Type --
+   -----------------------------------------------
+
+   function MP_UML_A_Extension_End_Extension_End_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1604;
+   end MP_UML_A_Extension_End_Extension_End_Type;
+
+   ---------------------------------------
+   -- MP_UML_A_Operation_Operation_Type --
+   ---------------------------------------
+
+   function MP_UML_A_Operation_Operation_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1605;
+   end MP_UML_A_Operation_Operation_Type;
+
+   -----------------------------------------------
+   -- MP_UML_A_Typed_Element_Typed_Element_Type --
+   -----------------------------------------------
+
+   function MP_UML_A_Typed_Element_Typed_Element_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1606;
+   end MP_UML_A_Typed_Element_Typed_Element_Type;
+
+   ------------------------------------------------------------------
+   -- MP_UML_A_Unmarshall_Action_Unmarshall_Action_Unmarshall_Type --
+   ------------------------------------------------------------------
+
+   function MP_UML_A_Unmarshall_Action_Unmarshall_Action_Unmarshall_Type return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1607;
+   end MP_UML_A_Unmarshall_Action_Unmarshall_Action_Unmarshall_Type;
+
+   --------------------------------------------------
+   -- MP_UML_A_Object_Node_Object_Node_Upper_Bound --
+   --------------------------------------------------
+
+   function MP_UML_A_Object_Node_Object_Node_Upper_Bound return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1608;
+   end MP_UML_A_Object_Node_Object_Node_Upper_Bound;
+
+   ------------------------------------------------------------
+   -- MP_UML_A_Owning_Upper_Multiplicity_Element_Upper_Value --
+   ------------------------------------------------------------
+
+   function MP_UML_A_Owning_Upper_Multiplicity_Element_Upper_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1609;
+   end MP_UML_A_Owning_Upper_Multiplicity_Element_Upper_Value;
+
+   -----------------------------------------------------------
+   -- MP_UML_A_Manifestation_Manifestation_Utilized_Element --
+   -----------------------------------------------------------
+
+   function MP_UML_A_Manifestation_Manifestation_Utilized_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1610;
+   end MP_UML_A_Manifestation_Manifestation_Utilized_Element;
+
+   ------------------------------------------------
+   -- MP_UML_A_Link_End_Data_Link_End_Data_Value --
+   ------------------------------------------------
+
+   function MP_UML_A_Link_End_Data_Link_End_Data_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1611;
+   end MP_UML_A_Link_End_Data_Link_End_Data_Value;
+
+   -------------------------------------
+   -- MP_UML_A_Owning_Slot_Slot_Value --
+   -------------------------------------
+
+   function MP_UML_A_Owning_Slot_Slot_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1612;
+   end MP_UML_A_Owning_Slot_Slot_Value;
+
+   ----------------------------------------------------
+   -- MP_UML_A_Qualifier_Value_Qualifier_Value_Value --
+   ----------------------------------------------------
+
+   function MP_UML_A_Qualifier_Value_Qualifier_Value_Value return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 1613;
+   end MP_UML_A_Qualifier_Value_Qualifier_Value_Value;
 
    --------------------------------------
    -- MA_UML_Value_Pin_Value_Value_Pin --

@@ -82,32 +82,59 @@ package body AMF.Internals.Tables.Standard_Profile_L3_Metamodel is
       return Base + 3;
    end MC_Standard_Profile_L3_System_Model;
 
-   -----------------------------------------------------------
-   -- MP_Standard_Profile_L3_Build_Component_Base_Component --
-   -----------------------------------------------------------
+   ---------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_Build_Component_Base_Component_A_Extension_Build_Component --
+   ---------------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L3_Build_Component_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L3_Build_Component_Base_Component_A_Extension_Build_Component return AMF.Internals.CMOF_Element is
    begin
       return Base + 4;
-   end MP_Standard_Profile_L3_Build_Component_Base_Component;
+   end MP_Standard_Profile_L3_Build_Component_Base_Component_A_Extension_Build_Component;
 
-   -------------------------------------------------
-   -- MP_Standard_Profile_L3_Metamodel_Base_Model --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_Metamodel_Base_Model_A_Extension_Metamodel --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L3_Metamodel_Base_Model return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L3_Metamodel_Base_Model_A_Extension_Metamodel return AMF.Internals.CMOF_Element is
    begin
       return Base + 5;
-   end MP_Standard_Profile_L3_Metamodel_Base_Model;
+   end MP_Standard_Profile_L3_Metamodel_Base_Model_A_Extension_Metamodel;
 
-   ----------------------------------------------------
-   -- MP_Standard_Profile_L3_System_Model_Base_Model --
-   ----------------------------------------------------
+   -----------------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_System_Model_Base_Model_A_Extension_System_Model --
+   -----------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L3_System_Model_Base_Model return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L3_System_Model_Base_Model_A_Extension_System_Model return AMF.Internals.CMOF_Element is
    begin
       return Base + 6;
-   end MP_Standard_Profile_L3_System_Model_Base_Model;
+   end MP_Standard_Profile_L3_System_Model_Base_Model_A_Extension_System_Model;
+
+   -----------------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_A_Extension_System_Model_System_Model_Base_Model --
+   -----------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L3_A_Extension_System_Model_System_Model_Base_Model return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 14;
+   end MP_Standard_Profile_L3_A_Extension_System_Model_System_Model_Base_Model;
+
+   ---------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_A_Extension_Build_Component_Build_Component_Base_Component --
+   ---------------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L3_A_Extension_Build_Component_Build_Component_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 12;
+   end MP_Standard_Profile_L3_A_Extension_Build_Component_Build_Component_Base_Component;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L3_A_Extension_Metamodel_Metamodel_Base_Model --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L3_A_Extension_Metamodel_Metamodel_Base_Model return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 13;
+   end MP_Standard_Profile_L3_A_Extension_Metamodel_Metamodel_Base_Model;
 
    ----------------------------------------------------------------
    -- MA_Standard_Profile_L3_A_Extension_System_Model_Base_Model --

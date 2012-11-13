@@ -406,23 +406,23 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 37;
    end MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame;
 
-   -------------------------------------------------
-   -- MP_UMLDI_UML_Activity_Diagram_Model_Element --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element --
+   -----------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Activity_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 38;
-   end MP_UMLDI_UML_Activity_Diagram_Model_Element;
+   end MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element;
 
-   ------------------------------------------------------
-   -- MP_UMLDI_UML_Association_End_Label_Model_Element --
-   ------------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element --
+   ----------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Association_End_Label_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 39;
-   end MP_UMLDI_UML_Association_End_Label_Model_Element;
+   end MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------
    -- MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind --
@@ -433,14 +433,14 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 40;
    end MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
 
-   -------------------------------------------------
-   -- MP_UMLDI_UML_Behavior_Diagram_Model_Element --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element --
+   -----------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Behavior_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 41;
-   end MP_UMLDI_UML_Behavior_Diagram_Model_Element;
+   end MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------------------------
    -- MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown --
@@ -487,41 +487,41 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 46;
    end MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility;
 
-   -------------------------------------------------
-   -- MP_UMLDI_UML_Classifier_Shape_Model_Element --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element --
+   -----------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Classifier_Shape_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 47;
-   end MP_UMLDI_UML_Classifier_Shape_Model_Element;
+   end MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element;
 
-   -----------------------------------------------------
-   -- MP_UMLDI_UML_Compartment_Element_In_Compartment --
-   -----------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Compartment_Element_In_Compartment_A_Owning_Compartment --
+   --------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Compartment_Element_In_Compartment return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Compartment_Element_In_Compartment_A_Owning_Compartment return AMF.Internals.CMOF_Element is
    begin
       return Base + 34;
-   end MP_UMLDI_UML_Compartment_Element_In_Compartment;
+   end MP_UMLDI_UML_Compartment_Element_In_Compartment_A_Owning_Compartment;
 
-   ----------------------------------------------------
-   -- MP_UMLDI_UML_Compartmentable_Shape_Compartment --
-   ----------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape --
+   --------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Compartmentable_Shape_Compartment return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape return AMF.Internals.CMOF_Element is
    begin
       return Base + 35;
-   end MP_UMLDI_UML_Compartmentable_Shape_Compartment;
+   end MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape;
 
-   ----------------------------------
-   -- MP_UMLDI_UML_Diagram_Heading --
-   ----------------------------------
+   ---------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Heading_A_Headed_Diagram --
+   ---------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Heading return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Heading_A_Headed_Diagram return AMF.Internals.CMOF_Element is
    begin
       return Base + 48;
-   end MP_UMLDI_UML_Diagram_Heading;
+   end MP_UMLDI_UML_Diagram_Heading_A_Headed_Diagram;
 
    -----------------------------------
    -- MP_UMLDI_UML_Diagram_Is_Frame --
@@ -550,68 +550,68 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 51;
    end MP_UMLDI_UML_Diagram_Element_Is_Icon;
 
-   ----------------------------------------------
-   -- MP_UMLDI_UML_Diagram_Element_Local_Style --
-   ----------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element --
+   ---------------------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 52;
-   end MP_UMLDI_UML_Diagram_Element_Local_Style;
+   end MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element;
 
-   ------------------------------------------------
-   -- MP_UMLDI_UML_Diagram_Element_Model_Element --
-   ------------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element --
+   ----------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 53;
-   end MP_UMLDI_UML_Diagram_Element_Model_Element;
+   end MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element;
 
-   ------------------------------------------------
-   -- MP_UMLDI_UML_Diagram_Element_Owned_Element --
-   ------------------------------------------------
+   -----------------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element --
+   -----------------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 36;
-   end MP_UMLDI_UML_Diagram_Element_Owned_Element;
+   end MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element;
 
-   -------------------------------------------------
-   -- MP_UMLDI_UML_Diagram_Element_Owning_Element --
-   -------------------------------------------------
+   -----------------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element --
+   -----------------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 54;
-   end MP_UMLDI_UML_Diagram_Element_Owning_Element;
+   end MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element;
 
-   -----------------------------------------------
-   -- MP_UMLDI_UML_Diagram_Element_Shared_Style --
-   -----------------------------------------------
+   ----------------------------------------------------------------
+   -- MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element --
+   ----------------------------------------------------------------
 
-   function MP_UMLDI_UML_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 55;
-   end MP_UMLDI_UML_Diagram_Element_Shared_Style;
+   end MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element;
 
-   ------------------------------
-   -- MP_UMLDI_UML_Edge_Source --
-   ------------------------------
+   --------------------------------------------
+   -- MP_UMLDI_UML_Edge_Source_A_Source_Edge --
+   --------------------------------------------
 
-   function MP_UMLDI_UML_Edge_Source return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Edge_Source_A_Source_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 56;
-   end MP_UMLDI_UML_Edge_Source;
+   end MP_UMLDI_UML_Edge_Source_A_Source_Edge;
 
-   ------------------------------
-   -- MP_UMLDI_UML_Edge_Target --
-   ------------------------------
+   --------------------------------------------
+   -- MP_UMLDI_UML_Edge_Target_A_Target_Edge --
+   --------------------------------------------
 
-   function MP_UMLDI_UML_Edge_Target return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Edge_Target_A_Target_Edge return AMF.Internals.CMOF_Element is
    begin
       return Base + 57;
-   end MP_UMLDI_UML_Edge_Target;
+   end MP_UMLDI_UML_Edge_Target_A_Target_Edge;
 
    -------------------------------------------
    -- MP_UMLDI_UML_Interaction_Diagram_Kind --
@@ -622,14 +622,14 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 58;
    end MP_UMLDI_UML_Interaction_Diagram_Kind;
 
-   ----------------------------------------------------
-   -- MP_UMLDI_UML_Interaction_Diagram_Model_Element --
-   ----------------------------------------------------
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element --
+   --------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Interaction_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 59;
-   end MP_UMLDI_UML_Interaction_Diagram_Model_Element;
+   end MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    -----------------------------------------------
    -- MP_UMLDI_UML_Interaction_Table_Label_Kind --
@@ -649,32 +649,32 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 61;
    end MP_UMLDI_UML_Label_Text;
 
-   ---------------------------------------------------
-   -- MP_UMLDI_UML_Multiplicity_Label_Model_Element --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element --
+   -------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Multiplicity_Label_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 62;
-   end MP_UMLDI_UML_Multiplicity_Label_Model_Element;
+   end MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element;
 
-   ------------------------------------------
-   -- MP_UMLDI_UML_Name_Label_Mode_Element --
-   ------------------------------------------
+   ----------------------------------------------------------------
+   -- MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element --
+   ----------------------------------------------------------------
 
-   function MP_UMLDI_UML_Name_Label_Mode_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 63;
-   end MP_UMLDI_UML_Name_Label_Mode_Element;
+   end MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element;
 
-   ------------------------------------------------
-   -- MP_UMLDI_UML_Redefines_Label_Model_Element --
-   ------------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element --
+   ----------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Redefines_Label_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 64;
-   end MP_UMLDI_UML_Redefines_Label_Model_Element;
+   end MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element;
 
    ---------------------------------------------------------------
    -- MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border --
@@ -703,14 +703,14 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 67;
    end MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented;
 
-   ------------------------------------------------------
-   -- MP_UMLDI_UML_State_Machine_Diagram_Model_Element --
-   ------------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element --
+   ----------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_State_Machine_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 68;
-   end MP_UMLDI_UML_State_Machine_Diagram_Model_Element;
+   end MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    ----------------------------------------
    -- MP_UMLDI_UML_State_Shape_Is_Tabbed --
@@ -721,32 +721,32 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
       return Base + 69;
    end MP_UMLDI_UML_State_Shape_Is_Tabbed;
 
-   --------------------------------------------
-   -- MP_UMLDI_UML_State_Shape_Model_Element --
-   --------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element --
+   ------------------------------------------------------------------
 
-   function MP_UMLDI_UML_State_Shape_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 70;
-   end MP_UMLDI_UML_State_Shape_Model_Element;
+   end MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element;
 
-   ----------------------------------------------------------------
-   -- MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element --
-   ----------------------------------------------------------------
+   --------------------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element_A_Uml_Diagram_Element --
+   --------------------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
       return Base + 71;
-   end MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element;
+   end MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element_A_Uml_Diagram_Element;
 
-   ----------------------------------------------------------------------
-   -- MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element --
-   ----------------------------------------------------------------------
+   -------------------------------------------------------------------------------------------------------
+   -- MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element_A_Label_Showing_Stereotype_Value --
+   -------------------------------------------------------------------------------------------------------
 
-   function MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element return AMF.Internals.CMOF_Element is
+   function MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element_A_Label_Showing_Stereotype_Value return AMF.Internals.CMOF_Element is
    begin
       return Base + 72;
-   end MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element;
+   end MP_UMLDI_UML_Stereotype_Property_Value_Label_Stereotyped_Element_A_Label_Showing_Stereotype_Value;
 
    ----------------------------------
    -- MP_UMLDI_UML_Style_Font_Name --
@@ -765,6 +765,186 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
    begin
       return Base + 74;
    end MP_UMLDI_UML_Style_Font_Size;
+
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Activity_Diagram_Model_Element --
+   -----------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Activity_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 97;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Activity_Diagram_Model_Element;
+
+   ----------------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Association_End_Label_Model_Element --
+   ----------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Association_End_Label_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 98;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Association_End_Label_Model_Element;
+
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Behavior_Diagram_Model_Element --
+   -----------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Behavior_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 99;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Behavior_Diagram_Model_Element;
+
+   -----------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Classifier_Shape_Model_Element --
+   -----------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Classifier_Shape_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 100;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Classifier_Shape_Model_Element;
+
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_A_Owning_Compartment_UML_Compartment_Element_In_Compartment --
+   --------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Owning_Compartment_UML_Compartment_Element_In_Compartment return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 101;
+   end MP_UMLDI_A_Owning_Compartment_UML_Compartment_Element_In_Compartment;
+
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_A_Compartmented_Shape_UML_Compartmentable_Shape_Compartment --
+   --------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Compartmented_Shape_UML_Compartmentable_Shape_Compartment return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 103;
+   end MP_UMLDI_A_Compartmented_Shape_UML_Compartmentable_Shape_Compartment;
+
+   ---------------------------------------------------------------
+   -- MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Local_Style --
+   ---------------------------------------------------------------
+
+   function MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Local_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 104;
+   end MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Local_Style;
+
+   ----------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Diagram_Element_Model_Element --
+   ----------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Diagram_Element_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 105;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Diagram_Element_Model_Element;
+
+   ----------------------------------------------------------------
+   -- MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Shared_Style --
+   ----------------------------------------------------------------
+
+   function MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Shared_Style return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 106;
+   end MP_UMLDI_A_Styled_Element_UML_Diagram_Element_Shared_Style;
+
+   ---------------------------------------------------
+   -- MP_UMLDI_A_Headed_Diagram_UML_Diagram_Heading --
+   ---------------------------------------------------
+
+   function MP_UMLDI_A_Headed_Diagram_UML_Diagram_Heading return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 107;
+   end MP_UMLDI_A_Headed_Diagram_UML_Diagram_Heading;
+
+   --------------------------------------------
+   -- MP_UMLDI_A_Source_Edge_UML_Edge_Source --
+   --------------------------------------------
+
+   function MP_UMLDI_A_Source_Edge_UML_Edge_Source return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 108;
+   end MP_UMLDI_A_Source_Edge_UML_Edge_Source;
+
+   --------------------------------------------
+   -- MP_UMLDI_A_Target_Edge_UML_Edge_Target --
+   --------------------------------------------
+
+   function MP_UMLDI_A_Target_Edge_UML_Edge_Target return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 109;
+   end MP_UMLDI_A_Target_Edge_UML_Edge_Target;
+
+   --------------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Interaction_Diagram_Model_Element --
+   --------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Interaction_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 110;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Interaction_Diagram_Model_Element;
+
+   -------------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Multiplicity_Label_Model_Element --
+   -------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Multiplicity_Label_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 111;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Multiplicity_Label_Model_Element;
+
+   ----------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Name_Label_Mode_Element --
+   ----------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Name_Label_Mode_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 112;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Name_Label_Mode_Element;
+
+   ----------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Redefines_Label_Model_Element --
+   ----------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Redefines_Label_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 113;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Redefines_Label_Model_Element;
+
+   ----------------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_State_Machine_Diagram_Model_Element --
+   ----------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_State_Machine_Diagram_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 114;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_State_Machine_Diagram_Model_Element;
+
+   ------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_State_Shape_Model_Element --
+   ------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_State_Shape_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 115;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_State_Shape_Model_Element;
+
+   --------------------------------------------------------------------------------------
+   -- MP_UMLDI_A_Uml_Diagram_Element_UML_Stereotype_Property_Value_Label_Model_Element --
+   --------------------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Uml_Diagram_Element_UML_Stereotype_Property_Value_Label_Model_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 116;
+   end MP_UMLDI_A_Uml_Diagram_Element_UML_Stereotype_Property_Value_Label_Model_Element;
+
+   -------------------------------------------------------------------------------------------------------
+   -- MP_UMLDI_A_Label_Showing_Stereotype_Value_UML_Stereotype_Property_Value_Label_Stereotyped_Element --
+   -------------------------------------------------------------------------------------------------------
+
+   function MP_UMLDI_A_Label_Showing_Stereotype_Value_UML_Stereotype_Property_Value_Label_Stereotyped_Element return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 117;
+   end MP_UMLDI_A_Label_Showing_Stereotype_Value_UML_Stereotype_Property_Value_Label_Stereotyped_Element;
 
    ---------------------------------------------------------------------
    -- MA_UMLDI_UML_Activity_Diagram_Model_Element_Uml_Diagram_Element --

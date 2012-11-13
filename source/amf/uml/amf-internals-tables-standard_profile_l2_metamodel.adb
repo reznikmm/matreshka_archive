@@ -325,293 +325,581 @@ package body AMF.Internals.Tables.Standard_Profile_L2_Metamodel is
       return Base + 30;
    end MC_Standard_Profile_L2_Utility;
 
-   -------------------------------------------------
-   -- MP_Standard_Profile_L2_Auxiliary_Base_Class --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Auxiliary_Base_Class_A_Extension_Auxiliary --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Auxiliary_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Auxiliary_Base_Class_A_Extension_Auxiliary return AMF.Internals.CMOF_Element is
    begin
       return Base + 31;
-   end MP_Standard_Profile_L2_Auxiliary_Base_Class;
+   end MP_Standard_Profile_L2_Auxiliary_Base_Class_A_Extension_Auxiliary;
 
-   --------------------------------------------
-   -- MP_Standard_Profile_L2_Call_Base_Usage --
-   --------------------------------------------
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Call_Base_Usage_A_Extension_Call --
+   -------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Call_Base_Usage return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Call_Base_Usage_A_Extension_Call return AMF.Internals.CMOF_Element is
    begin
       return Base + 32;
-   end MP_Standard_Profile_L2_Call_Base_Usage;
+   end MP_Standard_Profile_L2_Call_Base_Usage_A_Extension_Call;
 
-   -----------------------------------------------------------
-   -- MP_Standard_Profile_L2_Create_Base_Behavioral_Feature --
-   -----------------------------------------------------------
+   ------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Create_Base_Behavioral_Feature_A_Extension_Create --
+   ------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Create_Base_Behavioral_Feature return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Create_Base_Behavioral_Feature_A_Extension_Create return AMF.Internals.CMOF_Element is
    begin
       return Base + 33;
-   end MP_Standard_Profile_L2_Create_Base_Behavioral_Feature;
+   end MP_Standard_Profile_L2_Create_Base_Behavioral_Feature_A_Extension_Create;
 
-   ----------------------------------------------
-   -- MP_Standard_Profile_L2_Create_Base_Usage --
-   ----------------------------------------------
+   -----------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Create_Base_Usage_A_Extension_Create --
+   -----------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Create_Base_Usage return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Create_Base_Usage_A_Extension_Create return AMF.Internals.CMOF_Element is
    begin
       return Base + 34;
-   end MP_Standard_Profile_L2_Create_Base_Usage;
+   end MP_Standard_Profile_L2_Create_Base_Usage_A_Extension_Create;
 
-   ----------------------------------------------------
-   -- MP_Standard_Profile_L2_Derive_Base_Abstraction --
-   ----------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Derive_Base_Abstraction_A_Extension_Derive --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Derive_Base_Abstraction return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Derive_Base_Abstraction_A_Extension_Derive return AMF.Internals.CMOF_Element is
    begin
       return Base + 35;
-   end MP_Standard_Profile_L2_Derive_Base_Abstraction;
+   end MP_Standard_Profile_L2_Derive_Base_Abstraction_A_Extension_Derive;
 
-   -----------------------------------------------
-   -- MP_Standard_Profile_L2_Derive_Computation --
-   -----------------------------------------------
+   ------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Derive_Computation_A_Extension_Derive --
+   ------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Derive_Computation return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Derive_Computation_A_Extension_Derive return AMF.Internals.CMOF_Element is
    begin
       return Base + 36;
-   end MP_Standard_Profile_L2_Derive_Computation;
+   end MP_Standard_Profile_L2_Derive_Computation_A_Extension_Derive;
 
-   ------------------------------------------------------------
-   -- MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature --
-   ------------------------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature_A_Extension_Destroy --
+   --------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature_A_Extension_Destroy return AMF.Internals.CMOF_Element is
    begin
       return Base + 37;
-   end MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature;
+   end MP_Standard_Profile_L2_Destroy_Base_Behavioral_Feature_A_Extension_Destroy;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Document_Base_Artifact --
-   ---------------------------------------------------
+   ------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Document_Base_Artifact_A_Extension_Document --
+   ------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Document_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Document_Base_Artifact_A_Extension_Document return AMF.Internals.CMOF_Element is
    begin
       return Base + 38;
-   end MP_Standard_Profile_L2_Document_Base_Artifact;
+   end MP_Standard_Profile_L2_Document_Base_Artifact_A_Extension_Document;
 
-   --------------------------------------------------
-   -- MP_Standard_Profile_L2_Entity_Base_Component --
-   --------------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Entity_Base_Component_A_Extension_Entity --
+   ---------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Entity_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Entity_Base_Component_A_Extension_Entity return AMF.Internals.CMOF_Element is
    begin
       return Base + 39;
-   end MP_Standard_Profile_L2_Entity_Base_Component;
+   end MP_Standard_Profile_L2_Entity_Base_Component_A_Extension_Entity;
 
-   -----------------------------------------------------
-   -- MP_Standard_Profile_L2_Executable_Base_Artifact --
-   -----------------------------------------------------
+   ----------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Executable_Base_Artifact_A_Extension_Executable --
+   ----------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Executable_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Executable_Base_Artifact_A_Extension_Executable return AMF.Internals.CMOF_Element is
    begin
       return Base + 40;
-   end MP_Standard_Profile_L2_Executable_Base_Artifact;
+   end MP_Standard_Profile_L2_Executable_Base_Artifact_A_Extension_Executable;
 
-   -----------------------------------------------
-   -- MP_Standard_Profile_L2_File_Base_Artifact --
-   -----------------------------------------------
+   ----------------------------------------------------------------
+   -- MP_Standard_Profile_L2_File_Base_Artifact_A_Extension_File --
+   ----------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_File_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_File_Base_Artifact_A_Extension_File return AMF.Internals.CMOF_Element is
    begin
       return Base + 41;
-   end MP_Standard_Profile_L2_File_Base_Artifact;
+   end MP_Standard_Profile_L2_File_Base_Artifact_A_Extension_File;
 
-   ---------------------------------------------
-   -- MP_Standard_Profile_L2_Focus_Base_Class --
-   ---------------------------------------------
+   ---------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Focus_Base_Class_A_Extension_Focus --
+   ---------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Focus_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Focus_Base_Class_A_Extension_Focus return AMF.Internals.CMOF_Element is
    begin
       return Base + 42;
-   end MP_Standard_Profile_L2_Focus_Base_Class;
+   end MP_Standard_Profile_L2_Focus_Base_Class_A_Extension_Focus;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Framework_Base_Package --
-   ---------------------------------------------------
+   -------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Framework_Base_Package_A_Extension_Framework --
+   -------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Framework_Base_Package return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Framework_Base_Package_A_Extension_Framework return AMF.Internals.CMOF_Element is
    begin
       return Base + 43;
-   end MP_Standard_Profile_L2_Framework_Base_Package;
+   end MP_Standard_Profile_L2_Framework_Base_Package_A_Extension_Framework;
 
-   -----------------------------------------------------
-   -- MP_Standard_Profile_L2_Implement_Base_Component --
-   -----------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Implement_Base_Component_A_Extension_Implement --
+   ---------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Implement_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Implement_Base_Component_A_Extension_Implement return AMF.Internals.CMOF_Element is
    begin
       return Base + 44;
-   end MP_Standard_Profile_L2_Implement_Base_Component;
+   end MP_Standard_Profile_L2_Implement_Base_Component_A_Extension_Implement;
 
-   ------------------------------------------------------------
-   -- MP_Standard_Profile_L2_Implementation_Class_Base_Class --
-   ------------------------------------------------------------
+   ---------------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Implementation_Class_Base_Class_A_Extension_Implementation_Class --
+   ---------------------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Implementation_Class_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Implementation_Class_Base_Class_A_Extension_Implementation_Class return AMF.Internals.CMOF_Element is
    begin
       return Base + 45;
-   end MP_Standard_Profile_L2_Implementation_Class_Base_Class;
+   end MP_Standard_Profile_L2_Implementation_Class_Base_Class_A_Extension_Implementation_Class;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Instantiate_Base_Usage --
-   ---------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Instantiate_Base_Usage_A_Extension_Instantiate --
+   ---------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Instantiate_Base_Usage return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Instantiate_Base_Usage_A_Extension_Instantiate return AMF.Internals.CMOF_Element is
    begin
       return Base + 46;
-   end MP_Standard_Profile_L2_Instantiate_Base_Usage;
+   end MP_Standard_Profile_L2_Instantiate_Base_Usage_A_Extension_Instantiate;
 
-   --------------------------------------------------
-   -- MP_Standard_Profile_L2_Library_Base_Artifact --
-   --------------------------------------------------
+   ----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Library_Base_Artifact_A_Extension_Library --
+   ----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Library_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Library_Base_Artifact_A_Extension_Library return AMF.Internals.CMOF_Element is
    begin
       return Base + 47;
-   end MP_Standard_Profile_L2_Library_Base_Artifact;
+   end MP_Standard_Profile_L2_Library_Base_Artifact_A_Extension_Library;
 
-   -------------------------------------------------
-   -- MP_Standard_Profile_L2_Metaclass_Base_Class --
-   -------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Metaclass_Base_Class_A_Extension_Metaclass --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Metaclass_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Metaclass_Base_Class_A_Extension_Metaclass return AMF.Internals.CMOF_Element is
    begin
       return Base + 48;
-   end MP_Standard_Profile_L2_Metaclass_Base_Class;
+   end MP_Standard_Profile_L2_Metaclass_Base_Class_A_Extension_Metaclass;
 
-   -------------------------------------------------------
-   -- MP_Standard_Profile_L2_Model_Library_Base_Package --
-   -------------------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Model_Library_Base_Package_A_Extension_Model_Library --
+   ---------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Model_Library_Base_Package return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Model_Library_Base_Package_A_Extension_Model_Library return AMF.Internals.CMOF_Element is
    begin
       return Base + 49;
-   end MP_Standard_Profile_L2_Model_Library_Base_Package;
+   end MP_Standard_Profile_L2_Model_Library_Base_Package_A_Extension_Model_Library;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Process_Base_Component --
-   ---------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Process_Base_Component_A_Extension_Process --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Process_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Process_Base_Component_A_Extension_Process return AMF.Internals.CMOF_Element is
    begin
       return Base + 50;
-   end MP_Standard_Profile_L2_Process_Base_Component;
+   end MP_Standard_Profile_L2_Process_Base_Component_A_Extension_Process;
 
-   --------------------------------------------------------
-   -- MP_Standard_Profile_L2_Realization_Base_Classifier --
-   --------------------------------------------------------
+   --------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Realization_Base_Classifier_A_Extension_Realization --
+   --------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Realization_Base_Classifier return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Realization_Base_Classifier_A_Extension_Realization return AMF.Internals.CMOF_Element is
    begin
       return Base + 51;
-   end MP_Standard_Profile_L2_Realization_Base_Classifier;
+   end MP_Standard_Profile_L2_Realization_Base_Classifier_A_Extension_Realization;
 
-   ----------------------------------------------------
-   -- MP_Standard_Profile_L2_Refine_Base_Abstraction --
-   ----------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Refine_Base_Abstraction_A_Extension_Refine --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Refine_Base_Abstraction return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Refine_Base_Abstraction_A_Extension_Refine return AMF.Internals.CMOF_Element is
    begin
       return Base + 52;
-   end MP_Standard_Profile_L2_Refine_Base_Abstraction;
+   end MP_Standard_Profile_L2_Refine_Base_Abstraction_A_Extension_Refine;
 
-   ------------------------------------------------------
-   -- MP_Standard_Profile_L2_Responsibility_Base_Usage --
-   ------------------------------------------------------
+   ---------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Responsibility_Base_Usage_A_Extension_Responsibility --
+   ---------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Responsibility_Base_Usage return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Responsibility_Base_Usage_A_Extension_Responsibility return AMF.Internals.CMOF_Element is
    begin
       return Base + 53;
-   end MP_Standard_Profile_L2_Responsibility_Base_Usage;
+   end MP_Standard_Profile_L2_Responsibility_Base_Usage_A_Extension_Responsibility;
 
-   -------------------------------------------------
-   -- MP_Standard_Profile_L2_Script_Base_Artifact --
-   -------------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Script_Base_Artifact_A_Extension_Script --
+   --------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Script_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Script_Base_Artifact_A_Extension_Script return AMF.Internals.CMOF_Element is
    begin
       return Base + 54;
-   end MP_Standard_Profile_L2_Script_Base_Artifact;
+   end MP_Standard_Profile_L2_Script_Base_Artifact_A_Extension_Script;
 
-   --------------------------------------------
-   -- MP_Standard_Profile_L2_Send_Base_Usage --
-   --------------------------------------------
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Send_Base_Usage_A_Extension_Send --
+   -------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Send_Base_Usage return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Send_Base_Usage_A_Extension_Send return AMF.Internals.CMOF_Element is
    begin
       return Base + 55;
-   end MP_Standard_Profile_L2_Send_Base_Usage;
+   end MP_Standard_Profile_L2_Send_Base_Usage_A_Extension_Send;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Service_Base_Component --
-   ---------------------------------------------------
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Service_Base_Component_A_Extension_Service --
+   -----------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Service_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Service_Base_Component_A_Extension_Service return AMF.Internals.CMOF_Element is
    begin
       return Base + 56;
-   end MP_Standard_Profile_L2_Service_Base_Component;
+   end MP_Standard_Profile_L2_Service_Base_Component_A_Extension_Service;
 
-   -------------------------------------------------
-   -- MP_Standard_Profile_L2_Source_Base_Artifact --
-   -------------------------------------------------
+   --------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Source_Base_Artifact_A_Extension_Source --
+   --------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Source_Base_Artifact return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Source_Base_Artifact_A_Extension_Source return AMF.Internals.CMOF_Element is
    begin
       return Base + 57;
-   end MP_Standard_Profile_L2_Source_Base_Artifact;
+   end MP_Standard_Profile_L2_Source_Base_Artifact_A_Extension_Source;
 
-   ----------------------------------------------------------
-   -- MP_Standard_Profile_L2_Specification_Base_Classifier --
-   ----------------------------------------------------------
+   ------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Specification_Base_Classifier_A_Extension_Specification --
+   ------------------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Specification_Base_Classifier return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Specification_Base_Classifier_A_Extension_Specification return AMF.Internals.CMOF_Element is
    begin
       return Base + 58;
-   end MP_Standard_Profile_L2_Specification_Base_Classifier;
+   end MP_Standard_Profile_L2_Specification_Base_Classifier_A_Extension_Specification;
 
-   -----------------------------------------------------
-   -- MP_Standard_Profile_L2_Subsystem_Base_Component --
-   -----------------------------------------------------
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Subsystem_Base_Component_A_Extension_Subsystem --
+   ---------------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Subsystem_Base_Component return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Subsystem_Base_Component_A_Extension_Subsystem return AMF.Internals.CMOF_Element is
    begin
       return Base + 59;
-   end MP_Standard_Profile_L2_Subsystem_Base_Component;
+   end MP_Standard_Profile_L2_Subsystem_Base_Component_A_Extension_Subsystem;
 
-   ---------------------------------------------------
-   -- MP_Standard_Profile_L2_Trace_Base_Abstraction --
-   ---------------------------------------------------
+   ---------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Trace_Base_Abstraction_A_Extension_Trace --
+   ---------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Trace_Base_Abstraction return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Trace_Base_Abstraction_A_Extension_Trace return AMF.Internals.CMOF_Element is
    begin
       return Base + 60;
-   end MP_Standard_Profile_L2_Trace_Base_Abstraction;
+   end MP_Standard_Profile_L2_Trace_Base_Abstraction_A_Extension_Trace;
 
-   --------------------------------------------
-   -- MP_Standard_Profile_L2_Type_Base_Class --
-   --------------------------------------------
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Type_Base_Class_A_Extension_Type --
+   -------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Type_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Type_Base_Class_A_Extension_Type return AMF.Internals.CMOF_Element is
    begin
       return Base + 61;
-   end MP_Standard_Profile_L2_Type_Base_Class;
+   end MP_Standard_Profile_L2_Type_Base_Class_A_Extension_Type;
 
-   -----------------------------------------------
-   -- MP_Standard_Profile_L2_Utility_Base_Class --
-   -----------------------------------------------
+   -------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_Utility_Base_Class_A_Extension_Utility --
+   -------------------------------------------------------------------
 
-   function MP_Standard_Profile_L2_Utility_Base_Class return AMF.Internals.CMOF_Element is
+   function MP_Standard_Profile_L2_Utility_Base_Class_A_Extension_Utility return AMF.Internals.CMOF_Element is
    begin
       return Base + 62;
-   end MP_Standard_Profile_L2_Utility_Base_Class;
+   end MP_Standard_Profile_L2_Utility_Base_Class_A_Extension_Utility;
+
+   ---------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Focus_Focus_Base_Class --
+   ---------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Focus_Focus_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 109;
+   end MP_Standard_Profile_L2_A_Extension_Focus_Focus_Base_Class;
+
+   ---------------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Implementation_Class_Implementation_Class_Base_Class --
+   ---------------------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Implementation_Class_Implementation_Class_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 110;
+   end MP_Standard_Profile_L2_A_Extension_Implementation_Class_Implementation_Class_Base_Class;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Metaclass_Metaclass_Base_Class --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Metaclass_Metaclass_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 111;
+   end MP_Standard_Profile_L2_A_Extension_Metaclass_Metaclass_Base_Class;
+
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Type_Type_Base_Class --
+   -------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Type_Type_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 112;
+   end MP_Standard_Profile_L2_A_Extension_Type_Type_Base_Class;
+
+   -------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Utility_Utility_Base_Class --
+   -------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Utility_Utility_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 113;
+   end MP_Standard_Profile_L2_A_Extension_Utility_Utility_Base_Class;
+
+   --------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Realization_Realization_Base_Classifier --
+   --------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Realization_Realization_Base_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 114;
+   end MP_Standard_Profile_L2_A_Extension_Realization_Realization_Base_Classifier;
+
+   ------------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Specification_Specification_Base_Classifier --
+   ------------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Specification_Specification_Base_Classifier return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 115;
+   end MP_Standard_Profile_L2_A_Extension_Specification_Specification_Base_Classifier;
+
+   ---------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Entity_Entity_Base_Component --
+   ---------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Entity_Entity_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 116;
+   end MP_Standard_Profile_L2_A_Extension_Entity_Entity_Base_Component;
+
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Implement_Implement_Base_Component --
+   ---------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Implement_Implement_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 117;
+   end MP_Standard_Profile_L2_A_Extension_Implement_Implement_Base_Component;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Process_Process_Base_Component --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Process_Process_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 118;
+   end MP_Standard_Profile_L2_A_Extension_Process_Process_Base_Component;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Service_Service_Base_Component --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Service_Service_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 119;
+   end MP_Standard_Profile_L2_A_Extension_Service_Service_Base_Component;
+
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Subsystem_Subsystem_Base_Component --
+   ---------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Subsystem_Subsystem_Base_Component return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 120;
+   end MP_Standard_Profile_L2_A_Extension_Subsystem_Subsystem_Base_Component;
+
+   -------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Framework_Framework_Base_Package --
+   -------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Framework_Framework_Base_Package return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 121;
+   end MP_Standard_Profile_L2_A_Extension_Framework_Framework_Base_Package;
+
+   ---------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Model_Library_Model_Library_Base_Package --
+   ---------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Model_Library_Model_Library_Base_Package return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 122;
+   end MP_Standard_Profile_L2_A_Extension_Model_Library_Model_Library_Base_Package;
+
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Call_Call_Base_Usage --
+   -------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Call_Call_Base_Usage return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 123;
+   end MP_Standard_Profile_L2_A_Extension_Call_Call_Base_Usage;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Derive_Derive_Base_Abstraction --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Derive_Derive_Base_Abstraction return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 97;
+   end MP_Standard_Profile_L2_A_Extension_Derive_Derive_Base_Abstraction;
+
+   -----------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Usage --
+   -----------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Usage return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 124;
+   end MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Usage;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Refine_Refine_Base_Abstraction --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Refine_Refine_Base_Abstraction return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 98;
+   end MP_Standard_Profile_L2_A_Extension_Refine_Refine_Base_Abstraction;
+
+   ------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Derive_Derive_Computation --
+   ------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Derive_Derive_Computation return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 125;
+   end MP_Standard_Profile_L2_A_Extension_Derive_Derive_Computation;
+
+   ---------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Trace_Trace_Base_Abstraction --
+   ---------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Trace_Trace_Base_Abstraction return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 99;
+   end MP_Standard_Profile_L2_A_Extension_Trace_Trace_Base_Abstraction;
+
+   ---------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Instantiate_Instantiate_Base_Usage --
+   ---------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Instantiate_Instantiate_Base_Usage return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 126;
+   end MP_Standard_Profile_L2_A_Extension_Instantiate_Instantiate_Base_Usage;
+
+   ------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Document_Document_Base_Artifact --
+   ------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Document_Document_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 100;
+   end MP_Standard_Profile_L2_A_Extension_Document_Document_Base_Artifact;
+
+   ---------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Responsibility_Responsibility_Base_Usage --
+   ---------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Responsibility_Responsibility_Base_Usage return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 127;
+   end MP_Standard_Profile_L2_A_Extension_Responsibility_Responsibility_Base_Usage;
+
+   ----------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Executable_Executable_Base_Artifact --
+   ----------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Executable_Executable_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 101;
+   end MP_Standard_Profile_L2_A_Extension_Executable_Executable_Base_Artifact;
+
+   -------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Send_Send_Base_Usage --
+   -------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Send_Send_Base_Usage return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 128;
+   end MP_Standard_Profile_L2_A_Extension_Send_Send_Base_Usage;
+
+   ----------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_File_File_Base_Artifact --
+   ----------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_File_File_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 102;
+   end MP_Standard_Profile_L2_A_Extension_File_File_Base_Artifact;
+
+   ----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Library_Library_Base_Artifact --
+   ----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Library_Library_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 103;
+   end MP_Standard_Profile_L2_A_Extension_Library_Library_Base_Artifact;
+
+   --------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Script_Script_Base_Artifact --
+   --------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Script_Script_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 104;
+   end MP_Standard_Profile_L2_A_Extension_Script_Script_Base_Artifact;
+
+   --------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Source_Source_Base_Artifact --
+   --------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Source_Source_Base_Artifact return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 105;
+   end MP_Standard_Profile_L2_A_Extension_Source_Source_Base_Artifact;
+
+   ------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Behavioral_Feature --
+   ------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Behavioral_Feature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 106;
+   end MP_Standard_Profile_L2_A_Extension_Create_Create_Base_Behavioral_Feature;
+
+   --------------------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Destroy_Destroy_Base_Behavioral_Feature --
+   --------------------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Destroy_Destroy_Base_Behavioral_Feature return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 107;
+   end MP_Standard_Profile_L2_A_Extension_Destroy_Destroy_Base_Behavioral_Feature;
+
+   -----------------------------------------------------------------------
+   -- MP_Standard_Profile_L2_A_Extension_Auxiliary_Auxiliary_Base_Class --
+   -----------------------------------------------------------------------
+
+   function MP_Standard_Profile_L2_A_Extension_Auxiliary_Auxiliary_Base_Class return AMF.Internals.CMOF_Element is
+   begin
+      return Base + 108;
+   end MP_Standard_Profile_L2_A_Extension_Auxiliary_Auxiliary_Base_Class;
 
    ---------------------------------------------------------
    -- MA_Standard_Profile_L2_A_Extension_Focus_Base_Class --

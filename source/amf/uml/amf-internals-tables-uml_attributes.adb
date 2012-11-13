@@ -11619,10 +11619,23 @@ package body AMF.Internals.Tables.UML_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Collection, Self);
+      raise Program_Error;
+      return 0;
+--      return
+--        AMF.Internals.Links.Opposite_Element
+--         (AMF.Internals.Tables.UML_Element_Table.Table (Self).Member (12).Collection, Self);
    end Internal_Get_Shared_Style;
+
+   -------------------------------
+   -- Internal_Set_Shared_Style --
+   -------------------------------
+
+   procedure Internal_Set_Shared_Style
+    (Self : AMF.Internals.AMF_Element;
+     To   : AMF.Internals.AMF_Element) is
+   begin
+      raise Program_Error;
+   end Internal_Set_Shared_Style;
 
    -------------------------
    -- Internal_Get_Signal --
