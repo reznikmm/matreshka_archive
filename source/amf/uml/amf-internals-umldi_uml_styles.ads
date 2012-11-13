@@ -41,9 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This file is generated, don't edit it.
-------------------------------------------------------------------------------
-with AMF.Internals.UML_Elements;
+with AMF.Internals.UML_Packageable_Elements;
 with AMF.UML.Comments.Collections;
 with AMF.UML.Dependencies.Collections;
 with AMF.UML.Elements.Collections;
@@ -60,7 +58,7 @@ with League.Strings;
 package AMF.Internals.UMLDI_UML_Styles is
 
    type UMLDI_UML_Style_Proxy is
-     limited new AMF.Internals.UML_Elements.UML_Element_Proxy
+     limited new AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy
        and AMF.UMLDI.UML_Styles.UMLDI_UML_Style with null record;
 
    overriding function Get_Font_Name
