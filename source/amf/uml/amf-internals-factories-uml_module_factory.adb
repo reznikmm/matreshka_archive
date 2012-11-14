@@ -42,11 +42,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.Internals.Element_Collections;
+with AMF.Internals.Tables.DI_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
 with AMF.Internals.Tables.UML_Attribute_Mappings;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
+with AMF.Internals.Tables.UMLDI_Metamodel;
 
 package body AMF.Internals.Factories.UML_Module_Factory is
 
@@ -84,10 +86,12 @@ package body AMF.Internals.Factories.UML_Module_Factory is
       pragma Unreferenced (Self);
 
       use AMF.Internals.Tables;
+      use AMF.Internals.Tables.DI_Metamodel;
       use AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
       use AMF.Internals.Tables.Standard_Profile_L3_Metamodel;
       use AMF.Internals.Tables.UML_Attribute_Mappings;
       use AMF.Internals.Tables.UML_Metamodel;
+      use AMF.Internals.Tables.UMLDI_Metamodel;
 
    begin
       --  Properties which comes from UML metamodel.
@@ -171,6 +175,66 @@ package body AMF.Internals.Factories.UML_Module_Factory is
             then
                UML_Element_Table.Table (Element).Member
                 (Standard_Profile_L3_Member_Offset
+                  (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
+
+            else
+               AMF.Internals.Element_Collections.Internal_Append
+                (UML_Element_Table.Table (Element).Member (0).Collection,
+                 Other,
+                 Link);
+            end if;
+         end;
+
+      elsif Property in MB_DI .. ML_DI then
+         declare
+            PO : constant AMF.Internals.CMOF_Element
+              := Property - MB_DI;
+
+         begin
+            if PO in DI_Collection_Offset'Range (2) then
+               AMF.Internals.Element_Collections.Internal_Append
+                (UML_Element_Table.Table (Element).Member (0).Collection
+                   + DI_Collection_Offset
+                      (UML_Element_Table.Table (Element).Kind, PO),
+                 Other,
+                 Link);
+
+            elsif PO in DI_Member_Offset'Range (2)
+              and then DI_Member_Offset
+                        (UML_Element_Table.Table (Element).Kind, PO) /= 0
+            then
+               UML_Element_Table.Table (Element).Member
+                (DI_Member_Offset
+                  (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
+
+            else
+               AMF.Internals.Element_Collections.Internal_Append
+                (UML_Element_Table.Table (Element).Member (0).Collection,
+                 Other,
+                 Link);
+            end if;
+         end;
+
+      elsif Property in MB_UMLDI .. ML_UMLDI then
+         declare
+            PO : constant AMF.Internals.CMOF_Element
+              := Property - MB_UMLDI;
+
+         begin
+            if PO in UMLDI_Collection_Offset'Range (2) then
+               AMF.Internals.Element_Collections.Internal_Append
+                (UML_Element_Table.Table (Element).Member (0).Collection
+                   + UMLDI_Collection_Offset
+                      (UML_Element_Table.Table (Element).Kind, PO),
+                 Other,
+                 Link);
+
+            elsif PO in UMLDI_Member_Offset'Range (2)
+              and then UMLDI_Member_Offset
+                        (UML_Element_Table.Table (Element).Kind, PO) /= 0
+            then
+               UML_Element_Table.Table (Element).Member
+                (UMLDI_Member_Offset
                   (UML_Element_Table.Table (Element).Kind, PO)).Link := Link;
 
             else
