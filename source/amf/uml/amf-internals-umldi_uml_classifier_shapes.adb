@@ -260,31 +260,6 @@ package body AMF.Internals.UMLDI_UML_Classifier_Shapes is
          (AMF.Elements.Element_Access (To)));
    end Set_Local_Style;
 
-   ----------------
-   -- Get_Bounds --
-   ----------------
-
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Classifier_Shape_Proxy)
-       return AMF.DC.Optional_DC_Bounds is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Bounds
-         (Self.Element);
-   end Get_Bounds;
-
-   ----------------
-   -- Set_Bounds --
-   ----------------
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Classifier_Shape_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Bounds
-       (Self.Element, To);
-   end Set_Bounds;
-
    -------------------
    -- Enter_Element --
    -------------------

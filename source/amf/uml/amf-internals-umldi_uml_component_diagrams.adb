@@ -325,31 +325,6 @@ package body AMF.Internals.UMLDI_UML_Component_Diagrams is
        (Self.Element, To);
    end Set_Resolution;
 
-   ----------------
-   -- Get_Bounds --
-   ----------------
-
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Component_Diagram_Proxy)
-       return AMF.DC.Optional_DC_Bounds is
-   begin
-      return
-        AMF.Internals.Tables.UML_Attributes.Internal_Get_Bounds
-         (Self.Element);
-   end Get_Bounds;
-
-   ----------------
-   -- Set_Bounds --
-   ----------------
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Component_Diagram_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds) is
-   begin
-      AMF.Internals.Tables.UML_Attributes.Internal_Set_Bounds
-       (Self.Element, To);
-   end Set_Bounds;
-
    ---------------------------
    -- Get_Client_Dependency --
    ---------------------------

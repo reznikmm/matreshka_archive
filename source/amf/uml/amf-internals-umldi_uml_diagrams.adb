@@ -41,35 +41,33 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with AMF.DC;
-with AMF.Internals.UML_Packageable_Elements;
-with AMF.Internals.UMLDI_UML_Diagram_Elements;
-with AMF.UMLDI.UML_Diagrams;
+with AMF.Internals.Tables.UML_Attributes;
 
-package AMF.Internals.UMLDI_UML_Diagrams is
+package body AMF.Internals.UMLDI_UML_Diagrams is
 
-   package Diagram_Elements is
-     new AMF.Internals.UMLDI_UML_Diagram_Elements
-          (AMF.Internals.UML_Packageable_Elements.UML_Packageable_Element_Proxy);
-
-   type UMLDI_UML_Diagram_Proxy is
-     abstract limited new Diagram_Elements.UMLDI_UML_Diagram_Element_Proxy
-       and AMF.UMLDI.UML_Diagrams.UMLDI_UML_Diagram with null record;
+   ----------------
+   -- Get_Bounds --
+   ----------------
 
    overriding function Get_Bounds
     (Self : not null access constant UMLDI_UML_Diagram_Proxy)
-       return AMF.DC.Optional_DC_Bounds;
-   --  Getter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
+       return AMF.DC.Optional_DC_Bounds is
+   begin
+      return
+        AMF.Internals.Tables.UML_Attributes.Internal_Get_Bounds
+         (Self.Element);
+   end Get_Bounds;
+
+   ----------------
+   -- Set_Bounds --
+   ----------------
 
    overriding procedure Set_Bounds
     (Self : not null access UMLDI_UML_Diagram_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds);
-   --  Setter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
+     To   : AMF.DC.Optional_DC_Bounds) is
+   begin
+      AMF.Internals.Tables.UML_Attributes.Internal_Set_Bounds
+       (Self.Element, To);
+   end Set_Bounds;
 
 end AMF.Internals.UMLDI_UML_Diagrams;

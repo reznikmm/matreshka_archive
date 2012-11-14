@@ -231,22 +231,6 @@ package AMF.Internals.UMLDI_UML_Use_Case_Diagrams is
    --
    --  the resolution of the diagram expressed in user units per inch.
 
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
-       return AMF.DC.Optional_DC_Bounds;
-   --  Getter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Use_Case_Diagram_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds);
-   --  Setter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
-
    overriding function Get_Client_Dependency
     (Self : not null access constant UMLDI_UML_Use_Case_Diagram_Proxy)
        return AMF.UML.Dependencies.Collections.Set_Of_UML_Dependency;

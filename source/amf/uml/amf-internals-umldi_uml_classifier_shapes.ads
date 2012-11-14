@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
-with AMF.DC;
 with AMF.DI.Styles;
 with AMF.Internals.UMLDI_UML_Compartmentable_Shapes;
 with AMF.UML.Classifiers;
@@ -180,22 +179,6 @@ package AMF.Internals.UMLDI_UML_Classifier_Shapes is
    --  Setter of DiagramElement::localStyle.
    --
    --  a reference to an optional locally-owned style for this diagram element.
-
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Classifier_Shape_Proxy)
-       return AMF.DC.Optional_DC_Bounds;
-   --  Getter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Classifier_Shape_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds);
-   --  Setter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UMLDI_UML_Classifier_Shape_Proxy;

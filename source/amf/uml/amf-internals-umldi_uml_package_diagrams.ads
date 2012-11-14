@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
-with AMF.DC;
 with AMF.DI.Styles;
 with AMF.Internals.UMLDI_UML_Diagrams;
 with AMF.UML.Comments.Collections;
@@ -215,22 +214,6 @@ package AMF.Internals.UMLDI_UML_Package_Diagrams is
    --  Setter of Diagram::resolution.
    --
    --  the resolution of the diagram expressed in user units per inch.
-
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Package_Diagram_Proxy)
-       return AMF.DC.Optional_DC_Bounds;
-   --  Getter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Package_Diagram_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds);
-   --  Setter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
 
    overriding function Get_Client_Dependency
     (Self : not null access constant UMLDI_UML_Package_Diagram_Proxy)

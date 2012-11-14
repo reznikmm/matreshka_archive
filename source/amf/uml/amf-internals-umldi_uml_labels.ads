@@ -42,10 +42,8 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with AMF.CMOF.Elements;
-with AMF.DC;
 with AMF.DI.Styles;
-with AMF.Internals.UML_Elements;
-with AMF.Internals.UMLDI_UML_Diagram_Elements;
+with AMF.Internals.UMLDI_UML_Shapes;
 with AMF.UML.Elements.Collections;
 with AMF.UMLDI.UML_Labels;
 with AMF.UMLDI.UML_Styles;
@@ -54,12 +52,8 @@ with League.Strings;
 
 package AMF.Internals.UMLDI_UML_Labels is
 
-   package Diagram_Elements is
-     new AMF.Internals.UMLDI_UML_Diagram_Elements
-          (AMF.Internals.UML_Elements.UML_Element_Base);
-
    type UMLDI_UML_Label_Proxy is
-     limited new Diagram_Elements.UMLDI_UML_Diagram_Element_Proxy
+     limited new AMF.Internals.UMLDI_UML_Shapes.UMLDI_UML_Shape_Proxy
        and AMF.UMLDI.UML_Labels.UMLDI_UML_Label with null record;
 
    overriding function Get_Text
@@ -143,22 +137,6 @@ package AMF.Internals.UMLDI_UML_Labels is
    --  Setter of DiagramElement::localStyle.
    --
    --  a reference to an optional locally-owned style for this diagram element.
-
-   overriding function Get_Bounds
-    (Self : not null access constant UMLDI_UML_Label_Proxy)
-       return AMF.DC.Optional_DC_Bounds;
-   --  Getter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
-
-   overriding procedure Set_Bounds
-    (Self : not null access UMLDI_UML_Label_Proxy;
-     To   : AMF.DC.Optional_DC_Bounds);
-   --  Setter of Shape::bounds.
-   --
-   --  the optional bounds of the shape relative to the origin of its nesting 
-   --  plane.
 
    overriding procedure Enter_Element
     (Self    : not null access constant UMLDI_UML_Label_Proxy;
