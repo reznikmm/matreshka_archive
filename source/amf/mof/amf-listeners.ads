@@ -90,14 +90,14 @@ package AMF.Listeners is
    not overriding procedure Attribute_Add
     (Self      : not null access Abstract_Listener;
      Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Position  : Optional_Integer;
+     Position  : AMF.Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
 
    not overriding procedure Attribute_Remove
     (Self      : not null access Abstract_Listener;
      Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Position  : Optional_Integer;
+     Position  : AMF.Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
 
@@ -105,7 +105,7 @@ package AMF.Listeners is
     (Self      : not null access Abstract_Listener;
      Element   : not null AMF.Elements.Element_Access;
      Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
-     Position  : Optional_Integer;
+     Position  : AMF.Optional_Integer;
      Old_Value : League.Holders.Holder;
      New_Value : League.Holders.Holder) is null;
    --  Called when attribute value is changed.
@@ -120,6 +120,10 @@ package AMF.Listeners is
    not overriding procedure Link_Remove
     (Self : not null access Abstract_Listener) is null;
 
-   procedure Register (Listener : not null Listener_Access);
+   procedure Register_Listener (Listener : not null Listener_Access);
+
+   procedure Register_Instance_Listener
+    (Listener : not null Listener_Access;
+     Instance : not null AMF.Elements.Element_Access);
 
 end AMF.Listeners;

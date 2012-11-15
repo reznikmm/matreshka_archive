@@ -52,7 +52,14 @@ package AMF.Internals.Listener_Registry is
 
    pragma Preelaborate;
 
-   procedure Register (Listener : not null AMF.Listeners.Listener_Access);
+   procedure Register_Listener
+    (Listener : not null AMF.Listeners.Listener_Access);
+   --  Register listener to be notified about all events of the system.
+
+   procedure Register_Instance_Listener
+    (Listener : not null AMF.Listeners.Listener_Access;
+     Instance : not null AMF.Elements.Element_Access);
+   --  Register listener to be notified about events of the given instance.
 
    procedure Notify_Extent_Create
     (Extent : not null AMF.Extents.Extent_Access);

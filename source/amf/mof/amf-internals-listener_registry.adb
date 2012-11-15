@@ -45,9 +45,15 @@ with Ada.Containers.Vectors;
 
 package body AMF.Internals.Listener_Registry is
 
+   use type AMF.Elements.Element_Access;
+
+   type Registry_Record is record
+      Listener : AMF.Listeners.Listener_Access;
+      Instance : AMF.Elements.Element_Access;
+   end record;
+
    package Listener_Vectors is
-     new Ada.Containers.Vectors
-          (Positive, AMF.Listeners.Listener_Access, AMF.Listeners."=");
+     new Ada.Containers.Vectors (Positive, Registry_Record);
 
    Registry : Listener_Vectors.Vector;
 
@@ -60,11 +66,16 @@ package body AMF.Internals.Listener_Registry is
      Property  : not null AMF.CMOF.Properties.CMOF_Property_Access;
      Position  : Optional_Integer;
      Old_Value : League.Holders.Holder;
-     New_Value : League.Holders.Holder) is
+     New_Value : League.Holders.Holder)
+   is
+      Aux : Listener_Vectors.Vector := Registry;
+
    begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Attribute_Set
-          (Element, Property, Position, Old_Value, New_Value);
+      for Item of Aux loop
+         if Item.Instance = null or Element = Item.Instance then
+            Item.Listener.Attribute_Set
+             (Element, Property, Position, Old_Value, New_Value);
+         end if;
       end loop;
    end Notify_Attribute_Set;
 
@@ -73,10 +84,15 @@ package body AMF.Internals.Listener_Registry is
    --------------------------
 
    procedure Notify_Extent_Create
-    (Extent : not null AMF.Extents.Extent_Access) is
+    (Extent : not null AMF.Extents.Extent_Access)
+   is
+      Aux : Listener_Vectors.Vector := Registry;
+
    begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Extent_Create (Extent);
+      for Item of Aux loop
+         if Item.Instance = null then
+            Item.Listener.Extent_Create (Extent);
+         end if;
       end loop;
    end Notify_Extent_Create;
 
@@ -85,10 +101,15 @@ package body AMF.Internals.Listener_Registry is
    ----------------------------
 
    procedure Notify_Instance_Create
-    (Element : not null AMF.Elements.Element_Access) is
+    (Element : not null AMF.Elements.Element_Access)
+   is
+      Aux : Listener_Vectors.Vector := Registry;
+
    begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Instance_Create (Element);
+      for Item of Aux loop
+         if Item.Instance = null then
+            Item.Listener.Instance_Create (Element);
+         end if;
       end loop;
    end Notify_Instance_Create;
 
@@ -99,21 +120,41 @@ package body AMF.Internals.Listener_Registry is
    procedure Notify_Link_Add
     (Association    : not null AMF.CMOF.Associations.CMOF_Association_Access;
      First_Element  : not null AMF.Elements.Element_Access;
-     Second_Element : not null AMF.Elements.Element_Access) is
+     Second_Element : not null AMF.Elements.Element_Access)
+   is
+      Aux : Listener_Vectors.Vector := Registry;
+
    begin
-      for J in 1 .. Natural (Registry.Length) loop
-         Registry.Element (J).Link_Add
-          (Association, First_Element, Second_Element);
+      for Item of Aux loop
+         if Item.Instance = null
+           or First_Element = Item.Instance
+           or Second_Element = Item.Instance
+         then
+            Item.Listener.Link_Add
+             (Association, First_Element, Second_Element);
+         end if;
       end loop;
    end Notify_Link_Add;
 
-   --------------
-   -- Register --
-   --------------
+   --------------------------------
+   -- Register_Instance_Listener --
+   --------------------------------
 
-   procedure Register (Listener : not null AMF.Listeners.Listener_Access) is
+   procedure Register_Instance_Listener
+    (Listener : not null AMF.Listeners.Listener_Access;
+     Instance : not null AMF.Elements.Element_Access) is
    begin
-      Registry.Append (Listener);
-   end Register;
+      Registry.Append ((Listener, Instance));
+   end Register_Instance_Listener;
+
+   -----------------------
+   -- Register_Listener --
+   -----------------------
+
+   procedure Register_Listener
+    (Listener : not null AMF.Listeners.Listener_Access) is
+   begin
+      Registry.Append ((Listener, null));
+   end Register_Listener;
 
 end AMF.Internals.Listener_Registry;

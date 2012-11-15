@@ -45,11 +45,20 @@ with AMF.Internals.Listener_Registry;
 
 package body AMF.Listeners is
 
-   --------------
-   -- Register --
-   --------------
+   --------------------------------
+   -- Register_Instance_Listener --
+   --------------------------------
 
-   procedure Register (Listener : not null Listener_Access)
-     renames AMF.Internals.Listener_Registry.Register;
+   procedure Register_Instance_Listener
+    (Listener : not null Listener_Access;
+     Instance : not null AMF.Elements.Element_Access)
+       renames AMF.Internals.Listener_Registry.Register_Instance_Listener;
+
+   -----------------------
+   -- Register_Listener --
+   -----------------------
+
+   procedure Register_Listener (Listener : not null Listener_Access)
+     renames AMF.Internals.Listener_Registry.Register_Listener;
 
 end AMF.Listeners;
