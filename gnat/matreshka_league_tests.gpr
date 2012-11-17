@@ -47,7 +47,8 @@ with "matreshka_league.gpr";
 project Matreshka_League_Tests is
 
    for Main use
-    ("string_hash_test.adb",
+    ("base64_test.adb",
+     "string_hash_test.adb",
      "character_cursor_test.adb",
      "grapheme_cluster_cursor_test.adb",
      "case_conversion_test.adb",
