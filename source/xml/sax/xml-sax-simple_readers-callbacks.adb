@@ -200,10 +200,10 @@ package body XML.SAX.Simple_Readers.Callbacks is
    begin
       Self.Error_Handler.Error
        (XML.SAX.Parse_Exceptions.Internals.Create
-         (Public_Id => League.Strings.Empty_Universal_String,
-          System_Id => League.Strings.Empty_Universal_String,
-          Line      => 0,
-          Column    => 0,
+         (Public_Id => Self.Locator.Public_Id,
+          System_Id => Self.Locator.System_Id,
+          Line      => Self.Locator.Line,
+          Column    => Self.Locator.Column,
           Message   => Message),
         Self.Continue);
 
@@ -254,10 +254,10 @@ package body XML.SAX.Simple_Readers.Callbacks is
    begin
       Self.Error_Handler.Fatal_Error
        (XML.SAX.Parse_Exceptions.Internals.Create
-         (Public_Id => League.Strings.Empty_Universal_String,
-          System_Id => League.Strings.Empty_Universal_String,
-          Line      => 0,
-          Column    => 0,
+         (Public_Id => Self.Locator.Public_Id,
+          System_Id => Self.Locator.System_Id,
+          Line      => Self.Locator.Line,
+          Column    => Self.Locator.Column,
           Message   => Message));
 
       Self.Continue       := False;
@@ -636,10 +636,10 @@ package body XML.SAX.Simple_Readers.Callbacks is
    begin
       Self.Error_Handler.Warning
        (XML.SAX.Parse_Exceptions.Internals.Create
-         (Public_Id => League.Strings.Empty_Universal_String,
-          System_Id => League.Strings.Empty_Universal_String,
-          Line      => 0,
-          Column    => 0,
+         (Public_Id => Self.Locator.Public_Id,
+          System_Id => Self.Locator.System_Id,
+          Line      => Self.Locator.Line,
+          Column    => Self.Locator.Column,
           Message   => Message),
         Self.Continue);
 
