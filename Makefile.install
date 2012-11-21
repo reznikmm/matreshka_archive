@@ -279,7 +279,7 @@ uml:
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models/UML23
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/amf/models/UML24
 	gnat ls -d -s -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' > amf_uml-src.aux
-	cat league-src.lst xml-src.aux amf-src.aux | sort | uniq | diff -u - amf_uml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_uml-src.lst
+	cat league-src.lst xml-src.aux amf-src.aux amf_dd-src.aux | sort | uniq | diff -u - amf_uml-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > amf_uml-src.lst
 	gnat ls -o -P gnat/matreshka_amf_uml.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > amf_uml-ali.lst
 	cat amf_uml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/uml
 	cat amf_uml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
