@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,43 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_xml.gpr";
+private with League.Strings;
+with XML.SAX.Error_Handlers;
+private with XML.SAX.Parse_Exceptions;
 
-project Matreshka_XML_Tests is
+package Test_41_Handlers is
 
-   for Main use
-    ("xmlconf_test.adb",
-     "xmlcatconf-driver.adb",
-     "test_126.adb",
-     "test_157.adb",
-     "test_20.adb",
-     "test_245.adb",
-     "test_26.adb",
-     "test_41.adb",
-     "test_99.adb",
-     "simple_test.adb",
-     "escape_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-126",
-     "../testsuite/xml/TN-157",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-245",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/TN-41",
-     "../testsuite/xml/TN-99",
-     "../testsuite/xml/pretty_writer/simple_test",
-     "../testsuite/xml/pretty_writer/escape_test");
+   type Test_41_Handler is
+     limited new XML.SAX.Error_Handlers.SAX_Error_Handler with private;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   procedure Check
+    (Self   : Test_41_Handler'Class;
+     Line   : Positive;
+     Column : Positive);
 
-   package Builder is
-      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
-   end Builder;
+private
 
-end Matreshka_XML_Tests;
+   type Test_41_Handler is
+     limited new XML.SAX.Error_Handlers.SAX_Error_Handler with record
+      Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception;
+   end record;
+
+   overriding function Error_String
+    (Self : Test_41_Handler) return League.Strings.Universal_String;
+
+   overriding procedure Fatal_Error
+    (Self       : in out Test_41_Handler;
+     Occurrence : XML.SAX.Parse_Exceptions.SAX_Parse_Exception);
+
+end Test_41_Handlers;
