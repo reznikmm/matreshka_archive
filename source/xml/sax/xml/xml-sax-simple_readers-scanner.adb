@@ -564,6 +564,9 @@ package body XML.SAX.Simple_Readers.Scanner is
       YY_Last_Match_Position     : Utf16_String_Index;
       YY_Last_Match_Index        : Positive;
       YY_Last_Match_State        : Interfaces.Unsigned_32;
+      YY_Last_Match_Line         : Natural;
+      YY_Last_Match_Column       : Natural;
+      YY_Last_Match_Skip_LF      : Boolean;
       YY_Last_Match              : Boolean;
       YYLVal                     : YYSType renames Self.YYLVal;
       YY_Last                    : Utf16_String_Index;
@@ -699,6 +702,9 @@ package body XML.SAX.Simple_Readers.Scanner is
                   YY_Last_Match_Position := YY_Last_Accepting_Position;
                   YY_Last_Match_Index    := YY_Last_Accepting_Index;
                   YY_Last_Match_State    := YY_Last_Accepting_State;
+                  YY_Last_Match_Line     := YY_Last_Accepting_Line;
+                  YY_Last_Match_Column   := YY_Last_Accepting_Column;
+                  YY_Last_Match_Skip_LF  := YY_Last_Accepting_Skip_LF;
                end if;
             end if;
 
@@ -751,6 +757,12 @@ package body XML.SAX.Simple_Readers.Scanner is
                     YY_Last_Accepting_Position;
                   Self.Scanner_State.YY_Current_Index    :=
                     YY_Last_Accepting_Index;
+                  Self.Scanner_State.YY_Current_Line     :=
+                    YY_Last_Accepting_Line;
+                  Self.Scanner_State.YY_Current_Column   :=
+                    YY_Last_Accepting_Column;
+                  Self.Scanner_State.YY_Current_Skip_LF  :=
+                    YY_Last_Accepting_Skip_LF;
                   YY_Current_State                       :=
                     YY_Last_Accepting_State;
                   YY_Last_Accepting                      := False;
@@ -1713,6 +1725,12 @@ package body XML.SAX.Simple_Readers.Scanner is
                           YY_Last_Match_Position;
                         Self.Scanner_State.YY_Current_Index    :=
                           YY_Last_Match_Index;
+                        Self.Scanner_State.YY_Current_Line     :=
+                          YY_Last_Match_Line;
+                        Self.Scanner_State.YY_Current_Column   :=
+                          YY_Last_Match_Column;
+                        Self.Scanner_State.YY_Current_Skip_LF  :=
+                          YY_Last_Match_Skip_LF;
                         YY_Current_State                       :=
                           YY_Last_Match_State;
                         YY_Last_Match                          := False;
