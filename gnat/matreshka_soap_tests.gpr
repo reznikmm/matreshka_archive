@@ -2,9 +2,9 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---                          Ada Modeling Framework                          --
+--                               Web Framework                              --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,19 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/matreshka_config.gpr";
-with "league.gpr";
-with "xml.gpr";
+with "matreshka_common.gpr";
+with "matreshka_soap.gpr";
 
-library project SOAP is
+project Matreshka_SOAP_Tests is
 
-   Library_Name := "matreshka-soap" & Matreshka_Config.RTL_Version_Suffix;
+   for Main use
+    ("soapconf-driver.adb");
+   for Object_Dir use "../.objs";
+   for Source_Dirs use
+    ("../testsuite/soap");
 
-   for Library_Kind use "dynamic";
-   for Library_Name use Library_Name;
-   for Source_Dirs use (Matreshka_Config.Include_Dir & "/matreshka/soap");
-   for Library_Dir use Matreshka_Config.Library_Dir;
-   for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
-   for Externally_Built use "True";
+   package Compiler is
+      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
+   end Compiler;
 
-end SOAP;
+   package Builder is
+      for Executable ("soapconf-driver.adb") use "soapconf_test";
+   end Builder;
+
+end Matreshka_SOAP_Tests;

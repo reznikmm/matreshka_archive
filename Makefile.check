@@ -4,7 +4,7 @@ GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 VALGRIND_FLAGS = --error-exitcode=7 --quiet --suppressions=testsuite/glibc.supp
 
-ALL_TARGETS = league amf
+ALL_TARGETS = league soap amf
 
 ifdef HAS_VALGRIND
     ALL_TARGETS += league-valgrind
@@ -63,6 +63,10 @@ endif
 league-valgrind: league
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/library_level_test
 	$(VALGRIND) $(VALGRIND_FLAGS) --leak-check=full .objs/test_193
+
+soap:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_tests.gpr
+	.objs/soapconf_test
 
 sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
