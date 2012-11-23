@@ -3,7 +3,7 @@ include Makefile.config
 GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
-ALL_TARGETS = league xml fastcgi sql amf dd uml mofext ocl utp
+ALL_TARGETS = league xml fastcgi wsdl2ada sql amf dd uml mofext ocl utp
 
 ifdef HAS_OCI
 ALL_TARGETS += oci
@@ -31,6 +31,9 @@ xml: league
 
 fastcgi: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+
+wsdl2ada: league
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_wsdl2ada.gpr
 
 sql: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr

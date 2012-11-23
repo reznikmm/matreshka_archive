@@ -16,11 +16,13 @@ MKDIR = mkdir -p
 
 ifeq ($(OPERATING_SYSTEM), POSIX)
 LIBEXT = so
+EXEEXT =
 else ifeq ($(OPERATING_SYSTEM), Windows)
 LIBEXT = dll
+EXEEXT = .exe
 endif
 
-INSTALL_TARGETS = league fastcgi sql xml amf dd uml mofext ocl utp
+INSTALL_TARGETS = league xml fastcgi wsdl2ada sql amf dd uml mofext ocl utp
 
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
@@ -91,6 +93,10 @@ endif
 	cat fastcgi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/fastcgi.gpr" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)" >> .objs/fastcgi-devel.files
+
+wsdl2ada:
+	$(INSTALL) -d $(INSTALL_EXEC_DIR)
+	$(INSTALL) .objs/wsdl2ada/wsdl2ada$(EXEEXT) $(INSTALL_EXEC_DIR)/wsdl2ada$(EXEEXT)
 
 sql:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql
