@@ -119,6 +119,19 @@ Requires: libmatreshka-fastcgi%{PACKAGE_SUFFIX}
 FastCGI library of Matreshka components allows to Ada applications to
 communicate to web servers through FastCGI protocol.
 
+%package -n libmatreshka-soap%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: SOAP protocol implementation of Matreshka components
+%description -n libmatreshka-soap%{PACKAGE_SUFFIX}
+SOAP protocol specification implementation of Matreshka components.
+
+%package -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: SOAP protocol implementation of Matreshka components
+Requires: libmatreshka-soap%{PACKAGE_SUFFIX}
+%description -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel
+SOAP protocol specification implementation of Matreshka components.
+
 %package -n libmatreshka-sql%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other
 Summary: SQL database access library of Matreshka components for Ada programmers
@@ -280,6 +293,11 @@ component of Matreshka framework for Ada developers.
 %postun -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libmatreshka-soap%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-soap%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %post -n libmatreshka-sql%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-sql%{PACKAGE_SUFFIX}
@@ -354,6 +372,12 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-fastcgi%{PACKAGE_SUFFIX}-devel -f .objs/fastcgi-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/fastcgi
+
+%files -n libmatreshka-soap%{PACKAGE_SUFFIX} -f .objs/soap-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel -f .objs/soap-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/soap
 
 %files -n libmatreshka-sql%{PACKAGE_SUFFIX} -f .objs/sql-lib.files
 %defattr(-,root,root)
