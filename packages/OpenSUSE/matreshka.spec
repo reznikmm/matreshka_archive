@@ -132,6 +132,12 @@ Requires: libmatreshka-soap%{PACKAGE_SUFFIX}
 %description -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel
 SOAP protocol specification implementation of Matreshka components.
 
+%package -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: WSDL to Ada translator
+%description -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
+WSDL 2.0 to Ada translator of Matreshka
+
 %package -n libmatreshka-sql%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other
 Summary: SQL database access library of Matreshka components for Ada programmers
@@ -378,6 +384,11 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel -f .objs/soap-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/soap
+
+%files -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
+%defattr(-,root,root)
+%dir %{_bindir}
+%attr(755, -, -) %{_bindir}/wsdl2ada
 
 %files -n libmatreshka-sql%{PACKAGE_SUFFIX} -f .objs/sql-lib.files
 %defattr(-,root,root)
