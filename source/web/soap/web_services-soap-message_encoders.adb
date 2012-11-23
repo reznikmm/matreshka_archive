@@ -76,6 +76,8 @@ package body Web_Services.SOAP.Message_Encoders is
      Message : Web_Services.SOAP.Messages.SOAP_Message)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
+      pragma Unreferenced (Self);
+
       use type Web_Services.SOAP.Payloads.SOAP_Payload_Access;
 
       Codec   : constant League.Text_Codecs.Text_Codec

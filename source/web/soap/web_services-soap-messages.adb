@@ -41,9 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Base data structure for internal representation of SOAP Message.
-------------------------------------------------------------------------------
 with Ada.Strings.Hash;
+with Ada.Tags;
 with Ada.Unchecked_Deallocation;
 
 package body Web_Services.SOAP.Messages is

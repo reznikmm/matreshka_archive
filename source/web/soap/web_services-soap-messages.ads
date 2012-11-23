@@ -44,7 +44,6 @@
 --  Base data structure for internal representation of SOAP Message.
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Sets;
-with Ada.Tags;
 
 with League.Strings;
 

@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides interface to stream SOAP replies back to HTTP server.
 ------------------------------------------------------------------------------
-with Ada.Streams;
-
 with League.Stream_Element_Vectors;
 
 limited with Web_Services.SOAP.Messages;

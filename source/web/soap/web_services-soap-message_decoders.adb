@@ -266,7 +266,12 @@ package body Web_Services.SOAP.Message_Decoders is
    ------------------
 
    overriding function Error_String
-    (Self : SOAP_Message_Decoder) return League.Strings.Universal_String is
+    (Self : SOAP_Message_Decoder) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+      --  This parameter is not used, but defined by profile of overloaded
+      --  subprogram.
+
    begin
       return
         League.Strings.To_Universal_String
@@ -308,7 +313,13 @@ package body Web_Services.SOAP.Message_Decoders is
     (Self    : in out SOAP_Message_Decoder;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Target);
+      pragma Unreferenced (Data);
+      --  These parameters is not used, but defined by profile of overloaded
+      --  subprogram.
+
    begin
       --  [SOAP12]  5. SOAP Message Construct
       --
@@ -438,7 +449,12 @@ package body Web_Services.SOAP.Message_Decoders is
 
    overriding procedure Start_Document
     (Self    : in out SOAP_Message_Decoder;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+      --  This parameter is not used, but defined by profile of overloaded
+      --  subprogram.
+
    begin
       Self.Message := new Web_Services.SOAP.Messages.SOAP_Message;
    end Start_Document;
@@ -452,7 +468,14 @@ package body Web_Services.SOAP.Message_Decoders is
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
-     Success   : in out Boolean) is
+     Success   : in out Boolean)
+   is
+      pragma Unreferenced (Name);
+      pragma Unreferenced (Public_Id);
+      pragma Unreferenced (System_Id);
+      --  These parameters are not used but defined by profile of overrided
+      --  subprogram.
+
    begin
       --  [SOAP12P1] 5. SOAP Message Construct
       --

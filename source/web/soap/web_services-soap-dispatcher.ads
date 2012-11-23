@@ -46,7 +46,6 @@
 ------------------------------------------------------------------------------
 with Ada.Streams;
 
-with League.Stream_Element_Vectors;
 with League.Strings;
 
 with Web_Services.SOAP.Reply_Streams;

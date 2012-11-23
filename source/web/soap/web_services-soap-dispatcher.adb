@@ -51,7 +51,6 @@ with Web_Services.SOAP.Constants;
 with Web_Services.SOAP.Handler_Registry;
 with Web_Services.SOAP.Handlers;
 with Web_Services.SOAP.Message_Decoders;
-with Web_Services.SOAP.Message_Encoders;
 with Web_Services.SOAP.Messages;
 with Web_Services.SOAP.Modules.Registry;
 with Web_Services.SOAP.Payloads;

@@ -44,11 +44,7 @@
 --  Abstract interface of SOAP payload encoder. Application specific encoders
 --  must be derived from this interface type.
 ------------------------------------------------------------------------------
-with Ada.Tags;
-
 with XML.SAX.Writers;
-
-with Web_Services.SOAP.Messages;
 
 package Web_Services.SOAP.Payloads.Encoders is
 
