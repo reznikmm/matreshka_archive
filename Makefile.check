@@ -67,6 +67,7 @@ league-valgrind: league
 soap:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_tests.gpr
 	.objs/soapconf_test
+	.objs/test_248
 
 sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr

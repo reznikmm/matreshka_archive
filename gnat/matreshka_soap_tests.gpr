@@ -47,10 +47,12 @@ with "matreshka_soap.gpr";
 project Matreshka_SOAP_Tests is
 
    for Main use
-    ("soapconf-driver.adb");
+    ("soapconf-driver.adb",
+     "test_248.adb");
    for Object_Dir use "../.objs";
    for Source_Dirs use
-    ("../testsuite/soap");
+    ("../testsuite/soap",
+     "../testsuite/soap/TN-248");
 
    package Compiler is
       for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
