@@ -87,6 +87,9 @@ package League.Stream_Element_Vectors is
    not overriding function "="
     (Left  : Stream_Element_Vector;
      Right : Ada.Streams.Stream_Element_Array) return Boolean;
+   not overriding function "="
+    (Left  : Ada.Streams.Stream_Element_Array;
+     Right : Stream_Element_Vector) return Boolean;
 
 private
 

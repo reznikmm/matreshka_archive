@@ -82,6 +82,23 @@ package body League.Stream_Element_Vectors is
       end if;
    end "=";
 
+   ---------
+   -- "=" --
+   ---------
+
+   not overriding function "="
+    (Left  : Ada.Streams.Stream_Element_Array;
+     Right : Stream_Element_Vector) return Boolean is
+   begin
+      if Left'Length = Right.Data.Length then
+         return
+           Left = Right.Data.Value (0 .. Right.Data.Length - 1);
+
+      else
+         return False;
+      end if;
+   end "=";
+
    ------------
    -- Adjust --
    ------------
