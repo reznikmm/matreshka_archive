@@ -58,10 +58,20 @@ package body Configure.Tests.Install is
     (Self      : in out Install_Test;
      Arguments : in out Unbounded_String_Vector)
    is
+      use type GNAT.Strings.String_Access;
+
       Install_Path : constant GNAT.Strings.String_Access
         := GNAT.OS_Lib.Locate_Exec_On_Path ("install");
 
    begin
+      if Install_Path = null then
+         Self.Report_Check ("Required command not found: 'install'");
+
+         Self.Report_Status ("Exiting");
+         
+         raise Internal_Error;
+      end if;
+      
       Substitutions.Insert
        (Install_Name, Convert_Windows_Path (+Install_Path.all));
    end Execute;
