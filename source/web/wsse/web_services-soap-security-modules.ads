@@ -71,9 +71,9 @@ private
      Output  : in out Web_Services.SOAP.Messages.SOAP_Message_Access);
 
    overriding procedure Send_Request
-     (Self     : in out Security_Module;
-      Message  : in out Web_Services.SOAP.Messages.SOAP_Message;
-      User     : League.Strings.Universal_String;
-      Password : League.Strings.Universal_String);
+    (Self     : in out Security_Module;
+     Message  : in out Web_Services.SOAP.Messages.SOAP_Message;
+     User     : League.Strings.Universal_String;
+     Password : League.Strings.Universal_String);
 
 end Web_Services.SOAP.Security.Modules;

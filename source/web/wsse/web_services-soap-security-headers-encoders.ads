@@ -58,8 +58,7 @@ private
        with null record;
 
    overriding function Create
-    (Dummy : not null access Boolean)
-       return Security_Header_Encoder;
+    (Dummy : not null access Boolean) return Security_Header_Encoder;
 
    overriding procedure Encode
     (Self   : Security_Header_Encoder;

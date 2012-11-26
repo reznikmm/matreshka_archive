@@ -54,8 +54,10 @@ package body Web_Services.SOAP.Security.Headers.Encoders is
    ------------
 
    overriding function Create
-     (Dummy : not null access Boolean)
-      return Security_Header_Encoder is
+    (Dummy : not null access Boolean) return Security_Header_Encoder
+   is
+      pragma Unreferenced (Dummy);
+
    begin
       return Self : Security_Header_Encoder;
    end Create;
@@ -65,12 +67,15 @@ package body Web_Services.SOAP.Security.Headers.Encoders is
    ------------
 
    overriding procedure Encode
-     (Self   : Security_Header_Encoder;
-      Header : Web_Services.SOAP.Headers.Abstract_SOAP_Header'Class;
-      Writer : in out XML.SAX.Writers.SAX_Writer'Class)
+    (Self   : Security_Header_Encoder;
+     Header : Web_Services.SOAP.Headers.Abstract_SOAP_Header'Class;
+     Writer : in out XML.SAX.Writers.SAX_Writer'Class)
    is
+      pragma Unreferenced (Self);
+
       use Web_Services.SOAP.Constants;
       use Web_Services.SOAP.Security.Constants;
+
       Attributes : XML.SAX.Attributes.SAX_Attributes;
       Token      : Username_Token_Header
         renames Username_Token_Header (Header);

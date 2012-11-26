@@ -138,6 +138,8 @@ package body Web_Services.SOAP.Security.Modules is
      Message : in out Web_Services.SOAP.Messages.SOAP_Message;
      Output  : in out Web_Services.SOAP.Messages.SOAP_Message_Access)
    is
+      pragma Unreferenced (Self);
+
       use type League.Stream_Element_Vectors.Stream_Element_Vector;
       use type League.Strings.Universal_String;
       use type Web_Services.SOAP.Security.Headers.Username_Token_Header_Access;
@@ -219,10 +221,13 @@ package body Web_Services.SOAP.Security.Modules is
    ------------------
 
    overriding procedure Send_Request
-     (Self     : in out Security_Module;
-      Message  : in out Web_Services.SOAP.Messages.SOAP_Message;
-      User     : League.Strings.Universal_String;
-      Password : League.Strings.Universal_String) is
+    (Self     : in out Security_Module;
+     Message  : in out Web_Services.SOAP.Messages.SOAP_Message;
+     User     : League.Strings.Universal_String;
+     Password : League.Strings.Universal_String)
+   is
+      pragma Unreferenced (Self);
+
    begin
       if User.Is_Empty then
          return;

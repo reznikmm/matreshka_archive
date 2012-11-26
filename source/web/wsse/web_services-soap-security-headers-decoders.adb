@@ -56,7 +56,10 @@ package body Web_Services.SOAP.Security.Headers.Decoders is
    overriding procedure Characters
     (Self    : in out Security_Header_Decoder;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.Collect then
          Self.Text.Append (Text);
@@ -69,7 +72,10 @@ package body Web_Services.SOAP.Security.Headers.Decoders is
 
    overriding function Create
     (URI : not null access League.Strings.Universal_String)
-       return Security_Header_Decoder is
+       return Security_Header_Decoder
+   is
+      pragma Unreferenced (URI);
+
    begin
       return Self : Security_Header_Decoder do
          Self.Token := new Username_Token_Header;
