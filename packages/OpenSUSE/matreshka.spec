@@ -41,7 +41,7 @@
 ##--------------------------------------------------------------------------##
 
 Name:           matreshka
-Version:        0.4.0
+Version:        0.5.0
 Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
