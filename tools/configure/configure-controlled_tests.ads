@@ -81,11 +81,11 @@ package Configure.Controlled_Tests is
    not overriding function Enable_Switch
      (Self : Controlled_Test) return String;
    --  Returns --enable-NAME.
-   
+
    not overriding function Disable_Switch
      (Self : Controlled_Test) return String;
    --  Returns --disable-NAME.
-   
+
 private
 
    type Controlled_Test is abstract new Configure.Abstract_Tests.Abstract_Test

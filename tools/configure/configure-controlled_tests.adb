@@ -43,25 +43,25 @@
 ------------------------------------------------------------------------------
 
 package body Configure.Controlled_Tests is
-   
+
    --------------------
    -- Disable_Switch --
    --------------------
-   
+
    function Disable_Switch (Self : Controlled_Test) return String is
    begin
       return "--disable-" & Controlled_Test'Class (Self).Name;
    end Disable_Switch;
-   
+
    -------------------
    -- Enable_Switch --
    -------------------
-   
+
    function Enable_Switch (Self : Controlled_Test) return String is
    begin
       return "--enable-" & Controlled_Test'Class (Self).Name;
    end Enable_Switch;
-   
+
    -------------
    -- Execute --
    -------------
@@ -76,17 +76,17 @@ package body Configure.Controlled_Tests is
          Controlled_Test'Class (Self).Drop_Known_Arguments (Arguments);
       else
          Controlled_Test'Class (Self).Execute (Arguments, Success);
-         
-         if not Success 
+
+         if not Success
            and Has_Parameter (Arguments, Self.Enable_Switch)
          then
             Self.Report_Check
               ("Support requested by "
                  & Self.Enable_Switch
                  & " but failed");
-            
+
             Self.Report_Status ("Exiting");
-            
+
             raise Internal_Error;
          end if;
       end if;
@@ -110,7 +110,7 @@ package body Configure.Controlled_Tests is
            & "enable "
            & Controlled_Test'Class (Self).Name
            &" support or fail execution");
-      
+
       Result.Append
         (+"  "
            & Self.Disable_Switch
@@ -118,7 +118,7 @@ package body Configure.Controlled_Tests is
            & "disable "
            & Controlled_Test'Class (Self).Name
            &" support");
-      
+
       return Result;
    end Help;
 
