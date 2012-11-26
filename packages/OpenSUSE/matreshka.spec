@@ -132,6 +132,21 @@ Requires: libmatreshka-soap%{PACKAGE_SUFFIX}
 %description -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel
 SOAP protocol specification implementation of Matreshka components.
 
+%package -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: WS-Security for SOAP implementation of Matreshka components
+%description -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}
+WS-Security support for SOAP protocol specification implementation of Matreshka
+components.
+
+%package -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: WS-Security for SOAP implementation of Matreshka components
+Requires: libmatreshka-soap-wsse%{PACKAGE_SUFFIX}
+%description -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}-devel
+WS-Security support for SOAP protocol specification implementation of Matreshka
+components.
+
 %package -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other
 Summary: WSDL to Ada translator
@@ -304,6 +319,11 @@ component of Matreshka framework for Ada developers.
 %postun -n libmatreshka-soap%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %post -n libmatreshka-sql%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-sql%{PACKAGE_SUFFIX}
@@ -384,6 +404,12 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-soap%{PACKAGE_SUFFIX}-devel -f .objs/soap-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/soap
+
+%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX} -f .objs/soap-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}-devel -f .objs/soap-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/soap/wsse
 
 %files -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
 %defattr(-,root,root)
