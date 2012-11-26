@@ -239,6 +239,8 @@ package body Web_Services.SOAP.Security.Modules is
              := new Web_Services.SOAP.Security.Headers.Username_Token_Header;
 
       begin
+         Header.Mode := Headers.Digest;  --  FIXME: How does user set mode?
+         Header.Password := Password;  --  For Mode = Text
          Header.Username := User;
          Header.Nonce :=
            Web_Services.SOAP.Security.Password_Digest_Utilities.Generate_Nonce;
