@@ -405,9 +405,9 @@ component of Matreshka framework for Ada developers.
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/soap
 
-%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX} -f .objs/soap-lib.files
+%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX} -f .objs/soap_wsse-lib.files
 %defattr(-,root,root)
-%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}-devel -f .objs/soap-devel.files
+%files -n libmatreshka-soap-wsse%{PACKAGE_SUFFIX}-devel -f .objs/soap_wsse-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/soap/wsse
 
