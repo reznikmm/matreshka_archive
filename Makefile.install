@@ -22,7 +22,7 @@ LIBEXT = dll
 EXEEXT = .exe
 endif
 
-INSTALL_TARGETS = league xml fastcgi soap wsdl2ada sql amf dd uml mofext ocl utp
+INSTALL_TARGETS = league xml fastcgi soap wsse wsdl2ada sql amf dd uml mofext ocl utp
 
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
@@ -114,6 +114,27 @@ endif
 	cat soap-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/soap-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/soap.gpr" >> .objs/soap-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap$(RTL_VERSION).$(LIBEXT)" >> .objs/soap-devel.files
+
+wsse:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/soap/wsse
+	gnat ls -d -s -P gnat/matreshka_soap_wsse.gpr | sort | uniq | grep -v '^$$' > soap_wsse-src.aux
+	cat league-src.lst xml-src.aux soap-src.aux | sort | uniq | diff -u - soap_wsse-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > soap_wsse-src.lst
+	gnat ls -o -P gnat/matreshka_soap_wsse.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > soap_wsse-ali.lst
+	cat soap_wsse-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/soap/wsse
+	cat soap_wsse-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/soap_wsse.gpr $(INSTALL_PROJECT_DIR)/soap_wsse.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/soap_wsse-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)" > .objs/soap_wsse-lib.files
+endif
+	cat soap_wsse-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/soap/wsse/{}" > .objs/soap_wsse-devel.files
+	cat soap_wsse-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/soap_wsse-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/soap_wsse.gpr" >> .objs/soap_wsse-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)" >> .objs/soap_wsse-devel.files
 
 wsdl2ada:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
@@ -418,6 +439,7 @@ cleanup:
 	rm -f xml-src.lst xml-ali.lst xml-src.aux
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
 	rm -f soap-src.lst soap-ali.lst soap-src.aux
+	rm -f soap_wsse-src.lst soap_wsse-ali.lst soap_wsse-src.aux
 	rm -f sql-src.lst sql-ali.lst sql-src.aux
 	rm -f sql_oci-src.lst sql_oci-ali.lst sql_oci-src.aux
 	rm -f sql_postgresql-src.lst sql_postgresql-ali.lst sql_postgresql-src.aux
