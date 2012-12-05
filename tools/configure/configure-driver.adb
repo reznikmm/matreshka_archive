@@ -52,6 +52,7 @@ with Configure.Operating_System;
 with Configure.RTL_Version;
 with Configure.Tests.Install;
 with Configure.Tests.Installation_Directories;
+with Configure.Tests.MySQL;
 with Configure.Tests.OCI;
 with Configure.Tests.PostgreSQL;
 with Configure.Tests.SQLite3;
@@ -98,6 +99,7 @@ procedure Configure.Driver is
    Dirs_Test       :
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
+   MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
    SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
@@ -145,6 +147,7 @@ begin
    Configure.RTL_Version;
    Dirs_Test.Execute (Arguments);
    Install_Test.Execute (Arguments);
+   MySQL_Test.Execute (Arguments);
    OCI_Test.Execute (Arguments);
    PostgreSQL_Test.Execute (Arguments);
    SQLite3_Test.Execute (Arguments);
