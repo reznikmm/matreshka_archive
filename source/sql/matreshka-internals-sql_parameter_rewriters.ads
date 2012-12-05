@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,9 +46,12 @@
 --  specific representation.
 ------------------------------------------------------------------------------
 with League.Strings;
+
 with Matreshka.Internals.SQL_Parameter_Sets;
 
 package Matreshka.Internals.SQL_Parameter_Rewriters is
+
+   pragma Preelaborate;
 
    type Abstract_Parameter_Rewriter is abstract tagged limited null record;
 

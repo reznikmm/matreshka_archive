@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,8 @@ with League.Holders;
 private with League.Strings.Hash;
 
 package Matreshka.Internals.SQL_Parameter_Sets is
+
+   pragma Preelaborate;
 
    type Parameter_Set is tagged limited private;
 
