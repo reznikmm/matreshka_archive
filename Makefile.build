@@ -5,6 +5,14 @@ GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
 ALL_TARGETS = league xml fastcgi soap wsse wsdl2ada sql amf dd uml mofext ocl utp
 
+ifdef HAS_FIREBIRD
+ALL_TARGETS += firebird
+endif
+
+ifdef HAS_MYSQL
+ALL_TARGETS += mysql
+endif
+
 ifdef HAS_OCI
 ALL_TARGETS += oci
 endif
@@ -15,10 +23,6 @@ endif
 
 ifdef HAS_SQLITE3
 ALL_TARGETS += sqlite3
-endif
-
-ifdef HAS_FIREBIRD
-ALL_TARGETS += firebird
 endif
 
 all: $(ALL_TARGETS)
@@ -44,17 +48,20 @@ wsdl2ada: league
 sql: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr
 
-sqlite3: league sql
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3.gpr
+firebird: league sql
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_firebird.gpr
 
-postgresql: league sql
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
+mysql: league sql
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_mysql.gpr
 
 oci: league sql
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oracle.gpr
 
-firebird: league sql
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_firebird.gpr
+postgresql: league sql
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_postgresql.gpr
+
+sqlite3: league sql
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3.gpr
 
 amf: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf.gpr

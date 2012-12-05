@@ -66,12 +66,14 @@ abstract project Matreshka_Config is
    type Build_Type is ("RELEASE", "DEBUG");
    Build : Build_Type := external ("BUILD", "RELEASE");
 
-   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
+   Firebird_Library_Options := (@FIREBIRD_LIBRARY_OPTIONS@);
 
-   PostgreSQL_Library_Options := (@POSTGRESQL_LIBRARY_OPTIONS@);
+   MySQL_Library_Options := (@MYSQL_LIBRARY_OPTIONS@);
 
    OCI_Library_Options := (@OCI_LIBRARY_OPTIONS@);
 
-   Firebird_Library_Options := (@FIREBIRD_LIBRARY_OPTIONS@);
+   PostgreSQL_Library_Options := (@POSTGRESQL_LIBRARY_OPTIONS@);
+
+   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
 
 end Matreshka_Config;

@@ -24,6 +24,14 @@ endif
 
 INSTALL_TARGETS = league xml fastcgi soap wsse wsdl2ada sql amf dd uml mofext ocl utp
 
+ifdef HAS_FIREBIRD
+INSTALL_TARGETS += firebird
+endif
+
+ifdef HAS_MYSQL
+INSTALL_TARGETS += mysql
+endif
+
 ifdef HAS_OCI
 INSTALL_TARGETS += oci
 endif
@@ -34,10 +42,6 @@ endif
 
 ifdef HAS_SQLITE3
 INSTALL_TARGETS += sqlite3
-endif
-
-ifdef HAS_FIREBIRD
-INSTALL_TARGETS += firebird
 endif
 
 INSTALL_TARGETS += cleanup
@@ -160,6 +164,27 @@ endif
 	cat sql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/sql.gpr" >> .objs/sql-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql-devel.files
+
+mysql:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/mysql
+	gnat ls -d -s -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' > sql_mysql-src.aux
+	cat league-src.lst sql-src.aux | diff -u - sql_mysql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_mysql-src.lst
+	gnat ls -o -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_mysql-ali.lst
+	cat sql_mysql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/mysql
+	cat sql_mysql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/sql_mysql.gpr $(INSTALL_PROJECT_DIR)/sql_mysql.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/sql_mysql-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)" > .objs/sql_mysql-lib.files
+endif
+	cat sql_mysql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/mysql/{}" > .objs/sql_mysql-devel.files
+	cat sql_mysql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_mysql-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/sql_mysql.gpr" >> .objs/sql_mysql-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_mysql-devel.files
 
 oci:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/oci
@@ -441,6 +466,7 @@ cleanup:
 	rm -f soap-src.lst soap-ali.lst soap-src.aux
 	rm -f soap_wsse-src.lst soap_wsse-ali.lst soap_wsse-src.aux
 	rm -f sql-src.lst sql-ali.lst sql-src.aux
+	rm -f sql_mysql-src.lst sql_mysql-ali.lst sql_mysql-src.aux
 	rm -f sql_oci-src.lst sql_oci-ali.lst sql_oci-src.aux
 	rm -f sql_postgresql-src.lst sql_postgresql-ali.lst sql_postgresql-src.aux
 	rm -f sql_sqlite3-src.lst sql_sqlite3-ali.lst sql_sqlite3-src.aux
