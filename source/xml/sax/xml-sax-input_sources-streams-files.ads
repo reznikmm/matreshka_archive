@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,6 +56,9 @@ package XML.SAX.Input_Sources.Streams.Files is
     (Self : in out File_Input_Source;
      URI  : League.Strings.Universal_String);
    --  Opens file with specified URI.
+
+   not overriding procedure Close (Self : in out File_Input_Source);
+   --  Closes file.
 
    function URI_To_File_Name
     (URI : League.Strings.Universal_String)
