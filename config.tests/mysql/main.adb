@@ -44,8 +44,6 @@
 --  This procedure imports mysql_server_init and calls it. Absense of
 --  libmysqlclient_r or dependent libs produce linker error.
 ------------------------------------------------------------------------------
-pragma Ada_2012;
-
 with Interfaces.C;
 with System;
 
@@ -54,10 +52,8 @@ procedure Main is
    function mysql_server_init
     (argc   : Interfaces.C.int;
      argv   : System.Address;
-     groups : System.Address) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_server_init";
+     groups : System.Address) return Interfaces.C.int;
+   pragma Import (C, mysql_server_init, "mysql_server_init");
 
    Aux : Interfaces.C.int;
 
