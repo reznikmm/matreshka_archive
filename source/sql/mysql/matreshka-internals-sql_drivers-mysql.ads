@@ -44,8 +44,6 @@
 --  This package provides low level binding to MySQL client library or embedded
 --  server functions.
 ------------------------------------------------------------------------------
-pragma Ada_2012;
-
 with System;
 
 with Interfaces.C.Strings;
@@ -60,17 +58,18 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
 
    type MYSQL is limited private;
 
-   type MYSQL_Access is access all MYSQL
-     with Convention => C;
+   type MYSQL_Access is access all MYSQL;
+   pragma Convention (C, MYSQL_Access);
 
    type MYSQL_STMT is limited private;
 
-   type MYSQL_STMT_Access is access all MYSQL_STMT
-     with Convention => C;
+   type MYSQL_STMT_Access is access all MYSQL_STMT;
+   pragma Convention (C, MYSQL_STMT_Access);
 
    type MYSQL_RES is limited private;
 
    type MYSQL_RES_Access is access all MYSQL_RES;
+   pragma Convention (C, MYSQL_RES_Access);
 
    type my_bool is new Interfaces.C.signed_char;
 
@@ -98,8 +97,8 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
      MYSQL_OPT_RECONNECT,
      MYSQL_OPT_SSL_VERIFY_SERVER_CERT,
      MYSQL_PLUGIN_DIR,
-     MYSQL_DEFAULT_AUTH)
-       with Convention => C;
+     MYSQL_DEFAULT_AUTH);
+   pragma Convention (C, mysql_option);
 
    type enum_field_types is
     (MYSQL_TYPE_DECIMAL,
@@ -128,8 +127,8 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
      MYSQL_TYPE_BLOB,
      MYSQL_TYPE_VAR_STRING,
      MYSQL_TYPE_STRING,
-     MYSQL_TYPE_GEOMETRY)
-       with Convention => C;
+     MYSQL_TYPE_GEOMETRY);
+   pragma Convention (C, enum_field_types);
    for enum_field_types use
     (MYSQL_TYPE_DECIMAL     => 0,
      MYSQL_TYPE_TINY        => 1,
@@ -179,11 +178,11 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
       long_data_used   : my_bool;
       is_null_value    : my_bool;
       extension        : System.Address;
-   end record
-     with Convention => C;
+   end record;
+   pragma Convention (C, MYSQL_BIND);
 
-   type MYSQL_BIND_Array is array (Positive range <>) of aliased MYSQL_BIND
-     with Convention => C;
+   type MYSQL_BIND_Array is array (Positive range <>) of aliased MYSQL_BIND;
+   pragma Convention (C, MYSQL_BIND_Array);
 
    type MYSQL_BIND_Array_Access is access all MYSQL_BIND_Array;
 
@@ -209,10 +208,11 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
       charsetnr        : Interfaces.C.unsigned;
       field_type       : enum_field_types;
       extension        : System.Address;
-   end record
-     with Convention => C;
+   end record;
+   pragma Convention (C, MYSQL_FIELD);
 
    type MYSQL_FIELD_Access is access all MYSQL_FIELD;
+   pragma Convention (C, MYSQL_FIELD_Access);
 
    MYSQL_NO_DATA        : constant := 100;
    MYSQL_DATA_TRUNCATED : constant := 101;
@@ -221,55 +221,39 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
    -- Subprograms --
    -----------------
 
-   procedure mysql_close (handle : not null access MYSQL)
-     with Convention => C,
-          Import     => True,
-          Link_Name  => "mysql_close";
+   procedure mysql_close (handle : not null access MYSQL);
+   pragma Import (C, mysql_close, "mysql_close");
 
    function mysql_error
-    (handle : not null access MYSQL) return Interfaces.C.Strings.chars_ptr
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_error";
+    (handle : not null access MYSQL) return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, mysql_error, "mysql_error");
 
-   procedure mysql_free_result (handle : not null access MYSQL_RES)
-     with Convention => C,
-          Import     => True,
-          Link_Name  => "mysql_free_result";
+   procedure mysql_free_result (handle : not null access MYSQL_RES);
+   pragma Import (C, mysql_free_result, "mysql_free_result");
 
    function mysql_fetch_field
-    (handle : not null access MYSQL_RES) return MYSQL_FIELD_Access
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_fetch_field";
+    (handle : not null access MYSQL_RES) return MYSQL_FIELD_Access;
+   pragma Import (C, mysql_fetch_field, "mysql_fetch_field");
 
-   function mysql_init (handle : access MYSQL) return MYSQL_Access
-     with Convention => C,
-          Import     => True,
-          Link_Name  => "mysql_init";
+   function mysql_init (handle : access MYSQL) return MYSQL_Access;
+   pragma Import (C, mysql_init, "mysql_init");
 
    function mysql_library_init
     (argc   : Interfaces.C.int;
      argv   : access Interfaces.C.Strings.chars_ptr;
-     groups : access Interfaces.C.Strings.chars_ptr) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_server_init";
+     groups : access Interfaces.C.Strings.chars_ptr) return Interfaces.C.int;
+   pragma Import (C, mysql_library_init, "mysql_server_init");
    --  MySQL defines mysql_library_init as alias of mysql_server_init.
 
    function mysql_num_fields
-    (handle : not null access MYSQL_RES) return Interfaces.C.unsigned
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_num_fields";
+    (handle : not null access MYSQL_RES) return Interfaces.C.unsigned;
+   pragma Import (C, mysql_num_fields, "mysql_num_fields");
 
    function mysql_options
     (handle : not null access MYSQL;
      option : mysql_option;
-     arg    : Interfaces.C.char_array) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_options";
+     arg    : Interfaces.C.char_array) return Interfaces.C.int;
+   pragma Import (C, mysql_options, "mysql_options");
 
    function mysql_real_connect
     (handle : not null access MYSQL;
@@ -279,74 +263,53 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
      db     : Interfaces.C.Strings.chars_ptr;
      port   : Interfaces.C.unsigned;
      unix_socket : Interfaces.C.Strings.chars_ptr;
-     client_flag : Interfaces.C.unsigned_long) return MYSQL_Access
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_real_connect";
+     client_flag : Interfaces.C.unsigned_long) return MYSQL_Access;
+   pragma Import (C, mysql_real_connect, "mysql_real_connect");
 
    function mysql_stmt_bind_param
     (handle : not null access MYSQL_STMT;
-     bind   : access MYSQL_BIND) return my_bool
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_bind_param";
+     bind   : access MYSQL_BIND) return my_bool;
+   pragma Import (C, mysql_stmt_bind_param, "mysql_stmt_bind_param");
 
    function mysql_stmt_bind_result
     (handle : not null access MYSQL_STMT;
-     bind   : access MYSQL_BIND) return my_bool
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_bind_result";
+     bind   : access MYSQL_BIND) return my_bool;
+   pragma Import (C, mysql_stmt_bind_result, "mysql_stmt_bind_result");
 
    function mysql_stmt_close
-    (handle : not null access MYSQL_STMT) return my_bool
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_close";
+    (handle : not null access MYSQL_STMT) return my_bool;
+   pragma Import (C, mysql_stmt_close, "mysql_stmt_close");
 
    function mysql_stmt_error
-    (handle : not null access MYSQL_STMT) return Interfaces.C.Strings.chars_ptr
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_error";
+    (handle : not null access MYSQL_STMT)
+       return Interfaces.C.Strings.chars_ptr;
+   pragma Import (C, mysql_stmt_error, "mysql_stmt_error");
 
    function mysql_stmt_execute
-    (handle   : not null access MYSQL_STMT) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_execute";
+    (handle   : not null access MYSQL_STMT) return Interfaces.C.int;
+   pragma Import (C, mysql_stmt_execute, "mysql_stmt_execute");
 
    function mysql_stmt_fetch
-    (handle : not null access MYSQL_STMT) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_fetch";
+    (handle : not null access MYSQL_STMT) return Interfaces.C.int;
+   pragma Import (C, mysql_stmt_fetch, "mysql_stmt_fetch");
 
    function mysql_stmt_init
-    (handle : not null access MYSQL) return MYSQL_STMT_Access
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_init";
+    (handle : not null access MYSQL) return MYSQL_STMT_Access;
+   pragma Import (C, mysql_stmt_init, "mysql_stmt_init");
 
    function mysql_stmt_param_count
-    (handle : not null access MYSQL_STMT) return Interfaces.C.unsigned_long
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_param_count";
+    (handle : not null access MYSQL_STMT) return Interfaces.C.unsigned_long;
+   pragma Import (C, mysql_stmt_param_count, "mysql_stmt_param_count");
 
    function mysql_stmt_prepare
     (handle   : not null access MYSQL_STMT;
      stmt_str : Interfaces.C.Strings.chars_ptr;
-     length   : Interfaces.C.unsigned_long) return Interfaces.C.int
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_prepare";
+     length   : Interfaces.C.unsigned_long) return Interfaces.C.int;
+   pragma Import (C, mysql_stmt_prepare, "mysql_stmt_prepare");
 
    function mysql_stmt_result_metadata
-    (handle : not null access MYSQL_STMT) return MYSQL_RES_Access
-       with Convention => C,
-            Import     => True,
-            Link_Name  => "mysql_stmt_result_metadata";
+    (handle : not null access MYSQL_STMT) return MYSQL_RES_Access;
+   pragma Import (C, mysql_stmt_result_metadata, "mysql_stmt_result_metadata");
 
    ---------------
    -- Utilities --
