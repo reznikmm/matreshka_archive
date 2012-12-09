@@ -47,9 +47,9 @@ License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
-Source:         matreshka-0.4.0.tar.gz
+Source:         matreshka-0.5.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada postgresql-devel sqlite3-devel pkg-config
+BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config
 ##  PreReq:
 ##  Provides:
 %description
@@ -167,6 +167,19 @@ Requires: libmatreshka-sql%{PACKAGE_SUFFIX}
 %description -n libmatreshka-sql%{PACKAGE_SUFFIX}-devel
 SQL database access library of Matreshka components allows to use simple API to
 access to different SQL databases.
+
+%package -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: MySQL driver for SQL database access library of Matreshka components
+%description -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}
+MySQL driver for SQL database access library of Matreshka components.
+
+%package -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary: MySQL driver for SQL database access library of Matreshka components
+Requires: libmatreshka-sql-mysql%{PACKAGE_SUFFIX}
+%description -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}-devel
+MySQL driver for SQL database access library of Matreshka components.
 
 %package -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other
@@ -329,6 +342,11 @@ component of Matreshka framework for Ada developers.
 %postun -n libmatreshka-sql%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %post -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX}
@@ -421,6 +439,12 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-sql%{PACKAGE_SUFFIX}-devel -f .objs/sql-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/sql
+
+%files -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX} -f .objs/sql_mysql-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-sql-mysql%{PACKAGE_SUFFIX}-devel -f .objs/sql_mysql-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/sql/mysql
 
 %files -n libmatreshka-sql-postgresql%{PACKAGE_SUFFIX} -f .objs/sql_postgresql-lib.files
 %defattr(-,root,root)
