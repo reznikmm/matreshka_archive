@@ -49,7 +49,7 @@ Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.5.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config
+BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config valgrind
 ##  PreReq:
 ##  Provides:
 %description
