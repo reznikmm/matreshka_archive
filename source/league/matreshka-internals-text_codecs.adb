@@ -49,6 +49,7 @@ with Matreshka.Internals.Text_Codecs.IBM437;
 with Matreshka.Internals.Text_Codecs.ISO88591;
 with Matreshka.Internals.Text_Codecs.ISO88595;
 with Matreshka.Internals.Text_Codecs.KOI8R;
+with Matreshka.Internals.Text_Codecs.KOI8U;
 with Matreshka.Internals.Text_Codecs.SHIFTJIS;
 with Matreshka.Internals.Text_Codecs.UTF16;
 with Matreshka.Internals.Text_Codecs.UTF8;
@@ -73,6 +74,7 @@ package body Matreshka.Internals.Text_Codecs is
    MIB_SHIFTJIS    : constant Character_Set := 17;
    MIB_IBM437      : constant Character_Set := 2011;
    MIB_KOI8R       : constant Character_Set := 2084;
+   MIB_KOI8U       : constant Character_Set := 2088;
    MIB_WINDOWS1250 : constant Character_Set := 2250;
    MIB_WINDOWS1251 : constant Character_Set := 2251;
    MIB_WINDOWS1252 : constant Character_Set := 2252;
@@ -87,6 +89,7 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF16LE     => UTF16.LE_Decoder'Access,
          MIB_IBM437      => IBM437.Decoder'Access,
          MIB_KOI8R       => KOI8R.Decoder'Access,
+         MIB_KOI8U       => KOI8U.Decoder'Access,
          MIB_WINDOWS1250 => Windows1250.Decoder'Access,
          MIB_WINDOWS1251 => Windows1251.Decoder'Access,
          MIB_WINDOWS1252 => Windows1252.Decoder'Access,
@@ -99,6 +102,7 @@ package body Matreshka.Internals.Text_Codecs is
          MIB_UTF8        => UTF8.Encoder'Access,
          MIB_IBM437      => IBM437.Encoder'Access,
          MIB_KOI8R       => KOI8R.Encoder'Access,
+         MIB_KOI8U       => KOI8U.Encoder'Access,
          MIB_WINDOWS1250 => Windows1250.Encoder'Access,
          MIB_WINDOWS1251 => Windows1251.Encoder'Access,
          MIB_WINDOWS1252 => Windows1252.Encoder'Access,
