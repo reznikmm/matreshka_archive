@@ -220,7 +220,7 @@ package body Matreshka.Internals.Text_Codecs.KOI8R is
                 16#00A1# => Question_Mark,
                 16#00A2# => Question_Mark,
                 16#00A3# => Question_Mark,
-                16#00A4# => 16#A4#,   --  CURRENCY SIGN
+                16#00A4# => Question_Mark,
                 16#00A5# => Question_Mark,
                 16#00A6# => Question_Mark,
                 16#00A7# => Question_Mark,
