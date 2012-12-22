@@ -237,7 +237,7 @@ package body Matreshka.Internals.Text_Codecs.KOI8U is
                 16#00B7# => 16#9E#);  --  MIDDLE DOT
 
    Encode_Table_04 : constant
-     array (Matreshka.Internals.Unicode.Code_Point range 16#0401# .. 16#0456#)
+     array (Matreshka.Internals.Unicode.Code_Point range 16#0401# .. 16#0457#)
        of Ada.Streams.Stream_Element
             := (16#0401# => 16#B3#,   --  CYRILLIC CAPITAL LETTER IO
                 16#0402# => Question_Mark,
@@ -616,8 +616,8 @@ package body Matreshka.Internals.Text_Codecs.KOI8U is
 
                Element := Stream_Element (Code);
 
-            elsif Code in 16#0401# .. 16#0456# then
-               --  Table translation, range 0401 .. 0456.
+            elsif Code in 16#0401# .. 16#0457# then
+               --  Table translation, range 0401 .. 0457.
 
                Element := Encode_Table_04 (Code);
 
