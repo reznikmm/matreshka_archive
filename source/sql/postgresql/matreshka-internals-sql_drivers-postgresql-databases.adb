@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@ with Ada.Streams;
 
 with League.Text_Codecs;
 with Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries;
+with SQL.Options.Internals;
 
 package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
 
@@ -237,18 +238,39 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
 
    overriding function Open
     (Self    : not null access PostgreSQL_Database;
-     Options : League.Strings.Universal_String) return Boolean
+     Options : SQL.Options.SQL_Options) return Boolean
    is
-      C_Options : Interfaces.C.Strings.chars_ptr := New_String (Options);
+      Options_Size  : constant Interfaces.C.size_t
+        := Interfaces.C.size_t (SQL.Options.Internals.Length (Options) + 1);
+      Options_Name  : Interfaces.C.Strings.chars_ptr_array (1 .. Options_Size);
+      Options_Value : Interfaces.C.Strings.chars_ptr_array (1 .. Options_Size);
 
    begin
+      --  Prepare driver's options.
+
+      for J in 1 .. SQL.Options.Internals.Length (Options) loop
+         Options_Name (Interfaces.C.size_t (J)) :=
+           New_String (SQL.Options.Internals.Name (Options, J));
+         Options_Value (Interfaces.C.size_t (J)) :=
+           New_String (SQL.Options.Internals.Value (Options, J));
+      end loop;
+
+      Options_Name (Options_Size) := Interfaces.C.Strings.Null_Ptr;
+      Options_Value (Options_Size) := Interfaces.C.Strings.Null_Ptr;
+
       --  Establish connection.
 
-      Self.Handle := PQconnectdb (C_Options);
+      Self.Handle := PQconnectdbParams (Options_Name, Options_Value, 0);
 
       --  Cleanup.
 
-      Interfaces.C.Strings.Free (C_Options);
+      for J in Options_Name'Range loop
+         Interfaces.C.Strings.Free (Options_Name (J));
+      end loop;
+
+      for J in Options_Value'Range loop
+         Interfaces.C.Strings.Free (Options_Value (J));
+      end loop;
 
       --  Handle fatal error.
 

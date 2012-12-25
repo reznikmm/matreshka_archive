@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -112,16 +112,11 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL is
    function PQclientEncoding (conn : PGconn_Access) return Interfaces.C.int;
    pragma Import (C, PQclientEncoding, "PQclientEncoding");
 
-   function PQconnectdb
-    (conninfo : Interfaces.C.Strings.chars_ptr) return PGconn_Access;
-   pragma Import (C, PQconnectdb, "PQconnectdb");
-
---   function PQconnectdbParams
---    (keywords     : chars_ptr_Access;
---     values       : chars_ptr_Access;
---     expand_dbnam : Interfaces.C.int) return PGconn_Access;
---   pragma Import (C, PQconnectdbParams, "PQconnectdbParams");
---   XXX PostgreSQL 9.0 only, but it is preferable version of connect function.
+   function PQconnectdbParams
+    (keywords     : Interfaces.C.Strings.chars_ptr_array;
+     values       : Interfaces.C.Strings.chars_ptr_array;
+     expand_dbnam : Interfaces.C.int) return PGconn_Access;
+   pragma Import (C, PQconnectdbParams, "PQconnectdbParams");
 
    function PQerrorMessage
     (conn : PGconn_Access) return Interfaces.C.Strings.chars_ptr;
