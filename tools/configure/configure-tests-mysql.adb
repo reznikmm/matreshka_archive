@@ -192,7 +192,7 @@ package body Configure.Tests.MySQL is
             end;
 
          else
-            Self.Report_Status ("no (pg_config not found)");
+            Self.Report_Status ("no (mysql_config not found)");
          end if;
 
       else
