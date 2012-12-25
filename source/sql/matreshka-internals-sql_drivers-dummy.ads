@@ -53,7 +53,7 @@ package Matreshka.Internals.SQL_Drivers.Dummy is
 
    overriding function Open
     (Self    : not null access Dummy_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+     Options : SQL.Options.SQL_Options) return Boolean;
 
    overriding procedure Close (Self : not null access Dummy_Database) is null;
 

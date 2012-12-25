@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,152 +41,70 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Text_Codecs;
-with SQL.Queries.Internals;
 
-package body SQL.Databases is
-
-   procedure Raise_SQL_Error
-    (Self : in out SQL_Database'Class; Success : Boolean);
-   --  Raises SQL_Error when Success is not equal to True. Constructs exception
-   --  message from Error_Message of query.
-
---   ------------
---   -- Adjust --
---   ------------
---
---   overriding procedure Adjust (Self : in out SQL_Database) is
---   begin
---      Matreshka.Internals.SQL_Databases.Reference (Self.Data);
---   end Adjust;
-
-   -----------
-   -- Close --
-   -----------
-
-   procedure Close (Self : in out SQL_Database'Class) is
-   begin
-      null;
-   end Close;
+package body SQL.Options.Internals is
 
    ------------
-   -- Commit --
+   -- Length --
    ------------
 
-   procedure Commit (Self : in out SQL_Database'Class) is
+   function Length (Self : SQL_Options'Class) return Natural is
    begin
-      Self.Data.Commit;
-   end Commit;
-
-   ------------
-   -- Create --
-   ------------
-
-   function Create
-    (Driver  : League.Strings.Universal_String;
-     Options : SQL.Options.SQL_Options) return SQL_Database is
-   begin
-      return
-       (Ada.Finalization.Limited_Controlled with
-          Matreshka.Internals.SQL_Drivers.Create (Driver),
-          Options);
-   end Create;
-
-   -------------------
-   -- Error_Message --
-   -------------------
-
-   function Error_Message
-    (Self : SQL_Database'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Data.Error_Message;
-   end Error_Message;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out SQL_Database) is
-      use type Matreshka.Internals.SQL_Drivers.Database_Access;
-
-   begin
-      --  Finalize must be idempotent according to language rules.
-
-      if Self.Data /= null then
-         Matreshka.Internals.SQL_Drivers.Dereference (Self.Data);
-      end if;
-   end Finalize;
+      return Natural (Self.Set.Length);
+   end Length;
 
    ----------
-   -- Open --
+   -- Name --
    ----------
 
-   function Open (Self : in out SQL_Database'Class) return Boolean is
-   begin
-      return Self.Data.Open (Self.Options);
-   end Open;
+   function Name
+    (Self  : SQL_Options'Class;
+     Index : Positive) return League.Strings.Universal_String
+   is
+      Position : String_Maps.Cursor := Self.Set.First;
 
-   ----------
-   -- Open --
-   ----------
-
-   procedure Open (Self : in out SQL_Database'Class) is
    begin
-      Self.Raise_SQL_Error (Self.Data.Open (Self.Options));
-   end Open;
+      for J in 1 .. Index loop
+         if J = Index then
+            if String_Maps.Has_Element (Position) then
+               return String_Maps.Key (Position);
+
+            else
+               return League.Strings.Empty_Universal_String;
+            end if;
+         end if;
+
+         String_Maps.Next (Position);
+      end loop;
+
+      return League.Strings.Empty_Universal_String;
+   end Name;
 
    -----------
-   -- Query --
+   -- Value --
    -----------
 
-   function Query
-    (Self : in out SQL_Database'Class) return SQL.Queries.SQL_Query is
+   function Value
+    (Self  : SQL_Options'Class;
+     Index : Positive) return League.Strings.Universal_String
+   is
+      Position : String_Maps.Cursor := Self.Set.First;
+
    begin
-      return SQL.Queries.Internals.Wrap (Self.Data.Query);
-   end Query;
+      for J in 1 .. Index loop
+         if J = Index then
+            if String_Maps.Has_Element (Position) then
+               return String_Maps.Element (Position);
 
-   -----------
-   -- Query --
-   -----------
+            else
+               return League.Strings.Empty_Universal_String;
+            end if;
+         end if;
 
-   function Query
-    (Self  : in out SQL_Database'Class;
-     Query : League.Strings.Universal_String) return SQL.Queries.SQL_Query is
-   begin
-      return Aux : SQL.Queries.SQL_Query := Self.Query do
-         Aux.Prepare (Query);
-      end return;
-   end Query;
+         String_Maps.Next (Position);
+      end loop;
 
-   ---------------------
-   -- Raise_SQL_Error --
-   ---------------------
+      return League.Strings.Empty_Universal_String;
+   end Value;
 
-   procedure Raise_SQL_Error
-    (Self : in out SQL_Database'Class; Success : Boolean) is
-   begin
-      if not Success then
-         raise SQL_Error
-           with League.Text_Codecs.To_Exception_Message (Self.Error_Message);
-      end if;
-   end Raise_SQL_Error;
-
-   --------------
-   -- Rollback --
-   --------------
-
-   procedure Rollback (Self : in out SQL_Database'Class) is
-   begin
-      null;
-   end Rollback;
-
-   -----------------
-   -- Transaction --
-   -----------------
-
-   procedure Transaction (Self : in out SQL_Database'Class) is
-   begin
-      null;
-   end Transaction;
-
-end SQL.Databases;
+end SQL.Options.Internals;

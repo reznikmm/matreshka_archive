@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,7 +55,7 @@
 with League.Strings;
 with League.Holders;
 private with Matreshka.Atomics.Counters;
-with SQL;
+with SQL.Options;
 
 package Matreshka.Internals.SQL_Drivers is
 
@@ -79,7 +79,7 @@ package Matreshka.Internals.SQL_Drivers is
 
    not overriding function Open
     (Self    : not null access Abstract_Database;
-     Options : League.Strings.Universal_String) return Boolean is abstract;
+     Options : SQL.Options.SQL_Options) return Boolean is abstract;
    --  Opens database connection.
    --
    --  The function must return True on success and False on failure.

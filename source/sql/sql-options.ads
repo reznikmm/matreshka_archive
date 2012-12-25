@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,148 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides set of options to configure database drivers.
+------------------------------------------------------------------------------
+private with Ada.Containers.Hashed_Maps;
 
-package body Matreshka.Internals.SQL_Drivers.Dummy is
+with League.Strings;
+private with League.Strings.Hash;
 
-   -----------------
-   -- Bound_Value --
-   -----------------
+package SQL.Options is
 
-   overriding function Bound_Value
-    (Self : not null access Dummy_Query;
+   pragma Preelaborate;
+
+   type SQL_Options is tagged private;
+
+   procedure Set
+    (Self  : in out SQL_Options;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String);
+
+   function Get
+    (Self : SQL_Options;
      Name : League.Strings.Universal_String)
-       return League.Holders.Holder
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Name);
+       return League.Strings.Universal_String;
 
-   begin
-      return League.Holders.Empty_Holder;
-   end Bound_Value;
+   function Is_Set
+    (Self : SQL_Options;
+     Name : League.Strings.Universal_String) return Boolean;
 
-   -------------------
-   -- Error_Message --
-   -------------------
+private
 
-   overriding function Error_Message
-    (Self : not null access Dummy_Database)
-       return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
+   package String_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           League.Strings.Universal_String,
+           League.Strings.Hash,
+           League.Strings."=",
+           League.Strings."=");
 
-   begin
-      return League.Strings.To_Universal_String ("Database driver not defined");
-   end Error_Message;
+   type SQL_Options is tagged record
+      Set : String_Maps.Map;
+   end record;
 
-   -------------------
-   -- Error_Message --
-   -------------------
-
-   overriding function Error_Message
-    (Self : not null access Dummy_Query)
-       return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return League.Strings.To_Universal_String ("Database driver not defined");
-   end Error_Message;
-
-   -------------
-   -- Execute --
-   -------------
-
-   overriding function Execute
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Execute;
-
-   ---------------
-   -- Is_Active --
-   ---------------
-
-   overriding function Is_Active
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Is_Active;
-
-   ----------
-   -- Next --
-   ----------
-
-   overriding function Next
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Next;
-
-   ----------
-   -- Open --
-   ----------
-
-   overriding function Open
-    (Self    : not null access Dummy_Database;
-     Options : SQL.Options.SQL_Options) return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Options);
-
-   begin
-      return False;
-   end Open;
-
-   -------------
-   -- Prepare --
-   -------------
-
-   overriding function Prepare
-    (Self  : not null access Dummy_Query;
-     Query : League.Strings.Universal_String) return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Query);
-
-   begin
-      return False;
-   end Prepare;
-
-   -----------
-   -- Query --
-   -----------
-
-   overriding function Query
-    (Self : not null access Dummy_Database) return not null Query_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return Empty_Query'Access;
-   end Query;
-
-   -----------
-   -- Value --
-   -----------
-
-   overriding function Value
-    (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Holders.Holder
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Index);
-
-   begin
-      return League.Holders.Empty_Holder;
-   end Value;
-
-end Matreshka.Internals.SQL_Drivers.Dummy;
+end SQL.Options;

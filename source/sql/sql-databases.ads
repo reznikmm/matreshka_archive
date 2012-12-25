@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ private with Ada.Finalization;
 
 with League.Strings;
 private with Matreshka.Internals.SQL_Drivers.Dummy;
+with SQL.Options;
 with SQL.Queries;
 
 package SQL.Databases is
@@ -55,7 +56,7 @@ package SQL.Databases is
 
    function Create
     (Driver  : League.Strings.Universal_String;
-     Options : League.Strings.Universal_String) return SQL_Database;
+     Options : SQL.Options.SQL_Options) return SQL_Database;
 
    procedure Open (Self : in out SQL_Database'Class);
 
@@ -91,7 +92,7 @@ private
    type SQL_Database is new Ada.Finalization.Limited_Controlled with record
       Data    : Matreshka.Internals.SQL_Drivers.Database_Access
         := Matreshka.Internals.SQL_Drivers.Dummy.Empty_Database'Access;
-      Options : League.Strings.Universal_String;
+      Options : SQL.Options.SQL_Options;
    end record;
 
 --   overriding procedure Adjust (Self : in out SQL_Database);

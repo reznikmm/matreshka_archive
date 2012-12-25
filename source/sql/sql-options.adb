@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,147 +42,46 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.SQL_Drivers.Dummy is
+package body SQL.Options is
 
-   -----------------
-   -- Bound_Value --
-   -----------------
+   ---------
+   -- Get --
+   ---------
 
-   overriding function Bound_Value
-    (Self : not null access Dummy_Query;
+   function Get
+    (Self : SQL_Options;
      Name : League.Strings.Universal_String)
-       return League.Holders.Holder
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Name);
-
+       return League.Strings.Universal_String is
    begin
-      return League.Holders.Empty_Holder;
-   end Bound_Value;
+      if Self.Set.Contains (Name) then
+         return Self.Set.Element (Name);
 
-   -------------------
-   -- Error_Message --
-   -------------------
+      else
+         return League.Strings.Empty_Universal_String;
+      end if;
+   end Get;
 
-   overriding function Error_Message
-    (Self : not null access Dummy_Database)
-       return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
+   ------------
+   -- Is_Set --
+   ------------
 
+   function Is_Set
+    (Self : SQL_Options;
+     Name : League.Strings.Universal_String) return Boolean is
    begin
-      return League.Strings.To_Universal_String ("Database driver not defined");
-   end Error_Message;
+      return Self.Set.Contains (Name);
+   end Is_Set;
 
-   -------------------
-   -- Error_Message --
-   -------------------
+   ---------
+   -- Set --
+   ---------
 
-   overriding function Error_Message
-    (Self : not null access Dummy_Query)
-       return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Self);
-
+   procedure Set
+    (Self  : in out SQL_Options;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is
    begin
-      return League.Strings.To_Universal_String ("Database driver not defined");
-   end Error_Message;
+      Self.Set.Include (Name, Value);
+   end Set;
 
-   -------------
-   -- Execute --
-   -------------
-
-   overriding function Execute
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Execute;
-
-   ---------------
-   -- Is_Active --
-   ---------------
-
-   overriding function Is_Active
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Is_Active;
-
-   ----------
-   -- Next --
-   ----------
-
-   overriding function Next
-    (Self : not null access Dummy_Query) return Boolean
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Next;
-
-   ----------
-   -- Open --
-   ----------
-
-   overriding function Open
-    (Self    : not null access Dummy_Database;
-     Options : SQL.Options.SQL_Options) return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Options);
-
-   begin
-      return False;
-   end Open;
-
-   -------------
-   -- Prepare --
-   -------------
-
-   overriding function Prepare
-    (Self  : not null access Dummy_Query;
-     Query : League.Strings.Universal_String) return Boolean
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Query);
-
-   begin
-      return False;
-   end Prepare;
-
-   -----------
-   -- Query --
-   -----------
-
-   overriding function Query
-    (Self : not null access Dummy_Database) return not null Query_Access
-   is
-      pragma Unreferenced (Self);
-
-   begin
-      return Empty_Query'Access;
-   end Query;
-
-   -----------
-   -- Value --
-   -----------
-
-   overriding function Value
-    (Self  : not null access Dummy_Query;
-     Index : Positive) return League.Holders.Holder
-   is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Index);
-
-   begin
-      return League.Holders.Empty_Holder;
-   end Value;
-
-end Matreshka.Internals.SQL_Drivers.Dummy;
+end SQL.Options;
