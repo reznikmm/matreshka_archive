@@ -73,7 +73,7 @@ private
 
    overriding function Open
     (Self    : not null access MySQL_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+     Options : SQL.Options.SQL_Options) return Boolean;
 
    overriding function Query
     (Self : not null access MySQL_Database) return not null Query_Access;

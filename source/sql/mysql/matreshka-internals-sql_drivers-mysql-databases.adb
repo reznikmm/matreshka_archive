@@ -113,9 +113,34 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
 
    overriding function Open
     (Self    : not null access MySQL_Database;
-     Options : League.Strings.Universal_String) return Boolean
+     Options : SQL.Options.SQL_Options) return Boolean
    is
       use type Interfaces.C.int;
+
+      Database_Name : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("database");
+      Host_Name     : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("host");
+      Password_Name : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("password");
+      Port_Name     : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("port");
+      Socket_Name   : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("socket");
+      User_Name     : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("user");
+
+      Host_Option     : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
+      User_Option     : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
+      Password_Option : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
+      Database_Option : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
+      Port_Option     : Interfaces.C.unsigned := 0;
+      Socket_Option   : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.Null_Ptr;
 
    begin
       --  Initialize handle.
@@ -141,17 +166,54 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
          return False;
       end if;
 
+      --  Prepare options.
+
+      if Options.Is_Set (Host_Name) then
+         Host_Option :=
+           Interfaces.C.Strings.New_String
+            (Options.Get (Host_Name).To_UTF_8_String);
+      end if;
+
+      if Options.Is_Set (User_Name) then
+         User_Option :=
+           Interfaces.C.Strings.New_String
+            (Options.Get (User_Name).To_UTF_8_String);
+      end if;
+
+      if Options.Is_Set (Password_Name) then
+         Password_Option :=
+           Interfaces.C.Strings.New_String
+            (Options.Get (Password_Name).To_UTF_8_String);
+      end if;
+
+      if Options.Is_Set (Database_Name) then
+         Database_Option :=
+           Interfaces.C.Strings.New_String
+            (Options.Get (Database_Name).To_UTF_8_String);
+      end if;
+
+      if Options.Is_Set (Port_Name) then
+         Port_Option :=
+           Interfaces.C.unsigned'Wide_Wide_Value
+            (Options.Get (Port_Name).To_Wide_Wide_String);
+      end if;
+
+      if Options.Is_Set (Socket_Name) then
+         Socket_Option :=
+           Interfaces.C.Strings.New_String
+            (Options.Get (Socket_Name).To_UTF_8_String);
+      end if;
+
       --  Connect to database.
 
       if mysql_real_connect
           (Self.Handle,
-           Interfaces.C.Strings.Null_Ptr,
-           Interfaces.C.Strings.Null_Ptr,
-           Interfaces.C.Strings.Null_Ptr,
-           Interfaces.C.Strings.New_String ("test"),
---           Interfaces.C.Strings.Null_Ptr,
-           0,
-           Interfaces.C.Strings.Null_Ptr,
+           Host_Option,
+           User_Option,
+           Password_Option,
+           Database_Option,
+           Port_Option,
+           Socket_Option,
            0) = null
       then
          Self.Set_MySQL_Error;
