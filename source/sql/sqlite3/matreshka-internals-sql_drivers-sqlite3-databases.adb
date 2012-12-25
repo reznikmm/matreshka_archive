@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -161,12 +161,16 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Databases is
 
    overriding function Open
     (Self    : not null access SQLite3_Database;
-     Options : League.Strings.Universal_String) return Boolean is
+     Options : SQL.Options.SQL_Options) return Boolean
+   is
+      File_Name : constant League.Strings.Universal_String
+        := Options.Get (League.Strings.To_Universal_String ("filename"));
+
    begin
       if Self.Handle = null then
          Self.Call
           (sqlite3_open16
-            (League.Strings.Internals.Internal (Options).Value,
+            (League.Strings.Internals.Internal (File_Name).Value,
              Self.Handle'Unchecked_Access));
 
       else

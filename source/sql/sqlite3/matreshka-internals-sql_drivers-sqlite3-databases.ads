@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -74,7 +74,7 @@ private
 
    overriding function Open
     (Self    : not null access SQLite3_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+     Options : SQL.Options.SQL_Options) return Boolean;
 
    overriding function Query
     (Self : not null access SQLite3_Database) return not null Query_Access;
