@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -85,7 +85,11 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    overriding function Bound_Value
     (Self : not null access SQLite3_Query;
      Name : League.Strings.Universal_String)
-       return League.Holders.Holder is
+       return League.Holders.Holder
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Name);
+
    begin
       return League.Holders.Empty_Holder;
    end Bound_Value;
