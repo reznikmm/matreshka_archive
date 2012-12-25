@@ -141,6 +141,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
       Port_Option     : Interfaces.C.unsigned := 0;
       Socket_Option   : Interfaces.C.Strings.chars_ptr
         := Interfaces.C.Strings.Null_Ptr;
+      Result          : MYSQL_Access;
 
    begin
       --  Initialize handle.
@@ -206,16 +207,28 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
 
       --  Connect to database.
 
-      if mysql_real_connect
-          (Self.Handle,
-           Host_Option,
-           User_Option,
-           Password_Option,
-           Database_Option,
-           Port_Option,
-           Socket_Option,
-           0) = null
-      then
+      Result :=
+        mysql_real_connect
+         (Self.Handle,
+          Host_Option,
+          User_Option,
+          Password_Option,
+          Database_Option,
+          Port_Option,
+          Socket_Option,
+          0);
+
+      --  Cleanup options.
+
+      Interfaces.C.Strings.Free (Host_Option);
+      Interfaces.C.Strings.Free (User_Option);
+      Interfaces.C.Strings.Free (Password_Option);
+      Interfaces.C.Strings.Free (Database_Option);
+      Interfaces.C.Strings.Free (Socket_Option);
+
+      --  Check result of operation.
+
+      if Result = null then
          Self.Set_MySQL_Error;
 
          return False;
