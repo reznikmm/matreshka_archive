@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,9 +43,12 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 with League.Holders;
-with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 with SQL.Databases;
+with SQL.Options;
 with SQL.Queries;
+
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
+pragma Unreferenced (Matreshka.Internals.SQL_Drivers.SQLite3.Factory);
 
 procedure Test_147 is
 
@@ -56,7 +59,7 @@ procedure Test_147 is
        renames League.Strings.To_Universal_String;
 
    DB_Driver  : constant League.Strings.Universal_String := +"SQLITE3";
-   DB_Options : constant League.Strings.Universal_String := +":memory:";
+   DB_Options : SQL.Options.SQL_Options;
 
    DB    : SQL.Databases.SQL_Database
      := SQL.Databases.Create (DB_Driver, DB_Options);
