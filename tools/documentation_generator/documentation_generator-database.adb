@@ -1,12 +1,15 @@
 with Ada.Containers.Hashed_Maps;
 with Ada.Containers.Ordered_Sets;
+with Ada.Strings.Wide_Fixed;
 with Ada.Strings.Wide_Hash;
 with Ada.Unchecked_Conversion;
 
 with Asis.Compilation_Units;
 with Asis.Declarations;
 with Asis.Elements;
+with Asis.Text;
 
+with League.Characters.Latin;
 with League.Strings.Hash;
 
 package body Documentation_Generator.Database is
@@ -91,6 +94,55 @@ package body Documentation_Generator.Database is
 
       return Aux;
    end Create;
+
+   -----------------
+   -- Description --
+   -----------------
+
+   function Description
+    (Self : Type_Information'Class) return League.Strings.Universal_String
+   is
+      Lines : constant Asis.Text.Line_List
+        := Asis.Text.Lines
+            (Self.Element,
+             Asis.Text.Last_Line_Number (Self.Element) + 1,
+             Asis.Text.Compilation_Unit_Span (Self.Element).Last_Line);
+      Aux   : League.Strings.Universal_String;
+
+   begin
+      --  Extract text description from the comment starting immidiately after
+      --  last line of type declaration.
+
+      for J in Lines'Range loop
+         declare
+            Line      : constant Asis.Program_Text
+              := Asis.Text.Line_Image (Lines (J));
+            Comment   : constant Asis.Program_Text
+              := Asis.Text.Comment_Image (Lines (J));
+            Delimiter : constant Natural
+              := Ada.Strings.Wide_Fixed.Index (Comment, "-");
+
+         begin
+            exit when Line'Length = 0;
+
+            if Delimiter /= 0 then
+               if Delimiter + 4 > Comment'Last then
+                  Aux.Append (League.Characters.Latin.Line_Feed);
+                  Aux.Append (League.Characters.Latin.Line_Feed);
+
+               elsif not Aux.Is_Empty then
+                  Aux.Append (' ');
+               end if;
+
+               Aux.Append
+                (League.Strings.From_UTF_16_Wide_String
+                  (Comment (Delimiter + 4 .. Comment'Last)));
+            end if;
+         end;
+      end loop;
+
+      return Aux;
+   end Description;
 
    ----------
    -- Hash --

@@ -52,6 +52,10 @@ package Documentation_Generator.Database is
    function Module (Self : Type_Information'Class) return Module_Access;
    --  Returns module to which specified type belongs.
 
+   function Description
+    (Self : Type_Information'Class) return League.Strings.Universal_String;
+   --  Returns description of the type.
+
    ------------------------
    -- Global Supbrograms --
    ------------------------
