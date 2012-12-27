@@ -1,0 +1,26 @@
+= User's Guide =
+
+== Modules ==
+
+||= Name =||= Description =||
+|| League || Core components ||
+
+== Types ==
+
+||= Name =||= Package =||
+|| [wiki:Reference/League/Environment_Variable_Set Environment_Variable_Set] || League.Environment_Variables ||
+|| [wiki:Reference/League/Formats Formats] || League.Settings ||
+|| [wiki:Reference/League/Hash_Type Hash_Type] || League.Strings ||
+|| [wiki:Reference/League/IRI IRI] || League.IRIs ||
+|| [wiki:Reference/League/Regexp_Match Regexp_Match] || League.Regexps ||
+|| [wiki:Reference/League/Regexp_Pattern Regexp_Pattern] || League.Regexps ||
+|| [wiki:Reference/League/Settings Settings] || League.Settings ||
+|| [wiki:Reference/League/Sort_Key Sort_Key] || League.Strings ||
+|| [wiki:Reference/League/Split_Behavior Split_Behavior] || League.Strings ||
+|| [wiki:Reference/League/Stream_Element_Vector Stream_Element_Vector] || League.Stream_Element_Vectors ||
+|| [wiki:Reference/League/Text_Codec Text_Codec] || League.Text_Codecs ||
+|| [wiki:Reference/League/Universal_Character Universal_Character] || League.Characters ||
+|| [wiki:Reference/League/Universal_Slice Universal_Slice] || League.Strings ||
+|| [wiki:Reference/League/Universal_String Universal_String] || League.Strings ||
+|| [wiki:Reference/League/Universal_String_Vector Universal_String_Vector] || League.String_Vectors ||
+
