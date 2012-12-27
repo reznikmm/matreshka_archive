@@ -1,4 +1,5 @@
 with "asis.gpr";
+with "../../gnat/matreshka_league.gpr";
 
 project Documentation_Generator is
 
