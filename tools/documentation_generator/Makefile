@@ -2,7 +2,7 @@
 all:
 	gprbuild -p -P documentation_generator.gpr
 
-atd:
+adt:
 	gnatmake -c -u -f -P ../../gnat/matreshka_league.gpr league-characters.adb -gnatct || true
 	gnatmake -c -u -f -P ../../gnat/matreshka_league.gpr league-environment_variables.adb -gnatct || true
 	gnatmake -c -u -f -P ../../gnat/matreshka_league.gpr league-iris.adb -gnatct || true
@@ -14,8 +14,6 @@ atd:
 	gnatmake -c -u -f -P ../../gnat/matreshka_league.gpr league-text_codecs.adb -gnatct || true
 
 gen: all
-#	gprbuild -c -u -f -P ../../gnat/matreshka_league.gpr league-strings.adb -cargs -S || true
-#	gnatmake -c -u -f -P ../../gnat/matreshka_league.gpr league-strings.adb -S || true
 	.obj/docgen \
 		../../.objs/league/league-characters.adt League.Characters \
 		../../.objs/league/league-environment_variables.adt League.Environment_Variables \
