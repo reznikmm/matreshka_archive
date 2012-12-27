@@ -1,0 +1,6 @@
+[[PageOutline]]
+
+= IRI Type (declared in League.IRIs package) =
+
+ pragma Preelaborable_Initialization (IRI);
+

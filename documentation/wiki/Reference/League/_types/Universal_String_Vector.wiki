@@ -1,0 +1,6 @@
+[[PageOutline]]
+
+= Universal_String_Vector Type (declared in League.String_Vectors package) =
+
+
+

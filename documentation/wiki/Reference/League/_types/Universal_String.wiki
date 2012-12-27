@@ -1,0 +1,6 @@
+[[PageOutline]]
+
+= Universal_String Type (declared in League.Strings package) =
+
+Universal_String is a base type to represent information in textual form as unbounded sequence of Unicode characters (Unicode code points).
+

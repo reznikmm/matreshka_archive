@@ -1,0 +1,6 @@
+[[PageOutline]]
+
+= Settings Type (declared in League.Settings package) =
+
+
+
