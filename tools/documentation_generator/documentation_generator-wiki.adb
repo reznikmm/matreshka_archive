@@ -7,11 +7,19 @@ with Documentation_Generator.Database;
 package body Documentation_Generator.Wiki is
 
    use Documentation_Generator.Database;
+   use type League.Strings.Universal_String;
 
    procedure Generate_Main_Page;
 
    function Wiki_Link
-    (The_Type : not null Type_Access) return League.Strings.Universal_String;
+    (The_Module : not null Module_Access;
+     Text       : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+
+   function Wiki_Link
+    (The_Type : not null Type_Access;
+     Text     : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
 
    --------------
    -- Generate --
@@ -43,7 +51,7 @@ package body Documentation_Generator.Wiki is
          Ada.Wide_Wide_Text_IO.Put_Line
           (File,
            "|| "
-             & The_Module.Name.To_Wide_Wide_String
+             & Wiki_Link (The_Module, The_Module.Name).To_Wide_Wide_String
              & " || "
              & The_Module.Short_Description.To_Wide_Wide_String
              & " ||");
@@ -58,11 +66,9 @@ package body Documentation_Generator.Wiki is
          Ada.Wide_Wide_Text_IO.Put_Line
           (File,
            "|| "
-             & "["
-             & Wiki_Link (The_Type).To_Wide_Wide_String
-             & " "
-             & The_Type.Name.To_Wide_Wide_String
-             & "]"
+             & Wiki_Link
+                (The_Type,
+                 The_Type.Name).To_Wide_Wide_String
              & " || "
              & The_Type.Compilation_Unit.Name.To_Wide_Wide_String
              & " ||");
@@ -97,16 +103,35 @@ package body Documentation_Generator.Wiki is
    ---------------
 
    function Wiki_Link
-    (The_Type : not null Type_Access) return League.Strings.Universal_String
-   is
-      use type League.Strings.Universal_String;
-
+    (The_Type : not null Type_Access;
+     Text     : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
    begin
       return
-        "wiki:Reference/"
+        "[wiki:Reference/"
           & The_Type.Module.Name
-          & "/"
-          & The_Type.Name;
+          & "/types/"
+          & The_Type.Name
+          & " "
+          & Text
+          & ']';
+   end Wiki_Link;
+
+   ---------------
+   -- Wiki_Link --
+   ---------------
+
+   function Wiki_Link
+    (The_Module : not null Module_Access;
+     Text       : League.Strings.Universal_String)
+       return League.Strings.Universal_String is
+   begin
+      return
+        "[wiki:Reference/"
+          & The_Module.Name
+          & " "
+          & Text
+          & ']';
    end Wiki_Link;
 
 end Documentation_Generator.Wiki;
