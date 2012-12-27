@@ -110,7 +110,7 @@ package body Documentation_Generator.Wiki is
       return
         "[wiki:Reference/"
           & The_Type.Module.Name
-          & "/types/"
+          & "/_types/"
           & The_Type.Name
           & " "
           & Text
