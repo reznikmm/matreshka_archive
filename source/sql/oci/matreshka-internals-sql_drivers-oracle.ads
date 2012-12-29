@@ -48,6 +48,16 @@ with Matreshka.Internals.Utf16;
 
 package Matreshka.Internals.SQL_Drivers.Oracle is
 
+   --  Options supported by driver:
+   Database_Option : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("database");
+   Password_Option : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("password");
+   User_Option     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("user");
+
+   --  Low level Oracle Call interface binding below this line.
+
    subtype Address is System.Address;
    Null_Address : constant Address := System.Null_Address;
 

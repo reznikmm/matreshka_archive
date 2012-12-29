@@ -70,7 +70,7 @@ package Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
    overriding function Open
     (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+     Options : SQL.Options.SQL_Options) return Boolean;
 
    function Check_Error
      (Self : not null access OCI_Database;

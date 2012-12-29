@@ -267,15 +267,12 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
    overriding function Open
     (Self    : not null access OCI_Database;
-     Options : League.Strings.Universal_String) return Boolean
+     Options : SQL.Options.SQL_Options) return Boolean
    is
 
       function Get_User return League.Strings.Universal_String;
       function Get_Password return League.Strings.Universal_String;
       function Get_Database return League.Strings.Universal_String;
-
-      Pwd : constant Natural := Options.Index ('/');
-      DB  : constant Natural := Options.Index ('@');
 
       ------------------
       -- Get_Database --
@@ -283,11 +280,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
       function Get_Database return League.Strings.Universal_String is
       begin
-         if DB /= 0 then
-            return Options.Slice (DB + 1, Options.Length);
-         else
-            return League.Strings.Empty_Universal_String;
-         end if;
+         return Options.Get (Database_Option);
       end Get_Database;
 
       ------------------
@@ -296,15 +289,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
       function Get_Password return League.Strings.Universal_String is
       begin
-         if Pwd /= 0 then
-            if DB /= 0 then
-               return Options.Slice (Pwd + 1, DB - 1);
-            else
-               return Options.Slice (Pwd + 1, Options.Length);
-            end if;
-         else
-            return League.Strings.Empty_Universal_String;
-         end if;
+         return Options.Get (Password_Option);
       end Get_Password;
 
       --------------
@@ -313,13 +298,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
       function Get_User return League.Strings.Universal_String is
       begin
-         if Pwd /= 0 then
-            return Options.Slice (1, Pwd - 1);
-         elsif DB /= 0 then
-            return Options.Slice (1, DB - 1);
-         else
-            return Options;
-         end if;
+         return Options.Get (User_Option);
       end Get_User;
 
       Code : Error_Code;

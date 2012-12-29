@@ -65,7 +65,6 @@ procedure Simple_SQL is
    --  MySQL
 
 --   DB_Type : constant League.Strings.Universal_String := +"ORACLE";
---   DB_Name : constant League.Strings.Universal_String := +"scott/tiger@db";
    --  Oracle
 
 --   DB_Driver : constant League.Strings.Universal_String := +"POSTGRESQL";
@@ -85,6 +84,14 @@ begin
    --  MySQL
 
 --   DB_Options.Set (+"database", +"test");
+
+   --  Oracle
+--     DB_Options.Set
+--       (Matreshka.Internals.SQL_Drivers.Oracle.User_Option, +"scott");
+--     DB_Options.Set
+--       (Matreshka.Internals.SQL_Drivers.Oracle.Password_Option, +"tiger");
+--     DB_Options.Set
+--       (Matreshka.Internals.SQL_Drivers.Oracle.Database_Option, +"db");
 
    --  PostgreSQL
 
