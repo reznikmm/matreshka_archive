@@ -69,6 +69,27 @@ library project Matreshka_AMF_UML is
    -- Compiler --
    --------------
 
-   package Compiler renames Matreshka_Common.Compiler;
+   package Compiler is
+
+      for Default_Switches ("Ada") use
+        Matreshka_Common.Common_Ada_Switches
+          & Matreshka_Common.Platform_Ada_Switches
+          & Matreshka_Common.Optimization_Ada_Switches
+          & Matreshka_Common.Debug_Ada_Switches;
+
+      case Matreshka_Config.Operating_Systems is
+         when "Windows" =>
+            for Switches ("amf-internals-tables-uml_constructors.adb") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            --  Windows 32-bit doesn't provide enought memory to compile this
+            --  unit with GNAT GPL 2012.
+
+         when others =>
+            null;
+      end case;
+   end Compiler;
+
 
 end Matreshka_AMF_UML;
