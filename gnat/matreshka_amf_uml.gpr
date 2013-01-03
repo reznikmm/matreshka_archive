@@ -77,7 +77,7 @@ library project Matreshka_AMF_UML is
           & Matreshka_Common.Optimization_Ada_Switches
           & Matreshka_Common.Debug_Ada_Switches;
 
-      case Matreshka_Config.Operating_Systems is
+      case Matreshka_Config.Operating_System is
          when "Windows" =>
             for Switches ("amf-internals-tables-uml_constructors.adb") use
               Matreshka_Common.Common_Ada_Switches
