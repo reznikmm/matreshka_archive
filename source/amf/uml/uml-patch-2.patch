@@ -1,0 +1,101 @@
+--- amf-internals-tables-uml_constructors.adb.orig	2013-01-07 20:02:28.240690121 +0400
++++ amf-internals-tables-uml_constructors.adb	2013-01-07 20:20:29.943832740 +0400
+@@ -8735,8 +8735,6 @@
+                        --  modelElement
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -8987,8 +8985,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -9325,8 +9321,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -9441,8 +9435,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -9559,8 +9551,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -9752,8 +9742,6 @@
+                        --  modelElement
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -10207,8 +10195,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -10321,8 +10307,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -10435,8 +10419,6 @@
+                        --  localStyle
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -10693,8 +10675,6 @@
+                        --  modelElement
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+@@ -11095,8 +11075,6 @@
+                        --  modelElement
+           7      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
+                        --  modelElement
+-          2      => (AMF.Internals.Tables.UML_Types.M_String, null),
+-                       --  name
+           2      => (AMF.Internals.Tables.UML_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+                        --  name
+           3      => (AMF.Internals.Tables.UML_Types.M_Element, No_AMF_Link),
