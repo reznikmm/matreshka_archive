@@ -9489,11 +9489,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_351 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 351, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 351, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 351,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0125'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 351, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 351, (False, AMF.CMOF.Public_Visibility));
    end Initialize_351;
 
@@ -9503,9 +9502,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_352 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 352, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 352, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 352,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0125'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0705'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 352, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 352, (False, AMF.CMOF.Public_Visibility));
    end Initialize_352;
@@ -9516,11 +9517,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_353 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 353, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 353, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 353,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0705'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02B3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 353, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 353, (False, AMF.CMOF.Public_Visibility));
    end Initialize_353;
@@ -9531,9 +9530,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_354 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 354, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 354,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02B3'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05A8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 354, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 354, (False, AMF.CMOF.Public_Visibility));
    end Initialize_354;
@@ -9544,10 +9544,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_355 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 355, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 355, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 355, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 355,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05A8'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 355, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 355, (False, AMF.CMOF.Public_Visibility));
    end Initialize_355;
@@ -9558,12 +9560,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_356 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 356, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 356, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 356, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 356,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8C'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_041E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 356, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 356, (False, AMF.CMOF.Public_Visibility));
    end Initialize_356;
@@ -9574,10 +9574,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_357 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 357, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 357, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 357, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 357, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 357, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 357,
-        AMF.Internals.Tables.UML_String_Data_04.MS_041E'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07D9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 357, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 357, (False, AMF.CMOF.Public_Visibility));
    end Initialize_357;
@@ -9588,10 +9591,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_358 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 358, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 358, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 358,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B09'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_062F'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 358, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 358, (False, AMF.CMOF.Public_Visibility));
    end Initialize_358;
 
@@ -9601,13 +9605,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_359 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 359, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 359, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 359, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 359, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 359,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07D9'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C4E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 359, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 359, (False, AMF.CMOF.Public_Visibility));
    end Initialize_359;
@@ -9618,10 +9619,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_360 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 360, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 360,
-        AMF.Internals.Tables.UML_String_Data_06.MS_062F'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0962'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 360, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 360, (False, AMF.CMOF.Public_Visibility));
    end Initialize_360;
@@ -9632,10 +9632,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_361 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 361, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 361,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C4E'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02B9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 361, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 361, (False, AMF.CMOF.Public_Visibility));
    end Initialize_361;
@@ -9648,7 +9647,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 362,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0962'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_06EA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 362, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 362, (False, AMF.CMOF.Public_Visibility));
    end Initialize_362;
@@ -9659,9 +9658,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_363 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 363, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 363,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02B9'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01F3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 363, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 363, (False, AMF.CMOF.Public_Visibility));
    end Initialize_363;
@@ -9672,9 +9672,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_364 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 364, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 364,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06EA'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0637'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 364, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 364, (False, AMF.CMOF.Public_Visibility));
    end Initialize_364;
@@ -9688,7 +9689,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 365, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 365,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01F3'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_037C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 365, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 365, (False, AMF.CMOF.Public_Visibility));
    end Initialize_365;
@@ -9702,7 +9703,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 366, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 366,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0637'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07CF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 366, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 366, (False, AMF.CMOF.Public_Visibility));
    end Initialize_366;
@@ -9716,7 +9717,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 367, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 367,
-        AMF.Internals.Tables.UML_String_Data_03.MS_037C'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 367, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 367, (False, AMF.CMOF.Public_Visibility));
    end Initialize_367;
@@ -9730,7 +9731,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 368, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 368,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07CF'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 368, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 368, (False, AMF.CMOF.Public_Visibility));
    end Initialize_368;
@@ -9741,10 +9742,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_369 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 369, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 369, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 369,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B18'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_052F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 369, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 369, (False, AMF.CMOF.Public_Visibility));
    end Initialize_369;
@@ -9755,10 +9757,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_370 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 370, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 370, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 370,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07C7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 370, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 370, (False, AMF.CMOF.Public_Visibility));
    end Initialize_370;
@@ -9773,7 +9776,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 371, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 371,
-        AMF.Internals.Tables.UML_String_Data_05.MS_052F'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0748'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 371, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 371, (False, AMF.CMOF.Public_Visibility));
    end Initialize_371;
@@ -9785,10 +9788,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_372 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 372, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 372, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 372, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 372,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07C7'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0449'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 372, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 372, (False, AMF.CMOF.Public_Visibility));
    end Initialize_372;
@@ -9803,7 +9807,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 373, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 373,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0748'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_057B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 373, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 373, (False, AMF.CMOF.Public_Visibility));
    end Initialize_373;
@@ -9815,11 +9819,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_374 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 374, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 374, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 374, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 374,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0449'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0736'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 374, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 374, (False, AMF.CMOF.Public_Visibility));
    end Initialize_374;
@@ -9830,11 +9833,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_375 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 375, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 375, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 375,
-        AMF.Internals.Tables.UML_String_Data_05.MS_057B'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 375, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 375, (False, AMF.CMOF.Public_Visibility));
    end Initialize_375;
@@ -9849,7 +9851,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 376, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 376,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0736'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0117'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 376, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 376, (False, AMF.CMOF.Public_Visibility));
    end Initialize_376;
@@ -9860,10 +9862,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_377 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 377, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 377, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 377, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 377,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0449'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 377, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 377, (False, AMF.CMOF.Public_Visibility));
    end Initialize_377;
@@ -9878,7 +9882,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 378, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 378,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0117'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0324'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 378, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 378, (False, AMF.CMOF.Public_Visibility));
    end Initialize_378;
@@ -9894,7 +9898,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 379, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 379,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0449'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 379, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 379, (False, AMF.CMOF.Public_Visibility));
    end Initialize_379;
@@ -9906,10 +9910,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_380 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 380, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 380, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 380, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 380,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0324'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_06FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 380, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 380, (False, AMF.CMOF.Public_Visibility));
    end Initialize_380;
@@ -9925,7 +9930,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 381, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 381,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 381, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 381, (False, AMF.CMOF.Public_Visibility));
    end Initialize_381;
@@ -9941,7 +9946,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 382, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 382,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06FB'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04B1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 382, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 382, (False, AMF.CMOF.Public_Visibility));
    end Initialize_382;
@@ -9953,11 +9958,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_383 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 383, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 383, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 383, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 383,
-        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02CB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 383, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 383, (False, AMF.CMOF.Public_Visibility));
    end Initialize_383;
@@ -9968,12 +9972,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_384 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 384, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 384, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 384, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 384,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04B1'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_065D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 384, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 384, (False, AMF.CMOF.Public_Visibility));
    end Initialize_384;
@@ -9984,11 +9986,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_385 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 385, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 385, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 385,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02CB'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03E0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 385, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 385, (False, AMF.CMOF.Public_Visibility));
    end Initialize_385;
@@ -10002,7 +10003,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 386, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 386,
-        AMF.Internals.Tables.UML_String_Data_06.MS_065D'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 386, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 386, (False, AMF.CMOF.Public_Visibility));
    end Initialize_386;
@@ -10013,10 +10014,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_387 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 387, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 387, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 387, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 387,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03E0'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 387, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 387, (False, AMF.CMOF.Public_Visibility));
    end Initialize_387;
@@ -10030,7 +10033,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 388, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 388,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07A4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0351'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 388, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 388, (False, AMF.CMOF.Public_Visibility));
    end Initialize_388;
@@ -10042,11 +10045,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_389 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 389, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 389, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 389, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 389, (False, 2));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 389,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04BB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 389, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 389, (False, AMF.CMOF.Public_Visibility));
    end Initialize_389;
@@ -10057,10 +10059,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_390 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 390, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 390, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 390,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0351'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_027D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 390, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 390, (False, AMF.CMOF.Public_Visibility));
    end Initialize_390;
@@ -10072,10 +10074,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_391 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 391, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 391, (False, 2));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 391, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 391,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04BB'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 391, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 391, (False, AMF.CMOF.Public_Visibility));
    end Initialize_391;
@@ -10086,10 +10088,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_392 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 392, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 392, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 392, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 392,
-        AMF.Internals.Tables.UML_String_Data_02.MS_027D'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_038E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 392, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 392, (False, AMF.CMOF.Public_Visibility));
    end Initialize_392;
@@ -10100,11 +10103,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_393 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 393, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 393, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 393,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08DC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 393, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 393, (False, AMF.CMOF.Public_Visibility));
    end Initialize_393;
@@ -10119,7 +10121,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 394, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 394,
-        AMF.Internals.Tables.UML_String_Data_03.MS_038E'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AC1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 394, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 394, (False, AMF.CMOF.Public_Visibility));
    end Initialize_394;
@@ -10130,10 +10132,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_395 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 395, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 395, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 395, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 395,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08DC'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00A0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 395, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 395, (False, AMF.CMOF.Public_Visibility));
    end Initialize_395;
@@ -10144,11 +10148,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_396 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 396, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 396, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 396, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 396,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AC1'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 396, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 396, (False, AMF.CMOF.Public_Visibility));
    end Initialize_396;
@@ -10159,12 +10164,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_397 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 397, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 397, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 397, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 397,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00A0'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_044B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 397, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 397, (False, AMF.CMOF.Public_Visibility));
    end Initialize_397;
@@ -10175,12 +10178,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_398 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 398, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 398, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 398, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 398,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_048C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 398, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 398, (False, AMF.CMOF.Public_Visibility));
    end Initialize_398;
@@ -10191,10 +10191,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_399 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 399, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 399, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 399, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 399,
-        AMF.Internals.Tables.UML_String_Data_04.MS_044B'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 399, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 399, (False, AMF.CMOF.Public_Visibility));
    end Initialize_399;
@@ -10205,9 +10207,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_400 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 400, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 400,
-        AMF.Internals.Tables.UML_String_Data_04.MS_048C'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0323'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 400, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 400, (False, AMF.CMOF.Public_Visibility));
    end Initialize_400;
@@ -10219,11 +10222,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_401 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 401, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 401, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 401, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 401,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09B8'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AA3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 401, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 401, (False, AMF.CMOF.Public_Visibility));
    end Initialize_401;
@@ -10234,10 +10236,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_402 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 402, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 402, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 402, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 402,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0323'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_045D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 402, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 402, (False, AMF.CMOF.Public_Visibility));
    end Initialize_402;
@@ -10248,11 +10252,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_403 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 403, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 403, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 403, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 403, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 403, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 403,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AA3'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09EF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 403, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 403, (False, AMF.CMOF.Public_Visibility));
    end Initialize_403;
@@ -10263,12 +10269,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_404 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 404, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 404, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 404, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 404, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 404, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 404,
-        AMF.Internals.Tables.UML_String_Data_04.MS_045D'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0505'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 404, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 404, (False, AMF.CMOF.Public_Visibility));
    end Initialize_404;
@@ -10279,13 +10287,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_405 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 405, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 405, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 405, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 405, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 405, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 405,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09EF'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0765'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 405, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 405, (False, AMF.CMOF.Public_Visibility));
    end Initialize_405;
@@ -10297,13 +10303,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_406 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 406, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 406, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 406, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 406, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 406, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 406,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0505'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 406, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 406, (False, AMF.CMOF.Public_Visibility));
    end Initialize_406;
@@ -10318,7 +10321,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 407, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 407,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0765'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_080B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 407, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 407, (False, AMF.CMOF.Public_Visibility));
    end Initialize_407;
@@ -10329,11 +10332,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_408 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 408, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 408, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 408,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE0'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0653'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 408, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 408, (False, AMF.CMOF.Public_Visibility));
    end Initialize_408;
@@ -10344,11 +10346,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_409 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 409, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 409, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 409,
-        AMF.Internals.Tables.UML_String_Data_08.MS_080B'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0384'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 409, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 409, (False, AMF.CMOF.Public_Visibility));
    end Initialize_409;
@@ -10362,7 +10363,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 410, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 410,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0653'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05FA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 410, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 410, (False, AMF.CMOF.Public_Visibility));
    end Initialize_410;
@@ -10373,9 +10374,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_411 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 411, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 411, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 411,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_027D'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 411, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 411, (False, AMF.CMOF.Public_Visibility));
    end Initialize_411;
 
@@ -10385,10 +10389,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_412 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 412, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 412, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 412,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0384'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AD9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 412, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 412, (False, AMF.CMOF.Public_Visibility));
    end Initialize_412;
@@ -10399,10 +10404,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_413 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 413, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 413, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 413, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 413,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05FA'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0974'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 413, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 413, (False, AMF.CMOF.Public_Visibility));
    end Initialize_413;
@@ -10417,7 +10424,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 414, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 414,
-        AMF.Internals.Tables.UML_String_Data_02.MS_027D'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0157'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 414, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 414, (False, AMF.CMOF.Public_Visibility));
    end Initialize_414;
@@ -10432,7 +10439,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 415, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 415,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AD9'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_001A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 415, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 415, (False, AMF.CMOF.Public_Visibility));
    end Initialize_415;
@@ -10443,12 +10450,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_416 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 416, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 416, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 416, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 416,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0974'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0237'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 416, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 416, (False, AMF.CMOF.Public_Visibility));
    end Initialize_416;
@@ -10459,11 +10464,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_417 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 417, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 417, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 417,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0157'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0189'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 417, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 417, (False, AMF.CMOF.Public_Visibility));
    end Initialize_417;
@@ -10475,10 +10479,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_418 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 418, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 418, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 418, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 418,
-        AMF.Internals.Tables.UML_String_Data_00.MS_001A'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_084D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 418, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 418, (False, AMF.CMOF.Public_Visibility));
    end Initialize_418;
@@ -10489,10 +10494,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_419 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 419, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 419, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 419, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 419, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 419,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0237'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0866'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 419, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 419, (False, AMF.CMOF.Public_Visibility));
    end Initialize_419;
@@ -10503,10 +10511,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_420 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 420, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 420, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 420, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 420,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0189'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 420, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 420, (False, AMF.CMOF.Public_Visibility));
    end Initialize_420;
@@ -10518,11 +10528,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_421 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 421, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 421, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 421, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 421,
-        AMF.Internals.Tables.UML_String_Data_08.MS_084D'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0466'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 421, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 421, (False, AMF.CMOF.Public_Visibility));
    end Initialize_421;
@@ -10534,12 +10543,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_422 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 422, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 422, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 422, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 422, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 422,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0866'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0669'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 422, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 422, (False, AMF.CMOF.Public_Visibility));
    end Initialize_422;
@@ -10551,11 +10558,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_423 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 423, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 423, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 423, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 423,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03AC'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0716'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 423, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 423, (False, AMF.CMOF.Public_Visibility));
    end Initialize_423;
@@ -10566,11 +10572,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_424 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 424, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 424, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 424,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0466'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_077A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 424, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 424, (False, AMF.CMOF.Public_Visibility));
    end Initialize_424;
@@ -10585,7 +10590,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 425, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 425,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0669'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 425, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 425, (False, AMF.CMOF.Public_Visibility));
    end Initialize_425;
@@ -10596,11 +10601,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_426 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 426, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 426, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 426,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0716'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 426, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 426, (False, AMF.CMOF.Public_Visibility));
    end Initialize_426;
@@ -10611,10 +10614,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_427 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 427, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 427, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 427, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 427,
-        AMF.Internals.Tables.UML_String_Data_07.MS_077A'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B2C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 427, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 427, (False, AMF.CMOF.Public_Visibility));
    end Initialize_427;
@@ -10625,11 +10630,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_428 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 428, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 428, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 428,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 428, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 428, (False, AMF.CMOF.Public_Visibility));
    end Initialize_428;
@@ -10640,9 +10644,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_429 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 429, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 429, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 429, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 429,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0108'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 429, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 429, (False, AMF.CMOF.Public_Visibility));
    end Initialize_429;
@@ -10653,12 +10660,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_430 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 430, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 430, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 430, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 430, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 430,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B2C'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_003E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 430, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 430, (False, AMF.CMOF.Public_Visibility));
    end Initialize_430;
@@ -10669,10 +10675,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_431 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 431, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 431, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 431,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7E'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0632'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 431, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 431, (False, AMF.CMOF.Public_Visibility));
    end Initialize_431;
@@ -10683,12 +10690,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_432 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 432, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 432, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 432, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 432, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 432, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 432,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0108'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 432, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 432, (False, AMF.CMOF.Public_Visibility));
    end Initialize_432;
@@ -10699,11 +10706,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_433 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 433, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 433, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 433,
-        AMF.Internals.Tables.UML_String_Data_00.MS_003E'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05E4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 433, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 433, (False, AMF.CMOF.Public_Visibility));
    end Initialize_433;
@@ -10714,11 +10720,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_434 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 434, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 434, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 434,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0632'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0366'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 434, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 434, (False, AMF.CMOF.Public_Visibility));
    end Initialize_434;
@@ -10730,11 +10735,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_435 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 435, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 435, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 435, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 435,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01C2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 435, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 435, (False, AMF.CMOF.Public_Visibility));
    end Initialize_435;
@@ -10745,10 +10749,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_436 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 436, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 436, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 436, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 436,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05E4'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02F8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 436, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 436, (False, AMF.CMOF.Public_Visibility));
    end Initialize_436;
@@ -10762,7 +10768,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 437, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 437,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0366'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AF1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 437, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 437, (False, AMF.CMOF.Public_Visibility));
    end Initialize_437;
@@ -10773,11 +10779,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_438 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 438, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 438, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 438,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01C2'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0880'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 438, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 438, (False, AMF.CMOF.Public_Visibility));
    end Initialize_438;
@@ -10789,11 +10794,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_439 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 439, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 439, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 439, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 439, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 439,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02F8'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_022B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 439, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 439, (False, AMF.CMOF.Public_Visibility));
    end Initialize_439;
@@ -10804,10 +10810,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_440 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 440, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 440, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 440, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 440, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 440,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AF1'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 440, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 440, (False, AMF.CMOF.Public_Visibility));
    end Initialize_440;
@@ -10821,7 +10830,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 441, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 441,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0880'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 441, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 441, (False, AMF.CMOF.Public_Visibility));
    end Initialize_441;
@@ -10833,12 +10842,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_442 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 442, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 442, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 442, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 442, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 442,
-        AMF.Internals.Tables.UML_String_Data_02.MS_022B'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 442, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 442, (False, AMF.CMOF.Public_Visibility));
    end Initialize_442;
@@ -10849,13 +10857,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_443 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 443, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 443, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 443, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 443, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 443, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 443,
-        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_051C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 443, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 443, (False, AMF.CMOF.Public_Visibility));
    end Initialize_443;
@@ -10866,10 +10872,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_444 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 444, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 444, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 444,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09FB'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09B7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 444, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 444, (False, AMF.CMOF.Public_Visibility));
    end Initialize_444;
@@ -10881,11 +10888,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_445 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 445, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 445, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 445, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 445, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 445,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A2'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0305'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 445, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 445, (False, AMF.CMOF.Public_Visibility));
    end Initialize_445;
@@ -10896,11 +10903,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_446 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 446, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 446, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 446, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 446, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 446,
-        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC9'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 446, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 446, (False, AMF.CMOF.Public_Visibility));
    end Initialize_446;
 
@@ -10911,10 +10919,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_447 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 447, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 447, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 447, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 447,
-        AMF.Internals.Tables.UML_String_Data_05.MS_051C'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0031'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 447, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 447, (False, AMF.CMOF.Public_Visibility));
    end Initialize_447;
@@ -10926,10 +10935,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_448 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 448, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 448, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 448, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 448,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09B7'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 448, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 448, (False, AMF.CMOF.Public_Visibility));
    end Initialize_448;
@@ -10940,12 +10950,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_449 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 449, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 449, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 449, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 449, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 449, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 449, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 449,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0305'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 449, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 449, (False, AMF.CMOF.Public_Visibility));
    end Initialize_449;
@@ -10960,7 +10970,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 450, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 450,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC9'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0144'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 450, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 450, (False, AMF.CMOF.Public_Visibility));
    end Initialize_450;
@@ -10972,9 +10982,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_451 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 451, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 451, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 451,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B04'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0534'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 451, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 451, (False, AMF.CMOF.Public_Visibility));
    end Initialize_451;
 
@@ -10985,11 +10997,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_452 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 452, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 452, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 452, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 452,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0031'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 452, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 452, (False, AMF.CMOF.Public_Visibility));
    end Initialize_452;
@@ -11001,11 +11012,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_453 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 453, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 453, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 453, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 453,
-        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_051A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 453, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 453, (False, AMF.CMOF.Public_Visibility));
    end Initialize_453;
@@ -11017,11 +11027,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_454 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 454, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 454, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 454, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 454,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0534'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 454, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 454, (False, AMF.CMOF.Public_Visibility));
    end Initialize_454;
@@ -11032,11 +11041,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_455 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 455, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 455, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 455,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0144'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02E5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 455, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 455, (False, AMF.CMOF.Public_Visibility));
    end Initialize_455;
@@ -11048,10 +11056,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_456 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 456, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 456, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 456,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0534'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_051A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 456, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 456, (False, AMF.CMOF.Public_Visibility));
    end Initialize_456;
@@ -11062,11 +11069,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_457 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 457, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 457, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 457,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5D'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 457, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 457, (False, AMF.CMOF.Public_Visibility));
    end Initialize_457;
@@ -11077,11 +11083,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_458 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 458, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 458, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 458, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 458, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 458,
-        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_066B'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 458, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 458, (False, AMF.CMOF.Public_Visibility));
    end Initialize_458;
 
@@ -11095,7 +11102,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 459, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 459,
-        AMF.Internals.Tables.UML_String_Data_05.MS_051A'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A67'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 459, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 459, (False, AMF.CMOF.Public_Visibility));
    end Initialize_459;
@@ -11106,9 +11113,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_460 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 460, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 460, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 460,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_025C'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 460, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 460, (False, AMF.CMOF.Public_Visibility));
    end Initialize_460;
 
@@ -11122,7 +11132,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 461, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 461,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0534'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 461, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 461, (False, AMF.CMOF.Public_Visibility));
    end Initialize_461;
@@ -11133,10 +11143,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_462 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 462, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 462, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 462,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02E5'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 462, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 462, (False, AMF.CMOF.Public_Visibility));
    end Initialize_462;
@@ -11148,9 +11159,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_463 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 463, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 463, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 463,
-        AMF.Internals.Tables.UML_String_Data_05.MS_051A'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C9E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 463, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 463, (False, AMF.CMOF.Public_Visibility));
    end Initialize_463;
@@ -11161,10 +11173,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_464 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 464, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 464, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 464,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF4'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0067'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 464, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 464, (False, AMF.CMOF.Public_Visibility));
    end Initialize_464;
@@ -11176,10 +11189,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_465 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 465, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 465, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 465, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 465,
-        AMF.Internals.Tables.UML_String_Data_06.MS_066B'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 465, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 465, (False, AMF.CMOF.Public_Visibility));
    end Initialize_465;
@@ -11194,7 +11208,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 466, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 466,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A67'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_014F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 466, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 466, (False, AMF.CMOF.Public_Visibility));
    end Initialize_466;
@@ -11205,11 +11219,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_467 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 467, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 467, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 467, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 467, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 467,
-        AMF.Internals.Tables.UML_String_Data_02.MS_025C'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_047C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 467, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 467, (False, AMF.CMOF.Public_Visibility));
    end Initialize_467;
@@ -11220,11 +11235,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_468 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 468, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 468, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 468, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 468, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 468, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 468,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07A4'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_092F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 468, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 468, (False, AMF.CMOF.Public_Visibility));
    end Initialize_468;
@@ -11239,7 +11256,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 469, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 469,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08BF'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_083E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 469, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 469, (False, AMF.CMOF.Public_Visibility));
    end Initialize_469;
@@ -11251,10 +11268,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_470 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 470, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 470, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 470, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 470,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C9E'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0974'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 470, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 470, (False, AMF.CMOF.Public_Visibility));
    end Initialize_470;
@@ -11265,11 +11283,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_471 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 471, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 471, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 471, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 471,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0067'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 471, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 471, (False, AMF.CMOF.Public_Visibility));
    end Initialize_471;
@@ -11281,11 +11298,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_472 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 472, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 472, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 472, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 472,
-        AMF.Internals.Tables.UML_String_Data_01.MS_019B'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0220'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 472, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 472, (False, AMF.CMOF.Public_Visibility));
    end Initialize_472;
@@ -11296,11 +11312,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_473 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 473, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 473, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 473,
-        AMF.Internals.Tables.UML_String_Data_01.MS_014F'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_090B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 473, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 473, (False, AMF.CMOF.Public_Visibility));
    end Initialize_473;
@@ -11311,12 +11326,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_474 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 474, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 474, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 474, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 474, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 474,
-        AMF.Internals.Tables.UML_String_Data_04.MS_047C'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_073C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 474, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 474, (False, AMF.CMOF.Public_Visibility));
    end Initialize_474;
@@ -11327,13 +11341,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_475 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 475, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 475, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 475, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 475, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 475,
-        AMF.Internals.Tables.UML_String_Data_09.MS_092F'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B31'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 475, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 475, (False, AMF.CMOF.Public_Visibility));
    end Initialize_475;
@@ -11345,10 +11356,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_476 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 476, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 476, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 476,
-        AMF.Internals.Tables.UML_String_Data_08.MS_083E'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 476, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 476, (False, AMF.CMOF.Public_Visibility));
    end Initialize_476;
@@ -11360,11 +11370,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_477 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 477, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 477, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 477, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 477,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0974'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0426'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 477, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 477, (False, AMF.CMOF.Public_Visibility));
    end Initialize_477;
@@ -11375,10 +11384,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_478 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 478, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 478, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 478, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 478,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03E4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 478, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 478, (False, AMF.CMOF.Public_Visibility));
    end Initialize_478;
@@ -11393,7 +11403,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 479, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 479,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0220'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A4E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 479, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 479, (False, AMF.CMOF.Public_Visibility));
    end Initialize_479;
@@ -11407,7 +11417,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 480, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 480,
-        AMF.Internals.Tables.UML_String_Data_09.MS_090B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 480, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 480, (False, AMF.CMOF.Public_Visibility));
    end Initialize_480;
@@ -11420,9 +11430,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 481, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 481, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 481, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 481,
-        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_040B'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 481, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 481, (False, AMF.CMOF.Public_Visibility));
    end Initialize_481;
 
@@ -11432,11 +11444,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_482 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 482, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 482, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 482, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 482, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 482,
-        AMF.Internals.Tables.UML_String_Data_07.MS_073C'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_003C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 482, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 482, (False, AMF.CMOF.Public_Visibility));
    end Initialize_482;
@@ -11447,11 +11460,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_483 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 483, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 483, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 483,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B31'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 483, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_06.MS_06DC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 483, (False, AMF.CMOF.Public_Visibility));
    end Initialize_483;
 
@@ -11464,8 +11477,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 484, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 484,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 484, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_01.MS_014D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 484, (False, AMF.CMOF.Public_Visibility));
    end Initialize_484;
 
@@ -11475,12 +11487,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_485 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 485, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 485, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 485,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 485,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0426'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 485, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_07.MS_0763'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 485, (False, AMF.CMOF.Public_Visibility));
    end Initialize_485;
 
@@ -11490,12 +11502,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_486 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 486, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 486, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 486, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 486, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 486,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03E4'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 486, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 486, (False, AMF.CMOF.Public_Visibility));
    end Initialize_486;
 
@@ -11505,12 +11517,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_487 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 487, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 487, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 487,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 487,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A4E'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 487, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B63'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 487, (False, AMF.CMOF.Public_Visibility));
    end Initialize_487;
 
@@ -11520,11 +11532,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_488 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 488, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 488,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB6'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 488, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_07.MS_07C7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 488, (False, AMF.CMOF.Public_Visibility));
    end Initialize_488;
 
@@ -11534,13 +11544,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_489 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 489, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 489, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 489, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 489, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 489,
-        AMF.Internals.Tables.UML_String_Data_04.MS_040B'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 489, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_08.MS_0837'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 489, (False, AMF.CMOF.Public_Visibility));
    end Initialize_489;
 
@@ -11550,13 +11557,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_490 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 490, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 490, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 490, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 490,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 490,
-        AMF.Internals.Tables.UML_String_Data_00.MS_003C'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 490, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 490, (False, AMF.CMOF.Public_Visibility));
    end Initialize_490;
 
@@ -11566,11 +11572,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_491 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 491, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 491, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 491,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 491,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06DC'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_060C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 491, (False, AMF.CMOF.Public_Visibility));
    end Initialize_491;
 
@@ -11580,10 +11587,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_492 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 492, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 492, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 492,
-        AMF.Internals.Tables.UML_String_Data_01.MS_014D'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 492, (False, AMF.CMOF.Public_Visibility));
    end Initialize_492;
 
@@ -11593,12 +11600,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_493 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 493,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 493, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 493,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0763'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 493, (False, AMF.CMOF.Public_Visibility));
    end Initialize_493;
 
@@ -11608,12 +11613,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_494 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 494, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 494, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 494, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 494,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0967'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 494, (False, AMF.CMOF.Public_Visibility));
    end Initialize_494;
 
@@ -11623,12 +11626,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_495 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 495,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 495, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 495,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B63'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 495, (False, AMF.CMOF.Public_Visibility));
    end Initialize_495;
 
@@ -11640,7 +11641,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 496,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07C7'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_028D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 496, (False, AMF.CMOF.Public_Visibility));
    end Initialize_496;
 
@@ -11650,10 +11651,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_497 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 497, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 497,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0837'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 497, (False, AMF.CMOF.Public_Visibility));
    end Initialize_497;
 
@@ -11663,12 +11663,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_498 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 498,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 498, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 498,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04C0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 498, (False, AMF.CMOF.Public_Visibility));
    end Initialize_498;
 
@@ -11678,12 +11676,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_499 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 499,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 499, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 499,
-        AMF.Internals.Tables.UML_String_Data_06.MS_060C'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C6D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 499, (False, AMF.CMOF.Public_Visibility));
    end Initialize_499;
 
@@ -11693,10 +11689,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_500 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 500, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 500, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 500, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 500, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 500,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0169'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 500, (False, AMF.CMOF.Public_Visibility));
    end Initialize_500;
 
@@ -11706,10 +11705,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_501 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 501, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 501, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 501,
-        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 501, (False, AMF.CMOF.Public_Visibility));
    end Initialize_501;
 
@@ -11732,10 +11731,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_503 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 503, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 503,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04D0'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 503, (False, AMF.CMOF.Public_Visibility));
    end Initialize_503;
 
@@ -11745,9 +11743,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_504 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 504,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 504,
-        AMF.Internals.Tables.UML_String_Data_02.MS_028D'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 504, (False, AMF.CMOF.Public_Visibility));
    end Initialize_504;
 
@@ -11757,9 +11758,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_505 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 505,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 505,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 505, (False, AMF.CMOF.Public_Visibility));
    end Initialize_505;
 
@@ -11769,10 +11773,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_506 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 506, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 506, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 506,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04C0'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 506, (False, AMF.CMOF.Public_Visibility));
    end Initialize_506;
 
@@ -11785,7 +11789,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 507, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 507,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C6D'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AE8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 507, (False, AMF.CMOF.Public_Visibility));
    end Initialize_507;
 
@@ -11795,13 +11799,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_508 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 508, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 508, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 508, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 508, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 508, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 508,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0169'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 508, (False, AMF.CMOF.Public_Visibility));
    end Initialize_508;
 
@@ -11811,10 +11813,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_509 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 509, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 509,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 509,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 509, (False, AMF.CMOF.Public_Visibility));
    end Initialize_509;
 
@@ -11824,10 +11828,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_510 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 510, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 510, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 510,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0967'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 510, (False, AMF.CMOF.Public_Visibility));
    end Initialize_510;
 
@@ -11837,9 +11842,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_511 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 511,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 511,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0007'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 511, (False, AMF.CMOF.Public_Visibility));
    end Initialize_511;
 
@@ -11849,12 +11857,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_512 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 512,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 512, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 512,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC3'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A44'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 512, (False, AMF.CMOF.Public_Visibility));
    end Initialize_512;
 
@@ -11869,7 +11875,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 513,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_039F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 513, (False, AMF.CMOF.Public_Visibility));
    end Initialize_513;
 
@@ -11879,10 +11885,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_514 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 514, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 514, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 514, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 514,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD7'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 514, (False, AMF.CMOF.Public_Visibility));
    end Initialize_514;
 
@@ -11892,10 +11900,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_515 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 515, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 515,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 515,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AE8'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C64'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 515, (False, AMF.CMOF.Public_Visibility));
    end Initialize_515;
 
@@ -11905,11 +11915,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_516 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 516, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 516, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 516,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 516, (False, AMF.CMOF.Public_Visibility));
    end Initialize_516;
 
@@ -11919,12 +11928,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_517 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 517,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 517, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 517,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 517, (False, AMF.CMOF.Public_Visibility));
    end Initialize_517;
 
@@ -11934,11 +11941,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_518 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 518, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 518, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 518,
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C14'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 518,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09CE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 518, (False, AMF.CMOF.Public_Visibility));
    end Initialize_518;
 
@@ -11953,7 +11961,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 519,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 519, (False, AMF.CMOF.Public_Visibility));
    end Initialize_519;
 
@@ -11966,7 +11974,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 520, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 520,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A44'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 520, (False, AMF.CMOF.Public_Visibility));
    end Initialize_520;
 
@@ -11976,12 +11984,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_521 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 521,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 521,
-        AMF.Internals.Tables.UML_String_Data_03.MS_039F'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 521, (False, AMF.CMOF.Public_Visibility));
    end Initialize_521;
 
@@ -11991,12 +11996,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_522 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 522, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 522, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 522, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 522,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 522,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A6A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 522, (False, AMF.CMOF.Public_Visibility));
    end Initialize_522;
 
@@ -12006,12 +12011,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_523 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 523,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 523,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C64'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 523, (False, AMF.CMOF.Public_Visibility));
    end Initialize_523;
 
@@ -12021,10 +12023,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_524 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 524, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 524,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 524, (False, AMF.CMOF.Public_Visibility));
    end Initialize_524;
 
@@ -12034,10 +12035,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_525 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 525, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 525,
-        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 525, (False, AMF.CMOF.Public_Visibility));
    end Initialize_525;
 
@@ -12047,12 +12047,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_526 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 526,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C14'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 526, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 526,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09CE'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 526, (False, AMF.CMOF.Public_Visibility));
    end Initialize_526;
 
@@ -12062,12 +12060,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_527 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 527,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 527, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 527,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 527, (False, AMF.CMOF.Public_Visibility));
    end Initialize_527;
 
@@ -12077,10 +12073,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_528 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 528, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 528,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 528,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF1'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 528, (False, AMF.CMOF.Public_Visibility));
    end Initialize_528;
 
@@ -12090,9 +12088,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_529 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 529,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 529,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A75'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 529, (False, AMF.CMOF.Public_Visibility));
    end Initialize_529;
 
@@ -12104,10 +12105,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 530,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 530,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A6A'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 530, (False, AMF.CMOF.Public_Visibility));
    end Initialize_530;
 
@@ -12117,9 +12118,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_531 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 531,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 531,
-        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B9C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 531, (False, AMF.CMOF.Public_Visibility));
    end Initialize_531;
 
@@ -12129,9 +12133,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_532 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 532, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 532, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 532,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_086C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 532, (False, AMF.CMOF.Public_Visibility));
    end Initialize_532;
 
@@ -12141,9 +12147,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_533 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 533, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 533,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 533, (False, AMF.CMOF.Public_Visibility));
    end Initialize_533;
 
@@ -12153,10 +12160,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_534 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 534, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 534, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 534,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 534, (False, AMF.CMOF.Public_Visibility));
    end Initialize_534;
 
@@ -12166,10 +12173,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_535 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 535, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 535,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 535,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026E'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00FE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 535, (False, AMF.CMOF.Public_Visibility));
    end Initialize_535;
 
@@ -12179,12 +12188,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_536 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 536,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 536,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 536, (False, AMF.CMOF.Public_Visibility));
    end Initialize_536;
 
@@ -12194,12 +12200,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_537 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 537,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 537,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A75'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 537, (False, AMF.CMOF.Public_Visibility));
    end Initialize_537;
 
@@ -12209,12 +12212,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_538 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 538,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 538,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08A6'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A43'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 538, (False, AMF.CMOF.Public_Visibility));
    end Initialize_538;
 
@@ -12224,12 +12224,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_539 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 539,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 539, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 539,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B9C'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 539, (False, AMF.CMOF.Public_Visibility));
    end Initialize_539;
 
@@ -12243,7 +12241,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 540, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 540,
-        AMF.Internals.Tables.UML_String_Data_08.MS_086C'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 540, (False, AMF.CMOF.Public_Visibility));
    end Initialize_540;
 
@@ -12253,10 +12251,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_541 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 541, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 541,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BF0'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 541, (False, AMF.CMOF.Public_Visibility));
    end Initialize_541;
 
@@ -12266,10 +12263,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_542 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 542, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 542,
+        AMF.Internals.Tables.UML_String_Data_07.MS_07F5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 542,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0180'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 542, (False, AMF.CMOF.Public_Visibility));
    end Initialize_542;
 
@@ -12279,12 +12278,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_543 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 543,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 543, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 543,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00FE'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 543, (False, AMF.CMOF.Public_Visibility));
    end Initialize_543;
 
@@ -12294,9 +12291,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_544 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 544,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 544,
-        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0276'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 544, (False, AMF.CMOF.Public_Visibility));
    end Initialize_544;
 
@@ -12306,9 +12306,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_545 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 545, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 545,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC7'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0ADA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 545, (False, AMF.CMOF.Public_Visibility));
    end Initialize_545;
 
@@ -12318,9 +12319,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_546 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 546,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 546,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A43'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0344'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 546, (False, AMF.CMOF.Public_Visibility));
    end Initialize_546;
 
@@ -12330,10 +12334,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_547 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 547, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 547,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 547,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_0003'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 547, (False, AMF.CMOF.Public_Visibility));
    end Initialize_547;
 
@@ -12343,11 +12349,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_548 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 548, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 548, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 548,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 548, (False, AMF.CMOF.Public_Visibility));
    end Initialize_548;
 
@@ -12359,7 +12364,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 549,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 549, (False, AMF.CMOF.Public_Visibility));
    end Initialize_549;
 
@@ -12369,12 +12374,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_550 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 550,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07F5'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 550, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 550,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0180'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 550, (False, AMF.CMOF.Public_Visibility));
    end Initialize_550;
 
@@ -12384,10 +12387,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_551 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 551, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 551, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 551, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 551,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 551, (False, AMF.CMOF.Public_Visibility));
    end Initialize_551;
 
@@ -12397,12 +12401,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_552 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 552,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 552, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 552,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0276'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 552, (False, AMF.CMOF.Public_Visibility));
    end Initialize_552;
 
@@ -12412,10 +12414,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_553 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 553, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 553, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 553, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 553,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0ADA'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0611'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 553, (False, AMF.CMOF.Public_Visibility));
    end Initialize_553;
 
@@ -12425,12 +12429,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_554 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 554,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 554, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 554,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0344'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09BE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 554, (False, AMF.CMOF.Public_Visibility));
    end Initialize_554;
 
@@ -12440,12 +12442,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_555 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 555,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 555,
-        AMF.Internals.Tables.UML_String_Data_00.MS_0003'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_092F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 555, (False, AMF.CMOF.Public_Visibility));
    end Initialize_555;
 
@@ -12458,7 +12457,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 556, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 556,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 556, (False, AMF.CMOF.Public_Visibility));
    end Initialize_556;
 
@@ -12468,9 +12467,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_557 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 557, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 557,
-        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 557, (False, AMF.CMOF.Public_Visibility));
    end Initialize_557;
 
@@ -12480,10 +12480,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_558 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 558, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 558,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 558,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0945'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 558, (False, AMF.CMOF.Public_Visibility));
    end Initialize_558;
 
@@ -12493,11 +12495,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_559 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 559, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 559, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 559, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 559,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 559, (False, AMF.CMOF.Public_Visibility));
    end Initialize_559;
 
@@ -12507,10 +12508,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_560 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 560, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 560,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 560, (False, AMF.CMOF.Public_Visibility));
    end Initialize_560;
 
@@ -12520,12 +12520,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_561 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 561, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 561, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 561, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 561, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 561,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0611'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 561, (False, AMF.CMOF.Public_Visibility));
    end Initialize_561;
 
@@ -12538,7 +12536,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 562, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 562,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09BE'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0487'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 562, (False, AMF.CMOF.Public_Visibility));
    end Initialize_562;
 
@@ -12548,9 +12546,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_563 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 563, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 563,
-        AMF.Internals.Tables.UML_String_Data_09.MS_092F'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0771'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 563, (False, AMF.CMOF.Public_Visibility));
    end Initialize_563;
 
@@ -12560,10 +12559,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_564 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 564, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 564,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03DB'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 564, (False, AMF.CMOF.Public_Visibility));
    end Initialize_564;
 
@@ -12573,10 +12571,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_565 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 565, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 565, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 565,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03AD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 565, (False, AMF.CMOF.Public_Visibility));
    end Initialize_565;
 
@@ -12586,12 +12584,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_566 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 566,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 566, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 566,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0945'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0566'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 566, (False, AMF.CMOF.Public_Visibility));
    end Initialize_566;
 
@@ -12601,10 +12597,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_567 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 567, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 567, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 567,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0778'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 567, (False, AMF.CMOF.Public_Visibility));
    end Initialize_567;
 
@@ -12614,9 +12610,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_568 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 568,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 568,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0798'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 568, (False, AMF.CMOF.Public_Visibility));
    end Initialize_568;
 
@@ -12626,10 +12625,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_569 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 569, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 569,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 569,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_068D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 569, (False, AMF.CMOF.Public_Visibility));
    end Initialize_569;
 
@@ -12639,10 +12640,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_570 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 570, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 570, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 570,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0487'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 570, (False, AMF.CMOF.Public_Visibility));
    end Initialize_570;
 
@@ -12652,10 +12653,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_571 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 571, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 571, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 571,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0771'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0379'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 571, (False, AMF.CMOF.Public_Visibility));
    end Initialize_571;
 
@@ -12665,9 +12667,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_572 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 572, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 572,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8F'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 572, (False, (False, 2)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 572, (False, AMF.CMOF.Public_Visibility));
    end Initialize_572;
 
@@ -12677,10 +12681,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_573 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 573, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 573, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 573,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03AD'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 573, (False, AMF.CMOF.Public_Visibility));
    end Initialize_573;
 
@@ -12690,10 +12694,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_574 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 574, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 574,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0566'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 574, (False, AMF.CMOF.Public_Visibility));
    end Initialize_574;
 
@@ -12703,10 +12706,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_575 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 575, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 575,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0778'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 575, (False, AMF.CMOF.Public_Visibility));
    end Initialize_575;
 
@@ -12716,12 +12718,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_576 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 576,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 576, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 576,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0798'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 576, (False, (False, 2)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 576, (False, AMF.CMOF.Public_Visibility));
    end Initialize_576;
 
@@ -12731,12 +12732,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_577 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 577,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 577, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 577, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 577, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 577, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 577,
-        AMF.Internals.Tables.UML_String_Data_06.MS_068D'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0556'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 577, (False, AMF.CMOF.Public_Visibility));
    end Initialize_577;
 
@@ -12746,10 +12748,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_578 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 578, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 578, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 578,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_073E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 578, (False, AMF.CMOF.Public_Visibility));
    end Initialize_578;
 
@@ -12759,11 +12761,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_579 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 579, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 579, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 579,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0379'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04D1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 579, (False, AMF.CMOF.Public_Visibility));
    end Initialize_579;
 
@@ -12773,11 +12773,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_580 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 580, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 580,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 580, (False, (False, 2)));
+        AMF.Internals.Tables.UML_String_Data_07.MS_0780'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 580, (False, AMF.CMOF.Public_Visibility));
    end Initialize_580;
 
@@ -12787,10 +12785,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_581 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 581, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 581,
+        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 581,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 581, (False, AMF.CMOF.Public_Visibility));
    end Initialize_581;
 
@@ -12800,9 +12800,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_582 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 582, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 582, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 582,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 582, (False, AMF.CMOF.Public_Visibility));
    end Initialize_582;
 
@@ -12812,9 +12814,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_583 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 583, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 583,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_005B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 583, (False, AMF.CMOF.Public_Visibility));
    end Initialize_583;
 
@@ -12824,11 +12827,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_584 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 584, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 584,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 584, (False, (False, 2)));
+        AMF.Internals.Tables.UML_String_Data_04.MS_0436'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 584, (False, AMF.CMOF.Public_Visibility));
    end Initialize_584;
 
@@ -12838,13 +12839,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_585 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 585, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 585, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 585, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 585, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 585,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0556'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03F5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 585, (False, AMF.CMOF.Public_Visibility));
    end Initialize_585;
 
@@ -12854,10 +12851,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_586 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 586, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 586,
-        AMF.Internals.Tables.UML_String_Data_07.MS_073E'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07BB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 586, (False, AMF.CMOF.Public_Visibility));
    end Initialize_586;
 
@@ -12869,7 +12865,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 587,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04D1'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_005F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 587, (False, AMF.CMOF.Public_Visibility));
    end Initialize_587;
 
@@ -12881,7 +12877,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 588,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0780'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C39'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 588, (False, AMF.CMOF.Public_Visibility));
    end Initialize_588;
 
@@ -12891,12 +12887,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_589 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 589,
-        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 589,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0651'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 589, (False, AMF.CMOF.Public_Visibility));
    end Initialize_589;
 
@@ -12909,7 +12902,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 590, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 590,
-        AMF.Internals.Tables.UML_String_Data_00.MS_005B'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0986'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 590, (False, AMF.CMOF.Public_Visibility));
    end Initialize_590;
 
@@ -12919,9 +12912,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_591 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 591, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 591,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0436'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BBB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 591, (False, AMF.CMOF.Public_Visibility));
    end Initialize_591;
 
@@ -12931,9 +12925,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_592 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 592,
+        AMF.Internals.Tables.UML_String_Data_04.MS_047F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 592,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03F5'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 592, (False, AMF.CMOF.Public_Visibility));
    end Initialize_592;
 
@@ -12943,9 +12940,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_593 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 593, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 593,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07BB'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 593, (False, AMF.CMOF.Public_Visibility));
    end Initialize_593;
 
@@ -12955,9 +12953,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_594 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 594, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 594, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 594,
-        AMF.Internals.Tables.UML_String_Data_00.MS_005F'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 594, (False, AMF.CMOF.Public_Visibility));
    end Initialize_594;
 
@@ -12969,7 +12969,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 595,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C39'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 595, (False, AMF.CMOF.Public_Visibility));
    end Initialize_595;
 
@@ -12981,7 +12981,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 596,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0651'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0202'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 596, (False, AMF.CMOF.Public_Visibility));
    end Initialize_596;
 
@@ -12991,10 +12991,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_597 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 597, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 597,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 597, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 597, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 597,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0986'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 597, (False, AMF.CMOF.Public_Visibility));
    end Initialize_597;
 
@@ -13004,10 +13008,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_598 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 598, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 598, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 598, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 598,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BBB'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00FF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 598, (False, AMF.CMOF.Public_Visibility));
    end Initialize_598;
 
@@ -13017,12 +13022,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_599 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 599,
-        AMF.Internals.Tables.UML_String_Data_04.MS_047F'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 599, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 599,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A9'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B09'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 599, (False, AMF.CMOF.Public_Visibility));
    end Initialize_599;
 
@@ -13032,10 +13035,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_600 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 600,
+        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 600, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 600, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 600,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05FB'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 600, (False, AMF.CMOF.Public_Visibility));
    end Initialize_600;
 
@@ -13045,11 +13052,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_601 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 601, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 601, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 601,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 601, (False, AMF.CMOF.Public_Visibility));
    end Initialize_601;
 
@@ -13061,7 +13066,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 602,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE8'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00B9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 602, (False, AMF.CMOF.Public_Visibility));
    end Initialize_602;
 
@@ -13071,9 +13076,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_603 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 603,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 603,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0202'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B48'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 603, (False, AMF.CMOF.Public_Visibility));
    end Initialize_603;
 
@@ -13083,14 +13091,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_604 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 604,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 604, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 604, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 604,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BE2'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0508'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 604, (False, AMF.CMOF.Public_Visibility));
    end Initialize_604;
 
@@ -13100,11 +13103,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_605 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 605, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 605, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 605,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00FF'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02C9'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 605, (False, AMF.CMOF.Public_Visibility));
    end Initialize_605;
 
@@ -13114,14 +13115,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_606 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 606,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 606, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 606, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 606,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0598'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 606, (False, AMF.CMOF.Public_Visibility));
    end Initialize_606;
 
@@ -13131,9 +13127,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_607 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 607,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 607, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 607,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09D2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 607, (False, AMF.CMOF.Public_Visibility));
    end Initialize_607;
 
@@ -13145,7 +13145,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 608,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00B9'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A1E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 608, (False, AMF.CMOF.Public_Visibility));
    end Initialize_608;
 
@@ -13160,7 +13160,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 609,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B48'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0728'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 609, (False, AMF.CMOF.Public_Visibility));
    end Initialize_609;
 
@@ -13170,9 +13170,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_610 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 610,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 610,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0508'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02AF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 610, (False, AMF.CMOF.Public_Visibility));
    end Initialize_610;
 
@@ -13182,9 +13185,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_611 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 611, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 611,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02C9'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C71'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 611, (False, AMF.CMOF.Public_Visibility));
    end Initialize_611;
 
@@ -13194,9 +13198,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_612 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 612, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 612,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0598'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07E5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 612, (False, AMF.CMOF.Public_Visibility));
    end Initialize_612;
 
@@ -13206,13 +13211,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_613 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 613,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 613, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 613,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09D2'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BCF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 613, (False, AMF.CMOF.Public_Visibility));
    end Initialize_613;
 
@@ -13222,9 +13224,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_614 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 614, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 614,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A1E'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 614, (False, AMF.CMOF.Public_Visibility));
    end Initialize_614;
 
@@ -13234,12 +13237,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_615 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 615,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 615,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0728'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0457'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 615, (False, AMF.CMOF.Public_Visibility));
    end Initialize_615;
 
@@ -13249,12 +13249,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_616 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 616,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 616,
-        AMF.Internals.Tables.UML_String_Data_02.MS_02AF'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04DB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 616, (False, AMF.CMOF.Public_Visibility));
    end Initialize_616;
 
@@ -13264,10 +13261,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_617 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 617, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 617, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 617,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C71'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 617, (False, AMF.CMOF.Public_Visibility));
    end Initialize_617;
 
@@ -13277,10 +13275,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_618 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 618, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 618,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07E5'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BAB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 618, (False, AMF.CMOF.Public_Visibility));
    end Initialize_618;
 
@@ -13290,10 +13287,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_619 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 619, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 619, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 619,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BCF'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0264'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 619, (False, AMF.CMOF.Public_Visibility));
    end Initialize_619;
 
@@ -13303,10 +13301,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_620 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 620, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 620, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 620,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C8F'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AC3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 620, (False, AMF.CMOF.Public_Visibility));
    end Initialize_620;
 
@@ -13316,9 +13315,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_621 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 621, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 621,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0457'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01AD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 621, (False, AMF.CMOF.Public_Visibility));
    end Initialize_621;
 
@@ -13328,9 +13328,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_622 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 622, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 622,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04DB'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_001E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 622, (False, AMF.CMOF.Public_Visibility));
    end Initialize_622;
 
@@ -13344,7 +13345,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 623, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 623,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 623, (False, AMF.CMOF.Public_Visibility));
    end Initialize_623;
 
@@ -13356,7 +13357,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 624,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BAB'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04D3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 624, (False, AMF.CMOF.Public_Visibility));
    end Initialize_624;
 
@@ -13370,7 +13371,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 625, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 625,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0264'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_013E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 625, (False, AMF.CMOF.Public_Visibility));
    end Initialize_625;
 
@@ -13380,11 +13381,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_626 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 626, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 626, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 626,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AC3'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00F1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 626, (False, AMF.CMOF.Public_Visibility));
    end Initialize_626;
 
@@ -13394,10 +13394,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_627 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 627, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 627, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 627,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01AD'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0898'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 627, (False, AMF.CMOF.Public_Visibility));
    end Initialize_627;
 
@@ -13407,10 +13408,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_628 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 628, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 628,
-        AMF.Internals.Tables.UML_String_Data_00.MS_001E'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01F0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 628, (False, AMF.CMOF.Public_Visibility));
    end Initialize_628;
 
@@ -13420,11 +13420,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_629 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 629, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 629, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 629,
-        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0550'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 629, (False, AMF.CMOF.Public_Visibility));
    end Initialize_629;
 
@@ -13436,7 +13434,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 630,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04D3'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 630, (False, AMF.CMOF.Public_Visibility));
    end Initialize_630;
 
@@ -13446,11 +13444,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_631 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 631, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 631, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 631,
-        AMF.Internals.Tables.UML_String_Data_01.MS_013E'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 631, (False, AMF.CMOF.Public_Visibility));
    end Initialize_631;
 
@@ -13460,10 +13456,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_632 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 632, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 632, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 632,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00F1'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 632, (False, AMF.CMOF.Public_Visibility));
    end Initialize_632;
 
@@ -13473,11 +13469,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_633 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 633, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 633, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 633,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0898'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A38'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 633, (False, AMF.CMOF.Public_Visibility));
    end Initialize_633;
 
@@ -13487,9 +13482,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_634 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 634,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 634,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01F0'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08D4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 634, (False, AMF.CMOF.Public_Visibility));
    end Initialize_634;
 
@@ -13499,9 +13497,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_635 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 635, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 635,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0550'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_014B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 635, (False, AMF.CMOF.Public_Visibility));
    end Initialize_635;
 
@@ -13511,9 +13510,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_636 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 636, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 636,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_061D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 636, (False, AMF.CMOF.Public_Visibility));
    end Initialize_636;
 
@@ -13525,7 +13525,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 637,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0854'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 637, (False, AMF.CMOF.Public_Visibility));
    end Initialize_637;
 
@@ -13535,10 +13535,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_638 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 638, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 638, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 638,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 638, (False, AMF.CMOF.Public_Visibility));
    end Initialize_638;
 
@@ -13548,10 +13548,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_639 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 639, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 639, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 639,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A38'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04CE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 639, (False, AMF.CMOF.Public_Visibility));
    end Initialize_639;
 
@@ -13561,12 +13562,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_640 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 640,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 640, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 640,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08D4'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 640, (False, AMF.CMOF.Public_Visibility));
    end Initialize_640;
 
@@ -13576,10 +13575,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_641 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 641, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 641,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 641,
-        AMF.Internals.Tables.UML_String_Data_01.MS_014B'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 641, (False, AMF.CMOF.Public_Visibility));
    end Initialize_641;
 
@@ -13589,10 +13590,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_642 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 642, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 642,
-        AMF.Internals.Tables.UML_String_Data_06.MS_061D'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0277'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 642, (False, AMF.CMOF.Public_Visibility));
    end Initialize_642;
 
@@ -13602,9 +13602,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_643 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 643, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 643,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0854'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 643, (False, AMF.CMOF.Public_Visibility));
    end Initialize_643;
 
@@ -13617,7 +13618,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 644, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 644,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD7'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B16'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 644, (False, AMF.CMOF.Public_Visibility));
    end Initialize_644;
 
@@ -13627,11 +13628,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_645 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 645, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 645, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 645,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 645,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04CE'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_097A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 645, (False, AMF.CMOF.Public_Visibility));
    end Initialize_645;
 
@@ -13641,10 +13643,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_646 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 646, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 646,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 646,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08F4'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 646, (False, AMF.CMOF.Public_Visibility));
    end Initialize_646;
 
@@ -13656,10 +13660,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 647,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 647,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 647, (False, AMF.CMOF.Public_Visibility));
    end Initialize_647;
 
@@ -13671,7 +13675,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 648,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0277'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 648, (False, AMF.CMOF.Public_Visibility));
    end Initialize_648;
 
@@ -13694,10 +13698,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_650 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 650, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 650,
+        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 650,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B16'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 650, (False, AMF.CMOF.Public_Visibility));
    end Initialize_650;
 
@@ -13707,12 +13713,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_651 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 651,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 651,
-        AMF.Internals.Tables.UML_String_Data_09.MS_097A'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 651, (False, AMF.CMOF.Public_Visibility));
    end Initialize_651;
 
@@ -13727,7 +13730,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 652,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BCA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 652, (False, AMF.CMOF.Public_Visibility));
    end Initialize_652;
 
@@ -13737,12 +13740,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_653 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 653,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 653,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_075A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 653, (False, AMF.CMOF.Public_Visibility));
    end Initialize_653;
 
@@ -13752,9 +13752,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_654 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 654, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 654,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07F2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 654, (False, AMF.CMOF.Public_Visibility));
    end Initialize_654;
 
@@ -13764,10 +13765,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_655 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 655, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 655,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0854'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 655, (False, AMF.CMOF.Public_Visibility));
    end Initialize_655;
 
@@ -13779,10 +13779,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 656,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09FC'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A8D'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 656, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 656, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 656,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08BC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 656, (False, AMF.CMOF.Public_Visibility));
    end Initialize_656;
 
@@ -13792,9 +13794,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_657 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 657,
+        AMF.Internals.Tables.UML_String_Data_09.MS_09BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 657,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BC7'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0230'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 657, (False, AMF.CMOF.Public_Visibility));
    end Initialize_657;
 
@@ -13804,12 +13809,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_658 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 658,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 658, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 658,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BCA'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_019C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 658, (False, AMF.CMOF.Public_Visibility));
    end Initialize_658;
 
@@ -13819,9 +13822,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_659 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 659, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 659,
-        AMF.Internals.Tables.UML_String_Data_07.MS_075A'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A3B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 659, (False, AMF.CMOF.Public_Visibility));
    end Initialize_659;
 
@@ -13834,7 +13838,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 660, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 660,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07F2'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 660, (False, AMF.CMOF.Public_Visibility));
    end Initialize_660;
 
@@ -13844,9 +13848,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_661 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 661, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 661,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0854'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0736'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 661, (False, AMF.CMOF.Public_Visibility));
    end Initialize_661;
 
@@ -13856,14 +13861,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_662 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 662,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A8D'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 662, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 662, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 662, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 662,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08BC'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05CB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 662, (False, AMF.CMOF.Public_Visibility));
    end Initialize_662;
 
@@ -13875,10 +13876,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 663,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09BF'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 663,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0230'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 663, (False, AMF.CMOF.Public_Visibility));
    end Initialize_663;
 
@@ -13888,10 +13889,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_664 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 664, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 664,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 664,
-        AMF.Internals.Tables.UML_String_Data_01.MS_019C'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08C3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 664, (False, AMF.CMOF.Public_Visibility));
    end Initialize_664;
 
@@ -13901,10 +13904,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_665 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 665,
+        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 665, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 665, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 665,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A3B'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 665, (False, AMF.CMOF.Public_Visibility));
    end Initialize_665;
 
@@ -13914,10 +13921,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_666 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 666, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 666, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 666,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04DD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 666, (False, AMF.CMOF.Public_Visibility));
    end Initialize_666;
 
@@ -13927,10 +13935,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_667 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 667,
+        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 667, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 667, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 667,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0736'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_06C8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 667, (False, AMF.CMOF.Public_Visibility));
    end Initialize_667;
 
@@ -13940,10 +13952,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_668 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 668, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 668, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 668,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05CB'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AB7'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 668, (False, AMF.CMOF.Public_Visibility));
    end Initialize_668;
 
@@ -13953,12 +13966,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_669 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 669,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 669, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 669,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B83'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 669, (False, AMF.CMOF.Public_Visibility));
    end Initialize_669;
 
@@ -13968,12 +13979,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_670 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 670,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 670, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 670, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 670,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08C3'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0354'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 670, (False, AMF.CMOF.Public_Visibility));
    end Initialize_670;
 
@@ -13983,14 +13993,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_671 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 671,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 671, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 671, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 671, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 671, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 671,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05FF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 671, (False, AMF.CMOF.Public_Visibility));
    end Initialize_671;
 
@@ -14000,11 +14009,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_672 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 672, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 672, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 672, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 672, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 672,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04DD'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_011F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 672, (False, AMF.CMOF.Public_Visibility));
    end Initialize_672;
 
@@ -14014,14 +14024,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_673 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 673,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 673, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 673, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 673,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06C8'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 673, (False, AMF.CMOF.Public_Visibility));
    end Initialize_673;
 
@@ -14031,11 +14037,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_674 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 674, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 674, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 674,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 674,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AB7'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 674, (False, AMF.CMOF.Public_Visibility));
    end Initialize_674;
 
@@ -14045,10 +14052,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_675 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 675, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 675,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 675,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B83'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05FE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 675, (False, AMF.CMOF.Public_Visibility));
    end Initialize_675;
 
@@ -14058,11 +14067,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_676 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 676, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 676, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 676,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0354'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A28'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 676, (False, AMF.CMOF.Public_Visibility));
    end Initialize_676;
 
@@ -14072,13 +14080,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_677 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 677, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived_Union (Base + 677, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 677, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 677, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 677,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05FF'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 677, (False, AMF.CMOF.Public_Visibility));
    end Initialize_677;
 
@@ -14088,12 +14093,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_678 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 678, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 678, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 678, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 678,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 678,
-        AMF.Internals.Tables.UML_String_Data_01.MS_011F'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B92'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 678, (False, AMF.CMOF.Public_Visibility));
    end Initialize_678;
 
@@ -14103,10 +14108,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_679 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 679, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 679,
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C7A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 679,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A85'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 679, (False, AMF.CMOF.Public_Visibility));
    end Initialize_679;
 
@@ -14116,12 +14123,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_680 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 680,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 680, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 680,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05DE'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A28'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 680, (False, AMF.CMOF.Public_Visibility));
    end Initialize_680;
 
@@ -14131,12 +14136,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_681 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 681,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 681, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 681,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05FE'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_044E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 681, (False, AMF.CMOF.Public_Visibility));
    end Initialize_681;
 
@@ -14146,10 +14149,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_682 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 682, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 682,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A28'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 682, (False, AMF.CMOF.Public_Visibility));
    end Initialize_682;
 
@@ -14159,10 +14161,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_683 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 683, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 683, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 683, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 683,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D5'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 683, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 683, (False, AMF.CMOF.Public_Visibility));
    end Initialize_683;
 
@@ -14172,12 +14177,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_684 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 684,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 684, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 684, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 684,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B92'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5A'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 684, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 684, (False, AMF.CMOF.Public_Visibility));
    end Initialize_684;
 
@@ -14187,12 +14192,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_685 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 685,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C7A'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 685, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 685, False);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 685, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 685,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A85'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 685, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 685, (False, AMF.CMOF.Public_Visibility));
    end Initialize_685;
 
@@ -14202,10 +14208,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_686 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 686, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 686, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 686,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A28'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5A'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 686, (False, (Unlimited => True)));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 686, (False, AMF.CMOF.Public_Visibility));
    end Initialize_686;
 
@@ -14215,10 +14223,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_687 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 687, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 687, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 687,
-        AMF.Internals.Tables.UML_String_Data_04.MS_044E'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 687, (False, AMF.CMOF.Public_Visibility));
    end Initialize_687;
 
@@ -14259,13 +14267,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_690 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 690, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 690, False);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 690, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 690, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 690, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 690,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 690, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 690, (False, AMF.CMOF.Public_Visibility));
    end Initialize_690;
 
@@ -14275,12 +14282,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_691 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 691, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 691, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 691, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 691,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5A'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 691, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_03.MS_030A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 691, (False, AMF.CMOF.Public_Visibility));
    end Initialize_691;
 
@@ -14293,7 +14299,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 692, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 692,
-        AMF.Internals.Tables.UML_String_Data_02.MS_029D'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0494'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 692, (False, AMF.CMOF.Public_Visibility));
    end Initialize_692;
 
@@ -14303,13 +14309,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_693 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 693, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Unique (Base + 693, False);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 693, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 693,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B98'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 693, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_00.MS_00A1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 693, (False, AMF.CMOF.Public_Visibility));
    end Initialize_693;
 
@@ -14319,12 +14322,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_694 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Ordered (Base + 694, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 694, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 694,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B5A'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Upper (Base + 694, (False, (Unlimited => True)));
+        AMF.Internals.Tables.UML_String_Data_07.MS_07C5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 694, (False, AMF.CMOF.Public_Visibility));
    end Initialize_694;
 
@@ -14334,12 +14335,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_695 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 695,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 695, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 695, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 695, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 695,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 695, (False, AMF.CMOF.Public_Visibility));
    end Initialize_695;
 
@@ -14349,11 +14352,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_696 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 696, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 696, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 696,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 696,
-        AMF.Internals.Tables.UML_String_Data_03.MS_030A'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0329'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 696, (False, AMF.CMOF.Public_Visibility));
    end Initialize_696;
 
@@ -14363,10 +14367,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_697 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 697, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 697,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 697, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 697, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 697,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0494'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08C3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 697, (False, AMF.CMOF.Public_Visibility));
    end Initialize_697;
 
@@ -14376,10 +14384,15 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_698 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 698,
+        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 698, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 698, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 698, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 698,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00A1'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 698, (False, AMF.CMOF.Public_Visibility));
    end Initialize_698;
 
@@ -14392,7 +14405,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 699, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 699,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07C5'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 699, (False, AMF.CMOF.Public_Visibility));
    end Initialize_699;
 
@@ -14402,14 +14415,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_700 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 700,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 700, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 700, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 700, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 700,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 700, (False, AMF.CMOF.Public_Visibility));
    end Initialize_700;
 
@@ -14421,10 +14432,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 701,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 701, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 701, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 701, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 701,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0329'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_06C8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 701, (False, AMF.CMOF.Public_Visibility));
    end Initialize_701;
 
@@ -14434,14 +14448,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_702 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 702,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 702, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 702, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 702,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08C3'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 702, (False, AMF.CMOF.Public_Visibility));
    end Initialize_702;
 
@@ -14451,15 +14460,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_703 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 703,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 703, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 703, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 703, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 703,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04AC'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A77'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 703, (False, AMF.CMOF.Public_Visibility));
    end Initialize_703;
 
@@ -14472,7 +14476,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 704, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 704,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04B2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 704, (False, AMF.CMOF.Public_Visibility));
    end Initialize_704;
 
@@ -14482,12 +14486,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_705 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 705, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 705, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 705, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 705,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB4'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 705, (False, AMF.CMOF.Public_Visibility));
    end Initialize_705;
 
@@ -14497,15 +14498,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_706 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 706,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0373'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 706, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 706, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 706, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 706,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06C8'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0780'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 706, (False, AMF.CMOF.Public_Visibility));
    end Initialize_706;
 
@@ -14515,9 +14510,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_707 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 707,
+        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 707,
-        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 707, (False, AMF.CMOF.Public_Visibility));
    end Initialize_707;
 
@@ -14527,10 +14525,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_708 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 708, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 708,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A77'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_010E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 708, (False, AMF.CMOF.Public_Visibility));
    end Initialize_708;
 
@@ -14540,10 +14537,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_709 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 709, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 709,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04B2'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01A3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 709, (False, AMF.CMOF.Public_Visibility));
    end Initialize_709;
 
@@ -14553,9 +14549,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_710 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 710,
+        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 710,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0A'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 710, (False, AMF.CMOF.Public_Visibility));
    end Initialize_710;
 
@@ -14565,9 +14564,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_711 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 711, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 711, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 711,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0780'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 711, (False, AMF.CMOF.Public_Visibility));
    end Initialize_711;
 
@@ -14577,12 +14578,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_712 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 712,
-        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 712, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 712, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 712,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0362'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 712, (False, AMF.CMOF.Public_Visibility));
    end Initialize_712;
 
@@ -14592,9 +14592,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_713 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 713,
+        AMF.Internals.Tables.UML_String_Data_06.MS_0688'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 713,
-        AMF.Internals.Tables.UML_String_Data_01.MS_010E'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C05'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 713, (False, AMF.CMOF.Public_Visibility));
    end Initialize_713;
 
@@ -14604,9 +14607,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_714 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 714, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 714,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01A3'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_004F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 714, (False, AMF.CMOF.Public_Visibility));
    end Initialize_714;
 
@@ -14618,10 +14622,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 715,
-        AMF.Internals.Tables.UML_String_Data_05.MS_055A'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 715,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B62'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0337'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 715, (False, AMF.CMOF.Public_Visibility));
    end Initialize_715;
 
@@ -14631,11 +14635,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_716 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 716, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 716, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 716,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 716,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01E3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 716, (False, AMF.CMOF.Public_Visibility));
    end Initialize_716;
 
@@ -14645,11 +14650,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_717 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 717, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 717, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 717,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0362'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 717, (False, AMF.CMOF.Public_Visibility));
    end Initialize_717;
 
@@ -14659,12 +14663,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_718 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 718,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0688'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 718, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 718,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C05'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_045C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 718, (False, AMF.CMOF.Public_Visibility));
    end Initialize_718;
 
@@ -14677,7 +14679,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 719, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 719,
-        AMF.Internals.Tables.UML_String_Data_00.MS_004F'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 719, (False, AMF.CMOF.Public_Visibility));
    end Initialize_719;
 
@@ -14692,7 +14694,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 720,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0337'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B94'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 720, (False, AMF.CMOF.Public_Visibility));
    end Initialize_720;
 
@@ -14707,7 +14709,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 721,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01E3'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B30'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 721, (False, AMF.CMOF.Public_Visibility));
    end Initialize_721;
 
@@ -14717,10 +14719,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_722 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 722, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 722,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 722,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0638'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A6F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 722, (False, AMF.CMOF.Public_Visibility));
    end Initialize_722;
 
@@ -14730,10 +14734,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_723 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 723, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 723,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 723,
-        AMF.Internals.Tables.UML_String_Data_04.MS_045C'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09E3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 723, (False, AMF.CMOF.Public_Visibility));
    end Initialize_723;
 
@@ -14746,7 +14752,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 724, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 724,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01BF'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0898'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 724, (False, AMF.CMOF.Public_Visibility));
    end Initialize_724;
 
@@ -14756,12 +14762,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_725 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 725,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 725,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B94'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0203'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 725, (False, AMF.CMOF.Public_Visibility));
    end Initialize_725;
 
@@ -14771,12 +14774,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_726 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 726,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 726,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B30'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 726, (False, AMF.CMOF.Public_Visibility));
    end Initialize_726;
 
@@ -14791,7 +14791,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 727,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A6F'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0325'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 727, (False, AMF.CMOF.Public_Visibility));
    end Initialize_727;
 
@@ -14803,10 +14803,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
        (Base + 728,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_015B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 728,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09E3'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BFD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 728, (False, AMF.CMOF.Public_Visibility));
    end Initialize_728;
 
@@ -14819,7 +14819,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 729, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 729,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0898'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A43'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 729, (False, AMF.CMOF.Public_Visibility));
    end Initialize_729;
 
@@ -14829,9 +14829,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_730 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 730, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 730,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0203'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B19'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 730, (False, AMF.CMOF.Public_Visibility));
    end Initialize_730;
 
@@ -14841,9 +14842,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_731 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 731, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 731,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07FB'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0494'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 731, (False, AMF.CMOF.Public_Visibility));
    end Initialize_731;
 
@@ -14853,12 +14855,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_732 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 732,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 732, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 732,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0325'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00A1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 732, (False, AMF.CMOF.Public_Visibility));
    end Initialize_732;
 
@@ -14868,12 +14868,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_733 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 733,
-        AMF.Internals.Tables.UML_String_Data_01.MS_015B'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 733, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 733, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 733,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BFD'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 733, (False, AMF.CMOF.Public_Visibility));
    end Initialize_733;
 
@@ -14883,10 +14882,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_734 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 734, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 734, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 734,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A43'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0362'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 734, (False, AMF.CMOF.Public_Visibility));
    end Initialize_734;
 
@@ -14899,7 +14899,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 735, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 735,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B19'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07C5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 735, (False, AMF.CMOF.Public_Visibility));
    end Initialize_735;
 
@@ -14909,10 +14909,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_736 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 736, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 736,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 736, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 736,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0494'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_060E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 736, (False, AMF.CMOF.Public_Visibility));
    end Initialize_736;
 
@@ -14922,10 +14925,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_737 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 737, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 737,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 737,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00A1'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_039F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 737, (False, AMF.CMOF.Public_Visibility));
    end Initialize_737;
 
@@ -14935,11 +14940,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_738 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 738, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 738, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 738,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 738,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0176'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 738, (False, AMF.CMOF.Public_Visibility));
    end Initialize_738;
 
@@ -14949,11 +14955,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_739 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 739, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 739, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 739,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 739,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0362'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A0C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 739, (False, AMF.CMOF.Public_Visibility));
    end Initialize_739;
 
@@ -14963,10 +14970,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_740 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 740, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 740,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 740,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07C5'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 740, (False, AMF.CMOF.Public_Visibility));
    end Initialize_740;
 
@@ -14976,13 +14985,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_741 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 741,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 741, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 741, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 741,
-        AMF.Internals.Tables.UML_String_Data_06.MS_060E'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0444'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 741, (False, AMF.CMOF.Public_Visibility));
    end Initialize_741;
 
@@ -14992,12 +14999,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_742 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 742,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 742, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 742,
-        AMF.Internals.Tables.UML_String_Data_03.MS_039F'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_049F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 742, (False, AMF.CMOF.Public_Visibility));
    end Initialize_742;
 
@@ -15007,12 +15012,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_743 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 743,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 743,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0176'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A5F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 743, (False, AMF.CMOF.Public_Visibility));
    end Initialize_743;
 
@@ -15022,12 +15024,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_744 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 744,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 744,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A0C'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_008A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 744, (False, AMF.CMOF.Public_Visibility));
    end Initialize_744;
 
@@ -15037,12 +15036,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_745 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 745,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 745, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 745, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 745,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05F1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 745, (False, AMF.CMOF.Public_Visibility));
    end Initialize_745;
 
@@ -15052,11 +15050,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_746 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 746, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 746, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 746, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 746,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0444'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AB1'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 746, (False, AMF.CMOF.Public_Visibility));
    end Initialize_746;
 
@@ -15066,10 +15064,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_747 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 747, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 747,
+        AMF.Internals.Tables.UML_String_Data_09.MS_090C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 747,
-        AMF.Internals.Tables.UML_String_Data_04.MS_049F'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 747, (False, AMF.CMOF.Public_Visibility));
    end Initialize_747;
 
@@ -15079,9 +15079,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_748 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 748, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 748,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A5F'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 748, (False, AMF.CMOF.Public_Visibility));
    end Initialize_748;
 
@@ -15091,9 +15092,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_749 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 749, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 749,
-        AMF.Internals.Tables.UML_String_Data_00.MS_008A'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 749, (False, AMF.CMOF.Public_Visibility));
    end Initialize_749;
 
@@ -15103,11 +15105,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_750 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 750, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 750, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 750,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05F1'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 750, (False, AMF.CMOF.Public_Visibility));
    end Initialize_750;
 
@@ -15117,11 +15117,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_751 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 751, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 751, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 751,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AB1'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 751, (False, AMF.CMOF.Public_Visibility));
    end Initialize_751;
 
@@ -15131,12 +15129,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_752 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 752,
-        AMF.Internals.Tables.UML_String_Data_09.MS_090C'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 752, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 752,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0790'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 752, (False, AMF.CMOF.Public_Visibility));
    end Initialize_752;
 
@@ -15146,10 +15142,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_753 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 753, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 753,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 753, (False, AMF.CMOF.Public_Visibility));
    end Initialize_753;
 
@@ -15159,10 +15154,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_754 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 754, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 754, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 754,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7D'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 754, (False, AMF.CMOF.Public_Visibility));
    end Initialize_754;
 
@@ -15174,7 +15169,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 755,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 755, (False, AMF.CMOF.Public_Visibility));
    end Initialize_755;
 
@@ -15184,9 +15179,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_756 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 756,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 756,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0406'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_021D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 756, (False, AMF.CMOF.Public_Visibility));
    end Initialize_756;
 
@@ -15199,7 +15197,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 757, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 757,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0790'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 757, (False, AMF.CMOF.Public_Visibility));
    end Initialize_757;
 
@@ -15209,9 +15207,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_758 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 758, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 758,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 758, (False, AMF.CMOF.Public_Visibility));
    end Initialize_758;
 
@@ -15236,7 +15235,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 760,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0277'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 760, (False, AMF.CMOF.Public_Visibility));
    end Initialize_760;
 
@@ -15246,12 +15245,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_761 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 761,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 761, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 761,
-        AMF.Internals.Tables.UML_String_Data_02.MS_021D'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 761, (False, AMF.CMOF.Public_Visibility));
    end Initialize_761;
 
@@ -15264,7 +15261,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 762, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 762,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 762, (False, AMF.CMOF.Public_Visibility));
    end Initialize_762;
 
@@ -15277,7 +15274,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 763, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 763,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 763, (False, AMF.CMOF.Public_Visibility));
    end Initialize_763;
 
@@ -15287,10 +15284,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_764 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 764, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 764,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 764, (False, AMF.CMOF.Public_Visibility));
    end Initialize_764;
 
@@ -15300,9 +15296,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_765 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 765, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 765,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0277'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 765, (False, AMF.CMOF.Public_Visibility));
    end Initialize_765;
 
@@ -15315,7 +15312,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 766, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 766,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 766, (False, AMF.CMOF.Public_Visibility));
    end Initialize_766;
 
@@ -15341,7 +15338,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 768, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 768,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 768, (False, AMF.CMOF.Public_Visibility));
    end Initialize_768;
 
@@ -15353,7 +15350,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 769,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03A6'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 769, (False, AMF.CMOF.Public_Visibility));
    end Initialize_769;
 
@@ -15363,10 +15360,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_770 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 770, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 770,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 770,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 770, (False, AMF.CMOF.Public_Visibility));
    end Initialize_770;
 
@@ -15379,7 +15378,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 771, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 771,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 771, (False, AMF.CMOF.Public_Visibility));
    end Initialize_771;
 
@@ -15389,10 +15388,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_772 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 772, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 772,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 772,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0302'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 772, (False, AMF.CMOF.Public_Visibility));
    end Initialize_772;
 
@@ -15402,10 +15403,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_773 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 773, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 773,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 773, (False, AMF.CMOF.Public_Visibility));
    end Initialize_773;
 
@@ -15415,9 +15415,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_774 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 774, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 774,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_0686'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 774, (False, AMF.CMOF.Public_Visibility));
    end Initialize_774;
 
@@ -15432,7 +15433,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
         AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 775,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04A6'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 775, (False, AMF.CMOF.Public_Visibility));
    end Initialize_775;
 
@@ -15442,10 +15443,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_776 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 776, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 776,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01FF'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 776, (False, AMF.CMOF.Public_Visibility));
    end Initialize_776;
 
@@ -15455,12 +15455,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_777 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 777,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 777, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 777,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0302'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 777, (False, AMF.CMOF.Public_Visibility));
    end Initialize_777;
 
@@ -15470,9 +15468,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_778 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 778, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 778,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0321'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A1A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 778, (False, AMF.CMOF.Public_Visibility));
    end Initialize_778;
 
@@ -15482,10 +15481,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_779 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 779, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 779, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 779, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 779,
-        AMF.Internals.Tables.UML_String_Data_06.MS_0686'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 779, (False, AMF.CMOF.Public_Visibility));
    end Initialize_779;
 
@@ -15495,12 +15495,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_780 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 780,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 780, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 780,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07DE'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 780, (False, AMF.CMOF.Public_Visibility));
    end Initialize_780;
 
@@ -15510,9 +15508,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_781 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 781, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 781,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01FF'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 781, (False, AMF.CMOF.Public_Visibility));
    end Initialize_781;
 
@@ -15522,10 +15521,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_782 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 782, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 782,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 782,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09A8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 782, (False, AMF.CMOF.Public_Visibility));
    end Initialize_782;
 
@@ -15535,10 +15536,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_783 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 783, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 783, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 783,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A1A'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03C3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 783, (False, AMF.CMOF.Public_Visibility));
    end Initialize_783;
 
@@ -15548,10 +15550,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_784 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 784, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 784,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 784,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0273'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09A8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 784, (False, AMF.CMOF.Public_Visibility));
    end Initialize_784;
 
@@ -15561,10 +15565,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_785 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 785, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 785, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 785,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B7D'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03C3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 785, (False, AMF.CMOF.Public_Visibility));
    end Initialize_785;
 
@@ -15574,12 +15579,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_786 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 786,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 786,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09A8'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_03D6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 786, (False, AMF.CMOF.Public_Visibility));
    end Initialize_786;
 
@@ -15590,10 +15592,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_787 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 787, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 787, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 787,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03C3'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_014D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 787, (False, AMF.CMOF.Public_Visibility));
    end Initialize_787;
 
@@ -15603,12 +15604,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_788 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 788,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 788, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 788,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09A8'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B04'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 788, (False, AMF.CMOF.Public_Visibility));
    end Initialize_788;
 
@@ -15619,10 +15618,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_789 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 789, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 789, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 789,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03C3'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 789, (False, AMF.CMOF.Public_Visibility));
    end Initialize_789;
 
@@ -15634,7 +15632,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 790,
-        AMF.Internals.Tables.UML_String_Data_03.MS_03D6'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 790, (False, AMF.CMOF.Public_Visibility));
    end Initialize_790;
 
@@ -15647,7 +15645,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 791, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 791,
-        AMF.Internals.Tables.UML_String_Data_01.MS_014D'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 791, (False, AMF.CMOF.Public_Visibility));
    end Initialize_791;
 
@@ -15657,10 +15655,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_792 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 792, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 792,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 792, (False, AMF.CMOF.Public_Visibility));
    end Initialize_792;
 
@@ -15672,7 +15669,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 793,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_076F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 793, (False, AMF.CMOF.Public_Visibility));
    end Initialize_793;
 
@@ -15682,10 +15679,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_794 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 794, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 794,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D0'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B77'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 794, (False, AMF.CMOF.Public_Visibility));
    end Initialize_794;
 
@@ -15695,9 +15691,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_795 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 795, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 795,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0930'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 795, (False, AMF.CMOF.Public_Visibility));
    end Initialize_795;
 
@@ -15707,9 +15704,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_796 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 796, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 796,
-        AMF.Internals.Tables.UML_String_Data_07.MS_076F'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 796, (False, AMF.CMOF.Public_Visibility));
    end Initialize_796;
 
@@ -15719,9 +15717,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_797 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 797, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 797, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 797,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B77'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C65'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 797, (False, AMF.CMOF.Public_Visibility));
    end Initialize_797;
 
@@ -15732,9 +15732,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_798 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 798, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 798, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 798,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0271'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 798, (False, AMF.CMOF.Public_Visibility));
    end Initialize_798;
 
@@ -15745,9 +15746,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_799 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 799, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 799, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 799,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A37'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 799, (False, AMF.CMOF.Public_Visibility));
    end Initialize_799;
 
@@ -15757,11 +15759,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_800 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 800, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 800, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 800,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 800, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 800, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 800,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C65'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_060E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 800, (False, AMF.CMOF.Public_Visibility));
    end Initialize_800;
 
@@ -15771,11 +15776,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_801 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 801, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 801, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 801,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 801, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 801, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 801,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0271'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BBC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 801, (False, AMF.CMOF.Public_Visibility));
    end Initialize_801;
 
@@ -15785,11 +15793,14 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_802 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 802, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 802, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 802,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 802, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 802, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 802,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A37'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_0850'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 802, (False, AMF.CMOF.Public_Visibility));
    end Initialize_802;
 
@@ -15806,7 +15817,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 803, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 803,
-        AMF.Internals.Tables.UML_String_Data_06.MS_060E'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0767'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 803, (False, AMF.CMOF.Public_Visibility));
    end Initialize_803;
 
@@ -15816,14 +15827,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_804 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 804,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 804, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 804, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 804, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 804,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BBC'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_07B2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 804, (False, AMF.CMOF.Public_Visibility));
    end Initialize_804;
 
@@ -15833,14 +15840,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_805 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 805,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 805, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 805, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 805,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0850'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 805, (False, AMF.CMOF.Public_Visibility));
    end Initialize_805;
 
@@ -15850,14 +15854,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_806 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 806,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 806, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 806, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 806, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 806, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 806,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0767'Access);
+        AMF.Internals.Tables.UML_String_Data_06.MS_06E3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 806, (False, AMF.CMOF.Public_Visibility));
    end Initialize_806;
 
@@ -15870,7 +15871,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 807, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 807,
-        AMF.Internals.Tables.UML_String_Data_07.MS_07B2'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_04E4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 807, (False, AMF.CMOF.Public_Visibility));
    end Initialize_807;
 
@@ -15880,11 +15881,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_808 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 808, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 808, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 808,
-        AMF.Internals.Tables.UML_String_Data_06.MS_06E3'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_02BA'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 808, (False, AMF.CMOF.Public_Visibility));
    end Initialize_808;
 
@@ -15894,10 +15893,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_809 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 809, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 809, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 809,
-        AMF.Internals.Tables.UML_String_Data_04.MS_04E4'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_054E'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 809, (False, AMF.CMOF.Public_Visibility));
    end Initialize_809;
 
@@ -15907,10 +15906,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_810 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 810, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 810, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 810, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 810,
-        AMF.Internals.Tables.UML_String_Data_05.MS_054E'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB8'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 810, (False, AMF.CMOF.Public_Visibility));
    end Initialize_810;
 
@@ -15920,11 +15920,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_811 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 811, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 811, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 811, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 811,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BB8'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0791'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 811, (False, AMF.CMOF.Public_Visibility));
    end Initialize_811;
 
@@ -15934,10 +15933,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_812 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 812, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 812,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 812,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0791'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 812, (False, AMF.CMOF.Public_Visibility));
    end Initialize_812;
 
@@ -15947,12 +15948,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_813 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 813,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 813, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 813,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0118'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 813, (False, AMF.CMOF.Public_Visibility));
    end Initialize_813;
 
@@ -15962,10 +15961,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_814 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 814, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 814,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C18'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0270'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 814, (False, AMF.CMOF.Public_Visibility));
    end Initialize_814;
 
@@ -15975,9 +15973,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_815 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 815, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 815,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0270'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 815, (False, AMF.CMOF.Public_Visibility));
    end Initialize_815;
 
@@ -15987,10 +15986,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_816 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 816, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 816,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 816,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09A4'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0315'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 816, (False, AMF.CMOF.Public_Visibility));
    end Initialize_816;
 
@@ -16000,12 +16001,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_817 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 817,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 817,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0315'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01F0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 817, (False, AMF.CMOF.Public_Visibility));
    end Initialize_817;
 
@@ -16017,7 +16015,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 818,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01F0'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0924'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 818, (False, AMF.CMOF.Public_Visibility));
    end Initialize_818;
 
@@ -16029,7 +16027,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 819,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0924'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_0927'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 819, (False, AMF.CMOF.Public_Visibility));
    end Initialize_819;
 
@@ -16041,7 +16039,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 820,
-        AMF.Internals.Tables.UML_String_Data_09.MS_0927'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 820, (False, AMF.CMOF.Public_Visibility));
    end Initialize_820;
 
@@ -16051,9 +16049,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_821 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 821, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 821,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 821, (False, AMF.CMOF.Public_Visibility));
    end Initialize_821;
 
@@ -16063,10 +16062,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_822 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 822, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 822, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 822,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00FB'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_0782'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 822, (False, AMF.CMOF.Public_Visibility));
    end Initialize_822;
 
@@ -16080,7 +16080,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 823, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 823,
-        AMF.Internals.Tables.UML_String_Data_07.MS_0782'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_05D6'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 823, (False, AMF.CMOF.Public_Visibility));
    end Initialize_823;
 
@@ -16090,11 +16090,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_824 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 824, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 824, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 824,
-        AMF.Internals.Tables.UML_String_Data_05.MS_05D6'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 824, (False, AMF.CMOF.Public_Visibility));
    end Initialize_824;
 
@@ -16106,7 +16104,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 825,
-        AMF.Internals.Tables.UML_String_Data_07.MS_070A'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 825, (False, AMF.CMOF.Public_Visibility));
    end Initialize_825;
 
@@ -16118,7 +16116,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 826,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09F2'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_0578'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 826, (False, AMF.CMOF.Public_Visibility));
    end Initialize_826;
 
@@ -16130,7 +16128,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 827,
-        AMF.Internals.Tables.UML_String_Data_05.MS_0578'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01AC'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 827, (False, AMF.CMOF.Public_Visibility));
    end Initialize_827;
 
@@ -16140,9 +16138,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_828 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 828, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 828, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 828,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01AC'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0AE3'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 828, (False, AMF.CMOF.Public_Visibility));
    end Initialize_828;
 
@@ -16152,11 +16152,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_829 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 829, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 829, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 829,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0AE3'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_0220'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 829, (False, AMF.CMOF.Public_Visibility));
    end Initialize_829;
 
@@ -16168,7 +16166,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 830,
-        AMF.Internals.Tables.UML_String_Data_02.MS_0220'Access);
+        AMF.Internals.Tables.UML_String_Data_09.MS_09CB'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 830, (False, AMF.CMOF.Public_Visibility));
    end Initialize_830;
 
@@ -16178,9 +16176,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_831 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 831, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 831, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 831,
-        AMF.Internals.Tables.UML_String_Data_09.MS_09CB'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_086C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 831, (False, AMF.CMOF.Public_Visibility));
    end Initialize_831;
 
@@ -16191,10 +16191,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_832 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 832, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 832, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 832,
-        AMF.Internals.Tables.UML_String_Data_08.MS_086C'Access);
+        AMF.Internals.Tables.UML_String_Data_07.MS_078D'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 832, (False, AMF.CMOF.Public_Visibility));
    end Initialize_832;
 
@@ -16207,7 +16206,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 833, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 833,
-        AMF.Internals.Tables.UML_String_Data_07.MS_078D'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 833, (False, AMF.CMOF.Public_Visibility));
    end Initialize_833;
 
@@ -16220,7 +16219,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 834, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 834,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BD4'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_0437'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 834, (False, AMF.CMOF.Public_Visibility));
    end Initialize_834;
 
@@ -16230,10 +16229,13 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_835 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 835, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 835,
+        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 835, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 835,
-        AMF.Internals.Tables.UML_String_Data_04.MS_0437'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 835, (False, AMF.CMOF.Public_Visibility));
    end Initialize_835;
 
@@ -16243,13 +16245,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_836 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 836,
-        AMF.Internals.Tables.UML_String_Data_01.MS_0102'Access);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 836, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 836, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 836,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 836, (False, AMF.CMOF.Public_Visibility));
    end Initialize_836;
 
@@ -16259,10 +16258,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_837 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 837, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 837,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 837,
-        AMF.Internals.Tables.UML_String_Data_02.MS_026B'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_00C5'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 837, (False, AMF.CMOF.Public_Visibility));
    end Initialize_837;
 
@@ -16272,12 +16273,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_838 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 838,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 838, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 838,
-        AMF.Internals.Tables.UML_String_Data_00.MS_00C5'Access);
+        AMF.Internals.Tables.UML_String_Data_04.MS_041F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 838, (False, AMF.CMOF.Public_Visibility));
    end Initialize_838;
 
@@ -16288,9 +16287,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    procedure Initialize_839 is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 839, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 839, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 839,
-        AMF.Internals.Tables.UML_String_Data_04.MS_041F'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_0379'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 839, (False, AMF.CMOF.Public_Visibility));
    end Initialize_839;
 
@@ -16300,11 +16300,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_840 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 840, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 840, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 840,
-        AMF.Internals.Tables.UML_String_Data_03.MS_0379'Access);
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 840, (False, AMF.CMOF.Public_Visibility));
    end Initialize_840;
 
@@ -16316,7 +16314,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 841,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C0C'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 841, (False, AMF.CMOF.Public_Visibility));
    end Initialize_841;
 
@@ -16328,7 +16326,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
    begin
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 842,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0B40'Access);
+        AMF.Internals.Tables.UML_String_Data_08.MS_08D0'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 842, (False, AMF.CMOF.Public_Visibility));
    end Initialize_842;
 
@@ -16338,9 +16336,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_843 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 843,
+        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 843,
-        AMF.Internals.Tables.UML_String_Data_08.MS_08D0'Access);
+        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 843, (False, AMF.CMOF.Public_Visibility));
    end Initialize_843;
 
@@ -16350,12 +16351,9 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_844 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 844,
-        AMF.Internals.Tables.UML_String_Data_08.MS_0824'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 844,
-        AMF.Internals.Tables.UML_String_Data_0A.MS_0A41'Access);
+        AMF.Internals.Tables.UML_String_Data_0B.MS_0BAD'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 844, (False, AMF.CMOF.Public_Visibility));
    end Initialize_844;
 
@@ -16365,9 +16363,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_845 is
    begin
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 845, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 845, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 845,
-        AMF.Internals.Tables.UML_String_Data_0B.MS_0BAD'Access);
+        AMF.Internals.Tables.UML_String_Data_00.MS_004F'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 845, (False, AMF.CMOF.Public_Visibility));
    end Initialize_845;
 
@@ -16381,7 +16381,7 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 846, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 846,
-        AMF.Internals.Tables.UML_String_Data_00.MS_004F'Access);
+        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 846, (False, AMF.CMOF.Public_Visibility));
    end Initialize_846;
 
@@ -16391,11 +16391,12 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_847 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Composite (Base + 847, True);
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 847, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
+       (Base + 847,
+        AMF.Internals.Tables.UML_String_Data_0C.MS_0C79'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 847,
-        AMF.Internals.Tables.UML_String_Data_05.MS_052C'Access);
+        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 847, (False, AMF.CMOF.Public_Visibility));
    end Initialize_847;
 
@@ -16405,12 +16406,10 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_848 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Default
-       (Base + 848,
-        AMF.Internals.Tables.UML_String_Data_0C.MS_0C79'Access);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 848, (False, 0));
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 848,
-        AMF.Internals.Tables.UML_String_Data_01.MS_01C4'Access);
+        AMF.Internals.Tables.UML_String_Data_02.MS_022A'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 848, (False, AMF.CMOF.Public_Visibility));
    end Initialize_848;
 
@@ -16420,10 +16419,11 @@ package body AMF.Internals.Tables.UML_Metamodel.Properties is
 
    procedure Initialize_849 is
    begin
-      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Lower (Base + 849, (False, 0));
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Derived (Base + 849, True);
+      AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Is_Read_Only (Base + 849, True);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Name
        (Base + 849,
-        AMF.Internals.Tables.UML_String_Data_02.MS_022A'Access);
+        AMF.Internals.Tables.UML_String_Data_03.MS_036B'Access);
       AMF.Internals.Tables.CMOF_Attributes.Internal_Set_Visibility (Base + 849, (False, AMF.CMOF.Public_Visibility));
    end Initialize_849;
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@
 ------------------------------------------------------------------------------
 with AMF.Internals.Links;
 with AMF.Internals.Tables.DI_Metamodel;
+with AMF.Internals.Tables.Standard_Profile_L2_Metamodel;
 with AMF.Internals.Tables.UMLDI_Metamodel;
 with AMF.Internals.Tables.UML_Element_Table;
 with AMF.Internals.Tables.UML_Metamodel;
@@ -170,6 +171,18 @@ begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_In_Activity,
+              Opposite,
+              Element,
+              Link);
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Activity,
               Opposite,
               Element,
               Link);
@@ -335,6 +348,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Redefined_Node_A_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefined_Element_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Conditional_Node_Result_A_Conditional_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Activity_Node_Structured_Node_Output_Structured_Activity_Node,
               Element,
               Opposite,
               Link);
@@ -899,6 +919,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -947,6 +974,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Protocol_State_Machine =>
@@ -988,6 +1022,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Machine_Extended_State_Machine_A_State_Machine then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Redefined_Behavior_Behavior,
               Element,
               Opposite,
               Link);
@@ -1050,6 +1091,13 @@ begin
               Link);
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
               Element,
               Opposite,
               Link);
@@ -1152,6 +1200,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -1208,11 +1263,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -1355,7 +1424,14 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Enumeration_Literal =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment_Deployment_Location then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Instance_Specification_Classifier_Instance_Specification,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Deployment_Target_Deployment_Deployment_Location then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -1618,6 +1694,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Element,
+              Opposite,
+              Link);
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
@@ -1741,6 +1824,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Redefined_Transition_A_Transition then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefined_Element_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Redefinition_Context_A_Transition then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
               Element,
               Opposite,
               Link);
@@ -2179,6 +2269,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Element,
+              Opposite,
+              Link);
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
@@ -2245,7 +2342,35 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Activity_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -2264,11 +2389,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -2654,6 +2800,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -2706,6 +2859,57 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_End_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -2928,6 +3132,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -3012,6 +3223,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -3061,11 +3279,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -3171,6 +3403,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Send_Object_Action_Request_A_Send_Object_Action then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Invocation_Action_Argument_Invocation_Action,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Send_Object_Action_Target_A_Send_Object_Action then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Action_Input_Action,
@@ -3180,7 +3419,14 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Execution_Occurrence_Specification =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered_A_Events then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Covered_Covered_By,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Opposite,
@@ -3216,6 +3462,43 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Association_Or_Connector_Or_Link_Shape =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -3888,6 +4171,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -3986,6 +4276,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -4035,11 +4332,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Variable_Variable_Activity_Scope then
@@ -4134,6 +4445,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -4218,6 +4536,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -4267,11 +4592,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -4332,6 +4671,18 @@ begin
               Element,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_In_Activity,
+              Opposite,
+              Element,
+              Link);
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Activity,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Contained_Edge_In_Group,
@@ -4347,6 +4698,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Activity_Node_Node_In_Structured_Node,
               Element,
               Opposite,
               Link);
@@ -4624,6 +4982,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -4672,12 +5037,31 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Expansion_Region =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_In_Activity,
+              Opposite,
+              Element,
+              Link);
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Activity,
               Opposite,
               Element,
               Link);
@@ -4877,7 +5261,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Class_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -4896,11 +5294,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -4997,6 +5416,20 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Specification_A_Owning_Constraint then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interval_Constraint_Specification_A_Interval_Constraint then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Specification_Owning_Constraint,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Constraint_Specification_A_Time_Constraint then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Constraint_Specification_Interval_Constraint,
               Element,
               Opposite,
               Link);
@@ -5097,6 +5530,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interval_Constraint_Specification_A_Interval_Constraint then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Specification_Owning_Constraint,
+              Element,
+              Opposite,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Time_Event =>
@@ -5173,6 +5613,48 @@ begin
          if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -5597,6 +6079,41 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Start_Object_Behavior_Action =>
@@ -5820,7 +6337,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Time_Interval =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Interval_Max_A_Time_Interval then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Max_Interval,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Time_Interval_Min_A_Time_Interval then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Min_Interval,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -5994,6 +6525,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Extension_Owned_End_A_Extension then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Association_Owned_End_Owning_Association,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Member_Named_Element_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
@@ -6009,6 +6547,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Owned_Rule_Constraint_Context then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
               Element,
               Opposite,
               Link);
@@ -6061,12 +6606,54 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Compartmentable_Shape =>
          if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -6115,7 +6702,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Component_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -6134,11 +6735,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -6316,7 +6938,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Composite_Structure_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -6335,11 +6971,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -6466,6 +7123,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Redefinition_Context_A_Transition then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Transition_Trigger_A_Transition then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -6511,6 +7175,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
               Opposite,
               Element,
               Link);
@@ -6639,6 +7310,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Redefinition_Context_A_State then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Region_Region_State then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
@@ -6648,7 +7326,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Deployment_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -6667,11 +7359,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -6960,6 +7673,20 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Extension_End_Type_A_Extension_End then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Typed_Element_Type_Typed_Element,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -7232,12 +7959,70 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Edge =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Source_A_Source_Edge then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Edge_Source_Source_Edge,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Edge_Target_A_Target_Edge then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Edge_Target_Target_Edge,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Create_Link_Action =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Create_Link_Action_End_Data_A_Create_Link_Action then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Link_Action_End_Data_Link_Action,
+              Element,
+              Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_Action_End_Data_A_Link_Action then
@@ -7371,7 +8156,35 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -7390,11 +8203,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -7404,6 +8238,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Create_Link_Action_End_Data_A_Create_Link_Action then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Link_Action_End_Data_Link_Action,
+              Element,
+              Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_Action_End_Data_A_Link_Action then
@@ -7531,6 +8372,80 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Interaction_Table_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Keyword_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Final_State =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Connection_Connection_Point_Reference_State then
             AMF.Internals.Links.Create_Link
@@ -7647,9 +8562,53 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Redefinition_Context_A_State then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Region_Region_State then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -8034,6 +8993,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -8118,6 +9084,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -8167,9 +9140,67 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Multiplicity_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -8191,6 +9222,50 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Element_Owned_Comment_A_Owning_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Name_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -8405,7 +9480,21 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Object_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -8424,11 +9513,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -8671,6 +9781,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -8719,10 +9836,31 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Package_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -8741,11 +9879,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -8868,6 +10027,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -8966,6 +10132,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -9015,16 +10188,44 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Profile_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -9043,11 +10244,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -9118,6 +10340,50 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_Subgroup_Super_Group,
               Opposite,
               Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Redefines_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -9314,7 +10580,14 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_State_Invariant =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Invariant_Covered_A_State_Invariant then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Covered_Covered_By,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Opposite,
@@ -9469,6 +10742,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -9477,8 +10757,73 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Shape =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_State_Machine_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Behavior_Diagram_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -9497,11 +10842,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -9672,6 +11038,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_State_Machine_Extended_State_Machine_A_State_Machine then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavior_Redefined_Behavior_Behavior,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Feature_Feature_Featuring_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Member_Member_Namespace,
@@ -9730,6 +11103,13 @@ begin
               Link);
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
               Element,
               Opposite,
               Link);
@@ -9832,6 +11212,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -9888,11 +11275,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -9921,6 +11322,48 @@ begin
          if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Compartmentable_Shape_Compartment_A_Compartmented_Shape then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
               Element,
               Opposite,
               Link);
@@ -9989,6 +11432,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Element,
+              Opposite,
+              Link);
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
@@ -10021,6 +11471,50 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Stereotype_Property_Value_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Stereotype_Property_Value_Label_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -10234,6 +11728,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -10281,6 +11782,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -10646,6 +12154,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -10693,6 +12208,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -11061,6 +12583,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -11108,6 +12637,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -11215,7 +12751,14 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Occurrence_Specification =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered_A_Events then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Covered_Covered_By,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Opposite,
@@ -11429,6 +12972,43 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Typed_Element_Label =>
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Reception =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
@@ -11633,6 +13213,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -11680,6 +13267,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -12079,7 +13673,28 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UMLDI_UML_Use_Case_Diagram =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Local_Style_Styled_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UMLDI_Metamodel.MA_UMLDI_UML_Diagram_Element_Model_Element_Uml_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Model_Element_Diagram_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -12098,11 +13713,32 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Owned_Element_Owning_Element,
+              Opposite,
+              Element,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UMLDI_Metamodel.MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.DI_Metamodel.MA_DI_Diagram_Element_Shared_Style_Styled_Element,
+              Element,
+              Opposite,
               Link);
          end if;
 
@@ -12225,6 +13861,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -12309,6 +13952,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -12358,11 +14008,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -12542,6 +14206,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -12589,6 +14260,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -12772,6 +14450,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -12870,6 +14555,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -12919,11 +14611,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -13032,6 +14738,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefined_Element_Redefinable_Element,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper then
@@ -13264,6 +14977,15 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Document =>
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Document_Base_Artifact_A_Extension_Document then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_A_Extension_File_Base_Artifact,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Association =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Attribute_A_Classifier then
             AMF.Internals.Links.Create_Link
@@ -13374,6 +15096,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -13422,6 +15151,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Destroy_Link_Action =>
@@ -13430,6 +15166,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Opposite,
               Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Destroy_Link_Action_End_Data_A_Destroy_Link_Action then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Link_Action_End_Data_Link_Action,
+              Element,
+              Opposite,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Link_Action_End_Data_A_Link_Action then
@@ -13630,10 +15373,31 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Executable =>
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Executable_Base_Artifact_A_Extension_Executable then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_A_Extension_File_Base_Artifact,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Loop_Node =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_In_Activity,
+              Opposite,
+              Element,
+              Link);
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Activity,
               Opposite,
               Element,
               Link);
@@ -13725,6 +15489,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Activity_Node_Structured_Node_Input_Structured_Activity_Node,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -13792,6 +15563,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Redefined_Node_A_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefined_Element_Redefinable_Element,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Loop_Node_Result_A_Loop_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Activity_Node_Structured_Node_Output_Structured_Activity_Node,
               Element,
               Opposite,
               Link);
@@ -14071,6 +15849,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -14125,6 +15910,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -14305,6 +16097,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -14353,10 +16152,24 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Destruction_Occurrence_Specification =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered_A_Events then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Covered_Covered_By,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Opposite,
@@ -14495,6 +16308,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -14579,6 +16399,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -14628,11 +16455,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -14851,6 +16692,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -14945,6 +16793,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -14994,11 +16849,34 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Library =>
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Library_Base_Artifact_A_Extension_Library then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_A_Extension_File_Base_Artifact,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -15008,6 +16886,13 @@ begin
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Opposite,
+              Element,
               Link);
 
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature then
@@ -15268,6 +17153,20 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Constraint_Specification_A_Owning_Constraint then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Duration_Constraint_Specification_A_Duration_Constraint then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Constraint_Specification_Interval_Constraint,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interval_Constraint_Specification_A_Interval_Constraint then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Constraint_Specification_Owning_Constraint,
               Element,
               Opposite,
               Link);
@@ -15606,6 +17505,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Owned_Parameter_Parameter_Operation then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavioral_Feature_Owned_Parameter_Owner_Formal_Param,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Behavioral_Feature_Owned_Parameter_Set_A_Behavioral_Feature then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
@@ -15641,6 +17547,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Raised_Exception_A_Operation then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Behavioral_Feature_Raised_Exception_Behavioral_Feature,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Redefined_Operation_A_Operation then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefined_Element_Redefinable_Element,
@@ -15654,10 +17567,31 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Duration_Interval =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Duration_Interval_Max_A_Duration_Interval then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Max_Interval,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Duration_Interval_Min_A_Duration_Interval then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interval_Min_Interval,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Named_Element_Name_Expression_A_Named_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
@@ -15829,6 +17763,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -15877,6 +17818,13 @@ begin
               Element,
               Opposite,
               Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
+              Link);
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Duration_Observation =>
@@ -15902,6 +17850,15 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
+      when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Script =>
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Script_Base_Artifact_A_Extension_Script then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_A_Extension_File_Base_Artifact,
               Opposite,
               Element,
               Link);
@@ -15951,6 +17908,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Variable_Scope_Structured_Activity_Node_Variable then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
               Opposite,
               Element,
               Link);
@@ -16157,6 +18121,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -16241,6 +18212,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -16302,11 +18280,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -16314,6 +18306,18 @@ begin
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Activity_Node_Activity_Activity_Node then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Opposite,
+              Element,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Group_In_Activity,
+              Opposite,
+              Element,
+              Link);
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Activity_Node_Activity,
               Opposite,
               Element,
               Link);
@@ -16540,6 +18544,15 @@ begin
               Link);
          end if;
 
+      when AMF.Internals.Tables.UML_Types.E_Standard_Profile_L2_Source =>
+         if Property = AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MP_Standard_Profile_L2_Source_Base_Artifact_A_Extension_Source then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.Standard_Profile_L2_Metamodel.MA_Standard_Profile_L2_A_Extension_File_Base_Artifact,
+              Opposite,
+              Element,
+              Link);
+         end if;
+
       when AMF.Internals.Tables.UML_Types.E_UML_Interaction =>
          if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Action_A_Interaction then
             AMF.Internals.Links.Create_Link
@@ -16685,6 +18698,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Owned_Attribute_Property_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Structured_Classifier_Owned_Attribute_Structured_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_Attribute_Classifier,
@@ -16783,6 +18803,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Templateable_Element_Owned_Template_Signature_Template,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
@@ -16832,11 +18859,25 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Classifier_General_Classifier,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
               Element,
               Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Template_Parameter_Parametered_Element_Template_Parameter,
+              Opposite,
+              Element,
               Link);
          end if;
 
@@ -16945,6 +18986,13 @@ begin
          elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Region_Redefinition_Context_A_Region then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Redefinable_Element_Redefinition_Context_Redefinable_Element,
               Element,
               Opposite,
               Link);
@@ -17215,7 +19263,14 @@ begin
          end if;
 
       when AMF.Internals.Tables.UML_Types.E_UML_Message_Occurrence_Specification =>
-         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
+         if Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Occurrence_Specification_Covered_A_Events then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.UML_Metamodel.MA_UML_Interaction_Fragment_Covered_Covered_By,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.UML_Metamodel.MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.UML_Metamodel.MA_UML_Namespace_Owned_Member_Namespace,
               Opposite,

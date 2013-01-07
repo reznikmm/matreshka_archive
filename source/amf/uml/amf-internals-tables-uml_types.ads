@@ -455,7 +455,7 @@ package AMF.Internals.Tables.UML_Types is
       end case;
    end record;
 
-   type Member_Array is array (Natural range 0 .. 36) of Member_Record;
+   type Member_Array is array (Natural range 0 .. 37) of Member_Record;
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;

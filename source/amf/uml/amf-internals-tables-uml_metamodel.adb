@@ -2356,7 +2356,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Abstraction_Mapping_A_Abstraction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 491;
+      return Base + 483;
    end MP_UML_Abstraction_Mapping_A_Abstraction;
 
    -----------------------------------------------------------------------
@@ -2365,7 +2365,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Accept_Call_Action_Return_Information_A_Accept_Call_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 492;
+      return Base + 484;
    end MP_UML_Accept_Call_Action_Return_Information_A_Accept_Call_Action;
 
    ----------------------------------------------
@@ -2374,7 +2374,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Accept_Event_Action_Is_Unmarshall return AMF.Internals.CMOF_Element is
    begin
-      return Base + 493;
+      return Base + 485;
    end MP_UML_Accept_Event_Action_Is_Unmarshall;
 
    -------------------------------------------------------------
@@ -2401,7 +2401,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Action_Context_A_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 494;
+      return Base + 486;
    end MP_UML_Action_Context_A_Action;
 
    ----------------------------------
@@ -2419,7 +2419,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Action_Is_Locally_Reentrant return AMF.Internals.CMOF_Element is
    begin
-      return Base + 495;
+      return Base + 487;
    end MP_UML_Action_Is_Locally_Reentrant;
 
    ------------------------------------------------
@@ -2455,7 +2455,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Action_Execution_Specification_Action_A_Action_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 496;
+      return Base + 488;
    end MP_UML_Action_Execution_Specification_Action_A_Action_Execution_Specification;
 
    ------------------------------------------------------------
@@ -2464,7 +2464,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Action_Input_Pin_From_Action_A_Action_Input_Pin return AMF.Internals.CMOF_Element is
    begin
-      return Base + 497;
+      return Base + 489;
    end MP_UML_Action_Input_Pin_From_Action_A_Action_Input_Pin;
 
    -------------------------------------------------
@@ -2491,7 +2491,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Is_Read_Only return AMF.Internals.CMOF_Element is
    begin
-      return Base + 498;
+      return Base + 490;
    end MP_UML_Activity_Is_Read_Only;
 
    -----------------------------------------
@@ -2500,7 +2500,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Is_Single_Execution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 499;
+      return Base + 491;
    end MP_UML_Activity_Is_Single_Execution;
 
    -------------------------------------------------
@@ -2545,7 +2545,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Activity_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 500;
+      return Base + 492;
    end MP_UML_Activity_Edge_Activity_Activity_Edge;
 
    ------------------------------------------------
@@ -2554,7 +2554,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Guard_A_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 501;
+      return Base + 493;
    end MP_UML_Activity_Edge_Guard_A_Activity_Edge;
 
    -----------------------------------------------------------------
@@ -2581,7 +2581,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_In_Structured_Node_Structured_Activity_Node_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 502;
+      return Base + 494;
    end MP_UML_Activity_Edge_In_Structured_Node_Structured_Activity_Node_Edge;
 
    -------------------------------------------------------------------------------------
@@ -2590,7 +2590,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Interrupts_Interruptible_Activity_Region_Interrupting_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 503;
+      return Base + 495;
    end MP_UML_Activity_Edge_Interrupts_Interruptible_Activity_Region_Interrupting_Edge;
 
    ---------------------------------------------------------
@@ -2608,7 +2608,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Source_Activity_Node_Outgoing return AMF.Internals.CMOF_Element is
    begin
-      return Base + 504;
+      return Base + 496;
    end MP_UML_Activity_Edge_Source_Activity_Node_Outgoing;
 
    --------------------------------------------------------
@@ -2617,7 +2617,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Target_Activity_Node_Incoming return AMF.Internals.CMOF_Element is
    begin
-      return Base + 505;
+      return Base + 497;
    end MP_UML_Activity_Edge_Target_Activity_Node_Incoming;
 
    -------------------------------------------------
@@ -2626,7 +2626,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Edge_Weight_A_Activity_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 506;
+      return Base + 498;
    end MP_UML_Activity_Edge_Weight_A_Activity_Edge;
 
    -----------------------------------------------------------------
@@ -2653,7 +2653,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Group_In_Activity_Activity_Group return AMF.Internals.CMOF_Element is
    begin
-      return Base + 507;
+      return Base + 499;
    end MP_UML_Activity_Group_In_Activity_Activity_Group;
 
    ---------------------------------------------------------------
@@ -2671,7 +2671,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Group_Super_Group_Activity_Group_Subgroup return AMF.Internals.CMOF_Element is
    begin
-      return Base + 508;
+      return Base + 500;
    end MP_UML_Activity_Group_Super_Group_Activity_Group_Subgroup;
 
    -------------------------------------------------
@@ -2680,7 +2680,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Node_Activity_Activity_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 509;
+      return Base + 501;
    end MP_UML_Activity_Node_Activity_Activity_Node;
 
    -----------------------------------------------------------------
@@ -2716,7 +2716,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Node_In_Structured_Node_Structured_Activity_Node_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 510;
+      return Base + 502;
    end MP_UML_Activity_Node_In_Structured_Node_Structured_Activity_Node_Node;
 
    --------------------------------------------------------
@@ -2752,7 +2752,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Parameter_Node_Parameter_A_Activity_Parameter_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 511;
+      return Base + 503;
    end MP_UML_Activity_Parameter_Node_Parameter_A_Activity_Parameter_Node;
 
    ---------------------------------------------------------------
@@ -2770,7 +2770,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Partition_Is_Dimension return AMF.Internals.CMOF_Element is
    begin
-      return Base + 512;
+      return Base + 504;
    end MP_UML_Activity_Partition_Is_Dimension;
 
    -------------------------------------------
@@ -2779,7 +2779,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Partition_Is_External return AMF.Internals.CMOF_Element is
    begin
-      return Base + 513;
+      return Base + 505;
    end MP_UML_Activity_Partition_Is_External;
 
    ---------------------------------------------------------------
@@ -2797,7 +2797,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Partition_Represents_A_Activity_Partition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 514;
+      return Base + 506;
    end MP_UML_Activity_Partition_Represents_A_Activity_Partition;
 
    -------------------------------------------------------------------------------
@@ -2815,7 +2815,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Activity_Partition_Super_Partition_Activity_Partition_Subpartition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 515;
+      return Base + 507;
    end MP_UML_Activity_Partition_Super_Partition_Activity_Partition_Subpartition;
 
    ------------------------------------------------------------------------------------------------
@@ -2824,7 +2824,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Add_Structural_Feature_Value_Action_Insert_At_A_Add_Structural_Feature_Value_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 516;
+      return Base + 508;
    end MP_UML_Add_Structural_Feature_Value_Action_Insert_At_A_Add_Structural_Feature_Value_Action;
 
    ---------------------------------------------------------------
@@ -2833,7 +2833,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All return AMF.Internals.CMOF_Element is
    begin
-      return Base + 517;
+      return Base + 509;
    end MP_UML_Add_Structural_Feature_Value_Action_Is_Replace_All;
 
    ----------------------------------------------------------------------------
@@ -2842,7 +2842,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Add_Variable_Value_Action_Insert_At_A_Add_Variable_Value_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 518;
+      return Base + 510;
    end MP_UML_Add_Variable_Value_Action_Insert_At_A_Add_Variable_Value_Action;
 
    -----------------------------------------------------
@@ -2851,7 +2851,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Add_Variable_Value_Action_Is_Replace_All return AMF.Internals.CMOF_Element is
    begin
-      return Base + 519;
+      return Base + 511;
    end MP_UML_Add_Variable_Value_Action_Is_Replace_All;
 
    -------------------------------
@@ -2860,7 +2860,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Artifact_File_Name return AMF.Internals.CMOF_Element is
    begin
-      return Base + 520;
+      return Base + 512;
    end MP_UML_Artifact_File_Name;
 
    ----------------------------------------------
@@ -2914,7 +2914,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Association_Is_Derived return AMF.Internals.CMOF_Element is
    begin
-      return Base + 521;
+      return Base + 513;
    end MP_UML_Association_Is_Derived;
 
    --------------------------------------------------------
@@ -2950,7 +2950,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavior_Context_A_Behavior return AMF.Internals.CMOF_Element is
    begin
-      return Base + 522;
+      return Base + 514;
    end MP_UML_Behavior_Context_A_Behavior;
 
    ----------------------------------
@@ -2959,7 +2959,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavior_Is_Reentrant return AMF.Internals.CMOF_Element is
    begin
-      return Base + 523;
+      return Base + 515;
    end MP_UML_Behavior_Is_Reentrant;
 
    ------------------------------------------------
@@ -3013,7 +3013,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavior_Specification_Behavioral_Feature_Method return AMF.Internals.CMOF_Element is
    begin
-      return Base + 524;
+      return Base + 516;
    end MP_UML_Behavior_Specification_Behavioral_Feature_Method;
 
    -----------------------------------------------------------------------------------------
@@ -3022,7 +3022,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavior_Execution_Specification_Behavior_A_Behavior_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 525;
+      return Base + 517;
    end MP_UML_Behavior_Execution_Specification_Behavior_A_Behavior_Execution_Specification;
 
    -------------------------------------------
@@ -3031,7 +3031,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavioral_Feature_Concurrency return AMF.Internals.CMOF_Element is
    begin
-      return Base + 526;
+      return Base + 518;
    end MP_UML_Behavioral_Feature_Concurrency;
 
    -------------------------------------------
@@ -3040,7 +3040,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behavioral_Feature_Is_Abstract return AMF.Internals.CMOF_Element is
    begin
-      return Base + 527;
+      return Base + 519;
    end MP_UML_Behavioral_Feature_Is_Abstract;
 
    -------------------------------------------------------------
@@ -3085,7 +3085,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Behaviored_Classifier_Classifier_Behavior_A_Behaviored_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 528;
+      return Base + 520;
    end MP_UML_Behaviored_Classifier_Classifier_Behavior_A_Behaviored_Classifier;
 
    ------------------------------------------------------------------------------------------------------
@@ -3112,7 +3112,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Broadcast_Signal_Action_Signal_A_Broadcast_Signal_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 529;
+      return Base + 521;
    end MP_UML_Broadcast_Signal_Action_Signal_A_Broadcast_Signal_Action;
 
    ---------------------------------------
@@ -3121,7 +3121,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Call_Action_Is_Synchronous return AMF.Internals.CMOF_Element is
    begin
-      return Base + 530;
+      return Base + 522;
    end MP_UML_Call_Action_Is_Synchronous;
 
    ---------------------------------------------
@@ -3139,7 +3139,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Call_Behavior_Action_Behavior_A_Call_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 531;
+      return Base + 523;
    end MP_UML_Call_Behavior_Action_Behavior_A_Call_Behavior_Action;
 
    ----------------------------------------------
@@ -3148,7 +3148,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Call_Event_Operation_A_Call_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 532;
+      return Base + 524;
    end MP_UML_Call_Event_Operation_A_Call_Event;
 
    --------------------------------------------------------------------
@@ -3157,7 +3157,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Call_Operation_Action_Operation_A_Call_Operation_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 533;
+      return Base + 525;
    end MP_UML_Call_Operation_Action_Operation_A_Call_Operation_Action;
 
    -----------------------------------------------------------------
@@ -3166,7 +3166,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Call_Operation_Action_Target_A_Call_Operation_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 534;
+      return Base + 526;
    end MP_UML_Call_Operation_Action_Target_A_Call_Operation_Action;
 
    ----------------------------------------------------------
@@ -3175,7 +3175,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Change_Event_Change_Expression_A_Change_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 535;
+      return Base + 527;
    end MP_UML_Change_Event_Change_Expression_A_Change_Event;
 
    ------------------------------------------------
@@ -3193,7 +3193,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Class_Is_Abstract return AMF.Internals.CMOF_Element is
    begin
-      return Base + 536;
+      return Base + 528;
    end MP_UML_Class_Is_Abstract;
 
    ----------------------------
@@ -3202,7 +3202,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Class_Is_Active return AMF.Internals.CMOF_Element is
    begin
-      return Base + 537;
+      return Base + 529;
    end MP_UML_Class_Is_Active;
 
    --------------------------------------------
@@ -3310,7 +3310,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Is_Abstract return AMF.Internals.CMOF_Element is
    begin
-      return Base + 538;
+      return Base + 530;
    end MP_UML_Classifier_Is_Abstract;
 
    -----------------------------------------------
@@ -3319,7 +3319,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Is_Final_Specialization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 539;
+      return Base + 531;
    end MP_UML_Classifier_Is_Final_Specialization;
 
    ------------------------------------------------------------------------------------------
@@ -3328,7 +3328,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 540;
+      return Base + 532;
    end MP_UML_Classifier_Owned_Template_Signature_Redefinable_Template_Signature_Classifier;
 
    ---------------------------------------------------
@@ -3364,7 +3364,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Representation_A_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 541;
+      return Base + 533;
    end MP_UML_Classifier_Representation_A_Classifier;
 
    -------------------------------------------------------------------------
@@ -3382,7 +3382,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 542;
+      return Base + 534;
    end MP_UML_Classifier_Template_Parameter_Classifier_Template_Parameter_Parametered_Element;
 
    -------------------------------------------------
@@ -3400,7 +3400,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Template_Parameter_Allow_Substitutable return AMF.Internals.CMOF_Element is
    begin
-      return Base + 543;
+      return Base + 535;
    end MP_UML_Classifier_Template_Parameter_Allow_Substitutable;
 
    --------------------------------------------------------------------------------------------------
@@ -3418,7 +3418,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 544;
+      return Base + 536;
    end MP_UML_Classifier_Template_Parameter_Parametered_Element_Classifier_Template_Parameter;
 
    ---------------------------------
@@ -3445,7 +3445,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Clause_Decider_A_Clause return AMF.Internals.CMOF_Element is
    begin
-      return Base + 545;
+      return Base + 537;
    end MP_UML_Clause_Decider_A_Clause;
 
    --------------------------------------------------------------
@@ -3481,7 +3481,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Clear_Association_Action_Association_A_Clear_Association_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 546;
+      return Base + 538;
    end MP_UML_Clear_Association_Action_Association_A_Clear_Association_Action;
 
    -----------------------------------------------------------------------
@@ -3490,7 +3490,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Clear_Association_Action_Object_A_Clear_Association_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 547;
+      return Base + 539;
    end MP_UML_Clear_Association_Action_Object_A_Clear_Association_Action;
 
    -------------------------------------------------------------------------------------
@@ -3499,7 +3499,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Clear_Structural_Feature_Action_Result_A_Clear_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 548;
+      return Base + 540;
    end MP_UML_Clear_Structural_Feature_Action_Result_A_Clear_Structural_Feature_Action;
 
    -------------------------------------------------------------
@@ -3526,7 +3526,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Collaboration_Use_Type_A_Collaboration_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 549;
+      return Base + 541;
    end MP_UML_Collaboration_Use_Type_A_Collaboration_Use;
 
    -----------------------------------------------------------------
@@ -3544,7 +3544,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Combined_Fragment_Interaction_Operator return AMF.Internals.CMOF_Element is
    begin
-      return Base + 550;
+      return Base + 542;
    end MP_UML_Combined_Fragment_Interaction_Operator;
 
    ----------------------------------------------------------
@@ -3571,7 +3571,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Comment_Body return AMF.Internals.CMOF_Element is
    begin
-      return Base + 551;
+      return Base + 543;
    end MP_UML_Comment_Body;
 
    -------------------------------------------------
@@ -3580,7 +3580,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Component_Is_Indirectly_Instantiated return AMF.Internals.CMOF_Element is
    begin
-      return Base + 552;
+      return Base + 544;
    end MP_UML_Component_Is_Indirectly_Instantiated;
 
    ---------------------------------------------------
@@ -3625,7 +3625,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Component_Realization_Abstraction_Component_Realization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 553;
+      return Base + 545;
    end MP_UML_Component_Realization_Abstraction_Component_Realization;
 
    -------------------------------------------------------------------------------
@@ -3652,7 +3652,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Conditional_Node_Is_Assured return AMF.Internals.CMOF_Element is
    begin
-      return Base + 554;
+      return Base + 546;
    end MP_UML_Conditional_Node_Is_Assured;
 
    --------------------------------------------
@@ -3661,7 +3661,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Conditional_Node_Is_Determinate return AMF.Internals.CMOF_Element is
    begin
-      return Base + 555;
+      return Base + 547;
    end MP_UML_Conditional_Node_Is_Determinate;
 
    -------------------------------------------------------
@@ -3688,7 +3688,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 556;
+      return Base + 548;
    end MP_UML_Connectable_Element_Template_Parameter_Connectable_Element_Template_Parameter_Parametered_Element;
 
    --------------------------------------------------------------------------------------------------------------
@@ -3697,7 +3697,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 557;
+      return Base + 549;
    end MP_UML_Connectable_Element_Template_Parameter_Parametered_Element_Connectable_Element_Template_Parameter;
 
    --------------------------------------------------------------------------
@@ -3724,7 +3724,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connection_Point_Reference_State_State_Connection return AMF.Internals.CMOF_Element is
    begin
-      return Base + 558;
+      return Base + 550;
    end MP_UML_Connection_Point_Reference_State_State_Connection;
 
    -------------------------------------------
@@ -3751,7 +3751,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connector_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 559;
+      return Base + 551;
    end MP_UML_Connector_Kind;
 
    ------------------------------------------------------
@@ -3769,7 +3769,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connector_Type_A_Connector return AMF.Internals.CMOF_Element is
    begin
-      return Base + 560;
+      return Base + 552;
    end MP_UML_Connector_Type_A_Connector;
 
    -------------------------------------------------------
@@ -3778,7 +3778,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connector_End_Defining_End_A_Connector_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 561;
+      return Base + 553;
    end MP_UML_Connector_End_Defining_End_A_Connector_End;
 
    ---------------------------------------------------------
@@ -3787,7 +3787,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connector_End_Part_With_Port_A_Connector_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 562;
+      return Base + 554;
    end MP_UML_Connector_End_Part_With_Port_A_Connector_End;
 
    -------------------------------------------------------
@@ -3796,7 +3796,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Connector_End_Role_Connectable_Element_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 563;
+      return Base + 555;
    end MP_UML_Connector_End_Role_Connectable_Element_End;
 
    ------------------------------------------------------------------------
@@ -3823,7 +3823,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Constraint_Context_Namespace_Owned_Rule return AMF.Internals.CMOF_Element is
    begin
-      return Base + 564;
+      return Base + 556;
    end MP_UML_Constraint_Context_Namespace_Owned_Rule;
 
    ---------------------------------------------------------
@@ -3832,7 +3832,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Constraint_Specification_A_Owning_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 565;
+      return Base + 557;
    end MP_UML_Constraint_Specification_A_Owning_Constraint;
 
    ---------------------------------
@@ -3841,7 +3841,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Continuation_Setting return AMF.Internals.CMOF_Element is
    begin
-      return Base + 566;
+      return Base + 558;
    end MP_UML_Continuation_Setting;
 
    -------------------------------------------------------------
@@ -3859,7 +3859,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Create_Link_Object_Action_Result_A_Create_Link_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 567;
+      return Base + 559;
    end MP_UML_Create_Link_Object_Action_Result_A_Create_Link_Object_Action;
 
    -------------------------------------------------------------------
@@ -3868,7 +3868,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Create_Object_Action_Classifier_A_Create_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 568;
+      return Base + 560;
    end MP_UML_Create_Object_Action_Classifier_A_Create_Object_Action;
 
    ---------------------------------------------------------------
@@ -3877,7 +3877,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Create_Object_Action_Result_A_Create_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 569;
+      return Base + 561;
    end MP_UML_Create_Object_Action_Result_A_Create_Object_Action;
 
    --------------------------------------------------------
@@ -3904,7 +3904,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Decision_Node_Decision_Input_A_Decision_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 570;
+      return Base + 562;
    end MP_UML_Decision_Node_Decision_Input_A_Decision_Node;
 
    --------------------------------------------------------------
@@ -3913,7 +3913,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Decision_Node_Decision_Input_Flow_A_Decision_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 571;
+      return Base + 563;
    end MP_UML_Decision_Node_Decision_Input_Flow_A_Decision_Node;
 
    --------------------------------------------------------------
@@ -3958,7 +3958,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Deployment_Location_Deployment_Target_Deployment return AMF.Internals.CMOF_Element is
    begin
-      return Base + 572;
+      return Base + 564;
    end MP_UML_Deployment_Location_Deployment_Target_Deployment;
 
    -------------------------------------------------------------------------
@@ -3967,7 +3967,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Deployment_Specification_Deployment_Deployment_Configuration return AMF.Internals.CMOF_Element is
    begin
-      return Base + 573;
+      return Base + 565;
    end MP_UML_Deployment_Specification_Deployment_Deployment_Configuration;
 
    ---------------------------------------------------------
@@ -3976,7 +3976,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Deployment_Specification_Deployment_Location return AMF.Internals.CMOF_Element is
    begin
-      return Base + 574;
+      return Base + 566;
    end MP_UML_Deployment_Specification_Deployment_Location;
 
    --------------------------------------------------------
@@ -3985,7 +3985,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Deployment_Specification_Execution_Location return AMF.Internals.CMOF_Element is
    begin
-      return Base + 575;
+      return Base + 567;
    end MP_UML_Deployment_Specification_Execution_Location;
 
    -------------------------------------------------------------------
@@ -4021,7 +4021,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Destroy_Object_Action_Is_Destroy_Links return AMF.Internals.CMOF_Element is
    begin
-      return Base + 576;
+      return Base + 568;
    end MP_UML_Destroy_Object_Action_Is_Destroy_Links;
 
    -----------------------------------------------------------
@@ -4030,7 +4030,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects return AMF.Internals.CMOF_Element is
    begin
-      return Base + 577;
+      return Base + 569;
    end MP_UML_Destroy_Object_Action_Is_Destroy_Owned_Objects;
 
    -----------------------------------------------------------------
@@ -4039,7 +4039,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Destroy_Object_Action_Target_A_Destroy_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 578;
+      return Base + 570;
    end MP_UML_Destroy_Object_Action_Target_A_Destroy_Object_Action;
 
    -----------------------------------------------------------------
@@ -4066,7 +4066,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Expr_A_Duration return AMF.Internals.CMOF_Element is
    begin
-      return Base + 579;
+      return Base + 571;
    end MP_UML_Duration_Expr_A_Duration;
 
    --------------------------------------------
@@ -4084,7 +4084,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Constraint_First_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 580;
+      return Base + 572;
    end MP_UML_Duration_Constraint_First_Event;
 
    --------------------------------------------------------------------
@@ -4093,7 +4093,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Constraint_Specification_A_Duration_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 581;
+      return Base + 573;
    end MP_UML_Duration_Constraint_Specification_A_Duration_Constraint;
 
    ------------------------------------------------------
@@ -4102,7 +4102,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Interval_Max_A_Duration_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 582;
+      return Base + 574;
    end MP_UML_Duration_Interval_Max_A_Duration_Interval;
 
    ------------------------------------------------------
@@ -4111,7 +4111,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Interval_Min_A_Duration_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 583;
+      return Base + 575;
    end MP_UML_Duration_Interval_Min_A_Duration_Interval;
 
    --------------------------------------------------------------
@@ -4129,7 +4129,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Duration_Observation_First_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 584;
+      return Base + 576;
    end MP_UML_Duration_Observation_First_Event;
 
    ---------------------------------------------------
@@ -4156,7 +4156,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Element_Owner_Element_Owned_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 585;
+      return Base + 577;
    end MP_UML_Element_Owner_Element_Owned_Element;
 
    ---------------------------------
@@ -4165,7 +4165,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Element_Import_Alias return AMF.Internals.CMOF_Element is
    begin
-      return Base + 586;
+      return Base + 578;
    end MP_UML_Element_Import_Alias;
 
    -------------------------------------------------------------
@@ -4174,7 +4174,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Element_Import_Imported_Element_A_Element_Import return AMF.Internals.CMOF_Element is
    begin
-      return Base + 587;
+      return Base + 579;
    end MP_UML_Element_Import_Imported_Element_A_Element_Import;
 
    ------------------------------------------------------------------------
@@ -4183,7 +4183,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Element_Import_Importing_Namespace_Namespace_Element_Import return AMF.Internals.CMOF_Element is
    begin
-      return Base + 588;
+      return Base + 580;
    end MP_UML_Element_Import_Importing_Namespace_Namespace_Element_Import;
 
    --------------------------------------
@@ -4192,7 +4192,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Element_Import_Visibility return AMF.Internals.CMOF_Element is
    begin
-      return Base + 589;
+      return Base + 581;
    end MP_UML_Element_Import_Visibility;
 
    -------------------------------------------------------------------------
@@ -4219,7 +4219,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal return AMF.Internals.CMOF_Element is
    begin
-      return Base + 351;
+      return Base + 582;
    end MP_UML_Enumeration_Literal_Classifier_A_Enumeration_Literal;
 
    ----------------------------------------------------------------------
@@ -4228,7 +4228,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Enumeration_Literal_Enumeration_Enumeration_Owned_Literal return AMF.Internals.CMOF_Element is
    begin
-      return Base + 590;
+      return Base + 583;
    end MP_UML_Enumeration_Literal_Enumeration_Enumeration_Owned_Literal;
 
    ------------------------------------------------------------------
@@ -4237,7 +4237,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Exception_Handler_Exception_Input_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
-      return Base + 591;
+      return Base + 584;
    end MP_UML_Exception_Handler_Exception_Input_A_Exception_Handler;
 
    -----------------------------------------------------------------
@@ -4246,7 +4246,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Exception_Handler_Exception_Type_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
-      return Base + 352;
+      return Base + 351;
    end MP_UML_Exception_Handler_Exception_Type_A_Exception_Handler;
 
    ---------------------------------------------------------------
@@ -4255,7 +4255,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Exception_Handler_Handler_Body_A_Exception_Handler return AMF.Internals.CMOF_Element is
    begin
-      return Base + 592;
+      return Base + 585;
    end MP_UML_Exception_Handler_Handler_Body_A_Exception_Handler;
 
    ---------------------------------------------------------------------
@@ -4264,7 +4264,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Exception_Handler_Protected_Node_Executable_Node_Handler return AMF.Internals.CMOF_Element is
    begin
-      return Base + 593;
+      return Base + 586;
    end MP_UML_Exception_Handler_Protected_Node_Executable_Node_Handler;
 
    ---------------------------------------------------------------------
@@ -4273,7 +4273,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Executable_Node_Handler_Exception_Handler_Protected_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 353;
+      return Base + 352;
    end MP_UML_Executable_Node_Handler_Exception_Handler_Protected_Node;
 
    ----------------------------------------------------------------------------------------------
@@ -4282,7 +4282,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Execution_Occurrence_Specification_Execution_A_Execution_Occurrence_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 594;
+      return Base + 587;
    end MP_UML_Execution_Occurrence_Specification_Execution_A_Execution_Occurrence_Specification;
 
    ---------------------------------------------------------------------
@@ -4291,7 +4291,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Execution_Specification_Finish_A_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 595;
+      return Base + 588;
    end MP_UML_Execution_Specification_Finish_A_Execution_Specification;
 
    --------------------------------------------------------------------
@@ -4300,7 +4300,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Execution_Specification_Start_A_Execution_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 596;
+      return Base + 589;
    end MP_UML_Execution_Specification_Start_A_Execution_Specification;
 
    --------------------------------------------------------------------------
@@ -4309,7 +4309,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expansion_Node_Region_As_Input_Expansion_Region_Input_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 597;
+      return Base + 590;
    end MP_UML_Expansion_Node_Region_As_Input_Expansion_Region_Input_Element;
 
    ----------------------------------------------------------------------------
@@ -4318,7 +4318,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expansion_Node_Region_As_Output_Expansion_Region_Output_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 598;
+      return Base + 591;
    end MP_UML_Expansion_Node_Region_As_Output_Expansion_Region_Output_Element;
 
    --------------------------------------------------------------------------
@@ -4327,7 +4327,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expansion_Region_Input_Element_Expansion_Node_Region_As_Input return AMF.Internals.CMOF_Element is
    begin
-      return Base + 354;
+      return Base + 353;
    end MP_UML_Expansion_Region_Input_Element_Expansion_Node_Region_As_Input;
 
    ----------------------------------
@@ -4336,7 +4336,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expansion_Region_Mode return AMF.Internals.CMOF_Element is
    begin
-      return Base + 599;
+      return Base + 592;
    end MP_UML_Expansion_Region_Mode;
 
    ----------------------------------------------------------------------------
@@ -4345,7 +4345,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expansion_Region_Output_Element_Expansion_Node_Region_As_Output return AMF.Internals.CMOF_Element is
    begin
-      return Base + 355;
+      return Base + 354;
    end MP_UML_Expansion_Region_Output_Element_Expansion_Node_Region_As_Output;
 
    --------------------------------------------
@@ -4354,7 +4354,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expression_Operand_A_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 356;
+      return Base + 355;
    end MP_UML_Expression_Operand_A_Expression;
 
    ------------------------------
@@ -4363,7 +4363,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Expression_Symbol return AMF.Internals.CMOF_Element is
    begin
-      return Base + 600;
+      return Base + 593;
    end MP_UML_Expression_Symbol;
 
    --------------------------------------
@@ -4372,7 +4372,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extend_Condition_A_Extend return AMF.Internals.CMOF_Element is
    begin
-      return Base + 601;
+      return Base + 594;
    end MP_UML_Extend_Condition_A_Extend;
 
    ------------------------------------------
@@ -4381,7 +4381,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extend_Extended_Case_A_Extend return AMF.Internals.CMOF_Element is
    begin
-      return Base + 602;
+      return Base + 595;
    end MP_UML_Extend_Extended_Case_A_Extend;
 
    ---------------------------------------------
@@ -4390,7 +4390,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extend_Extension_Use_Case_Extend return AMF.Internals.CMOF_Element is
    begin
-      return Base + 603;
+      return Base + 596;
    end MP_UML_Extend_Extension_Use_Case_Extend;
 
    --------------------------------------------------
@@ -4399,7 +4399,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extend_Extension_Location_A_Extension return AMF.Internals.CMOF_Element is
    begin
-      return Base + 357;
+      return Base + 356;
    end MP_UML_Extend_Extension_Location_A_Extension;
 
    ----------------------------------
@@ -4408,7 +4408,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_Is_Required return AMF.Internals.CMOF_Element is
    begin
-      return Base + 604;
+      return Base + 597;
    end MP_UML_Extension_Is_Required;
 
    ------------------------------------------------
@@ -4417,7 +4417,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_Metaclass_Class_Extension return AMF.Internals.CMOF_Element is
    begin
-      return Base + 605;
+      return Base + 598;
    end MP_UML_Extension_Metaclass_Class_Extension;
 
    --------------------------------------------
@@ -4426,7 +4426,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_Owned_End_A_Extension return AMF.Internals.CMOF_Element is
    begin
-      return Base + 358;
+      return Base + 599;
    end MP_UML_Extension_Owned_End_A_Extension;
 
    --------------------------------
@@ -4435,7 +4435,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_End_Lower return AMF.Internals.CMOF_Element is
    begin
-      return Base + 606;
+      return Base + 600;
    end MP_UML_Extension_End_Lower;
 
    -----------------------------------------------
@@ -4444,7 +4444,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_End_Type_A_Extension_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 607;
+      return Base + 601;
    end MP_UML_Extension_End_Type_A_Extension_End;
 
    --------------------------------------------------------------
@@ -4453,7 +4453,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Extension_Point_Use_Case_Use_Case_Extension_Point return AMF.Internals.CMOF_Element is
    begin
-      return Base + 608;
+      return Base + 602;
    end MP_UML_Extension_Point_Use_Case_Use_Case_Extension_Point;
 
    ------------------------------------------------------------
@@ -4462,7 +4462,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Feature_Featuring_Classifier_Classifier_Feature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 359;
+      return Base + 357;
    end MP_UML_Feature_Featuring_Classifier_Classifier_Feature;
 
    ------------------------------
@@ -4471,7 +4471,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Feature_Is_Static return AMF.Internals.CMOF_Element is
    begin
-      return Base + 609;
+      return Base + 603;
    end MP_UML_Feature_Is_Static;
 
    ----------------------------------------------------------------------
@@ -4480,7 +4480,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_General_Ordering_After_Occurrence_Specification_To_Before return AMF.Internals.CMOF_Element is
    begin
-      return Base + 610;
+      return Base + 604;
    end MP_UML_General_Ordering_After_Occurrence_Specification_To_Before;
 
    ----------------------------------------------------------------------
@@ -4489,7 +4489,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_General_Ordering_Before_Occurrence_Specification_To_After return AMF.Internals.CMOF_Element is
    begin
-      return Base + 611;
+      return Base + 605;
    end MP_UML_General_Ordering_Before_Occurrence_Specification_To_After;
 
    ----------------------------------------------------
@@ -4498,7 +4498,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_General_A_Generalization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 612;
+      return Base + 606;
    end MP_UML_Generalization_General_A_Generalization;
 
    --------------------------------------------------------------------------------
@@ -4507,7 +4507,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Generalization_Set_Generalization_Set_Generalization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 360;
+      return Base + 358;
    end MP_UML_Generalization_Generalization_Set_Generalization_Set_Generalization;
 
    --------------------------------------------
@@ -4516,7 +4516,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Is_Substitutable return AMF.Internals.CMOF_Element is
    begin
-      return Base + 613;
+      return Base + 607;
    end MP_UML_Generalization_Is_Substitutable;
 
    --------------------------------------------------------------
@@ -4525,7 +4525,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Specific_Classifier_Generalization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 614;
+      return Base + 608;
    end MP_UML_Generalization_Specific_Classifier_Generalization;
 
    --------------------------------------------------------------------------------
@@ -4534,7 +4534,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Set_Generalization_Generalization_Generalization_Set return AMF.Internals.CMOF_Element is
    begin
-      return Base + 361;
+      return Base + 359;
    end MP_UML_Generalization_Set_Generalization_Generalization_Generalization_Set;
 
    -------------------------------------------
@@ -4543,7 +4543,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Set_Is_Covering return AMF.Internals.CMOF_Element is
    begin
-      return Base + 615;
+      return Base + 609;
    end MP_UML_Generalization_Set_Is_Covering;
 
    -------------------------------------------
@@ -4552,7 +4552,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Set_Is_Disjoint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 616;
+      return Base + 610;
    end MP_UML_Generalization_Set_Is_Disjoint;
 
    ---------------------------------------------------------------------
@@ -4561,7 +4561,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Generalization_Set_Powertype_Classifier_Powertype_Extent return AMF.Internals.CMOF_Element is
    begin
-      return Base + 617;
+      return Base + 611;
    end MP_UML_Generalization_Set_Powertype_Classifier_Powertype_Extent;
 
    --------------------------
@@ -4570,7 +4570,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Image_Content return AMF.Internals.CMOF_Element is
    begin
-      return Base + 618;
+      return Base + 612;
    end MP_UML_Image_Content;
 
    -------------------------
@@ -4579,7 +4579,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Image_Format return AMF.Internals.CMOF_Element is
    begin
-      return Base + 619;
+      return Base + 613;
    end MP_UML_Image_Format;
 
    ---------------------------
@@ -4588,7 +4588,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Image_Location return AMF.Internals.CMOF_Element is
    begin
-      return Base + 620;
+      return Base + 614;
    end MP_UML_Image_Location;
 
    ---------------------------------------
@@ -4597,7 +4597,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Include_Addition_A_Include return AMF.Internals.CMOF_Element is
    begin
-      return Base + 621;
+      return Base + 615;
    end MP_UML_Include_Addition_A_Include;
 
    ----------------------------------------------------
@@ -4606,7 +4606,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Include_Including_Case_Use_Case_Include return AMF.Internals.CMOF_Element is
    begin
-      return Base + 622;
+      return Base + 616;
    end MP_UML_Include_Including_Case_Use_Case_Include;
 
    ---------------------------------------------------------
@@ -4615,7 +4615,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Conveyed_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 362;
+      return Base + 360;
    end MP_UML_Information_Flow_Conveyed_A_Information_Flow;
 
    -------------------------------------------------------------------
@@ -4624,7 +4624,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Information_Source_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 363;
+      return Base + 361;
    end MP_UML_Information_Flow_Information_Source_A_Information_Flow;
 
    -------------------------------------------------------------------
@@ -4633,7 +4633,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Information_Target_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 364;
+      return Base + 362;
    end MP_UML_Information_Flow_Information_Target_A_Information_Flow;
 
    -------------------------------------------------------
@@ -4642,7 +4642,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Realization_A_Abstraction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 365;
+      return Base + 363;
    end MP_UML_Information_Flow_Realization_A_Abstraction;
 
    ------------------------------------------------------------------------
@@ -4651,7 +4651,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Realizing_Activity_Edge_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 366;
+      return Base + 364;
    end MP_UML_Information_Flow_Realizing_Activity_Edge_A_Information_Flow;
 
    --------------------------------------------------------------------
@@ -4660,7 +4660,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Realizing_Connector_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 367;
+      return Base + 365;
    end MP_UML_Information_Flow_Realizing_Connector_A_Information_Flow;
 
    ------------------------------------------------------------------
@@ -4669,7 +4669,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Flow_Realizing_Message_A_Information_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 368;
+      return Base + 366;
    end MP_UML_Information_Flow_Realizing_Message_A_Information_Flow;
 
    ----------------------------------------------------------
@@ -4678,7 +4678,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Information_Item_Represented_A_Representation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 369;
+      return Base + 367;
    end MP_UML_Information_Item_Represented_A_Representation;
 
    -----------------------------------------------------------------------
@@ -4687,7 +4687,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Instance_Specification_Classifier_A_Instance_Specification return AMF.Internals.CMOF_Element is
    begin
-      return Base + 370;
+      return Base + 368;
    end MP_UML_Instance_Specification_Classifier_A_Instance_Specification;
 
    -------------------------------------------------------------
@@ -4696,7 +4696,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Instance_Specification_Slot_Slot_Owning_Instance return AMF.Internals.CMOF_Element is
    begin
-      return Base + 371;
+      return Base + 369;
    end MP_UML_Instance_Specification_Slot_Slot_Owning_Instance;
 
    ------------------------------------------------------------------------
@@ -4705,7 +4705,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Instance_Specification_Specification_A_Owning_Instance_Spec return AMF.Internals.CMOF_Element is
    begin
-      return Base + 623;
+      return Base + 617;
    end MP_UML_Instance_Specification_Specification_A_Owning_Instance_Spec;
 
    -----------------------------------------------------
@@ -4714,7 +4714,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Instance_Value_Instance_A_Instance_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 624;
+      return Base + 618;
    end MP_UML_Instance_Value_Instance_A_Instance_Value;
 
    ---------------------------------------------
@@ -4723,7 +4723,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Action_A_Interaction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 372;
+      return Base + 370;
    end MP_UML_Interaction_Action_A_Interaction;
 
    --------------------------------------------------
@@ -4732,7 +4732,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Formal_Gate_A_Interaction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 373;
+      return Base + 371;
    end MP_UML_Interaction_Formal_Gate_A_Interaction;
 
    ----------------------------------------------------------------------------
@@ -4741,7 +4741,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Fragment_Interaction_Fragment_Enclosing_Interaction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 374;
+      return Base + 372;
    end MP_UML_Interaction_Fragment_Interaction_Fragment_Enclosing_Interaction;
 
    ------------------------------------------------------
@@ -4750,7 +4750,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Lifeline_Lifeline_Interaction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 375;
+      return Base + 373;
    end MP_UML_Interaction_Lifeline_Lifeline_Interaction;
 
    ----------------------------------------------------
@@ -4759,7 +4759,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Message_Message_Interaction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 376;
+      return Base + 374;
    end MP_UML_Interaction_Message_Message_Interaction;
 
    -------------------------------------------------------------------
@@ -4768,7 +4768,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Constraint_Maxint_A_Interaction_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 625;
+      return Base + 619;
    end MP_UML_Interaction_Constraint_Maxint_A_Interaction_Constraint;
 
    -------------------------------------------------------------------
@@ -4777,7 +4777,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Constraint_Minint_A_Interaction_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 626;
+      return Base + 620;
    end MP_UML_Interaction_Constraint_Minint_A_Interaction_Constraint;
 
    -------------------------------------------------------------
@@ -4786,7 +4786,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Fragment_Covered_Lifeline_Covered_By return AMF.Internals.CMOF_Element is
    begin
-      return Base + 377;
+      return Base + 375;
    end MP_UML_Interaction_Fragment_Covered_Lifeline_Covered_By;
 
    ----------------------------------------------------------------------------
@@ -4795,7 +4795,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment return AMF.Internals.CMOF_Element is
    begin
-      return Base + 627;
+      return Base + 621;
    end MP_UML_Interaction_Fragment_Enclosing_Interaction_Interaction_Fragment;
 
    --------------------------------------------------------------------------------
@@ -4804,7 +4804,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Fragment_Enclosing_Operand_Interaction_Operand_Fragment return AMF.Internals.CMOF_Element is
    begin
-      return Base + 628;
+      return Base + 622;
    end MP_UML_Interaction_Fragment_Enclosing_Operand_Interaction_Operand_Fragment;
 
    -------------------------------------------------------------------------
@@ -4813,7 +4813,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Fragment_General_Ordering_A_Interaction_Fragment return AMF.Internals.CMOF_Element is
    begin
-      return Base + 378;
+      return Base + 376;
    end MP_UML_Interaction_Fragment_General_Ordering_A_Interaction_Fragment;
 
    --------------------------------------------------------------------------------
@@ -4822,7 +4822,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Operand_Fragment_Interaction_Fragment_Enclosing_Operand return AMF.Internals.CMOF_Element is
    begin
-      return Base + 379;
+      return Base + 377;
    end MP_UML_Interaction_Operand_Fragment_Interaction_Fragment_Enclosing_Operand;
 
    ------------------------------------------------------------
@@ -4831,7 +4831,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Operand_Guard_A_Interaction_Operand return AMF.Internals.CMOF_Element is
    begin
-      return Base + 629;
+      return Base + 623;
    end MP_UML_Interaction_Operand_Guard_A_Interaction_Operand;
 
    ----------------------------------------------------------
@@ -4840,7 +4840,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Use_Actual_Gate_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 380;
+      return Base + 378;
    end MP_UML_Interaction_Use_Actual_Gate_A_Interaction_Use;
 
    -------------------------------------------------------
@@ -4849,7 +4849,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Use_Argument_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 381;
+      return Base + 379;
    end MP_UML_Interaction_Use_Argument_A_Interaction_Use;
 
    --------------------------------------------------------
@@ -4858,7 +4858,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Use_Refers_To_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 630;
+      return Base + 624;
    end MP_UML_Interaction_Use_Refers_To_A_Interaction_Use;
 
    -----------------------------------------------------------
@@ -4867,7 +4867,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Use_Return_Value_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 631;
+      return Base + 625;
    end MP_UML_Interaction_Use_Return_Value_A_Interaction_Use;
 
    ---------------------------------------------------------------------
@@ -4876,7 +4876,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interaction_Use_Return_Value_Recipient_A_Interaction_Use return AMF.Internals.CMOF_Element is
    begin
-      return Base + 632;
+      return Base + 626;
    end MP_UML_Interaction_Use_Return_Value_Recipient_A_Interaction_Use;
 
    ----------------------------------------------------
@@ -4885,7 +4885,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Nested_Classifier_A_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 382;
+      return Base + 380;
    end MP_UML_Interface_Nested_Classifier_A_Interface;
 
    ---------------------------------------------------------
@@ -4894,7 +4894,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Owned_Attribute_Property_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 383;
+      return Base + 381;
    end MP_UML_Interface_Owned_Attribute_Property_Interface;
 
    ----------------------------------------------------------
@@ -4903,7 +4903,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Owned_Operation_Operation_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 384;
+      return Base + 382;
    end MP_UML_Interface_Owned_Operation_Operation_Interface;
 
    --------------------------------------------------
@@ -4912,7 +4912,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Owned_Reception_A_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 385;
+      return Base + 383;
    end MP_UML_Interface_Owned_Reception_A_Interface;
 
    -------------------------------------------
@@ -4921,7 +4921,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Protocol_A_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 633;
+      return Base + 627;
    end MP_UML_Interface_Protocol_A_Interface;
 
    ------------------------------------------------------
@@ -4930,7 +4930,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Redefined_Interface_A_Interface return AMF.Internals.CMOF_Element is
    begin
-      return Base + 386;
+      return Base + 384;
    end MP_UML_Interface_Redefined_Interface_A_Interface;
 
    -------------------------------------------------------------------
@@ -4939,7 +4939,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Realization_Contract_A_Interface_Realization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 634;
+      return Base + 628;
    end MP_UML_Interface_Realization_Contract_A_Interface_Realization;
 
    ------------------------------------------------------------------------------------------------------
@@ -4948,7 +4948,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interface_Realization_Implementing_Classifier_Behaviored_Classifier_Interface_Realization return AMF.Internals.CMOF_Element is
    begin
-      return Base + 635;
+      return Base + 629;
    end MP_UML_Interface_Realization_Implementing_Classifier_Behaviored_Classifier_Interface_Realization;
 
    -------------------------------------------------------------------------------------
@@ -4957,7 +4957,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interruptible_Activity_Region_Interrupting_Edge_Activity_Edge_Interrupts return AMF.Internals.CMOF_Element is
    begin
-      return Base + 387;
+      return Base + 385;
    end MP_UML_Interruptible_Activity_Region_Interrupting_Edge_Activity_Edge_Interrupts;
 
    -------------------------------------------------------------------------------------
@@ -4966,7 +4966,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interruptible_Activity_Region_Node_Activity_Node_In_Interruptible_Region return AMF.Internals.CMOF_Element is
    begin
-      return Base + 388;
+      return Base + 386;
    end MP_UML_Interruptible_Activity_Region_Node_Activity_Node_In_Interruptible_Region;
 
    ------------------------------------
@@ -4975,7 +4975,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interval_Max_A_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 636;
+      return Base + 630;
    end MP_UML_Interval_Max_A_Interval;
 
    ------------------------------------
@@ -4984,7 +4984,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interval_Min_A_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 637;
+      return Base + 631;
    end MP_UML_Interval_Min_A_Interval;
 
    --------------------------------------------------------------------
@@ -4993,7 +4993,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Interval_Constraint_Specification_A_Interval_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 638;
+      return Base + 632;
    end MP_UML_Interval_Constraint_Specification_A_Interval_Constraint;
 
    -----------------------------------------------------------
@@ -5002,7 +5002,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Invocation_Action_Argument_A_Invocation_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 389;
+      return Base + 387;
    end MP_UML_Invocation_Action_Argument_A_Invocation_Action;
 
    ----------------------------------------------------------
@@ -5011,7 +5011,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Invocation_Action_On_Port_A_Invocation_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 639;
+      return Base + 633;
    end MP_UML_Invocation_Action_On_Port_A_Invocation_Action;
 
    -------------------------------------------
@@ -5020,7 +5020,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Join_Node_Is_Combine_Duplicate return AMF.Internals.CMOF_Element is
    begin
-      return Base + 640;
+      return Base + 634;
    end MP_UML_Join_Node_Is_Combine_Duplicate;
 
    --------------------------------------------
@@ -5029,7 +5029,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Join_Node_Join_Spec_A_Join_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 641;
+      return Base + 635;
    end MP_UML_Join_Node_Join_Spec_A_Join_Node;
 
    -------------------------------------------------------------
@@ -5038,7 +5038,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Lifeline_Covered_By_Interaction_Fragment_Covered return AMF.Internals.CMOF_Element is
    begin
-      return Base + 390;
+      return Base + 388;
    end MP_UML_Lifeline_Covered_By_Interaction_Fragment_Covered;
 
    ----------------------------------------------
@@ -5047,7 +5047,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Lifeline_Decomposed_As_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
-      return Base + 642;
+      return Base + 636;
    end MP_UML_Lifeline_Decomposed_As_A_Lifeline;
 
    ------------------------------------------------------
@@ -5056,7 +5056,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Lifeline_Interaction_Interaction_Lifeline return AMF.Internals.CMOF_Element is
    begin
-      return Base + 643;
+      return Base + 637;
    end MP_UML_Lifeline_Interaction_Interaction_Lifeline;
 
    -------------------------------------------
@@ -5065,7 +5065,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Lifeline_Represents_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
-      return Base + 644;
+      return Base + 638;
    end MP_UML_Lifeline_Represents_A_Lifeline;
 
    -----------------------------------------
@@ -5074,7 +5074,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Lifeline_Selector_A_Lifeline return AMF.Internals.CMOF_Element is
    begin
-      return Base + 645;
+      return Base + 639;
    end MP_UML_Lifeline_Selector_A_Lifeline;
 
    -----------------------------------------------
@@ -5083,7 +5083,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_Action_End_Data_A_Link_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 391;
+      return Base + 389;
    end MP_UML_Link_Action_End_Data_A_Link_Action;
 
    --------------------------------------------------
@@ -5092,7 +5092,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_Action_Input_Value_A_Link_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 392;
+      return Base + 390;
    end MP_UML_Link_Action_Input_Value_A_Link_Action;
 
    ----------------------------------------------------------------------
@@ -5101,7 +5101,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Creation_Data_Insert_At_A_Link_End_Creation_Data return AMF.Internals.CMOF_Element is
    begin
-      return Base + 646;
+      return Base + 640;
    end MP_UML_Link_End_Creation_Data_Insert_At_A_Link_End_Creation_Data;
 
    --------------------------------------------------
@@ -5110,7 +5110,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Creation_Data_Is_Replace_All return AMF.Internals.CMOF_Element is
    begin
-      return Base + 647;
+      return Base + 641;
    end MP_UML_Link_End_Creation_Data_Is_Replace_All;
 
    ----------------------------------------------
@@ -5119,7 +5119,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Data_End_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
-      return Base + 648;
+      return Base + 642;
    end MP_UML_Link_End_Data_End_A_Link_End_Data;
 
    ----------------------------------------------------
@@ -5128,7 +5128,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Data_Qualifier_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
-      return Base + 393;
+      return Base + 391;
    end MP_UML_Link_End_Data_Qualifier_A_Link_End_Data;
 
    ------------------------------------------------
@@ -5137,7 +5137,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Data_Value_A_Link_End_Data return AMF.Internals.CMOF_Element is
    begin
-      return Base + 649;
+      return Base + 643;
    end MP_UML_Link_End_Data_Value_A_Link_End_Data;
 
    -----------------------------------------------------------------------------
@@ -5146,7 +5146,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Destruction_Data_Destroy_At_A_Link_End_Destruction_Data return AMF.Internals.CMOF_Element is
    begin
-      return Base + 650;
+      return Base + 644;
    end MP_UML_Link_End_Destruction_Data_Destroy_At_A_Link_End_Destruction_Data;
 
    ------------------------------------------------------------
@@ -5155,7 +5155,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Link_End_Destruction_Data_Is_Destroy_Duplicates return AMF.Internals.CMOF_Element is
    begin
-      return Base + 651;
+      return Base + 645;
    end MP_UML_Link_End_Destruction_Data_Is_Destroy_Duplicates;
 
    ----------------------------------
@@ -5164,7 +5164,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Literal_Boolean_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 652;
+      return Base + 646;
    end MP_UML_Literal_Boolean_Value;
 
    ----------------------------------
@@ -5173,7 +5173,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Literal_Integer_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 653;
+      return Base + 647;
    end MP_UML_Literal_Integer_Value;
 
    -------------------------------
@@ -5182,7 +5182,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Literal_Real_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 654;
+      return Base + 648;
    end MP_UML_Literal_Real_Value;
 
    ---------------------------------
@@ -5191,7 +5191,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Literal_String_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 655;
+      return Base + 649;
    end MP_UML_Literal_String_Value;
 
    --------------------------------------------
@@ -5200,7 +5200,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Literal_Unlimited_Natural_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 656;
+      return Base + 650;
    end MP_UML_Literal_Unlimited_Natural_Value;
 
    ----------------------------------------------
@@ -5209,7 +5209,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Body_Output_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 394;
+      return Base + 392;
    end MP_UML_Loop_Node_Body_Output_A_Loop_Node;
 
    --------------------------------------------
@@ -5218,7 +5218,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Body_Part_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 395;
+      return Base + 393;
    end MP_UML_Loop_Node_Body_Part_A_Loop_Node;
 
    ------------------------------------------
@@ -5227,7 +5227,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Decider_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 657;
+      return Base + 651;
    end MP_UML_Loop_Node_Decider_A_Loop_Node;
 
    --------------------------------------
@@ -5236,7 +5236,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Is_Tested_First return AMF.Internals.CMOF_Element is
    begin
-      return Base + 658;
+      return Base + 652;
    end MP_UML_Loop_Node_Is_Tested_First;
 
    ------------------------------------------------
@@ -5245,7 +5245,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Loop_Variable_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 396;
+      return Base + 394;
    end MP_UML_Loop_Node_Loop_Variable_A_Loop_Node;
 
    ------------------------------------------------------
@@ -5254,7 +5254,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 397;
+      return Base + 395;
    end MP_UML_Loop_Node_Loop_Variable_Input_A_Loop_Node;
 
    -----------------------------------------
@@ -5263,7 +5263,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Result_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 398;
+      return Base + 396;
    end MP_UML_Loop_Node_Result_A_Loop_Node;
 
    ---------------------------------------------
@@ -5272,7 +5272,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Setup_Part_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 399;
+      return Base + 397;
    end MP_UML_Loop_Node_Setup_Part_A_Loop_Node;
 
    ---------------------------------------
@@ -5281,7 +5281,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Loop_Node_Test_A_Loop_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 400;
+      return Base + 398;
    end MP_UML_Loop_Node_Test_A_Loop_Node;
 
    -----------------------------------------------------------
@@ -5290,7 +5290,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Manifestation_Utilized_Element_A_Manifestation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 659;
+      return Base + 653;
    end MP_UML_Manifestation_Utilized_Element_A_Manifestation;
 
    ---------------------------------------
@@ -5299,7 +5299,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Argument_A_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 401;
+      return Base + 399;
    end MP_UML_Message_Argument_A_Message;
 
    ----------------------------------------
@@ -5308,7 +5308,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Connector_A_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 660;
+      return Base + 654;
    end MP_UML_Message_Connector_A_Message;
 
    ----------------------------------------------------
@@ -5317,7 +5317,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Interaction_Interaction_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 661;
+      return Base + 655;
    end MP_UML_Message_Interaction_Interaction_Message;
 
    ---------------------------------
@@ -5326,7 +5326,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Message_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 662;
+      return Base + 656;
    end MP_UML_Message_Message_Kind;
 
    ---------------------------------
@@ -5335,7 +5335,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Message_Sort return AMF.Internals.CMOF_Element is
    begin
-      return Base + 663;
+      return Base + 657;
    end MP_UML_Message_Message_Sort;
 
    ------------------------------------------------
@@ -5344,7 +5344,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Receive_Event_A_End_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 664;
+      return Base + 658;
    end MP_UML_Message_Receive_Event_A_End_Message;
 
    ---------------------------------------------
@@ -5353,7 +5353,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Send_Event_A_End_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 665;
+      return Base + 659;
    end MP_UML_Message_Send_Event_A_End_Message;
 
    ----------------------------------------
@@ -5362,7 +5362,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_Signature_A_Message return AMF.Internals.CMOF_Element is
    begin
-      return Base + 666;
+      return Base + 660;
    end MP_UML_Message_Signature_A_Message;
 
    ----------------------------------------------
@@ -5371,7 +5371,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Message_End_Message_A_Message_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 667;
+      return Base + 661;
    end MP_UML_Message_End_Message_A_Message_End;
 
    ----------------------------
@@ -5380,7 +5380,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Model_Viewpoint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 668;
+      return Base + 662;
    end MP_UML_Model_Viewpoint;
 
    --------------------------------------------
@@ -5389,7 +5389,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Is_Ordered return AMF.Internals.CMOF_Element is
    begin
-      return Base + 669;
+      return Base + 663;
    end MP_UML_Multiplicity_Element_Is_Ordered;
 
    -------------------------------------------
@@ -5398,7 +5398,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Is_Unique return AMF.Internals.CMOF_Element is
    begin
-      return Base + 670;
+      return Base + 664;
    end MP_UML_Multiplicity_Element_Is_Unique;
 
    ---------------------------------------
@@ -5407,7 +5407,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Lower return AMF.Internals.CMOF_Element is
    begin
-      return Base + 671;
+      return Base + 665;
    end MP_UML_Multiplicity_Element_Lower;
 
    ------------------------------------------------------------
@@ -5416,7 +5416,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Lower_Value_A_Owning_Lower return AMF.Internals.CMOF_Element is
    begin
-      return Base + 672;
+      return Base + 666;
    end MP_UML_Multiplicity_Element_Lower_Value_A_Owning_Lower;
 
    ---------------------------------------
@@ -5425,7 +5425,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Upper return AMF.Internals.CMOF_Element is
    begin
-      return Base + 673;
+      return Base + 667;
    end MP_UML_Multiplicity_Element_Upper;
 
    ------------------------------------------------------------
@@ -5434,7 +5434,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper return AMF.Internals.CMOF_Element is
    begin
-      return Base + 674;
+      return Base + 668;
    end MP_UML_Multiplicity_Element_Upper_Value_A_Owning_Upper;
 
    --------------------------------------------------------------
@@ -5443,7 +5443,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Client_Dependency_Dependency_Client return AMF.Internals.CMOF_Element is
    begin
-      return Base + 402;
+      return Base + 400;
    end MP_UML_Named_Element_Client_Dependency_Dependency_Client;
 
    -------------------------------
@@ -5452,7 +5452,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Name return AMF.Internals.CMOF_Element is
    begin
-      return Base + 675;
+      return Base + 669;
    end MP_UML_Named_Element_Name;
 
    ----------------------------------------------------------
@@ -5461,7 +5461,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Name_Expression_A_Named_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 676;
+      return Base + 670;
    end MP_UML_Named_Element_Name_Expression_A_Named_Element;
 
    -----------------------------------------------------------
@@ -5470,7 +5470,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Namespace_Namespace_Owned_Member return AMF.Internals.CMOF_Element is
    begin
-      return Base + 677;
+      return Base + 671;
    end MP_UML_Named_Element_Namespace_Namespace_Owned_Member;
 
    -----------------------------------------
@@ -5479,7 +5479,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Qualified_Name return AMF.Internals.CMOF_Element is
    begin
-      return Base + 678;
+      return Base + 672;
    end MP_UML_Named_Element_Qualified_Name;
 
    -------------------------------------
@@ -5488,7 +5488,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Named_Element_Visibility return AMF.Internals.CMOF_Element is
    begin
-      return Base + 679;
+      return Base + 673;
    end MP_UML_Named_Element_Visibility;
 
    ------------------------------------------------------------------------
@@ -5497,7 +5497,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
-      return Base + 403;
+      return Base + 401;
    end MP_UML_Namespace_Element_Import_Element_Import_Importing_Namespace;
 
    --------------------------------------------------
@@ -5506,7 +5506,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Imported_Member_A_Namespace return AMF.Internals.CMOF_Element is
    begin
-      return Base + 404;
+      return Base + 402;
    end MP_UML_Namespace_Imported_Member_A_Namespace;
 
    ------------------------------------------------
@@ -5515,7 +5515,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Member_A_Member_Namespace return AMF.Internals.CMOF_Element is
    begin
-      return Base + 405;
+      return Base + 403;
    end MP_UML_Namespace_Member_A_Member_Namespace;
 
    -----------------------------------------------------------
@@ -5524,7 +5524,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Owned_Member_Named_Element_Namespace return AMF.Internals.CMOF_Element is
    begin
-      return Base + 406;
+      return Base + 404;
    end MP_UML_Namespace_Owned_Member_Named_Element_Namespace;
 
    ----------------------------------------------------
@@ -5533,7 +5533,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Owned_Rule_Constraint_Context return AMF.Internals.CMOF_Element is
    begin
-      return Base + 407;
+      return Base + 405;
    end MP_UML_Namespace_Owned_Rule_Constraint_Context;
 
    ------------------------------------------------------------------------
@@ -5542,7 +5542,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace return AMF.Internals.CMOF_Element is
    begin
-      return Base + 408;
+      return Base + 406;
    end MP_UML_Namespace_Package_Import_Package_Import_Importing_Namespace;
 
    ------------------------------------
@@ -5551,7 +5551,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Node_Nested_Node_A_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 409;
+      return Base + 407;
    end MP_UML_Node_Nested_Node_A_Node;
 
    -------------------------------------
@@ -5560,7 +5560,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Flow_Is_Multicast return AMF.Internals.CMOF_Element is
    begin
-      return Base + 680;
+      return Base + 674;
    end MP_UML_Object_Flow_Is_Multicast;
 
    ----------------------------------------
@@ -5569,7 +5569,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Flow_Is_Multireceive return AMF.Internals.CMOF_Element is
    begin
-      return Base + 681;
+      return Base + 675;
    end MP_UML_Object_Flow_Is_Multireceive;
 
    ------------------------------------------------
@@ -5578,7 +5578,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Flow_Selection_A_Object_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 682;
+      return Base + 676;
    end MP_UML_Object_Flow_Selection_A_Object_Flow;
 
    -----------------------------------------------------
@@ -5587,7 +5587,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Flow_Transformation_A_Object_Flow return AMF.Internals.CMOF_Element is
    begin
-      return Base + 683;
+      return Base + 677;
    end MP_UML_Object_Flow_Transformation_A_Object_Flow;
 
    -----------------------------------------------
@@ -5596,7 +5596,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Node_In_State_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 410;
+      return Base + 408;
    end MP_UML_Object_Node_In_State_A_Object_Node;
 
    ----------------------------------------
@@ -5605,7 +5605,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Node_Is_Control_Type return AMF.Internals.CMOF_Element is
    begin
-      return Base + 684;
+      return Base + 678;
    end MP_UML_Object_Node_Is_Control_Type;
 
    ---------------------------------
@@ -5614,7 +5614,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Node_Ordering return AMF.Internals.CMOF_Element is
    begin
-      return Base + 685;
+      return Base + 679;
    end MP_UML_Object_Node_Ordering;
 
    ------------------------------------------------
@@ -5623,7 +5623,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Node_Selection_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 686;
+      return Base + 680;
    end MP_UML_Object_Node_Selection_A_Object_Node;
 
    --------------------------------------------------
@@ -5632,7 +5632,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Object_Node_Upper_Bound_A_Object_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 687;
+      return Base + 681;
    end MP_UML_Object_Node_Upper_Bound_A_Object_Node;
 
    ------------------------------------------------------
@@ -5641,7 +5641,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Occurrence_Specification_Covered_A_Events return AMF.Internals.CMOF_Element is
    begin
-      return Base + 411;
+      return Base + 682;
    end MP_UML_Occurrence_Specification_Covered_A_Events;
 
    ----------------------------------------------------------------------
@@ -5650,7 +5650,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Occurrence_Specification_To_After_General_Ordering_Before return AMF.Internals.CMOF_Element is
    begin
-      return Base + 412;
+      return Base + 409;
    end MP_UML_Occurrence_Specification_To_After_General_Ordering_Before;
 
    ----------------------------------------------------------------------
@@ -5659,7 +5659,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Occurrence_Specification_To_Before_General_Ordering_After return AMF.Internals.CMOF_Element is
    begin
-      return Base + 413;
+      return Base + 410;
    end MP_UML_Occurrence_Specification_To_Before_General_Ordering_After;
 
    -------------------------------
@@ -5668,7 +5668,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Action_Body return AMF.Internals.CMOF_Element is
    begin
-      return Base + 688;
+      return Base + 683;
    end MP_UML_Opaque_Action_Body;
 
    ------------------------------------------------------
@@ -5677,7 +5677,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Action_Input_Value_A_Opaque_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 414;
+      return Base + 411;
    end MP_UML_Opaque_Action_Input_Value_A_Opaque_Action;
 
    -----------------------------------
@@ -5686,7 +5686,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Action_Language return AMF.Internals.CMOF_Element is
    begin
-      return Base + 689;
+      return Base + 684;
    end MP_UML_Opaque_Action_Language;
 
    -------------------------------------------------------
@@ -5695,7 +5695,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Action_Output_Value_A_Opaque_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 415;
+      return Base + 412;
    end MP_UML_Opaque_Action_Output_Value_A_Opaque_Action;
 
    ---------------------------------
@@ -5704,7 +5704,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Behavior_Body return AMF.Internals.CMOF_Element is
    begin
-      return Base + 690;
+      return Base + 685;
    end MP_UML_Opaque_Behavior_Body;
 
    -------------------------------------
@@ -5713,7 +5713,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Behavior_Language return AMF.Internals.CMOF_Element is
    begin
-      return Base + 691;
+      return Base + 686;
    end MP_UML_Opaque_Behavior_Language;
 
    -----------------------------------------------------------
@@ -5722,7 +5722,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 692;
+      return Base + 687;
    end MP_UML_Opaque_Expression_Behavior_A_Opaque_Expression;
 
    -----------------------------------
@@ -5731,7 +5731,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Expression_Body return AMF.Internals.CMOF_Element is
    begin
-      return Base + 693;
+      return Base + 688;
    end MP_UML_Opaque_Expression_Body;
 
    ---------------------------------------
@@ -5740,7 +5740,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Expression_Language return AMF.Internals.CMOF_Element is
    begin
-      return Base + 694;
+      return Base + 689;
    end MP_UML_Opaque_Expression_Language;
 
    ---------------------------------------------------------
@@ -5749,7 +5749,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Opaque_Expression_Result_A_Opaque_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 695;
+      return Base + 690;
    end MP_UML_Opaque_Expression_Result_A_Opaque_Expression;
 
    ----------------------------------------------------
@@ -5758,7 +5758,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Body_Condition_A_Body_Context return AMF.Internals.CMOF_Element is
    begin
-      return Base + 696;
+      return Base + 691;
    end MP_UML_Operation_Body_Condition_A_Body_Context;
 
    --------------------------------------------------
@@ -5767,7 +5767,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Class_Class_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 697;
+      return Base + 692;
    end MP_UML_Operation_Class_Class_Owned_Operation;
 
    ---------------------------------------------------------
@@ -5776,7 +5776,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Datatype_Data_Type_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 698;
+      return Base + 693;
    end MP_UML_Operation_Datatype_Data_Type_Owned_Operation;
 
    ----------------------------------------------------------
@@ -5785,7 +5785,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Interface_Interface_Owned_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 699;
+      return Base + 694;
    end MP_UML_Operation_Interface_Interface_Owned_Operation;
 
    ---------------------------------
@@ -5794,7 +5794,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Is_Ordered return AMF.Internals.CMOF_Element is
    begin
-      return Base + 700;
+      return Base + 695;
    end MP_UML_Operation_Is_Ordered;
 
    -------------------------------
@@ -5803,7 +5803,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Is_Query return AMF.Internals.CMOF_Element is
    begin
-      return Base + 701;
+      return Base + 696;
    end MP_UML_Operation_Is_Query;
 
    --------------------------------
@@ -5812,7 +5812,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Is_Unique return AMF.Internals.CMOF_Element is
    begin
-      return Base + 702;
+      return Base + 697;
    end MP_UML_Operation_Is_Unique;
 
    ----------------------------
@@ -5821,7 +5821,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Lower return AMF.Internals.CMOF_Element is
    begin
-      return Base + 703;
+      return Base + 698;
    end MP_UML_Operation_Lower;
 
    ----------------------------------------------------------
@@ -5830,7 +5830,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Owned_Parameter_Parameter_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 416;
+      return Base + 413;
    end MP_UML_Operation_Owned_Parameter_Parameter_Operation;
 
    ---------------------------------------------------
@@ -5839,7 +5839,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Postcondition_A_Post_Context return AMF.Internals.CMOF_Element is
    begin
-      return Base + 417;
+      return Base + 414;
    end MP_UML_Operation_Postcondition_A_Post_Context;
 
    -------------------------------------------------
@@ -5848,7 +5848,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Precondition_A_Pre_Context return AMF.Internals.CMOF_Element is
    begin
-      return Base + 418;
+      return Base + 415;
    end MP_UML_Operation_Precondition_A_Pre_Context;
 
    ---------------------------------------------------
@@ -5857,7 +5857,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Raised_Exception_A_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 419;
+      return Base + 416;
    end MP_UML_Operation_Raised_Exception_A_Operation;
 
    ------------------------------------------------------
@@ -5866,7 +5866,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Redefined_Operation_A_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 420;
+      return Base + 417;
    end MP_UML_Operation_Redefined_Operation_A_Operation;
 
    ------------------------------------------------------------------------------------------
@@ -5875,7 +5875,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 704;
+      return Base + 699;
    end MP_UML_Operation_Template_Parameter_Operation_Template_Parameter_Parametered_Element;
 
    ---------------------------------------
@@ -5884,7 +5884,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Type_A_Operation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 705;
+      return Base + 700;
    end MP_UML_Operation_Type_A_Operation;
 
    ----------------------------
@@ -5893,7 +5893,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Upper return AMF.Internals.CMOF_Element is
    begin
-      return Base + 706;
+      return Base + 701;
    end MP_UML_Operation_Upper;
 
    ------------------------------------------------------------------------------------------
@@ -5902,7 +5902,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 707;
+      return Base + 702;
    end MP_UML_Operation_Template_Parameter_Parametered_Element_Operation_Template_Parameter;
 
    ------------------------
@@ -5911,7 +5911,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_URI return AMF.Internals.CMOF_Element is
    begin
-      return Base + 708;
+      return Base + 703;
    end MP_UML_Package_URI;
 
    -----------------------------------------------------------
@@ -5920,7 +5920,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Nested_Package_Package_Nesting_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 421;
+      return Base + 418;
    end MP_UML_Package_Nested_Package_Package_Nesting_Package;
 
    -----------------------------------------------------------
@@ -5929,7 +5929,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Nesting_Package_Package_Nested_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 709;
+      return Base + 704;
    end MP_UML_Package_Nesting_Package_Package_Nested_Package;
 
    ------------------------------------------------------
@@ -5938,7 +5938,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Owned_Stereotype_A_Owning_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 422;
+      return Base + 419;
    end MP_UML_Package_Owned_Stereotype_A_Owning_Package;
 
    --------------------------------------------
@@ -5947,7 +5947,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Owned_Type_Type_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 423;
+      return Base + 420;
    end MP_UML_Package_Owned_Type_Type_Package;
 
    ------------------------------------------------------------------
@@ -5956,7 +5956,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Package_Merge_Package_Merge_Receiving_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 424;
+      return Base + 421;
    end MP_UML_Package_Package_Merge_Package_Merge_Receiving_Package;
 
    ------------------------------------------------------
@@ -5965,7 +5965,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Packaged_Element_A_Owning_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 425;
+      return Base + 422;
    end MP_UML_Package_Packaged_Element_A_Owning_Package;
 
    -----------------------------------------------------------------------------
@@ -5974,7 +5974,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Profile_Application_Profile_Application_Applying_Package return AMF.Internals.CMOF_Element is
    begin
-      return Base + 426;
+      return Base + 423;
    end MP_UML_Package_Profile_Application_Profile_Application_Applying_Package;
 
    -------------------------------------------------------------
@@ -5983,7 +5983,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Import_Imported_Package_A_Package_Import return AMF.Internals.CMOF_Element is
    begin
-      return Base + 710;
+      return Base + 705;
    end MP_UML_Package_Import_Imported_Package_A_Package_Import;
 
    ------------------------------------------------------------------------
@@ -5992,7 +5992,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Import_Importing_Namespace_Namespace_Package_Import return AMF.Internals.CMOF_Element is
    begin
-      return Base + 711;
+      return Base + 706;
    end MP_UML_Package_Import_Importing_Namespace_Namespace_Package_Import;
 
    --------------------------------------
@@ -6001,7 +6001,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Import_Visibility return AMF.Internals.CMOF_Element is
    begin
-      return Base + 712;
+      return Base + 707;
    end MP_UML_Package_Import_Visibility;
 
    ---------------------------------------------------------
@@ -6010,7 +6010,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Merge_Merged_Package_A_Package_Merge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 713;
+      return Base + 708;
    end MP_UML_Package_Merge_Merged_Package_A_Package_Merge;
 
    ------------------------------------------------------------------
@@ -6019,7 +6019,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Package_Merge_Receiving_Package_Package_Package_Merge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 714;
+      return Base + 709;
    end MP_UML_Package_Merge_Receiving_Package_Package_Package_Merge;
 
    -------------------------------------------
@@ -6028,7 +6028,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Packageable_Element_Visibility return AMF.Internals.CMOF_Element is
    begin
-      return Base + 715;
+      return Base + 710;
    end MP_UML_Packageable_Element_Visibility;
 
    ------------------------------
@@ -6037,7 +6037,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Default return AMF.Internals.CMOF_Element is
    begin
-      return Base + 716;
+      return Base + 711;
    end MP_UML_Parameter_Default;
 
    -------------------------------------------------------
@@ -6046,7 +6046,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Default_Value_A_Owning_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 717;
+      return Base + 712;
    end MP_UML_Parameter_Default_Value_A_Owning_Parameter;
 
    --------------------------------
@@ -6055,7 +6055,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Direction return AMF.Internals.CMOF_Element is
    begin
-      return Base + 718;
+      return Base + 713;
    end MP_UML_Parameter_Direction;
 
    -----------------------------
@@ -6064,7 +6064,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Effect return AMF.Internals.CMOF_Element is
    begin
-      return Base + 719;
+      return Base + 714;
    end MP_UML_Parameter_Effect;
 
    -----------------------------------
@@ -6073,7 +6073,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Is_Exception return AMF.Internals.CMOF_Element is
    begin
-      return Base + 720;
+      return Base + 715;
    end MP_UML_Parameter_Is_Exception;
 
    --------------------------------
@@ -6082,7 +6082,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Is_Stream return AMF.Internals.CMOF_Element is
    begin
-      return Base + 721;
+      return Base + 716;
    end MP_UML_Parameter_Is_Stream;
 
    ----------------------------------------------------------
@@ -6091,7 +6091,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Operation_Operation_Owned_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 722;
+      return Base + 717;
    end MP_UML_Parameter_Operation_Operation_Owned_Parameter;
 
    ------------------------------------------------------------
@@ -6100,7 +6100,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Parameter_Set_Parameter_Set_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 427;
+      return Base + 424;
    end MP_UML_Parameter_Parameter_Set_Parameter_Set_Parameter;
 
    ----------------------------------------------------
@@ -6109,7 +6109,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Set_Condition_A_Parameter_Set return AMF.Internals.CMOF_Element is
    begin
-      return Base + 428;
+      return Base + 425;
    end MP_UML_Parameter_Set_Condition_A_Parameter_Set;
 
    ------------------------------------------------------------
@@ -6118,7 +6118,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameter_Set_Parameter_Parameter_Parameter_Set return AMF.Internals.CMOF_Element is
    begin
-      return Base + 429;
+      return Base + 426;
    end MP_UML_Parameter_Set_Parameter_Parameter_Parameter_Set;
 
    ---------------------------------------------------------------------------------------------------------
@@ -6127,7 +6127,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 723;
+      return Base + 718;
    end MP_UML_Parameterable_Element_Owning_Template_Parameter_Template_Parameter_Owned_Parametered_Element;
 
    --------------------------------------------------------------------------------------------
@@ -6136,7 +6136,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 724;
+      return Base + 719;
    end MP_UML_Parameterable_Element_Template_Parameter_Template_Parameter_Parametered_Element;
 
    ---------------------------
@@ -6145,7 +6145,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Pin_Is_Control return AMF.Internals.CMOF_Element is
    begin
-      return Base + 725;
+      return Base + 720;
    end MP_UML_Pin_Is_Control;
 
    -----------------------------
@@ -6154,7 +6154,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Is_Behavior return AMF.Internals.CMOF_Element is
    begin
-      return Base + 726;
+      return Base + 721;
    end MP_UML_Port_Is_Behavior;
 
    -------------------------------
@@ -6163,7 +6163,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Is_Conjugated return AMF.Internals.CMOF_Element is
    begin
-      return Base + 727;
+      return Base + 722;
    end MP_UML_Port_Is_Conjugated;
 
    ----------------------------
@@ -6172,7 +6172,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Is_Service return AMF.Internals.CMOF_Element is
    begin
-      return Base + 728;
+      return Base + 723;
    end MP_UML_Port_Is_Service;
 
    ---------------------------------
@@ -6181,7 +6181,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Protocol_A_Port return AMF.Internals.CMOF_Element is
    begin
-      return Base + 729;
+      return Base + 724;
    end MP_UML_Port_Protocol_A_Port;
 
    ---------------------------------
@@ -6190,7 +6190,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Provided_A_Port return AMF.Internals.CMOF_Element is
    begin
-      return Base + 430;
+      return Base + 427;
    end MP_UML_Port_Provided_A_Port;
 
    ---------------------------------------
@@ -6199,7 +6199,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Redefined_Port_A_Port return AMF.Internals.CMOF_Element is
    begin
-      return Base + 431;
+      return Base + 428;
    end MP_UML_Port_Redefined_Port_A_Port;
 
    ---------------------------------
@@ -6208,7 +6208,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Port_Required_A_Port return AMF.Internals.CMOF_Element is
    begin
-      return Base + 432;
+      return Base + 429;
    end MP_UML_Port_Required_A_Port;
 
    --------------------------------------------------
@@ -6217,7 +6217,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Profile_Metaclass_Reference_A_Profile return AMF.Internals.CMOF_Element is
    begin
-      return Base + 433;
+      return Base + 430;
    end MP_UML_Profile_Metaclass_Reference_A_Profile;
 
    --------------------------------------------------
@@ -6226,7 +6226,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Profile_Metamodel_Reference_A_Profile return AMF.Internals.CMOF_Element is
    begin
-      return Base + 434;
+      return Base + 431;
    end MP_UML_Profile_Metamodel_Reference_A_Profile;
 
    ----------------------------------------------------------------------
@@ -6235,7 +6235,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Profile_Application_Applied_Profile_A_Profile_Application return AMF.Internals.CMOF_Element is
    begin
-      return Base + 730;
+      return Base + 725;
    end MP_UML_Profile_Application_Applied_Profile_A_Profile_Application;
 
    -----------------------------------------------------------------------------
@@ -6244,7 +6244,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Profile_Application_Applying_Package_Package_Profile_Application return AMF.Internals.CMOF_Element is
    begin
-      return Base + 731;
+      return Base + 726;
    end MP_UML_Profile_Application_Applying_Package_Package_Profile_Application;
 
    ------------------------------------------
@@ -6253,7 +6253,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Profile_Application_Is_Strict return AMF.Internals.CMOF_Element is
    begin
-      return Base + 732;
+      return Base + 727;
    end MP_UML_Profile_Application_Is_Strict;
 
    ---------------------------------
@@ -6262,7 +6262,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Aggregation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 733;
+      return Base + 728;
    end MP_UML_Property_Aggregation;
 
    --------------------------------------------------------
@@ -6271,7 +6271,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Association_Association_Member_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 734;
+      return Base + 729;
    end MP_UML_Property_Association_Association_Member_End;
 
    --------------------------------------------------------
@@ -6280,7 +6280,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Association_End_Property_Qualifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 735;
+      return Base + 730;
    end MP_UML_Property_Association_End_Property_Qualifier;
 
    -------------------------------------------------
@@ -6289,7 +6289,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Class_Class_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
-      return Base + 736;
+      return Base + 731;
    end MP_UML_Property_Class_Class_Owned_Attribute;
 
    --------------------------------------------------------
@@ -6298,7 +6298,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Datatype_Data_Type_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
-      return Base + 737;
+      return Base + 732;
    end MP_UML_Property_Datatype_Data_Type_Owned_Attribute;
 
    -----------------------------
@@ -6307,7 +6307,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Default return AMF.Internals.CMOF_Element is
    begin
-      return Base + 738;
+      return Base + 733;
    end MP_UML_Property_Default;
 
    -----------------------------------------------------
@@ -6316,7 +6316,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Default_Value_A_Owning_Property return AMF.Internals.CMOF_Element is
    begin
-      return Base + 739;
+      return Base + 734;
    end MP_UML_Property_Default_Value_A_Owning_Property;
 
    ---------------------------------------------------------
@@ -6325,7 +6325,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Interface_Interface_Owned_Attribute return AMF.Internals.CMOF_Element is
    begin
-      return Base + 740;
+      return Base + 735;
    end MP_UML_Property_Interface_Interface_Owned_Attribute;
 
    ----------------------------------
@@ -6334,7 +6334,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Is_Composite return AMF.Internals.CMOF_Element is
    begin
-      return Base + 741;
+      return Base + 736;
    end MP_UML_Property_Is_Composite;
 
    --------------------------------
@@ -6343,7 +6343,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Is_Derived return AMF.Internals.CMOF_Element is
    begin
-      return Base + 742;
+      return Base + 737;
    end MP_UML_Property_Is_Derived;
 
    --------------------------------------
@@ -6352,7 +6352,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Is_Derived_Union return AMF.Internals.CMOF_Element is
    begin
-      return Base + 743;
+      return Base + 738;
    end MP_UML_Property_Is_Derived_Union;
 
    ---------------------------
@@ -6361,7 +6361,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Is_ID return AMF.Internals.CMOF_Element is
    begin
-      return Base + 744;
+      return Base + 739;
    end MP_UML_Property_Is_ID;
 
    ----------------------------------
@@ -6370,7 +6370,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Is_Read_Only return AMF.Internals.CMOF_Element is
    begin
-      return Base + 745;
+      return Base + 740;
    end MP_UML_Property_Is_Read_Only;
 
    -----------------------------------------
@@ -6379,7 +6379,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Opposite_A_Property return AMF.Internals.CMOF_Element is
    begin
-      return Base + 746;
+      return Base + 741;
    end MP_UML_Property_Opposite_A_Property;
 
    --------------------------------------------------------------
@@ -6388,7 +6388,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Owning_Association_Association_Owned_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 747;
+      return Base + 742;
    end MP_UML_Property_Owning_Association_Association_Owned_End;
 
    --------------------------------------------------------
@@ -6397,7 +6397,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Qualifier_Property_Association_End return AMF.Internals.CMOF_Element is
    begin
-      return Base + 435;
+      return Base + 432;
    end MP_UML_Property_Qualifier_Property_Association_End;
 
    ---------------------------------------------------
@@ -6406,7 +6406,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Redefined_Property_A_Property return AMF.Internals.CMOF_Element is
    begin
-      return Base + 436;
+      return Base + 433;
    end MP_UML_Property_Redefined_Property_A_Property;
 
    ---------------------------------------------------
@@ -6415,7 +6415,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Property_Subsetted_Property_A_Property return AMF.Internals.CMOF_Element is
    begin
-      return Base + 437;
+      return Base + 434;
    end MP_UML_Property_Subsetted_Property_A_Property;
 
    ------------------------------------------------------------------------
@@ -6424,7 +6424,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_Conformance_General_Machine_A_Protocol_Conformance return AMF.Internals.CMOF_Element is
    begin
-      return Base + 748;
+      return Base + 743;
    end MP_UML_Protocol_Conformance_General_Machine_A_Protocol_Conformance;
 
    -------------------------------------------------------------------------------------
@@ -6433,7 +6433,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_Conformance_Specific_Machine_Protocol_State_Machine_Conformance return AMF.Internals.CMOF_Element is
    begin
-      return Base + 749;
+      return Base + 744;
    end MP_UML_Protocol_Conformance_Specific_Machine_Protocol_State_Machine_Conformance;
 
    -------------------------------------------------------------------------------------
@@ -6442,7 +6442,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_State_Machine_Conformance_Protocol_Conformance_Specific_Machine return AMF.Internals.CMOF_Element is
    begin
-      return Base + 438;
+      return Base + 435;
    end MP_UML_Protocol_State_Machine_Conformance_Protocol_Conformance_Specific_Machine;
 
    -------------------------------------------------------------------
@@ -6451,7 +6451,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_Transition_Post_Condition_A_Owning_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 750;
+      return Base + 745;
    end MP_UML_Protocol_Transition_Post_Condition_A_Owning_Transition;
 
    --------------------------------------------------------------------
@@ -6460,7 +6460,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_Transition_Pre_Condition_A_Protocol_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 751;
+      return Base + 746;
    end MP_UML_Protocol_Transition_Pre_Condition_A_Protocol_Transition;
 
    ---------------------------------------------------------------
@@ -6469,7 +6469,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Protocol_Transition_Referred_A_Protocol_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 439;
+      return Base + 436;
    end MP_UML_Protocol_Transition_Referred_A_Protocol_Transition;
 
    -----------------------------
@@ -6478,7 +6478,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Pseudostate_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 752;
+      return Base + 747;
    end MP_UML_Pseudostate_Kind;
 
    -----------------------------------------------------
@@ -6487,7 +6487,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Pseudostate_State_State_Connection_Point return AMF.Internals.CMOF_Element is
    begin
-      return Base + 753;
+      return Base + 748;
    end MP_UML_Pseudostate_State_State_Connection_Point;
 
    ---------------------------------------------------------------------
@@ -6496,7 +6496,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Pseudostate_State_Machine_State_Machine_Connection_Point return AMF.Internals.CMOF_Element is
    begin
-      return Base + 754;
+      return Base + 749;
    end MP_UML_Pseudostate_State_Machine_State_Machine_Connection_Point;
 
    --------------------------------------------------------
@@ -6505,7 +6505,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Qualifier_Value_Qualifier_A_Qualifier_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 755;
+      return Base + 750;
    end MP_UML_Qualifier_Value_Qualifier_A_Qualifier_Value;
 
    ----------------------------------------------------
@@ -6514,7 +6514,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Qualifier_Value_Value_A_Qualifier_Value return AMF.Internals.CMOF_Element is
    begin
-      return Base + 756;
+      return Base + 751;
    end MP_UML_Qualifier_Value_Value_A_Qualifier_Value;
 
    ----------------------------------------------------------------------
@@ -6523,7 +6523,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Raise_Exception_Action_Exception_A_Raise_Exception_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 757;
+      return Base + 752;
    end MP_UML_Raise_Exception_Action_Exception_A_Raise_Exception_Action;
 
    ---------------------------------------------------------------
@@ -6532,7 +6532,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Extent_Action_Classifier_A_Read_Extent_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 758;
+      return Base + 753;
    end MP_UML_Read_Extent_Action_Classifier_A_Read_Extent_Action;
 
    -----------------------------------------------------------
@@ -6541,7 +6541,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Extent_Action_Result_A_Read_Extent_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 759;
+      return Base + 754;
    end MP_UML_Read_Extent_Action_Result_A_Read_Extent_Action;
 
    -------------------------------------------------------------------------------------------
@@ -6550,7 +6550,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Is_Classified_Object_Action_Classifier_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 760;
+      return Base + 755;
    end MP_UML_Read_Is_Classified_Object_Action_Classifier_A_Read_Is_Classified_Object_Action;
 
    -------------------------------------------------------
@@ -6559,7 +6559,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Is_Classified_Object_Action_Is_Direct return AMF.Internals.CMOF_Element is
    begin
-      return Base + 761;
+      return Base + 756;
    end MP_UML_Read_Is_Classified_Object_Action_Is_Direct;
 
    ---------------------------------------------------------------------------------------
@@ -6568,7 +6568,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Is_Classified_Object_Action_Object_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 762;
+      return Base + 757;
    end MP_UML_Read_Is_Classified_Object_Action_Object_A_Read_Is_Classified_Object_Action;
 
    ---------------------------------------------------------------------------------------
@@ -6577,7 +6577,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Is_Classified_Object_Action_Result_A_Read_Is_Classified_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 763;
+      return Base + 758;
    end MP_UML_Read_Is_Classified_Object_Action_Result_A_Read_Is_Classified_Object_Action;
 
    -------------------------------------------------------
@@ -6586,7 +6586,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Action_Result_A_Read_Link_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 764;
+      return Base + 759;
    end MP_UML_Read_Link_Action_Result_A_Read_Link_Action;
 
    --------------------------------------------------------------------------
@@ -6595,7 +6595,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Action_End_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 765;
+      return Base + 760;
    end MP_UML_Read_Link_Object_End_Action_End_A_Read_Link_Object_End_Action;
 
    -----------------------------------------------------------------------------
@@ -6604,7 +6604,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Action_Object_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 766;
+      return Base + 761;
    end MP_UML_Read_Link_Object_End_Action_Object_A_Read_Link_Object_End_Action;
 
    -----------------------------------------------------------------------------
@@ -6613,7 +6613,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Action_Result_A_Read_Link_Object_End_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 767;
+      return Base + 762;
    end MP_UML_Read_Link_Object_End_Action_Result_A_Read_Link_Object_End_Action;
 
    -------------------------------------------------------------------------------------------------
@@ -6622,7 +6622,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Qualifier_Action_Object_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 768;
+      return Base + 763;
    end MP_UML_Read_Link_Object_End_Qualifier_Action_Object_A_Read_Link_Object_End_Qualifier_Action;
 
    ----------------------------------------------------------------------------------------------------
@@ -6631,7 +6631,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 769;
+      return Base + 764;
    end MP_UML_Read_Link_Object_End_Qualifier_Action_Qualifier_A_Read_Link_Object_End_Qualifier_Action;
 
    -------------------------------------------------------------------------------------------------
@@ -6640,7 +6640,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Link_Object_End_Qualifier_Action_Result_A_Read_Link_Object_End_Qualifier_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 770;
+      return Base + 765;
    end MP_UML_Read_Link_Object_End_Qualifier_Action_Result_A_Read_Link_Object_End_Qualifier_Action;
 
    -------------------------------------------------------
@@ -6649,7 +6649,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Self_Action_Result_A_Read_Self_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 771;
+      return Base + 766;
    end MP_UML_Read_Self_Action_Result_A_Read_Self_Action;
 
    -----------------------------------------------------------------------------------
@@ -6658,7 +6658,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Structural_Feature_Action_Result_A_Read_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 772;
+      return Base + 767;
    end MP_UML_Read_Structural_Feature_Action_Result_A_Read_Structural_Feature_Action;
 
    ---------------------------------------------------------------
@@ -6667,7 +6667,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Read_Variable_Action_Result_A_Read_Variable_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 773;
+      return Base + 768;
    end MP_UML_Read_Variable_Action_Result_A_Read_Variable_Action;
 
    -----------------------------------------
@@ -6676,7 +6676,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reception_Signal_A_Reception return AMF.Internals.CMOF_Element is
    begin
-      return Base + 774;
+      return Base + 769;
    end MP_UML_Reception_Signal_A_Reception;
 
    ----------------------------------------------------
@@ -6685,7 +6685,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reclassify_Object_Action_Is_Replace_All return AMF.Internals.CMOF_Element is
    begin
-      return Base + 775;
+      return Base + 770;
    end MP_UML_Reclassify_Object_Action_Is_Replace_All;
 
    -------------------------------------------------------------------------------
@@ -6694,7 +6694,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reclassify_Object_Action_New_Classifier_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 440;
+      return Base + 437;
    end MP_UML_Reclassify_Object_Action_New_Classifier_A_Reclassify_Object_Action;
 
    -----------------------------------------------------------------------
@@ -6703,7 +6703,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reclassify_Object_Action_Object_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 776;
+      return Base + 771;
    end MP_UML_Reclassify_Object_Action_Object_A_Reclassify_Object_Action;
 
    -------------------------------------------------------------------------------
@@ -6712,7 +6712,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reclassify_Object_Action_Old_Classifier_A_Reclassify_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 441;
+      return Base + 438;
    end MP_UML_Reclassify_Object_Action_Old_Classifier_A_Reclassify_Object_Action;
 
    ----------------------------------------
@@ -6721,7 +6721,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Element_Is_Leaf return AMF.Internals.CMOF_Element is
    begin
-      return Base + 777;
+      return Base + 772;
    end MP_UML_Redefinable_Element_Is_Leaf;
 
    ------------------------------------------------------------------------
@@ -6730,7 +6730,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 442;
+      return Base + 439;
    end MP_UML_Redefinable_Element_Redefined_Element_A_Redefinable_Element;
 
    ---------------------------------------------------------------------------
@@ -6739,7 +6739,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 443;
+      return Base + 440;
    end MP_UML_Redefinable_Element_Redefinition_Context_A_Redefinable_Element;
 
    ------------------------------------------------------------------------------------------
@@ -6748,7 +6748,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 778;
+      return Base + 773;
    end MP_UML_Redefinable_Template_Signature_Classifier_Classifier_Owned_Template_Signature;
 
    -----------------------------------------------------------------------------------------------
@@ -6757,7 +6757,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 444;
+      return Base + 441;
    end MP_UML_Redefinable_Template_Signature_Extended_Signature_A_Redefinable_Template_Signature;
 
    ------------------------------------------------------------------------------------------------
@@ -6766,7 +6766,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Redefinable_Template_Signature_Inherited_Parameter_A_Redefinable_Template_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 445;
+      return Base + 442;
    end MP_UML_Redefinable_Template_Signature_Inherited_Parameter_A_Redefinable_Template_Signature;
 
    -----------------------------------------------------
@@ -6775,7 +6775,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reduce_Action_Collection_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 779;
+      return Base + 774;
    end MP_UML_Reduce_Action_Collection_A_Reduce_Action;
 
    -------------------------------------
@@ -6784,7 +6784,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reduce_Action_Is_Ordered return AMF.Internals.CMOF_Element is
    begin
-      return Base + 780;
+      return Base + 775;
    end MP_UML_Reduce_Action_Is_Ordered;
 
    --------------------------------------------------
@@ -6793,7 +6793,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reduce_Action_Reducer_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 781;
+      return Base + 776;
    end MP_UML_Reduce_Action_Reducer_A_Reduce_Action;
 
    -------------------------------------------------
@@ -6802,7 +6802,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reduce_Action_Result_A_Reduce_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 782;
+      return Base + 777;
    end MP_UML_Reduce_Action_Result_A_Reduce_Action;
 
    --------------------------------------------
@@ -6811,7 +6811,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_Extended_Region_A_Region return AMF.Internals.CMOF_Element is
    begin
-      return Base + 783;
+      return Base + 778;
    end MP_UML_Region_Extended_Region_A_Region;
 
    -------------------------------------------------
@@ -6820,7 +6820,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_Redefinition_Context_A_Region return AMF.Internals.CMOF_Element is
    begin
-      return Base + 446;
+      return Base + 779;
    end MP_UML_Region_Redefinition_Context_A_Region;
 
    --------------------------------------
@@ -6829,7 +6829,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_State_State_Region return AMF.Internals.CMOF_Element is
    begin
-      return Base + 784;
+      return Base + 780;
    end MP_UML_Region_State_State_Region;
 
    ------------------------------------------------------
@@ -6838,7 +6838,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_State_Machine_State_Machine_Region return AMF.Internals.CMOF_Element is
    begin
-      return Base + 785;
+      return Base + 781;
    end MP_UML_Region_State_Machine_State_Machine_Region;
 
    ----------------------------------------------
@@ -6847,7 +6847,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_Subvertex_Vertex_Container return AMF.Internals.CMOF_Element is
    begin
-      return Base + 447;
+      return Base + 443;
    end MP_UML_Region_Subvertex_Vertex_Container;
 
    ---------------------------------------------------
@@ -6856,7 +6856,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Region_Transition_Transition_Container return AMF.Internals.CMOF_Element is
    begin
-      return Base + 448;
+      return Base + 444;
    end MP_UML_Region_Transition_Transition_Container;
 
    --------------------------------------------------------
@@ -6865,7 +6865,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Relationship_Related_Element_A_Relationship return AMF.Internals.CMOF_Element is
    begin
-      return Base + 449;
+      return Base + 445;
    end MP_UML_Relationship_Related_Element_A_Relationship;
 
    ------------------------------------------------------------------------
@@ -6874,7 +6874,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates return AMF.Internals.CMOF_Element is
    begin
-      return Base + 786;
+      return Base + 782;
    end MP_UML_Remove_Structural_Feature_Value_Action_Is_Remove_Duplicates;
 
    ------------------------------------------------------------------------------------------------------
@@ -6883,7 +6883,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Remove_Structural_Feature_Value_Action_Remove_At_A_Remove_Structural_Feature_Value_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 787;
+      return Base + 783;
    end MP_UML_Remove_Structural_Feature_Value_Action_Remove_At_A_Remove_Structural_Feature_Value_Action;
 
    --------------------------------------------------------------
@@ -6892,7 +6892,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates return AMF.Internals.CMOF_Element is
    begin
-      return Base + 788;
+      return Base + 784;
    end MP_UML_Remove_Variable_Value_Action_Is_Remove_Duplicates;
 
    ----------------------------------------------------------------------------------
@@ -6901,7 +6901,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Remove_Variable_Value_Action_Remove_At_A_Remove_Variable_Value_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 789;
+      return Base + 785;
    end MP_UML_Remove_Variable_Value_Action_Remove_At_A_Remove_Variable_Value_Action;
 
    ------------------------------------------------------
@@ -6910,7 +6910,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reply_Action_Reply_To_Call_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 790;
+      return Base + 786;
    end MP_UML_Reply_Action_Reply_To_Call_A_Reply_Action;
 
    ----------------------------------------------------
@@ -6919,7 +6919,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reply_Action_Reply_Value_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 450;
+      return Base + 446;
    end MP_UML_Reply_Action_Reply_Value_A_Reply_Action;
 
    -----------------------------------------------------------
@@ -6928,7 +6928,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Reply_Action_Return_Information_A_Reply_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 791;
+      return Base + 787;
    end MP_UML_Reply_Action_Return_Information_A_Reply_Action;
 
    ------------------------------------------------------------
@@ -6937,7 +6937,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Send_Object_Action_Request_A_Send_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 451;
+      return Base + 788;
    end MP_UML_Send_Object_Action_Request_A_Send_Object_Action;
 
    -----------------------------------------------------------
@@ -6946,7 +6946,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Send_Object_Action_Target_A_Send_Object_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 792;
+      return Base + 789;
    end MP_UML_Send_Object_Action_Target_A_Send_Object_Action;
 
    -----------------------------------------------------------
@@ -6955,7 +6955,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Send_Signal_Action_Signal_A_Send_Signal_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 793;
+      return Base + 790;
    end MP_UML_Send_Signal_Action_Signal_A_Send_Signal_Action;
 
    -----------------------------------------------------------
@@ -6964,7 +6964,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Send_Signal_Action_Target_A_Send_Signal_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 794;
+      return Base + 791;
    end MP_UML_Send_Signal_Action_Target_A_Send_Signal_Action;
 
    ----------------------------------------------------------
@@ -6973,7 +6973,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 452;
+      return Base + 447;
    end MP_UML_Sequence_Node_Executable_Node_A_Sequence_Node;
 
    ---------------------------------------------------
@@ -6982,7 +6982,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Signal_Owned_Attribute_A_Owning_Signal return AMF.Internals.CMOF_Element is
    begin
-      return Base + 453;
+      return Base + 448;
    end MP_UML_Signal_Owned_Attribute_A_Owning_Signal;
 
    -----------------------------------------------
@@ -6991,7 +6991,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Signal_Event_Signal_A_Signal_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 795;
+      return Base + 792;
    end MP_UML_Signal_Event_Signal_A_Signal_Event;
 
    -----------------------------------------
@@ -7000,7 +7000,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Slot_Defining_Feature_A_Slot return AMF.Internals.CMOF_Element is
    begin
-      return Base + 796;
+      return Base + 793;
    end MP_UML_Slot_Defining_Feature_A_Slot;
 
    -------------------------------------------------------------
@@ -7009,7 +7009,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Slot_Owning_Instance_Instance_Specification_Slot return AMF.Internals.CMOF_Element is
    begin
-      return Base + 797;
+      return Base + 794;
    end MP_UML_Slot_Owning_Instance_Instance_Specification_Slot;
 
    -------------------------------------
@@ -7018,7 +7018,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Slot_Value_A_Owning_Slot return AMF.Internals.CMOF_Element is
    begin
-      return Base + 454;
+      return Base + 449;
    end MP_UML_Slot_Value_A_Owning_Slot;
 
    ---------------------------------------------------------------------------------------
@@ -7027,7 +7027,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Start_Classifier_Behavior_Action_Object_A_Start_Classifier_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 798;
+      return Base + 795;
    end MP_UML_Start_Classifier_Behavior_Action_Object_A_Start_Classifier_Behavior_Action;
 
    -------------------------------------------------------------------------------
@@ -7036,7 +7036,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Start_Object_Behavior_Action_Object_A_Start_Object_Behavior_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 799;
+      return Base + 796;
    end MP_UML_Start_Object_Behavior_Action_Object_A_Start_Object_Behavior_Action;
 
    --------------------------------------------------------------
@@ -7045,7 +7045,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Connection_Connection_Point_Reference_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 455;
+      return Base + 450;
    end MP_UML_State_Connection_Connection_Point_Reference_State;
 
    -----------------------------------------------------
@@ -7054,7 +7054,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Connection_Point_Pseudostate_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 456;
+      return Base + 451;
    end MP_UML_State_Connection_Point_Pseudostate_State;
 
    ---------------------------------------------
@@ -7063,7 +7063,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Deferrable_Trigger_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 457;
+      return Base + 452;
    end MP_UML_State_Deferrable_Trigger_A_State;
 
    --------------------------------------
@@ -7072,7 +7072,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Do_Activity_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 800;
+      return Base + 797;
    end MP_UML_State_Do_Activity_A_State;
 
    --------------------------------
@@ -7081,7 +7081,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Entry_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 801;
+      return Base + 798;
    end MP_UML_State_Entry_A_State;
 
    -------------------------------
@@ -7090,7 +7090,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Exit_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 802;
+      return Base + 799;
    end MP_UML_State_Exit_A_State;
 
    -------------------------------
@@ -7099,7 +7099,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Is_Composite return AMF.Internals.CMOF_Element is
    begin
-      return Base + 803;
+      return Base + 800;
    end MP_UML_State_Is_Composite;
 
    --------------------------------
@@ -7108,7 +7108,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Is_Orthogonal return AMF.Internals.CMOF_Element is
    begin
-      return Base + 804;
+      return Base + 801;
    end MP_UML_State_Is_Orthogonal;
 
    ----------------------------
@@ -7117,7 +7117,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Is_Simple return AMF.Internals.CMOF_Element is
    begin
-      return Base + 805;
+      return Base + 802;
    end MP_UML_State_Is_Simple;
 
    --------------------------------------
@@ -7126,7 +7126,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Is_Submachine_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 806;
+      return Base + 803;
    end MP_UML_State_Is_Submachine_State;
 
    ------------------------------------------
@@ -7135,7 +7135,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Redefined_State_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 807;
+      return Base + 804;
    end MP_UML_State_Redefined_State_A_State;
 
    -----------------------------------------------
@@ -7144,7 +7144,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Redefinition_Context_A_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 458;
+      return Base + 805;
    end MP_UML_State_Redefinition_Context_A_State;
 
    --------------------------------------
@@ -7153,7 +7153,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Region_Region_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 459;
+      return Base + 453;
    end MP_UML_State_Region_Region_State;
 
    -------------------------------------------------
@@ -7162,7 +7162,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_State_Invariant_A_Owning_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 808;
+      return Base + 806;
    end MP_UML_State_State_Invariant_A_Owning_State;
 
    ------------------------------------------------------------
@@ -7171,7 +7171,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Submachine_State_Machine_Submachine_State return AMF.Internals.CMOF_Element is
    begin
-      return Base + 809;
+      return Base + 807;
    end MP_UML_State_Submachine_State_Machine_Submachine_State;
 
    ------------------------------------------------------
@@ -7180,7 +7180,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Invariant_Covered_A_State_Invariant return AMF.Internals.CMOF_Element is
    begin
-      return Base + 460;
+      return Base + 808;
    end MP_UML_State_Invariant_Covered_A_State_Invariant;
 
    --------------------------------------------------------
@@ -7189,7 +7189,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Invariant_Invariant_A_State_Invariant return AMF.Internals.CMOF_Element is
    begin
-      return Base + 810;
+      return Base + 809;
    end MP_UML_State_Invariant_Invariant_A_State_Invariant;
 
    ---------------------------------------------------------------------
@@ -7198,7 +7198,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Machine_Connection_Point_Pseudostate_State_Machine return AMF.Internals.CMOF_Element is
    begin
-      return Base + 461;
+      return Base + 454;
    end MP_UML_State_Machine_Connection_Point_Pseudostate_State_Machine;
 
    -----------------------------------------------------------------
@@ -7207,7 +7207,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Machine_Extended_State_Machine_A_State_Machine return AMF.Internals.CMOF_Element is
    begin
-      return Base + 462;
+      return Base + 455;
    end MP_UML_State_Machine_Extended_State_Machine_A_State_Machine;
 
    ------------------------------------------------------
@@ -7216,7 +7216,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Machine_Region_Region_State_Machine return AMF.Internals.CMOF_Element is
    begin
-      return Base + 463;
+      return Base + 456;
    end MP_UML_State_Machine_Region_Region_State_Machine;
 
    ------------------------------------------------------------
@@ -7225,7 +7225,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_State_Machine_Submachine_State_State_Submachine return AMF.Internals.CMOF_Element is
    begin
-      return Base + 464;
+      return Base + 457;
    end MP_UML_State_Machine_Submachine_State_State_Submachine;
 
    -----------------------------------------
@@ -7234,7 +7234,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Stereotype_Icon_A_Stereotype return AMF.Internals.CMOF_Element is
    begin
-      return Base + 465;
+      return Base + 458;
    end MP_UML_Stereotype_Icon_A_Stereotype;
 
    --------------------------------------------
@@ -7243,7 +7243,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Stereotype_Profile_A_Stereotype return AMF.Internals.CMOF_Element is
    begin
-      return Base + 811;
+      return Base + 810;
    end MP_UML_Stereotype_Profile_A_Stereotype;
 
    ---------------------------------------------------------------------------------
@@ -7252,7 +7252,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_String_Expression_Owning_Expression_String_Expression_Sub_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 812;
+      return Base + 811;
    end MP_UML_String_Expression_Owning_Expression_String_Expression_Sub_Expression;
 
    ---------------------------------------------------------------------------------
@@ -7261,7 +7261,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_String_Expression_Sub_Expression_String_Expression_Owning_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 466;
+      return Base + 459;
    end MP_UML_String_Expression_Sub_Expression_String_Expression_Owning_Expression;
 
    --------------------------------------------
@@ -7270,7 +7270,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structural_Feature_Is_Read_Only return AMF.Internals.CMOF_Element is
    begin
-      return Base + 813;
+      return Base + 812;
    end MP_UML_Structural_Feature_Is_Read_Only;
 
    -------------------------------------------------------------------------
@@ -7279,7 +7279,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structural_Feature_Action_Object_A_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 814;
+      return Base + 813;
    end MP_UML_Structural_Feature_Action_Object_A_Structural_Feature_Action;
 
    -------------------------------------------------------------------------------------
@@ -7288,7 +7288,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structural_Feature_Action_Structural_Feature_A_Structural_Feature_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 815;
+      return Base + 814;
    end MP_UML_Structural_Feature_Action_Structural_Feature_A_Structural_Feature_Action;
 
    -----------------------------------------------------------------------
@@ -7297,7 +7297,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 816;
+      return Base + 815;
    end MP_UML_Structured_Activity_Node_Activity_Activity_Structured_Node;
 
    ---------------------------------------------------------------------------
@@ -7306,7 +7306,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 467;
+      return Base + 460;
    end MP_UML_Structured_Activity_Node_Edge_Activity_Edge_In_Structured_Node;
 
    --------------------------------------------------
@@ -7315,7 +7315,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Must_Isolate return AMF.Internals.CMOF_Element is
    begin
-      return Base + 817;
+      return Base + 816;
    end MP_UML_Structured_Activity_Node_Must_Isolate;
 
    ---------------------------------------------------------------------------
@@ -7324,7 +7324,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Node_Activity_Node_In_Structured_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 468;
+      return Base + 461;
    end MP_UML_Structured_Activity_Node_Node_Activity_Node_In_Structured_Node;
 
    --------------------------------------------------------------------------------------
@@ -7333,7 +7333,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Structured_Node_Input_A_Structured_Activity_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 469;
+      return Base + 462;
    end MP_UML_Structured_Activity_Node_Structured_Node_Input_A_Structured_Activity_Node;
 
    ---------------------------------------------------------------------------------------
@@ -7342,7 +7342,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Structured_Node_Output_A_Structured_Activity_Node return AMF.Internals.CMOF_Element is
    begin
-      return Base + 470;
+      return Base + 463;
    end MP_UML_Structured_Activity_Node_Structured_Node_Output_A_Structured_Activity_Node;
 
    -------------------------------------------------------------
@@ -7351,7 +7351,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Activity_Node_Variable_Variable_Scope return AMF.Internals.CMOF_Element is
    begin
-      return Base + 471;
+      return Base + 464;
    end MP_UML_Structured_Activity_Node_Variable_Variable_Scope;
 
    --------------------------------------------------------------------------
@@ -7360,7 +7360,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 472;
+      return Base + 465;
    end MP_UML_Structured_Classifier_Owned_Attribute_A_Structured_Classifier;
 
    --------------------------------------------------------------------------
@@ -7369,7 +7369,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Classifier_Owned_Connector_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 473;
+      return Base + 466;
    end MP_UML_Structured_Classifier_Owned_Connector_A_Structured_Classifier;
 
    ---------------------------------------------------------------
@@ -7378,7 +7378,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Classifier_Part_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 474;
+      return Base + 467;
    end MP_UML_Structured_Classifier_Part_A_Structured_Classifier;
 
    ---------------------------------------------------------------
@@ -7387,7 +7387,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Structured_Classifier_Role_A_Structured_Classifier return AMF.Internals.CMOF_Element is
    begin
-      return Base + 475;
+      return Base + 468;
    end MP_UML_Structured_Classifier_Role_A_Structured_Classifier;
 
    -------------------------------------------------
@@ -7396,7 +7396,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Substitution_Contract_A_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 818;
+      return Base + 817;
    end MP_UML_Substitution_Contract_A_Substitution;
 
    -------------------------------------------------------------------------
@@ -7405,7 +7405,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Substitution_Substituting_Classifier_Classifier_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 819;
+      return Base + 818;
    end MP_UML_Substitution_Substituting_Classifier_Classifier_Substitution;
 
    ---------------------------------------------------------------------------------
@@ -7414,7 +7414,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Binding_Bound_Element_Templateable_Element_Template_Binding return AMF.Internals.CMOF_Element is
    begin
-      return Base + 820;
+      return Base + 819;
    end MP_UML_Template_Binding_Bound_Element_Templateable_Element_Template_Binding;
 
    -----------------------------------------------------------------------------------------------------
@@ -7423,7 +7423,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Binding_Parameter_Substitution_Template_Parameter_Substitution_Template_Binding return AMF.Internals.CMOF_Element is
    begin
-      return Base + 476;
+      return Base + 469;
    end MP_UML_Template_Binding_Parameter_Substitution_Template_Parameter_Substitution_Template_Binding;
 
    ----------------------------------------------------------
@@ -7432,7 +7432,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Binding_Signature_A_Template_Binding return AMF.Internals.CMOF_Element is
    begin
-      return Base + 821;
+      return Base + 820;
    end MP_UML_Template_Binding_Signature_A_Template_Binding;
 
    ------------------------------------------------------------
@@ -7441,7 +7441,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Default_A_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 822;
+      return Base + 821;
    end MP_UML_Template_Parameter_Default_A_Template_Parameter;
 
    ------------------------------------------------------------------
@@ -7450,7 +7450,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Owned_Default_A_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 823;
+      return Base + 822;
    end MP_UML_Template_Parameter_Owned_Default_A_Template_Parameter;
 
    ---------------------------------------------------------------------------------------------------------
@@ -7459,7 +7459,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Owned_Parametered_Element_Parameterable_Element_Owning_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 824;
+      return Base + 823;
    end MP_UML_Template_Parameter_Owned_Parametered_Element_Parameterable_Element_Owning_Template_Parameter;
 
    --------------------------------------------------------------------------------------------
@@ -7468,7 +7468,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Parametered_Element_Parameterable_Element_Template_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 825;
+      return Base + 824;
    end MP_UML_Template_Parameter_Parametered_Element_Parameterable_Element_Template_Parameter;
 
    ----------------------------------------------------------------------------
@@ -7477,7 +7477,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Signature_Template_Signature_Owned_Parameter return AMF.Internals.CMOF_Element is
    begin
-      return Base + 826;
+      return Base + 825;
    end MP_UML_Template_Parameter_Signature_Template_Signature_Owned_Parameter;
 
    -------------------------------------------------------------------------------------
@@ -7486,7 +7486,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Substitution_Actual_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 827;
+      return Base + 826;
    end MP_UML_Template_Parameter_Substitution_Actual_A_Template_Parameter_Substitution;
 
    -------------------------------------------------------------------------------------
@@ -7495,7 +7495,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Substitution_Formal_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 828;
+      return Base + 827;
    end MP_UML_Template_Parameter_Substitution_Formal_A_Template_Parameter_Substitution;
 
    -------------------------------------------------------------------------------------------
@@ -7504,7 +7504,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Substitution_Owned_Actual_A_Template_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 829;
+      return Base + 828;
    end MP_UML_Template_Parameter_Substitution_Owned_Actual_A_Template_Parameter_Substitution;
 
    -----------------------------------------------------------------------------------------------------
@@ -7513,7 +7513,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Parameter_Substitution_Template_Binding_Template_Binding_Parameter_Substitution return AMF.Internals.CMOF_Element is
    begin
-      return Base + 830;
+      return Base + 829;
    end MP_UML_Template_Parameter_Substitution_Template_Binding_Template_Binding_Parameter_Substitution;
 
    ----------------------------------------------------------------------------
@@ -7522,7 +7522,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Signature_Owned_Parameter_Template_Parameter_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 477;
+      return Base + 470;
    end MP_UML_Template_Signature_Owned_Parameter_Template_Parameter_Signature;
 
    --------------------------------------------------------------
@@ -7531,7 +7531,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Signature_Parameter_A_Template_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 478;
+      return Base + 471;
    end MP_UML_Template_Signature_Parameter_A_Template_Signature;
 
    --------------------------------------------------------------------------------------
@@ -7540,7 +7540,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Template_Signature_Template_Templateable_Element_Owned_Template_Signature return AMF.Internals.CMOF_Element is
    begin
-      return Base + 831;
+      return Base + 830;
    end MP_UML_Template_Signature_Template_Templateable_Element_Owned_Template_Signature;
 
    --------------------------------------------------------------------------------------
@@ -7549,7 +7549,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template return AMF.Internals.CMOF_Element is
    begin
-      return Base + 832;
+      return Base + 831;
    end MP_UML_Templateable_Element_Owned_Template_Signature_Template_Signature_Template;
 
    ---------------------------------------------------------------------------------
@@ -7558,7 +7558,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 479;
+      return Base + 472;
    end MP_UML_Templateable_Element_Template_Binding_Template_Binding_Bound_Element;
 
    --------------------------------------------------------------
@@ -7567,7 +7567,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Test_Identity_Action_First_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 833;
+      return Base + 832;
    end MP_UML_Test_Identity_Action_First_A_Test_Identity_Action;
 
    ---------------------------------------------------------------
@@ -7576,7 +7576,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Test_Identity_Action_Result_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 834;
+      return Base + 833;
    end MP_UML_Test_Identity_Action_Result_A_Test_Identity_Action;
 
    ---------------------------------------------------------------
@@ -7585,7 +7585,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Test_Identity_Action_Second_A_Test_Identity_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 835;
+      return Base + 834;
    end MP_UML_Test_Identity_Action_Second_A_Test_Identity_Action;
 
    ----------------------------------------
@@ -7594,7 +7594,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Constraint_First_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 836;
+      return Base + 835;
    end MP_UML_Time_Constraint_First_Event;
 
    ------------------------------------------------------------
@@ -7603,7 +7603,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Constraint_Specification_A_Time_Constraint return AMF.Internals.CMOF_Element is
    begin
-      return Base + 837;
+      return Base + 836;
    end MP_UML_Time_Constraint_Specification_A_Time_Constraint;
 
    -----------------------------------
@@ -7612,7 +7612,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Event_Is_Relative return AMF.Internals.CMOF_Element is
    begin
-      return Base + 838;
+      return Base + 837;
    end MP_UML_Time_Event_Is_Relative;
 
    -----------------------------------------
@@ -7621,7 +7621,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Event_When_A_Time_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 839;
+      return Base + 838;
    end MP_UML_Time_Event_When_A_Time_Event;
 
    ---------------------------------------------------
@@ -7630,7 +7630,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Expression_Expr_A_Time_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 840;
+      return Base + 839;
    end MP_UML_Time_Expression_Expr_A_Time_Expression;
 
    ----------------------------------------------------------
@@ -7639,7 +7639,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Expression_Observation_A_Time_Expression return AMF.Internals.CMOF_Element is
    begin
-      return Base + 480;
+      return Base + 473;
    end MP_UML_Time_Expression_Observation_A_Time_Expression;
 
    ----------------------------------------------
@@ -7648,7 +7648,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Interval_Max_A_Time_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 841;
+      return Base + 840;
    end MP_UML_Time_Interval_Max_A_Time_Interval;
 
    ----------------------------------------------
@@ -7657,7 +7657,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Interval_Min_A_Time_Interval return AMF.Internals.CMOF_Element is
    begin
-      return Base + 842;
+      return Base + 841;
    end MP_UML_Time_Interval_Min_A_Time_Interval;
 
    ------------------------------------------------------
@@ -7666,7 +7666,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Observation_Event_A_Time_Observation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 843;
+      return Base + 842;
    end MP_UML_Time_Observation_Event_A_Time_Observation;
 
    -----------------------------------------
@@ -7675,7 +7675,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Time_Observation_First_Event return AMF.Internals.CMOF_Element is
    begin
-      return Base + 844;
+      return Base + 843;
    end MP_UML_Time_Observation_First_Event;
 
    ---------------------------------------------------
@@ -7684,7 +7684,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Container_Region_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 845;
+      return Base + 844;
    end MP_UML_Transition_Container_Region_Transition;
 
    -------------------------------------------
@@ -7693,7 +7693,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Effect_A_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 846;
+      return Base + 845;
    end MP_UML_Transition_Effect_A_Transition;
 
    ------------------------------------------
@@ -7702,7 +7702,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Guard_A_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 847;
+      return Base + 846;
    end MP_UML_Transition_Guard_A_Transition;
 
    ----------------------------
@@ -7711,7 +7711,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 848;
+      return Base + 847;
    end MP_UML_Transition_Kind;
 
    ---------------------------------------------------------
@@ -7720,7 +7720,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Redefined_Transition_A_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 849;
+      return Base + 848;
    end MP_UML_Transition_Redefined_Transition_A_Transition;
 
    ---------------------------------------------------------
@@ -7729,7 +7729,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Redefinition_Context_A_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 481;
+      return Base + 849;
    end MP_UML_Transition_Redefinition_Context_A_Transition;
 
    ----------------------------------------------
@@ -7756,7 +7756,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Transition_Trigger_A_Transition return AMF.Internals.CMOF_Element is
    begin
-      return Base + 482;
+      return Base + 474;
    end MP_UML_Transition_Trigger_A_Transition;
 
    ------------------------------------
@@ -7774,7 +7774,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Trigger_Port_A_Trigger return AMF.Internals.CMOF_Element is
    begin
-      return Base + 483;
+      return Base + 475;
    end MP_UML_Trigger_Port_A_Trigger;
 
    --------------------------------------------
@@ -7810,7 +7810,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Unmarshall_Action_Result_A_Unmarshall_Action return AMF.Internals.CMOF_Element is
    begin
-      return Base + 484;
+      return Base + 476;
    end MP_UML_Unmarshall_Action_Result_A_Unmarshall_Action;
 
    ------------------------------------------------------------------
@@ -7828,7 +7828,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Use_Case_Extend_Extend_Extension return AMF.Internals.CMOF_Element is
    begin
-      return Base + 485;
+      return Base + 477;
    end MP_UML_Use_Case_Extend_Extend_Extension;
 
    --------------------------------------------------------------
@@ -7837,7 +7837,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Use_Case_Extension_Point_Extension_Point_Use_Case return AMF.Internals.CMOF_Element is
    begin
-      return Base + 486;
+      return Base + 478;
    end MP_UML_Use_Case_Extension_Point_Extension_Point_Use_Case;
 
    ----------------------------------------------------
@@ -7846,7 +7846,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Use_Case_Include_Include_Including_Case return AMF.Internals.CMOF_Element is
    begin
-      return Base + 487;
+      return Base + 479;
    end MP_UML_Use_Case_Include_Include_Including_Case;
 
    -------------------------------------------------
@@ -7855,7 +7855,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Use_Case_Subject_Classifier_Use_Case return AMF.Internals.CMOF_Element is
    begin
-      return Base + 488;
+      return Base + 480;
    end MP_UML_Use_Case_Subject_Classifier_Use_Case;
 
    ----------------------------------------
@@ -7927,7 +7927,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Vertex_Incoming_Transition_Target return AMF.Internals.CMOF_Element is
    begin
-      return Base + 489;
+      return Base + 481;
    end MP_UML_Vertex_Incoming_Transition_Target;
 
    ----------------------------------------------
@@ -7936,7 +7936,7 @@ package body AMF.Internals.Tables.UML_Metamodel is
 
    function MP_UML_Vertex_Outgoing_Transition_Source return AMF.Internals.CMOF_Element is
    begin
-      return Base + 490;
+      return Base + 482;
    end MP_UML_Vertex_Outgoing_Transition_Source;
 
    -------------------------------------------------------------------------------------

@@ -403,7 +403,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame return AMF.Internals.CMOF_Element is
    begin
-      return Base + 37;
+      return Base + 39;
    end MP_UMLDI_UML_Activity_Diagram_Is_Activity_Frame;
 
    -----------------------------------------------------------------------
@@ -412,7 +412,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 38;
+      return Base + 40;
    end MP_UMLDI_UML_Activity_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    ----------------------------------------------------------------------------
@@ -421,7 +421,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 39;
+      return Base + 41;
    end MP_UMLDI_UML_Association_End_Label_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------
@@ -430,7 +430,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 40;
+      return Base + 42;
    end MP_UMLDI_UML_Association_Or_Connector_Or_Link_Shape_Kind;
 
    -----------------------------------------------------------------------
@@ -439,7 +439,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 41;
+      return Base + 43;
    end MP_UMLDI_UML_Behavior_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------------------------
@@ -448,7 +448,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown return AMF.Internals.CMOF_Element is
    begin
-      return Base + 42;
+      return Base + 44;
    end MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Is_Association_Dot_Shown;
 
    -----------------------------------------------------------------------------
@@ -457,7 +457,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 43;
+      return Base + 45;
    end MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Navigability_Notation;
 
    ---------------------------------------------------------------------------------
@@ -466,7 +466,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation return AMF.Internals.CMOF_Element is
    begin
-      return Base + 44;
+      return Base + 46;
    end MP_UMLDI_UML_Class_Or_Composite_Structure_Diagram_Non_Navigability_Notation;
 
    ---------------------------------------------------
@@ -475,7 +475,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Classifier_Shape_Is_Double_Sided return AMF.Internals.CMOF_Element is
    begin
-      return Base + 45;
+      return Base + 47;
    end MP_UMLDI_UML_Classifier_Shape_Is_Double_Sided;
 
    ------------------------------------------------------------
@@ -484,7 +484,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility return AMF.Internals.CMOF_Element is
    begin
-      return Base + 46;
+      return Base + 48;
    end MP_UMLDI_UML_Classifier_Shape_Is_Indent_For_Visibility;
 
    -----------------------------------------------------------------------
@@ -493,7 +493,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 47;
+      return Base + 49;
    end MP_UMLDI_UML_Classifier_Shape_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------------------
@@ -520,7 +520,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Heading_A_Headed_Diagram return AMF.Internals.CMOF_Element is
    begin
-      return Base + 48;
+      return Base + 50;
    end MP_UMLDI_UML_Diagram_Heading_A_Headed_Diagram;
 
    -----------------------------------
@@ -529,7 +529,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Is_Frame return AMF.Internals.CMOF_Element is
    begin
-      return Base + 49;
+      return Base + 51;
    end MP_UMLDI_UML_Diagram_Is_Frame;
 
    ---------------------------------
@@ -538,7 +538,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Is_Iso return AMF.Internals.CMOF_Element is
    begin
-      return Base + 50;
+      return Base + 52;
    end MP_UMLDI_UML_Diagram_Is_Iso;
 
    ------------------------------------------
@@ -547,7 +547,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Is_Icon return AMF.Internals.CMOF_Element is
    begin
-      return Base + 51;
+      return Base + 53;
    end MP_UMLDI_UML_Diagram_Element_Is_Icon;
 
    ---------------------------------------------------------------
@@ -556,7 +556,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 52;
+      return Base + 54;
    end MP_UMLDI_UML_Diagram_Element_Local_Style_A_Styled_Element;
 
    ----------------------------------------------------------------------
@@ -565,7 +565,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 53;
+      return Base + 36;
    end MP_UMLDI_UML_Diagram_Element_Model_Element_A_Uml_Diagram_Element;
 
    -----------------------------------------------------------------------------------
@@ -574,7 +574,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 36;
+      return Base + 37;
    end MP_UMLDI_UML_Diagram_Element_Owned_Element_UML_Diagram_Element_Owning_Element;
 
    -----------------------------------------------------------------------------------
@@ -583,7 +583,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 54;
+      return Base + 55;
    end MP_UMLDI_UML_Diagram_Element_Owning_Element_UML_Diagram_Element_Owned_Element;
 
    ----------------------------------------------------------------
@@ -592,7 +592,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 55;
+      return Base + 56;
    end MP_UMLDI_UML_Diagram_Element_Shared_Style_A_Styled_Element;
 
    --------------------------------------------
@@ -601,7 +601,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Edge_Source_A_Source_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 56;
+      return Base + 57;
    end MP_UMLDI_UML_Edge_Source_A_Source_Edge;
 
    --------------------------------------------
@@ -610,7 +610,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Edge_Target_A_Target_Edge return AMF.Internals.CMOF_Element is
    begin
-      return Base + 57;
+      return Base + 58;
    end MP_UMLDI_UML_Edge_Target_A_Target_Edge;
 
    -------------------------------------------
@@ -619,7 +619,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Interaction_Diagram_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 58;
+      return Base + 59;
    end MP_UMLDI_UML_Interaction_Diagram_Kind;
 
    --------------------------------------------------------------------------
@@ -628,7 +628,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 59;
+      return Base + 60;
    end MP_UMLDI_UML_Interaction_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    -----------------------------------------------
@@ -637,7 +637,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Interaction_Table_Label_Kind return AMF.Internals.CMOF_Element is
    begin
-      return Base + 60;
+      return Base + 61;
    end MP_UMLDI_UML_Interaction_Table_Label_Kind;
 
    -----------------------------
@@ -646,7 +646,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Label_Text return AMF.Internals.CMOF_Element is
    begin
-      return Base + 61;
+      return Base + 62;
    end MP_UMLDI_UML_Label_Text;
 
    -------------------------------------------------------------------------
@@ -655,7 +655,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 62;
+      return Base + 63;
    end MP_UMLDI_UML_Multiplicity_Label_Model_Element_A_Uml_Diagram_Element;
 
    ----------------------------------------------------------------
@@ -664,7 +664,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 63;
+      return Base + 64;
    end MP_UMLDI_UML_Name_Label_Mode_Element_A_Uml_Diagram_Element;
 
    ----------------------------------------------------------------------
@@ -673,7 +673,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 64;
+      return Base + 65;
    end MP_UMLDI_UML_Redefines_Label_Model_Element_A_Uml_Diagram_Element;
 
    ---------------------------------------------------------------
@@ -682,7 +682,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border return AMF.Internals.CMOF_Element is
    begin
-      return Base + 65;
+      return Base + 66;
    end MP_UMLDI_UML_State_Machine_Diagram_Inherited_State_Border;
 
    ---------------------------------------------------------------
@@ -691,7 +691,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Machine_Diagram_Is_Collapse_State_Icon return AMF.Internals.CMOF_Element is
    begin
-      return Base + 66;
+      return Base + 67;
    end MP_UMLDI_UML_State_Machine_Diagram_Is_Collapse_State_Icon;
 
    ---------------------------------------------------------------
@@ -700,7 +700,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented return AMF.Internals.CMOF_Element is
    begin
-      return Base + 67;
+      return Base + 68;
    end MP_UMLDI_UML_State_Machine_Diagram_Is_Transition_Oriented;
 
    ----------------------------------------------------------------------------
@@ -709,7 +709,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 68;
+      return Base + 69;
    end MP_UMLDI_UML_State_Machine_Diagram_Model_Element_A_Uml_Diagram_Element;
 
    ----------------------------------------
@@ -718,7 +718,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Shape_Is_Tabbed return AMF.Internals.CMOF_Element is
    begin
-      return Base + 69;
+      return Base + 70;
    end MP_UMLDI_UML_State_Shape_Is_Tabbed;
 
    ------------------------------------------------------------------
@@ -727,7 +727,7 @@ package body AMF.Internals.Tables.UMLDI_Metamodel is
 
    function MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element return AMF.Internals.CMOF_Element is
    begin
-      return Base + 70;
+      return Base + 38;
    end MP_UMLDI_UML_State_Shape_Model_Element_A_Uml_Diagram_Element;
 
    --------------------------------------------------------------------------------------
