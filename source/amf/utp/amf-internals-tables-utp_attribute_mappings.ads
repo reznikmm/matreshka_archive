@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -123,20 +123,20 @@ package AMF.Internals.Tables.UTP_Attribute_Mappings is
         (AMF.Internals.Tables.UTP_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Coding_Rule =>
-          (32     => 3,     --  CodingRule::base_Namespace
-           33     => 1,     --  CodingRule::base_Property
-           34     => 2,     --  CodingRule::base_ValueSpecification
+          (32     => 2,     --  CodingRule::base_Namespace
+           33     => 3,     --  CodingRule::base_Property
+           34     => 1,     --  CodingRule::base_ValueSpecification
            35     => 4,     --  CodingRule::coding
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Data_Partition =>
-          (36     => 2,     --  DataPartition::base_Classifier
+          (36     => 1,     --  DataPartition::base_Classifier
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Data_Pool =>
-          (37     => 2,     --  DataPool::base_Classifier
-           38     => 1,     --  DataPool::base_Property
+          (37     => 1,     --  DataPool::base_Classifier
+           38     => 2,     --  DataPool::base_Property
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Data_Selector =>
-          (39     => 5,     --  DataSelector::base_Operation
+          (39     => 1,     --  DataSelector::base_Operation
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Default =>
           (40     => 1,     --  Default::base_Behavior
@@ -187,22 +187,22 @@ package AMF.Internals.Tables.UTP_Attribute_Mappings is
           (59     => 1,     --  StopTimerAction::base_CallOperationAction
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Case =>
-          (60     => 1,     --  TestCase::base_Behavior
+          (60     => 4,     --  TestCase::base_Behavior
            61     => 5,     --  TestCase::base_Operation
-           62     => 3,     --  TestCase::compatibleSUTVariant
-           63     => 2,     --  TestCase::compatibleSUTVersion
-           64     => 4,     --  TestCase::priority
+           62     => 2,     --  TestCase::compatibleSUTVariant
+           63     => 1,     --  TestCase::compatibleSUTVersion
+           64     => 3,     --  TestCase::priority
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Component =>
-          (65     => 1,     --  TestComponent::base_StructuredClassifier
-           66     => 3,     --  TestComponent::compatibleSUTVariant
-           67     => 2,     --  TestComponent::compatibleSUTVersion
+          (65     => 3,     --  TestComponent::base_StructuredClassifier
+           66     => 2,     --  TestComponent::compatibleSUTVariant
+           67     => 1,     --  TestComponent::compatibleSUTVersion
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Context =>
           (68     => 4,     --  TestContext::base_BehavioredClassifier
-           69     => 1,     --  TestContext::base_StructuredClassifier
-           70     => 3,     --  TestContext::compatibleSUTVariant
-           71     => 2,     --  TestContext::compatibleSUTVersion
+           69     => 3,     --  TestContext::base_StructuredClassifier
+           70     => 2,     --  TestContext::compatibleSUTVariant
+           71     => 1,     --  TestContext::compatibleSUTVersion
            72     => 5,     --  TestContext::testLevel
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Log =>
@@ -219,11 +219,11 @@ package AMF.Internals.Tables.UTP_Attribute_Mappings is
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Objective =>
           (81     => 1,     --  TestObjective::base_Dependency
-           82     => 4,     --  TestObjective::priority
+           82     => 3,     --  TestObjective::priority
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Test_Suite =>
           (83     => 1,     --  TestSuite::base_Behavior
-           84     => 4,     --  TestSuite::priority
+           84     => 3,     --  TestSuite::priority
            others => 0),
          AMF.Internals.Tables.UTP_Types.E_Utp_Time_Out =>
           (85     => 1,     --  TimeOut::base_TimeEvent
