@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -125,6 +125,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -135,8 +137,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -402,7 +406,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Bag_Types.OCL_Bag_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  elementType
           12     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
                        --  isAbstract
@@ -416,6 +420,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -426,8 +432,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -894,7 +902,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Collection_Types.OCL_Collection_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  elementType
           12     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
                        --  isAbstract
@@ -908,6 +916,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -918,8 +928,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -1188,9 +1200,9 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Expression_In_Ocls.OCL_Expression_In_Ocl_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          11     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  behavior
-          12     => (AMF.Internals.Tables.OCL_Types.M_Collection_Of_String, 0),
+          11     => (AMF.Internals.Tables.OCL_Types.M_Collection_Of_String, 0),
                        --  body
           14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  bodyExpression
@@ -1198,7 +1210,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  contextVariable
           17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  generatedType
-          13     => (AMF.Internals.Tables.OCL_Types.M_Collection_Of_String, 0),
+          12     => (AMF.Internals.Tables.OCL_Types.M_Collection_Of_String, 0),
                        --  language
           2      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  name
@@ -1212,7 +1224,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  owningTemplateParameter
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          13     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  result
           16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  resultVariable
@@ -1479,6 +1491,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1489,8 +1503,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -1979,6 +1995,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -1989,12 +2007,14 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          18     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  referredOperation
-          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  referredSignal
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -2257,7 +2277,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  owner
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  referredOperation
           8      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  source
@@ -2319,7 +2339,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Ordered_Set_Types.OCL_Ordered_Set_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  elementType
           12     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
                        --  isAbstract
@@ -2333,6 +2353,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -2343,8 +2365,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -2687,7 +2711,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Sequence_Types.OCL_Sequence_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  elementType
           12     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
                        --  isAbstract
@@ -2701,6 +2725,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -2711,8 +2737,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -2918,7 +2946,7 @@ package body AMF.Internals.Tables.OCL_Constructors is
           new AMF.Internals.OCL_Set_Types.OCL_Set_Type_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.OCL_Types.M_None),
-          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          17     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  elementType
           12     => (AMF.Internals.Tables.OCL_Types.M_Boolean, False),
                        --  isAbstract
@@ -2932,6 +2960,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -2942,8 +2972,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -3287,6 +3319,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -3297,10 +3331,12 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
-          15     => (AMF.Internals.Tables.OCL_Types.M_String, null),
+          17     => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  specification
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -3635,6 +3671,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -3645,8 +3683,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),
@@ -4179,6 +4219,8 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  nameExpression
           4      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  namespace
+          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  ownedTemplateSignature
           10     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  ownedTemplateSignature
           1      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
@@ -4189,8 +4231,10 @@ package body AMF.Internals.Tables.OCL_Constructors is
                        --  package
           5      => (AMF.Internals.Tables.OCL_Types.M_String, null),
                        --  qualifiedName
-          14     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+          15     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  representation
+          16     => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
+                       --  templateParameter
           9      => (AMF.Internals.Tables.OCL_Types.M_Element, No_AMF_Link),
                        --  templateParameter
           6      => (AMF.Internals.Tables.OCL_Types.M_Visibility_Kind_Holder, (False, AMF.UML.Public_Visibility)),

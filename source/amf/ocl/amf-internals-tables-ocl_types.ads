@@ -147,7 +147,7 @@ package AMF.Internals.Tables.OCL_Types is
       end case;
    end record;
 
-   type Member_Array is array (Natural range 0 .. 17) of Member_Record;
+   type Member_Array is array (Natural range 0 .. 18) of Member_Record;
 
    type Element_Record is record
       Kind   : Element_Kinds := E_None;
