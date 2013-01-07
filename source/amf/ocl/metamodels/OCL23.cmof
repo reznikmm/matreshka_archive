@@ -367,7 +367,7 @@
       <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
     </packagedElement>
     <packagedElement xmi:type='cmof:Class' xmi:id='MessageType' name='MessageType' visibility='public'>
-      <general xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
+      <superClass xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Classifier'/>
       <ownedAttribute xmi:type='cmof:Property' xmi:id='_17_0_1_bc902f8_1329389513855_352728_3658' name='referredSignal' visibility='public' association='_17_0_1_bc902f8_1329389513855_801652_3657' lower='0'>
         <type xmi:type='cmof:Class' href='http://www.omg.org/spec/UML/20100901/UML.cmof#Signal'/>
       </ownedAttribute>
