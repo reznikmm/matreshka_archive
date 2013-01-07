@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -140,10 +140,10 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Circle =>
-          (30     => 4,     --  Circle::center
+          (30     => 5,     --  Circle::center
            38     => 3,     --  GraphicalElement::clipPath
            39     => 2,     --  GraphicalElement::group
-           31     => 5,     --  Circle::radius
+           31     => 4,     --  Circle::radius
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
@@ -153,10 +153,10 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
-          (33     => 4,     --  Ellipse::center
+          (33     => 5,     --  Ellipse::center
            38     => 3,     --  GraphicalElement::clipPath
            39     => 2,     --  GraphicalElement::group
-           34     => 5,     --  Ellipse::radii
+           34     => 4,     --  Ellipse::radii
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Group =>
@@ -165,11 +165,11 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Image =>
-          (41     => 5,     --  Image::bounds
+          (41     => 4,     --  Image::bounds
            38     => 3,     --  GraphicalElement::clipPath
            39     => 2,     --  GraphicalElement::group
            42     => 6,     --  Image::isAspectRatioPreserved
-           43     => 4,     --  Image::source
+           43     => 5,     --  Image::source
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Line =>
@@ -183,10 +183,10 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Linear_Gradient =>
-          (35     => 4,     --  Fill::canvas
-           37     => 2,     --  Gradient::stop
+          (35     => 2,     --  Fill::canvas
+           37     => 3,     --  Gradient::stop
            36     => 1,     --  Fill::transform
-           46     => 3,     --  LinearGradient::x1
+           46     => 4,     --  LinearGradient::x1
            47     => 5,     --  LinearGradient::x2
            48     => 6,     --  LinearGradient::y1
            49     => 7,     --  LinearGradient::y2
@@ -217,9 +217,9 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Pattern =>
-          (57     => 5,     --  Pattern::bounds
-           35     => 4,     --  Fill::canvas
-           58     => 2,     --  Pattern::tile
+          (57     => 4,     --  Pattern::bounds
+           35     => 2,     --  Fill::canvas
+           58     => 3,     --  Pattern::tile
            36     => 1,     --  Fill::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
@@ -241,19 +241,19 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            40     => 1,     --  GraphicalElement::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Radial_Gradient =>
-          (35     => 4,     --  Fill::canvas
-           61     => 3,     --  RadialGradient::centerX
+          (35     => 2,     --  Fill::canvas
+           61     => 5,     --  RadialGradient::centerX
            62     => 6,     --  RadialGradient::centerY
            63     => 7,     --  RadialGradient::focusX
            64     => 8,     --  RadialGradient::focusY
-           65     => 5,     --  RadialGradient::radius
-           37     => 2,     --  Gradient::stop
+           65     => 4,     --  RadialGradient::radius
+           37     => 3,     --  Gradient::stop
            36     => 1,     --  Fill::transform
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
-          (66     => 5,     --  Rectangle::bounds
+          (66     => 4,     --  Rectangle::bounds
            38     => 3,     --  GraphicalElement::clipPath
-           67     => 4,     --  Rectangle::cornerRadius
+           67     => 5,     --  Rectangle::cornerRadius
            39     => 2,     --  GraphicalElement::group
            40     => 1,     --  GraphicalElement::transform
            others => 0),
@@ -275,9 +275,9 @@ package AMF.Internals.Tables.DD_Attribute_Mappings is
            others => 0),
          AMF.Internals.Tables.DD_Types.E_DG_Text =>
           (82     => 6,     --  Text::alignment
-           83     => 5,     --  Text::bounds
+           83     => 4,     --  Text::bounds
            38     => 3,     --  GraphicalElement::clipPath
-           84     => 4,     --  Text::data
+           84     => 5,     --  Text::data
            39     => 2,     --  GraphicalElement::group
            40     => 1,     --  GraphicalElement::transform
            others => 0));

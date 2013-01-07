@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -169,13 +169,13 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Circles.DG_Circle_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          4      => (AMF.Internals.Tables.DD_Types.M_Point, (others => <>)),
+          5      => (AMF.Internals.Tables.DD_Types.M_Point, (others => <>)),
                        --  center
           3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  clipPath
           2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  group
-          5      => (AMF.Internals.Tables.DD_Types.M_Real, 0.0),
+          4      => (AMF.Internals.Tables.DD_Types.M_Real, 0.0),
                        --  radius
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
@@ -274,13 +274,13 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Ellipses.DG_Ellipse_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          4      => (AMF.Internals.Tables.DD_Types.M_Point, (others => <>)),
+          5      => (AMF.Internals.Tables.DD_Types.M_Point, (others => <>)),
                        --  center
           3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  clipPath
           2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  group
-          5      => (AMF.Internals.Tables.DD_Types.M_Dimension, (others => <>)),
+          4      => (AMF.Internals.Tables.DD_Types.M_Dimension, (others => <>)),
                        --  radii
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
@@ -377,7 +377,7 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Images.DG_Image_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          5      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
+          4      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
                        --  bounds
           3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  clipPath
@@ -385,7 +385,7 @@ package body AMF.Internals.Tables.DD_Constructors is
                        --  group
           6      => (AMF.Internals.Tables.DD_Types.M_Boolean, False),
                        --  isAspectRatioPreserved
-          4      => (AMF.Internals.Tables.DD_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          5      => (AMF.Internals.Tables.DD_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  source
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
@@ -485,13 +485,13 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Linear_Gradients.DG_Linear_Gradient_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          4      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  canvas
-          2      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Gradient_Stop, 0),
+          3      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Gradient_Stop, 0),
                        --  stop
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
-          3      => (AMF.Internals.Tables.DD_Types.M_Real, 0.00000000000000E+00),
+          4      => (AMF.Internals.Tables.DD_Types.M_Real, 0.00000000000000E+00),
                        --  x1
           5      => (AMF.Internals.Tables.DD_Types.M_Real, 1.00000000000000E+00),
                        --  x2
@@ -690,11 +690,11 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Patterns.DG_Pattern_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          5      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
+          4      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
                        --  bounds
-          4      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
-                       --  canvas
           2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
+                       --  canvas
+          3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  tile
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
@@ -832,9 +832,9 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Radial_Gradients.DG_Radial_Gradient_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          4      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
+          2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  canvas
-          3      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
+          5      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
                        --  centerX
           6      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
                        --  centerY
@@ -842,9 +842,9 @@ package body AMF.Internals.Tables.DD_Constructors is
                        --  focusX
           8      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
                        --  focusY
-          5      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
+          4      => (AMF.Internals.Tables.DD_Types.M_Real, 5.00000000000000E-01),
                        --  radius
-          2      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Gradient_Stop, 0),
+          3      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Gradient_Stop, 0),
                        --  stop
           1      => (AMF.Internals.Tables.DD_Types.M_Collection_Of_Transform, 0),
                        --  transform
@@ -874,11 +874,11 @@ package body AMF.Internals.Tables.DD_Constructors is
           new AMF.Internals.DG_Rectangles.DG_Rectangle_Proxy'(Element => Self),
         Member   =>
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
-          5      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
+          4      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
                        --  bounds
           3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  clipPath
-          4      => (AMF.Internals.Tables.DD_Types.M_Real, 0.00000000000000E+00),
+          5      => (AMF.Internals.Tables.DD_Types.M_Real, 0.00000000000000E+00),
                        --  cornerRadius
           2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  group
@@ -980,11 +980,11 @@ package body AMF.Internals.Tables.DD_Constructors is
          (0      => (Kind => AMF.Internals.Tables.DD_Types.M_None),
           6      => (AMF.Internals.Tables.DD_Types.M_Alignment_Kind, AMF.DC.Align_Start),
                        --  alignment
-          5      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
+          4      => (AMF.Internals.Tables.DD_Types.M_Bounds, (others => <>)),
                        --  bounds
           3      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  clipPath
-          4      => (AMF.Internals.Tables.DD_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
+          5      => (AMF.Internals.Tables.DD_Types.M_String, Matreshka.Internals.Strings.Shared_Empty'Access),
                        --  data
           2      => (AMF.Internals.Tables.DD_Types.M_Element, No_AMF_Link),
                        --  group

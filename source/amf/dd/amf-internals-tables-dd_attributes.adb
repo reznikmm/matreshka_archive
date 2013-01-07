@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,10 +70,10 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  Circle
    --
-   --     4  Circle::center
+   --     5  Circle::center
    --     3  GraphicalElement::clipPath
    --     2  GraphicalElement::group
-   --     5  Circle::radius
+   --     4  Circle::radius
    --     1  GraphicalElement::transform
    --
    --     1  GraphicalElement::localStyle
@@ -92,10 +92,10 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  Ellipse
    --
-   --     4  Ellipse::center
+   --     5  Ellipse::center
    --     3  GraphicalElement::clipPath
    --     2  GraphicalElement::group
-   --     5  Ellipse::radii
+   --     4  Ellipse::radii
    --     1  GraphicalElement::transform
    --
    --     1  GraphicalElement::localStyle
@@ -113,11 +113,11 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  Image
    --
-   --     5  Image::bounds
+   --     4  Image::bounds
    --     3  GraphicalElement::clipPath
    --     2  GraphicalElement::group
    --     6  Image::isAspectRatioPreserved
-   --     4  Image::source
+   --     5  Image::source
    --     1  GraphicalElement::transform
    --
    --     1  GraphicalElement::localStyle
@@ -139,10 +139,10 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  LinearGradient
    --
-   --     4  Fill::canvas
-   --     2  Gradient::stop
+   --     2  Fill::canvas
+   --     3  Gradient::stop
    --     1  Fill::transform
-   --     3  LinearGradient::x1
+   --     4  LinearGradient::x1
    --     5  LinearGradient::x2
    --     6  LinearGradient::y1
    --     7  LinearGradient::y2
@@ -188,9 +188,9 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  Pattern
    --
-   --     5  Pattern::bounds
-   --     4  Fill::canvas
-   --     2  Pattern::tile
+   --     4  Pattern::bounds
+   --     2  Fill::canvas
+   --     3  Pattern::tile
    --     1  Fill::transform
    --
 
@@ -222,21 +222,21 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    --  RadialGradient
    --
-   --     4  Fill::canvas
-   --     3  RadialGradient::centerX
+   --     2  Fill::canvas
+   --     5  RadialGradient::centerX
    --     6  RadialGradient::centerY
    --     7  RadialGradient::focusX
    --     8  RadialGradient::focusY
-   --     5  RadialGradient::radius
-   --     2  Gradient::stop
+   --     4  RadialGradient::radius
+   --     3  Gradient::stop
    --     1  Fill::transform
    --
 
    --  Rectangle
    --
-   --     5  Rectangle::bounds
+   --     4  Rectangle::bounds
    --     3  GraphicalElement::clipPath
-   --     4  Rectangle::cornerRadius
+   --     5  Rectangle::cornerRadius
    --     2  GraphicalElement::group
    --     1  GraphicalElement::transform
    --
@@ -264,9 +264,9 @@ package body AMF.Internals.Tables.DD_Attributes is
    --  Text
    --
    --     6  Text::alignment
-   --     5  Text::bounds
+   --     4  Text::bounds
    --     3  GraphicalElement::clipPath
-   --     4  Text::data
+   --     5  Text::data
    --     2  GraphicalElement::group
    --     1  GraphicalElement::transform
    --
@@ -303,9 +303,15 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Background_Fill;
 
    -------------------------
@@ -316,7 +322,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.DC.DC_Bounds is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Bounds_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Bounds_Value;
    end Internal_Get_Bounds;
 
    -------------------------
@@ -327,9 +333,30 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Linear_Gradient =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Pattern =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Radial_Gradient =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Canvas;
 
    -------------------------
@@ -340,7 +367,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.DC.DC_Point is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Point_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Point_Value;
    end Internal_Get_Center;
 
    ---------------------------
@@ -351,7 +378,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
    end Internal_Get_Center_X;
 
    ---------------------------
@@ -373,9 +400,80 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Group =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Image =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Text =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Clip_Path;
 
    ----------------------------------
@@ -386,9 +484,15 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Clipped_Element;
 
    --------------------------
@@ -410,7 +514,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
    end Internal_Get_Corner_Radius;
 
    -----------------------
@@ -422,7 +526,7 @@ package body AMF.Internals.Tables.DD_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Data;
 
    ----------------------
@@ -444,9 +548,35 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_End_Marker;
 
    -----------------------
@@ -457,9 +587,15 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (1).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Style =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Fill;
 
    -----------------------------
@@ -592,9 +728,80 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Group =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Image =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Text =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Group;
 
    --------------------------------------------
@@ -616,7 +823,52 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Group =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Image =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Text =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Local_Style;
 
    -------------------------
@@ -627,7 +879,22 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Group =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Member;
 
    -----------------------------
@@ -638,9 +905,35 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Mid_Marker;
 
    --------------------------------
@@ -651,7 +944,13 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 4;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Packaged_Fill;
 
    ----------------------------------
@@ -662,7 +961,13 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 5;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Packaged_Marker;
 
    ---------------------------------
@@ -673,7 +978,13 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 6;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Packaged_Style;
 
    ------------------------
@@ -695,7 +1006,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.DC.DC_Dimension is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Dimension_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Dimension_Value;
    end Internal_Get_Radii;
 
    -------------------------
@@ -706,7 +1017,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
    end Internal_Get_Radius;
 
    ----------------------------
@@ -728,7 +1039,52 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Canvas =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Circle =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Clip_Path =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Ellipse =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Group =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Image =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marker =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Rectangle =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Text =>
+            return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Shared_Style;
 
    -----------------------
@@ -751,7 +1107,7 @@ package body AMF.Internals.Tables.DD_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).String_Value;
    end Internal_Get_Source;
 
    ------------------------
@@ -773,9 +1129,35 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Line =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Marked_Element =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Path =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polygon =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.DD_Types.E_DG_Polyline =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Start_Marker;
 
    -----------------------
@@ -786,7 +1168,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.DG.Set_Of_DG_Gradient_Stop is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Gradient_Collection;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Gradient_Collection;
    end Internal_Get_Stop;
 
    -------------------------------
@@ -841,9 +1223,15 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (2).Link, Self);
+      case AMF.Internals.Tables.DD_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.DD_Types.E_DG_Pattern =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Tile;
 
    ----------------------------
@@ -865,7 +1253,7 @@ package body AMF.Internals.Tables.DD_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Real is
    begin
-      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value;
+      return AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
    end Internal_Get_X1;
 
    ---------------------
@@ -968,8 +1356,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.DC.DC_Bounds;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Bounds_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Bounds_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Bounds_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Bounds_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Image_Bounds, Old, To);
@@ -1024,8 +1412,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.DC.DC_Point;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Point_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Point_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Point_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Point_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Circle_Center, Old, To);
@@ -1042,8 +1430,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.Real;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Radial_Gradient_Center_X, Old, To);
@@ -1196,8 +1584,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.Real;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Rectangle_Corner_Radius, Old, To);
@@ -1215,11 +1603,11 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).String_Value;
 
-      DD_Element_Table.Table (Self).Member (4).String_Value := To;
+      DD_Element_Table.Table (Self).Member (5).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (DD_Element_Table.Table (Self).Member (4).String_Value);
+       (DD_Element_Table.Table (Self).Member (5).String_Value);
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Text_Data, Old, To);
@@ -1687,8 +2075,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.DC.DC_Dimension;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Dimension_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Dimension_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Dimension_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Dimension_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Ellipse_Radii, Old, To);
@@ -1705,8 +2093,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.Real;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).Real_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Circle_Radius, Old, To);
@@ -1760,11 +2148,11 @@ package body AMF.Internals.Tables.DD_Attributes is
 
    begin
       Old :=
-        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (5).String_Value;
 
-      DD_Element_Table.Table (Self).Member (4).String_Value := To;
+      DD_Element_Table.Table (Self).Member (5).String_Value := To;
       Matreshka.Internals.Strings.Reference
-       (DD_Element_Table.Table (Self).Member (4).String_Value);
+       (DD_Element_Table.Table (Self).Member (5).String_Value);
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Image_Source, Old, To);
@@ -1918,8 +2306,8 @@ package body AMF.Internals.Tables.DD_Attributes is
       Old : AMF.Real;
 
    begin
-      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value;
-      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (3).Real_Value := To;
+      Old := AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value;
+      AMF.Internals.Tables.DD_Element_Table.Table (Self).Member (4).Real_Value := To;
 
       AMF.Internals.Tables.DC_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.DG_Metamodel.MP_DG_Linear_Gradient_X1, Old, To);
