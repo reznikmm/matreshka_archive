@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -295,6 +295,13 @@ begin
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Class_Super_Class_A_Class then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Classifier_General_Classifier,
               Element,
               Opposite,
               Link);
@@ -847,6 +854,13 @@ begin
               Opposite,
               Link);
 
+         elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Owned_Parameter_Parameter_Operation then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Behavioral_Feature_Owned_Parameter_Owner_Formal_Param,
+              Element,
+              Opposite,
+              Link);
+
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Behavioral_Feature_Owned_Parameter_A_Owner_Formal_Param then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Namespace_Owned_Member_Namespace,
@@ -864,6 +878,13 @@ begin
          elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Namespace_Package_Import_Package_Import_Importing_Namespace then
             AMF.Internals.Links.Create_Link
              (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Element_Owned_Element_Owner,
+              Element,
+              Opposite,
+              Link);
+
+         elsif Property = AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Raised_Exception_A_Operation then
+            AMF.Internals.Links.Create_Link
+             (AMF.Internals.Tables.CMOF_Metamodel.MA_CMOF_Behavioral_Feature_Raised_Exception_Behavioral_Feature,
               Element,
               Opposite,
               Link);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -107,7 +107,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --     14  Class::ownedOperation
    --     8  Namespace::ownedRule
    --     5  Namespace::packageImport
-   --     11  Class::superClass
+   --     15  Class::superClass
 
    --  Comment
    --
@@ -159,9 +159,9 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    --  ElementImport
    --
-   --     4  ElementImport::alias
-   --     5  ElementImport::importedElement
-   --     3  ElementImport::importingNamespace
+   --     3  ElementImport::alias
+   --     4  ElementImport::importedElement
+   --     5  ElementImport::importingNamespace
    --     1  Element::owner
    --     2  ElementImport::visibility
    --
@@ -238,19 +238,19 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    --  Operation
    --
-   --     13  Operation::bodyCondition
-   --     14  Operation::class
-   --     15  Operation::datatype
+   --     15  Operation::bodyCondition
+   --     12  Operation::class
+   --     13  Operation::datatype
    --     11  RedefinableElement::isLeaf
    --     7  Operation::isOrdered
-   --     12  Operation::isQuery
+   --     6  Operation::isQuery
    --     8  Operation::isUnique
    --     9  Operation::lower
    --     2  NamedElement::name
    --     4  NamedElement::namespace
    --     1  Element::owner
    --     5  NamedElement::qualifiedName
-   --     6  Operation::type
+   --     14  Operation::type
    --     10  Operation::upper
    --     3  NamedElement::visibility
    --
@@ -261,16 +261,16 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --     2  Element::ownedComment
    --     1  Element::ownedElement
    --     6  Namespace::ownedMember
-   --     12  Operation::ownedParameter
+   --     16  Operation::ownedParameter
    --     12  BehavioralFeature::ownedParameter
    --     8  Namespace::ownedRule
    --     5  Namespace::packageImport
-   --     16  Operation::postcondition
-   --     15  Operation::precondition
-   --     13  Operation::raisedException
+   --     18  Operation::postcondition
+   --     17  Operation::precondition
+   --     14  Operation::raisedException
    --     13  BehavioralFeature::raisedException
    --     10  RedefinableElement::redefinedElement
-   --     14  Operation::redefinedOperation
+   --     15  Operation::redefinedOperation
    --     9  RedefinableElement::redefinitionContext
 
    --  Package
@@ -298,8 +298,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
 
    --  PackageImport
    --
-   --     4  PackageImport::importedPackage
-   --     3  PackageImport::importingNamespace
+   --     3  PackageImport::importedPackage
+   --     4  PackageImport::importingNamespace
    --     1  Element::owner
    --     2  PackageImport::visibility
    --
@@ -368,22 +368,22 @@ package body AMF.Internals.Tables.CMOF_Attributes is
    --  Property
    --
    --     21  Property::association
-   --     14  Property::class
-   --     15  Property::datatype
+   --     17  Property::class
+   --     20  Property::datatype
    --     12  Property::default
-   --     17  Property::isComposite
+   --     15  Property::isComposite
    --     13  Property::isDerived
-   --     18  Property::isDerivedUnion
+   --     16  Property::isDerivedUnion
    --     11  RedefinableElement::isLeaf
    --     7  MultiplicityElement::isOrdered
-   --     16  Property::isReadOnly
+   --     14  Property::isReadOnly
    --     8  MultiplicityElement::isUnique
    --     9  MultiplicityElement::lower
    --     2  NamedElement::name
    --     4  NamedElement::namespace
-   --     20  Property::opposite
+   --     19  Property::opposite
    --     1  Element::owner
-   --     19  Property::owningAssociation
+   --     18  Property::owningAssociation
    --     5  NamedElement::qualifiedName
    --     6  TypedElement::type
    --     10  MultiplicityElement::upper
@@ -417,7 +417,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
        return Matreshka.Internals.Strings.Shared_String_Access is
    begin
       return
-        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+        AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).String_Value;
    end Internal_Get_Alias;
 
    ------------------------------------
@@ -428,7 +428,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Annotated_Element;
 
    ------------------------------
@@ -439,9 +445,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (21).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Association;
 
    ----------------------------
@@ -452,7 +464,25 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Attribute;
 
    -----------------------
@@ -486,9 +516,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Body_Condition;
 
    ------------------------
@@ -499,9 +535,20 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (17).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Class;
 
    --------------------------------------
@@ -512,7 +559,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Constrained_Element;
 
    --------------------------
@@ -523,9 +576,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (7).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Context;
 
    ---------------------------
@@ -536,9 +595,20 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Datatype;
 
    --------------------------
@@ -572,7 +642,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Element;
 
    ---------------------------------
@@ -583,7 +659,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Element_Import;
 
    ---------------------------
@@ -594,7 +694,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_End_Type;
 
    ------------------------------
@@ -605,9 +711,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Enumeration;
 
    --------------------------
@@ -618,7 +730,25 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Feature;
 
    ---------------------------------------
@@ -629,7 +759,16 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Featuring_Classifier;
 
    --------------------------
@@ -640,7 +779,25 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_General;
 
    -----------------------------------
@@ -651,9 +808,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (5).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Element;
 
    ----------------------------------
@@ -664,7 +827,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Member;
 
    -----------------------------------
@@ -675,9 +862,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Imported_Package;
 
    --------------------------------------
@@ -688,9 +881,20 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (5).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Importing_Namespace;
 
    -----------------------------------
@@ -701,7 +905,25 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Inherited_Member;
 
    ------------------------------
@@ -723,7 +945,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (17).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
    end Internal_Get_Is_Composite;
 
    -----------------------------
@@ -745,7 +967,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (18).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
    end Internal_Get_Is_Derived_Union;
 
    ------------------------------------------
@@ -789,7 +1011,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Boolean_Value;
    end Internal_Get_Is_Query;
 
    -------------------------------
@@ -800,7 +1022,7 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return Boolean is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
+      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value;
    end Internal_Get_Is_Read_Only;
 
    ----------------------------
@@ -844,7 +1066,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 7;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Member;
 
    -----------------------------
@@ -855,7 +1101,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Member_End;
 
    ---------------------------------
@@ -866,9 +1118,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Merged_Package;
 
    -----------------------
@@ -891,9 +1149,75 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Namespace;
 
    --------------------------------------
@@ -904,7 +1228,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 17;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 17;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Navigable_Owned_End;
 
    ---------------------------------
@@ -915,7 +1245,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Nested_Package;
 
    ----------------------------------
@@ -926,9 +1262,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Nesting_Package;
 
    --------------------------
@@ -939,7 +1281,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Operand;
 
    ----------------------------
@@ -950,9 +1298,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (13).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Operation;
 
    ---------------------------
@@ -963,9 +1317,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (20).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (19).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Opposite;
 
    ----------------------------------
@@ -976,7 +1336,22 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Attribute;
 
    --------------------------------
@@ -987,7 +1362,64 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -998,7 +1430,64 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Element;
 
    ----------------------------
@@ -1009,7 +1498,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_End;
 
    --------------------------------
@@ -1020,7 +1515,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Literal;
 
    -------------------------------
@@ -1031,7 +1532,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 6;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Member;
 
    ----------------------------------
@@ -1042,7 +1567,22 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Operation;
 
    ----------------------------------
@@ -1053,7 +1593,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Parameter;
 
    -----------------------------
@@ -1064,7 +1610,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 8;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Rule;
 
    -----------------------------
@@ -1075,7 +1645,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Type;
 
    ------------------------
@@ -1086,9 +1662,100 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration_Literal =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owner;
 
    -------------------------------------
@@ -1099,9 +1766,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (19).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (18).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owning_Association;
 
    --------------------------
@@ -1112,9 +1785,35 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package;
 
    ---------------------------------
@@ -1125,7 +1824,31 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Data_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Enumeration =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Primitive_Type =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 5;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package_Import;
 
    --------------------------------
@@ -1136,7 +1859,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 12;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Package_Merge;
 
    -----------------------------------
@@ -1147,7 +1876,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Packaged_Element;
 
    --------------------------------
@@ -1158,7 +1893,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 16;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 18;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Postcondition;
 
    -------------------------------
@@ -1169,7 +1910,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 17;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Precondition;
 
    ---------------------------------
@@ -1192,7 +1939,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Raised_Exception;
 
    ------------------------------------
@@ -1203,9 +1956,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (2).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Receiving_Package;
 
    ------------------------------------
@@ -1216,7 +1975,16 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 10;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Element;
 
    --------------------------------------
@@ -1227,7 +1995,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 14;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Operation;
 
    -------------------------------------
@@ -1238,7 +2012,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefined_Property;
 
    ---------------------------------------
@@ -1249,7 +2029,16 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 9;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Redefinition_Context;
 
    ----------------------------------
@@ -1260,7 +2049,22 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Association =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 13;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Related_Element;
 
    -------------------------
@@ -1271,7 +2075,19 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Source;
 
    --------------------------------
@@ -1282,9 +2098,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Constraint =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Specification;
 
    -------------------------------------
@@ -1295,7 +2117,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Subsetted_Property;
 
    ------------------------------
@@ -1306,7 +2134,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 11;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Class =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 15;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Super_Class;
 
    ----------------------------
@@ -1317,9 +2151,15 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Tag =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Tag_Owner;
 
    -------------------------
@@ -1330,7 +2170,19 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Merge =>
+            return AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (0).Collection + 4;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Target;
 
    -----------------------
@@ -1341,9 +2193,35 @@ package body AMF.Internals.Tables.CMOF_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+      case AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Opaque_Expression =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Parameter =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Type;
 
    ------------------------
@@ -1414,13 +2292,13 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Matreshka.Internals.Strings.Shared_String_Access;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (4).String_Value;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (3).String_Value;
 
-      CMOF_Element_Table.Table (Self).Member (4).String_Value := To;
+      CMOF_Element_Table.Table (Self).Member (3).String_Value := To;
 
-      if CMOF_Element_Table.Table (Self).Member (4).String_Value /= null then
+      if CMOF_Element_Table.Table (Self).Member (3).String_Value /= null then
          Matreshka.Internals.Strings.Reference
-          (CMOF_Element_Table.Table (Self).Member (4).String_Value);
+          (CMOF_Element_Table.Table (Self).Member (3).String_Value);
       end if;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
@@ -1732,8 +2610,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (17).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (17).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (15).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Is_Composite, Old, To);
@@ -1768,8 +2646,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (18).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (18).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Is_Derived_Union, Old, To);
@@ -1840,8 +2718,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (12).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (6).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Operation_Is_Query, Old, To);
@@ -1858,8 +2736,8 @@ package body AMF.Internals.Tables.CMOF_Attributes is
       Old : Boolean;
 
    begin
-      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value;
-      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (16).Boolean_Value := To;
+      Old := AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value;
+      AMF.Internals.Tables.CMOF_Element_Table.Table (Self).Member (14).Boolean_Value := To;
 
       AMF.Internals.Tables.CMOF_Notification.Notify_Attribute_Set
        (Self, AMF.Internals.Tables.CMOF_Metamodel.MP_CMOF_Property_Is_Read_Only, Old, To);

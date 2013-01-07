@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -89,7 +89,7 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            41     => 14,    --  Class::ownedOperation
            62     => 8,     --  Namespace::ownedRule
            63     => 5,     --  Namespace::packageImport
-           42     => 11,    --  Class::superClass
+           42     => 15,    --  Class::superClass
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Comment =>
           (47     => 3,     --  Comment::annotatedElement
@@ -162,16 +162,16 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            53     => 2,     --  Element::ownedComment
            54     => 1,     --  Element::ownedElement
            61     => 6,     --  Namespace::ownedMember
-           64     => 12,    --  Operation::ownedParameter
+           64     => 16,    --  Operation::ownedParameter
            38     => 12,    --  BehavioralFeature::ownedParameter
            62     => 8,     --  Namespace::ownedRule
            63     => 5,     --  Namespace::packageImport
-           65     => 16,    --  Operation::postcondition
-           66     => 15,    --  Operation::precondition
-           67     => 13,    --  Operation::raisedException
+           65     => 18,    --  Operation::postcondition
+           66     => 17,    --  Operation::precondition
+           67     => 14,    --  Operation::raisedException
            39     => 13,    --  BehavioralFeature::raisedException
            75     => 10,    --  RedefinableElement::redefinedElement
-           68     => 14,    --  Operation::redefinedOperation
+           68     => 15,    --  Operation::redefinedOperation
            76     => 9,     --  RedefinableElement::redefinitionContext
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Package =>
@@ -285,9 +285,9 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            98     => 3,     --  NamedElement::visibility
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Element_Import =>
-          (86     => 4,     --  ElementImport::alias
-           87     => 5,     --  ElementImport::importedElement
-           88     => 3,     --  ElementImport::importingNamespace
+          (86     => 3,     --  ElementImport::alias
+           87     => 4,     --  ElementImport::importedElement
+           88     => 5,     --  ElementImport::importingNamespace
            85     => 1,     --  Element::owner
            89     => 2,     --  ElementImport::visibility
            others => 0),
@@ -327,19 +327,19 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            98     => 3,     --  NamedElement::visibility
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Operation =>
-          (101    => 13,    --  Operation::bodyCondition
-           102    => 14,    --  Operation::class
-           103    => 15,    --  Operation::datatype
+          (101    => 15,    --  Operation::bodyCondition
+           102    => 12,    --  Operation::class
+           103    => 13,    --  Operation::datatype
            130    => 11,    --  RedefinableElement::isLeaf
            104    => 7,     --  Operation::isOrdered
-           105    => 12,    --  Operation::isQuery
+           105    => 6,     --  Operation::isQuery
            106    => 8,     --  Operation::isUnique
            107    => 9,     --  Operation::lower
            95     => 2,     --  NamedElement::name
            96     => 4,     --  NamedElement::namespace
            85     => 1,     --  Element::owner
            97     => 5,     --  NamedElement::qualifiedName
-           108    => 6,     --  Operation::type
+           108    => 14,    --  Operation::type
            109    => 10,    --  Operation::upper
            98     => 3,     --  NamedElement::visibility
            others => 0),
@@ -353,8 +353,8 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            98     => 3,     --  NamedElement::visibility
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Package_Import =>
-          (112    => 4,     --  PackageImport::importedPackage
-           113    => 3,     --  PackageImport::importingNamespace
+          (112    => 3,     --  PackageImport::importedPackage
+           113    => 4,     --  PackageImport::importingNamespace
            85     => 1,     --  Element::owner
            114    => 2,     --  PackageImport::visibility
            others => 0),
@@ -389,22 +389,22 @@ package AMF.Internals.Tables.CMOF_Attribute_Mappings is
            others => 0),
          AMF.Internals.Tables.CMOF_Types.E_CMOF_Property =>
           (120    => 21,    --  Property::association
-           121    => 14,    --  Property::class
-           122    => 15,    --  Property::datatype
+           121    => 17,    --  Property::class
+           122    => 20,    --  Property::datatype
            123    => 12,    --  Property::default
-           124    => 17,    --  Property::isComposite
+           124    => 15,    --  Property::isComposite
            125    => 13,    --  Property::isDerived
-           126    => 18,    --  Property::isDerivedUnion
+           126    => 16,    --  Property::isDerivedUnion
            130    => 11,    --  RedefinableElement::isLeaf
            91     => 7,     --  MultiplicityElement::isOrdered
-           127    => 16,    --  Property::isReadOnly
+           127    => 14,    --  Property::isReadOnly
            92     => 8,     --  MultiplicityElement::isUnique
            93     => 9,     --  MultiplicityElement::lower
            95     => 2,     --  NamedElement::name
            96     => 4,     --  NamedElement::namespace
-           128    => 20,    --  Property::opposite
+           128    => 19,    --  Property::opposite
            85     => 1,     --  Element::owner
-           129    => 19,    --  Property::owningAssociation
+           129    => 18,    --  Property::owningAssociation
            97     => 5,     --  NamedElement::qualifiedName
            135    => 6,     --  TypedElement::type
            94     => 10,    --  MultiplicityElement::upper
