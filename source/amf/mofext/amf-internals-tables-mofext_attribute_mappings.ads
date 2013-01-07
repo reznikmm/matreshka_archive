@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -72,7 +72,7 @@ package AMF.Internals.Tables.MOFEXT_Attribute_Mappings is
 
    UML_Collection_Offset : constant
      array (AMF.Internals.Tables.MOFEXT_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 243 .. 490)
+            AMF.Internals.CMOF_Element range 243 .. 482)
        of AMF.Internals.AMF_Collection_Of_Element :=
         (AMF.Internals.Tables.MOFEXT_Types.E_None =>
           (others => 0),
@@ -83,11 +83,11 @@ package AMF.Internals.Tables.MOFEXT_Attribute_Mappings is
 
    UML_Member_Offset : constant
      array (AMF.Internals.Tables.MOFEXT_Types.Element_Kinds,
-            AMF.Internals.CMOF_Element range 491 .. 866) of Natural :=
+            AMF.Internals.CMOF_Element range 483 .. 866) of Natural :=
         (AMF.Internals.Tables.MOFEXT_Types.E_None =>
           (others => 0),
          AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
-          (585    => 1,     --  Element::owner
+          (577    => 1,     --  Element::owner
            others => 0));
 
 end AMF.Internals.Tables.MOFEXT_Attribute_Mappings;

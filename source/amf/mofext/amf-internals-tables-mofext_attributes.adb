@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -72,7 +72,13 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 3;
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+            return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 3;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Element;
 
    -----------------------
@@ -95,7 +101,13 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 1;
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+            return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 1;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Comment;
 
    --------------------------------
@@ -106,7 +118,13 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Collection_Of_Element is
    begin
-      return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 2;
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+            return AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (0).Collection + 2;
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owned_Element;
 
    ------------------------
@@ -117,9 +135,15 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (1).Link, Self);
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (1).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Owner;
 
    ----------------------------
@@ -130,9 +154,15 @@ package body AMF.Internals.Tables.MOFEXT_Attributes is
     (Self : AMF.Internals.AMF_Element)
        return AMF.Internals.AMF_Element is
    begin
-      return
-        AMF.Internals.Links.Opposite_Element
-         (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (4).Link, Self);
+      case AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Kind is
+         when AMF.Internals.Tables.MOFEXT_Types.E_MOF_Tag =>
+            return
+              AMF.Internals.Links.Opposite_Element
+               (AMF.Internals.Tables.MOFEXT_Element_Table.Table (Self).Member (4).Link, Self);
+
+         when others =>
+            raise Program_Error;
+      end case;
    end Internal_Get_Tag_Owner;
 
    ------------------------
