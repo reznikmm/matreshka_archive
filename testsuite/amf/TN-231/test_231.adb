@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -75,6 +75,7 @@ procedure Test_231 is
      := +("<?xml version='1.0'?>" & LF
             & "<xmi:XMI xmlns:uml='http://www.omg.org/spec/UML/20100901' xmlns:xmi='http://www.omg.org/spec/XMI/20100901' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>" & LF
             & "  <uml:Package xmi:type='uml:Package' xmi:id='33554433' name='Package'>" & LF
+            & "    <URI xsi:nil='true'/>" & LF
             & "    <packagedElement xmi:type='uml:Class' xmi:id='33554434' name='Class'>" & LF
             & "      <ownedOperation xmi:type='uml:Operation' xmi:id='33554436' bodyCondition='33554435' name='operation'>" & LF
             & "        <ownedRule xmi:type='uml:Constraint' xmi:id='33554435'>" & LF
@@ -83,7 +84,6 @@ procedure Test_231 is
             & "        <visibility xsi:nil='true'/>" & LF
             & "      </ownedOperation>" & LF
             & "    </packagedElement>" & LF
-            & "    <URI xsi:nil='true'/>" & LF
             & "  </uml:Package>" & LF
             & "</xmi:XMI>");
    UML_URI     : constant League.Strings.Universal_String
