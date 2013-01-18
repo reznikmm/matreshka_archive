@@ -83,6 +83,8 @@ package League.Strings is
    type Universal_String is tagged private
      with Iterator_Element  => League.Characters.Universal_Character,
           Constant_Indexing => Element;
+   --  Universal_String is a base type to represent information in textual form
+   --  as unbounded sequence of Unicode characters (Unicode code points).
 
    type Universal_Slice is tagged private;
 

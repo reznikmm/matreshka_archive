@@ -57,6 +57,7 @@ package League.IRIs is
    pragma Remote_Types;
 
    type IRI is tagged private;
+
 --   pragma Preelaborable_Initialization (IRI);
 
    function From_Universal_String
