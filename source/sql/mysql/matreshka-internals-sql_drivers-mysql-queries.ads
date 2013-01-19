@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,10 +57,11 @@ package Matreshka.Internals.SQL_Drivers.MySQL.Queries is
 private
 
    type Value_Record is record
+      Null_Value    : aliased my_bool;
       Integer_Value : aliased Interfaces.C.long;
       Double_Value  : aliased Interfaces.C.double;
       Length_Value  : aliased Interfaces.C.unsigned_long;
-      Null_Value    : aliased my_bool;
+      Time_Value    : aliased MYSQL_TIME;
    end record;
 
    type Value_Array is array (Positive range <>) of Value_Record;

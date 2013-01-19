@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,12 +44,14 @@
 with Ada.Unchecked_Conversion;
 with Ada.Unchecked_Deallocation;
 
+with League.Calendars.ISO_8601;
 with Matreshka.Internals.SQL_Drivers.MySQL.Databases;
 with Matreshka.Internals.SQL_Parameter_Rewriters.MySQL;
 
 package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
 
    use type Interfaces.C.int;
+   use type League.Calendars.ISO_8601.Nanosecond_100_Number;
 
    procedure Set_MySQL_Stmt_Error (Self : not null access MySQL_Query'Class);
    --  Sets error message to reported by database.
@@ -156,6 +158,87 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                  (League.Holders.Element (Value)));
             Binds (J).buffer_type := MYSQL_TYPE_DOUBLE;
             Binds (J).buffer := Values (J).Double_Value'Address;
+
+         elsif League.Holders.Is_Date (Value) then
+            declare
+               Aux   : constant League.Calendars.Date
+                 := League.Holders.Element (Value);
+               Year  : League.Calendars.ISO_8601.Year_Number;
+               Month : League.Calendars.ISO_8601.Month_Number;
+               Day   : League.Calendars.ISO_8601.Day_Number;
+
+            begin
+               League.Calendars.ISO_8601.Split (Aux, Year, Month, Day);
+               Values (J).Time_Value :=
+                (year        => Interfaces.C.unsigned (Year),
+                 month       => Interfaces.C.unsigned (Month),
+                 day         => Interfaces.C.unsigned (Day),
+                 hour        => 0,
+                 minute      => 0,
+                 second      => 0,
+                 second_part => 0,
+                 neg         => 0,
+                 time_type   => MYSQL_TIMESTAMP_DATE);
+               Binds (J).buffer_type := MYSQL_TYPE_DATE;
+               Binds (J).buffer := Values (J).Time_Value'Address;
+            end;
+
+         elsif League.Holders.Is_Date_Time (Value) then
+            declare
+               Aux      : constant League.Calendars.Date_Time
+                 := League.Holders.Element (Value);
+               Year     : League.Calendars.ISO_8601.Year_Number;
+               Month    : League.Calendars.ISO_8601.Month_Number;
+               Day      : League.Calendars.ISO_8601.Day_Number;
+               Hour     : League.Calendars.ISO_8601.Hour_Number;
+               Minute   : League.Calendars.ISO_8601.Minute_Number;
+               Second   : League.Calendars.ISO_8601.Second_Number;
+               Fraction : League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+            begin
+               League.Calendars.ISO_8601.Split
+                (Aux, Year, Month, Day, Hour, Minute, Second, Fraction);
+               Values (J).Time_Value :=
+                (year        => Interfaces.C.unsigned (Year),
+                 month       => Interfaces.C.unsigned (Month),
+                 day         => Interfaces.C.unsigned (Day),
+                 hour        => Interfaces.C.unsigned (Hour),
+                 minute      => Interfaces.C.unsigned (Minute),
+                 second      => Interfaces.C.unsigned (Second),
+                 second_part => Interfaces.C.unsigned_long (Fraction / 10),
+                 neg         => 0,
+                 time_type   => MYSQL_TIMESTAMP_DATETIME);
+               Binds (J).buffer_type := MYSQL_TYPE_DATETIME;
+               Binds (J).buffer := Values (J).Time_Value'Address;
+            end;
+
+         elsif League.Holders.Is_Time (Value) then
+            declare
+               Aux : constant League.Calendars.Time
+                 := League.Holders.Element (Value);
+
+            begin
+               Values (J).Time_Value :=
+                (year        => 0,
+                 month       => 0,
+                 day         => 0,
+                 hour        =>
+                   Interfaces.C.unsigned
+                    (League.Calendars.ISO_8601.Hour (Aux)),
+                 minute      =>
+                   Interfaces.C.unsigned
+                    (League.Calendars.ISO_8601.Minute (Aux)),
+                 second      =>
+                   Interfaces.C.unsigned
+                    (League.Calendars.ISO_8601.Second (Aux)),
+                 second_part =>
+                   Interfaces.C.unsigned_long
+                    (League.Calendars.ISO_8601.Nanosecond_100 (Aux) / 10),
+                 neg         => 0,
+                 time_type   => MYSQL_TIMESTAMP_TIME);
+               Binds (J).buffer_type := MYSQL_TYPE_TIME;
+               Binds (J).buffer := Values (J).Time_Value'Address;
+            end;
          end if;
       end loop;
 
@@ -400,7 +483,12 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                   raise Program_Error;
 
                when MYSQL_TYPE_TIMESTAMP =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_TIMESTAMP;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Time_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_LONGLONG =>
                   raise Program_Error;
@@ -409,13 +497,28 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                   raise Program_Error;
 
                when MYSQL_TYPE_DATE =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_DATE;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Time_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_TIME =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_TIME;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Time_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_DATETIME =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_DATETIME;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Time_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_YEAR =>
                   raise Program_Error;
@@ -558,6 +661,80 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
              (Value,
               League.Holders.Universal_Float
                (Self.Buffer (Index).Double_Value));
+         end if;
+
+      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_TIMESTAMP then
+         --  Process TIMESTAMP.
+
+         League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+
+         if Self.Buffer (Index).Null_Value = 0 then
+            League.Holders.Replace_Element
+             (Value,
+              League.Calendars.ISO_8601.Create
+               (League.Calendars.ISO_8601.Year_Number
+                 (Self.Buffer (Index).Time_Value.year),
+                League.Calendars.ISO_8601.Month_Number
+                 (Self.Buffer (Index).Time_Value.month),
+                League.Calendars.ISO_8601.Day_Number
+                 (Self.Buffer (Index).Time_Value.day),
+                League.Calendars.ISO_8601.Hour_Number
+                 (Self.Buffer (Index).Time_Value.hour),
+                League.Calendars.ISO_8601.Minute_Number
+                 (Self.Buffer (Index).Time_Value.minute),
+                League.Calendars.ISO_8601.Second_Number
+                 (Self.Buffer (Index).Time_Value.second),
+                League.Calendars.ISO_8601.Nanosecond_100_Number
+                 (Self.Buffer (Index).Time_Value.second_part) * 10));
+         end if;
+
+      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_DATE then
+         --  Process DATE.
+
+         League.Holders.Set_Tag (Value, League.Holders.Date_Tag);
+
+         if Self.Buffer (Index).Null_Value = 0 then
+            League.Holders.Replace_Element
+             (Value,
+              League.Calendars.ISO_8601.Create
+               (League.Calendars.ISO_8601.Year_Number
+                 (Self.Buffer (Index).Time_Value.year),
+                League.Calendars.ISO_8601.Month_Number
+                 (Self.Buffer (Index).Time_Value.month),
+                League.Calendars.ISO_8601.Day_Number
+                 (Self.Buffer (Index).Time_Value.day)));
+         end if;
+
+      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_TIME then
+         --  Process TIME.
+
+         League.Holders.Set_Tag (Value, League.Holders.Time_Tag);
+
+         --  XXX TIME is not supported.
+
+      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_DATETIME then
+         --  Process DATETIME.
+
+         League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+
+         if Self.Buffer (Index).Null_Value = 0 then
+            League.Holders.Replace_Element
+             (Value,
+              League.Calendars.ISO_8601.Create
+               (League.Calendars.ISO_8601.Year_Number
+                 (Self.Buffer (Index).Time_Value.year),
+                League.Calendars.ISO_8601.Month_Number
+                 (Self.Buffer (Index).Time_Value.month),
+                League.Calendars.ISO_8601.Day_Number
+                 (Self.Buffer (Index).Time_Value.day),
+                League.Calendars.ISO_8601.Hour_Number
+                 (Self.Buffer (Index).Time_Value.hour),
+                League.Calendars.ISO_8601.Minute_Number
+                 (Self.Buffer (Index).Time_Value.minute),
+                League.Calendars.ISO_8601.Second_Number
+                 (Self.Buffer (Index).Time_Value.second),
+                League.Calendars.ISO_8601.Nanosecond_100_Number
+                 (Self.Buffer (Index).Time_Value.second_part) * 10));
          end if;
       end if;
 

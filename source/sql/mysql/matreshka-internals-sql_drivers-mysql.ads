@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -216,6 +216,33 @@ package Matreshka.Internals.SQL_Drivers.MySQL is
 
    MYSQL_NO_DATA        : constant := 100;
    MYSQL_DATA_TRUNCATED : constant := 101;
+
+   type enum_mysql_timestamp_type is
+    (MYSQL_TIMESTAMP_NONE,
+     MYSQL_TIMESTAMP_ERROR,
+     MYSQL_TIMESTAMP_DATE,
+     MYSQL_TIMESTAMP_DATETIME,
+     MYSQL_TIMESTAMP_TIME);
+   for enum_mysql_timestamp_type use
+    (MYSQL_TIMESTAMP_NONE     => -2,
+     MYSQL_TIMESTAMP_ERROR    => -1,
+     MYSQL_TIMESTAMP_DATE     => 0,
+     MYSQL_TIMESTAMP_DATETIME => 1,
+     MYSQL_TIMESTAMP_TIME     => 2);
+   pragma Convention (C, enum_mysql_timestamp_type);
+
+   type MYSQL_TIME is record
+      year        : Interfaces.C.unsigned;
+      month       : Interfaces.C.unsigned;
+      day         : Interfaces.C.unsigned;
+      hour        : Interfaces.C.unsigned;
+      minute      : Interfaces.C.unsigned;
+      second      : Interfaces.C.unsigned;
+      second_part : Interfaces.C.unsigned_long;
+      neg         : my_bool;
+      time_type   : enum_mysql_timestamp_type;
+   end record;
+   pragma Convention (C, MYSQL_TIME);
 
    -----------------
    -- Subprograms --
