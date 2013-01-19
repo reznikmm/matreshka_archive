@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+pragma Ada_2012;
+
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Atomics.Generic_Test_And_Set;
