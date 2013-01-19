@@ -1,0 +1,2 @@
+#!/bin/sh
+svn propset svn:mime-type 'text/x-trac-wiki;charset=utf-8' $@
