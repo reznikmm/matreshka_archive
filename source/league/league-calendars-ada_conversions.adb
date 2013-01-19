@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,8 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with Ada.Calendar.Time_Zones;
+
 with League.Calendars.ISO_8601;
 
 package body League.Calendars.Ada_Conversions is
@@ -51,26 +51,50 @@ package body League.Calendars.Ada_Conversions is
    -- From_Ada_Time --
    -------------------
 
-   function From_Ada_Time (Time : Ada.Calendar.Time) return Date_Time is
-      use League.Calendars.ISO_8601;
+   function From_Ada_Time (Item : Ada.Calendar.Time) return Date_Time is
       use type Ada.Calendar.Time;
 
-      Year    : Ada.Calendar.Year_Number;
-      Month   : Ada.Calendar.Month_Number;
-      Day     : Ada.Calendar.Day_Number;
-      Seconds : Ada.Calendar.Day_Duration;
+      Offset   : constant Ada.Calendar.Time_Zones.Time_Offset
+        := Ada.Calendar.Time_Zones.UTC_Time_Offset (Item);
+      UTC      : constant Ada.Calendar.Time := Item - Duration (Offset) * 60.0;
+      --  XXX Must be reviewed after implementation of timezone support.
+      --  Ada.Calendar.Time is local time and time zone conversion will be
+      --  applied automatically by League.Calendars.ISO_8601.Create.
 
-      Offset  : constant Ada.Calendar.Time_Zones.Time_Offset :=
-        Ada.Calendar.Time_Zones.UTC_Time_Offset (Time);
+      Year     : Ada.Calendar.Year_Number;
+      Month    : Ada.Calendar.Month_Number;
+      Day      : Ada.Calendar.Day_Number;
+      Seconds  : Ada.Calendar.Day_Duration;
+      Hour     : League.Calendars.ISO_8601.Hour_Number;
+      Minute   : League.Calendars.ISO_8601.Minute_Number;
+      Second   : League.Calendars.ISO_8601.Second_Number;
+      Fraction : League.Calendars.ISO_8601.Nanosecond_100_Number;
 
-      UTC     : constant Ada.Calendar.Time := Time - Duration (Offset) * 60.0;
+
    begin
       Ada.Calendar.Split (UTC, Year, Month, Day, Seconds);
 
-      return Create (Year_Number (Year),
-                     Month_Number (Month),
-                     Day_Number (Day),
-                     League.Calendars.Time (Seconds * 1e7));
+      Hour :=
+        League.Calendars.ISO_8601.Hour_Number (Seconds / 3_600);
+      Minute :=
+        League.Calendars.ISO_8601.Minute_Number
+         (Integer (Seconds / 60) mod 60);
+      Second :=
+        League.Calendars.ISO_8601.Second_Number (Integer (Seconds) mod 60);
+      Fraction :=
+        League.Calendars.ISO_8601.Nanosecond_100_Number
+         ((Seconds - Ada.Calendar.Day_Duration (Integer (Seconds)))
+             * 10_000_000);
+
+      return
+        League.Calendars.ISO_8601.Create
+         (League.Calendars.ISO_8601.Year_Number (Year),
+          League.Calendars.ISO_8601.Month_Number (Month),
+          League.Calendars.ISO_8601.Day_Number (Day),
+          Hour,
+          Minute,
+          Second,
+          Fraction);
    end From_Ada_Time;
 
 end League.Calendars.Ada_Conversions;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Calendars.Gregorian;
 
 package body Matreshka.Internals.Calendars.Times is
 
@@ -60,7 +59,7 @@ package body Matreshka.Internals.Calendars.Times is
       Correction : Absolute_Time;
    end record;
 
-   Leaps : array (Positive range <>) of Leap_Second_Information
+   Leaps : constant array (Positive range <>) of Leap_Second_Information
      := ((2454832, 134500608230000000, 240000000),   --  2008-12-31
          (2453736, 133553664220000000, 230000000),   --  2005-12-31
          (2451179, 131344416210000000, 220000000),   --  1998-12-31
@@ -91,12 +90,16 @@ package body Matreshka.Internals.Calendars.Times is
    ------------
 
    function Create
-    (Julian_Day : Julian_Day_Number;
+    (Zone       : not null Time_Zone_Access;
+     Julian_Day : Julian_Day_Number;
      Hour       : Hour_Number;
      Minute     : Minute_Number;
      Second     : Second_Number;
      Nano_100   : Nano_Second_100_Number) return Absolute_Time
    is
+      pragma Unreferenced (Zone);
+      --  XXX Time zone is not supported yet.
+
       Stamp : Absolute_Time;
       Row   : Natural := 0;
       --  Number of row in correction table to obtain nearset next leap second
@@ -154,7 +157,7 @@ package body Matreshka.Internals.Calendars.Times is
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Zone, Julian_Day, Time, Leap);
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
 
       return Hour_Number (Time / Ticks_In_Hour);
    end Hour;
@@ -181,7 +184,7 @@ package body Matreshka.Internals.Calendars.Times is
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Zone, Julian_Day, Time, Leap);
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
 
       return Julian_Day;
    end Julian_Day;
@@ -199,7 +202,7 @@ package body Matreshka.Internals.Calendars.Times is
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Zone, Julian_Day, Time, Leap);
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
 
       return Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
    end Minute;
@@ -226,7 +229,7 @@ package body Matreshka.Internals.Calendars.Times is
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Zone, Julian_Day, Time, Leap);
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
 
       return
         Nano_Second_100_Number
@@ -261,7 +264,7 @@ package body Matreshka.Internals.Calendars.Times is
       Leap       : Relative_Time;
 
    begin
-      Split (Stamp, Zone, Julian_Day, Time, Leap);
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
 
       return
         Second_Number
@@ -287,12 +290,15 @@ package body Matreshka.Internals.Calendars.Times is
    -----------
 
    procedure Split
-    (Stamp      : Absolute_Time;
-     Zone       : not null Time_Zone_Access;
+    (Zone       : not null Time_Zone_Access;
+     Stamp      : Absolute_Time;
      Julian_Day : out Julian_Day_Number;
      Time       : out Relative_Time;
      Leap       : out Relative_Time)
    is
+      pragma Unreferenced (Zone);
+      --  XXX Timezone is not supported.
+
       Corrected_Stamp : Absolute_Time := Stamp;
 
    begin
@@ -328,6 +334,36 @@ package body Matreshka.Internals.Calendars.Times is
       Julian_Day :=
         Julian_Day_Number (Corrected_Stamp / (Ticks_In_Day)) + X_Open_Epoch;
       Time := Relative_Time (Corrected_Stamp mod (Ticks_In_Day));
+   end Split;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Zone           : not null Time_Zone_Access;
+     Stamp          : Absolute_Time;
+     Julian_Day     : out Julian_Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nano_Second_100_Number)
+   is
+      Leap : Relative_Time;
+      Time : Relative_Time;
+
+   begin
+      Split (Zone, Stamp, Julian_Day, Time, Leap);
+      Hour := Hour_Number (Time / Ticks_In_Hour);
+      Minute := Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
+      Second :=
+        Second_Number
+         ((Time mod Ticks_In_Minute + Leap mod Ticks_In_Minute)
+            / Ticks_In_Second);
+      Nanosecond_100 :=
+        Nano_Second_100_Number
+         ((Time mod Ticks_In_Minute + Leap mod Ticks_In_Minute)
+            mod Ticks_In_Second);
    end Split;
 
 end Matreshka.Internals.Calendars.Times;

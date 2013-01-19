@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,7 +60,8 @@ package Matreshka.Internals.Calendars.Times is
    subtype Nano_Second_100_Number is Integer range 0 .. 9_999_999;
 
    function Create
-    (Julian_Day : Julian_Day_Number;
+    (Zone       : not null Time_Zone_Access;
+     Julian_Day : Julian_Day_Number;
      Hour       : Hour_Number;
      Minute     : Minute_Number;
      Second     : Second_Number;
@@ -99,12 +100,24 @@ package Matreshka.Internals.Calendars.Times is
    --  Returns the second fraction part (0 to 9_999_999) of the time.
 
    procedure Split
-    (Stamp      : Absolute_Time;
-     Zone       : not null Time_Zone_Access;
+    (Zone       : not null Time_Zone_Access;
+     Stamp      : Absolute_Time;
      Julian_Day : out Julian_Day_Number;
      Time       : out Relative_Time;
      Leap       : out Relative_Time);
-   --  Splits stamp onto juliad day number, relative time and leap second
+   --  Splits stamp onto julian day number, relative time and leap second
    --  fraction.
+
+   procedure Split
+    (Zone           : not null Time_Zone_Access;
+     Stamp          : Absolute_Time;
+     Julian_Day     : out Julian_Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nano_Second_100_Number);
+   --  Splits stamp onto julian day number and splitted time inside day. Leap
+   --  second is returned as Second equal to 60. It is not necessary last
+   --  second of the day due to timezone correction.
 
 end Matreshka.Internals.Calendars.Times;

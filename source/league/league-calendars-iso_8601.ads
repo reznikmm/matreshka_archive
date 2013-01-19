@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -340,22 +340,29 @@ package League.Calendars.ISO_8601 is
      Month : out Month_Number;
      Day   : out Day_Number);
    procedure Split
-    (Self    : ISO_8601_Calendar'Class;
-     Stamp   : Date_Time;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time);
+    (Self           : ISO_8601_Calendar'Class;
+     Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number);
    procedure Split
-    (Self    : ISO_8601_Calendar'Class;
-     Stamp   : Date_Time;
-     Zone    : Time_Zone;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time);
-   --  Extracts the date's year, month, day, and time, and assigns them to
-   --  Year, Month, Day, and Seconds.
+    (Self           : ISO_8601_Calendar'Class;
+     Zone           : Time_Zone;
+     Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number);
+   --  Extracts the date's year, month, day, hour, minute, second and fraction
+   --  of second, and assigns them to Year, Month, Day, Hour, Minute, Second
+   --  and Nanosecond_100.
 
    function Create
     (Self  : ISO_8601_Calendar'Class;
@@ -363,19 +370,26 @@ package League.Calendars.ISO_8601 is
      Month : Month_Number;
      Day   : Day_Number) return Date;
    function Create
-    (Self    : ISO_8601_Calendar'Class;
-     Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time) return Date_Time;
+    (Self           : ISO_8601_Calendar'Class;
+     Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time;
    function Create
-    (Self    : ISO_8601_Calendar'Class;
-     Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time;
-     Zone    : Time_Zone) return Date_Time;
-   --  Constructs a date with Year, Month, Day and time Seconds.
+    (Self           : ISO_8601_Calendar'Class;
+     Zone           : Time_Zone;
+     Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time;
+   --  Constructs a date with Year, Month, Day, Hour, Minute, Second and
+   --  franction of second.
    --
    --  If the specified date is invalid, Constraint_Error is raised.
 
@@ -580,18 +594,24 @@ package League.Calendars.ISO_8601 is
      Month : out Month_Number;
      Day   : out Day_Number);
    procedure Split
-    (Stamp   : Date_Time;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time);
+    (Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number);
    procedure Split
-    (Stamp   : Date_Time;
-     Zone    : Time_Zone;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time);
+    (Stamp          : Date_Time;
+     Zone           : Time_Zone;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number);
    --  Extracts the date's year, month, day, and time, and assigns them to
    --  Year, Month, Day, and Seconds.
 
@@ -600,17 +620,24 @@ package League.Calendars.ISO_8601 is
      Month : Month_Number;
      Day   : Day_Number) return Date;
    function Create
-    (Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time) return Date_Time;
+    (Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time;
    function Create
-    (Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time;
-     Zone    : Time_Zone) return Date_Time;
-   --  Constructs a date with Year, Month, Day and time Seconds.
+    (Year           : Year_Number;
+     Zone           : Time_Zone;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time;
+   --  Constructs a date with Year, Month, Day, Hour, Minute, Second and
+   --  fraction of second.
    --
    --  If the specified date is invalid, Constraint_Error is raised.
 

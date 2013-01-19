@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -377,12 +377,17 @@ package body League.Calendars.ISO_8601 is
    ------------
 
    function Create
-    (Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time) return Date_Time is
+    (Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time is
    begin
-      return Calendar.Create (Year, Month, Day, Seconds);
+      return
+        Calendar.Create
+         (Year, Month, Day, Hour, Minute, Second, Nanosecond_100);
    end Create;
 
    ------------
@@ -390,13 +395,18 @@ package body League.Calendars.ISO_8601 is
    ------------
 
    function Create
-    (Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time;
-     Zone    : Time_Zone) return Date_Time is
+    (Year           : Year_Number;
+     Zone           : Time_Zone;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time is
    begin
-      return Calendar.Create (Year, Month, Day, Seconds, Zone);
+      return
+        Calendar.Create
+         (Zone, Year, Month, Day, Hour, Minute, Second, Nanosecond_100);
    end Create;
 
    ------------
@@ -425,24 +435,33 @@ package body League.Calendars.ISO_8601 is
    ------------
 
    function Create
-    (Self    : ISO_8601_Calendar'Class;
-     Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time) return Date_Time
+    (Self           : ISO_8601_Calendar'Class;
+     Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time
    is
-      --  XXX fix me
-      Stamp : constant Date := Create (Self, Year, Month, Day);
+      pragma Unreferenced (Self);
 
    begin
-      --  XXX Time zone not yet implemented.
+      --  XXX Time zone is not yet implemented.
 
       return
         Date_Time
          (Matreshka.Internals.Calendars.Times.Create
-           (Matreshka.Internals.Calendars.Julian_Day_Number (Stamp),
-            0, 0, 0, 0)) +
-        Date_Time (Seconds);
+           (Matreshka.Internals.Calendars.UTC_Time_Zone'Access,
+            Matreshka.Internals.Calendars.Gregorian.Julian_Day
+             (Matreshka.Internals.Calendars.Gregorian.Year_Number (Year),
+              Matreshka.Internals.Calendars.Gregorian.Month_Number (Month),
+              Matreshka.Internals.Calendars.Gregorian.Day_Number (Day)),
+            Matreshka.Internals.Calendars.Times.Hour_Number (Hour),
+            Matreshka.Internals.Calendars.Times.Minute_Number (Minute),
+            Matreshka.Internals.Calendars.Times.Second_Number (Second),
+            Matreshka.Internals.Calendars.Times.Nano_Second_100_Number
+             (Nanosecond_100)));
    end Create;
 
    ------------
@@ -450,12 +469,15 @@ package body League.Calendars.ISO_8601 is
    ------------
 
    function Create
-    (Self    : ISO_8601_Calendar'Class;
-     Year    : Year_Number;
-     Month   : Month_Number;
-     Day     : Day_Number;
-     Seconds : Time;
-     Zone    : Time_Zone) return Date_Time
+    (Self           : ISO_8601_Calendar'Class;
+     Zone           : Time_Zone;
+     Year           : Year_Number;
+     Month          : Month_Number;
+     Day            : Day_Number;
+     Hour           : Hour_Number;
+     Minute         : Minute_Number;
+     Second         : Second_Number;
+     Nanosecond_100 : Nanosecond_100_Number) return Date_Time
    is
       pragma Unreferenced (Self);
 
@@ -1617,13 +1639,17 @@ package body League.Calendars.ISO_8601 is
    -----------
 
    procedure Split
-    (Stamp   : Date_Time;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time) is
+    (Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number) is
    begin
-      Calendar.Split (Stamp, Year, Month, Day, Seconds);
+      Calendar.Split
+       (Stamp, Year, Month, Day, Hour, Minute, Second, Nanosecond_100);
    end Split;
 
    -----------
@@ -1631,14 +1657,18 @@ package body League.Calendars.ISO_8601 is
    -----------
 
    procedure Split
-    (Stamp   : Date_Time;
-     Zone    : Time_Zone;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time) is
+    (Stamp          : Date_Time;
+     Zone           : Time_Zone;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number) is
    begin
-      Calendar.Split (Stamp, Zone, Year, Month, Day, Seconds);
+      Calendar.Split
+       (Zone, Stamp, Year, Month, Day, Hour, Minute, Second, Nanosecond_100);
    end Split;
 
    -----------
@@ -1671,12 +1701,15 @@ package body League.Calendars.ISO_8601 is
    -----------
 
    procedure Split
-    (Self    : ISO_8601_Calendar'Class;
-     Stamp   : Date_Time;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time)
+    (Self           : ISO_8601_Calendar'Class;
+     Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number)
    is
       pragma Unreferenced (Self);
 
@@ -1691,13 +1724,16 @@ package body League.Calendars.ISO_8601 is
    -----------
 
    procedure Split
-    (Self    : ISO_8601_Calendar'Class;
-     Stamp   : Date_Time;
-     Zone    : Time_Zone;
-     Year    : out Year_Number;
-     Month   : out Month_Number;
-     Day     : out Day_Number;
-     Seconds : out Time)
+    (Self           : ISO_8601_Calendar'Class;
+     Zone           : Time_Zone;
+     Stamp          : Date_Time;
+     Year           : out Year_Number;
+     Month          : out Month_Number;
+     Day            : out Day_Number;
+     Hour           : out Hour_Number;
+     Minute         : out Minute_Number;
+     Second         : out Second_Number;
+     Nanosecond_100 : out Nanosecond_100_Number)
    is
       pragma Unreferenced (Self);
 
