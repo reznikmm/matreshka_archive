@@ -33,6 +33,10 @@ gen-ucd:
 	rm -rf .new
 #	.objs/tools/gen_segments $(CLDR)
 
+gen-tz:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_tz.gpr
+	.objs/tools/gen_tz tools/tz/a
+
 regexp: yy_tools .gens-regexp
 	cd .gens-regexp && $(AYACC) ../source/league/regexp_parser.y
 	cd .gens-regexp && gcc -c -gnat12 -gnatct -I../source/league regexp_parser_tokens.ads
