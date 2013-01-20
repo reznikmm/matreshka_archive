@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -243,6 +243,29 @@ package body Matreshka.Internals.Calendars.Gregorian is
 
       return Month_Number (((Shifted_Month + 2) mod 12) + 1);
    end Month;
+
+   -----------
+   -- Split --
+   -----------
+
+   procedure Split
+    (Date  : Julian_Day_Number;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number)
+   is
+      Days          : Julian_Day_Number;
+      Years         : Julian_Day_Number;
+      Shifted_Month : Julian_Day_Number;
+
+   begin
+      Split (Date, Shifted_Year => Years, Day_In_Year => Days);
+      Shifted_Month := (5 * Days + 2) / 153;
+
+      Year  := Year_Number (Years + Boolean'Pos (Days > 305) + Min_Year);
+      Month := Month_Number (((Shifted_Month + 2) mod 12) + 1);
+      Day   := Day_Number (Days - (153 * Shifted_Month + 2) / 5 + 1);
+   end Split;
 
    -----------
    -- Split --

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -92,5 +92,12 @@ package Matreshka.Internals.Calendars.Gregorian is
    function Days_In_Year (Date : Julian_Day_Number) return Day_Of_Year_Number;
    function Days_In_Year (Year : Year_Number) return Day_Of_Year_Number;
    --  Returns number of days in the specified year.
+
+   procedure Split
+    (Date  : Julian_Day_Number;
+     Year  : out Year_Number;
+     Month : out Month_Number;
+     Day   : out Day_Number);
+   --  Splits date into year, month and day components.
 
 end Matreshka.Internals.Calendars.Gregorian;
