@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -72,11 +72,20 @@ package Matreshka.Internals.Calendars is
 
    type Julian_Day_Number is new Interfaces.Integer_32;
 
-   type Internal_Time_Zone is null record;
+   type Zone_Record is record
+      From   : Absolute_Time;
+      Offset : Relative_Time;
+   end record;
+
+   type Zone_Array is array (Positive range <>) of Zone_Record;
+
+   type Internal_Time_Zone (Length : Natural) is record
+      Data : Zone_Array (1 .. Length);
+   end record;
 
    type Time_Zone_Access is access all Internal_Time_Zone;
    for Time_Zone_Access'Storage_Size use 0;
 
-   UTC_Time_Zone : aliased Internal_Time_Zone;
+   UTC_Time_Zone : aliased Internal_Time_Zone (0);
 
 end Matreshka.Internals.Calendars;

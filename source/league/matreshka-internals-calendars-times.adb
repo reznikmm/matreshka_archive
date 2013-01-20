@@ -350,11 +350,55 @@ package body Matreshka.Internals.Calendars.Times is
      Second         : out Second_Number;
      Nanosecond_100 : out Nano_Second_100_Number)
    is
-      Leap : Relative_Time;
-      Time : Relative_Time;
+      Leap            : Relative_Time;
+      Time            : Relative_Time;
+      Corrected_Stamp : Absolute_Time := Stamp;
 
    begin
-      Split (Zone, Stamp, Julian_Day, Time, Leap);
+      --  Compensate leap seconds and extract leap second duration when
+      --  necessary.
+
+      Leap := 0;
+
+      --  Going through list of leap seconds.
+
+      for J in Leaps'Range loop
+         if Stamp >= Leaps (J).Stamp + 10_000_000 then
+            --  Stamp is larger than current leap second and outside of leap
+            --  second range.
+
+            Corrected_Stamp := Stamp - Leaps (J).Correction;
+
+            exit;
+
+         elsif Stamp >= Leaps (J).Stamp then
+            --  Stamp is inside leap second range.
+
+            Corrected_Stamp :=
+              Leaps (J).Stamp - Leaps (J).Correction + 10_000_000 - 1;
+            Leap := Relative_Time (Stamp - Leaps (J).Stamp + 1);
+
+            exit;
+         end if;
+      end loop;
+
+      --  Apply timezone offset.
+
+      for J in Zone.Data'Range loop
+         if Corrected_Stamp >= Zone.Data (J).From then
+            Corrected_Stamp :=
+              Corrected_Stamp + Absolute_Time (Zone.Data (J).Offset);
+
+            exit;
+         end if;
+      end loop;
+
+      --  Compute julian day number and relative time.
+
+      Julian_Day :=
+        Julian_Day_Number (Corrected_Stamp / (Ticks_In_Day)) + X_Open_Epoch;
+      Time := Relative_Time (Corrected_Stamp mod (Ticks_In_Day));
+
       Hour := Hour_Number (Time / Ticks_In_Hour);
       Minute := Minute_Number ((Time mod Ticks_In_Hour) / Ticks_In_Minute);
       Second :=
