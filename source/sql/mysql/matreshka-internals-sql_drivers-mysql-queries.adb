@@ -603,7 +603,16 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                     Self.Buffer (J).Length_Value'Unchecked_Access;
 
                when MYSQL_TYPE_STRING =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_STRING;
+                  Self.Result (J).buffer :=
+                    To_Address
+                     (Interfaces.C.Strings.New_String
+                       ((1 .. Natural (Field.length) => ' ')));
+                  Self.Result (J).buffer_length := Field.length;
+                  Self.Result (J).length :=
+                    Self.Buffer (J).Length_Value'Unchecked_Access;
 
                when MYSQL_TYPE_GEOMETRY =>
                   raise Program_Error;
@@ -882,7 +891,19 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
             end if;
 
          when MYSQL_TYPE_STRING =>
-            raise Program_Error;
+            --  Process text data.
+
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_String_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Strings.From_UTF_8_String
+                  (Interfaces.C.Strings.Value
+                    (To_chars_ptr (Self.Result (Index).buffer),
+                     Interfaces.C.size_t (Self.Buffer (Index).Length_Value))));
+            end if;
 
          when MYSQL_TYPE_GEOMETRY =>
             raise Program_Error;
