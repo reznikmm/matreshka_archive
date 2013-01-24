@@ -447,12 +447,10 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Time zone is not yet implemented.
-
       return
         Date_Time
          (Matreshka.Internals.Calendars.Times.Create
-           (Matreshka.Internals.Calendars.UTC_Time_Zone'Access,
+           (Local_Time_Zone,
             Matreshka.Internals.Calendars.Gregorian.Julian_Day
              (Matreshka.Internals.Calendars.Gregorian.Year_Number (Year),
               Matreshka.Internals.Calendars.Gregorian.Month_Number (Month),
@@ -482,10 +480,19 @@ package body League.Calendars.ISO_8601 is
       pragma Unreferenced (Self);
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
-      return Dummy : Date_Time;
+      return
+        Date_Time
+         (Matreshka.Internals.Calendars.Times.Create
+           (Zone.Description,
+            Matreshka.Internals.Calendars.Gregorian.Julian_Day
+             (Matreshka.Internals.Calendars.Gregorian.Year_Number (Year),
+              Matreshka.Internals.Calendars.Gregorian.Month_Number (Month),
+              Matreshka.Internals.Calendars.Gregorian.Day_Number (Day)),
+            Matreshka.Internals.Calendars.Times.Hour_Number (Hour),
+            Matreshka.Internals.Calendars.Times.Minute_Number (Minute),
+            Matreshka.Internals.Calendars.Times.Second_Number (Second),
+            Matreshka.Internals.Calendars.Times.Nano_Second_100_Number
+             (Nanosecond_100)));
    end Create;
 
    ---------
