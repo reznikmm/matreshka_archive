@@ -57,11 +57,15 @@ package Matreshka.Internals.SQL_Drivers.MySQL.Queries is
 private
 
    type Value_Record is record
-      Null_Value    : aliased my_bool;
-      Integer_Value : aliased Interfaces.C.long;
-      Double_Value  : aliased Interfaces.C.double;
-      Length_Value  : aliased Interfaces.C.unsigned_long;
-      Time_Value    : aliased MYSQL_TIME;
+      Null_Value      : aliased my_bool;
+      Tiny_Value      : aliased Interfaces.C.signed_char;
+      Short_Value     : aliased Interfaces.C.short;
+      Int_24_Value    : aliased Interfaces.C.int;
+      Long_Value      : aliased Interfaces.C.int;
+      Long_Long_Value : aliased Interfaces.C.long;
+      Double_Value    : aliased Interfaces.C.double;
+      Length_Value    : aliased Interfaces.C.unsigned_long;
+      Time_Value      : aliased MYSQL_TIME;
    end record;
 
    type Value_Array is array (Positive range <>) of Value_Record;

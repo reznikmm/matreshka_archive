@@ -148,12 +148,13 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
             Binds (J).length := Values (J).Length_Value'Unchecked_Access;
 
          elsif League.Holders.Is_Abstract_Integer (Value) then
-            Values (J).Integer_Value :=
+            Values (J).Long_Long_Value :=
               Interfaces.C.long
                (League.Holders.Universal_Integer'
                  (League.Holders.Element (Value)));
-            Binds (J).buffer_type := MYSQL_TYPE_LONG;
-            Binds (J).buffer := Values (J).Integer_Value'Address;
+            Binds (J).buffer_type := MYSQL_TYPE_LONGLONG;
+            Binds (J).is_unsigned := 0;
+            Binds (J).buffer := Values (J).Long_Long_Value'Address;
 
          elsif League.Holders.Is_Abstract_Float (Value) then
             Values (J).Double_Value :=
@@ -461,23 +462,36 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                   raise Program_Error;
 
                when MYSQL_TYPE_TINY =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_TINY;
+                  Self.Result (J).is_unsigned := 0;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Tiny_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_SHORT =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_SHORT;
+                  Self.Result (J).is_unsigned := 0;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Short_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_LONG =>
                   Self.Result (J).is_null :=
                     Self.Buffer (J).Null_Value'Access;
                   Self.Result (J).buffer_type := MYSQL_TYPE_LONG;
+                  Self.Result (J).is_unsigned := 0;
                   Self.Result (J).buffer :=
-                    Self.Buffer (J).Integer_Value'Address;
+                    Self.Buffer (J).Long_Value'Address;
                   Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_FLOAT =>
                   Self.Result (J).is_null :=
                     Self.Buffer (J).Null_Value'Access;
-                  Self.Result (J).buffer_type := MYSQL_TYPE_DOUBLE;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_FLOAT;
                   Self.Result (J).buffer :=
                     Self.Buffer (J).Double_Value'Address;
                   Self.Result (J).buffer_length := 0;
@@ -497,10 +511,22 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                   Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_LONGLONG =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_LONGLONG;
+                  Self.Result (J).is_unsigned := 0;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Long_Long_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_INT24 =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_INT24;
+                  Self.Result (J).is_unsigned := 0;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Int_24_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_DATE =>
                   Self.Result (J).is_null :=
@@ -628,123 +654,224 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
 
       --  Extract requested value.
 
-      if Self.Result (Index).buffer_type = MYSQL_TYPE_VAR_STRING then
-         --  Process text data.
+      case Self.Result (Index).buffer_type is
+         when MYSQL_TYPE_DECIMAL =>
+            raise Program_Error;
 
-         League.Holders.Set_Tag
-          (Value, League.Holders.Universal_String_Tag);
+         when MYSQL_TYPE_TINY =>
+            --  Process integer (TINY) data.
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            League.Holders.Replace_Element
-             (Value,
-              League.Strings.From_UTF_8_String
-               (Interfaces.C.Strings.Value
-                 (To_chars_ptr (Self.Result (Index).buffer),
-                  Interfaces.C.size_t (Self.Buffer (Index).Length_Value))));
-         end if;
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_LONG then
-         --  Process integer data.
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Integer
+                  (Self.Buffer (Index).Tiny_Value));
+            end if;
 
-         League.Holders.Set_Tag
-          (Value, League.Holders.Universal_Integer_Tag);
+         when MYSQL_TYPE_SHORT =>
+            --  Process integer (SHORT) data.
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            League.Holders.Replace_Element
-             (Value,
-              League.Holders.Universal_Integer
-               (Self.Buffer (Index).Integer_Value));
-         end if;
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_DOUBLE then
-         --  Process float data.
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Integer
+                  (Self.Buffer (Index).Short_Value));
+            end if;
 
-         League.Holders.Set_Tag
-          (Value, League.Holders.Universal_Float_Tag);
+         when MYSQL_TYPE_LONG =>
+            --  Process integer (LONG) data.
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            League.Holders.Replace_Element
-             (Value,
-              League.Holders.Universal_Float
-               (Self.Buffer (Index).Double_Value));
-         end if;
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_TIMESTAMP then
-         --  Process TIMESTAMP.
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Integer
+                  (Self.Buffer (Index).Long_Value));
+            end if;
 
-         League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+         when MYSQL_TYPE_FLOAT =>
+            raise Program_Error;
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            --  XXX UTC time zone must be specified here.
+         when MYSQL_TYPE_DOUBLE =>
+            --  Process float data.
 
-            League.Holders.Replace_Element
-             (Value,
-              League.Calendars.ISO_8601.Create
-               (League.Calendars.ISO_8601.Year_Number
-                 (Self.Buffer (Index).Time_Value.year),
-                League.Calendars.ISO_8601.Month_Number
-                 (Self.Buffer (Index).Time_Value.month),
-                League.Calendars.ISO_8601.Day_Number
-                 (Self.Buffer (Index).Time_Value.day),
-                League.Calendars.ISO_8601.Hour_Number
-                 (Self.Buffer (Index).Time_Value.hour),
-                League.Calendars.ISO_8601.Minute_Number
-                 (Self.Buffer (Index).Time_Value.minute),
-                League.Calendars.ISO_8601.Second_Number
-                 (Self.Buffer (Index).Time_Value.second),
-                League.Calendars.ISO_8601.Nanosecond_100_Number
-                 (Self.Buffer (Index).Time_Value.second_part) * 10));
-         end if;
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Float_Tag);
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_DATE then
-         --  Process DATE.
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Float
+                  (Self.Buffer (Index).Double_Value));
+            end if;
 
-         League.Holders.Set_Tag (Value, League.Holders.Date_Tag);
+         when MYSQL_TYPE_NULL =>
+            raise Program_Error;
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            League.Holders.Replace_Element
-             (Value,
-              League.Calendars.ISO_8601.Create
-               (League.Calendars.ISO_8601.Year_Number
-                 (Self.Buffer (Index).Time_Value.year),
-                League.Calendars.ISO_8601.Month_Number
-                 (Self.Buffer (Index).Time_Value.month),
-                League.Calendars.ISO_8601.Day_Number
-                 (Self.Buffer (Index).Time_Value.day)));
-         end if;
+         when MYSQL_TYPE_TIMESTAMP =>
+            --  Process TIMESTAMP.
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_TIME then
-         --  Process TIME.
+            League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
 
-         League.Holders.Set_Tag (Value, League.Holders.Time_Tag);
+            if Self.Buffer (Index).Null_Value = 0 then
+               --  XXX UTC time zone must be specified here.
 
-         --  XXX TIME is not supported.
+               League.Holders.Replace_Element
+                (Value,
+                 League.Calendars.ISO_8601.Create
+                  (League.Calendars.ISO_8601.Year_Number
+                    (Self.Buffer (Index).Time_Value.year),
+                   League.Calendars.ISO_8601.Month_Number
+                    (Self.Buffer (Index).Time_Value.month),
+                   League.Calendars.ISO_8601.Day_Number
+                    (Self.Buffer (Index).Time_Value.day),
+                   League.Calendars.ISO_8601.Hour_Number
+                    (Self.Buffer (Index).Time_Value.hour),
+                   League.Calendars.ISO_8601.Minute_Number
+                    (Self.Buffer (Index).Time_Value.minute),
+                   League.Calendars.ISO_8601.Second_Number
+                    (Self.Buffer (Index).Time_Value.second),
+                   League.Calendars.ISO_8601.Nanosecond_100_Number
+                    (Self.Buffer (Index).Time_Value.second_part) * 10));
+            end if;
 
-      elsif Self.Result (Index).buffer_type = MYSQL_TYPE_DATETIME then
-         --  Process DATETIME.
+         when MYSQL_TYPE_LONGLONG =>
+            --  Process integer (LONGLONG) data.
 
-         League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
 
-         if Self.Buffer (Index).Null_Value = 0 then
-            League.Holders.Replace_Element
-             (Value,
-              League.Calendars.ISO_8601.Create
-               (League.Calendars.ISO_8601.Year_Number
-                 (Self.Buffer (Index).Time_Value.year),
-                League.Calendars.ISO_8601.Month_Number
-                 (Self.Buffer (Index).Time_Value.month),
-                League.Calendars.ISO_8601.Day_Number
-                 (Self.Buffer (Index).Time_Value.day),
-                League.Calendars.ISO_8601.Hour_Number
-                 (Self.Buffer (Index).Time_Value.hour),
-                League.Calendars.ISO_8601.Minute_Number
-                 (Self.Buffer (Index).Time_Value.minute),
-                League.Calendars.ISO_8601.Second_Number
-                 (Self.Buffer (Index).Time_Value.second),
-                League.Calendars.ISO_8601.Nanosecond_100_Number
-                 (Self.Buffer (Index).Time_Value.second_part) * 10));
-         end if;
-      end if;
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Integer
+                  (Self.Buffer (Index).Long_Long_Value));
+            end if;
+
+         when MYSQL_TYPE_INT24 =>
+            --  Process integer (INT24) data.
+
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Integer_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Integer
+                  (Self.Buffer (Index).Int_24_Value));
+            end if;
+
+         when MYSQL_TYPE_DATE =>
+            --  Process DATE.
+
+            League.Holders.Set_Tag (Value, League.Holders.Date_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Calendars.ISO_8601.Create
+                  (League.Calendars.ISO_8601.Year_Number
+                    (Self.Buffer (Index).Time_Value.year),
+                   League.Calendars.ISO_8601.Month_Number
+                    (Self.Buffer (Index).Time_Value.month),
+                   League.Calendars.ISO_8601.Day_Number
+                    (Self.Buffer (Index).Time_Value.day)));
+            end if;
+
+         when MYSQL_TYPE_TIME =>
+            --  Process TIME.
+
+            League.Holders.Set_Tag (Value, League.Holders.Time_Tag);
+
+            --  XXX TIME is not supported.
+
+         when MYSQL_TYPE_DATETIME =>
+            --  Process DATETIME.
+
+            League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Calendars.ISO_8601.Create
+                  (League.Calendars.ISO_8601.Year_Number
+                    (Self.Buffer (Index).Time_Value.year),
+                   League.Calendars.ISO_8601.Month_Number
+                    (Self.Buffer (Index).Time_Value.month),
+                   League.Calendars.ISO_8601.Day_Number
+                    (Self.Buffer (Index).Time_Value.day),
+                   League.Calendars.ISO_8601.Hour_Number
+                    (Self.Buffer (Index).Time_Value.hour),
+                   League.Calendars.ISO_8601.Minute_Number
+                    (Self.Buffer (Index).Time_Value.minute),
+                   League.Calendars.ISO_8601.Second_Number
+                    (Self.Buffer (Index).Time_Value.second),
+                   League.Calendars.ISO_8601.Nanosecond_100_Number
+                    (Self.Buffer (Index).Time_Value.second_part) * 10));
+            end if;
+
+         when MYSQL_TYPE_YEAR =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_NEWDATE =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_VARCHAR =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_BIT =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_NEWDECIMAL =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_ENUM =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_SET =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_TINY_BLOB =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_MEDIUM_BLOB =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_LONG_BLOB =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_BLOB =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_VAR_STRING =>
+            --  Process text data.
+
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_String_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Strings.From_UTF_8_String
+                  (Interfaces.C.Strings.Value
+                    (To_chars_ptr (Self.Result (Index).buffer),
+                     Interfaces.C.size_t (Self.Buffer (Index).Length_Value))));
+            end if;
+
+         when MYSQL_TYPE_STRING =>
+            raise Program_Error;
+
+         when MYSQL_TYPE_GEOMETRY =>
+            raise Program_Error;
+      end case;
 
       return Value;
    end Value;
