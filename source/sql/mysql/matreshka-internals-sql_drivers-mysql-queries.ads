@@ -63,6 +63,7 @@ private
       Int_24_Value    : aliased Interfaces.C.int;
       Long_Value      : aliased Interfaces.C.int;
       Long_Long_Value : aliased Interfaces.C.long;
+      Float_Value     : aliased Interfaces.C.c_float;
       Double_Value    : aliased Interfaces.C.double;
       Length_Value    : aliased Interfaces.C.unsigned_long;
       Time_Value      : aliased MYSQL_TIME;

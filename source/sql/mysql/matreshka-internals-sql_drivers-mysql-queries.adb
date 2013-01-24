@@ -493,11 +493,16 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                     Self.Buffer (J).Null_Value'Access;
                   Self.Result (J).buffer_type := MYSQL_TYPE_FLOAT;
                   Self.Result (J).buffer :=
-                    Self.Buffer (J).Double_Value'Address;
+                    Self.Buffer (J).Float_Value'Address;
                   Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_DOUBLE =>
-                  raise Program_Error;
+                  Self.Result (J).is_null :=
+                    Self.Buffer (J).Null_Value'Access;
+                  Self.Result (J).buffer_type := MYSQL_TYPE_DOUBLE;
+                  Self.Result (J).buffer :=
+                    Self.Buffer (J).Double_Value'Address;
+                  Self.Result (J).buffer_length := 0;
 
                when MYSQL_TYPE_NULL =>
                   raise Program_Error;
@@ -698,10 +703,20 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
             end if;
 
          when MYSQL_TYPE_FLOAT =>
-            raise Program_Error;
+            --  Process float (FLOAT) data.
+
+            League.Holders.Set_Tag
+             (Value, League.Holders.Universal_Float_Tag);
+
+            if Self.Buffer (Index).Null_Value = 0 then
+               League.Holders.Replace_Element
+                (Value,
+                 League.Holders.Universal_Float
+                  (Self.Buffer (Index).Float_Value));
+            end if;
 
          when MYSQL_TYPE_DOUBLE =>
-            --  Process float data.
+            --  Process float (DOUBLE) data.
 
             League.Holders.Set_Tag
              (Value, League.Holders.Universal_Float_Tag);
