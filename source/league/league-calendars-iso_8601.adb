@@ -1712,11 +1712,25 @@ package body League.Calendars.ISO_8601 is
      Nanosecond_100 : out Nanosecond_100_Number)
    is
       pragma Unreferenced (Self);
+      --  This parameter is used for dispatching only.
+
+      Julian_Day : Matreshka.Internals.Calendars.Julian_Day_Number;
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+      Matreshka.Internals.Calendars.Times.Split
+       (Local_Time_Zone,
+        Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+        Julian_Day,
+        Matreshka.Internals.Calendars.Times.Hour_Number (Hour),
+        Matreshka.Internals.Calendars.Times.Minute_Number (Minute),
+        Matreshka.Internals.Calendars.Times.Second_Number (Second),
+        Matreshka.Internals.Calendars.Times.Nano_second_100_Number
+         (Nanosecond_100));
+      Matreshka.Internals.Calendars.Gregorian.Split
+       (Julian_Day,
+        Matreshka.Internals.Calendars.Gregorian.Year_Number (Year),
+        Matreshka.Internals.Calendars.Gregorian.Month_Number (Month),
+        Matreshka.Internals.Calendars.Gregorian.Day_Number (Day));
    end Split;
 
    -----------
@@ -1736,11 +1750,25 @@ package body League.Calendars.ISO_8601 is
      Nanosecond_100 : out Nanosecond_100_Number)
    is
       pragma Unreferenced (Self);
+      --  This parameter is used for dispatching only.
+
+      Julian_Day : Matreshka.Internals.Calendars.Julian_Day_Number;
 
    begin
-      --  XXX Not yet implemented.
-
-      raise Program_Error;
+      Matreshka.Internals.Calendars.Times.Split
+       (Zone.Description,
+        Matreshka.Internals.Calendars.Absolute_Time (Stamp),
+        Julian_Day,
+        Matreshka.Internals.Calendars.Times.Hour_Number (Hour),
+        Matreshka.Internals.Calendars.Times.Minute_Number (Minute),
+        Matreshka.Internals.Calendars.Times.Second_Number (Second),
+        Matreshka.Internals.Calendars.Times.Nano_second_100_Number
+         (Nanosecond_100));
+      Matreshka.Internals.Calendars.Gregorian.Split
+       (Julian_Day,
+        Matreshka.Internals.Calendars.Gregorian.Year_Number (Year),
+        Matreshka.Internals.Calendars.Gregorian.Month_Number (Month),
+        Matreshka.Internals.Calendars.Gregorian.Day_Number (Day));
    end Split;
 
    -------------------
