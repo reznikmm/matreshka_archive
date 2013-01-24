@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,12 +46,21 @@ with Matreshka.Internals.SQL_Drivers.MySQL.Queries;
 package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
 
    use type Interfaces.C.char_array;
+   use type Interfaces.C.int;
+
 
    UTF8_Encoding : constant Interfaces.C.char_array
      := "utf8" & Interfaces.C.nul;
 
    procedure Set_MySQL_Error (Self : not null access MySQL_Database'Class);
    --  Sets error message to reported by database.
+
+   procedure Execute_Query
+    (Self    : not null access MySQL_Database'Class;
+     Query   : String;
+     Success : in out Boolean);
+   --  Internal subprogram to executre simple parameter-less and result-less
+   --  queries at connection initialization time.
 
    -----------
    -- Close --
@@ -96,6 +105,92 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
       return Self.Error;
    end Error_Message;
 
+   -------------------
+   -- Execute_Query --
+   -------------------
+
+   procedure Execute_Query
+    (Self    : not null access MySQL_Database'Class;
+     Query   : String;
+     Success : in out Boolean)
+   is
+      procedure Set_MySQL_Stmt_Error;
+
+      Handle   : MYSQL_STMT_Access;
+      C_Query  : Interfaces.C.Strings.chars_ptr;
+      Status   : Interfaces.C.int;
+      B_Status : my_bool;
+
+      --------------------------
+      -- Set_MySQL_Stmt_Error --
+      --------------------------
+
+      procedure Set_MySQL_Stmt_Error is
+      begin
+         Self.Error :=
+           League.Strings.From_UTF_8_String
+            (Interfaces.C.Strings.Value (mysql_stmt_error (Handle)));
+         Success := False;
+      end Set_MySQL_Stmt_Error;
+
+   begin
+      if not Success then
+         --  Return immidiately when error condition had been detected. It
+         --  allows to write sequence of call to Execute_Query without
+         --  intermediate check for error conditions.
+
+         return;
+      end if;
+
+      --  Allocate statement handle.
+
+      Handle := mysql_stmt_init (Self.Database_Handle);
+
+      if Handle = null then
+         Self.Error := League.Strings.To_Universal_String ("out of memory");
+         Success    := False;
+
+         return;
+      end if;
+
+      --  Prepare statement.
+
+      C_Query := Interfaces.C.Strings.New_String (Query);
+      Status :=
+        mysql_stmt_prepare
+         (Handle,
+          C_Query,
+          Interfaces.C.unsigned_long
+           (Interfaces.C.Strings.Strlen (C_Query)));
+      Interfaces.C.Strings.Free (C_Query);
+
+      if Status /= 0 then
+         Set_MySQL_Stmt_Error;
+
+         return;
+      end if;
+
+      --  Execute statement.
+
+      Status := mysql_stmt_execute (Handle);
+
+      if Status /= 0 then
+         Set_MySQL_Stmt_Error;
+
+         return;
+      end if;
+
+      --  Deallocate statement.
+
+      B_Status := mysql_stmt_close (Handle);
+
+      if B_Status /= 0 then
+         Set_MySQL_Stmt_Error;
+
+         return;
+      end if;
+   end Execute_Query;
+
    --------------
    -- Finalize --
    --------------
@@ -115,8 +210,6 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
     (Self    : not null access MySQL_Database;
      Options : SQL.Options.SQL_Options) return Boolean
    is
-      use type Interfaces.C.int;
-
       Database_Name : constant League.Strings.Universal_String
         := League.Strings.To_Universal_String ("database");
       Host_Name     : constant League.Strings.Universal_String
@@ -142,6 +235,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
       Socket_Option   : Interfaces.C.Strings.chars_ptr
         := Interfaces.C.Strings.Null_Ptr;
       Result          : MYSQL_Access;
+      Success         : Boolean;
 
    begin
       --  Initialize handle.
@@ -234,7 +328,16 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
          return False;
       end if;
 
-      return True;
+      --  Configure connection.
+
+      Success := True;
+
+      --  Set time_zone variable to UTC. Driver assumes that all date/time
+      --  types are represented as UTC time.
+
+      Execute_Query (Self, "SET time_zone = '+00:00'", Success);
+
+      return Success;
    end Open;
 
    -----------

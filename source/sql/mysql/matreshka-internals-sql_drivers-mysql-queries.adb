@@ -196,6 +196,8 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
                Fraction : League.Calendars.ISO_8601.Nanosecond_100_Number;
 
             begin
+               --  XXX UTC time zone must be specified here.
+
                League.Calendars.ISO_8601.Split
                 (Aux, Year, Month, Day, Hour, Minute, Second, Fraction);
                Values (J).Time_Value :=
@@ -669,6 +671,8 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
          League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
 
          if Self.Buffer (Index).Null_Value = 0 then
+            --  XXX UTC time zone must be specified here.
+
             League.Holders.Replace_Element
              (Value,
               League.Calendars.ISO_8601.Create
