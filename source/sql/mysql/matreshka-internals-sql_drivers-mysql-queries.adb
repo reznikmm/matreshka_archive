@@ -81,7 +81,11 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
     (Self      : not null access MySQL_Query;
      Name      : League.Strings.Universal_String;
      Value     : League.Holders.Holder;
-     Direction : SQL.Parameter_Directions) is
+     Direction : SQL.Parameter_Directions)
+   is
+      pragma Unreferenced (Direction);
+      --  Only 'in' parameters are supported now.
+
    begin
       Self.Parameters.Set_Value (Name, Value);
    end Bind_Value;
