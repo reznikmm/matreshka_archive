@@ -948,7 +948,10 @@ package body League.Calendars.ISO_8601 is
 
    function Days_In_Year
     (Self : ISO_8601_Calendar'Class;
-     Year : Year_Number) return Day_Of_Year_Number is
+     Year : Year_Number) return Day_Of_Year_Number
+   is
+      pragma Unreferenced (Self);
+
    begin
       return
         Day_Of_Year_Number
@@ -973,7 +976,10 @@ package body League.Calendars.ISO_8601 is
    function Days_To
     (Self  : ISO_8601_Calendar'Class;
      From  : Date;
-     To    : Date) return Integer is
+     To    : Date) return Integer
+   is
+      pragma Unreferenced (Self);
+
    begin
       return Integer (To - From);
    end Days_To;
