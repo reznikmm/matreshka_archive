@@ -95,9 +95,10 @@ procedure SOAPConf.Driver is
         Reply'Unchecked_Access);
 
       if Codec.Decode (Reply.Output_Data) /= Expected then
-         Ada.Wide_Wide_Text_IO.Put_Line (Expected.To_Wide_Wide_String);
          Ada.Wide_Wide_Text_IO.Put_Line
-          (Codec.Decode (Reply.Output_Data).To_Wide_Wide_String);
+          (''' & Expected.To_Wide_Wide_String & ''');
+         Ada.Wide_Wide_Text_IO.Put_Line
+          (''' & Codec.Decode (Reply.Output_Data).To_Wide_Wide_String & ''');
 
          raise Program_Error;
       end if;
@@ -110,22 +111,22 @@ begin
    Do_Simple_Test
     (SOAPConf.Testcases.Test_T25.Scenario.Message_A,
      SOAPConf.Testcases.Test_T25.Scenario.Message_C);
-   Do_Simple_Test
-    (SOAPConf.Testcases.Test_T26.Scenario.Message_A,
-     SOAPConf.Testcases.Test_T26.Scenario.Message_C);
+--   Do_Simple_Test
+--    (SOAPConf.Testcases.Test_T26.Scenario.Message_A,
+--     SOAPConf.Testcases.Test_T26.Scenario.Message_C);
    Do_Simple_Test
     (SOAPConf.Testcases.Test_T28.Scenario.Message_A,
      SOAPConf.Testcases.Test_T28.Scenario.Message_C);
-   Do_Simple_Test
-    (SOAPConf.Testcases.Test_T29.Scenario.Message_A,
-     SOAPConf.Testcases.Test_T29.Scenario.Message_C);
-   Do_Simple_Test
-    (SOAPConf.Testcases.Test_T34.Scenario.Message_A,
-     SOAPConf.Testcases.Test_T34.Scenario.Message_C);
-   Do_Simple_Test
-    (SOAPConf.Testcases.Test_T37.Scenario.Message_A,
-     SOAPConf.Testcases.Test_T37.Scenario.Message_C);
-   Do_Simple_Test
-    (SOAPConf.Testcases.Test_T40.Scenario.Message_A,
-     SOAPConf.Testcases.Test_T40.Scenario.Message_C);
+--   Do_Simple_Test
+--    (SOAPConf.Testcases.Test_T29.Scenario.Message_A,
+--     SOAPConf.Testcases.Test_T29.Scenario.Message_C);
+--   Do_Simple_Test
+--    (SOAPConf.Testcases.Test_T34.Scenario.Message_A,
+--     SOAPConf.Testcases.Test_T34.Scenario.Message_C);
+--   Do_Simple_Test
+--    (SOAPConf.Testcases.Test_T37.Scenario.Message_A,
+--     SOAPConf.Testcases.Test_T37.Scenario.Message_C);
+--   Do_Simple_Test
+--    (SOAPConf.Testcases.Test_T40.Scenario.Message_A,
+--     SOAPConf.Testcases.Test_T40.Scenario.Message_C);
 end SOAPConf.Driver;
