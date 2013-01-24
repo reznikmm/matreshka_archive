@@ -10,6 +10,10 @@ ifdef HAS_VALGRIND
     ALL_TARGETS += league-valgrind
 endif
 
+ifdef HAS_MYSQL
+    ALL_TARGETS += mysql
+endif
+
 ifdef HAS_SQLITE3
     ALL_TARGETS += sqlite3
 
@@ -68,6 +72,11 @@ soap:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_tests.gpr
 	.objs/soapconf_test
 	.objs/test_248
+
+mysql:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_mysql_tests.gpr
+	mysql test < testsuite/sql/TN-284/cleanup.sql
+	.objs/test_284
 
 sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
