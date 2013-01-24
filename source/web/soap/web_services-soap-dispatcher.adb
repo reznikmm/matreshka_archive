@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,6 +66,7 @@ package body Web_Services.SOAP.Dispatcher is
      SOAP_Action : League.Strings.Universal_String;
      Stream      : Web_Services.SOAP.Reply_Streams.Reply_Stream_Access)
    is
+      use type Web_Services.SOAP.Handlers.SOAP_Message_Handler;
       use type Web_Services.SOAP.Messages.SOAP_Message_Access;
       use type Web_Services.SOAP.Payloads.SOAP_Payload_Access;
 
@@ -111,26 +112,7 @@ package body Web_Services.SOAP.Dispatcher is
             return;
          end if;
 
-         --  Process request.
-
-         Handled := False;
-
-         for Handler of Web_Services.SOAP.Handler_Registry.RPC_Registry loop
-            Handler (Input.all, Output, Handled);
-
-            exit when Handled;
-         end loop;
-
-         if Handled then
-            --  Return when request was handled.
-
-            Status := Reply_Streams.S_200;
-            Stream.Send_Message (Status, Output);
-
-            return;
-         end if;
-
-         --  Attempt to handle message using old style handlers.
+         --  Handle message using message-style handlers.
 
          if Input.Payload = null then
             Handler :=
@@ -141,11 +123,37 @@ package body Web_Services.SOAP.Dispatcher is
               Web_Services.SOAP.Handler_Registry.Resolve (Input.Payload'Tag);
          end if;
 
-         --  Execute handler.
+         if Handler /= null then
+            --  Execute handler.
 
-         Handler (Input, Output);
-         Web_Services.SOAP.Messages.Free (Input);
-         Status := Reply_Streams.S_200;
+            Handler (Input, Output);
+            Web_Services.SOAP.Messages.Free (Input);
+            Status := Reply_Streams.S_200;
+
+            return;
+         end if;
+
+         --  Process request using RCI-style handlers.
+
+         Handled := False;
+
+         for Handler of Web_Services.SOAP.Handler_Registry.RPC_Registry loop
+            Handler (Input.all, Output, Handled);
+
+            exit when Handled;
+         end loop;
+
+         if Handled then
+            --  Return when request has been handled.
+
+            Status := Reply_Streams.S_200;
+            Stream.Send_Message (Status, Output);
+
+            return;
+         end if;
+
+         raise Program_Error;
+         --  Request was not handled, fault must be created and returned.
 
       else
          Output := Decoder.Message;
