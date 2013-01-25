@@ -129,6 +129,7 @@ package body Web_Services.SOAP.Dispatcher is
             Handler (Input, Output);
             Web_Services.SOAP.Messages.Free (Input);
             Status := Reply_Streams.S_200;
+            Stream.Send_Message (Status, Output);
 
             return;
          end if;
