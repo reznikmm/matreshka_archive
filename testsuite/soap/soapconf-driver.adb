@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -111,22 +111,22 @@ begin
    Do_Simple_Test
     (SOAPConf.Testcases.Test_T25.Scenario.Message_A,
      SOAPConf.Testcases.Test_T25.Scenario.Message_C);
---   Do_Simple_Test
---    (SOAPConf.Testcases.Test_T26.Scenario.Message_A,
---     SOAPConf.Testcases.Test_T26.Scenario.Message_C);
+   Do_Simple_Test
+    (SOAPConf.Testcases.Test_T26.Scenario.Message_A,
+     SOAPConf.Testcases.Test_T26.Scenario.Message_C);
    Do_Simple_Test
     (SOAPConf.Testcases.Test_T28.Scenario.Message_A,
      SOAPConf.Testcases.Test_T28.Scenario.Message_C);
---   Do_Simple_Test
---    (SOAPConf.Testcases.Test_T29.Scenario.Message_A,
---     SOAPConf.Testcases.Test_T29.Scenario.Message_C);
---   Do_Simple_Test
---    (SOAPConf.Testcases.Test_T34.Scenario.Message_A,
---     SOAPConf.Testcases.Test_T34.Scenario.Message_C);
---   Do_Simple_Test
---    (SOAPConf.Testcases.Test_T37.Scenario.Message_A,
---     SOAPConf.Testcases.Test_T37.Scenario.Message_C);
---   Do_Simple_Test
---    (SOAPConf.Testcases.Test_T40.Scenario.Message_A,
---     SOAPConf.Testcases.Test_T40.Scenario.Message_C);
+   Do_Simple_Test
+    (SOAPConf.Testcases.Test_T29.Scenario.Message_A,
+     SOAPConf.Testcases.Test_T29.Scenario.Message_C);
+   Do_Simple_Test
+    (SOAPConf.Testcases.Test_T34.Scenario.Message_A,
+     SOAPConf.Testcases.Test_T34.Scenario.Message_C);
+   Do_Simple_Test
+    (SOAPConf.Testcases.Test_T37.Scenario.Message_A,
+     SOAPConf.Testcases.Test_T37.Scenario.Message_C);
+   Do_Simple_Test
+    (SOAPConf.Testcases.Test_T40.Scenario.Message_A,
+     SOAPConf.Testcases.Test_T40.Scenario.Message_C);
 end SOAPConf.Driver;
