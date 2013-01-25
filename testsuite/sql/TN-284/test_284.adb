@@ -116,16 +116,17 @@ begin
          Query.Prepare
           (+"CREATE TABLE test_284"
               & " (timestamp TIMESTAMP NOT NULL,"
-              & "  datetime DATETIME NOT NULL,"
-              & "  tiny TINYINT NOT NULL,"
-              & "  small SMALLINT NOT NULL,"
-              & "  medium MEDIUMINT NOT NULL,"
-              & "  intv INTEGER NOT NULL,"
-              & "  big BIGINT NOT NULL,"
-              & "  floatv FLOAT NOT NULL,"
-              & "  doublev DOUBLE NOT NULL,"
-              & "  c10 CHAR(10) NOT NULL,"
-              & "  vchar VARCHAR (20) NOT NULL)");
+              & "  datetime  DATETIME NOT NULL,"
+              & "  tiny      TINYINT NOT NULL,"
+              & "  small     SMALLINT NOT NULL,"
+              & "  medium    MEDIUMINT NOT NULL,"
+              & "  intv      INTEGER NOT NULL,"
+              & "  big       BIGINT NOT NULL,"
+              & "  ubig      BIGINT UNSIGNED NOT NULL,"
+              & "  floatv    FLOAT NOT NULL,"
+              & "  doublev   DOUBLE NOT NULL,"
+              & "  c10       CHAR(10) NOT NULL,"
+              & "  vchar     VARCHAR (20) NOT NULL)");
          Query.Execute;
 
          --  Insert data.
@@ -133,10 +134,10 @@ begin
          Query.Prepare
           (+"INSERT INTO test_284"
               & " (timestamp, datetime, tiny, small, medium, intv, big,"
-              & "  floatv, doublev, c10, vchar)"
+              & "  ubig, floatv, doublev, c10, vchar)"
               & " VALUES"
               & " (:timestamp, :datetime, :tiny, :small, :medium, :int,"
-              & " :big, :floatv, :doublev, :c10, :vchar)");
+              & " :big, :ubig, :floatv, :doublev, :c10, :vchar)");
          Query.Bind_Value
           (+":datetime", League.Holders.To_Holder (Datetime_Value));
          Query.Bind_Value
@@ -147,6 +148,9 @@ begin
          Query.Bind_Value (+":int", League.Holders.Integers.To_Holder (-4));
          Query.Bind_Value
           (+":big",
+           League.Holders.Long_Integers.To_Holder (-9223372036854775807));
+         Query.Bind_Value
+          (+":ubig",
            League.Holders.Long_Integers.To_Holder (9223372036854775807));
          Query.Bind_Value (+":floatv", League.Holders.Floats.To_Holder (2.6));
          Query.Bind_Value
@@ -166,7 +170,7 @@ begin
 
          Query.Prepare
           (+"SELECT timestamp, datetime, tiny, small, medium, intv, big,"
-              & " floatv, doublev, c10, vchar"
+              & " ubig, floatv, doublev, c10, vchar"
               & " FROM test_284");
          Query.Execute;
 
@@ -199,24 +203,30 @@ begin
          end if;
 
          if League.Holders.Long_Integers.Element (Query.Value (7))
+              /= -9223372036854775807
+         then
+            raise Program_Error;
+         end if;
+
+         if League.Holders.Long_Integers.Element (Query.Value (8))
               /= 9223372036854775807
          then
             raise Program_Error;
          end if;
 
-         if League.Holders.Floats.Element (Query.Value (8)) /= 2.6 then
+         if League.Holders.Floats.Element (Query.Value (9)) /= 2.6 then
             raise Program_Error;
          end if;
 
-         if League.Holders.Long_Floats.Element (Query.Value (9)) /= -4.3 then
+         if League.Holders.Long_Floats.Element (Query.Value (10)) /= -4.3 then
             raise Program_Error;
          end if;
 
-         if League.Holders.Element (Query.Value (10)) /= +"abcdefghij" then
+         if League.Holders.Element (Query.Value (11)) /= +"abcdefghij" then
             raise Program_Error;
          end if;
 
-         if League.Holders.Element (Query.Value (11)) /= +"АБВГД" then
+         if League.Holders.Element (Query.Value (12)) /= +"АБВГД" then
             raise Program_Error;
          end if;
       end;
