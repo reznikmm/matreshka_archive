@@ -74,6 +74,10 @@ package Web_Services.SOAP.Payloads.Faults is
     (Self : Abstract_SOAP_Fault'Class) return Language_Text_Maps.Map;
    --  Returns items of Reason element of fault.
 
+   function Subcodes
+    (Self : Abstract_SOAP_Fault'Class) return Code_Vectors.Vector;
+   --  Returns items of Subcode element of Code element of fault.
+
    type Version_Mismatch_Fault is
      abstract new Abstract_SOAP_Fault with private;
 

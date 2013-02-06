@@ -107,4 +107,14 @@ package body Web_Services.SOAP.Payloads.Faults is
       return Self.Reason;
    end Reason;
 
+   --------------
+   -- Subcodes --
+   --------------
+
+   function Subcodes
+    (Self : Abstract_SOAP_Fault'Class) return Code_Vectors.Vector is
+   begin
+      return Self.Subcodes;
+   end Subcodes;
+
 end Web_Services.SOAP.Payloads.Faults;

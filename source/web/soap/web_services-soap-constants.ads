@@ -81,6 +81,8 @@ package Web_Services.SOAP.Constants is
      := League.Strings.To_Universal_String ("Header");
    SOAP_Reason_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Reason");
+   SOAP_Subcode_Name         : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Subcode");
    SOAP_Text_Name            : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Text");
    SOAP_Value_Name           : constant League.Strings.Universal_String

@@ -163,6 +163,34 @@ package body Web_Services.SOAP.Message_Encoders is
           := Reason.First;
       Attributes : XML.SAX.Attributes.SAX_Attributes;
 
+      procedure Write_Subcode (Index : Positive);
+
+      -------------------
+      -- Write_Subcode --
+      -------------------
+
+      procedure Write_Subcode (Index : Positive) is
+         Code : constant Web_Services.SOAP.Payloads.Faults.Fault_Code
+           := Fault.Subcodes.Element (Index);
+
+      begin
+         Writer.Start_Element (SOAP_Envelope_URI, SOAP_Subcode_Name);
+
+         Writer.Start_Element (SOAP_Envelope_URI, SOAP_Value_Name);
+         Writer.Characters (Code.Prefix);
+         --  XXX Namespace URI to prefix mapping resolution must to be
+         --  implemented here.
+         Writer.Characters (':');
+         Writer.Characters (Code.Local_Name);
+         Writer.End_Element (SOAP_Envelope_URI, SOAP_Value_Name);
+
+         if Integer (Fault.Subcodes.Length) > Index then
+            Write_Subcode (Index + 1);
+         end if;
+
+         Writer.End_Element (SOAP_Envelope_URI, SOAP_Subcode_Name);
+      end Write_Subcode;
+
    begin
       Writer.Start_Element (SOAP_Envelope_URI, SOAP_Fault_Name);
 
@@ -179,8 +207,11 @@ package body Web_Services.SOAP.Message_Encoders is
       Writer.Characters (Fault.Code.Local_Name);
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Value_Name);
 
---      Abstract_SOAP_Fault_Encoder'Class (Self).Encode_Code_Subcode
---       (Fault, Writer);
+      --  Serialize 'Subcode' elements.
+
+      if not Fault.Subcodes.Is_Empty then
+         Write_Subcode (1);
+      end if;
 
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Code_Name);
 
