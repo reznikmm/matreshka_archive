@@ -91,12 +91,18 @@ private
       Detail : League.Strings.Universal_String;
    end record;
 
+   function Has_Detail (Self : Simple_Must_Understand_Fault) return Boolean;
+
    type Simple_Version_Mismatch_Fault is new Version_Mismatch_Fault with record
       Detail : League.Strings.Universal_String;
    end record;
 
+   function Has_Detail (Self : Simple_Version_Mismatch_Fault) return Boolean;
+
    type Simple_Sender_Fault is new Sender_Fault with record
       Detail : League.Strings.Universal_String;
    end record;
+
+   function Has_Detail (Self : Simple_Sender_Fault) return Boolean;
 
 end Web_Services.SOAP.Payloads.Faults.Simple;

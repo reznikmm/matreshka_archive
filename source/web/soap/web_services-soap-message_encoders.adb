@@ -251,12 +251,16 @@ package body Web_Services.SOAP.Message_Encoders is
 --
 --      Abstract_SOAP_Fault_Encoder'Class (Self).Encode_Role (Fault, Writer);
 
-      --  Serialize optional 'Detail' attribute.
+      --  Serialize optional 'Detail' attribute when necessary.
 
-      Encoder :=
-        Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Resolve
-         (Fault'Tag);
-      Encoder.Encode (Fault, Writer);
+      if Fault.Has_Detail then
+         Writer.Start_Element (SOAP_Envelope_URI, SOAP_Detail_Name);
+         Encoder :=
+           Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Resolve
+            (Fault'Tag);
+         Encoder.Encode (Fault, Writer);
+         Writer.End_Element (SOAP_Envelope_URI, SOAP_Detail_Name);
+      end if;
 
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Fault_Name);
    end Encode_Fault;

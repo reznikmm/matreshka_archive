@@ -204,6 +204,8 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
      Message : Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault'Class;
      Writer  : in out XML.SAX.Writers.SAX_Writer'Class)
    is
+      pragma Unreferenced (Self);
+
       Detail : League.Strings.Universal_String;
 
    begin
@@ -225,6 +227,33 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
          Writer.Characters (Detail);
       end if;
    end Encode;
+
+   ----------------
+   -- Has_Detail --
+   ----------------
+
+   function Has_Detail (Self : Simple_Must_Understand_Fault) return Boolean is
+   begin
+      return not Self.Detail.Is_Empty;
+   end Has_Detail;
+
+   ----------------
+   -- Has_Detail --
+   ----------------
+
+   function Has_Detail (Self : Simple_Version_Mismatch_Fault) return Boolean is
+   begin
+      return not Self.Detail.Is_Empty;
+   end Has_Detail;
+
+   ----------------
+   -- Has_Detail --
+   ----------------
+
+   function Has_Detail (Self : Simple_Sender_Fault) return Boolean is
+   begin
+      return not Self.Detail.Is_Empty;
+   end Has_Detail;
 
 begin
    Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Register
