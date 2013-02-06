@@ -91,7 +91,7 @@ package body Web_Services.SOAP.Payloads.Faults is
    procedure Initialize
     (Self     : in out Version_Mismatch_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
-     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map) is
+     Reason   : Language_Text_Maps.Map) is
    begin
       Self.Kind     := Version_Mismatch;
       Self.Subcodes := Subcodes;
@@ -105,7 +105,7 @@ package body Web_Services.SOAP.Payloads.Faults is
    procedure Initialize
     (Self     : in out Must_Understand_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
-     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map) is
+     Reason   : Language_Text_Maps.Map) is
    begin
       Self.Kind     := Must_Understand;
       Self.Subcodes := Subcodes;
@@ -119,7 +119,7 @@ package body Web_Services.SOAP.Payloads.Faults is
    procedure Initialize
     (Self     : in out Data_Encoding_Unknown_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
-     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map) is
+     Reason   : Language_Text_Maps.Map) is
    begin
       Self.Kind     := Data_Encoding_Unknown;
       Self.Subcodes := Subcodes;
@@ -133,7 +133,7 @@ package body Web_Services.SOAP.Payloads.Faults is
    procedure Initialize
     (Self     : in out Sender_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
-     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map) is
+     Reason   : Language_Text_Maps.Map) is
    begin
       Self.Kind     := Sender;
       Self.Subcodes := Subcodes;
@@ -147,7 +147,7 @@ package body Web_Services.SOAP.Payloads.Faults is
    procedure Initialize
     (Self     : in out Receiver_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
-     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map) is
+     Reason   : Language_Text_Maps.Map) is
    begin
       Self.Kind     := Receiver;
       Self.Subcodes := Subcodes;
