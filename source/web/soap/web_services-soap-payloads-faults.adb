@@ -154,17 +154,6 @@ package body Web_Services.SOAP.Payloads.Faults is
       Self.Reason   := Reason;
    end Initialize;
 
-   ----------------
-   -- Has_Detail --
-   ----------------
-
-   function Has_Detail (Self : Abstract_SOAP_Fault) return Boolean is
-      pragma Unreferenced (Self);
-
-   begin
-      return False;
-   end Has_Detail;
-
    ------------
    -- Reason --
    ------------

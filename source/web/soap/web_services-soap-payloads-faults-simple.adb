@@ -232,7 +232,8 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
    -- Has_Detail --
    ----------------
 
-   function Has_Detail (Self : Simple_Must_Understand_Fault) return Boolean is
+   overriding function Has_Detail
+    (Self : Simple_Must_Understand_Fault) return Boolean is
    begin
       return not Self.Detail.Is_Empty;
    end Has_Detail;
@@ -241,7 +242,8 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
    -- Has_Detail --
    ----------------
 
-   function Has_Detail (Self : Simple_Version_Mismatch_Fault) return Boolean is
+   overriding function Has_Detail
+    (Self : Simple_Version_Mismatch_Fault) return Boolean is
    begin
       return not Self.Detail.Is_Empty;
    end Has_Detail;
@@ -250,7 +252,8 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
    -- Has_Detail --
    ----------------
 
-   function Has_Detail (Self : Simple_Sender_Fault) return Boolean is
+   overriding function Has_Detail
+    (Self : Simple_Sender_Fault) return Boolean is
    begin
       return not Self.Detail.Is_Empty;
    end Has_Detail;

@@ -78,9 +78,9 @@ package Web_Services.SOAP.Payloads.Faults is
     (Self : Abstract_SOAP_Fault'Class) return Code_Vectors.Vector;
    --  Returns items of Subcode element of Code element of fault.
 
-   function Has_Detail (Self : Abstract_SOAP_Fault) return Boolean;
-   --  Returns True when fault Detail elements need to be serialized. Default
-   --  implementation returns False always.
+   not overriding function Has_Detail
+    (Self : Abstract_SOAP_Fault) return Boolean is abstract;
+   --  Returns True when fault Detail elements need to be serialized.
 
    type Version_Mismatch_Fault is
      abstract new Abstract_SOAP_Fault with private;
@@ -141,13 +141,13 @@ private
    end record;
 
    type Version_Mismatch_Fault is
-     new Abstract_SOAP_Fault with null record;
+     abstract new Abstract_SOAP_Fault with null record;
 
    type Must_Understand_Fault is
-     new Abstract_SOAP_Fault with null record;
+     abstract new Abstract_SOAP_Fault with null record;
 
    type Data_Encoding_Unknown_Fault is
-     new Abstract_SOAP_Fault with null record;
+     abstract new Abstract_SOAP_Fault with null record;
 
    type Sender_Fault is
      abstract new Abstract_SOAP_Fault with null record;
