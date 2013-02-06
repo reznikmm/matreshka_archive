@@ -41,8 +41,36 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with XML.SAX.Writers;
+
+with Web_Services.SOAP.Payloads.Faults.Encoders.Registry;
 
 package body Web_Services.SOAP.Payloads.Faults.Simple is
+
+   type Simple_Fault_Encoder is
+     limited new Web_Services.SOAP.Payloads.Faults.Encoders.SOAP_Fault_Encoder
+       with null record;
+
+   overriding function Create
+    (Dummy : not null access Boolean) return Simple_Fault_Encoder;
+
+   overriding procedure Encode
+    (Self    : Simple_Fault_Encoder;
+     Message : Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault'Class;
+     Writer  : in out XML.SAX.Writers.SAX_Writer'Class);
+
+   ------------
+   -- Create --
+   ------------
+
+   overriding function Create
+    (Dummy : not null access Boolean) return Simple_Fault_Encoder
+   is
+      pragma Unreferenced (Dummy);
+
+   begin
+      return Result : Simple_Fault_Encoder;
+   end Create;
 
    ----------------------------------
    -- Create_Must_Understand_Fault --
@@ -167,4 +195,42 @@ package body Web_Services.SOAP.Payloads.Faults.Simple is
       end return;
    end Create_Version_Mismatch_Fault;
 
+   ------------
+   -- Encode --
+   ------------
+
+   overriding procedure Encode
+    (Self    : Simple_Fault_Encoder;
+     Message : Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault'Class;
+     Writer  : in out XML.SAX.Writers.SAX_Writer'Class)
+   is
+      Detail : League.Strings.Universal_String;
+
+   begin
+      if Message in Simple_Must_Understand_Fault'Class then
+         Detail := Simple_Must_Understand_Fault (Message).Detail;
+
+      elsif Message in Simple_Version_Mismatch_Fault'Class then
+         Detail := Simple_Version_Mismatch_Fault (Message).Detail;
+
+      elsif Message in Simple_Sender_Fault'Class then
+         Detail := Simple_Sender_Fault (Message).Detail;
+
+      else
+         raise Program_Error;
+         --  Must never be happen.
+      end if;
+
+      if not Detail.Is_Empty then
+         Writer.Characters (Detail);
+      end if;
+   end Encode;
+
+begin
+   Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Register
+    (Simple_Must_Understand_Fault'Tag, Simple_Fault_Encoder'Tag);
+   Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Register
+    (Simple_Version_Mismatch_Fault'Tag, Simple_Fault_Encoder'Tag);
+   Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Register
+    (Simple_Sender_Fault'Tag, Simple_Fault_Encoder'Tag);
 end Web_Services.SOAP.Payloads.Faults.Simple;

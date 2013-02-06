@@ -52,7 +52,7 @@ with XML.SAX.Writers;
 with Web_Services.SOAP.Constants;
 with Web_Services.SOAP.Headers.Encoders.Registry;
 with Web_Services.SOAP.Payloads.Encoders.Registry;
-with Web_Services.SOAP.Payloads.Faults;
+with Web_Services.SOAP.Payloads.Faults.Encoders.Registry;
 
 package body Web_Services.SOAP.Message_Encoders is
 
@@ -155,13 +155,6 @@ package body Web_Services.SOAP.Message_Encoders is
     (Fault  : Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault'Class;
      Writer : in out XML.SAX.Writers.SAX_Writer'Class)
    is
-      Reason     : constant
-        Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map
-          := Fault.Reason;
-      Position   :
-        Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Cursor
-          := Reason.First;
-      Attributes : XML.SAX.Attributes.SAX_Attributes;
 
       procedure Write_Subcode (Index : Positive);
 
@@ -190,6 +183,16 @@ package body Web_Services.SOAP.Message_Encoders is
 
          Writer.End_Element (SOAP_Envelope_URI, SOAP_Subcode_Name);
       end Write_Subcode;
+
+      Reason     : constant
+        Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map
+          := Fault.Reason;
+      Position   :
+        Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Cursor
+          := Reason.First;
+      Attributes : XML.SAX.Attributes.SAX_Attributes;
+      Encoder    :
+        Web_Services.SOAP.Payloads.Faults.Encoders.SOAP_Fault_Encoder_Access;
 
    begin
       Writer.Start_Element (SOAP_Envelope_URI, SOAP_Fault_Name);
@@ -247,10 +250,13 @@ package body Web_Services.SOAP.Message_Encoders is
 --      --  Serialize optional 'Role' attribute.
 --
 --      Abstract_SOAP_Fault_Encoder'Class (Self).Encode_Role (Fault, Writer);
---
---      --  Serialize optional 'Detail' attribute.
---
---      Abstract_SOAP_Fault_Encoder'Class (Self).Encode_Detail (Fault, Writer);
+
+      --  Serialize optional 'Detail' attribute.
+
+      Encoder :=
+        Web_Services.SOAP.Payloads.Faults.Encoders.Registry.Resolve
+         (Fault'Tag);
+      Encoder.Encode (Fault, Writer);
 
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Fault_Name);
    end Encode_Fault;
