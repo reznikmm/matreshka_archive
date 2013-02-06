@@ -92,27 +92,27 @@ package Web_Services.SOAP.Payloads.Faults is
 
    procedure Initialize
     (Self     : in out Version_Mismatch_Fault'Class;
-     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Subcodes : Code_Vectors.Vector := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map);
 
    procedure Initialize
     (Self     : in out Must_Understand_Fault'Class;
-     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Subcodes : Code_Vectors.Vector := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map);
 
    procedure Initialize
     (Self     : in out Data_Encoding_Unknown_Fault'Class;
-     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Subcodes : Code_Vectors.Vector := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map);
 
    procedure Initialize
     (Self     : in out Sender_Fault'Class;
-     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Subcodes : Code_Vectors.Vector := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map);
 
    procedure Initialize
     (Self     : in out Receiver_Fault'Class;
-     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Subcodes : Code_Vectors.Vector := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map);
 
 private
