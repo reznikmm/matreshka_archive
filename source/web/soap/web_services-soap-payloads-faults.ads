@@ -64,7 +64,7 @@ package Web_Services.SOAP.Payloads.Faults is
 
    package Code_Vectors is new Ada.Containers.Vectors (Positive, Fault_Code);
 
-   type Abstract_SOAP_Fault (<>) is
+   type Abstract_SOAP_Fault is
      abstract new Abstract_SOAP_Payload with private;
 
    function Code (Self : Abstract_SOAP_Fault'Class) return Fault_Code;
@@ -91,7 +91,27 @@ package Web_Services.SOAP.Payloads.Faults is
    type Receiver_Fault is abstract new Abstract_SOAP_Fault with private;
 
    procedure Initialize
-    (Self     : in out Abstract_SOAP_Fault'Class;
+    (Self     : in out Version_Mismatch_Fault'Class;
+     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
+
+   procedure Initialize
+    (Self     : in out Must_Understand_Fault'Class;
+     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
+
+   procedure Initialize
+    (Self     : in out Data_Encoding_Unknown_Fault'Class;
+     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
+
+   procedure Initialize
+    (Self     : in out Sender_Fault'Class;
+     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
+
+   procedure Initialize
+    (Self     : in out Receiver_Fault'Class;
      Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
      Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
 
@@ -104,26 +124,31 @@ private
      Sender,
      Receiver);
 
-   type Abstract_SOAP_Fault (Kind : Fault_Kinds) is
+   type Abstract_SOAP_Fault is
      abstract new Abstract_SOAP_Payload with
    record
+      Kind     : Fault_Kinds;
+      --  XXX Conversion of Kind into discriminant of Abstract_SOAP_Fault
+      --  allows to merge Initialize subprograms into one and avoid problems
+      --  with uninitialized objects; but this crash GNAT GPL 2012 on user's
+      --  code.
       Subcodes : Code_Vectors.Vector;
       Reason   : Language_Text_Maps.Map;
    end record;
 
    type Version_Mismatch_Fault is
-     new Abstract_SOAP_Fault (Version_Mismatch) with null record;
+     new Abstract_SOAP_Fault with null record;
 
    type Must_Understand_Fault is
-     new Abstract_SOAP_Fault (Must_Understand) with null record;
+     new Abstract_SOAP_Fault with null record;
 
    type Data_Encoding_Unknown_Fault is
-     new Abstract_SOAP_Fault (Data_Encoding_Unknown) with null record;
+     new Abstract_SOAP_Fault with null record;
 
    type Sender_Fault is
-     abstract new Abstract_SOAP_Fault (Sender) with null record;
+     abstract new Abstract_SOAP_Fault with null record;
 
    type Receiver_Fault is
-     abstract new Abstract_SOAP_Fault (Receiver) with null record;
+     abstract new Abstract_SOAP_Fault with null record;
 
 end Web_Services.SOAP.Payloads.Faults;
