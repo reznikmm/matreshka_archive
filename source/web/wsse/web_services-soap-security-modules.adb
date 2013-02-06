@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,7 @@
 with League.Stream_Element_Vectors;
 
 with Web_Services.SOAP.Payloads.Faults.Simple;
+with Web_Services.SOAP.Security.Constants;
 with Web_Services.SOAP.Security.Headers;
 with Web_Services.SOAP.Security.Password_Digest_Utilities;
 
@@ -73,17 +74,15 @@ package body Web_Services.SOAP.Security.Modules is
       Output :=
         new Web_Services.SOAP.Messages.SOAP_Message'
          (Payload =>
-            Web_Services.SOAP.Payloads.Faults.Simple.Create_SOAP_Fault
-             (League.Strings.To_Universal_String ("Sender"),
+            Web_Services.SOAP.Payloads.Faults.Simple.Create_Sender_Fault
+             (Web_Services.SOAP.Security.Constants.WSSE_Namespace_URI,
+              League.Strings.To_Universal_String ("FailedAuthentication"),
+              League.Strings.To_Universal_String ("wsse"),
               League.Strings.To_Universal_String ("en-US"),
               League.Strings.To_Universal_String
                ("The security token could not be authenticated"
                   & " or authorized")),
           others => <>);
---  XXX Fault/Code/Subcode/Value must be set to:
---                 WSSE_Namespace_URI,
---                 League.Strings.To_Universal_String ("wsse"),
---                 League.Strings.To_Universal_String ("FailedAuthentication")
    end Create_Failed_Authentication_Fault;
 
    -----------------------------------------
@@ -96,16 +95,14 @@ package body Web_Services.SOAP.Security.Modules is
       Output :=
         new Web_Services.SOAP.Messages.SOAP_Message'
          (Payload =>
-            Web_Services.SOAP.Payloads.Faults.Simple.Create_SOAP_Fault
-             (League.Strings.To_Universal_String ("Sender"),
+            Web_Services.SOAP.Payloads.Faults.Simple.Create_Sender_Fault
+             (Web_Services.SOAP.Security.Constants.WSSE_Namespace_URI,
+              League.Strings.To_Universal_String ("InvalidSecurityToken"),
+              League.Strings.To_Universal_String ("wsse"),
               League.Strings.To_Universal_String ("en-US"),
               League.Strings.To_Universal_String
                ("An invalid security token was provided")),
           others => <>);
---  XXX Fault/Code/Subcode/Value must be set to:
---                 WSSE_Namespace_URI,
---                 League.Strings.To_Universal_String ("wsse"),
---                 League.Strings.To_Universal_String ("InvalidSecurityToken")
    end Create_Invalid_Security_Token_Fault;
 
    ----------------------

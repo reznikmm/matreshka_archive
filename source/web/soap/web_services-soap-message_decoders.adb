@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -368,9 +368,8 @@ package body Web_Services.SOAP.Message_Decoders is
               Output        => null,
               Headers       => <>,
               Payload       =>
-                Web_Services.SOAP.Payloads.Faults.Simple.Create_SOAP_Fault
-                 (League.Strings.To_Universal_String ("MustUnderstand"),
-                  League.Strings.To_Universal_String ("en-US"),
+                Web_Services.SOAP.Payloads.Faults.Simple.Create_Must_Understand_Fault
+                 (League.Strings.To_Universal_String ("en-US"),
                   Diagnosis));
    end Set_Must_Understand_Error;
 
@@ -403,9 +402,8 @@ package body Web_Services.SOAP.Message_Decoders is
               Output        => null,
               Headers       => <>,
               Payload       =>
-                Web_Services.SOAP.Payloads.Faults.Simple.Create_SOAP_Fault
-                 (League.Strings.To_Universal_String ("Sender"),
-                  League.Strings.To_Universal_String ("en-US"),
+                Web_Services.SOAP.Payloads.Faults.Simple.Create_Sender_Fault
+                 (League.Strings.To_Universal_String ("en-US"),
                   Text,
                   Detail));
    end Set_Sender_Fault;
@@ -437,9 +435,8 @@ package body Web_Services.SOAP.Message_Decoders is
               Output        => null,
               Headers       => <>,
               Payload       =>
-                Web_Services.SOAP.Payloads.Faults.Simple.Create_SOAP_Fault
-                 (League.Strings.To_Universal_String ("VersionMismatch"),
-                  League.Strings.To_Universal_String ("en-US"),
+                Web_Services.SOAP.Payloads.Faults.Simple.Create_Version_Mismatch_Fault
+                 (League.Strings.To_Universal_String ("en-US"),
                   Diagnosis));
    end Set_Version_Mismatch_Fault;
 

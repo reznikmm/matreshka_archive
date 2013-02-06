@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,102 +41,130 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Web_Services.SOAP.Constants;
 
 package body Web_Services.SOAP.Payloads.Faults.Simple is
 
-   use Web_Services.SOAP.Constants;
+   ----------------------------------
+   -- Create_Must_Understand_Fault --
+   ----------------------------------
 
-   ---------------------
-   -- Code_Local_Name --
-   ---------------------
-
-   overriding function Code_Local_Name
-    (Self : Simple_Fault) return League.Strings.Universal_String is
-   begin
-      return Self.Local_Name;
-   end Code_Local_Name;
-
-   ------------------------
-   -- Code_Namespace_URI --
-   ------------------------
-
-   overriding function Code_Namespace_URI
-    (Self : Simple_Fault) return League.Strings.Universal_String is
-   begin
-      return Self.Namespace_URI;
-   end Code_Namespace_URI;
-
-   -----------------
-   -- Code_Prefix --
-   -----------------
-
-   overriding function Code_Prefix
-    (Self : Simple_Fault) return League.Strings.Universal_String is
-   begin
-      return Self.Prefix;
-   end Code_Prefix;
-
-   ------------
-   -- Create --
-   ------------
-
-   function Create
-    (Code_Prefix        : League.Strings.Universal_String;
-     Code_Namespace_URI : League.Strings.Universal_String;
-     Code_Local_Name    : League.Strings.Universal_String;
-     Reason_Language    : League.Strings.Universal_String;
+   function Create_Must_Understand_Fault
+    (Reason_Language    : League.Strings.Universal_String;
      Reason_Text        : League.Strings.Universal_String;
      Detail             : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return Web_Services.SOAP.Payloads.SOAP_Payload_Access is
    begin
       return Result : constant Web_Services.SOAP.Payloads.SOAP_Payload_Access
-               := new Simple_Fault
+               := new Simple_Must_Understand_Fault
       do
          declare
-            Self : Simple_Fault renames Simple_Fault (Result.all);
+            Self   : Simple_Must_Understand_Fault
+              renames Simple_Must_Understand_Fault (Result.all);
+            Reason : Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
 
          begin
-            Self.Prefix        := Code_Prefix;
-            Self.Namespace_URI := Code_Namespace_URI;
-            Self.Local_Name    := Code_Local_Name;
-            Self.Reason.Insert (Reason_Language, Reason_Text);
-            Self.Detail        := Detail;
+            Reason.Insert (Reason_Language, Reason_Text);
+            Web_Services.SOAP.Payloads.Faults.Initialize
+             (Self,
+              Web_Services.SOAP.Payloads.Faults.Code_Vectors.Empty_Vector,
+              Reason);
+            Self.Detail := Detail;
          end;
       end return;
-   end Create;
+   end Create_Must_Understand_Fault;
 
-   -----------------------
-   -- Create_SOAP_Fault --
-   -----------------------
+   -------------------------
+   -- Create_Sender_Fault --
+   -------------------------
 
-   function Create_SOAP_Fault
-    (Code_Local_Name    : League.Strings.Universal_String;
-     Reason_Language    : League.Strings.Universal_String;
+   function Create_Sender_Fault
+    (Subcode_Namespace_URI : League.Strings.Universal_String;
+     Subcode_Local_Name    : League.Strings.Universal_String;
+     Subcode_Prexif        : League.Strings.Universal_String;
+     Reason_Language       : League.Strings.Universal_String;
+     Reason_Text           : League.Strings.Universal_String;
+     Detail                : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return Web_Services.SOAP.Payloads.SOAP_Payload_Access is
+   begin
+      return Result : constant Web_Services.SOAP.Payloads.SOAP_Payload_Access
+               := new Simple_Sender_Fault
+      do
+         declare
+            Self   : Simple_Sender_Fault
+              renames Simple_Sender_Fault (Result.all);
+            Codes  : Web_Services.SOAP.Payloads.Faults.Code_Vectors.Vector;
+            Reason : Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
+
+         begin
+            Codes.Append
+             ((Subcode_Namespace_URI, Subcode_Local_Name, Subcode_Prexif));
+            Reason.Insert (Reason_Language, Reason_Text);
+            Web_Services.SOAP.Payloads.Faults.Initialize (Self, Codes, Reason);
+            Self.Detail := Detail;
+         end;
+      end return;
+   end Create_Sender_Fault;
+
+   -------------------------
+   -- Create_Sender_Fault --
+   -------------------------
+
+   function Create_Sender_Fault
+    (Reason_Language    : League.Strings.Universal_String;
      Reason_Text        : League.Strings.Universal_String;
      Detail             : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return Web_Services.SOAP.Payloads.SOAP_Payload_Access is
    begin
-      return
-        Create
-         (SOAP_Envelope_Prefix,
-          SOAP_Envelope_URI,
-          Code_Local_Name,
-          Reason_Language,
-          Reason_Text);
-   end Create_SOAP_Fault;
+      return Result : constant Web_Services.SOAP.Payloads.SOAP_Payload_Access
+               := new Simple_Sender_Fault
+      do
+         declare
+            Self   : Simple_Sender_Fault
+              renames Simple_Sender_Fault (Result.all);
+            Reason : Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
 
-   ------------
-   -- Reason --
-   ------------
+         begin
+            Reason.Insert (Reason_Language, Reason_Text);
+            Web_Services.SOAP.Payloads.Faults.Initialize
+             (Self,
+              Web_Services.SOAP.Payloads.Faults.Code_Vectors.Empty_Vector,
+              Reason);
+            Self.Detail := Detail;
+         end;
+      end return;
+   end Create_Sender_Fault;
 
-   overriding function Reason
-    (Self : Simple_Fault)
-       return Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map is
+   -----------------------------------
+   -- Create_Version_Mismatch_Fault --
+   -----------------------------------
+
+   function Create_Version_Mismatch_Fault
+    (Reason_Language    : League.Strings.Universal_String;
+     Reason_Text        : League.Strings.Universal_String;
+     Detail             : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return Web_Services.SOAP.Payloads.SOAP_Payload_Access is
    begin
-      return Self.Reason;
-   end Reason;
+      return Result : constant Web_Services.SOAP.Payloads.SOAP_Payload_Access
+               := new Simple_Version_Mismatch_Fault
+      do
+         declare
+            Self   : Simple_Version_Mismatch_Fault
+              renames Simple_Version_Mismatch_Fault (Result.all);
+            Reason : Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
+
+         begin
+            Reason.Insert (Reason_Language, Reason_Text);
+            Web_Services.SOAP.Payloads.Faults.Initialize
+             (Self,
+              Web_Services.SOAP.Payloads.Faults.Code_Vectors.Empty_Vector,
+              Reason);
+            Self.Detail := Detail;
+         end;
+      end return;
+   end Create_Version_Mismatch_Fault;
 
 end Web_Services.SOAP.Payloads.Faults.Simple;

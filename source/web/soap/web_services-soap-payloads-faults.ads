@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,12 +42,11 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Containers.Hashed_Maps;
+with Ada.Containers.Vectors;
 
 with League.Strings.Hash;
 
 package Web_Services.SOAP.Payloads.Faults is
-
-   pragma Preelaborate;
 
    package Language_Text_Maps is
      new Ada.Containers.Hashed_Maps
@@ -57,22 +56,70 @@ package Web_Services.SOAP.Payloads.Faults is
            League.Strings."=",
            League.Strings."=");
 
-   type Abstract_SOAP_Fault is
-     abstract new Abstract_SOAP_Payload with null record;
+   type Fault_Code is record
+      Namespace_URI : League.Strings.Universal_String;
+      Local_Name    : League.Strings.Universal_String;
+      Prefix        : League.Strings.Universal_String;
+   end record;
 
-   not overriding function Code_Namespace_URI
-    (Self : Abstract_SOAP_Fault) return League.Strings.Universal_String
-       is abstract;
+   package Code_Vectors is new Ada.Containers.Vectors (Positive, Fault_Code);
 
-   not overriding function Code_Prefix
-    (Self : Abstract_SOAP_Fault) return League.Strings.Universal_String
-       is abstract;
+   type Abstract_SOAP_Fault (<>) is
+     abstract new Abstract_SOAP_Payload with private;
 
-   not overriding function Code_Local_Name
-    (Self : Abstract_SOAP_Fault) return League.Strings.Universal_String
-       is abstract;
+   function Code (Self : Abstract_SOAP_Fault'Class) return Fault_Code;
+   --  Returns fault's code.
 
-   not overriding function Reason
-    (Self : Abstract_SOAP_Fault) return Language_Text_Maps.Map is abstract;
+   function Reason
+    (Self : Abstract_SOAP_Fault'Class) return Language_Text_Maps.Map;
+   --  Returns items of Reason element of fault.
+
+   type Version_Mismatch_Fault is
+     abstract new Abstract_SOAP_Fault with private;
+
+   type Must_Understand_Fault is abstract new Abstract_SOAP_Fault with private;
+
+   type Data_Encoding_Unknown_Fault is
+     abstract new Abstract_SOAP_Fault with private;
+
+   type Sender_Fault is abstract new Abstract_SOAP_Fault with private;
+
+   type Receiver_Fault is abstract new Abstract_SOAP_Fault with private;
+
+   procedure Initialize
+    (Self     : in out Abstract_SOAP_Fault'Class;
+     Subcodes : Code_Vectors.Vector    := Code_Vectors.Empty_Vector;
+     Reason   : Language_Text_Maps.Map := Language_Text_Maps.Empty_Map);
+
+private
+
+   type Fault_Kinds is
+    (Version_Mismatch,
+     Must_Understand,
+     Data_Encoding_Unknown,
+     Sender,
+     Receiver);
+
+   type Abstract_SOAP_Fault (Kind : Fault_Kinds) is
+     abstract new Abstract_SOAP_Payload with
+   record
+      Subcodes : Code_Vectors.Vector;
+      Reason   : Language_Text_Maps.Map;
+   end record;
+
+   type Version_Mismatch_Fault is
+     new Abstract_SOAP_Fault (Version_Mismatch) with null record;
+
+   type Must_Understand_Fault is
+     new Abstract_SOAP_Fault (Must_Understand) with null record;
+
+   type Data_Encoding_Unknown_Fault is
+     new Abstract_SOAP_Fault (Data_Encoding_Unknown) with null record;
+
+   type Sender_Fault is
+     abstract new Abstract_SOAP_Fault (Sender) with null record;
+
+   type Receiver_Fault is
+     abstract new Abstract_SOAP_Fault (Receiver) with null record;
 
 end Web_Services.SOAP.Payloads.Faults;

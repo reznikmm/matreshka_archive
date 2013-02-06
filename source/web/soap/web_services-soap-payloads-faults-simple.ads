@@ -45,49 +45,58 @@ with League.Strings;
 
 package Web_Services.SOAP.Payloads.Faults.Simple is
 
-   type Simple_Fault is
-     new Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault with private;
+   type Simple_Must_Understand_Fault is new Must_Understand_Fault with private;
 
-   function Create
-    (Code_Prefix        : League.Strings.Universal_String;
-     Code_Namespace_URI : League.Strings.Universal_String;
-     Code_Local_Name    : League.Strings.Universal_String;
-     Reason_Language    : League.Strings.Universal_String;
-     Reason_Text        : League.Strings.Universal_String;
-     Detail             : League.Strings.Universal_String
+   type Simple_Version_Mismatch_Fault is
+     new Version_Mismatch_Fault with private;
+
+   type Simple_Sender_Fault is new Sender_Fault with private;
+
+   function Create_Must_Understand_Fault
+    (Reason_Language : League.Strings.Universal_String;
+     Reason_Text     : League.Strings.Universal_String;
+     Detail          : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return Web_Services.SOAP.Payloads.SOAP_Payload_Access;
 
-   function Create_SOAP_Fault
-    (Code_Local_Name    : League.Strings.Universal_String;
-     Reason_Language    : League.Strings.Universal_String;
-     Reason_Text        : League.Strings.Universal_String;
-     Detail             : League.Strings.Universal_String
+   function Create_Sender_Fault
+    (Reason_Language : League.Strings.Universal_String;
+     Reason_Text     : League.Strings.Universal_String;
+     Detail          : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return Web_Services.SOAP.Payloads.SOAP_Payload_Access;
+   --  Creates evn:Sender fault with specified Reason and Detail.
+
+   function Create_Sender_Fault
+    (Subcode_Namespace_URI : League.Strings.Universal_String;
+     Subcode_Local_Name    : League.Strings.Universal_String;
+     Subcode_Prexif        : League.Strings.Universal_String;
+     Reason_Language       : League.Strings.Universal_String;
+     Reason_Text           : League.Strings.Universal_String;
+     Detail                : League.Strings.Universal_String
+       := League.Strings.Empty_Universal_String)
+       return Web_Services.SOAP.Payloads.SOAP_Payload_Access;
+   --  Creates evn:Sender fault with specified Subcode, Reason and Detail.
+
+   function Create_Version_Mismatch_Fault
+    (Reason_Language : League.Strings.Universal_String;
+     Reason_Text     : League.Strings.Universal_String;
+     Detail          : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String)
        return Web_Services.SOAP.Payloads.SOAP_Payload_Access;
 
 private
 
-   type Simple_Fault is
-     new Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault with record
-      Namespace_URI : League.Strings.Universal_String;
-      Prefix        : League.Strings.Universal_String;
-      Local_Name    : League.Strings.Universal_String;
-      Reason        : Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
-      Detail        : League.Strings.Universal_String;
+   type Simple_Must_Understand_Fault is new Must_Understand_Fault with record
+      Detail : League.Strings.Universal_String;
    end record;
 
-   overriding function Code_Namespace_URI
-    (Self : Simple_Fault) return League.Strings.Universal_String;
+   type Simple_Version_Mismatch_Fault is new Version_Mismatch_Fault with record
+      Detail : League.Strings.Universal_String;
+   end record;
 
-   overriding function Code_Prefix
-    (Self : Simple_Fault) return League.Strings.Universal_String;
-
-   overriding function Code_Local_Name
-    (Self : Simple_Fault) return League.Strings.Universal_String;
-
-   overriding function Reason
-    (Self : Simple_Fault)
-       return Web_Services.SOAP.Payloads.Faults.Language_Text_Maps.Map;
+   type Simple_Sender_Fault is new Sender_Fault with record
+      Detail : League.Strings.Universal_String;
+   end record;
 
 end Web_Services.SOAP.Payloads.Faults.Simple;

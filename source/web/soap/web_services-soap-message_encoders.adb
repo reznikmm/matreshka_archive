@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -172,12 +172,11 @@ package body Web_Services.SOAP.Message_Encoders is
       Writer.Start_Element (SOAP_Envelope_URI, SOAP_Code_Name);
 
       Writer.Start_Element (SOAP_Envelope_URI, SOAP_Value_Name);
-      Writer.Characters (Fault.Code_Prefix);
+      Writer.Characters (Fault.Code.Prefix);
       --  XXX Namespace URI to prefix mapping resolution must to be implemented
       --  here.
-      Writer.Characters (League.Strings.To_Universal_String (":"));
---      Writer.Characters (':');
-      Writer.Characters (Fault.Code_Local_Name);
+      Writer.Characters (':');
+      Writer.Characters (Fault.Code.Local_Name);
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Value_Name);
 
 --      Abstract_SOAP_Fault_Encoder'Class (Self).Encode_Code_Subcode

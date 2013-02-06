@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -87,6 +87,19 @@ package Web_Services.SOAP.Constants is
      := League.Strings.To_Universal_String ("Value");
    SOAP_Must_Understand_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("mustUnderstand");
+
+   --  Codes of SOAP faults.
+
+   SOAP_Version_Mismatch_Code      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("VersionMismatch");
+   SOAP_Must_Understand_Code       : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("MustUnderstand");
+   SOAP_Data_Encoding_Unknown_Code : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("DataEncodingUnknown");
+   SOAP_Sender_Code                : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Sender");
+   SOAP_Receiver_Code              : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Receiver");
 
    --  Some literals for values of attributes.
 
