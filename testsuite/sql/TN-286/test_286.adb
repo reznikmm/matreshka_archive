@@ -4,7 +4,7 @@
 --                                                                          --
 --                           SQL Database Access                            --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
@@ -41,23 +41,56 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_mysql.gpr";
+--  Check whether Value returns empty holder when results of executed statement
+--  wasn't retrieved.
+------------------------------------------------------------------------------
+with League.Holders;
+with League.Strings;
+with SQL.Databases;
+with SQL.Options;
+with SQL.Queries;
 
-project Matreshka_SQL_MySQL_Tests is
+with Matreshka.Internals.SQL_Drivers.MySQL.Factory;
+pragma Unreferenced (Matreshka.Internals.SQL_Drivers.MySQL.Factory);
 
-   for Main use
-    ("test_284.adb",
-     "test_286.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-284",
-     "../testsuite/sql/TN-286");
+procedure Test_286 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function "+"
+    (Item : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
 
-end Matreshka_SQL_MySQL_Tests;
+   DB_Driver  : constant League.Strings.Universal_String := +"MYSQL";
+   DB_Options : SQL.Options.SQL_Options;
+
+begin
+   DB_Options.Set (+"database", +"test");
+
+   declare
+      Database : aliased SQL.Databases.SQL_Database
+        := SQL.Databases.Create (DB_Driver, DB_Options);
+
+   begin
+      Database.Open;
+
+      declare
+         Query : SQL.Queries.SQL_Query := Database.Query;
+         Value : League.Holders.Holder;
+
+      begin
+         --  Prepare and execute statement.
+
+         Query.Prepare (+"SELECT 3 + 5 AS value");
+         Query.Execute;
+
+         --  Don't obtain row by calling Next, but retrieve value immidiately.
+
+         Value := Query.Value (1);
+
+         if not League.Holders.Is_Empty (Value) then
+            raise Program_Error;
+         end if;
+      end;
+
+      Database.Close;
+   end;
+end Test_286;
