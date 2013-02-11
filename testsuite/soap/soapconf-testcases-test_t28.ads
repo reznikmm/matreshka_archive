@@ -112,11 +112,10 @@ package SOAPConf.Testcases.Test_T28 is
              & "Incorrect SOAP Body element serialization"
              & "</env:Text>"
              & "</env:Reason>"
---  XXX Detail is not supported yet.
---             & "<env:Detail>"
---             & "SOAP Body must not have encodingStyle attribute information"
---             & " item."
---             & "</env:Detail>"
+             & "<env:Detail>"
+             & "SOAP Body must not have encodingStyle attribute information"
+             & " item."
+             & "</env:Detail>"
              & "</env:Fault>"
              & "</env:Body>"
              & "</env:Envelope>"));
