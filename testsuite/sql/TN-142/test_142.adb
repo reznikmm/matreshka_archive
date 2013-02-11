@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -40,6 +40,8 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
+------------------------------------------------------------------------------
+--  Check whether parameter value specified in upper case works properly.
 ------------------------------------------------------------------------------
 with League.Holders.Integers;
 with League.Strings;
@@ -82,11 +84,14 @@ begin
 
    Query.Prepare (+"SELECT value FROM test142");
    Query.Execute;
-   Value := Query.Value (1);
 
-   DB.Close;
-
-   if League.Holders.Is_Empty (Value) then
+   if not Query.Next then
       raise Program_Error;
    end if;
+
+   if League.Holders.Is_Empty (Query.Value (1)) then
+      raise Program_Error;
+   end if;
+
+   DB.Close;
 end Test_142;
