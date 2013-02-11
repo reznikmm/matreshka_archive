@@ -274,6 +274,7 @@ package body SQL.Queries is
    begin
       if not Self.Data.Is_Object_Valid
         or else not Self.Data.Is_Active
+        or else not Self.Data.Is_Valid
       then
          --  Returns when internal object was invalidated or not in active
          --  state.
