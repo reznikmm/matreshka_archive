@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -287,6 +287,16 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
    begin
       return Self.Is_Active;
    end Is_Active;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   overriding function Is_Valid
+    (Self : not null access SQLite3_Query) return Boolean is
+   begin
+      return Self.Has_Row and not Self.Skip_Step;
+   end Is_Valid;
 
    ----------
    -- Next --

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -750,6 +750,16 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
    begin
       return Self.State in Active;
    end Is_Active;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   overriding function Is_Valid
+    (Self : not null access OCI_Query) return Boolean is
+   begin
+      return Self.State = Has_Row;
+   end Is_Valid;
 
    ----------
    -- Next --

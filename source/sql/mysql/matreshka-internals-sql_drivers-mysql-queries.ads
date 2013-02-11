@@ -80,6 +80,7 @@ private
       Result     : MYSQL_BIND_Array_Access;
       Buffer     : Value_Array_Access;
       Is_Active  : Boolean := False;
+      Is_Valid   : Boolean := False;
    end record;
 
    overriding procedure Bind_Value
@@ -105,6 +106,9 @@ private
    overriding procedure Invalidate (Self : not null access MySQL_Query);
 
    overriding function Is_Active
+    (Self : not null access MySQL_Query) return Boolean;
+
+   overriding function Is_Valid
     (Self : not null access MySQL_Query) return Boolean;
 
    overriding function Next

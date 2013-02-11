@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -109,6 +109,10 @@ package SQL.Queries is
    --  that is a SELECT statement can cause a Commit or a Rollback to fail, so
    --  before committing or rolling back, you should make your active SELECT
    --  statement query inactive using one of the ways listed above.
+
+   function Is_Valid (Self : SQL_Query'Class) return Boolean;
+   --  Returns True if the query is currently positioned on a valid record;
+   --  otherwise returns false.
 
    function Next (Self : in out SQL_Query'Class) return Boolean;
 

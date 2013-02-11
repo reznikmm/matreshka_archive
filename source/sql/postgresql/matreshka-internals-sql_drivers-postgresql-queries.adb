@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -247,6 +247,18 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    begin
       return Self.Result /= null;
    end Is_Active;
+
+   --------------
+   -- Is_Valid --
+   --------------
+
+   overriding function Is_Valid
+    (Self : not null access PostgreSQL_Query) return Boolean is
+   begin
+      return
+        Self.Result /= null
+          and then Self.Row in 0 .. PQntuples (Self.Result) - 1;
+   end Is_Valid;
 
    ----------
    -- Next --

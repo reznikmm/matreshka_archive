@@ -180,6 +180,21 @@ package body SQL.Queries is
       return Self.Data.Is_Active;
    end Is_Active;
 
+   --------------
+   -- Is_Valid --
+   --------------
+
+   function Is_Valid (Self : SQL_Query'Class) return Boolean is
+   begin
+      if not Self.Data.Is_Object_Valid then
+         --  Returns when internal object was invalidated.
+
+         return False;
+      end if;
+
+      return Self.Data.Is_Valid;
+   end Is_Valid;
+
    ----------
    -- Next --
    ----------

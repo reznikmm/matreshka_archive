@@ -280,6 +280,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
       end if;
 
       Self.Is_Active := True;
+      Self.Is_Valid := False;
 
       return True;
    end Execute;
@@ -304,6 +305,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
       SQL_Drivers.Initialize (Self, Database_Access (Database));
 
       Self.Is_Active := False;
+      Self.Is_Valid  := False;
    end Initialize;
 
    ----------------
@@ -351,6 +353,16 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
       return Self.Is_Active;
    end Is_Active;
 
+   --------------
+   -- Is_Valid --
+   --------------
+
+   overriding function Is_Valid
+    (Self : not null access MySQL_Query) return Boolean is
+   begin
+      return Self.Is_Valid;
+   end Is_Valid;
+
    ----------
    -- Next --
    ----------
@@ -368,12 +380,15 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
       Result := mysql_stmt_fetch (Self.Handle);
 
       if Result = 0 then
+         Self.Is_Valid := True;
          return True;
 
       elsif Result = MYSQL_NO_Data then
+         Self.Is_Valid := False;
          return False;
 
       else
+         Self.Is_Valid := False;
          Self.Set_MySQL_Stmt_Error;
 
          return False;
