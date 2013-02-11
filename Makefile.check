@@ -12,6 +12,10 @@ endif
 
 ifdef HAS_MYSQL
     ALL_TARGETS += mysql
+
+    ifdef HAS_VALGRIND
+        ALL_TARGETS += mysql-valgrind
+    endif
 endif
 
 ifdef HAS_SQLITE3
@@ -78,6 +82,9 @@ mysql:
 	mysql test < testsuite/sql/TN-284/cleanup.sql
 	.objs/test_284
 	.objs/test_286
+
+mysql-valgrind:
+	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_286
 
 sqlite3:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_sqlite3_tests.gpr
