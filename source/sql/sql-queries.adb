@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -69,7 +69,7 @@ package body SQL.Queries is
      Value     : League.Holders.Holder;
      Direction : Parameter_Directions := In_Parameter) is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return;
@@ -86,7 +86,7 @@ package body SQL.Queries is
     (Self : SQL_Query'Class;
      Name : League.Strings.Universal_String) return League.Holders.Holder is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return League.Holders.Empty_Holder;
@@ -102,7 +102,7 @@ package body SQL.Queries is
    function Error_Message
     (Self : SQL_Query'Class) return League.Strings.Universal_String is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return League.Strings.To_Universal_String ("object was invalidated");
@@ -117,7 +117,7 @@ package body SQL.Queries is
 
    function Execute (Self : in out SQL_Query'Class) return Boolean is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return False;
@@ -156,7 +156,7 @@ package body SQL.Queries is
 
    procedure Finish (Self : in out SQL_Query'Class) is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return;
@@ -171,7 +171,7 @@ package body SQL.Queries is
 
    function Is_Active (Self : SQL_Query'Class) return Boolean is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return False;
@@ -186,7 +186,7 @@ package body SQL.Queries is
 
    function Next (Self : in out SQL_Query'Class) return Boolean is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return False;
@@ -203,7 +203,7 @@ package body SQL.Queries is
     (Self  : in out SQL_Query'Class;
      Query : League.Strings.Universal_String) return Boolean is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return False;
@@ -229,7 +229,7 @@ package body SQL.Queries is
 --   function Previous (Self : in out SQL_Query'Class) return Boolean;
    procedure Previous (Self : in out SQL_Query'Class) is
    begin
-      if not Self.Data.Is_Valid then
+      if not Self.Data.Is_Object_Valid then
          --  Returns when internal object was invalidated.
 
          return;
@@ -257,7 +257,7 @@ package body SQL.Queries is
     (Self  : SQL_Query'Class;
      Index : Positive) return League.Holders.Holder is
    begin
-      if not Self.Data.Is_Valid
+      if not Self.Data.Is_Object_Valid
         or else not Self.Data.Is_Active
       then
          --  Returns when internal object was invalidated or not in active

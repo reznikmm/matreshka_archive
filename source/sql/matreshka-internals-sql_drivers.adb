@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -205,15 +205,15 @@ package body Matreshka.Internals.SQL_Drivers is
       end loop;
    end Invalidate_Queries;
 
-   --------------
-   -- Is_Valid --
-   --------------
+   ---------------------
+   -- Is_Object_Valid --
+   ---------------------
 
-   function Is_Valid
+   function Is_Object_Valid
     (Self : not null access Abstract_Query'Class) return Boolean is
    begin
       return Self.Database /= null;
-   end Is_Valid;
+   end Is_Object_Valid;
 
    ---------------
    -- Reference --

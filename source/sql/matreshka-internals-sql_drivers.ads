@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,8 +49,9 @@
 --  reports failures of operations in specified way and be ready to provide
 --  diagnosis message in Error_Message function.
 --
---  Note: all operations except Is_Valid on Abstract_Query are called only
---  when query is valid, so database drivers should use this to optimize code.
+--  Note: all operations except Is_Object_Valid on Abstract_Query are called
+--  only when query is valid, so database drivers should use this to optimize
+--  code.
 ------------------------------------------------------------------------------
 with League.Strings;
 with League.Holders;
@@ -144,9 +145,9 @@ package Matreshka.Internals.SQL_Drivers is
    --  database object and dereference database object. Database drivers should
    --  release other resources before call to this inherited procedure.
 
-   function Is_Valid
+   function Is_Object_Valid
     (Self : not null access Abstract_Query'Class) return Boolean;
-   --  Returns True when query is valid.
+   --  Returns True when query object is valid.
 
    not overriding function Is_Active
     (Self : not null access Abstract_Query) return Boolean is abstract;
