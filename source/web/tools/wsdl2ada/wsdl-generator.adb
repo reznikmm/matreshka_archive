@@ -228,6 +228,7 @@ package body WSDL.Generator is
       Put_Line
        ("--------------------------------------------------------------------"
           & "----------");
+      Put_Line ("with Web_Services.SOAP.Payloads.Faults;");
       Put_Line ("with Payloads;");
       New_Line;
       Put_Line ("generic");
@@ -317,8 +318,12 @@ package body WSDL.Generator is
 
          --  Generate output fault parameter, if eny.
 
---         Put_Line (";");
---         Put ("     Fault  : out SOAP_Fault_Access");
+         if not Operation_Node.Interface_Fault_References.Is_Empty then
+            Put_Line (";");
+            Put
+             ("     Fault  :"
+                & " out Web_Services.SOAP.Payloads.Faults.SOAP_Fault_Access");
+         end if;
 
          Put_Line (");");
       end loop;
@@ -366,7 +371,12 @@ package body WSDL.Generator is
       Put_Line ("   procedure Dispatch");
       Put_Line ("    (Input   : Web_Services.SOAP.Messages.SOAP_Message;");
       Put_Line ("     Output  : out Web_Services.SOAP.Messages.SOAP_Message_Access;");
-      Put_Line ("     Found   : in out Boolean) is");
+      Put_Line ("     Found   : in out Boolean)");
+      Put_Line ("   is");
+      Put_Line ("      use type Web_Services.SOAP.Payloads.Faults.SOAP_Fault_Access;");
+      New_Line;
+      Put_Line ("      Fault : Web_Services.SOAP.Payloads.Faults.SOAP_Fault_Access;");
+      New_Line;
       Put_Line ("   begin");
 
       First_Operation := True;
@@ -482,8 +492,10 @@ package body WSDL.Generator is
 
          --  Generate output fault parameter, if eny.
 
---         Put_Line (";");
---         Put ("     Fault  : out SOAP_Fault_Access");
+         if not Operation_Node.Interface_Fault_References.Is_Empty then
+            Put_Line (",");
+            Put ("              Fault");
+         end if;
 
          Put_Line (");");
 
@@ -492,12 +504,40 @@ package body WSDL.Generator is
              ("            Output :="
                 & " new Web_Services.SOAP.Messages.SOAP_Message;");
 
-            if Output_Message /= null then
+            if not Operation_Node.Interface_Fault_References.Is_Empty then
+               New_Line;
+               Put_Line ("            if Fault = null then");
+               Put_Line ("               Output.Payload :=");
+               Put_Line
+                ("                 "
+                   & "Web_Services.SOAP.Payloads.SOAP_Payload_Access (Aux);");
+               New_Line;
+               Put_Line ("            else");
+               Put_Line ("               Output.Payload :=");
+               Put_Line
+                ("                 "
+                   & "Web_Services.SOAP.Payloads.SOAP_Payload_Access (Fault);");
+               Put_Line ("            end if;");
+
+            else
                Put_Line
                 ("            Output.Payload :=");
                Put_Line
                 ("              "
                    & "Web_Services.SOAP.Payloads.SOAP_Payload_Access (Aux);");
+            end if;
+
+         elsif Operation_Node.Message_Exchange_Pattern = Robust_In_Only_MEP then
+            --  Generate fault handling code when necessary.
+
+            if not Operation_Node.Interface_Fault_References.Is_Empty then
+               Put_Line
+                ("            Output :="
+                   & " new Web_Services.SOAP.Messages.SOAP_Message;");
+               Put_Line ("            Output.Payload :=");
+               Put_Line
+                ("              "
+                   & "Web_Services.SOAP.Payloads.SOAP_Payload_Access (Fault);");
             end if;
          end if;
 
