@@ -67,6 +67,8 @@ package Web_Services.SOAP.Payloads.Faults is
    type Abstract_SOAP_Fault is
      abstract new Abstract_SOAP_Payload with private;
 
+   type SOAP_Fault_Access is access all Abstract_SOAP_Fault'Class;
+
    function Code (Self : Abstract_SOAP_Fault'Class) return Fault_Code;
    --  Returns fault's code.
 
