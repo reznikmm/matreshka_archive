@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,7 +55,6 @@
 private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 private with WSDL.AST.Endpoints;
-private with WSDL.AST.Interfaces;
 private with WSDL.AST.Operations;
 private with WSDL.AST.Services;
 private with WSDL.Iterators;
@@ -94,7 +93,7 @@ private
 
    overriding procedure Enter_Interface
     (Self    : in out Name_Resolver;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Service

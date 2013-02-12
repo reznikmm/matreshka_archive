@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -110,12 +110,12 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Leave_Interface
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Interface_Message
@@ -251,7 +251,7 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
       Attributes : XML.SAX.Attributes.SAX_Attributes;
@@ -383,7 +383,7 @@ package body WSDL.Debug is
 
    overriding procedure Leave_Interface
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       Self.Writer.End_Element (WSDL_Namespace_URI, Interface_Element);

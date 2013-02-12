@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,8 @@
 with League.Strings;
 
 with WSDL.AST.Interfaces;
+pragma Unreferenced (WSDL.AST.Interfaces);
+--  XXX GNAT 20130108 reports that unit is not referenced.
 
 package body WSDL.Name_Resolvers is
 
@@ -61,17 +63,17 @@ package body WSDL.Name_Resolvers is
     (Root          : not null WSDL.AST.Descriptions.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return WSDL.AST.Interfaces.Interface_Access;
+       return WSDL.AST.Interface_Access;
    --  Resolves name of interface component.
 
    function Resolve_Interface_Operation
-    (Node       : not null WSDL.AST.Interfaces.Interface_Access;
+    (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String)
        return WSDL.AST.Operations.Interface_Operation_Access;
    --  Resolves name of interface operation component.
 
    procedure Resolve_Interface_Operation
-    (Node       : not null WSDL.AST.Interfaces.Interface_Access;
+    (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String;
      Result     : out WSDL.AST.Operations.Interface_Operation_Access);
 
@@ -135,7 +137,7 @@ package body WSDL.Name_Resolvers is
 
    overriding procedure Enter_Interface
     (Self    : in out Name_Resolver;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       for J of Node.Extends loop
@@ -194,7 +196,7 @@ package body WSDL.Name_Resolvers is
     (Root          : not null WSDL.AST.Descriptions.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return WSDL.AST.Interfaces.Interface_Access is
+       return WSDL.AST.Interface_Access is
    begin
       --  QName-resolution-1064: "A Description component MUST NOT have such
       --  broken references."
@@ -215,12 +217,9 @@ package body WSDL.Name_Resolvers is
    ---------------------------------
 
    procedure Resolve_Interface_Operation
-    (Node       : not null WSDL.AST.Interfaces.Interface_Access;
+    (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String;
-     Result     : out WSDL.AST.Operations.Interface_Operation_Access)
-   is
-      use type WSDL.AST.Operations.Interface_Operation_Access;
-
+     Result     : out WSDL.AST.Operations.Interface_Operation_Access) is
    begin
       Result := null;
 
@@ -244,7 +243,7 @@ package body WSDL.Name_Resolvers is
    ---------------------------------
 
    function Resolve_Interface_Operation
-    (Node       : not null WSDL.AST.Interfaces.Interface_Access;
+    (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String)
        return WSDL.AST.Operations.Interface_Operation_Access
    is

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,7 +46,6 @@ with Ada.Containers.Vectors;
 with League.String_Vectors;
 
 limited with WSDL.AST.Bindings;
-limited with WSDL.AST.Interfaces;
 with WSDL.AST.Messages;
 
 package WSDL.AST.Operations is
@@ -59,9 +58,6 @@ package WSDL.AST.Operations is
            WSDL.AST.Messages.Interface_Message_Access,
            WSDL.AST.Messages."=");
 
-   type Interface_Access is
-     access all WSDL.AST.Interfaces.Interface_Node'Class;
-
    type Binding_Access is
      access all WSDL.AST.Bindings.Binding_Node'Class;
 
@@ -73,7 +69,7 @@ package WSDL.AST.Operations is
       Local_Name                   : League.Strings.Universal_String;
       --  Local name part of the name of the operation.
 
-      Parent                       : Interface_Access;
+      Parent                       : WSDL.AST.Interface_Access;
       --  Value of {parent} property.
 
       Message_Exchange_Pattern     : League.Strings.Universal_String;

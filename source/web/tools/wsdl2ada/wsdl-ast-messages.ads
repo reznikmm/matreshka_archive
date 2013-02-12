@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,8 +52,6 @@ package WSDL.AST.Messages is
 
    type Message_Directions is (In_Message, Out_Message);
 
-   type Message_Content_Models is (Element, Any, None, Other);
-
    type Interface_Message_Node is new Abstract_Node with record
       Parent                : Interface_Operation_Access;
       --  Value of {parent} property.
@@ -64,7 +62,7 @@ package WSDL.AST.Messages is
       Direction             : Message_Directions;
       --  Value of {direction} property.
 
-      Message_Content_Model : Message_Content_Models;
+      Message_Content_Model : WSDL.AST.Message_Content_Models;
       --  Value of {message content model} property.
 
       Element               : WSDL.AST.Qualified_Name;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with WSDL.AST.Interfaces;
 
 package body WSDL.Iterators.Containment is
 
@@ -96,7 +97,7 @@ package body WSDL.Iterators.Containment is
    overriding procedure Visit_Interface
     (Self    : in out Containment_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out Traverse_Control) is
    begin
       for J of Node.Interface_Operations loop

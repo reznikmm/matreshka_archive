@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,55 +41,89 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Root package for AST of WSDL.
-------------------------------------------------------------------------------
-with Ada.Containers;
+with WSDL.Iterators;
+with WSDL.Visitors;
 
-with League.Strings;
+package body WSDL.AST.Faults is
 
-limited with WSDL.AST.Interfaces;
-limited with WSDL.Iterators;
-limited with WSDL.Visitors;
+--   -----------
+--   -- Enter --
+--   -----------
+--
+--   overriding procedure Enter
+--    (Self    : not null access Binding_Operation_Node;
+--     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control : in out WSDL.Iterators.Traverse_Control) is
+--   begin
+--      Visitor.Enter_Binding_Operation
+--       (Binding_Operation_Access (Self), Control);
+--   end Enter;
 
-package WSDL.AST is
+   -----------
+   -- Enter --
+   -----------
 
-   pragma Preelaborate;
-
-   type Qualified_Name is record
-      Namespace_URI : League.Strings.Universal_String;
-      Local_Name    : League.Strings.Universal_String;
-   end record;
-
-   function Image
-    (Item : Qualified_Name) return League.Strings.Universal_String;
-
-   function Hash (Item : Qualified_Name) return Ada.Containers.Hash_Type;
-
-   type Message_Content_Models is (Element, Any, None, Other);
-
-   type Abstract_Node is abstract tagged record
-      null;
-   end record;
-
-   type Node_Access is access all Abstract_Node'Class;
-
-   not overriding procedure Enter
-    (Self    : not null access Abstract_Node;
+   overriding procedure Enter
+    (Self    : not null access Interface_Fault_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Enter_Interface_Fault
+       (Interface_Fault_Access (Self), Control);
+   end Enter;
 
-   not overriding procedure Leave
-    (Self    : not null access Abstract_Node;
+--   -----------
+--   -- Leave --
+--   -----------
+--
+--   overriding procedure Leave
+--    (Self    : not null access Binding_Operation_Node;
+--     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control : in out WSDL.Iterators.Traverse_Control) is
+--   begin
+--      Visitor.Leave_Binding_Operation
+--       (Binding_Operation_Access (Self), Control);
+--   end Leave;
+
+   -----------
+   -- Leave --
+   -----------
+
+   overriding procedure Leave
+    (Self    : not null access Interface_Fault_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Leave_Interface_Fault
+       (Interface_Fault_Access (Self), Control);
+   end Leave;
 
-   not overriding procedure Visit
-    (Self     : not null access Abstract_Node;
+--   -----------
+--   -- Visit --
+--   -----------
+--
+--   overriding procedure Visit
+--    (Self     : not null access Binding_Operation_Node;
+--     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+--     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control  : in out WSDL.Iterators.Traverse_Control) is
+--   begin
+--      Iterator.Visit_Binding_Operation
+--       (Visitor, Binding_Operation_Access (Self), Control);
+--   end Visit;
+
+   -----------
+   -- Visit --
+   -----------
+
+   overriding procedure Visit
+    (Self     : not null access Interface_Fault_Node;
      Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control  : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control  : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Iterator.Visit_Interface_Fault
+       (Visitor, Interface_Fault_Access (Self), Control);
+   end Visit;
 
-   type Interface_Access is
-     access all WSDL.AST.Interfaces.Interface_Node'Class;
-
-end WSDL.AST;
+end WSDL.AST.Faults;

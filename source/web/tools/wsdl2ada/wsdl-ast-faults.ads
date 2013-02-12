@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,55 +41,107 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Root package for AST of WSDL.
-------------------------------------------------------------------------------
-with Ada.Containers;
+--with Ada.Containers.Vectors;
+--
+--with League.String_Vectors;
+--
+--limited with WSDL.AST.Bindings;
+--limited with WSDL.AST.Interfaces;
+--with WSDL.AST.Messages;
 
-with League.Strings;
-
-limited with WSDL.AST.Interfaces;
-limited with WSDL.Iterators;
-limited with WSDL.Visitors;
-
-package WSDL.AST is
+package WSDL.AST.Faults is
 
    pragma Preelaborate;
 
-   type Qualified_Name is record
-      Namespace_URI : League.Strings.Universal_String;
-      Local_Name    : League.Strings.Universal_String;
+--   package Interface_Message_Vectors is
+--     new Ada.Containers.Vectors
+--          (Positive,
+--           WSDL.AST.Messages.Interface_Message_Access,
+--           WSDL.AST.Messages."=");
+
+--   type Binding_Access is
+--     access all WSDL.AST.Bindings.Binding_Node'Class;
+
+   ---------------------
+   -- Interface Fault --
+   ---------------------
+
+   type Interface_Fault_Node is new Abstract_Node with record
+      Local_Name            : League.Strings.Universal_String;
+      --  Local name part of the name of the fault.
+
+      Parent                : Interface_Access;
+      --  Value of {parent} property.
+
+      Message_Content_Model : WSDL.AST.Message_Content_Models;
+      --  Value of {message content model} property.
+
+      Element               : WSDL.AST.Qualified_Name;
+      --  Name of the element which is used as content of the fault.
    end record;
 
-   function Image
-    (Item : Qualified_Name) return League.Strings.Universal_String;
+   type Interface_Fault_Access is
+     access all Interface_Fault_Node'Class;
 
-   function Hash (Item : Qualified_Name) return Ada.Containers.Hash_Type;
-
-   type Message_Content_Models is (Element, Any, None, Other);
-
-   type Abstract_Node is abstract tagged record
-      null;
-   end record;
-
-   type Node_Access is access all Abstract_Node'Class;
-
-   not overriding procedure Enter
-    (Self    : not null access Abstract_Node;
+   overriding procedure Enter
+    (Self    : not null access Interface_Fault_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control : in out WSDL.Iterators.Traverse_Control);
 
-   not overriding procedure Leave
-    (Self    : not null access Abstract_Node;
+   overriding procedure Leave
+    (Self    : not null access Interface_Fault_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control : in out WSDL.Iterators.Traverse_Control);
 
-   not overriding procedure Visit
-    (Self     : not null access Abstract_Node;
+   overriding procedure Visit
+    (Self     : not null access Interface_Fault_Node;
      Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Control  : in out WSDL.Iterators.Traverse_Control) is abstract;
+     Control  : in out WSDL.Iterators.Traverse_Control);
 
-   type Interface_Access is
-     access all WSDL.AST.Interfaces.Interface_Node'Class;
+--   -----------------------
+--   -- Binding Operation --
+--   -----------------------
+--
+--   type SOAP_Binding_Operation_Extension is record
+--      MEP    : League.Strings.Universal_String;
+--      --  Value of {soap mep} property.
+--
+--      Action : League.Strings.Universal_String;
+--      --  Value of {soap action} property.
+--   end record;
+--
+--   type Binding_Operation_Node is new Abstract_Node with record
+--      Ref                 : Qualified_Name;
+--      --  Name of the related interface operation.
+--
+--      Parent              : Binding_Access;
+--      --  Value of {parent} property.
+--
+--      Interface_Operation : Interface_Operation_Access;
+--      --  Value of {interface operation} property.
+--
+--      SOAP                : SOAP_Binding_Operation_Extension;
+--      --  SOAP Binding extension information;
+--   end record;
+--
+--   type Binding_Operation_Access is
+--     access all Binding_Operation_Node'Class;
+--
+--   overriding procedure Enter
+--    (Self    : not null access Binding_Operation_Node;
+--     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control : in out WSDL.Iterators.Traverse_Control);
+--
+--   overriding procedure Leave
+--    (Self    : not null access Binding_Operation_Node;
+--     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control : in out WSDL.Iterators.Traverse_Control);
+--
+--   overriding procedure Visit
+--    (Self     : not null access Binding_Operation_Node;
+--     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+--     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+--     Control  : in out WSDL.Iterators.Traverse_Control);
 
-end WSDL.AST;
+end WSDL.AST.Faults;

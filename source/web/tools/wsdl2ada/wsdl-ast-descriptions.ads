@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,7 +46,6 @@ with Ada.Containers.Hashed_Maps;
 with League.Strings.Hash;
 
 with WSDL.AST.Bindings;
-with WSDL.AST.Interfaces;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
 
@@ -65,10 +64,10 @@ package WSDL.AST.Descriptions is
    package Interface_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           WSDL.AST.Interfaces.Interface_Access,
+           WSDL.AST.Interface_Access,
            League.Strings.Hash,
            League.Strings."=",
-           WSDL.AST.Interfaces."=");
+           WSDL.AST."=");
 
    package Service_Maps is
      new Ada.Containers.Hashed_Maps

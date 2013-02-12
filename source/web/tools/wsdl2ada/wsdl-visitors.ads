@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,7 +44,7 @@
 with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
-with WSDL.AST.Interfaces;
+with WSDL.AST.Faults;
 with WSDL.AST.Messages;
 with WSDL.AST.Operations;
 with WSDL.AST.Services;
@@ -99,12 +99,22 @@ package WSDL.Visitors is
 
    not overriding procedure Enter_Interface
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Leave_Interface
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Interfaces.Interface_Access;
+     Node    : not null WSDL.AST.Interface_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
+   not overriding procedure Enter_Interface_Fault
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Faults.Interface_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
+   not overriding procedure Leave_Interface_Fault
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Faults.Interface_Fault_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Enter_Interface_Message

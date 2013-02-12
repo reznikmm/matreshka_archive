@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,6 +48,8 @@ with League.Strings;
 
 with WSDL.AST.Bindings;
 with WSDL.AST.Interfaces;
+pragma Unreferenced (WSDL.AST.Interfaces);
+--  XXX GNAT 20130108 reports unreferenced unit.
 with WSDL.AST.Messages;
 with WSDL.AST.Operations;
 with WSDL.AST.Services;
@@ -73,11 +75,11 @@ package body WSDL.Generator is
     (Service_Node : not null WSDL.AST.Services.Service_Access);
 
    procedure Lookup_Binding
-    (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access;
+    (Interface_Node : not null WSDL.AST.Interface_Access;
      Binding_Node   : out WSDL.AST.Bindings.Binding_Access);
 
    function Compute_All_Operations
-    (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access)
+    (Interface_Node : not null WSDL.AST.Interface_Access)
        return Operation_Maps.Map;
 
    function Compute_SOAP_Action
@@ -90,20 +92,20 @@ package body WSDL.Generator is
    ----------------------------
 
    function Compute_All_Operations
-    (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access)
+    (Interface_Node : not null WSDL.AST.Interface_Access)
        return Operation_Maps.Map
    is
       Result : Operation_Maps.Map;
 
       procedure Analyze_Interface
-       (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access);
+       (Interface_Node : not null WSDL.AST.Interface_Access);
 
       -----------------------
       -- Analyze_Interface --
       -----------------------
 
       procedure Analyze_Interface
-       (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access) is
+       (Interface_Node : not null WSDL.AST.Interface_Access) is
       begin
          --  Fill result by own operations of the interface, but excluding
          --  all operations which names is in the result already because they
@@ -168,8 +170,8 @@ package body WSDL.Generator is
    is
       use type League.Strings.Universal_String;
       use type WSDL.AST.Bindings.Binding_Access;
+      use type WSDL.AST.Message_Content_Models;
       use type WSDL.AST.Messages.Message_Directions;
-      use type WSDL.AST.Messages.Message_Content_Models;
       use type WSDL.AST.Messages.Interface_Message_Access;
 
       Binding_Node           : WSDL.AST.Bindings.Binding_Access;
@@ -274,7 +276,7 @@ package body WSDL.Generator is
 
          if Input_Message /= null then
             if Input_Message.Message_Content_Model
-              not in WSDL.AST.Messages.None | WSDL.AST.Messages.Element
+              not in WSDL.AST.None | WSDL.AST.Element
             then
                --  Only '#none' and '#element' message content models are
                --  supported.
@@ -282,9 +284,7 @@ package body WSDL.Generator is
                raise Program_Error;
             end if;
 
-            if Input_Message.Message_Content_Model
-                 = WSDL.AST.Messages.Element
-            then
+            if Input_Message.Message_Content_Model = WSDL.AST.Element then
                New_Line;
                Put
                 ("    (Input  : Payloads."
@@ -298,8 +298,7 @@ package body WSDL.Generator is
 
          if Output_Message /= null then
             if Input_Message /= null
-              and then Input_Message.Message_Content_Model
-                         = WSDL.AST.Messages.Element
+              and then Input_Message.Message_Content_Model = WSDL.AST.Element
             then
                Put_Line (";");
                Put ("     ");
@@ -449,7 +448,7 @@ package body WSDL.Generator is
 
          if Input_Message /= null then
             if Input_Message.Message_Content_Model
-              not in WSDL.AST.Messages.None | WSDL.AST.Messages.Element
+              not in WSDL.AST.None | WSDL.AST.Element
             then
                --  Only '#none' and '#element' message content models are
                --  supported.
@@ -457,9 +456,7 @@ package body WSDL.Generator is
                raise Program_Error;
             end if;
 
-            if Input_Message.Message_Content_Model
-                 = WSDL.AST.Messages.Element
-            then
+            if Input_Message.Message_Content_Model = WSDL.AST.Element then
                New_Line;
                Put ("             (Payloads." 
                    & Naming_Conventions.To_Ada_Identifier
@@ -472,8 +469,7 @@ package body WSDL.Generator is
 
          if Output_Message /= null then
             if Input_Message = null
-              or else Input_Message.Message_Content_Model
-                        /= WSDL.AST.Messages.Element
+              or else Input_Message.Message_Content_Model /= WSDL.AST.Element
             then
                New_Line;
                Put ("             (Aux");
@@ -530,10 +526,10 @@ package body WSDL.Generator is
    --------------------
 
    procedure Lookup_Binding
-    (Interface_Node : not null WSDL.AST.Interfaces.Interface_Access;
+    (Interface_Node : not null WSDL.AST.Interface_Access;
      Binding_Node   : out WSDL.AST.Bindings.Binding_Access)
    is
-      use type WSDL.AST.Interfaces.Interface_Access;
+      use type WSDL.AST.Interface_Access;
 
    begin
       Binding_Node := null;

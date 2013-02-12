@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,7 +47,6 @@ with League.Strings.Hash;
 
 with WSDL.AST.Components;
 with WSDL.AST.Endpoints;
-with WSDL.AST.Interfaces;
 
 package WSDL.AST.Services is
 
@@ -65,7 +64,7 @@ package WSDL.AST.Services is
       Interface_Name : Qualified_Name;
       --  Name of interface.
 
-      Interface_Node : WSDL.AST.Interfaces.Interface_Access;
+      Interface_Node : WSDL.AST.Interface_Access;
       --  Value of {interface} property.
 
       Endpoints      : Endpoint_Maps.Map;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,7 +44,6 @@
 with Ada.Containers.Vectors;
 
 with WSDL.AST.Components;
-with WSDL.AST.Interfaces;
 with WSDL.AST.Operations;
 
 package WSDL.AST.Bindings is
@@ -72,7 +71,7 @@ package WSDL.AST.Bindings is
       Interface_Name     : Qualified_Name;
       --  Name of interface.
 
-      Interface_Node     : WSDL.AST.Interfaces.Interface_Access;
+      Interface_Node     : WSDL.AST.Interface_Access;
       --  Value of {interface} property.
 
       Binding_Type       : League.Strings.Universal_String;

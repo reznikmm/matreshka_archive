@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,7 +50,8 @@ with XML.SAX.Content_Handlers;
 
 private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
-private with WSDL.AST.Interfaces;
+--private with WSDL.AST.Faults;
+--private with WSDL.AST.Interfaces;
 private with WSDL.AST.Operations;
 private with WSDL.AST.Services;
 
@@ -88,6 +89,7 @@ private
      WSDL_Endpoint,
      WSDL_Input,
      WSDL_Interface,
+     WSDL_Interface_Fault,
      WSDL_Interface_Operation,
      WSDL_Output,
      WSDL_Service,
@@ -130,7 +132,10 @@ private
       Namespaces        : Namespace_Maps.Map;
       --  Mapping from prefix to namespace URI.
 
-      Current_Interface : WSDL.AST.Interfaces.Interface_Access;
+--      Current_Fault     : WSDL.AST.Faults.Interface_Fault_Access;
+--      --  Currently processed fault component.
+--
+      Current_Interface : WSDL.AST.Interface_Access;
       --  Currently processed interface component.
 
       Current_Operation : WSDL.AST.Operations.Interface_Operation_Access;

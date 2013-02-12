@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,7 @@ with League.String_Vectors;
 with League.Strings.Hash;
 
 with WSDL.AST.Components;
+with WSDL.AST.Faults;
 with WSDL.AST.Operations;
 
 package WSDL.AST.Interfaces is
@@ -66,12 +67,16 @@ package WSDL.AST.Interfaces is
            League.Strings."=",
            WSDL.AST.Operations."=");
 
-   type Interface_Node is tagged;
-
-   type Interface_Access is access all Interface_Node'Class;
+   package Interface_Fault_Maps is
+     new Ada.Containers.Hashed_Maps
+          (League.Strings.Universal_String,
+           WSDL.AST.Faults.Interface_Fault_Access,
+           League.Strings.Hash,
+           League.Strings."=",
+           WSDL.AST.Faults."=");
 
    package Interface_Vectors is
-     new Ada.Containers.Vectors (Positive, Interface_Access);
+     new Ada.Containers.Vectors (Positive, WSDL.AST.Interface_Access);
 
    type Interface_Node is new WSDL.AST.Components.Component_Node with record
       Extends              : Qualified_Name_Sets.Set;
@@ -82,6 +87,9 @@ package WSDL.AST.Interfaces is
 
       Style_Default        : League.String_Vectors.Universal_String_Vector;
       --  Default value of operation style for all operations of the interface.
+
+      Interface_Faults     : Interface_Fault_Maps.Map;
+      --  Value of {interface faults} property of interface component.
 
       Interface_Operations : Interface_Operation_Maps.Map;
       --  Value of {interface operations} property of interface component.
