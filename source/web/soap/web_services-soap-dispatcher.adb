@@ -79,7 +79,6 @@ package body Web_Services.SOAP.Dispatcher is
       Input   : Web_Services.SOAP.Messages.SOAP_Message_Access;
       Output  : Web_Services.SOAP.Messages.SOAP_Message_Access;
       Handler : Web_Services.SOAP.Handlers.SOAP_Message_Handler;
-      Status  : Reply_Streams.Status_Type;
       Handled : Boolean;
 
    begin
@@ -106,8 +105,7 @@ package body Web_Services.SOAP.Dispatcher is
          if Output /= null then
             --  Return error when SOAP Module returns fault.
 
-            Status := Reply_Streams.S_400;
-            Stream.Send_Message (Status, Output);
+            Stream.Send_Message (Output);
 
             return;
          end if;
@@ -128,8 +126,7 @@ package body Web_Services.SOAP.Dispatcher is
 
             Handler (Input, Output);
             Web_Services.SOAP.Messages.Free (Input);
-            Status := Reply_Streams.S_200;
-            Stream.Send_Message (Status, Output);
+            Stream.Send_Message (Output);
 
             return;
          end if;
@@ -147,8 +144,7 @@ package body Web_Services.SOAP.Dispatcher is
          if Handled then
             --  Return when request has been handled.
 
-            Status := Reply_Streams.S_200;
-            Stream.Send_Message (Status, Output);
+            Stream.Send_Message (Output);
 
             return;
          end if;
@@ -180,10 +176,8 @@ package body Web_Services.SOAP.Dispatcher is
             end;
          end if;
 
-         Status := Reply_Streams.S_400;
+         Stream.Send_Message (Output);
       end if;
-
-      Stream.Send_Message (Status, Output);
    end Dispatch;
 
 end Web_Services.SOAP.Dispatcher;

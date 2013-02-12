@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,7 +56,7 @@ package Web_Services.SOAP.Reply_Streams is
     (Self : in out Abstract_Reply_Stream) is abstract;
    --  To enable multiply replies returned for single request.
 
-   type Status_Type is (S_200, S_400);
+   type Status_Type is (S_200, S_202, S_400, S_500);
 
    not overriding procedure Send_Reply
     (Self         : in out Abstract_Reply_Stream;
@@ -73,7 +73,6 @@ package Web_Services.SOAP.Reply_Streams is
 
    procedure Send_Message
     (Self    : in out Abstract_Reply_Stream'Class;
-     Status  : Status_Type;
      Message : in out Web_Services.SOAP.Messages.SOAP_Message_Access);
    --  Send first (or only) reply using given reply stream. Free message after
    --  sending.

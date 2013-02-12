@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,12 +46,12 @@ with Ada.Unchecked_Deallocation;
 with Web_Services.SOAP.Constants;
 with Web_Services.SOAP.Message_Encoders;
 with Web_Services.SOAP.Messages;
+with Web_Services.SOAP.Payloads.Faults;
 
 package body Web_Services.SOAP.Reply_Streams is
 
    procedure Common_Send_Message
     (Self    : in out Abstract_Reply_Stream'Class;
-     Status  : Status_Type;
      Message : in out Web_Services.SOAP.Messages.SOAP_Message_Access;
      Success : out Boolean);
 
@@ -61,16 +61,51 @@ package body Web_Services.SOAP.Reply_Streams is
 
    procedure Common_Send_Message
     (Self    : in out Abstract_Reply_Stream'Class;
-     Status  : Status_Type;
      Message : in out Web_Services.SOAP.Messages.SOAP_Message_Access;
      Success : out Boolean)
    is
       use League.Stream_Element_Vectors;
       use type Web_Services.SOAP.Messages.SOAP_Message_Access;
+      use type Web_Services.SOAP.Payloads.SOAP_Payload_Access;
 
       Encoder : Web_Services.SOAP.Message_Encoders.SOAP_Message_Encoder;
+      Status  : Status_Type;
 
    begin
+      --  Compute HTTP status code.
+
+      if Message = null then
+         --  Reply message is empty.
+
+         Status := S_202;
+
+      elsif Message.Payload = null then
+         --  There is no payload, SOAP message with empty <Body> sent.
+
+         Status := S_200;
+
+      elsif Message.Payload.all
+        in Web_Services.SOAP.Payloads.Faults.Sender_Fault'Class
+      then
+         --  env:Sender SOAP fault is sent.
+
+         Status := S_400;
+
+      elsif Message.Payload.all
+        in Web_Services.SOAP.Payloads.Faults.Abstract_SOAP_Fault'Class
+      then
+         --  Others SOAP fault is sent.
+
+         Status := S_500;
+
+      else
+         --  Normal SOAP message with non-empty body is sent.
+
+         Status := S_200;
+      end if;
+
+      --  Send message.
+
       if Message = null then
          Self.Send_Reply
            (Status       => Status,
@@ -84,9 +119,11 @@ package body Web_Services.SOAP.Reply_Streams is
             Success      => Success,
             Content_Type => Constants.MIME_Application_SOAP_XML,
             Output_Data  => Encoder.Encode (Message.all));
-
-         Web_Services.SOAP.Messages.Free (Message);
       end if;
+
+      --  Deallocate message.
+
+      Web_Services.SOAP.Messages.Free (Message);
    end Common_Send_Message;
 
    -------------
@@ -107,12 +144,11 @@ package body Web_Services.SOAP.Reply_Streams is
 
    procedure Send_Message
     (Self    : in out Abstract_Reply_Stream'Class;
-     Status  : Status_Type;
      Message : in out Web_Services.SOAP.Messages.SOAP_Message_Access)
    is
       Ignore : Boolean;
    begin
-      Common_Send_Message (Self, Status, Message, Ignore);
+      Common_Send_Message (Self, Message, Ignore);
    end Send_Message;
 
    -----------------------
@@ -126,7 +162,7 @@ package body Web_Services.SOAP.Reply_Streams is
    begin
       --  Status doesn't matter in next messages, let it be S_200
 
-      Common_Send_Message (Self, S_200, Message, Success);
+      Common_Send_Message (Self, Message, Success);
    end Send_Next_Message;
 
 end Web_Services.SOAP.Reply_Streams;
