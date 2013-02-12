@@ -110,10 +110,19 @@ package body WSDL.Parsers is
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Operations.Interface_Operation_Access;
-     Direction  : WSDL.AST.Messages.Message_Directions;
+     Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean);
-   --  Handles start of 'input' element as child of 'operation' element as
-   --  child of 'interface' element.
+   --  Handles start of 'input' and 'output' element as child of 'operation'
+   --  element as child of 'interface' element.
+
+   procedure Start_Input_Output_Fault_Element
+    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Namespaces : Namespace_Maps.Map;
+     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Direction  : WSDL.AST.Message_Directions;
+     Success    : in out Boolean);
+   --  Handles start of 'infault' and 'outfault' element as child of
+   --  'operation' element as child of 'interface' element.
 
    procedure Start_Binding_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
@@ -201,6 +210,9 @@ package body WSDL.Parsers is
          elsif Local_Name = Fault_Element then
             Self.Pop;
 
+         elsif Local_Name = Infault_Element then
+            Self.Pop;
+
          elsif Local_Name = Input_Element then
             Self.Pop;
 
@@ -208,6 +220,9 @@ package body WSDL.Parsers is
             Self.Pop;
 
          elsif Local_Name = Operation_Element then
+            Self.Pop;
+
+         elsif Local_Name = Outfault_Element then
             Self.Pop;
 
          elsif Local_Name = Output_Element then
@@ -505,9 +520,13 @@ package body WSDL.Parsers is
                Self.Ignore_Depth := 1;
 
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
-               --  XXX all children elements are ignored for now.
-
-               Self.Ignore_Depth := 1;
+               Self.Push (WSDL_Infault);
+               Start_Input_Output_Fault_Element
+                (Attributes,
+                 Self.Namespaces,
+                 Self.Current_Operation,
+                 WSDL.AST.In_Message,
+                 Success);
 
             else
                raise Program_Error;
@@ -525,7 +544,7 @@ package body WSDL.Parsers is
                 (Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
-                 WSDL.AST.Messages.In_Message,
+                 WSDL.AST.In_Message,
                  Success);
 
             else
@@ -592,9 +611,13 @@ package body WSDL.Parsers is
                Self.Ignore_Depth := 1;
 
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
-               --  XXX all children elements are ignored for now.
-
-               Self.Ignore_Depth := 1;
+               Self.Push (WSDL_Outfault);
+               Start_Input_Output_Fault_Element
+                (Attributes,
+                 Self.Namespaces,
+                 Self.Current_Operation,
+                 WSDL.AST.Out_Message,
+                 Success);
 
             else
                raise Program_Error;
@@ -612,7 +635,7 @@ package body WSDL.Parsers is
                 (Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
-                 WSDL.AST.Messages.Out_Message,
+                 WSDL.AST.Out_Message,
                  Success);
 
             else
@@ -731,6 +754,34 @@ package body WSDL.Parsers is
       end if;
    end Start_Endpoint_Element;
 
+   --------------------------------------
+   -- Start_Input_Output_Fault_Element --
+   --------------------------------------
+
+   procedure Start_Input_Output_Fault_Element
+    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Namespaces : Namespace_Maps.Map;
+     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Direction  : WSDL.AST.Message_Directions;
+     Success    : in out Boolean)
+   is
+      Node : constant WSDL.AST.Interface_Fault_Reference_Access
+        := new WSDL.AST.Faults.Interface_Fault_Reference_Node;
+
+   begin
+      Node.Parent := Parent;
+      Parent.Interface_Fault_References.Append (Node);
+      Node.Interface_Fault_Name :=
+        To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
+      Node.Direction := Direction;
+
+      --  Analyze 'messageLabel' attribute.
+
+      if Attributes.Is_Specified (Message_Label_Attribute) then
+         Node.Message_Label := Attributes.Value (Message_Label_Attribute);
+      end if;
+   end Start_Input_Output_Fault_Element;
+
    --------------------------------
    -- Start_Input_Output_Element --
    --------------------------------
@@ -739,7 +790,7 @@ package body WSDL.Parsers is
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Operations.Interface_Operation_Access;
-     Direction  : WSDL.AST.Messages.Message_Directions;
+     Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean)
    is
       Node : constant WSDL.AST.Messages.Interface_Message_Access

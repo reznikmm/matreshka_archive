@@ -47,6 +47,7 @@ with Ada.Containers;
 
 with League.Strings;
 
+limited with WSDL.AST.Faults;
 limited with WSDL.AST.Interfaces;
 limited with WSDL.Iterators;
 limited with WSDL.Visitors;
@@ -66,6 +67,12 @@ package WSDL.AST is
    function Hash (Item : Qualified_Name) return Ada.Containers.Hash_Type;
 
    type Message_Content_Models is (Element, Any, None, Other);
+
+   type Message_Directions is (In_Message, Out_Message);
+
+   -------------------
+   -- Abstract Node --
+   -------------------
 
    type Abstract_Node is abstract tagged record
       null;
@@ -91,5 +98,8 @@ package WSDL.AST is
 
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;
+
+   type Interface_Fault_Reference_Access is
+     access all WSDL.AST.Faults.Interface_Fault_Reference_Node'Class;
 
 end WSDL.AST;

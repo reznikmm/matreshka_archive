@@ -72,6 +72,19 @@ package body WSDL.AST.Faults is
        (Interface_Fault_Access (Self), Control);
    end Enter;
 
+   -----------
+   -- Enter --
+   -----------
+
+   overriding procedure Enter
+    (Self    : not null access Interface_Fault_Reference_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Enter_Interface_Fault_Reference
+       (Interface_Fault_Reference_Access (Self), Control);
+   end Enter;
+
 --   -----------
 --   -- Leave --
 --   -----------
@@ -96,6 +109,19 @@ package body WSDL.AST.Faults is
    begin
       Visitor.Leave_Interface_Fault
        (Interface_Fault_Access (Self), Control);
+   end Leave;
+
+   -----------
+   -- Leave --
+   -----------
+
+   overriding procedure Leave
+    (Self    : not null access Interface_Fault_Reference_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Leave_Interface_Fault_Reference
+       (Interface_Fault_Reference_Access (Self), Control);
    end Leave;
 
 --   -----------
@@ -124,6 +150,20 @@ package body WSDL.AST.Faults is
    begin
       Iterator.Visit_Interface_Fault
        (Visitor, Interface_Fault_Access (Self), Control);
+   end Visit;
+
+   -----------
+   -- Visit --
+   -----------
+
+   overriding procedure Visit
+    (Self     : not null access Interface_Fault_Reference_Node;
+     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control  : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Iterator.Visit_Interface_Fault_Reference
+       (Visitor, Interface_Fault_Reference_Access (Self), Control);
    end Visit;
 
 end WSDL.AST.Faults;

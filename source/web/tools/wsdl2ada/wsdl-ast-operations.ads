@@ -58,6 +58,12 @@ package WSDL.AST.Operations is
            WSDL.AST.Messages.Interface_Message_Access,
            WSDL.AST.Messages."=");
 
+   package Interface_Fault_Vectors is
+     new Ada.Containers.Vectors
+          (Positive,
+           WSDL.AST.Interface_Fault_Reference_Access,
+           WSDL.AST."=");
+
    type Binding_Access is
      access all WSDL.AST.Bindings.Binding_Node'Class;
 
@@ -81,6 +87,9 @@ package WSDL.AST.Operations is
 
       Interface_Message_References : Interface_Message_Vectors.Vector;
       --  Value of {interface message references} property.
+
+      Interface_Fault_References   : Interface_Fault_Vectors.Vector;
+      --  Value of {interface fault references} property.
    end record;
 
    type Interface_Operation_Access is

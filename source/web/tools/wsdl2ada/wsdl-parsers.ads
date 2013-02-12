@@ -87,10 +87,12 @@ private
      WSDL_Binding_Operation,
      WSDL_Description,
      WSDL_Endpoint,
+     WSDL_Infault,
      WSDL_Input,
      WSDL_Interface,
      WSDL_Interface_Fault,
      WSDL_Interface_Operation,
+     WSDL_Outfault,
      WSDL_Output,
      WSDL_Service,
      WSDL_Types);

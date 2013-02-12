@@ -171,7 +171,7 @@ package body WSDL.Generator is
       use type League.Strings.Universal_String;
       use type WSDL.AST.Bindings.Binding_Access;
       use type WSDL.AST.Message_Content_Models;
-      use type WSDL.AST.Messages.Message_Directions;
+      use type WSDL.AST.Message_Directions;
       use type WSDL.AST.Messages.Interface_Message_Access;
 
       Binding_Node           : WSDL.AST.Bindings.Binding_Access;
@@ -252,10 +252,10 @@ package body WSDL.Generator is
 
          for Message_Node of Operation_Node.Interface_Message_References loop
             case Message_Node.Direction is
-               when WSDL.AST.Messages.In_Message =>
+               when WSDL.AST.In_Message =>
                   Input_Message := Message_Node;
 
-               when WSDL.AST.Messages.Out_Message =>
+               when WSDL.AST.Out_Message =>
                   Output_Message := Message_Node;
             end case;
          end loop;
@@ -389,10 +389,10 @@ package body WSDL.Generator is
 
          for Message_Node of Operation_Node.Interface_Message_References loop
             case Message_Node.Direction is
-               when WSDL.AST.Messages.In_Message =>
+               when WSDL.AST.In_Message =>
                   Input_Message := Message_Node;
 
-               when WSDL.AST.Messages.Out_Message =>
+               when WSDL.AST.Out_Message =>
                   Output_Message := Message_Node;
             end case;
          end loop;

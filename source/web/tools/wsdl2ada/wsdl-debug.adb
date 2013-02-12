@@ -272,10 +272,10 @@ package body WSDL.Debug is
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       case Node.Direction is
-         when WSDL.AST.Messages.In_Message =>
+         when WSDL.AST.In_Message =>
             Self.Writer.Start_Element (WSDL_Namespace_URI, Input_Element);
 
-         when WSDL.AST.Messages.Out_Message =>
+         when WSDL.AST.Out_Message =>
             Self.Writer.Start_Element (WSDL_Namespace_URI, Output_Element);
       end case;
    end Enter_Interface_Message;
@@ -399,10 +399,10 @@ package body WSDL.Debug is
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       case Node.Direction is
-         when WSDL.AST.Messages.In_Message =>
+         when WSDL.AST.In_Message =>
             Self.Writer.End_Element (WSDL_Namespace_URI, Input_Element);
 
-         when WSDL.AST.Messages.Out_Message =>
+         when WSDL.AST.Out_Message =>
             Self.Writer.End_Element (WSDL_Namespace_URI, Output_Element);
       end case;
    end Leave_Interface_Message;

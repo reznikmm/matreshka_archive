@@ -50,8 +50,6 @@ package WSDL.AST.Messages is
    type Interface_Operation_Access is
      access all WSDL.AST.Operations.Interface_Operation_Node'Class;
 
-   type Message_Directions is (In_Message, Out_Message);
-
    type Interface_Message_Node is new Abstract_Node with record
       Parent                : Interface_Operation_Access;
       --  Value of {parent} property.
@@ -59,7 +57,7 @@ package WSDL.AST.Messages is
       Message_Label         : League.Strings.Universal_String;
       --  Value of {message label} property.
 
-      Direction             : Message_Directions;
+      Direction             : WSDL.AST.Message_Directions;
       --  Value of {direction} property.
 
       Message_Content_Model : WSDL.AST.Message_Content_Models;

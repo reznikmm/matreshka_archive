@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -59,6 +59,9 @@ package body WSDL.Analyzer is
      Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Control);
+
       use type League.Strings.Universal_String;
       use type WSDL.AST.Messages.Interface_Message_Access;
 
@@ -89,7 +92,7 @@ package body WSDL.Analyzer is
 
          for Message_Node of Node.Interface_Message_References loop
             case Message_Node.Direction is
-               when WSDL.AST.Messages.In_Message =>
+               when WSDL.AST.In_Message =>
                   if Input_Message /= null then
                      --  InOutComposition-2015: Only one input message can be
                      --  specified in this MEP.
@@ -99,7 +102,7 @@ package body WSDL.Analyzer is
 
                   Input_Message := Message_Node;
 
-               when WSDL.AST.Messages.Out_Message =>
+               when WSDL.AST.Out_Message =>
                   if Output_Message /= null then
                      --  InOutComposition-2015: Only one output message can be
                      --  specified in this MEP.
@@ -169,7 +172,7 @@ package body WSDL.Analyzer is
 
          for Message_Node of Node.Interface_Message_References loop
             case Message_Node.Direction is
-               when WSDL.AST.Messages.In_Message =>
+               when WSDL.AST.In_Message =>
                   if Input_Message /= null then
                      --  RobustInOnlyComposition-2013: Only one input message
                      --  can be specified in this MEP.
@@ -179,7 +182,7 @@ package body WSDL.Analyzer is
 
                   Input_Message := Message_Node;
 
-               when WSDL.AST.Messages.Out_Message =>
+               when WSDL.AST.Out_Message =>
                   --  RobustInOnlyComposition-2013: Output messages can't be
                   --  specified for this MEP.
                   --

@@ -41,26 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---with Ada.Containers.Vectors;
---
---with League.String_Vectors;
---
---limited with WSDL.AST.Bindings;
---limited with WSDL.AST.Interfaces;
---with WSDL.AST.Messages;
+with WSDL.AST.Operations;
 
 package WSDL.AST.Faults is
 
    pragma Preelaborate;
-
---   package Interface_Message_Vectors is
---     new Ada.Containers.Vectors
---          (Positive,
---           WSDL.AST.Messages.Interface_Message_Access,
---           WSDL.AST.Messages."=");
-
---   type Binding_Access is
---     access all WSDL.AST.Bindings.Binding_Node'Class;
 
    ---------------------
    -- Interface Fault --
@@ -95,6 +80,43 @@ package WSDL.AST.Faults is
 
    overriding procedure Visit
     (Self     : not null access Interface_Fault_Node;
+     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control  : in out WSDL.Iterators.Traverse_Control);
+
+   -------------------------------
+   -- Interface Fault Reference --
+   -------------------------------
+
+   type Interface_Fault_Reference_Node is new Abstract_Node with record
+      Interface_Fault_Name : Qualified_Name;
+      --  QName of referenced interface fault component.
+
+      Interface_Fault      : WSDL.AST.Faults.Interface_Fault_Access;
+      --  Value of {interface fault} property.
+
+      Parent               : WSDL.AST.Operations.Interface_Operation_Access;
+      --  Value of {parent} property.
+
+      Message_Label        : League.Strings.Universal_String;
+      --  Value of {message label} property.
+
+      Direction            : WSDL.AST.Message_Directions;
+      --  Value of {direction} property.
+   end record;
+
+   overriding procedure Enter
+    (Self    : not null access Interface_Fault_Reference_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
+   overriding procedure Leave
+    (Self    : not null access Interface_Fault_Reference_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
+   overriding procedure Visit
+    (Self     : not null access Interface_Fault_Reference_Node;
      Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
      Control  : in out WSDL.Iterators.Traverse_Control);

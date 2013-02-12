@@ -105,6 +105,12 @@ package WSDL.Iterators is
      Node    : not null WSDL.AST.Faults.Interface_Fault_Access;
      Control : in out Traverse_Control) is null;
 
+   not overriding procedure Visit_Interface_Fault_Reference
+    (Self    : in out WSDL_Iterator;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Node    : not null WSDL.AST.Interface_Fault_Reference_Access;
+     Control : in out Traverse_Control) is null;
+
    not overriding procedure Visit_Interface_Message
     (Self    : in out WSDL_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;

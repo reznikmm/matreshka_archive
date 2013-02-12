@@ -117,6 +117,16 @@ package WSDL.Visitors is
      Node    : not null WSDL.AST.Faults.Interface_Fault_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
+   not overriding procedure Enter_Interface_Fault_Reference
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Interface_Fault_Reference_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
+   not overriding procedure Leave_Interface_Fault_Reference
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Interface_Fault_Reference_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
    not overriding procedure Enter_Interface_Message
     (Self    : in out WSDL_Visitor;
      Node    : not null WSDL.AST.Messages.Interface_Message_Access;
