@@ -56,7 +56,7 @@ package Web_Services.SOAP.Reply_Streams is
     (Self : in out Abstract_Reply_Stream) is abstract;
    --  To enable multiply replies returned for single request.
 
-   type Status_Type is (S_200, S_202, S_400, S_500);
+   type Status_Type is (S_200, S_202, S_204, S_400, S_500);
 
    not overriding procedure Send_Reply
     (Self         : in out Abstract_Reply_Stream;
