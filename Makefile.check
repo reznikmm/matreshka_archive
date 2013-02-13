@@ -55,6 +55,7 @@ endif
 	.objs/test_165
 	.objs/test_177
 	.objs/test_209
+	.objs/test_290
 	.objs/base64_test
 	# Tests below is for XML module
 	.objs/test_20 testsuite/xml/TN-20/
