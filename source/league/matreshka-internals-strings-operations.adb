@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -340,8 +340,11 @@ package body Matreshka.Internals.Strings.Operations is
 
          Destination.Value (First + By.Unused .. New_Size - 1) :=
            Source.Value (First + Size .. Source.Unused - 1);
-         Destination.Value (First .. First + By.Unused - 1) :=
-           By.Value (0 .. By.Unused - 1);
+
+         if By.Length /= 0 then
+            Destination.Value (First .. First + By.Unused - 1) :=
+              By.Value (0 .. By.Unused - 1);
+         end if;
 
          Destination.Unused := New_Size;
          Destination.Length := New_Length;
