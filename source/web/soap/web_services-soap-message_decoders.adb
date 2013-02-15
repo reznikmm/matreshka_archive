@@ -368,9 +368,8 @@ package body Web_Services.SOAP.Message_Decoders is
               Output        => null,
               Headers       => <>,
               Payload       =>
-                Web_Services.SOAP.Payloads.Faults.Simple.Create_Must_Understand_Fault
-                 (League.Strings.To_Universal_String ("en-US"),
-                  Diagnosis));
+                Web_Services.SOAP.Payloads.Faults.Simple
+                  .Create_Must_Understand_Fault (XML_EN_US_Code, Diagnosis));
    end Set_Must_Understand_Error;
 
    ----------------------
@@ -403,9 +402,7 @@ package body Web_Services.SOAP.Message_Decoders is
               Headers       => <>,
               Payload       =>
                 Web_Services.SOAP.Payloads.Faults.Simple.Create_Sender_Fault
-                 (League.Strings.To_Universal_String ("en-US"),
-                  Text,
-                  Detail));
+                 (XML_EN_US_Code, Text, Detail));
    end Set_Sender_Fault;
 
    --------------------------------
@@ -435,9 +432,8 @@ package body Web_Services.SOAP.Message_Decoders is
               Output        => null,
               Headers       => <>,
               Payload       =>
-                Web_Services.SOAP.Payloads.Faults.Simple.Create_Version_Mismatch_Fault
-                 (League.Strings.To_Universal_String ("en-US"),
-                  Diagnosis));
+                Web_Services.SOAP.Payloads.Faults.Simple
+                  .Create_Version_Mismatch_Fault (XML_EN_US_Code, Diagnosis));
    end Set_Version_Mismatch_Fault;
 
    --------------------
