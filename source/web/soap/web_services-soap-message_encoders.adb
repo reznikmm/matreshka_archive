@@ -169,6 +169,7 @@ package body Web_Services.SOAP.Message_Encoders is
       begin
          Writer.Start_Element (SOAP_Envelope_URI, SOAP_Subcode_Name);
 
+         Writer.Start_Prefix_Mapping (Code.Prefix, Code.Namespace_URI);
          Writer.Start_Element (SOAP_Envelope_URI, SOAP_Value_Name);
          Writer.Characters (Code.Prefix);
          --  XXX Namespace URI to prefix mapping resolution must to be
