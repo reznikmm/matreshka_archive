@@ -59,6 +59,11 @@ package Web_Services.SOAP.Constants is
    XML_Lang_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("lang");
 
+   --  XML langauge codes.
+
+   XML_EN_US_Code : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("en-US");
+
    --  SOAP Envelope namespace URI, names of elements and attributes in this
    --  namespace.
 
@@ -92,6 +97,14 @@ package Web_Services.SOAP.Constants is
    SOAP_Must_Understand_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("mustUnderstand");
 
+   --  SOAP RPC namespace URI and prefix.
+
+   SOAP_RPC_URI    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://www.w3.org/2003/05/soap-rpc");
+   SOAP_RPC_Prefix : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("rpc");
+
    --  Codes of SOAP faults.
 
    SOAP_Version_Mismatch_Code      : constant League.Strings.Universal_String
@@ -104,6 +117,12 @@ package Web_Services.SOAP.Constants is
      := League.Strings.To_Universal_String ("Sender");
    SOAP_Receiver_Code              : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("Receiver");
+
+   --  Subcodes of SOAP RPC faults.
+
+   SOAP_Procedure_Not_Present_Subcode :
+     constant League.Strings.Universal_String
+       := League.Strings.To_Universal_String ("ProcedureNotPresent");
 
    --  Some literals for values of attributes.
 

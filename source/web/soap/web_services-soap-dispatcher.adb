@@ -53,7 +53,7 @@ with Web_Services.SOAP.Handlers;
 with Web_Services.SOAP.Message_Decoders;
 with Web_Services.SOAP.Messages;
 with Web_Services.SOAP.Modules.Registry;
-with Web_Services.SOAP.Payloads;
+with Web_Services.SOAP.Payloads.Faults.Simple;
 
 package body Web_Services.SOAP.Dispatcher is
 
@@ -66,6 +66,7 @@ package body Web_Services.SOAP.Dispatcher is
      SOAP_Action : League.Strings.Universal_String;
      Stream      : Web_Services.SOAP.Reply_Streams.Reply_Stream_Access)
    is
+      use type League.Strings.Universal_String;
       use type Web_Services.SOAP.Handlers.SOAP_Message_Handler;
       use type Web_Services.SOAP.Messages.SOAP_Message_Access;
       use type Web_Services.SOAP.Payloads.SOAP_Payload_Access;
@@ -80,6 +81,7 @@ package body Web_Services.SOAP.Dispatcher is
       Output  : Web_Services.SOAP.Messages.SOAP_Message_Access;
       Handler : Web_Services.SOAP.Handlers.SOAP_Message_Handler;
       Handled : Boolean;
+      Detail  : League.Strings.Universal_String;
 
    begin
       --  Parse request data.
@@ -149,8 +151,54 @@ package body Web_Services.SOAP.Dispatcher is
             return;
          end if;
 
-         raise Program_Error;
-         --  Request was not handled, fault must be created and returned.
+         --  SOAP Message was not handled, return SOAP Fault.
+
+         Detail :=
+           League.Strings.To_Universal_String
+            ("SOAP message handler was not found for");
+           
+         if not Input.Namespace_URI.Is_Empty then
+            Detail.Append
+             (" {"
+                & Input.Namespace_URI
+                & "}"
+                & Input.Local_Name
+                & " payload element");
+
+         else
+            Detail.Append (" empty payload element");
+         end if;
+
+         if not Input.Action.Is_Empty then
+            Detail.Append (" with '" & Input.Action & "' SOAP Action");
+
+         else
+            Detail.Append (" without SOAP Action");
+         end if;
+
+         --  Use of rpc:ProcedureNotPresent subcode not required, but looks
+         --  helpful.
+
+         Output :=
+           new Web_Services.SOAP.Messages.SOAP_Message'
+                (Action        => <>,
+                 Namespace_URI => <>,
+                 Local_Name    => <>,
+                 Output        => null,
+                 Headers       => <>,
+                 Payload       =>
+                  Web_Services.SOAP.Payloads.Faults.Simple.Create_Sender_Fault
+                   (Web_Services.SOAP.Constants.SOAP_RPC_URI,
+                    Web_Services.SOAP.Constants
+                      .SOAP_Procedure_Not_Present_Subcode,
+                    Web_Services.SOAP.Constants.SOAP_RPC_Prefix,
+                    Web_Services.SOAP.Constants.XML_EN_US_Code,
+                    League.Strings.To_Universal_String
+                     ("Procedure Not Present"),
+                    Detail));
+         Stream.Send_Message (Output);
+
+         return;
 
       else
          Output := Decoder.Message;
