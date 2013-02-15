@@ -77,6 +77,7 @@ soap:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_tests.gpr
 	.objs/soapconf_test
 	.objs/test_248
+	.objs/test_292
 
 mysql:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_mysql_tests.gpr
