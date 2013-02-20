@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides set of Intel's specific data types for MMX/SSE
+--  This package provides set of Intel's specific data types for MMX/SSE/AVX
 --  instruction sets. Children packages provide operations on this types,
 --  one child package covers one instruction set. Types declarations are
 --  specific for GNAT compiler. The way how subprograms are defined is also
@@ -54,6 +54,32 @@ with Interfaces;
 package Matreshka.Internals.SIMD.Intel is
 
    pragma Pure;
+
+   --  256-bit types
+
+   type v32qi is array (1 .. 32) of Interfaces.Integer_8;
+   pragma Machine_Attribute (v32qi, "vector_type");
+   pragma Machine_Attribute (v32qi, "may_alias");
+
+   type v16hi is array (1 .. 16) of Interfaces.Integer_16;
+   pragma Machine_Attribute (v16hi, "vector_type");
+   pragma Machine_Attribute (v16hi, "may_alias");
+
+   type v8si is array (1 .. 8) of Interfaces.Integer_32;
+   pragma Machine_Attribute (v8si, "vector_type");
+   pragma Machine_Attribute (v8si, "may_alias");
+
+   type v4di is array (1 .. 4) of Interfaces.Integer_64;
+   pragma Machine_Attribute (v4di, "vector_type");
+   pragma Machine_Attribute (v4di, "may_alias");
+
+   type v8sf is array (1 .. 8) of Interfaces.IEEE_Float_32;
+   pragma Machine_Attribute (v8sf, "vector_type");
+   pragma Machine_Attribute (v8sf, "may_alias");
+
+   type v4df is array (1 .. 4) of Interfaces.IEEE_Float_64;
+   pragma Machine_Attribute (v4df, "vector_type");
+   pragma Machine_Attribute (v4df, "may_alias");
 
    --  128-bit types
 
@@ -100,6 +126,9 @@ package Matreshka.Internals.SIMD.Intel is
    pragma Machine_Attribute (v1di, "may_alias");
 
    --  Type conversion operations.
+
+   function To_v16hi is new Ada.Unchecked_Conversion (v4df, v16hi);
+   function To_v4df is new Ada.Unchecked_Conversion (v16hi, v4df);
 
    function To_v16qi is new Ada.Unchecked_Conversion (v8hi, v16qi);
    function To_v8hi is new Ada.Unchecked_Conversion (v4si, v8hi);
