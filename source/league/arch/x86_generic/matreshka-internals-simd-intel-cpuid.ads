@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,82 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Latin_1;
 with Interfaces;
-with System.Machine_Code;
 
-with Matreshka.Internals.SIMD.Intel.CPUID;
-with Matreshka.Internals.Strings.Handlers.Portable;
-with Matreshka.Internals.Strings.Handlers.X86.SSE2;
+package Matreshka.Internals.SIMD.Intel.CPUID is
 
-package body Matreshka.Internals.Strings.Configuration is
+   pragma Pure;
 
-   use Ada.Characters.Latin_1;
-   use type Interfaces.Unsigned_32;
+   function Highest_CPUID
+    (Extended : Boolean := False) return Interfaces.Unsigned_32;
+   --  Returns highest value of supported 'cpuid' instruction.
 
-   LFHT : constant String := LF & HT;
+   function Has_AVX return Boolean;
+   --  Returns True when the processor supports the AVX instruction extensions.
 
-   function Has_CPUID return Boolean;
-   --  Returns True when CPU supports 'cpuid' instruction.
+   function Has_SSE2 return Boolean;
+   --  Returns True when the processor supports the Streaming SIMD Extensions 2
+   --  Instructions.
 
-   ---------------
-   -- Has_CPUID --
-   ---------------
-
-   function Has_CPUID return Boolean is
-      use type Interfaces.Unsigned_32;
-
-      eax : Interfaces.Unsigned_32;
-      ebx : Interfaces.Unsigned_32;
-
-   begin
-      --  This code is copied from GCC's cpuid.h file.
-
-      System.Machine_Code.Asm
-       (Template =>
-          "pushf{l|d}" & LFHT
-            & "pushf{l|d}" & LFHT
-            & "pop{l}" & HT & "%0" & LFHT
-            & "mov{l}" & HT & "{%0, %1|%1, %0}" & LFHT
-            & "xor{l}" & HT & "{%2, %0|%0, %2}" & LFHT
-            & "push{l}" & HT & "%0" & LFHT
-            & "popf{l|d}" & LFHT
-            & "pushf{l|d}" & LFHT
-            & "pop{l}" & HT & "%0" & LFHT
-            & "popf{l|d}" & LFHT,
-        Outputs =>
-         (Interfaces.Unsigned_32'Asm_Output ("=&r", eax),
-          Interfaces.Unsigned_32'Asm_Output ("=&r", ebx)),
-        Inputs =>
-          Interfaces.Unsigned_32'Asm_Input ("i", 16#0020_0000#));
-
-      return ((eax xor ebx) and 16#0020_0000#) /= 0;
-   end Has_CPUID;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      if not Has_CPUID
-        or else Matreshka.Internals.SIMD.Intel.CPUID.Highest_CPUID < 1
-      then
-         --  CPU doesn't has CPUID instruction or doesn't support getting of
-         --  features sets.
-
-         String_Handler := Handlers.Portable.Handler'Access;
-
-      elsif Matreshka.Internals.SIMD.Intel.CPUID.Has_SSE2 then
-         --  CPU supports SSE2 instructions set.
-
-         String_Handler := Handlers.X86.SSE2.Handler'Access;
-
-      else
-         --  CPU doesn't supports SSE2 instructions set.
-
-         String_Handler := Handlers.Portable.Handler'Access;
-      end if;
-   end Initialize;
-
-end Matreshka.Internals.Strings.Configuration;
+end Matreshka.Internals.SIMD.Intel.CPUID;
