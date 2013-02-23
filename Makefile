@@ -63,6 +63,15 @@ xml:	yy_tools .gens-xml
 .gens-xml:
 	mkdir .gens-xml
 
+gen-csmib:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_csmib.gpr
+	rm -rf .new
+	mkdir .new
+	.objs/csmib/gen_csmib data/csmib/character-sets.xml > .new/sources.ada
+	gnatchop -gnat05 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ./tools/move-if-changed .new/{} source/league/iana/{}
+	rm -rf .new
+
 yy_tools:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_aflex.gpr
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_ayacc.gpr
