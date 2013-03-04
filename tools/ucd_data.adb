@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -395,13 +395,11 @@ package body Ucd_Data is
             when C | S =>
                Cases (Code).SCF := (True, 0);
                Parse_Code_Point (Ucd_Input.Field (File), Cases (Code).SCF.C);
-               Core (Code).B (Has_Case_Folding) := True;
 
             when F =>
                Cases (Code).FCF :=
                  new Code_Point_Sequence'
                       (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
-               Core (Code).B (Has_Case_Folding) := True;
 
             when T =>
                Ada.Text_IO.Put_Line
@@ -810,48 +808,25 @@ package body Ucd_Data is
                if Upper'Length /= 1
                  or else Upper (1) /= Code
                then
-                  Core (Code).B (Has_Uppercase_Mapping) := True;
                   Cases (Code).FUM.Positive (Final_Sigma) := Upper;
                end if;
 
                if Lower'Length /= 1
                  or else Lower (1) /= Code
                then
-                  Core (Code).B (Has_Lowercase_Mapping) := True;
                   Cases (Code).FLM.Positive (Final_Sigma) := Lower;
                end if;
 
                if Title'Length /= 1
                  or else Title (1) /= Code
                then
-                  Core (Code).B (Has_Titlecase_Mapping) := True;
                   Cases (Code).FTM.Positive (Final_Sigma) := Title;
                end if;
 
             elsif V'Length = 0 then
                Cases (Code).FUM.Default := Upper;
-
-               if Upper'Length /= 1
-                 or else Upper (1) /= Code
-               then
-                  Core (Code).B (Has_Uppercase_Mapping) := True;
-               end if;
-
                Cases (Code).FLM.Default := Lower;
-
-               if Lower'Length /= 1
-                 or else Lower (1) /= Code
-               then
-                  Core (Code).B (Has_Lowercase_Mapping) := True;
-               end if;
-
                Cases (Code).FTM.Default := Title;
-
-               if Title'Length /= 1
-                 or else Title (1) /= Code
-               then
-                  Core (Code).B (Has_Titlecase_Mapping) := True;
-               end if;
 
             else
                --  XXX Ignore more complex contexts for now.
@@ -900,8 +875,7 @@ package body Ucd_Data is
         DM   : Code_Point_Sequence;
         SUM  : Optional_Code_Point;
         SLM  : Optional_Code_Point;
-        STM  : Optional_Code_Point)
-      is
+        STM  : Optional_Code_Point) is
       begin
          Core (Code).GC  := GC;
          Core (Code).CCC := CCC;
@@ -923,7 +897,6 @@ package body Ucd_Data is
 
          if SUM.Present and then SUM.C /= Code then
             Cases (Code).SUM := SUM;
-            Core (Code).B (Has_Uppercase_Mapping) := True;
 
          else
             Cases (Code).SUM := (Present => False);
@@ -933,7 +906,6 @@ package body Ucd_Data is
 
          if SLM.Present and then SLM.C /= Code then
             Cases (Code).SLM := SLM;
-            Core (Code).B (Has_Lowercase_Mapping) := True;
 
          else
             Cases (Code).SLM := (Present => False);
@@ -943,7 +915,6 @@ package body Ucd_Data is
 
          if STM.Present and then STM.C /= Code then
             Cases (Code).STM := STM;
-            Core (Code).B (Has_Titlecase_Mapping) := True;
 
          else
             Cases (Code).STM := (Present => False);

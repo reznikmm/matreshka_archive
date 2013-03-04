@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -394,13 +394,6 @@ procedure Gen_Props is
      aliased constant String := "Changes_When_Casefolded";
    BP_Changes_When_Casemapped_Image :
      aliased constant String := "Changes_When_Casemapped";
-   BP_Has_Lowercase_Mapping_Image :
-     aliased constant String := "Has_Lowercase_Mapping";
-   BP_Has_Uppercase_Mapping_Image :
-     aliased constant String := "Has_Uppercase_Mapping";
-   BP_Has_Titlecase_Mapping_Image :
-     aliased constant String := "Has_Titlecase_Mapping";
-   BP_Has_Case_Folding_Image  : aliased constant String := "Has_Case_Folding";
 
    Boolean_Properties_Image : constant
      array (Boolean_Properties) of Constant_String_Access
@@ -467,12 +460,7 @@ procedure Gen_Props is
            Changes_When_Uppercased => BP_Changes_When_Uppercased_Image'Access,
            Changes_When_Titlecased => BP_Changes_When_Titlecased_Image'Access,
            Changes_When_Casefolded => BP_Changes_When_Casefolded_Image'Access,
-           Changes_When_Casemapped => BP_Changes_When_Casemapped_Image'Access,
-
-           Has_Lowercase_Mapping   => BP_Has_Lowercase_Mapping_Image'Access,
-           Has_Uppercase_Mapping   => BP_Has_Uppercase_Mapping_Image'Access,
-           Has_Titlecase_Mapping   => BP_Has_Titlecase_Mapping_Image'Access,
-           Has_Case_Folding        => BP_Has_Case_Folding_Image'Access);
+           Changes_When_Casemapped => BP_Changes_When_Casemapped_Image'Access);
 
    NQC_No_Image    : aliased constant String := "No";
    NQC_Maybe_Image : aliased constant String := "Maybe";
@@ -709,7 +697,7 @@ begin
             Put_File_Header
              ("Localization, Internationalization, Globalization for Ada",
               2012,
-              2012);
+              2013);
             Ada.Text_IO.New_Line;
             Ada.Text_IO.Put_Line
              ("pragma Restrictions (No_Elaboration_Code);");

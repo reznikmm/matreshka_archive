@@ -183,9 +183,8 @@ begin
    --  Construct casing information.
 
    for J in Code_Point loop
-      if Core (J).B (Has_Lowercase_Mapping)
-        or else Core (J).B (Has_Uppercase_Mapping)
-        or else Core (J).B (Has_Titlecase_Mapping)
+      if Core (J).B (Changes_When_Casemapped)
+        or else Core (J).B (Changes_When_Casefolded)
       then
          --  Process data for default casing context.
 
