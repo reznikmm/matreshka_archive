@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -399,7 +399,7 @@ package Matreshka.Internals.Unicode.Ucd is
      array (Case_Mapping_Kinds) of Case_Mapping_Range;
 
    type Simple_Case_Mappings is
-     array (Case_Mapping_Kinds range Lower .. Title) of Code_Point;
+     array (Case_Mapping_Kinds) of Code_Point;
 
    type Casing_Context_Mapping_Ranges is
      array (Case_Mapping_Kinds range Lower .. Title) of Case_Mapping_Range;
