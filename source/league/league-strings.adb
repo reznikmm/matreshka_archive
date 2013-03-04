@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -1431,7 +1431,7 @@ package body League.Strings is
           (Locale,
            Self.Data,
            Matreshka.Internals.Unicode.Ucd.Folding,
-           Matreshka.Internals.Unicode.Ucd.Has_Case_Folding,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Casefolded,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
@@ -1460,7 +1460,7 @@ package body League.Strings is
           (Locale,
            Self.Data,
            Matreshka.Internals.Unicode.Ucd.Lower,
-           Matreshka.Internals.Unicode.Ucd.Has_Lowercase_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Lowercased,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 
@@ -1568,7 +1568,7 @@ package body League.Strings is
           (Locale,
            Self.Data,
            Matreshka.Internals.Unicode.Ucd.Upper,
-           Matreshka.Internals.Unicode.Ucd.Has_Uppercase_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Uppercased,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
 

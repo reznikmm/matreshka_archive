@@ -204,14 +204,7 @@ package Matreshka.Internals.Unicode.Ucd is
      Expands_On_NFD,                --  Derived
      Expands_On_NFKC,               --  Derived
      Expands_On_NFKD,               --  Derived
-     Changes_When_NFKC_Casefolded,  --  Derived
-
-     --  Following are used by case conversion subprograms.
-
-     Has_Lowercase_Mapping,
-     Has_Uppercase_Mapping,
-     Has_Titlecase_Mapping,
-     Has_Case_Folding);
+     Changes_When_NFKC_Casefolded); --  Derived
 
    type Boolean_Values is array (Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
