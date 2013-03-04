@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -84,7 +84,7 @@ procedure Gen_Cases is
    end record;
 
    Case_Info : array (Code_Point) of Case_Mapping
-     := (others => ((0, 0, 0), ((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
+     := (others => ((0, 0, 0, 0), ((0, 0), (0, 0), (0, 0), (0, 0)), 0, 0));
    Cont_Info : Casing_Context_Mapping_Sequence (Sequence_Index);
    Cont_Last : Sequence_Count := 0;
    Case_Seq  : Code_Point_Sequence (Sequence_Index);
@@ -149,6 +149,8 @@ procedure Gen_Cases is
           & Code_Point_Image (Item.Simple (Upper))
           & "#, 16#"
           & Code_Point_Image (Item.Simple (Title))
+          & "#, 16#"
+          & Code_Point_Image (Item.Simple (Folding))
           & "#),");
       Ada.Text_IO.Set_Col (Column);
       Ada.Text_IO.Put
@@ -271,6 +273,8 @@ begin
             Case_Info (J).Simple (Title) := 0;
          end if;
 
+         --  Casefolding mapping.
+
          if Cases (J).FCF /= null then
             if Cases (J).FCF'Length /= 1
               or else Cases (J).FCF (1) /= J
@@ -288,6 +292,13 @@ begin
                  Case_Info (J).Ranges (Folding).First,
                  Case_Info (J).Ranges (Folding).Last);
             end if;
+         end if;
+
+         if Cases (J).SCF.Present then
+            Case_Info (J).Simple (Folding) := Cases (J).SCF.C;
+
+         else
+            Case_Info (J).Simple (Folding) := 0;
          end if;
 
          --  Process data for Final_Sigma casing context.
@@ -349,7 +360,7 @@ begin
    Put_File_Header
     ("Localization, Internationalization, Globalization for Ada",
      2009,
-     2011);
+     2013);
    Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
    Ada.Text_IO.Put_Line
