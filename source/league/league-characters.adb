@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -255,6 +255,19 @@ package body League.Characters is
           and then Matreshka.Internals.Unicode.Properties.Lowercase
                     (Self.Code);
    end Lowercase;
+
+   -----------------------------
+   -- Simple_Casefold_Mapping --
+   -----------------------------
+
+   function Simple_Casefold_Mapping
+    (Self : Universal_Character'Class) return Universal_Character is
+   begin
+      return
+       (Code =>
+          Matreshka.Internals.Unicode.Properties.Simple_Casefold_Mapping
+           (Self.Code));
+   end Simple_Casefold_Mapping;
 
    ------------------------------
    -- Simple_Lowercase_Mapping --

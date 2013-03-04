@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -106,6 +106,10 @@ package League.Characters is
    function Simple_Titlecase_Mapping
     (Self : Universal_Character'Class) return Universal_Character;
    --  Returns simple titlecase mapping for the specified character.
+
+   function Simple_Casefold_Mapping
+    (Self : Universal_Character'Class) return Universal_Character;
+   --  Returns simple casefold mapping for the specified character.
 
    overriding function "="
     (Left : Universal_Character; Right : Universal_Character) return Boolean;

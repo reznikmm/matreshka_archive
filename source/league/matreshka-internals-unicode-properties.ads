@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,6 +70,9 @@ package Matreshka.Internals.Unicode.Properties is
    function Uppercase (Code : Code_Point) return Boolean
      with Inline => True;
    --  Code points which lowercase character.
+
+   function Simple_Casefold_Mapping (Code : Code_Point) return Code_Point;
+   --  Returns simple casefold mapping for the specified code point.
 
    function Simple_Lowercase_Mapping (Code : Code_Point) return Code_Point;
    --  Returns simple lowercase mapping for the specified code point.

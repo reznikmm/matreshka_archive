@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -121,6 +121,25 @@ package body Matreshka.Internals.Unicode.Properties is
          (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
            (Matreshka.Internals.Unicode.Ucd.Lowercase);
    end Lowercase;
+
+   -----------------------------
+   -- Simple_Casefold_Mapping --
+   -----------------------------
+
+   function Simple_Casefold_Mapping (Code : Code_Point) return Code_Point is
+      C : constant Code_Point
+        := Element
+            (Matreshka.Internals.Unicode.Ucd.Cases.Mapping, Code).Simple
+              (Matreshka.Internals.Unicode.Ucd.Folding);
+
+   begin
+      if C /= 0 then
+         return C;
+
+      else
+         return Code;
+      end if;
+   end Simple_Casefold_Mapping;
 
    ------------------------------
    -- Simple_Lowercase_Mapping --
