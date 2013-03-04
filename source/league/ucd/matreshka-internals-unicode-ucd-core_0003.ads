@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -378,10 +378,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | ID_Continue
               | Lowercase
               | XID_Continue
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#46#           =>  --  0346
           (Nonspacing_Mark, 230,
@@ -565,9 +562,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#72#           =>  --  0372
           (Uppercase_Letter, 0,
@@ -584,9 +579,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#74#           =>  --  0374
           (Modifier_Letter, 0,
@@ -626,9 +619,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#78# .. 16#79# =>  --  0378 .. 0379
           (Unassigned, 0,
@@ -703,9 +694,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#87#           =>  --  0387
           (Other_Punctuation, 0,
@@ -737,9 +726,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#8B#           =>  --  038B
           (Unassigned, 0,
@@ -763,9 +750,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#8D#           =>  --  038D
           (Unassigned, 0,
@@ -789,9 +774,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#90#           =>  --  0390
           (Lowercase_Letter, 0,
@@ -809,10 +792,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Expands_On_NFKD => True,
             others => False)),
          16#91# .. 16#A1# =>  --  0391 .. 03A1
           (Uppercase_Letter, 0,
@@ -829,9 +809,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#A2#           =>  --  03A2
           (Unassigned, 0,
@@ -853,9 +831,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#AA# .. 16#AB# =>  --  03AA .. 03AB
           (Uppercase_Letter, 0,
@@ -874,11 +850,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#AC# .. 16#AF# =>  --  03AC .. 03AF
+         16#AC# .. 16#B0# =>  --  03AC .. 03B0
           (Lowercase_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, No, Yes, No), Canonical,
@@ -894,30 +868,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
-            others => False)),
-         16#B0#           =>  --  03B0
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
-           (Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Expands_On_NFKD => True,
             others => False)),
          16#C2#           =>  --  03C2
           (Lowercase_Letter, 0,
@@ -935,10 +886,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#CA# .. 16#CE# =>  --  03CA .. 03CE
           (Lowercase_Letter, 0,
@@ -956,9 +904,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Expands_On_NFKD => True,
             others => False)),
          16#CF#           =>  --  03CF
           (Uppercase_Letter, 0,
@@ -975,9 +921,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D0# .. 16#D1# =>  --  03D0 .. 03D1
           (Lowercase_Letter, 0,
@@ -997,10 +941,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Math
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D2#           =>  --  03D2
           (Uppercase_Letter, 0,
@@ -1052,10 +993,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Math
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D6#           =>  --  03D6
           (Lowercase_Letter, 0,
@@ -1073,10 +1011,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D8#           =>  --  03D8
           (Uppercase_Letter, 0,
@@ -1093,9 +1028,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DA#           =>  --  03DA
           (Uppercase_Letter, 0,
@@ -1112,9 +1045,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DC#           =>  --  03DC
           (Uppercase_Letter, 0,
@@ -1131,9 +1062,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DE#           =>  --  03DE
           (Uppercase_Letter, 0,
@@ -1150,9 +1079,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E0#           =>  --  03E0
           (Uppercase_Letter, 0,
@@ -1169,9 +1096,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E2#           =>  --  03E2
           (Uppercase_Letter, 0,
@@ -1188,9 +1113,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E4#           =>  --  03E4
           (Uppercase_Letter, 0,
@@ -1207,9 +1130,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E6#           =>  --  03E6
           (Uppercase_Letter, 0,
@@ -1226,9 +1147,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E8#           =>  --  03E8
           (Uppercase_Letter, 0,
@@ -1245,9 +1164,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EA#           =>  --  03EA
           (Uppercase_Letter, 0,
@@ -1264,9 +1181,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EC#           =>  --  03EC
           (Uppercase_Letter, 0,
@@ -1283,9 +1198,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EE#           =>  --  03EE
           (Uppercase_Letter, 0,
@@ -1302,9 +1215,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F0# .. 16#F1# =>  --  03F0 .. 03F1
           (Lowercase_Letter, 0,
@@ -1324,10 +1235,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Math
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F2#           =>  --  03F2
           (Lowercase_Letter, 0,
@@ -1344,9 +1252,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F3#           =>  --  03F3
           (Lowercase_Letter, 0,
@@ -1379,9 +1285,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F5#           =>  --  03F5
           (Lowercase_Letter, 0,
@@ -1401,10 +1305,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Math
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F6#           =>  --  03F6
           (Math_Symbol, 0,
@@ -1428,9 +1329,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#F9#           =>  --  03F9
           (Uppercase_Letter, 0,
@@ -1447,9 +1346,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FA#           =>  --  03FA
           (Uppercase_Letter, 0,
@@ -1466,9 +1363,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FC#           =>  --  03FC
           (Lowercase_Letter, 0,
@@ -1498,9 +1393,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
           (Lowercase_Letter, 0,
@@ -1516,9 +1409,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | ID_Start
               | Lowercase
               | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | XID_Start => True,
             others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0003;

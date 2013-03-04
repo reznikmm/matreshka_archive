@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,9 +66,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#28# .. 16#4F# =>  --  010428 .. 01044F
           (Lowercase_Letter, 0,
@@ -84,9 +82,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
               | ID_Start
               | Lowercase
               | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | XID_Start => True,
             others => False)),
          16#50# .. 16#9D# =>  --  010450 .. 01049D
           (Other_Letter, 0,

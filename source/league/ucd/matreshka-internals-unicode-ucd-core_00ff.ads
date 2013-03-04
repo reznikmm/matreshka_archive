@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -240,9 +240,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#27# .. 16#3A# =>  --  FF27 .. FF3A
           (Uppercase_Letter, 0,
@@ -259,9 +257,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#3B#           =>  --  FF3B
           (Open_Punctuation, 0,
@@ -331,9 +327,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#47# .. 16#5A# =>  --  FF47 .. FF5A
           (Lowercase_Letter, 0,
@@ -350,9 +344,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5B#           =>  --  FF5B
           (Open_Punctuation, 0,

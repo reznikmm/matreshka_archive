@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,445 +51,442 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
    pragma Preelaborate;
 
    Group_001E : aliased constant Core_Second_Stage
-     := (16#01#           =>  --  1E01
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+     := (16#00#           =>  --  1E00
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#03#           =>  --  1E03
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#02#           =>  --  1E02
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#05#           =>  --  1E05
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#04#           =>  --  1E04
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#07#           =>  --  1E07
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#06#           =>  --  1E06
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#09#           =>  --  1E09
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#08#           =>  --  1E08
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#0B#           =>  --  1E0B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#0A#           =>  --  1E0A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#0D#           =>  --  1E0D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#0C#           =>  --  1E0C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#0F#           =>  --  1E0F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#0E#           =>  --  1E0E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#11#           =>  --  1E11
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#10#           =>  --  1E10
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#13#           =>  --  1E13
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#12#           =>  --  1E12
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#15#           =>  --  1E15
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#14#           =>  --  1E14
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#17#           =>  --  1E17
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#16#           =>  --  1E16
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#19#           =>  --  1E19
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#18#           =>  --  1E18
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#1B#           =>  --  1E1B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#1A#           =>  --  1E1A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#1D#           =>  --  1E1D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#1C#           =>  --  1E1C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#1F#           =>  --  1E1F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#1E#           =>  --  1E1E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#21#           =>  --  1E21
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#20#           =>  --  1E20
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#23#           =>  --  1E23
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#22#           =>  --  1E22
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#25#           =>  --  1E25
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#24#           =>  --  1E24
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#27#           =>  --  1E27
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#26#           =>  --  1E26
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#29#           =>  --  1E29
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#28#           =>  --  1E28
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#2B#           =>  --  1E2B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#2A#           =>  --  1E2A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#2C#           =>  --  1E2C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, No, Yes, No), Canonical,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Expands_On_NFD
+              | Expands_On_NFKD
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2D#           =>  --  1E2D
           (Lowercase_Letter, 0,
@@ -508,1070 +505,995 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Expands_On_NFKD => True,
             others => False)),
-         16#2F#           =>  --  1E2F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#2E#           =>  --  1E2E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#31#           =>  --  1E31
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#30#           =>  --  1E30
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#33#           =>  --  1E33
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#32#           =>  --  1E32
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#35#           =>  --  1E35
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#34#           =>  --  1E34
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#37#           =>  --  1E37
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#36#           =>  --  1E36
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#39#           =>  --  1E39
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#38#           =>  --  1E38
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#3B#           =>  --  1E3B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#3A#           =>  --  1E3A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#3D#           =>  --  1E3D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#3C#           =>  --  1E3C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#3F#           =>  --  1E3F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#3E#           =>  --  1E3E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#41#           =>  --  1E41
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#40#           =>  --  1E40
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#43#           =>  --  1E43
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#42#           =>  --  1E42
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#45#           =>  --  1E45
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#44#           =>  --  1E44
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#47#           =>  --  1E47
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#46#           =>  --  1E46
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#49#           =>  --  1E49
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#48#           =>  --  1E48
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#4B#           =>  --  1E4B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#4A#           =>  --  1E4A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#4D#           =>  --  1E4D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#4C#           =>  --  1E4C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#4F#           =>  --  1E4F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#4E#           =>  --  1E4E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#51#           =>  --  1E51
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#50#           =>  --  1E50
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#53#           =>  --  1E53
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#52#           =>  --  1E52
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#55#           =>  --  1E55
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#54#           =>  --  1E54
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#57#           =>  --  1E57
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#56#           =>  --  1E56
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#59#           =>  --  1E59
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#58#           =>  --  1E58
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#5B#           =>  --  1E5B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#5A#           =>  --  1E5A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#5D#           =>  --  1E5D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#5C#           =>  --  1E5C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#5F#           =>  --  1E5F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#5E#           =>  --  1E5E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#61#           =>  --  1E61
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#60#           =>  --  1E60
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#63#           =>  --  1E63
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#62#           =>  --  1E62
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#65#           =>  --  1E65
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#64#           =>  --  1E64
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#67#           =>  --  1E67
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#66#           =>  --  1E66
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#69#           =>  --  1E69
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#68#           =>  --  1E68
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#6B#           =>  --  1E6B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#6A#           =>  --  1E6A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#6D#           =>  --  1E6D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#6C#           =>  --  1E6C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#6F#           =>  --  1E6F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#6E#           =>  --  1E6E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#71#           =>  --  1E71
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#70#           =>  --  1E70
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#73#           =>  --  1E73
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#72#           =>  --  1E72
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#75#           =>  --  1E75
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#74#           =>  --  1E74
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#77#           =>  --  1E77
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#76#           =>  --  1E76
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#79#           =>  --  1E79
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#78#           =>  --  1E78
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#7B#           =>  --  1E7B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#7A#           =>  --  1E7A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#7D#           =>  --  1E7D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#7C#           =>  --  1E7C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#7F#           =>  --  1E7F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#7E#           =>  --  1E7E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#81#           =>  --  1E81
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#80#           =>  --  1E80
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#83#           =>  --  1E83
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#82#           =>  --  1E82
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#85#           =>  --  1E85
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#84#           =>  --  1E84
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#87#           =>  --  1E87
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#86#           =>  --  1E86
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#89#           =>  --  1E89
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#88#           =>  --  1E88
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#8B#           =>  --  1E8B
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#8A#           =>  --  1E8A
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#8D#           =>  --  1E8D
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#8C#           =>  --  1E8C
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#8F#           =>  --  1E8F
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#8E#           =>  --  1E8E
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#91#           =>  --  1E91
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#90#           =>  --  1E90
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#93#           =>  --  1E93
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#92#           =>  --  1E92
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#95#           =>  --  1E95
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#94#           =>  --  1E94
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
-            others => False)),
-         16#96# .. 16#99# =>  --  1E96 .. 1E99
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
-           (Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#9A#           =>  --  1E9A
           (Lowercase_Letter, 0,
@@ -1590,10 +1512,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | XID_Continue
               | XID_Start
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#9B#           =>  --  1E9B
           (Lowercase_Letter, 0,
@@ -1613,10 +1532,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#9C# .. 16#9D# =>  --  1E9C .. 1E9D
           (Lowercase_Letter, 0,
@@ -1646,9 +1562,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#9F#           =>  --  1E9F
           (Lowercase_Letter, 0,
@@ -1663,425 +1577,423 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#A1#           =>  --  1EA1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#A0#           =>  --  1EA0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A3#           =>  --  1EA3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#A2#           =>  --  1EA2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A5#           =>  --  1EA5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#A4#           =>  --  1EA4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A7#           =>  --  1EA7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#A6#           =>  --  1EA6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A9#           =>  --  1EA9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#A8#           =>  --  1EA8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#AB#           =>  --  1EAB
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#AA#           =>  --  1EAA
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#AD#           =>  --  1EAD
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#AC#           =>  --  1EAC
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#AF#           =>  --  1EAF
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#AE#           =>  --  1EAE
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#B1#           =>  --  1EB1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#B0#           =>  --  1EB0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#B3#           =>  --  1EB3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#B2#           =>  --  1EB2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#B5#           =>  --  1EB5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#B4#           =>  --  1EB4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#B7#           =>  --  1EB7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#B6#           =>  --  1EB6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#B9#           =>  --  1EB9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#B8#           =>  --  1EB8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#BB#           =>  --  1EBB
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#BA#           =>  --  1EBA
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#BD#           =>  --  1EBD
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#BC#           =>  --  1EBC
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#BF#           =>  --  1EBF
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#BE#           =>  --  1EBE
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#C1#           =>  --  1EC1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#C0#           =>  --  1EC0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#C3#           =>  --  1EC3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#C2#           =>  --  1EC2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#C5#           =>  --  1EC5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#C4#           =>  --  1EC4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#C7#           =>  --  1EC7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#C6#           =>  --  1EC6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#C9#           =>  --  1EC9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#C8#           =>  --  1EC8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#CA#           =>  --  1ECA
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
+           (Yes, No, Yes, No), Canonical,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Expands_On_NFD
+              | Expands_On_NFKD
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#CB#           =>  --  1ECB
           (Lowercase_Letter, 0,
@@ -2100,469 +2012,444 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Expands_On_NFKD => True,
             others => False)),
-         16#CD#           =>  --  1ECD
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#CC#           =>  --  1ECC
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#CF#           =>  --  1ECF
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#CE#           =>  --  1ECE
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#D1#           =>  --  1ED1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#D0#           =>  --  1ED0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#D3#           =>  --  1ED3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#D2#           =>  --  1ED2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#D5#           =>  --  1ED5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#D4#           =>  --  1ED4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#D7#           =>  --  1ED7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#D6#           =>  --  1ED6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#D9#           =>  --  1ED9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#D8#           =>  --  1ED8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#DB#           =>  --  1EDB
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#DA#           =>  --  1EDA
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#DD#           =>  --  1EDD
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#DC#           =>  --  1EDC
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#DF#           =>  --  1EDF
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#DE#           =>  --  1EDE
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#E1#           =>  --  1EE1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#E0#           =>  --  1EE0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#E3#           =>  --  1EE3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#E2#           =>  --  1EE2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#E5#           =>  --  1EE5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#E4#           =>  --  1EE4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#E7#           =>  --  1EE7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#E6#           =>  --  1EE6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#E9#           =>  --  1EE9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#E8#           =>  --  1EE8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#EB#           =>  --  1EEB
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#EA#           =>  --  1EEA
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#ED#           =>  --  1EED
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#EC#           =>  --  1EEC
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#EF#           =>  --  1EEF
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#EE#           =>  --  1EEE
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#F1#           =>  --  1EF1
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#F0#           =>  --  1EF0
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#F3#           =>  --  1EF3
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#F2#           =>  --  1EF2
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#F5#           =>  --  1EF5
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#F4#           =>  --  1EF4
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#F7#           =>  --  1EF7
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#F6#           =>  --  1EF6
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#F9#           =>  --  1EF9
-          (Lowercase_Letter, 0,
-           Other, A_Letter, Lower, Alphabetic,
+         16#F8#           =>  --  1EF8
+          (Uppercase_Letter, 0,
+           Other, A_Letter, Upper, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Lowercase
+              | Uppercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
               | Expands_On_NFKD
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FA#           =>  --  1EFA
           (Uppercase_Letter, 0,
@@ -2579,9 +2466,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FB#           =>  --  1EFB
           (Lowercase_Letter, 0,
@@ -2597,9 +2482,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | ID_Start
               | Lowercase
               | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | XID_Start => True,
             others => False)),
          16#FC#           =>  --  1EFC
           (Uppercase_Letter, 0,
@@ -2616,9 +2499,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FD#           =>  --  1EFD
           (Lowercase_Letter, 0,
@@ -2634,9 +2515,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | ID_Start
               | Lowercase
               | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | XID_Start => True,
             others => False)),
          16#FE#           =>  --  1EFE
           (Uppercase_Letter, 0,
@@ -2653,9 +2532,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FF#           =>  --  1EFF
           (Lowercase_Letter, 0,
@@ -2671,30 +2548,25 @@ package Matreshka.Internals.Unicode.Ucd.Core_001E is
               | ID_Start
               | Lowercase
               | XID_Continue
-              | XID_Start
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | XID_Start => True,
             others => False)),
          others           =>
-          (Uppercase_Letter, 0,
-           Other, A_Letter, Upper, Alphabetic,
+          (Lowercase_Letter, 0,
+           Other, A_Letter, Lower, Alphabetic,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
               | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
               | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Uppercase
+              | Lowercase
               | XID_Continue
               | XID_Start
               | Expands_On_NFD
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Expands_On_NFKD => True,
             others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_001E;

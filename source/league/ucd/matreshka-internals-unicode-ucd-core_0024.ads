@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -107,9 +107,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_Casemapped
               | Grapheme_Base
               | Uppercase
-              | Changes_When_NFKC_Casefolded
-              | Has_Lowercase_Mapping
-              | Has_Case_Folding => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D0# .. 16#E9# =>  --  24D0 .. 24E9
           (Other_Symbol, 0,
@@ -124,9 +122,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_Casemapped
               | Grapheme_Base
               | Lowercase
-              | Changes_When_NFKC_Casefolded
-              | Has_Uppercase_Mapping
-              | Has_Titlecase_Mapping => True,
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EA#           =>  --  24EA
           (Other_Number, 0,
