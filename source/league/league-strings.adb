@@ -1520,6 +1520,151 @@ package body League.Strings is
       return Wrap (Data);
    end To_NFKD;
 
+   ------------------------
+   -- To_Simple_Casefold --
+   ------------------------
+
+   function To_Simple_Casefold
+    (Self : Universal_String'Class) return Universal_String is
+   begin
+      if Self.Data.Length = 0 then
+         return Empty_Universal_String;
+      end if;
+
+      declare
+         Locale : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
+
+      begin
+         Matreshka.Internals.Unicode.Casing.Simple_Convert_Case
+          (Locale,
+           Self.Data,
+           Matreshka.Internals.Unicode.Ucd.Upper,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Casefolded,
+           Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+
+         return Wrap (Data);
+      end;
+   end To_Simple_Casefold;
+
+   -------------------------
+   -- To_Simple_Lowercase --
+   -------------------------
+
+   function To_Simple_Lowercase
+    (Self : Universal_String'Class) return Universal_String is
+   begin
+      if Self.Data.Length = 0 then
+         return Empty_Universal_String;
+      end if;
+
+      declare
+         Locale : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
+
+      begin
+         Matreshka.Internals.Unicode.Casing.Simple_Convert_Case
+          (Locale,
+           Self.Data,
+           Matreshka.Internals.Unicode.Ucd.Lower,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Lowercased,
+           Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+
+         return Wrap (Data);
+      end;
+   end To_Simple_Lowercase;
+
+   -------------------------
+   -- To_Simple_Titlecase --
+   -------------------------
+
+   function To_Simple_Titlecase
+    (Self : Universal_String'Class) return Universal_String is
+   begin
+      if Self.Data.Length = 0 then
+         return Empty_Universal_String;
+      end if;
+
+      declare
+         Locale : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
+
+      begin
+         Matreshka.Internals.Unicode.Casing.Simple_Convert_Case
+          (Locale,
+           Self.Data,
+           Matreshka.Internals.Unicode.Ucd.Title,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Titlecased,
+           Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+
+         return Wrap (Data);
+      end;
+   end To_Simple_Titlecase;
+
+   -------------------------
+   -- To_Simple_Uppercase --
+   -------------------------
+
+   function To_Simple_Uppercase
+    (Self : Universal_String'Class) return Universal_String is
+   begin
+      if Self.Data.Length = 0 then
+         return Empty_Universal_String;
+      end if;
+
+      declare
+         Locale : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
+
+      begin
+         Matreshka.Internals.Unicode.Casing.Simple_Convert_Case
+          (Locale,
+           Self.Data,
+           Matreshka.Internals.Unicode.Ucd.Upper,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Uppercased,
+           Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+
+         return Wrap (Data);
+      end;
+   end To_Simple_Uppercase;
+
+   ------------------
+   -- To_Titlecase --
+   ------------------
+
+   function To_Titlecase
+    (Self : Universal_String'Class) return Universal_String is
+   begin
+      if Self.Data.Length = 0 then
+         return Empty_Universal_String;
+      end if;
+
+      declare
+         Locale : Matreshka.Internals.Locales.Locale_Data_Access
+           := Matreshka.Internals.Locales.Get_Locale;
+         Data   : not null Shared_String_Access := Allocate (Self.Data.Unused);
+
+      begin
+         Matreshka.Internals.Unicode.Casing.Convert_Case
+          (Locale,
+           Self.Data,
+           Matreshka.Internals.Unicode.Ucd.Title,
+           Matreshka.Internals.Unicode.Ucd.Changes_When_Titlecased,
+           Data);
+         Matreshka.Internals.Locales.Dereference (Locale);
+
+         return Wrap (Data);
+      end;
+   end To_Titlecase;
+
    -------------------------
    -- To_Universal_String --
    -------------------------

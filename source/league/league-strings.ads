@@ -271,10 +271,37 @@ package League.Strings is
    --  full case conversion (both context-dependent mappings and tailoring are
    --  used). Returns result string.
 
+   function To_Titlecase
+    (Self : Universal_String'Class) return Universal_String;
+   --  Converts each character in the specified string to titlecase form using
+   --  full case conversion (both context-dependent mappings and tailoring are
+   --  used). Returns result string.
+
    function To_Casefold
     (Self : Universal_String'Class) return Universal_String;
    --  Converts each character in the specified string to case folding form
    --  using full case conversion (only tailoring is used). Returns result
+   --  string.
+
+   function To_Simple_Uppercase
+    (Self : Universal_String'Class) return Universal_String;
+   --  Converts each character in the specified string to uppercase form using
+   --  simple case conversion (only tailoring is used). Returns result string.
+
+   function To_Simple_Lowercase
+    (Self : Universal_String'Class) return Universal_String;
+   --  Converts each character in the specified string to lowercase form using
+   --  simple case conversion (only tailoring is used). Returns result string.
+
+   function To_Simple_Titlecase
+    (Self : Universal_String'Class) return Universal_String;
+   --  Converts each character in the specified string to titlecase form using
+   --  simple case conversion (only tailoring is used). Returns result string.
+
+   function To_Simple_Casefold
+    (Self : Universal_String'Class) return Universal_String;
+   --  Converts each character in the specified string to case folding form
+   --  using simple case conversion (only tailoring is used). Returns result
    --  string.
 
    function To_NFC (Self : Universal_String'Class) return Universal_String;

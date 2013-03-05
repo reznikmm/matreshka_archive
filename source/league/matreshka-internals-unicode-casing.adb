@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -348,5 +348,50 @@ package body Matreshka.Internals.Unicode.Casing is
 
       String_Handler.Fill_Null_Terminator (Destination);
    end Convert_Case;
+
+   -------------------------
+   -- Simple_Convert_Case --
+   -------------------------
+
+   procedure Simple_Convert_Case
+    (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
+     Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access)
+   is
+      Source_Current : Utf16_String_Index := 0;
+      Source_Code    : Code_Point;
+
+   begin
+      Destination.Unused := 0;
+      Destination.Length := 0;
+
+      while Source_Current < Source.Unused loop
+         Unchecked_Next (Source.Value, Source_Current, Source_Code);
+
+         if Locale.Get_Core (Source_Code).B (Property) then
+            declare
+               Mapping : constant Case_Mapping
+                 := Locale.Casing.Mapping
+                     (First_Stage_Index (Source_Code / 16#100#))
+                     (Second_Stage_Index (Source_Code mod 16#100#));
+
+            begin
+               if Mapping.Simple (Kind) /= 0 then
+                  Append (Destination, Mapping.Simple (Kind));
+
+               else
+                  Append (Destination, Source_Code);
+               end if;
+            end;
+
+         else
+            Append (Destination, Source_Code);
+         end if;
+      end loop;
+
+      String_Handler.Fill_Null_Terminator (Destination);
+   end Simple_Convert_Case;
 
 end Matreshka.Internals.Unicode.Casing;

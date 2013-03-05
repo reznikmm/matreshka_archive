@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2010, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,6 +52,13 @@ package Matreshka.Internals.Unicode.Casing is
    pragma Preelaborate;
 
    procedure Convert_Case
+    (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
+     Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
+     Property    : Matreshka.Internals.Unicode.Ucd.Boolean_Properties;
+     Destination : in out Matreshka.Internals.Strings.Shared_String_Access);
+
+   procedure Simple_Convert_Case
     (Locale      : not null Matreshka.Internals.Locales.Locale_Data_Access;
      Source      : not null Matreshka.Internals.Strings.Shared_String_Access;
      Kind        : Matreshka.Internals.Unicode.Ucd.Case_Mapping_Kinds;
