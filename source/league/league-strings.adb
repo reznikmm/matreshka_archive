@@ -1540,7 +1540,7 @@ package body League.Strings is
          Matreshka.Internals.Unicode.Casing.Simple_Convert_Case
           (Locale,
            Self.Data,
-           Matreshka.Internals.Unicode.Ucd.Upper,
+           Matreshka.Internals.Unicode.Ucd.Folding,
            Matreshka.Internals.Unicode.Ucd.Changes_When_Casefolded,
            Data);
          Matreshka.Internals.Locales.Dereference (Locale);
