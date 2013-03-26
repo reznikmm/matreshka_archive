@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,6 +50,7 @@ with Configure.Architecture;
 with Configure.Instantiate;
 with Configure.Operating_System;
 with Configure.RTL_Version;
+with Configure.Tests.Gprbuild;
 with Configure.Tests.Install;
 with Configure.Tests.Installation_Directories;
 with Configure.Tests.MySQL;
@@ -98,6 +99,7 @@ procedure Configure.Driver is
    Arguments       : Unbounded_String_Vector;
    Dirs_Test       :
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
+   Gprbuild_Test   : Configure.Tests.Gprbuild.Gprbuild_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
    MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
@@ -147,6 +149,7 @@ begin
    Configure.RTL_Version;
    Dirs_Test.Execute (Arguments);
    Install_Test.Execute (Arguments);
+   Gprbuild_Test.Execute (Arguments);
    MySQL_Test.Execute (Arguments);
    OCI_Test.Execute (Arguments);
    PostgreSQL_Test.Execute (Arguments);

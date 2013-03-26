@@ -1,6 +1,5 @@
 include Makefile.config
 
-GPRBUILD = gnatmake
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 VALGRIND_FLAGS = --error-exitcode=7 --quiet --suppressions=testsuite/glibc.supp
 
