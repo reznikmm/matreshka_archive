@@ -51,6 +51,7 @@ procedure Main is
    use Interfaces;
 
    type v2di is array (1 .. 2) of Unsigned_64;
+   for v2di'Alignment use 16;
    pragma Machine_Attribute (v2di, "vector_type");
    pragma Machine_Attribute (v2di, "may_alias");
 
