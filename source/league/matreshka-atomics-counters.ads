@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,7 @@ package Matreshka.Atomics.Counters is
    pragma Preelaborate;
 
    type Counter is limited private;
+   pragma Preelaborable_Initialization (Counter);
 
    procedure Increment (Self : in out Counter);
    pragma Inline (Increment);
