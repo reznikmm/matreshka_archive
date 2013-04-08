@@ -9683,32 +9683,16 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
    --  ami1251
 
    N825 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 75,
-         Length => 75,
+     := (Size   => 15,
+         Unused => 11,
+         Length => 11,
          Value  =>
           (16#0063#, 16#0073#, 16#0061#, 16#006D#,
            16#0069#, 16#0067#, 16#0061#, 16#0031#,
-           16#0032#, 16#0035#, 16#0031#, 16#0061#,
-           16#006C#, 16#0069#, 16#0061#, 16#0073#,
-           16#0065#, 16#0073#, 16#0061#, 16#0072#,
-           16#0065#, 16#0070#, 16#0072#, 16#006F#,
-           16#0076#, 16#0069#, 16#0064#, 16#0065#,
-           16#0064#, 16#0066#, 16#006F#, 16#0072#,
-           16#0068#, 16#0069#, 16#0073#, 16#0074#,
-           16#006F#, 16#0072#, 16#0069#, 16#0063#,
-           16#0061#, 16#006C#, 16#0072#, 16#0065#,
-           16#0061#, 16#0073#, 16#006F#, 16#006E#,
-           16#0073#, 16#0061#, 16#006E#, 16#0064#,
-           16#0073#, 16#0068#, 16#006F#, 16#0075#,
-           16#006C#, 16#0064#, 16#006E#, 16#006F#,
-           16#0074#, 16#0062#, 16#0065#, 16#0075#,
-           16#0073#, 16#0065#, 16#0064#, 16#006D#,
-           16#0061#, 16#006C#, 16#0079#, 16#0073#,
-           16#0068#, 16#0065#, 16#0076#,
+           16#0032#, 16#0035#, 16#0031#,
            others => 16#0000#),
          others => <>);
-   --  csamiga1251aliasesareprovidedforhistoricalreasonsandshouldnotbeusedmalyshev
+   --  csamiga1251
 
    N826 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
@@ -9876,6 +9860,17 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
    --  cswindows1251
 
    N840 : aliased Matreshka.Internals.Strings.Shared_String
+     := (Size   => 7,
+         Unused => 6,
+         Length => 6,
+         Value  =>
+          (16#0063#, 16#0070#, 16#0031#, 16#0032#,
+           16#0035#, 16#0031#,
+           others => 16#0000#),
+         others => <>);
+   --  cp1251
+
+   N841 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -9887,7 +9882,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1252
 
-   N841 : aliased Matreshka.Internals.Strings.Shared_String
+   N842 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -9900,7 +9895,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1252
 
-   N842 : aliased Matreshka.Internals.Strings.Shared_String
+   N843 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -9912,7 +9907,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1253
 
-   N843 : aliased Matreshka.Internals.Strings.Shared_String
+   N844 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -9925,7 +9920,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1253
 
-   N844 : aliased Matreshka.Internals.Strings.Shared_String
+   N845 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -9937,7 +9932,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1254
 
-   N845 : aliased Matreshka.Internals.Strings.Shared_String
+   N846 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -9950,7 +9945,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1254
 
-   N846 : aliased Matreshka.Internals.Strings.Shared_String
+   N847 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -9962,7 +9957,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1255
 
-   N847 : aliased Matreshka.Internals.Strings.Shared_String
+   N848 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -9975,7 +9970,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1255
 
-   N848 : aliased Matreshka.Internals.Strings.Shared_String
+   N849 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -9987,7 +9982,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1256
 
-   N849 : aliased Matreshka.Internals.Strings.Shared_String
+   N850 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -10000,7 +9995,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1256
 
-   N850 : aliased Matreshka.Internals.Strings.Shared_String
+   N851 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -10012,7 +10007,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1257
 
-   N851 : aliased Matreshka.Internals.Strings.Shared_String
+   N852 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -10025,7 +10020,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1257
 
-   N852 : aliased Matreshka.Internals.Strings.Shared_String
+   N853 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 11,
          Length => 11,
@@ -10037,7 +10032,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  windows1258
 
-   N853 : aliased Matreshka.Internals.Strings.Shared_String
+   N854 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 13,
          Length => 13,
@@ -10050,7 +10045,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cswindows1258
 
-   N854 : aliased Matreshka.Internals.Strings.Shared_String
+   N855 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 6,
          Length => 6,
@@ -10061,7 +10056,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  tis620
 
-   N855 : aliased Matreshka.Internals.Strings.Shared_String
+   N856 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 8,
          Length => 8,
@@ -10072,7 +10067,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cstis620
 
-   N856 : aliased Matreshka.Internals.Strings.Shared_String
+   N857 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 7,
          Unused => 7,
          Length => 7,
@@ -10083,7 +10078,7 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          others => <>);
    --  cp50220
 
-   N857 : aliased Matreshka.Internals.Strings.Shared_String
+   N858 : aliased Matreshka.Internals.Strings.Shared_String
      := (Size   => 15,
          Unused => 9,
          Length => 9,
@@ -10935,23 +10930,24 @@ private package Matreshka.Internals.Text_Codecs.IANA_Registry is
          (N837'Access, 2250),
          (N838'Access, 2251),
          (N839'Access, 2251),
-         (N840'Access, 2252),
+         (N840'Access, 2251),
          (N841'Access, 2252),
-         (N842'Access, 2253),
+         (N842'Access, 2252),
          (N843'Access, 2253),
-         (N844'Access, 2254),
+         (N844'Access, 2253),
          (N845'Access, 2254),
-         (N846'Access, 2255),
+         (N846'Access, 2254),
          (N847'Access, 2255),
-         (N848'Access, 2256),
+         (N848'Access, 2255),
          (N849'Access, 2256),
-         (N850'Access, 2257),
+         (N850'Access, 2256),
          (N851'Access, 2257),
-         (N852'Access, 2258),
+         (N852'Access, 2257),
          (N853'Access, 2258),
-         (N854'Access, 2259),
+         (N854'Access, 2258),
          (N855'Access, 2259),
-         (N856'Access, 2260),
-         (N857'Access, 2260));
+         (N856'Access, 2259),
+         (N857'Access, 2260),
+         (N858'Access, 2260));
 
 end Matreshka.Internals.Text_Codecs.IANA_Registry;
