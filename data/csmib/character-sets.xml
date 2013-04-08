@@ -2639,8 +2639,7 @@ INIS-Cyrillic, ISO-5427.</description>
       <alias>Ami1251</alias>
       <alias>Amiga1251</alias>
       <alias>Ami-1251</alias>
-      <alias>csAmiga1251
-(Aliases are provided for historical reasons and should not be used) [Malyshev]</alias>
+      <alias>csAmiga1251</alias>
     </record>
     <record>
       <name>KOI7-switched</name>
@@ -2683,6 +2682,7 @@ INIS-Cyrillic, ISO-5427.</description>
       <value>2251</value>
       <description>Microsoft  <xref type="uri" data="http://www.iana.org/assignments/charset-reg/windows-1251"/> <xref type="person" data="Katya_Lazhintseva"/></description>
       <alias>cswindows1251</alias>
+      <alias>cp1251</alias>
     </record>
     <record date="1999-12">
       <name>windows-1252</name>
