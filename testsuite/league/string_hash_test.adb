@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,9 +48,10 @@ with League.Strings;
 
 procedure String_Hash_Test is
 
+   use type League.Hash_Type;
    use League.Strings;
 
-   V : array (1 .. 6) of Hash_Type
+   V : array (1 .. 6) of League.Hash_Type
      := (To_Universal_String ("A").Hash,
          To_Universal_String ("B").Hash,
          To_Universal_String ("AA").Hash,
