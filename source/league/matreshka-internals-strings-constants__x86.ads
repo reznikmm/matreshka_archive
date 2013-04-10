@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -85,11 +85,43 @@ private package Matreshka.Internals.Strings.Constants is
    --  This mask is used to set unused components of the element to zero on
    --  x86_64 platforms.
 
+   Terminator_Mask_AVX : constant
+     array (Matreshka.Internals.Utf16.Utf16_String_Index range 0 .. 15)
+       of Matreshka.Internals.SIMD.Intel.v16hi
+         := (0 => (              others => 0),
+             1 => (1      => -1, others => 0),
+             2 => (1 .. 2 => -1, others => 0),
+             3 => (1 .. 3 => -1, others => 0),
+             4 => (1 .. 4 => -1, others => 0),
+             5 => (1 .. 5 => -1, others => 0),
+             6 => (1 .. 6 => -1, others => 0),
+             7 => (1 .. 7 => -1, others => 0),
+             8 => (1 .. 8 => -1, others => 0),
+             9 => (1 .. 9 => -1, others => 0),
+             10 => (1 .. 10 => -1, others => 0),
+             11 => (1 .. 11 => -1, others => 0),
+             12 => (1 .. 12 => -1, others => 0),
+             13 => (1 .. 13 => -1, others => 0),
+             14 => (1 .. 14 => -1, others => 0),
+             15 => (1 .. 15 => -1, others => 0));
+   --  This mask is used to set unused components of the element to zero on
+   --  platforms where AVX instruction set is supported.
+
    Surrogate_Kind_Mask_x86_64   : constant Matreshka.Internals.SIMD.Intel.v8hi
      := (others =>  -1_024);  --  FC00
    Masked_High_Surrogate_x86_64 : constant Matreshka.Internals.SIMD.Intel.v8hi
      := (others => -10_240);  --  D800
    Masked_Low_Surrogate_x86_64  : constant Matreshka.Internals.SIMD.Intel.v8hi
+     := (others =>  -9_216);  --  DC00
+   --  Mask and constants to detect surrogate characters in vector. To detect
+   --  surrogate mask should be applied to vector and result should be compared
+   --  with corresponding constant to detect high or low surrogates in vector.
+
+   Surrogate_Kind_Mask_AVX   : constant Matreshka.Internals.SIMD.Intel.v16hi
+     := (others =>  -1_024);  --  FC00
+   Masked_High_Surrogate_AVX : constant Matreshka.Internals.SIMD.Intel.v16hi
+     := (others => -10_240);  --  D800
+   Masked_Low_Surrogate_AVX  : constant Matreshka.Internals.SIMD.Intel.v16hi
      := (others =>  -9_216);  --  DC00
    --  Mask and constants to detect surrogate characters in vector. To detect
    --  surrogate mask should be applied to vector and result should be compared
