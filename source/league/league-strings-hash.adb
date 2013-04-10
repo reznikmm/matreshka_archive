@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,12 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is hash function compatible with standard containers.
-------------------------------------------------------------------------------
 with Ada.Containers;
 
 function League.Strings.Hash
  (Item : Universal_String) return Ada.Containers.Hash_Type is
 begin
-   return Ada.Containers.Hash_Type (League.Strings.Hash_Type'(Item.Hash));
+   return Ada.Containers.Hash_Type (League.Hash_Type'(Item.Hash));
 end League.Strings.Hash;

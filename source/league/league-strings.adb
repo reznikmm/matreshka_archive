@@ -878,9 +878,9 @@ package body League.Strings is
    -- Hash --
    ----------
 
-   function Hash (Self : Universal_String'Class) return Hash_Type is
+   function Hash (Self : Universal_String'Class) return League.Hash_Type is
    begin
-      return Hash_Type (Hash (Self.Data));
+      return Hash (Self.Data);
    end Hash;
 
    -----------

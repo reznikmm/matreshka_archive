@@ -219,12 +219,14 @@ package body Matreshka.Internals.Strings is
    -- Hash --
    ----------
 
-   function Hash (Self : not null Shared_String_Access)
-     return Internal_Hash_Type
+   function Hash
+    (Self : not null Shared_String_Access) return League.Hash_Type
    is
-      M     : constant Internal_Hash_Type := 16#5BD1E995#;
-      H     : Internal_Hash_Type := Internal_Hash_Type (Self.Length);
-      K     : Internal_Hash_Type;
+      use type League.Hash_Type;
+
+      M     : constant League.Hash_Type := 16#5BD1E995#;
+      H     : League.Hash_Type := League.Hash_Type (Self.Length);
+      K     : league.Hash_Type;
       C     : Code_Unit_32;
       Index : Utf16_String_Index := 0;
 
@@ -232,7 +234,7 @@ package body Matreshka.Internals.Strings is
       while Index < Self.Unused loop
          Unchecked_Next (Self.Value, Index, C);
 
-         K := Internal_Hash_Type (C) * M;
+         K := League.Hash_Type (C) * M;
          K := K xor (K / 16#1000000#);
          K := K * M;
 
