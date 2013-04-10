@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,9 +45,62 @@ with Ada.Unchecked_Deallocation;
 
 package body Matreshka.Internals.Stream_Element_Vectors is
 
+   Growth_Factor : constant := 32;
+   --  The growth factor controls how much extra space is allocated when we
+   --  have to increase the size of an allocated vector. By allocating extra
+   --  space, we avoid the need to reallocate on every append, particularly
+   --  important when a vector is built up by repeated append operations of
+   --  small pieces. This is expressed as a factor so 32 means add 1/32 of the
+   --  length of the vector as growth space.
+
+   Min_Mul_Alloc : constant
+     := Standard'Maximum_Alignment * Standard'Storage_Unit
+          / Ada.Streams.Stream_Element'Size;
+   --  Allocation will be done by a multiple of Min_Mul_Alloc. This causes
+   --  no memory loss as most (all?) malloc implementations are obliged to
+   --  align the returned memory on the maximum alignment as malloc does not
+   --  know the target alignment.
+
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Shared_Stream_Element_Vector, Shared_Stream_Element_Vector_Access);
+
+   function Aligned_Size
+    (Size : Ada.Streams.Stream_Element_Offset)
+       return Ada.Streams.Stream_Element_Offset;
+   pragma Inline (Aligned_Size);
+   --  Returns recommended size of the shared vector which is greater or equal
+   --  to specified. Calculation take in sense alignment of the allocated
+   --  memory segments to use memory effectively by Append/Insert/etc
+   --  operations.
+
+   ------------------
+   -- Aligned_Size --
+   ------------------
+
+   function Aligned_Size
+    (Size : Ada.Streams.Stream_Element_Offset)
+       return Ada.Streams.Stream_Element_Offset
+   is
+      Static_Size  : constant Ada.Streams.Stream_Element_Offset
+        := (Empty_Shared_Stream_Element_Vector'Size
+              - Ada.Streams.Stream_Element'Size
+                  * (Empty_Shared_Stream_Element_Vector.Size + 1))
+              / Ada.Streams.Stream_Element'Size;
+      --  Total size of all static components in Code_Unit_16 units.
+
+      pragma Assert
+       ((Empty_Shared_Stream_Element_Vector'Size
+           - Ada.Streams.Stream_Element'Size
+               * (Empty_Shared_Stream_Element_Vector.Size + 1))
+          mod Ada.Streams.Stream_Element'Size = 0);
+      --  Reminder must be zero to compute value correctly.
+
+   begin
+      return
+       (((Static_Size + Size + Size / Growth_Factor)
+            / Min_Mul_Alloc + 1) * Min_Mul_Alloc - Static_Size);
+   end Aligned_Size;
 
    --------------
    -- Allocate --
@@ -61,7 +114,7 @@ package body Matreshka.Internals.Stream_Element_Vectors is
          return Empty_Shared_Stream_Element_Vector'Access;
 
       else
-         return new Shared_Stream_Element_Vector (Size);
+         return new Shared_Stream_Element_Vector (Aligned_Size (Size) - 1);
       end if;
    end Allocate;
 
@@ -80,6 +133,22 @@ package body Matreshka.Internals.Stream_Element_Vectors is
          Item := null;
       end if;
    end Dereference;
+
+   ---------------
+   -- Fill_Tail --
+   ---------------
+
+   procedure Fill_Tail (Item : not null Shared_Stream_Element_Vector_Access) is
+      pragma Assert (Ada.Streams.Stream_Element'Size = 8);
+
+      Index : Ada.Streams.Stream_Element_Offset := Item.Length;
+
+   begin
+      while Index mod 4 /= 0 loop
+         Item.Value (Index) := 0;
+         Index := Index + 1;
+      end loop;
+   end Fill_Tail;
 
    ---------------
    -- Reference --

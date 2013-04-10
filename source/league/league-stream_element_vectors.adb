@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -124,6 +124,7 @@ package body League.Stream_Element_Vectors is
       Data.Value (0 .. Self.Data.Length - 1) :=
         Self.Data.Value (0 .. Self.Data.Length - 1);
       Data.Value (Data.Length - 1) := Item;
+      Fill_Tail (Data);
       Dereference (Self.Data);
       Self.Data := Data;
    end Append;
@@ -144,6 +145,7 @@ package body League.Stream_Element_Vectors is
       Data.Value (0 .. Self.Data.Length - 1) :=
         Self.Data.Value (0 .. Self.Data.Length - 1);
       Data.Value (Self.Data.Length .. Data.Length - 1) := Item;
+      Fill_Tail (Data);
       Dereference (Self.Data);
       Self.Data := Data;
    end Append;
@@ -165,6 +167,7 @@ package body League.Stream_Element_Vectors is
         Self.Data.Value (0 .. Self.Data.Length - 1);
       Data.Value (Self.Data.Length .. Data.Length - 1) :=
         Item.Data.Value (0 .. Item.Data.Length - 1);
+      Fill_Tail (Data);
       Dereference (Self.Data);
       Self.Data := Data;
    end Append;
@@ -245,6 +248,7 @@ package body League.Stream_Element_Vectors is
          Item.Data.Length := Length;
          Ada.Streams.Stream_Element_Array'Read
           (Stream, Item.Data.Value (0 .. Length - 1));
+         Fill_Tail (Item.Data);
       end if;
    end Read;
 
@@ -271,6 +275,7 @@ package body League.Stream_Element_Vectors is
    begin
       Data.Length := Item'Length;
       Data.Value (0 .. Data.Length - 1) := Item;
+      Fill_Tail (Data);
 
       return (Ada.Finalization.Controlled with Data => Data);
    end To_Stream_Element_Vector;

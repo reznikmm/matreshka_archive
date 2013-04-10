@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -85,5 +85,9 @@ package Matreshka.Internals.Stream_Element_Vectors is
    --  Allocates new instance of stream element vector with specified size.
    --  Actual size of the allocated object can be greater. Returns reference to
    --  Empty_Shared_Stream_Element_Vector when Size is zero.
+
+   procedure Fill_Tail (Item : not null Shared_Stream_Element_Vector_Access);
+   --  Fill tail of internal array by zero elements to align data for 32-bits.
+   --  This is needed to compute reliable Hash value.
 
 end Matreshka.Internals.Stream_Element_Vectors;
