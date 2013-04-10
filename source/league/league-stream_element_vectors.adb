@@ -197,6 +197,15 @@ package body League.Stream_Element_Vectors is
       end if;
    end Finalize;
 
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash (Self : Stream_Element_Vector) return League.Hash_Type is
+   begin
+      return Hash (Self.Data);
+   end Hash;
+
    --------------
    -- Is_Empty --
    --------------

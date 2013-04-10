@@ -150,6 +150,43 @@ package body Matreshka.Internals.Stream_Element_Vectors is
       end loop;
    end Fill_Tail;
 
+   ----------
+   -- Hash --
+   ----------
+
+   function Hash
+    (Item : not null Shared_Stream_Element_Vector_Access) return League.Hash_Type
+   is
+      use type League.Hash_Type;
+
+      M      : constant League.Hash_Type := 16#5BD1E995#;
+      H      : League.Hash_Type := League.Hash_Type (Item.Length);
+      K      : league.Hash_Type;
+      Index  : Ada.Streams.Stream_Element_Offset := 0;
+      Length : Ada.Streams.Stream_Element_Offset := (Item.Length + 3) / 4;
+      Data   :
+        array (Ada.Streams.Stream_Element_Offset range 0 .. Length - 1)
+          of League.Hash_Type;
+      for Data'Address use Item.Value'Address;
+      pragma Import (Ada, Data);
+
+   begin
+      while Index < Length loop
+         K := League.Hash_Type (Data (Index)) * M;
+         K := K xor (K / 16#1000000#);
+         K := K * M;
+
+         H := H * M;
+         H := H xor K;
+      end loop;
+
+      H := H xor (H / 16#2000#);
+      H := H * M;
+      H := H xor (H / 16#8000#);
+
+      return H;
+   end Hash;
+
    ---------------
    -- Reference --
    ---------------

@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Streams;
 
+with League;
 with Matreshka.Atomics.Counters;
 
 package Matreshka.Internals.Stream_Element_Vectors is
@@ -89,5 +90,10 @@ package Matreshka.Internals.Stream_Element_Vectors is
    procedure Fill_Tail (Item : not null Shared_Stream_Element_Vector_Access);
    --  Fill tail of internal array by zero elements to align data for 32-bits.
    --  This is needed to compute reliable Hash value.
+
+   function Hash
+    (Item : not null Shared_Stream_Element_Vector_Access) return League.Hash_Type;
+   --  Returns hash value for the vector. MurmurHash2, by Austin Appleby is
+   --  used.
 
 end Matreshka.Internals.Stream_Element_Vectors;
