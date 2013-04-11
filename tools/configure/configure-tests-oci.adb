@@ -43,6 +43,9 @@
 ------------------------------------------------------------------------------
 with Ada.Environment_Variables;
 
+with GNAT.OS_Lib;
+with GNAT.Strings;
+
 with Configure.Builder;
 
 package body Configure.Tests.OCI is
@@ -76,6 +79,11 @@ package body Configure.Tests.OCI is
          end if;
       end OCI_Library_Name;
 
+      use type GNAT.Strings.String_Access;
+
+      OCI_DLL_Name : constant String := "oci.dll";
+      OCI_DLL_Path : constant GNAT.Strings.String_Access
+        := GNAT.OS_Lib.Locate_Exec_On_Path (OCI_DLL_Name);
    begin
       --  Command line parameter has preference other automatic detection.
 
@@ -102,6 +110,15 @@ package body Configure.Tests.OCI is
 
             Self.Report_Status ("yes (environment variable)");
 
+         elsif Is_Windows and OCI_DLL_Path /= null then
+            Substitutions.Insert
+             (OCI_Library_Options,
+              +"""-L"
+              & OCI_DLL_Path
+                (OCI_DLL_Path'First .. OCI_DLL_Path'Last - OCI_DLL_Name'Length)
+                 & """, ""-l" & OCI_Library_Name & '"');
+
+            Self.Report_Status ("yes (" & OCI_DLL_Name & " in PATH)");
          else
             Self.Report_Status ("no (not found)");
          end if;

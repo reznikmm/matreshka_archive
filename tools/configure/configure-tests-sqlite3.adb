@@ -45,6 +45,9 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 
+with GNAT.OS_Lib;
+with GNAT.Strings;
+
 with Configure.Builder;
 with Configure.Pkg_Config;
 
@@ -62,7 +65,13 @@ package body Configure.Tests.SQLite3 is
 
    overriding procedure Execute
     (Self      : in out SQLite3_Test;
-     Arguments : in out Unbounded_String_Vector) is
+     Arguments : in out Unbounded_String_Vector)
+   is
+      use type GNAT.Strings.String_Access;
+
+      SQLite3_DLL_Name : constant String := "sqlite3.dll";
+      SQLite3_DLL_Path : constant GNAT.Strings.String_Access
+        := GNAT.OS_Lib.Locate_Exec_On_Path (SQLite3_DLL_Name);
    begin
       --  Command line parameter has preference other automatic detection.
 
@@ -125,6 +134,16 @@ package body Configure.Tests.SQLite3 is
                   end if;
                end;
 
+            elsif Is_Windows and SQLite3_DLL_Path /= null then
+               Substitutions.Insert
+                 (SQLite3_Library_Options,
+                  +"""-L"
+                  & SQLite3_DLL_Path
+                    (SQLite3_DLL_Path'First .. SQLite3_DLL_Path'Last
+                                                 - SQLite3_DLL_Name'Length)
+                  & """, ""-lsqlite3""");
+
+               Self.Report_Status ("yes (" & SQLite3_DLL_Name & " in PATH)");
             else
                Self.Report_Status ("no (not found)");
             end if;
