@@ -134,20 +134,20 @@ package body Configure.Tests.SQLite3 is
                   end if;
                end;
 
-            elsif Is_Windows and SQLite3_DLL_Path /= null then
-               Substitutions.Insert
-                 (SQLite3_Library_Options,
-                  +"""-L"
-                  & SQLite3_DLL_Path
-                    (SQLite3_DLL_Path'First .. SQLite3_DLL_Path'Last
-                                                 - SQLite3_DLL_Name'Length)
-                  & """, ""-lsqlite3""");
-
-               Self.Report_Status ("yes (" & SQLite3_DLL_Name & " in PATH)");
             else
                Self.Report_Status ("no (not found)");
             end if;
 
+	 elsif Is_Windows and SQLite3_DLL_Path /= null then
+	    Substitutions.Insert
+	      (SQLite3_Library_Options,
+	       +"""-L"
+		 & SQLite3_DLL_Path
+		 (SQLite3_DLL_Path'First .. SQLite3_DLL_Path'Last
+		    - SQLite3_DLL_Name'Length)
+		 & """, ""-lsqlite3""");
+
+	    Self.Report_Status ("yes (" & SQLite3_DLL_Name & " in PATH)");
          else
             Self.Report_Status ("no (pkg-config not found)");
          end if;
