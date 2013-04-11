@@ -56,7 +56,7 @@ endif
 	.objs/test_209
 	.objs/test_290
 	.objs/base64_test
-	# Tests below is for XML module
+	echo Tests below is for XML module
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
 	.objs/test_41
