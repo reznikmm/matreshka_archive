@@ -101,7 +101,9 @@ sqlite3-valgrind: sqlite3
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_249
 
+export AMF_DATA_DIR
 amf: AMF_DATA_DIR = .objs/share
+
 amf: amf-setup
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
 	.objs/test_222
