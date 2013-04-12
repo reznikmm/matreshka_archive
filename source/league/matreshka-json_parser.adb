@@ -41,11 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision: 3824 $ $Date: 2013-03-28 20:15:46 +0200 (Чт., 28 марта 2013) $
 ------------------------------------------------------------------------------
+with League.Characters;
 with League.Holders;
 with League.JSON.Arrays;
 with League.JSON.Objects;
 with League.JSON.Values;
 with Matreshka.Internals.Utf16;
+with Matreshka.Internals.Unicode;
 
 package body Matreshka.JSON_Parser is
 
@@ -60,6 +62,7 @@ package body Matreshka.JSON_Parser is
    is
       Index  : Natural;
       Char   : Wide_Wide_Character;
+      EOF    : constant Wide_Wide_Character := Wide_Wide_Character'Last;
 
       function Next_Character return Boolean;
 
@@ -97,7 +100,11 @@ package body Matreshka.JSON_Parser is
 
       function Parse_Escaped (Result : out Wide_Wide_Character) return Boolean;
 
-      function Parse_Hex_Digit (Result : out Natural) return Boolean;
+      function Parse_Utf16_Code_Unit
+       (Result : out Matreshka.Internals.Utf16.Utf16_Code_Unit) return Boolean;
+
+      function Parse_Hex_Digit
+       (Result : out Matreshka.Internals.Utf16.Utf16_Code_Unit) return Boolean;
 
       ---------------------
       -- Match_Character --
@@ -114,10 +121,14 @@ package body Matreshka.JSON_Parser is
 
       function Next_Character return Boolean is
       begin
-         Index := Index + 1;
-
-         if Index <= Text.Length then
+         if Index < Text.Length then
+            Index := Index + 1;
             Char := Text.Element (Index).To_Wide_Wide_Character;
+            return True;
+         elsif Index = Text.Length then
+            --  Return artificial EOF character at end of text
+            Index := Index + 1;
+            Char := EOF;
             return True;
          else
             return False;
@@ -179,11 +190,9 @@ package body Matreshka.JSON_Parser is
          end if;
       end Parse_Array_Value;
 
-      -------------------
-      -- Parse_Escaped --
-      -------------------
-
-      function Parse_Escaped (Result : out Wide_Wide_Character) return Boolean is
+      function Parse_Utf16_Code_Unit
+        (Result : out Matreshka.Internals.Utf16.Utf16_Code_Unit) return Boolean
+      is
          use Matreshka.Internals.Utf16;
          use type Utf16_Code_Unit;
 
@@ -191,6 +200,33 @@ package body Matreshka.JSON_Parser is
          Hex_2 : Utf16_Code_Unit;
          Hex_3 : Utf16_Code_Unit;
          Hex_4 : Utf16_Code_Unit;
+      begin
+         if not Next_Character then
+            --  Unexpected EOF after \u
+
+            return False;
+         end if;
+
+         if Parse_Hex_Digit (Hex_1)
+           and then Parse_Hex_Digit (Hex_2)
+           and then Parse_Hex_Digit (Hex_3)
+           and then Parse_Hex_Digit (Hex_4)
+         then
+            Result := 16 * (16 * (16 * Hex_1 + Hex_2) + Hex_3) + Hex_4;
+
+            return True;
+         else
+            -- Wrong \uXXXX
+
+            return False;
+         end if;
+      end Parse_Utf16_Code_Unit;
+
+      -------------------
+      -- Parse_Escaped --
+      -------------------
+
+      function Parse_Escaped (Result : out Wide_Wide_Character) return Boolean is
 
       begin
          case Char is
@@ -213,20 +249,44 @@ package body Matreshka.JSON_Parser is
                Result := Wide_Wide_Character'Val (9);
 
             when 'u' =>
-               if Parse_Hex_Digit (Natural (Hex_1))
-                 and then Parse_Hex_Digit (Natural (Hex_2))
-                 and then Parse_Hex_Digit (Natural (Hex_3))
-                 and then Parse_Hex_Digit (Natural (Hex_4))
-               then
-                  Result :=
-                    Wide_Wide_Character'Val
-                     (16 * (16 * (16 * Hex_1 + Hex_2) + Hex_3) + Hex_4);
+               declare
+                  use Matreshka.Internals.Utf16;
+                  High  : Utf16_Code_Unit;
+                  Low   : Utf16_Code_Unit;
+                  Point : Matreshka.Internals.Unicode.Code_Point;
+                  Value : League.Characters.Universal_Character;
+               begin
+                  if not Parse_Utf16_Code_Unit (High) then
+                     --  Wrong \uXXXX
+                     return False;
+                  elsif High in High_Surrogate_Utf16_Code_Unit then
+                     if not Match_Character ('\') then
+                        --  \uDXXX expected after first surrogate char
+                        return False;
+                     elsif not Parse_Utf16_Code_Unit (Low)
+                       or else Low not in Low_Surrogate_Utf16_Code_Unit
+                     then
+                        --  Wrong \uDXXX after first surrogate char
+                        return False;
+                     end if;
 
-               else
-                  -- Wrong \uXXXX
+                     Point := Unchecked_Surrogate_Pair_To_Code_Point
+                       (High => High, Low => Low);
+                  else
+                     Point := Matreshka.Internals.Unicode.Code_Point (High);
+                  end if;
 
-                  return False;
-               end if;
+                  Result := Wide_Wide_Character'Val (Point);
+
+                  Value := League.Characters.To_Universal_Character (Result);
+
+                  if Value.Is_Valid then
+                     return True;
+                  else
+                     --  Invalid \uXXXX character
+                     return False;
+                  end if;
+               end;
 
             when others =>
                -- Unknown escaped
@@ -234,7 +294,13 @@ package body Matreshka.JSON_Parser is
                return False;
          end case;
 
-         return True;
+         if Next_Character then
+            return True;
+         else
+            --  Unexpected EOF after hex
+
+            return False;
+         end if;
       end Parse_Escaped;
 
       -----------------------
@@ -254,7 +320,11 @@ package body Matreshka.JSON_Parser is
       -- Parse_Hex_Digit --
       ---------------------
 
-      function Parse_Hex_Digit (Result : out Natural) return Boolean is
+      function Parse_Hex_Digit
+       (Result : out Matreshka.Internals.Utf16.Utf16_Code_Unit)
+        return Boolean
+      is
+         use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
       begin
          case Char is
             when '0' .. '9' =>
@@ -270,7 +340,7 @@ package body Matreshka.JSON_Parser is
             when 'A' .. 'F' =>
                Result :=
                  Wide_Wide_Character'Pos (Char)
-                   - Wide_Wide_Character'Pos ('F') + 10;
+                   - Wide_Wide_Character'Pos ('A') + 10;
 
             when others =>
                --  Unexpected hex digit
@@ -345,7 +415,7 @@ package body Matreshka.JSON_Parser is
                return False;
             end if;
 
-            if not WS then
+            if not Next_Character or else not WS then
                --  Unexpected EOF after ':'
 
                return False;
@@ -585,6 +655,12 @@ package body Matreshka.JSON_Parser is
                         Result.Append (Text.Slice (Old_Index, Index - 1));
                      end if;
 
+                     if not Next_Character then
+                        --  Unexpected EOF after slash
+
+                        return False;
+                     end if;
+
                      if not Parse_Escaped (Escape) then
                         --  Unknown escaped character
 
@@ -750,7 +826,9 @@ package body Matreshka.JSON_Parser is
    begin
       Index := 0;
 
-      Success := Next_Character and then Parse_JSON_Text (Value);
+      Success := Next_Character
+        and then Parse_JSON_Text (Value)
+        and then Char = EOF;
    end Parse;
 
 end Matreshka.JSON_Parser;
