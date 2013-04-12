@@ -3,7 +3,7 @@ include Makefile.config
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 VALGRIND_FLAGS = --error-exitcode=7 --quiet --suppressions=testsuite/glibc.supp
 
-ALL_TARGETS = league soap amf
+ALL_TARGETS = league soap
 
 ifdef HAS_VALGRIND
     ALL_TARGETS += league-valgrind
@@ -24,6 +24,9 @@ ifdef HAS_SQLITE3
         ALL_TARGETS += sqlite3-valgrind
     endif
 endif
+
+# Run amf tests after any others because it fails on windows now
+ALL_TARGETS += amf
 
 all: $(ALL_TARGETS)
 
@@ -98,22 +101,23 @@ sqlite3-valgrind: sqlite3
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_249
 
+amf: AMF_DATA_DIR = .objs/share
 amf: amf-setup
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_tests.gpr
-	AMF_DATA_DIR=.objs/share .objs/test_222
-	AMF_DATA_DIR=.objs/share .objs/test_225
-	AMF_DATA_DIR=.objs/share .objs/test_226 testsuite/amf/TN-226/test_226.xmi
-	AMF_DATA_DIR=.objs/share .objs/test_227 testsuite/amf/TN-227/test_227.xmi
-	AMF_DATA_DIR=.objs/share .objs/test_230
-	AMF_DATA_DIR=.objs/share .objs/test_231
+	.objs/test_222
+	.objs/test_225
+	.objs/test_226 testsuite/amf/TN-226/test_226.xmi
+	.objs/test_227 testsuite/amf/TN-227/test_227.xmi
+	.objs/test_230
+	.objs/test_231
 
 amf-setup:
 	rm -rf .objs/share
-	mkdir .objs/share
-	mkdir .objs/share/metamodels
-	mkdir .objs/share/models
-	mkdir .objs/share/models/UML23
-	mkdir .objs/share/models/UML24
+	$(INSTALL) -d .objs/share
+	$(INSTALL) -d .objs/share/metamodels/
+	$(INSTALL) -d .objs/share/models/
+	$(INSTALL) -d .objs/share/models/UML23/
+	$(INSTALL) -d .objs/share/models/UML24/
 	cp source/amf/mof/metamodels/mapping.xml .objs/share/metamodels
 	cp source/amf/mof/models/mapping.xml .objs/share/models
 	cp source/amf/uml/models/UML23/UML.xmi .objs/share/models/UML23
