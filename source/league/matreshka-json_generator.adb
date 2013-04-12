@@ -115,7 +115,7 @@ package body Matreshka.JSON_Generator is
       ---------------------
 
       procedure Generate_String (Value : League.Strings.Universal_String) is
-         To_Hex : array (Natural range 0 .. 15) of Wide_Wide_Character
+         To_Hex : constant array (Natural range 0 .. 15) of Wide_Wide_Character
            := "0123456789ABCDEF";
          Code   : Natural;
 

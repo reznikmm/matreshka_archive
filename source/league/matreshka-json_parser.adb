@@ -385,7 +385,7 @@ package body Matreshka.JSON_Parser is
       function Parse_Number_Value
        (Result : out League.Holders.Universal_Float) return Boolean
       is
-         Old_Index : Positive := Index;
+         Old_Index : constant Positive := Index;
 
       begin
          --  [minus]

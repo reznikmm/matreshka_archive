@@ -395,7 +395,7 @@ package body League.JSON.Documents is
    function To_JSON_Document
     (Value : League.JSON.Arrays.JSON_Array) return JSON_Document is
    begin
-      return Self : JSON_Document
+      return Self : constant JSON_Document
         := (Ada.Finalization.Controlled with
               Data => new Matreshka.JSON_Documents.Shared_JSON_Document'
                            (Counter      => <>,
@@ -414,7 +414,7 @@ package body League.JSON.Documents is
    function To_JSON_Document
     (Value : League.JSON.Objects.JSON_Object) return JSON_Document is
    begin
-      return Self : JSON_Document
+      return Self : constant JSON_Document
         := (Ada.Finalization.Controlled with
               Data => new Matreshka.JSON_Documents.Shared_JSON_Document'
                            (Counter      => <>,
