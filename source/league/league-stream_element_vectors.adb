@@ -182,6 +182,22 @@ package body League.Stream_Element_Vectors is
       Self.Data := MISEV.Empty_Shared_Stream_Element_Vector'Access;
    end Clear;
 
+   -------------
+   -- Element --
+   -------------
+
+   function Element
+    (Self  : Stream_Element_Vector'Class;
+     Index : Ada.Streams.Stream_Element_Offset) return Ada.Streams.Stream_Element is
+   begin
+      if Index <= Self.Data.Length then
+         return Self.Data.Value (Index - 1);
+
+      else
+         raise Constraint_Error with "Index is out of range";
+      end if;
+   end Element;
+
    --------------
    -- Finalize --
    --------------

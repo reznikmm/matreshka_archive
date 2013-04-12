@@ -72,6 +72,11 @@ package League.Stream_Element_Vectors is
    function Hash (Self : Stream_Element_Vector) return League.Hash_Type;
    --  Returns hash for the data.
 
+   function Element
+    (Self  : Stream_Element_Vector'Class;
+     Index : Ada.Streams.Stream_Element_Offset) return Ada.Streams.Stream_Element;
+   --  Returns element at the specified position.
+
    procedure Append
     (Self : in out Stream_Element_Vector'Class;
      Item : Ada.Streams.Stream_Element);
