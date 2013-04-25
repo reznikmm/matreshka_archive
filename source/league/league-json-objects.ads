@@ -104,6 +104,10 @@ package League.JSON.Objects is
    --
    --  The returned JSON_Value is Undefined, if the key does not exist.
 
+   function To_JSON_Value
+    (Self : JSON_Object) return League.JSON.Values.JSON_Value;
+   --  Returns specified JSON_Object as JSON_Value.
+
 private
 
    type JSON_Object is new Ada.Finalization.Controlled with record

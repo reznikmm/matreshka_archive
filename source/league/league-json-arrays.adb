@@ -292,4 +292,22 @@ package body League.JSON.Arrays is
       end if;
    end Take;
 
+   -------------------
+   -- To_JSON_Value --
+   -------------------
+
+   function To_JSON_Value
+    (Self : JSON_Array'Class) return League.JSON.Values.JSON_Value is
+   begin
+      Matreshka.JSON_Types.Reference (Self.Data);
+
+      return
+        League.JSON.Values.Internals.Wrap
+         (new Matreshka.JSON_Types.Shared_JSON_Value'
+               (Counter => <>,
+                Value   =>
+                 (Kind        => Matreshka.JSON_Types.Array_Value,
+                  Array_Value => Self.Data)));
+   end To_JSON_Value;
+
 end League.JSON.Arrays;

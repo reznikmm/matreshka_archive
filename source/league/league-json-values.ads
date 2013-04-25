@@ -76,10 +76,6 @@ package League.JSON.Values is
     (Value : League.Holders.Universal_Integer) return JSON_Value;
    function To_JSON_Value
     (Value : League.Strings.Universal_String) return JSON_Value;
-   function To_JSON_Value
-    (Value : League.JSON.Arrays.JSON_Array) return JSON_Value;
-   function To_JSON_Value
-    (Value : League.JSON.Objects.JSON_Object) return JSON_Value;
    function To_JSON_Value (Value : League.Holders.Holder) return JSON_Value;
 
    function Is_Array (Self : JSON_Value'Class) return Boolean;

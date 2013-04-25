@@ -195,6 +195,24 @@ package body League.JSON.Objects is
       end if;
    end Take;
 
+   -------------------
+   -- To_JSON_Value --
+   -------------------
+
+   function To_JSON_Value
+    (Self : JSON_Object) return League.JSON.Values.JSON_Value is
+   begin
+      Matreshka.JSON_Types.Reference (Self.Data);
+
+      return
+        League.JSON.Values.Internals.Wrap
+         (new Matreshka.JSON_Types.Shared_JSON_Value'
+               (Counter => <>,
+                Value   =>
+                 (Kind         => Matreshka.JSON_Types.Object_Value,
+                  Object_Value => Self.Data)));
+   end To_JSON_Value;
+
    -----------
    -- Value --
    -----------

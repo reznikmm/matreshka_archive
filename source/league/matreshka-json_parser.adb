@@ -786,7 +786,7 @@ package body Matreshka.JSON_Parser is
 
             when '{' =>
                if Parse_Object_Value (Aux_Object) then
-                  Result := League.JSON.Values.To_JSON_Value (Aux_Object);
+                  Result := Aux_Object.To_JSON_Value;
 
                   return True;
 
@@ -796,7 +796,7 @@ package body Matreshka.JSON_Parser is
 
             when '[' =>
                if Parse_Array_Value (Aux_Array) then
-                  Result := League.JSON.Values.To_JSON_Value (Aux_Array);
+                  Result := Aux_Array.To_JSON_Value;
 
                   return True;
 

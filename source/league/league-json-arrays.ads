@@ -113,6 +113,10 @@ package League.JSON.Arrays is
    --  Removes the item at index position Index and returns it. Index must be a
    --  valid index position in the array.
 
+   function To_JSON_Value
+    (Self : JSON_Array'Class) return League.JSON.Values.JSON_Value;
+   --  Converts JSON_Array into JSON_Value.
+
 private
 
    type JSON_Array is new Ada.Finalization.Controlled with record
