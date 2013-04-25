@@ -93,7 +93,7 @@ package body Matreshka.JSON_Parser is
        (Result : out League.JSON.Arrays.JSON_Array) return Boolean;
 
       function Parse_Number_Value
-       (Result : out League.Holders.Universal_Float) return Boolean;
+       (Result : out League.JSON.Values.JSON_Value) return Boolean;
 
       function Parse_String_Value
        (Result : out League.Strings.Universal_String) return Boolean;
@@ -453,10 +453,10 @@ package body Matreshka.JSON_Parser is
       ------------------------
 
       function Parse_Number_Value
-       (Result : out League.Holders.Universal_Float) return Boolean
+       (Result : out League.JSON.Values.JSON_Value) return Boolean
       is
-         Old_Index : constant Positive := Index;
-
+         Old_Index  : constant Positive := Index;
+         Is_Integer : Boolean := True;
       begin
          --  [minus]
 
@@ -497,6 +497,8 @@ package body Matreshka.JSON_Parser is
          --  [frac]
 
          if Char = '.' then
+            Is_Integer := False;
+
             if not Next_Character then
                --  unexpected EOF after '.'
 
@@ -523,6 +525,8 @@ package body Matreshka.JSON_Parser is
          --  [exp]
 
          if Char in 'e' | 'E' then
+            Is_Integer := False;
+
             if not Next_Character then
                --  unexpected EOF after 'e'
 
@@ -556,9 +560,27 @@ package body Matreshka.JSON_Parser is
             end loop;
          end if;
 
-         Result :=
-           League.Holders.Universal_Float'Wide_Wide_Value
-            (Text.Slice (Old_Index, Index - 1).To_Wide_Wide_String);
+         if Is_Integer then
+            declare
+               Integer : League.Holders.Universal_Integer;
+            begin
+               Integer :=
+                 League.Holders.Universal_Integer'Wide_Wide_Value
+                   (Text.Slice (Old_Index, Index - 1).To_Wide_Wide_String);
+
+               Result := League.JSON.Values.To_JSON_Value (Integer);
+            end;
+         else
+            declare
+               Float : League.Holders.Universal_Float;
+            begin
+               Float :=
+                 League.Holders.Universal_Float'Wide_Wide_Value
+                   (Text.Slice (Old_Index, Index - 1).To_Wide_Wide_String);
+
+               Result := League.JSON.Values.To_JSON_Value (Float);
+            end;
+         end if;
 
          return True;
       end Parse_Number_Value;
@@ -729,7 +751,6 @@ package body Matreshka.JSON_Parser is
          Aux_Array  : League.JSON.Arrays.JSON_Array;
          Aux_Object : League.JSON.Objects.JSON_Object;
          Aux_String : League.Strings.Universal_String;
-         Aux_Float  : League.Holders.Universal_Float;
 
       begin
          case Char is
@@ -794,14 +815,7 @@ package body Matreshka.JSON_Parser is
                end if;
 
             when others =>
-               if Parse_Number_Value (Aux_Float) then
-                  Result := League.JSON.Values.To_JSON_Value (Aux_Float);
-
-                  return True;
-
-               else
-                  return False;
-               end if;
+               return Parse_Number_Value (Result);
          end case;
       end Parse_Value;
 
