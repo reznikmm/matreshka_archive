@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
+with Ada.Streams;
 
 with League.JSON.Arrays;
 with League.JSON.Objects;
@@ -69,6 +70,8 @@ package League.JSON.Documents is
    function From_JSON
     (Data : League.Stream_Element_Vectors.Stream_Element_Vector)
        return JSON_Document;
+   function From_JSON
+    (Data : Ada.Streams.Stream_Element_Array) return JSON_Document;
    --  Parses an encoded JSON document and creates a JSON_Document from it.
    --  Data can be encoded using UTF-8, UTF-16 and UTF-32 encoding. Encoding
    --  is detected automatically accroding to RFC-4627.

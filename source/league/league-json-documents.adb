@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Streams;
-
 with League.JSON.Arrays.Internals;
 with League.JSON.Objects.Internals;
 with League.Stream_Element_Vectors.Internals;
@@ -85,6 +83,18 @@ package body League.JSON.Documents is
          Matreshka.JSON_Documents.Dereference (Self.Data);
       end if;
    end Finalize;
+
+   ---------------
+   -- From_JSON --
+   ---------------
+
+   function From_JSON
+    (Data : Ada.Streams.Stream_Element_Array) return JSON_Document is
+   begin
+      return
+        From_JSON
+         (League.Stream_Element_Vectors.To_Stream_Element_Vector (Data));
+   end From_JSON;
 
    ---------------
    -- From_JSON --
