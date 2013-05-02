@@ -58,6 +58,12 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
      Code : Interfaces.C.int);
    --  Process return code, constructs error message when code is error.
 
+   Last_Insert_Rowid_Parameter : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("last_insert_rowid");
+   --  Name of the pseudo-parameter to obtain value of identifier of last
+   --  inserted row. This name must be in casefolded form to pass parameter
+   --  name check.
+
    Rewriter : SQL_Parameter_Rewriters.SQLite3.SQLite3_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
 
@@ -87,10 +93,20 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
      Name : League.Strings.Universal_String)
        return League.Holders.Holder
    is
-      pragma Unreferenced (Self);
-      pragma Unreferenced (Name);
+      use type League.Strings.Universal_String;
 
    begin
+      if Name = Last_Insert_Rowid_Parameter then
+         --  Handle LAST_INSERT_ROWID pseudo-parameter.
+
+         return Result : League.Holders.Holder do
+            League.Holders.Set_Tag
+             (Result, League.Holders.Universal_Integer_Tag);
+            League.Holders.Replace_Element
+             (Result, Self.Last_Row_Id);
+         end return;
+      end if;
+
       return League.Holders.Empty_Holder;
    end Bound_Value;
 
@@ -229,6 +245,15 @@ package body Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
       if Self.Success then
          Self.Is_Active := True;
       end if;
+
+      --  Store value of last_insert_rowid, it is accessible through
+      --  LAST_INSERT_ROWID output parameter.
+
+      Self.Last_Row_Id :=
+        League.Holders.Universal_Integer
+         (sqlite3_last_insert_rowid
+           (Databases.SQLite3_Database'Class
+             (Self.Database.all).Database_Handle));
 
       return Self.Success;
    end Execute;

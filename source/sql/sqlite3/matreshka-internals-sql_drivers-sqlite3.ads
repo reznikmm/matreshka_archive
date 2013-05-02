@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -209,6 +209,10 @@ package Matreshka.Internals.SQL_Drivers.SQLite3 is
    function sqlite3_finalize
     (Handle : sqlite3_stmt_Access) return Interfaces.C.int;
    pragma Import (C, sqlite3_finalize);
+
+   function sqlite3_last_insert_rowid
+    (Handle : sqlite3_Access) return Interfaces.Integer_64;
+   pragma Import (C, sqlite3_last_insert_rowid);
 
    function sqlite3_open16
     (File_Name : Matreshka.Internals.Utf16.Utf16_String;

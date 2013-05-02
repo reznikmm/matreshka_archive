@@ -55,13 +55,15 @@ package Matreshka.Internals.SQL_Drivers.SQLite3.Queries is
 private
 
    type SQLite3_Query is new Abstract_Query with record
-      Handle     : aliased sqlite3_stmt_Access;
-      Is_Active  : Boolean := False;
-      Has_Row    : Boolean := False;
-      Skip_Step  : Boolean := False;
-      Error      : League.Strings.Universal_String;
-      Success    : Boolean := True;
-      Parameters : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
+      Handle      : aliased sqlite3_stmt_Access;
+      Is_Active   : Boolean := False;
+      Has_Row     : Boolean := False;
+      Skip_Step   : Boolean := False;
+      Error       : League.Strings.Universal_String;
+      Success     : Boolean := True;
+      Parameters  : Matreshka.Internals.SQL_Parameter_Sets.Parameter_Set;
+      Last_Row_Id : League.Holders.Universal_Integer;
+      --  Return value of sqlite3_last_insert_rowid for the executed statement.
    end record;
 
    overriding procedure Bind_Value
