@@ -4,11 +4,11 @@
 --                                                                          --
 --                           SQL Database Access                            --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,29 +41,50 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_sqlite3.gpr";
+--  Checks whether obtain of LAST_INSERT_ROWID pseudo-parameter works for
+--  SQLite3 driver.
+------------------------------------------------------------------------------
+with League.Holders;
+with League.Strings;
+with SQL.Databases;
+with SQL.Options;
+with SQL.Queries;
 
-project Matreshka_SQL_SQLite3_Tests is
+with Matreshka.Internals.SQL_Drivers.SQLite3.Factory;
 
-   for Main use
-    ("test_138.adb",
-     "test_142.adb",
-     "test_147.adb",
-     "test_249.adb",
-     "test_303.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-138",
-     "../testsuite/sql/TN-142",
-     "../testsuite/sql/TN-147",
-     "../testsuite/sql/TN-249",
-     "../testsuite/sql/TN-303");
+procedure Test_303 is
+   Last_Insert_Rowid : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("LAST_INSERT_ROWID");
+   Driver   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("SQLITE3");
+   Options  : SQL.Options.SQL_Options;
+   Database : SQL.Databases.SQL_Database
+     := SQL.Databases.Create (Driver, Options);
+   Query    : SQL.Queries.SQL_Query := Database.Query;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+begin
+   Database.Open;
 
-end Matreshka_SQL_SQLite3_Tests;
+   Query.Prepare
+    (League.Strings.To_Universal_String
+      ("CREATE TABLE test"
+         & " (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+         & " value CHARACTER VARYING NOT NULL)"));
+   Query.Execute;
+
+   Query.Prepare
+    (League.Strings.To_Universal_String
+      ("INSERT INTO test (value) VALUES ('dummy')"));
+
+   for J in 1 .. 10 loop
+      Query.Execute;
+
+      if Integer
+          (League.Holders.Universal_Integer'
+            (League.Holders.Element (Query.Bound_Value (Last_Insert_Rowid))))
+           /= J
+      then
+         raise Program_Error;
+      end if;
+   end loop;
+end Test_303;

@@ -96,6 +96,7 @@ sqlite3:
 	.objs/test_142
 	.objs/test_147
 	.objs/test_249
+	.objs/test_303
 
 sqlite3-valgrind: sqlite3
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_147
