@@ -59,6 +59,7 @@ with Configure.Tests.PostgreSQL;
 with Configure.Tests.SQLite3;
 with Configure.Tests.Firebird;
 with Configure.Tests.Valgrind;
+with Configure.Version;
 
 procedure Configure.Driver is
    use Ada.Command_Line;
@@ -144,6 +145,7 @@ begin
       Arguments.Append (+Ada.Command_Line.Argument (J));
    end loop;
 
+   Configure.Version;
    Configure.Architecture;
    Configure.Operating_System;
    Configure.RTL_Version;

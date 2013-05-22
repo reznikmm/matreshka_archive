@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                        Runtime Library Component                         --
+--                              Tools Component                             --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,39 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Actual configuration.
+--  Define substitution variable for the version of configured package.
 ------------------------------------------------------------------------------
 
-abstract project Matreshka_Config is
+procedure Configure.Version is
+   Version_Name  : constant Unbounded_String := +"VERSION";
+   Version_Value : constant Unbounded_String := +"0.5.0";
 
-   Version := "@VERSION@";
-
-   RTL_Version_Suffix := "@RTL_VERSION_SUFFIX@";
-
-   type Architectures is
-    ("portable_32_be",
-     "portable_32_le",
-     "portable_64_be",
-     "portable_64_le",
-     "x86",
-     "x86_64");
-   Architecture : Architectures := external ("ARCHITECTURE", "@ARCHITECTURE@");
-
-   type Operating_Systems is ("POSIX", "Windows");
-   Operating_System : Operating_Systems
-     := external ("OPERATING_SYSTEM", "@OPERATING_SYSTEM@");
-
-   type Build_Type is ("RELEASE", "DEBUG");
-   Build : Build_Type := external ("BUILD", "RELEASE");
-
-   Firebird_Library_Options := (@FIREBIRD_LIBRARY_OPTIONS@);
-
-   MySQL_Library_Options := (@MYSQL_LIBRARY_OPTIONS@);
-
-   OCI_Library_Options := (@OCI_LIBRARY_OPTIONS@);
-
-   PostgreSQL_Library_Options := (@POSTGRESQL_LIBRARY_OPTIONS@);
-
-   SQLite3_Library_Options := (@SQLITE3_LIBRARY_OPTIONS@);
-
-end Matreshka_Config;
+begin
+   Substitutions.Insert (Version_Name, Version_Value);
+end Configure.Version;
