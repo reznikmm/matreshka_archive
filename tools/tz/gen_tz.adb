@@ -62,16 +62,19 @@ procedure Gen_TZ is
 
    type Time_Kinds is (Wall, Standard, UTC);
 
+   type Day_Kinds is (Number, Last_Sunday, Last_Saturday);
+
    type TZ_Zone_Record is record
       GMT_Offset : Relative_Time;
       Rules      : League.Strings.Universal_String;
       Year       : Year_Number;
       Month      : Month_Number  := 1;
+      Day_Kind   : Day_Kinds     := Number;
       Day        : Day_Number    := 1;
       Hour       : Hour_Number   := 0;
       Minute     : Minute_Number := 0;
       Second     : Second_Number := 0;
-      Kind       : Time_Kinds    := Wall;
+      Time_Kind  : Time_Kinds    := Wall;
    end record;
 
    type Time_Zone_Access is access all Internal_Time_Zone;
@@ -207,15 +210,22 @@ procedure Gen_TZ is
 
       procedure Parse_Field is
       begin
-         --  Skip spaces.
+         --  Skip leading whitespaces.
 
          for J in First .. Last loop
             First := J;
 
-            exit when Buffer (J) /= ' ';
+            exit when Buffer (J) /= ' '
+              and Buffer (J) /= Ada.Characters.Wide_Wide_Latin_1.HT;
          end loop;
 
          Field_First := First;
+
+         if Buffer (Field_First) = '"' then
+            --  Use of quatation mark is not supported.
+
+            raise Program_Error;
+         end if;
 
          for J in First .. Last loop
             if Buffer (J) = ' '
@@ -231,6 +241,9 @@ procedure Gen_TZ is
                First := Last + 1;
             end if;
          end loop;
+
+         Ada.Wide_Wide_Text_IO.Put_Line
+          (''' & Buffer (Field_First .. Field_Last) & ''');
       end Parse_Field;
 
       ------------------
@@ -243,8 +256,16 @@ procedure Gen_TZ is
          Second : Second_Number := 0;
          First  : Positive      := Field_First;
          Last   : Natural       := Field_Last;
+         Minus  : Boolean       := False;
 
       begin
+         --  Look for minus sign.
+
+         if Buffer (First) = '-' then
+            Minus := True;
+            First := First + 1;
+         end if;
+
          --  Lookup for hour separator.
 
          for J in First .. Field_Last loop
@@ -284,6 +305,10 @@ procedure Gen_TZ is
          end if;
 
          Value := To_Relative_Time (Hour, Minute, Second);
+
+         if Minus then
+            Value := -Value;
+         end if;
       end Parse_GMTOFF;
 
       -----------------
@@ -441,6 +466,9 @@ procedure Gen_TZ is
             if Buffer (First .. Last) = "s" then
                Kind := Standard;
 
+            elsif Buffer (First .. Last) = "u" then
+               Kind := UTC;
+
             else
                raise Constraint_Error;
             end if;
@@ -502,9 +530,21 @@ procedure Gen_TZ is
          Parse_Field;
 
          if Field_First <= Field_Last then
-            Value.Day :=
-              Day_Number'Wide_Wide_Value
-               (Buffer (Field_First .. Field_Last));
+            --  Special values.
+
+            if Buffer (Field_First .. Field_Last) = "lastSun" then
+               Value.Day_Kind := Last_Sunday;
+
+            elsif Buffer (Field_First .. Field_Last) = "lastSat" then
+               Value.Day_Kind := Last_Saturday;
+
+            --  Simple numeric value.
+
+            else
+               Value.Day :=
+                 Day_Number'Wide_Wide_Value
+                  (Buffer (Field_First .. Field_Last));
+            end if;
          end if;
 
          --  Time component.
@@ -512,7 +552,8 @@ procedure Gen_TZ is
          Parse_Field;
 
          if Field_First <= Field_Last then
-            Parse_Time (Value.Hour, Value.Minute, Value.Second, Value.Kind);
+            Parse_Time
+             (Value.Hour, Value.Minute, Value.Second, Value.Time_Kind);
          end if;
       end Parse_Zone_Common;
 
@@ -555,7 +596,12 @@ procedure Gen_TZ is
 
                null;
 
+            elsif Buffer (1 .. 4) = "Link" then
+               Ada.Wide_Wide_Text_IO.Put_Line (Buffer (First .. Last));
+
             elsif Buffer (1 .. 4) = "Zone" then
+               Ada.Wide_Wide_Text_IO.Put_Line (Buffer (First .. Last));
+
                --  Zone primary line.
 
                declare
@@ -580,18 +626,14 @@ procedure Gen_TZ is
                end;
 
             else
+               Ada.Wide_Wide_Text_IO.Put_Line (Buffer (First .. Last));
+
                --  Zone continuation line.
 
                declare
                   D : TZ_Zone_Record;
 
                begin
-                  --  Skip empty fields.
-
-                  Parse_Field;
-                  Parse_Field;
-                  Parse_Field;
-
                   --  Parse common fields.
 
                   Parse_Zone_Common (D);
@@ -754,9 +796,17 @@ begin
            To_Absolute_Time
             (R.Year, R.Month, R.Day, R.Hour, R.Minute, R.Second);
 
-         From := From - Absolute_Time (R.GMT_Offset);
-         --  XXX Note: this time must be corrected according to modifier
-         --  (wall/standard/GMT).
+         case R.Time_Kind is
+            when Wall =>
+               From := From - Absolute_Time (R.GMT_Offset);
+               --  XXX Note: this time must be corrected according to modifier.
+
+            when Standard =>
+               From := From - Absolute_Time (R.GMT_Offset);
+
+            when UTC =>
+               null;
+         end case;
 
       else
          From := Absolute_Time'Last;
@@ -771,4 +821,7 @@ begin
    Test (Z, 1916,  7,  2, 21, 30, 00);
    Test (Z, 1917,  7,  1, 20, 29, 11);
    Test (Z, 1917,  7,  1, 20, 29, 12);
+
+   Test (Z, 2011,  3, 26, 22, 59, 59);
+   Test (Z, 2011,  3, 26, 23,  0,  0);
 end Gen_TZ;
