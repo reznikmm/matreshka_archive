@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,8 +66,8 @@ package body XML.SAX.Input_Sources.Streams.Element_Arrays is
    -- Set_Stream_Element_Array --
    ------------------------------
 
-   not overriding procedure Set_Stream_Element_Array
-    (Self : in out Stream_Element_Array_Input_Source;
+   procedure Set_Stream_Element_Array
+    (Self : in out Stream_Element_Array_Input_Source'Class;
      Data : Ada.Streams.Stream_Element_Array) is
    begin
       Free (Self.Buffer);
@@ -77,5 +77,16 @@ package body XML.SAX.Input_Sources.Streams.Element_Arrays is
       Self.First := 0;
       Self.Last := Data'Length - 1;
    end Set_Stream_Element_Array;
+
+   -------------------------------
+   -- Set_Stream_Element_Vector --
+   -------------------------------
+
+   procedure Set_Stream_Element_Vector
+    (Self : in out Stream_Element_Array_Input_Source'Class;
+     Data : League.Stream_Element_Vectors.Stream_Element_Vector) is
+   begin
+      Self.Set_Stream_Element_Array (Data.To_Stream_Element_Array);
+   end Set_Stream_Element_Vector;
 
 end XML.SAX.Input_Sources.Streams.Element_Arrays;
