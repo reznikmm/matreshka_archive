@@ -6,7 +6,7 @@
 ##                                                                          ##
 ##--------------------------------------------------------------------------##
 ##                                                                          ##
-## Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                ##
+## Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                ##
 ## All rights reserved.                                                     ##
 ##                                                                          ##
 ## Redistribution and use in source and binary forms, with or without       ##
@@ -41,13 +41,13 @@
 ##--------------------------------------------------------------------------##
 
 Name:           matreshka
-Version:        0.5.0
+Version:        0.6.0
 Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
-Source:         matreshka-0.5.0.tar.gz
+Source:         matreshka-0.6.0.tar.gz
 ##  Patch:
 BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config valgrind
 ##  PreReq:
