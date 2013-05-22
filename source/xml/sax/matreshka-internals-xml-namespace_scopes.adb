@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,11 +58,25 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
    procedure Bind
     (Self      : in out Namespace_Scope;
      Prefix    : Symbol_Identifier;
-     Namespace : Symbol_Identifier) is
+     Namespace : Symbol_Identifier)
+   is
+      Old_Scopes   : Scope_Array_Access;
+      Old_Mappings : Mapping_Array_Access;
+
    begin
       if Self.Scopes (Self.Last).Count /= 0 then
          Self.Scopes (Self.Last).Count := Self.Scopes (Self.Last).Count - 1;
          Self.Last := Self.Last + 1;
+
+         if Self.Last > Self.Scopes'Last then
+            --  Reallocate scopes vector when necessary.
+
+            Old_Scopes := Self.Scopes;
+            Self.Scopes := new Scope_Array (1 .. Old_Scopes'Last + 8);
+            Self.Scopes (Old_Scopes'Range) := Old_Scopes.all;
+            Free (Old_Scopes);
+         end if;
+
          Self.Scopes (Self.Last) :=
           (0,
            Self.Scopes (Self.Last - 1).Last + 1,
@@ -81,6 +95,16 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
       end loop;
 
       Self.Scopes (Self.Last).Last := Self.Scopes (Self.Last).Last + 1;
+
+      if Self.Scopes (Self.Last).Last > Self.Mappings'Last then
+         --  Reallocate mappings vector when necessary.
+
+         Old_Mappings := Self.Mappings;
+         Self.Mappings := new Mapping_Array (1 .. Old_Mappings'Last + 8);
+         Self.Mappings (Old_Mappings'Range) := Old_Mappings.all;
+         Free (Old_Mappings);
+      end if;
+
       Self.Mappings (Self.Scopes (Self.Last).Last) := (Prefix, Namespace);
    end Bind;
 
@@ -100,10 +124,10 @@ package body Matreshka.Internals.XML.Namespace_Scopes is
 
    procedure Initialize (Self : in out Namespace_Scope) is
    begin
-      Self.Mappings := new Mapping_Array (1 .. 16);
+      Self.Mappings := new Mapping_Array (1 .. 8);
       Self.Mappings (1) := (Symbol_xml, Symbol_xml_NS);
       Self.Mappings (2) := (Symbol_xmlns, Symbol_xmlns_NS);
-      Self.Scopes := new Scope_Array (1 .. 16);
+      Self.Scopes := new Scope_Array (1 .. 8);
       Self.Scopes (1) := (0, 1, 2);
       Self.Last := 1;
    end Initialize;
