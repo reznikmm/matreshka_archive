@@ -178,6 +178,7 @@ package body Matreshka.Internals.Stream_Element_Vectors is
 
          H := H * M;
          H := H xor K;
+         Index := Index + 1;
       end loop;
 
       H := H xor (H / 16#2000#);
