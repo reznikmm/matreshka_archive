@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,57 +41,65 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
+--  This test checks whether Ada to League time conversion work properly for
+--  the times near to end of day.
+------------------------------------------------------------------------------
+with Ada.Calendar.Formatting;
+with Ada.Calendar.Time_Zones;
 
-project Matreshka_League_Tests is
+with League.Calendars.Ada_Conversions;
+with League.Calendars.ISO_8601;
 
-   for Main use
-    ("base64_test.adb",
-     "string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "fill_null_terminator_performance.adb",
-     "string_operations_test.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb",
-     "test_35.adb",
-     "test_104.adb",
-     "test_106.adb",
-     "test_139.adb",
-     "test_150.adb",
-     "test_165.adb",
-     "test_177.adb",
-     "test_193.adb",
-     "test_209.adb",
-     "test_290.adb",
-     "test_308.adb",
-     "arguments_environment_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/league",
-     "../testsuite/league/TN-35",
-     "../testsuite/league/TN-104",
-     "../testsuite/league/TN-106",
-     "../testsuite/league/TN-139",
-     "../testsuite/league/TN-150",
-     "../testsuite/league/TN-165",
-     "../testsuite/league/TN-177",
-     "../testsuite/league/TN-193",
-     "../testsuite/league/TN-209",
-     "../testsuite/league/TN-290",
-     "../testsuite/league/TN-308",
-     "../tools");
+procedure Test_308 is
+   use type League.Calendars.ISO_8601.Year_Number;
+   use type League.Calendars.ISO_8601.Month_Number;
+   use type League.Calendars.ISO_8601.Day_Number;
+   use type League.Calendars.ISO_8601.Hour_Number;
+   use type League.Calendars.ISO_8601.Minute_Number;
+   use type League.Calendars.ISO_8601.Second_Number;
+   use type League.Calendars.ISO_8601.Nanosecond_100_Number;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   Ada_Time    : constant Ada.Calendar.Time
+     := Ada.Calendar.Formatting.Time_Of (2013, 6, 7, 23, 36, 43, 0.0);
+   League_Time : constant League.Calendars.Date_Time
+     := League.Calendars.Ada_Conversions.From_Ada_Time (Ada_Time);
 
-end Matreshka_League_Tests;
+   Y  : League.Calendars.ISO_8601.Year_Number;
+   M  : League.Calendars.ISO_8601.Month_Number;
+   D  : League.Calendars.ISO_8601.Day_Number;
+   DH : League.Calendars.ISO_8601.Hour_Number;
+   DM : League.Calendars.ISO_8601.Minute_Number;
+   DS : League.Calendars.ISO_8601.Second_Number;
+   DN : League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+begin
+   League.Calendars.ISO_8601.Split (League_Time, Y, M, D, DH, DM, DS, DN);
+
+   if Y /= 2013 then
+      raise Program_Error;
+   end if;
+
+   if M /= 6 then
+      raise Program_Error;
+   end if;
+
+   if D /= 7 then
+      raise Program_Error;
+   end if;
+
+   if DH /= 23 then
+      raise Program_Error;
+   end if;
+
+   if DM /= 36 then
+      raise Program_Error;
+   end if;
+
+   if DS /= 43 then
+      raise Program_Error;
+   end if;
+
+   if DN /= 0 then
+      raise Program_Error;
+   end if;
+end Test_308;
