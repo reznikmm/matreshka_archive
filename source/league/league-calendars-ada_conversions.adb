@@ -61,29 +61,32 @@ package body League.Calendars.Ada_Conversions is
       --  Ada.Calendar.Time is local time and time zone conversion will be
       --  applied automatically by League.Calendars.ISO_8601.Create.
 
-      Year     : Ada.Calendar.Year_Number;
-      Month    : Ada.Calendar.Month_Number;
-      Day      : Ada.Calendar.Day_Number;
-      Seconds  : Ada.Calendar.Day_Duration;
-      Hour     : League.Calendars.ISO_8601.Hour_Number;
-      Minute   : League.Calendars.ISO_8601.Minute_Number;
-      Second   : League.Calendars.ISO_8601.Second_Number;
-      Fraction : League.Calendars.ISO_8601.Nanosecond_100_Number;
-
+      Year          : Ada.Calendar.Year_Number;
+      Month         : Ada.Calendar.Month_Number;
+      Day           : Ada.Calendar.Day_Number;
+      Seconds       : Ada.Calendar.Day_Duration;
+      Whole_Seconds : Integer;
+      Hour          : League.Calendars.ISO_8601.Hour_Number;
+      Minute        : League.Calendars.ISO_8601.Minute_Number;
+      Second        : League.Calendars.ISO_8601.Second_Number;
+      Fraction      : League.Calendars.ISO_8601.Nanosecond_100_Number;
 
    begin
       Ada.Calendar.Split (UTC, Year, Month, Day, Seconds);
+      Whole_Seconds := Integer (Seconds - 0.5);
+      --  Conversion to integer uses mathematical rounding, so we need to
+      --  subtract by 0.5 to extract whole number of seconds.
 
       Hour :=
-        League.Calendars.ISO_8601.Hour_Number (Seconds / 3_600);
+        League.Calendars.ISO_8601.Hour_Number (Whole_Seconds / 3_600);
       Minute :=
         League.Calendars.ISO_8601.Minute_Number
-         (Integer (Seconds / 60) mod 60);
+         ((Whole_Seconds / 60) mod 60);
       Second :=
-        League.Calendars.ISO_8601.Second_Number (Integer (Seconds) mod 60);
+        League.Calendars.ISO_8601.Second_Number (Whole_Seconds mod 60);
       Fraction :=
         League.Calendars.ISO_8601.Nanosecond_100_Number
-         ((Seconds - Ada.Calendar.Day_Duration (Integer (Seconds)))
+         ((Seconds - Ada.Calendar.Day_Duration (Whole_Seconds))
              * 10_000_000);
 
       return
