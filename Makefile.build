@@ -38,7 +38,7 @@ fastcgi: league
 soap: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap.gpr
 
-wsse:
+wsse: soap
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_wsse.gpr
 
 wsdl2ada: league
