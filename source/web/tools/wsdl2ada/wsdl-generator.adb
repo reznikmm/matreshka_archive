@@ -228,6 +228,8 @@ package body WSDL.Generator is
       Put_Line
        ("--------------------------------------------------------------------"
           & "----------");
+      Put_Line ("pragma Style_Checks (""NM32766"")");
+      New_Line;
       Put_Line ("with Web_Services.SOAP.Payloads.Faults;");
       Put_Line ("with Payloads;");
       New_Line;
@@ -345,6 +347,8 @@ package body WSDL.Generator is
       Put_Line
        ("--------------------------------------------------------------------"
           & "----------");
+      Put_Line ("pragma Style_Checks (""NM32766"")");
+      New_Line;
       Put_Line ("with League.Strings;");
       Put_Line ("with Web_Services.SOAP.Handler_Registry;");
       Put_Line ("with Web_Services.SOAP.Messages;");
