@@ -947,7 +947,7 @@ package body WSDL.Parsers is
            Attributes.Value (Style_Default_Attribute).Split
             (' ', League.Strings.Skip_Empty);
 
-         --  Interface-2012: The type of the styleDefault attribute information
+         --  Interface-1012: The type of the styleDefault attribute information
          --  item is list of xs:anyURI. Its value, if present, MUST contain
          --  absolute IRIs (see [IETF RFC 3987]).
          --
