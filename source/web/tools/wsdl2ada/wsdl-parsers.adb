@@ -51,6 +51,7 @@ with WSDL.AST.Messages;
 --with WSDL.AST.Operations;
 with WSDL.AST.Types;
 with WSDL.Constants;
+with WSDL.Diagnoses;
 with WSDL.Parsers.SOAP;
 
 package body WSDL.Parsers is
@@ -290,6 +291,32 @@ package body WSDL.Parsers is
       Self.Current_State := Aux;
    end Push;
 
+   ------------
+   -- Report --
+   ------------
+
+   procedure Report
+    (Self      : WSDL_Parser;
+     Assertion : WSDL.Assertions.WSDL_Assertion) is
+   begin
+      WSDL.Assertions.Report
+       (Self.Locator.System_Id,
+        WSDL.Diagnoses.Line_Number (Self.Locator.Line),
+        WSDL.Diagnoses.Column_Number (Self.Locator.Column),
+        Assertion);
+   end Report;
+
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out WSDL_Parser;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
    ---------------------------
    -- Start_Binding_Element --
    ---------------------------
@@ -446,7 +473,9 @@ package body WSDL.Parsers is
                   --  Description-1005: Invalid order of children elements of
                   --  'description' element.
 
-                  raise Program_Error;
+                  Self.Report (WSDL.Assertions.Description_1005);
+
+                  raise WSDL_Error;
 
                else
                   Self.Current_State.Last_Child_Kind := Documentation;
@@ -506,7 +535,9 @@ package body WSDL.Parsers is
                   --  Description-1005: Invalid order of children elements of
                   --  'description' element.
 
-                  raise Program_Error;
+                  Self.Report (WSDL.Assertions.Description_1005);
+
+                  raise WSDL_Error;
 
                else
                   Self.Current_State.Last_Child_Kind := Include_Import;
@@ -576,7 +607,9 @@ package body WSDL.Parsers is
                   --  Description-1005: Invalid order of children elements of
                   --  'description' element.
 
-                  raise Program_Error;
+                  Self.Report (WSDL.Assertions.Description_1005);
+
+                  raise WSDL_Error;
 
                else
                   Self.Current_State.Last_Child_Kind := Include_Import;
@@ -667,7 +700,9 @@ package body WSDL.Parsers is
                   --  Description-1005: Invalid order of children elements of
                   --  'description' element.
 
-                  raise Program_Error;
+                  Self.Report (WSDL.Assertions.Description_1005);
+
+                  raise WSDL_Error;
 
                else
                   Self.Current_State.Last_Child_Kind := Types;

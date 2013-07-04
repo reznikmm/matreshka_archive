@@ -47,7 +47,9 @@ private with Ada.Containers.Vectors;
 private with League.Strings.Hash;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
+private with XML.SAX.Locators;
 
+private with WSDL.Assertions;
 private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 --private with WSDL.AST.Faults;
@@ -116,6 +118,10 @@ private
    type WSDL_Parser is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with
    record
+      Locator           : XML.SAX.Locators.SAX_Locator;
+      --  SAX document locator to obtain file and position to report assertion
+      --  violations.
+
       Description       : WSDL.AST.Descriptions.Description_Access;
       --  Root element of AST for the processed file.
 
@@ -153,6 +159,10 @@ private
    overriding function Error_String
     (Self : WSDL_Parser) return League.Strings.Universal_String;
 
+   overriding procedure Set_Document_Locator
+    (Self    : in out WSDL_Parser;
+     Locator : XML.SAX.Locators.SAX_Locator);
+
    overriding procedure Start_Document
     (Self    : in out WSDL_Parser;
      Success : in out Boolean);
@@ -177,5 +187,10 @@ private
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
+
+   procedure Report
+    (Self      : WSDL_Parser;
+     Assertion : WSDL.Assertions.WSDL_Assertion);
+   --  Reports violation of WSDL assertion.
 
 end WSDL.Parsers;

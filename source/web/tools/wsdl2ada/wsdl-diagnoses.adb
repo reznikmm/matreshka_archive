@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,69 +41,32 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
+with Ada.Strings.Wide_Wide_Fixed;
+with Ada.Wide_Wide_Text_IO;
 
-with League.Application;
+package body WSDL.Diagnoses is
 
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+   ------------
+   -- Report --
+   ------------
 
-with WSDL.Analyzer;
-with WSDL.AST;
-with WSDL.Debug;
-with WSDL.Generator;
-with WSDL.Iterators.Containment;
-with WSDL.Parsers;
-with WSDL.Name_Resolvers;
-
-procedure WSDL.Driver is
-   Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Handler : aliased WSDL.Parsers.WSDL_Parser;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-
-begin
-   --  Load document.
-
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Source.Open_By_File_Name (League.Application.Arguments.Element (1));
-   Reader.Parse (Source'Unchecked_Access);
-
-   --  Resolve names.
-
-   declare
-      Resolver : WSDL.Name_Resolvers.Name_Resolver;
-      Iterator : WSDL.Iterators.Containment.Containment_Iterator;
-      Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
-
+   procedure Report
+    (File    : League.Strings.Universal_String;
+     Line    : Line_Number;
+     Column  : Column_Number;
+     Message : League.Strings.Universal_String) is
    begin
-      Resolver.Set_Root (Handler.Get_Description);
-      Iterator.Visit
-       (Resolver, WSDL.AST.Node_Access (Handler.Get_Description), Control);
-   end;
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Ada.Wide_Wide_Text_IO.Standard_Error,
+        File.To_Wide_Wide_String
+          & ':'
+          & Ada.Strings.Wide_Wide_Fixed.Trim
+             (Line_Number'Wide_Wide_Image (Line), Ada.Strings.Both)
+          & ':'
+          & Ada.Strings.Wide_Wide_Fixed.Trim
+             (Column_Number'Wide_Wide_Image (Column), Ada.Strings.Both)
+          & ": "
+          & Message.To_Wide_Wide_String);
+   end Report;
 
-   --  Analyze.
-
-   declare
-      Analyzer : WSDL.Analyzer.Analyzer;
-      Iterator : WSDL.Iterators.Containment.Containment_Iterator;
-      Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
-
-   begin
-      Analyzer.Set_Root (Handler.Get_Description);
-      Iterator.Visit
-       (Analyzer, WSDL.AST.Node_Access (Handler.Get_Description), Control);
-   end;
-
---   WSDL.Debug.Dump (Handler.Get_Description);
-
-   --  Generate code.
-
-   WSDL.Generator.Generate (Handler.Get_Description);
-
-exception
-   when WSDL.WSDL_Error =>
-      --  It means that detedted error was reported and processing was
-      --  terminated. Set exit status to report presence of some error.
-
-      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
-end WSDL.Driver;
+end WSDL.Diagnoses;

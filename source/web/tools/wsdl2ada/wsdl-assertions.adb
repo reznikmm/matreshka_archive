@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,69 +41,65 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Command_Line;
 
-with League.Application;
+package body WSDL.Assertions is
 
-with XML.SAX.Input_Sources.Streams.Files;
-with XML.SAX.Simple_Readers;
+--   type WSDL_Assertion is
+--     (Description_1001,
+--      --  The value of the targetNamespace attribute information item SHOULD be
+--      --  dereferencable.
+--
+--      Description_1002,
+--      --  It SHOULD resolve to a human or machine processable document that
+--      --  directly or indirectly defines the intended semantics of those
+--      --  components.
+--
+--      Description_1003,
+--      --  It MAY resolve to a WSDL 2.0 document that provides service
+--      --  description information for that namespace.
+--
+--      Description_1004,
+--      --  If a WSDL 2.0 document is split into multiple WSDL 2.0 documents
+--      --  (which may be combined as needed via 4.1 Including Descriptions),
+--      --  then the targetNamespace attribute information item SHOULD resolve to
+--      --  a master WSDL 2.0 document that includes all the WSDL 2.0 documents
+--      --  needed for that service description.
+--
+--      Description_1005,
+--      --  Zero or more element information items amongst its [children], in
+--      --  order as follows:
+--
+--      Description_1006);
+--      --  Its value MUST be an absolute IRI (see [IETF RFC 3987]) and should be
+--      --  dereferencable.
+   WSDL_Assertion_Message :
+     constant array (WSDL_Assertion) of League.Strings.Universal_String
+       := (Description_1001 =>
+             League.Strings.To_Universal_String ("not supported"),
+           Description_1002 =>
+             League.Strings.To_Universal_String ("not supported"),
+           Description_1003 =>
+             League.Strings.To_Universal_String ("not supported"),
+           Description_1004 =>
+             League.Strings.To_Universal_String ("not supported"),
+           Description_1005 =>
+             League.Strings.To_Universal_String
+              ("invalid order of children elements of wsdl:decription element"),
+           Description_1006 =>
+             League.Strings.To_Universal_String ("not supported"));
 
-with WSDL.Analyzer;
-with WSDL.AST;
-with WSDL.Debug;
-with WSDL.Generator;
-with WSDL.Iterators.Containment;
-with WSDL.Parsers;
-with WSDL.Name_Resolvers;
+   ------------
+   -- Report --
+   ------------
 
-procedure WSDL.Driver is
-   Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Handler : aliased WSDL.Parsers.WSDL_Parser;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-
-begin
-   --  Load document.
-
-   Reader.Set_Content_Handler (Handler'Unchecked_Access);
-   Source.Open_By_File_Name (League.Application.Arguments.Element (1));
-   Reader.Parse (Source'Unchecked_Access);
-
-   --  Resolve names.
-
-   declare
-      Resolver : WSDL.Name_Resolvers.Name_Resolver;
-      Iterator : WSDL.Iterators.Containment.Containment_Iterator;
-      Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
-
+   procedure Report
+    (File      : League.Strings.Universal_String;
+     Line      : WSDL.Diagnoses.Line_Number;
+     Column    : WSDL.Diagnoses.Column_Number;
+     Assertion : WSDL_Assertion) is
    begin
-      Resolver.Set_Root (Handler.Get_Description);
-      Iterator.Visit
-       (Resolver, WSDL.AST.Node_Access (Handler.Get_Description), Control);
-   end;
+      WSDL.Diagnoses.Report
+       (File, Line, Column, WSDL_Assertion_Message (Assertion));
+   end Report;
 
-   --  Analyze.
-
-   declare
-      Analyzer : WSDL.Analyzer.Analyzer;
-      Iterator : WSDL.Iterators.Containment.Containment_Iterator;
-      Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
-
-   begin
-      Analyzer.Set_Root (Handler.Get_Description);
-      Iterator.Visit
-       (Analyzer, WSDL.AST.Node_Access (Handler.Get_Description), Control);
-   end;
-
---   WSDL.Debug.Dump (Handler.Get_Description);
-
-   --  Generate code.
-
-   WSDL.Generator.Generate (Handler.Get_Description);
-
-exception
-   when WSDL.WSDL_Error =>
-      --  It means that detedted error was reported and processing was
-      --  terminated. Set exit status to report presence of some error.
-
-      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
-end WSDL.Driver;
+end WSDL.Assertions;
