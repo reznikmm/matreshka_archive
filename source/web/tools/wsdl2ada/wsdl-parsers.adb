@@ -59,9 +59,6 @@ package body WSDL.Parsers is
    use WSDL.Constants;
    use type League.Strings.Universal_String;
 
-   type Universal_String_Array is
-     array (Positive range <>) of League.Strings.Universal_String;
-
    procedure Push
     (Self : in out WSDL_Parser'Class; State : Parser_State_Kind);
 
@@ -168,7 +165,10 @@ package body WSDL.Parsers is
 
    procedure End_Binding_Element
     (Node    : WSDL.AST.Bindings.Binding_Access;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if not Node.Binding_Operations.Is_Empty
         and Node.Interface_Name.Local_Name.Is_Empty
@@ -193,7 +193,10 @@ package body WSDL.Parsers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Qualified_Name);
+
    begin
       if Self.Ignore_Depth /= 0 then
          Self.Ignore_Depth := Self.Ignore_Depth - 1;
@@ -244,7 +247,10 @@ package body WSDL.Parsers is
    ------------------
 
    overriding function Error_String
-    (Self : WSDL_Parser) return League.Strings.Universal_String is
+    (Self : WSDL_Parser) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
@@ -406,7 +412,10 @@ package body WSDL.Parsers is
    procedure Start_Description_Element
     (Self       : in out WSDL_Parser'Class;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
-     Success    : in out Boolean) is
+     Success    : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Description := new WSDL.AST.Descriptions.Description_Node;
       Self.Description.Target_Namespace :=
@@ -423,7 +432,10 @@ package body WSDL.Parsers is
 
    overriding procedure Start_Document
     (Self    : in out WSDL_Parser;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Current_State := (Document, others => <>);
    end Start_Document;
@@ -438,7 +450,10 @@ package body WSDL.Parsers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Qualified_Name);
+
    begin
       if Self.Ignore_Depth /= 0 then
          Self.Ignore_Depth := Self.Ignore_Depth + 1;
@@ -773,6 +788,8 @@ package body WSDL.Parsers is
      Parent     : WSDL.AST.Services.Service_Access;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
       Node : WSDL.AST.Endpoints.Endpoint_Access;
@@ -806,6 +823,8 @@ package body WSDL.Parsers is
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Node : constant WSDL.AST.Interface_Fault_Reference_Access
         := new WSDL.AST.Faults.Interface_Fault_Reference_Node;
 
@@ -834,6 +853,8 @@ package body WSDL.Parsers is
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Node : constant WSDL.AST.Messages.Interface_Message_Access
         := new WSDL.AST.Messages.Interface_Message_Node;
 
@@ -888,6 +909,8 @@ package body WSDL.Parsers is
      Node        : out WSDL.AST.Interface_Access;
      Success     : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
 
@@ -966,6 +989,8 @@ package body WSDL.Parsers is
 --     Node       : out WSDL.AST.Faults.Interface_Fault_Access;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
       Node : WSDL.AST.Faults.Interface_Fault_Access;
@@ -1027,6 +1052,8 @@ package body WSDL.Parsers is
      Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
 
@@ -1065,7 +1092,10 @@ package body WSDL.Parsers is
     (Self          : in out WSDL_Parser;
      Prefix        : League.Strings.Universal_String;
      Namespace_URI : League.Strings.Universal_String;
-     Success       : in out Boolean) is
+     Success       : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Namespaces.Insert (Prefix, Namespace_URI);
    end Start_Prefix_Mapping;
@@ -1081,6 +1111,8 @@ package body WSDL.Parsers is
      Node       : out WSDL.AST.Services.Service_Access;
      Success    : in out Boolean)
    is
+      pragma Unreferenced (Success);
+
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
 
@@ -1109,7 +1141,10 @@ package body WSDL.Parsers is
 
    procedure Start_Types_Element
     (Description : WSDL.AST.Descriptions.Description_Access;
-     Success     : in out Boolean) is
+     Success     : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Description.Types := new WSDL.AST.Types.Types_Node;
       Description.Types.Parent :=
