@@ -44,34 +44,6 @@
 
 package body WSDL.Assertions is
 
---   type WSDL_Assertion is
---     (Description_1001,
---      --  The value of the targetNamespace attribute information item SHOULD be
---      --  dereferencable.
---
---      Description_1002,
---      --  It SHOULD resolve to a human or machine processable document that
---      --  directly or indirectly defines the intended semantics of those
---      --  components.
---
---      Description_1003,
---      --  It MAY resolve to a WSDL 2.0 document that provides service
---      --  description information for that namespace.
---
---      Description_1004,
---      --  If a WSDL 2.0 document is split into multiple WSDL 2.0 documents
---      --  (which may be combined as needed via 4.1 Including Descriptions),
---      --  then the targetNamespace attribute information item SHOULD resolve to
---      --  a master WSDL 2.0 document that includes all the WSDL 2.0 documents
---      --  needed for that service description.
---
---      Description_1005,
---      --  Zero or more element information items amongst its [children], in
---      --  order as follows:
---
---      Description_1006);
---      --  Its value MUST be an absolute IRI (see [IETF RFC 3987]) and should be
---      --  dereferencable.
    WSDL_Assertion_Message :
      constant array (WSDL_Assertion) of League.Strings.Universal_String
        := (Description_1001 =>
@@ -86,6 +58,20 @@ package body WSDL.Assertions is
              League.Strings.To_Universal_String
               ("invalid order of children elements of wsdl:decription element"),
            Description_1006 =>
+             League.Strings.To_Universal_String ("not supported"),
+           Types_1007       =>
+             League.Strings.To_Universal_String ("not supported"),
+           Types_1008       =>
+             League.Strings.To_Universal_String ("not supported"),
+           Interface_1009   =>
+             League.Strings.To_Universal_String ("not supported"),
+           Interface_1010   =>
+             League.Strings.To_Universal_String
+              ("name of the interface component must be unique"),
+           Interface_1011   =>
+             League.Strings.To_Universal_String
+              ("list of extended interfaces must not contain duplicates"),
+           Interface_1012   =>
              League.Strings.To_Universal_String ("not supported"));
 
    ------------

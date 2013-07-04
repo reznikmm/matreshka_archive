@@ -74,9 +74,31 @@ package WSDL.Assertions is
       --  Zero or more element information items amongst its [children], in
       --  order as follows:
 
-      Description_1006);
+      Description_1006,
       --  Its value MUST be an absolute IRI (see [IETF RFC 3987]) and should be
       --  dereferencable.
+
+      Types_1007,
+      --  Each XML Schema element declaration MUST have a unique QName. 
+
+      Types_1008,
+      --  Each XML Schema type definition MUST have a unique QName. 
+
+      Interface_1009,
+      --  To avoid circular definitions, an interface MUST NOT appear in the
+      --  set of interfaces it extends, either directly or indirectly. 
+
+      Interface_1010,
+      --  For each Interface component in the {interfaces} property of a
+      --  Description component, the {name} property MUST be unique.
+
+      Interface_1011,
+      --  The list of xs:QName in an extends attribute information item MUST
+      --  NOT contain duplicates. 
+
+      Interface_1012);
+      --  Its value, if present, MUST contain absolute IRIs (see [IETF RFC
+      --  3987]).
 
    procedure Report
     (File      : League.Strings.Universal_String;

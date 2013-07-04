@@ -85,7 +85,8 @@ package body WSDL.Parsers is
    --  Handles start of 'types' element.
 
    procedure Start_Interface_Element
-    (Attributes  : XML.SAX.Attributes.SAX_Attributes;
+    (Parser      : in out WSDL_Parser;
+     Attributes  : XML.SAX.Attributes.SAX_Attributes;
      Namespaces  : Namespace_Maps.Map;
      Description : WSDL.AST.Descriptions.Description_Access;
      Node        : out WSDL.AST.Interface_Access;
@@ -591,7 +592,8 @@ package body WSDL.Parsers is
                Self.Current_State.Last_Child_Kind := Interface_Binding_Service;
                Self.Push (WSDL_Interface);
                Start_Interface_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Description,
                  Self.Current_Interface,
@@ -879,7 +881,8 @@ package body WSDL.Parsers is
    -----------------------------
 
    procedure Start_Interface_Element
-    (Attributes  : XML.SAX.Attributes.SAX_Attributes;
+    (Parser      : in out WSDL_Parser;
+     Attributes  : XML.SAX.Attributes.SAX_Attributes;
      Namespaces  : Namespace_Maps.Map;
      Description : WSDL.AST.Descriptions.Description_Access;
      Node        : out WSDL.AST.Interface_Access;
@@ -897,7 +900,9 @@ package body WSDL.Parsers is
       --  component.
 
       if Description.Interfaces.Contains (Name) then
-         raise Program_Error;
+         Parser.Report (WSDL.Assertions.Interface_1010);
+
+         raise WSDL_Error;
       end if;
 
       Node := new WSDL.AST.Interfaces.Interface_Node;
@@ -925,7 +930,9 @@ package body WSDL.Parsers is
                --  already.
 
                if Node.Extends.Contains (Item) then
-                  raise Program_Error;
+                  Parser.Report (WSDL.Assertions.Interface_1011);
+
+                  raise WSDL_Error;
                end if;
 
                Node.Extends.Insert (Item);
