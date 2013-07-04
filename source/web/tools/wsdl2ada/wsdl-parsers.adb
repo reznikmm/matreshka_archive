@@ -383,6 +383,10 @@ package body WSDL.Parsers is
       Self.Description := new WSDL.AST.Descriptions.Description_Node;
       Self.Description.Target_Namespace :=
         Attributes.Value (Target_Namespace_Attribute);
+
+      --  Description-1006: IRI of target namespace must be absolute.
+      --
+      --  XXX Not implemented yet.
    end Start_Description_Element;
 
    --------------------
