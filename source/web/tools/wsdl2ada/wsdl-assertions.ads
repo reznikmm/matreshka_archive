@@ -96,9 +96,34 @@ package WSDL.Assertions is
       --  The list of xs:QName in an extends attribute information item MUST
       --  NOT contain duplicates. 
 
-      Interface_1012);
+      Interface_1012,
       --  Its value, if present, MUST contain absolute IRIs (see [IETF RFC
       --  3987]).
+
+      InterfaceFault_1013,
+      --  An xs:token with one of the values #any, #none, #other, or #element.
+
+      InterfaceFault_1014,
+      -- When the {message content model} property has the value #any or #none
+      -- the {element declaration} property MUST be empty.
+
+      InterfaceFault_1015,
+      --  In cases where, due to an interface extending one or more other
+      --  interfaces, two or more Interface Fault components have the same
+      --  value for their {name} property, then the component models of those
+      --  Interface Fault components MUST be equivalent (see 2.15 Equivalence
+      --  of Components).
+
+      InterfaceFault_1016,
+      --  For the above reason, it is considered good practice to ensure, where
+      --  necessary, that the local name of the {name} property of Interface
+      --  Fault components within a namespace SHOULD be unique, thus allowing
+      --  such derivation to occur without inadvertent error.
+
+      InterfaceFault_1017);
+      --  If the element attribute information item has a value, then it MUST
+      --  resolve to an Element Declaration component from the {element
+      --  declarations} property of the Description component.
 
    procedure Report
     (File      : League.Strings.Universal_String;

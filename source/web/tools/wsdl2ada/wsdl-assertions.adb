@@ -46,32 +46,42 @@ package body WSDL.Assertions is
 
    WSDL_Assertion_Message :
      constant array (WSDL_Assertion) of League.Strings.Universal_String
-       := (Description_1001 =>
+       := (Description_1001    =>
              League.Strings.To_Universal_String ("not supported"),
-           Description_1002 =>
+           Description_1002    =>
              League.Strings.To_Universal_String ("not supported"),
-           Description_1003 =>
+           Description_1003    =>
              League.Strings.To_Universal_String ("not supported"),
-           Description_1004 =>
+           Description_1004    =>
              League.Strings.To_Universal_String ("not supported"),
-           Description_1005 =>
+           Description_1005    =>
              League.Strings.To_Universal_String
               ("invalid order of children elements of wsdl:decription element"),
-           Description_1006 =>
+           Description_1006    =>
              League.Strings.To_Universal_String ("not supported"),
-           Types_1007       =>
+           Types_1007          =>
              League.Strings.To_Universal_String ("not supported"),
-           Types_1008       =>
+           Types_1008          =>
              League.Strings.To_Universal_String ("not supported"),
-           Interface_1009   =>
+           Interface_1009      =>
              League.Strings.To_Universal_String ("not supported"),
-           Interface_1010   =>
+           Interface_1010      =>
              League.Strings.To_Universal_String
               ("name of the interface component must be unique"),
-           Interface_1011   =>
+           Interface_1011      =>
              League.Strings.To_Universal_String
               ("list of extended interfaces must not contain duplicates"),
-           Interface_1012   =>
+           Interface_1012      =>
+             League.Strings.To_Universal_String ("not supported"),
+           InterfaceFault_1013 =>
+             League.Strings.To_Universal_String ("not supported"),
+           InterfaceFault_1014 =>
+             League.Strings.To_Universal_String ("not supported"),
+           InterfaceFault_1015 =>
+             League.Strings.To_Universal_String ("not supported"),
+           InterfaceFault_1016 =>
+             League.Strings.To_Universal_String ("not supported"),
+           InterfaceFault_1017 =>
              League.Strings.To_Universal_String ("not supported"));
 
    ------------

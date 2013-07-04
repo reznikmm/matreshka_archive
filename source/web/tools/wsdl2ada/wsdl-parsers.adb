@@ -978,6 +978,19 @@ package body WSDL.Parsers is
 
       --  Analyze 'element' attribute.
 
+      --  Note, there are two assertion is applied to {message content model}
+      --  and {element declaration} properties of interface's fault component:
+      --
+      --  InterfaceFault-1013: An xs:token with one of the values #any, #none,
+      --  #other, or #element.
+      --
+      --  InterfaceFault-1014: When the {message content model} property has
+      --  the value #any or #none the {element declaration} property MUST be
+      --  empty.
+      --
+      --  Both assertions not need to be tested at runtime, they are enforced
+      --  by construction.
+
       if Attributes.Is_Specified (Element_Attribute) then
          declare
             Value : constant League.Strings.Universal_String
