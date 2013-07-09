@@ -1068,6 +1068,20 @@ package body WSDL.Parsers is
       if Attributes.Is_Specified (Pattern_Attribute) then
          Node.Message_Exchange_Pattern := Attributes.Value (Pattern_Attribute);
 
+         --  InterfaceOperation-1018: This xs:anyURI MUST be an absolute IRI
+         --  (see [IETF RFC 3987]).
+         --
+         --  XXX Not implemented yet.
+
+         --  MEP-1022: A message exchange pattern is itself uniquely identified
+         --  by an absolute IRI, which is used as the value of the {message
+         --  exchange pattern} property of the Interface Operation component,
+         --  and which specifies the fault propagation ruleset that its faults
+         --  obey. 
+         --
+         --  XXX Not implemented yet (should check whether specified MEP is
+         --  known to translator).
+
       else
          Node.Message_Exchange_Pattern := In_Out_MEP;
       end if;
@@ -1078,6 +1092,15 @@ package body WSDL.Parsers is
          Node.Style :=
            Attributes.Value (Style_Attribute).Split
             (' ', League.Strings.Skip_Empty);
+
+         for J in 1 .. Node.Style.Length loop
+            --  InterfaceOperation-1019: These xs:anyURIs MUST be absolute IRIs
+            --  (see [IETF RFC 3986]).
+            --
+            --  XXX Not implemented yet.
+
+            null;
+         end loop;
 
       else
          Node.Style := Node.Parent.Style_Default;

@@ -120,10 +120,39 @@ package WSDL.Assertions is
       --  Fault components within a namespace SHOULD be unique, thus allowing
       --  such derivation to occur without inadvertent error.
 
-      InterfaceFault_1017);
+      InterfaceFault_1017,
       --  If the element attribute information item has a value, then it MUST
       --  resolve to an Element Declaration component from the {element
       --  declarations} property of the Description component.
+
+      InterfaceOperation_1018,
+      --  This xs:anyURI MUST be an absolute IRI (see [IETF RFC 3987]).
+
+      InterfaceOperation_1019,
+      --  These xs:anyURIs MUST be absolute IRIs (see [IETF RFC 3986]).
+
+      InterfaceOperation_1020,
+      --  In cases where, due to an interface extending one or more other
+      --  interfaces, two or more Interface Operation components have the same
+      --  value for their {name} property, then the component models of those
+      --  Interface Operation components MUST be equivalent (see 2.15
+      --  Equivalence of Components).
+
+      InterfaceOperation_1021,
+      --  For the above reason, it is considered good practice to ensure, where
+      --  necessary, that the {name} property of Interface Operation components
+      --  within a namespace SHOULD be unique, thus allowing such derivation to
+      --  occur without inadvertent error.
+
+      MEP_1022,
+      --  A message exchange pattern is itself uniquely identified by an
+      --  absolute IRI, which is used as the value of the {message exchange
+      --  pattern} property of the Interface Operation component, and which
+      --  specifies the fault propagation ruleset that its faults obey.
+
+      InterfaceOperation_1023);
+      --  An Interface Operation component MUST satisfy the specification
+      --  defined by each operation style identified by its {style} property.
 
    procedure Report
     (File      : League.Strings.Universal_String;
