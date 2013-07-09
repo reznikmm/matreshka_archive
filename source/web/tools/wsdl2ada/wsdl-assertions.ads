@@ -181,11 +181,17 @@ package WSDL.Assertions is
       --  message references} property of an Interface Operation component, its
       --  {message label} property MUST be unique.
 
-      MessageLabel_1030);
+      MessageLabel_1030,
       --  If the messageLabel attribute information item of an interface
       --  message reference element information item is present, then its
       --  actual value MUST match the {message label} of some placeholder
       --  message with {direction} equal to the message direction.
+
+      MessageLabel_1031);
+      --  If the messageLabel attribute information item of an interface
+      --  message reference element information item is absent then there MUST
+      --  be a unique placeholder message with {direction} equal to the message
+      --  direction.
 
    procedure Report
     (File      : League.Strings.Universal_String;

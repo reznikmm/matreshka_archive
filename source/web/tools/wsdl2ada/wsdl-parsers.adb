@@ -897,6 +897,28 @@ package body WSDL.Parsers is
 
       if Attributes.Is_Specified (Message_Label_Attribute) then
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
+
+      else
+         --  MessageLabel-1031: If the messageLabel attribute information item
+         --  of an interface message reference element information item is
+         --  absent then there MUST be a unique placeholder message with
+         --  {direction} equal to the message direction. 
+
+         case Direction is
+            when WSDL.AST.In_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_Single_In then
+                  Parser.Report (WSDL.Assertions.MessageLabel_1031);
+
+                  raise WSDL_Error;
+               end if;
+
+            when WSDL.AST.Out_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_Single_Out then
+                  Parser.Report (WSDL.Assertions.MessageLabel_1031);
+
+                  raise WSDL_Error;
+               end if;
+         end case;
       end if;
 
       --  Lookup for placeholder in the operation's MEP.

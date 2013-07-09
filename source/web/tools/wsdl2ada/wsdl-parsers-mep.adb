@@ -65,10 +65,12 @@ package body WSDL.Parsers.MEP is
       if IRI = WSDL.Constants.In_Only_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length       => 1,
-                 IRI          => WSDL.Constants.In_Only_MEP,
-                 Placeholders =>
-                  (1 => (Label => WSDL.Constants.In_Label,
+                (Length         => 1,
+                 IRI            => WSDL.Constants.In_Only_MEP,
+                 Has_Single_In  => True,
+                 Has_Single_Out => False,
+                 Placeholders   =>
+                  (1 => (Label     => WSDL.Constants.In_Label,
                          Direction => WSDL.AST.In_Message,
                          Message   => null)));
 
@@ -77,9 +79,11 @@ package body WSDL.Parsers.MEP is
       elsif IRI = WSDL.Constants.Robust_In_Only_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length       => 1,
-                 IRI          => WSDL.Constants.Robust_In_Only_MEP,
-                 Placeholders =>
+                (Length         => 1,
+                 IRI            => WSDL.Constants.Robust_In_Only_MEP,
+                 Has_Single_In  => True,
+                 Has_Single_Out => False,
+                 Placeholders   =>
                   (1 => (Label => WSDL.Constants.In_Label,
                          Direction => WSDL.AST.In_Message,
                          Message   => null)));
@@ -89,9 +93,11 @@ package body WSDL.Parsers.MEP is
       elsif IRI = WSDL.Constants.In_Out_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length       => 2,
-                 IRI          => WSDL.Constants.In_Out_MEP,
-                 Placeholders =>
+                (Length         => 2,
+                 IRI            => WSDL.Constants.In_Out_MEP,
+                 Has_Single_In  => True,
+                 Has_Single_Out => True,
+                 Placeholders   =>
                   (1 => (Label => WSDL.Constants.In_Label,
                          Direction => WSDL.AST.In_Message,
                          Message   => null),

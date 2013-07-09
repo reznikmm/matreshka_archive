@@ -61,8 +61,12 @@ package WSDL.MEPs is
      array (Positive range <>) of Message_Placeholder;
 
    type MEP (Length : Natural) is limited record
-      IRI          : League.Strings.Universal_String;
-      Placeholders : Message_Placeholder_Array (1 .. Length);
+      IRI            : League.Strings.Universal_String;
+      Has_Single_In  : Boolean;
+      --  MEP has only one 'in' placeholder message.
+      Has_Single_Out : Boolean;
+      --  MEP has only one 'out' placeholder message.
+      Placeholders   : Message_Placeholder_Array (1 .. Length);
    end record;
 
    type MEP_Access is access all MEP;
