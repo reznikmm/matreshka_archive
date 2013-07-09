@@ -105,7 +105,10 @@ package body WSDL.Assertions is
            InterfaceMessageReference_1027 =>
              League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceMessageReference_1028 =>
-             League.Strings.To_Universal_String ("enforced by construction"));
+             League.Strings.To_Universal_String ("enforced by construction"),
+           InterfaceMessageReference_1029 =>
+             League.Strings.To_Universal_String
+              ("effective message label must be unique"));
 
    ------------
    -- Report --

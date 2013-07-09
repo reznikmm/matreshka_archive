@@ -863,6 +863,7 @@ package body WSDL.Parsers is
       pragma Unreferenced (Success);
 
       use type WSDL.AST.Message_Directions;
+      use type WSDL.AST.Interface_Message_Access;
 
       Node  : constant WSDL.AST.Interface_Message_Access
         := new WSDL.AST.Messages.Interface_Message_Node;
@@ -893,9 +894,6 @@ package body WSDL.Parsers is
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
       end if;
 
-      --  MessageLabel-1024: The value of this property MUST match the name of
-      --  placeholder message defined by the message exchange pattern. 
-      --
       --  Lookup for placeholder in the operation's MEP.
 
       Found := False;
@@ -906,9 +904,31 @@ package body WSDL.Parsers is
            and Parent.Message_Exchange_Pattern.Placeholders (J).Label
                  = Node.Message_Label
          then
+            --  InterfaceMessageReference-1029: For each Interface Message
+            --  Reference component in the {interface message references}
+            --  property of an Interface Operation component, its {message
+            --  label} property MUST be unique.
+            --
+            --  This code assumes that MEP uses unique labels for messages and
+            --  takes in sense the fact that Message member is filled by
+            --  interface message reference once it is processed.
+
+            if Parent.Message_Exchange_Pattern.Placeholders (J).Message /= null then
+               Parser.Report (WSDL.Assertions.InterfaceMessageReference_1029);
+
+               raise WSDL_Error;
+            end if;
+
+            Parent.Message_Exchange_Pattern.Placeholders (J).Message := Node;
+
             Found := True;
+
+            exit;
          end if;
       end loop;
+
+      --  MessageLabel-1024: The value of this property MUST match the name of
+      --  placeholder message defined by the message exchange pattern. 
 
       if not Found then
          Parser.Report (WSDL.Assertions.MessageLabel_1024);

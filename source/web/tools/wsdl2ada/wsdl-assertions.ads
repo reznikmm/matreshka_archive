@@ -172,9 +172,14 @@ package WSDL.Assertions is
       InterfaceMessageReference_1027,
       --  An xs:token with one of the values #any, #none, #other, or #element.
 
-      InterfaceMessageReference_1028);
+      InterfaceMessageReference_1028,
       --  When the {message content model} property has the value #any or
       --  #none, the {element declaration} property MUST be empty.
+
+      InterfaceMessageReference_1029);
+      --  For each Interface Message Reference component in the {interface
+      --  message references} property of an Interface Operation component, its
+      --  {message label} property MUST be unique.
 
    procedure Report
     (File      : League.Strings.Universal_String;
