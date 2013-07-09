@@ -41,73 +41,45 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with WSDL.Constants;
 
-package body WSDL.Assertions is
+package body WSDL.Parsers.MEP is
 
-   WSDL_Assertion_Message :
-     constant array (WSDL_Assertion) of League.Strings.Universal_String
-       := (Description_1001        =>
-             League.Strings.To_Universal_String ("not supported"),
-           Description_1002        =>
-             League.Strings.To_Universal_String ("not supported"),
-           Description_1003        =>
-             League.Strings.To_Universal_String ("not supported"),
-           Description_1004        =>
-             League.Strings.To_Universal_String ("not supported"),
-           Description_1005        =>
-             League.Strings.To_Universal_String
-              ("invalid order of children elements of wsdl:decription element"),
-           Description_1006        =>
-             League.Strings.To_Universal_String ("not supported"),
-           Types_1007              =>
-             League.Strings.To_Universal_String ("not supported"),
-           Types_1008              =>
-             League.Strings.To_Universal_String ("not supported"),
-           Interface_1009          =>
-             League.Strings.To_Universal_String ("not supported"),
-           Interface_1010          =>
-             League.Strings.To_Universal_String
-              ("name of the interface component must be unique"),
-           Interface_1011          =>
-             League.Strings.To_Universal_String
-              ("list of extended interfaces must not contain duplicates"),
-           Interface_1012          =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceFault_1013     =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceFault_1014     =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceFault_1015     =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceFault_1016     =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceFault_1017     =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceOperation_1018 =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceOperation_1019 =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceOperation_1020 =>
-             League.Strings.To_Universal_String ("not supported"),
-           InterfaceOperation_1021 =>
-             League.Strings.To_Universal_String ("not supported"),
-           MEP_1022                =>
-             League.Strings.To_Universal_String ("MEP is not supported"),
-           InterfaceOperation_1023 =>
-             League.Strings.To_Universal_String ("not supported"));
+   -------------
+   -- Resolve --
+   -------------
 
-   ------------
-   -- Report --
-   ------------
+   function Resolve
+    (Parser : WSDL_Parser;
+     IRI    : League.Strings.Universal_String)
+       return not null WSDL.MEPs.MEP_Access
+   is
+      use type League.Strings.Universal_String;
 
-   procedure Report
-    (File      : League.Strings.Universal_String;
-     Line      : WSDL.Diagnoses.Line_Number;
-     Column    : WSDL.Diagnoses.Column_Number;
-     Assertion : WSDL_Assertion) is
    begin
-      WSDL.Diagnoses.Report
-       (File, Line, Column, WSDL_Assertion_Message (Assertion));
-   end Report;
+      --  MEPs specified by Web Services Description Language (WSDL) Version
+      --  2.0 Part 2: Adjuncts.
 
-end WSDL.Assertions;
+      if IRI = WSDL.Constants.In_Only_MEP then
+         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.In_Only_MEP);
+
+      elsif IRI = WSDL.Constants.Robust_In_Only_MEP then
+         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.Robust_In_Only_MEP);
+
+      elsif IRI = WSDL.Constants.In_Out_MEP then
+         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.In_Out_MEP);
+
+      else
+         --  MEP-1022: A message exchange pattern is itself uniquely identified
+         --  by an absolute IRI, which is used as the value of the {message
+         --  exchange pattern} property of the Interface Operation component,
+         --  and which specifies the fault propagation ruleset that its faults
+         --  obey. 
+
+         Parser.Report (WSDL.Assertions.MEP_1022);
+
+         raise WSDL_Error;
+      end if;
+   end Resolve;
+
+end WSDL.Parsers.MEP;

@@ -238,8 +238,8 @@ package body WSDL.Generator is
       First_Operation := True;
 
       for Operation_Node of Operations loop
-         if Operation_Node.Message_Exchange_Pattern /= In_Out_MEP
-           and Operation_Node.Message_Exchange_Pattern /= Robust_In_Only_MEP
+         if Operation_Node.Message_Exchange_Pattern.IRI /= In_Out_MEP
+           and Operation_Node.Message_Exchange_Pattern.IRI /= Robust_In_Only_MEP
          then
             --  Only in-out and robust-in-only MEPs are supported.
 
@@ -386,8 +386,8 @@ package body WSDL.Generator is
       First_Operation := True;
 
       for Operation_Node of Operations loop
-         if Operation_Node.Message_Exchange_Pattern /= In_Out_MEP
-           and Operation_Node.Message_Exchange_Pattern /= Robust_In_Only_MEP
+         if Operation_Node.Message_Exchange_Pattern.IRI /= In_Out_MEP
+           and Operation_Node.Message_Exchange_Pattern.IRI /= Robust_In_Only_MEP
          then
             --  Only in-out and robust-in-only MEPs are supported.
 
@@ -503,7 +503,7 @@ package body WSDL.Generator is
 
          Put_Line (");");
 
-         if Operation_Node.Message_Exchange_Pattern = In_Out_MEP then
+         if Operation_Node.Message_Exchange_Pattern.IRI = In_Out_MEP then
             Put_Line
              ("            Output :="
                 & " new Web_Services.SOAP.Messages.SOAP_Message;");
@@ -531,7 +531,7 @@ package body WSDL.Generator is
                    & "Web_Services.SOAP.Payloads.SOAP_Payload_Access (Aux);");
             end if;
 
-         elsif Operation_Node.Message_Exchange_Pattern = Robust_In_Only_MEP then
+         elsif Operation_Node.Message_Exchange_Pattern.IRI = Robust_In_Only_MEP then
             --  Generate fault handling code when necessary.
 
             if not Operation_Node.Interface_Fault_References.Is_Empty then

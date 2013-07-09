@@ -47,6 +47,7 @@ with League.String_Vectors;
 
 limited with WSDL.AST.Bindings;
 with WSDL.AST.Messages;
+with WSDL.MEPs;
 
 package WSDL.AST.Operations is
 
@@ -78,7 +79,7 @@ package WSDL.AST.Operations is
       Parent                       : WSDL.AST.Interface_Access;
       --  Value of {parent} property.
 
-      Message_Exchange_Pattern     : League.Strings.Universal_String;
+      Message_Exchange_Pattern     : WSDL.MEPs.MEP_Access;
       --  Value of {message exchange pattern} property.
 
       Style                        :

@@ -69,7 +69,7 @@ package body WSDL.Analyzer is
       Output_Message : WSDL.AST.Messages.Interface_Message_Access;
 
    begin
-      if Node.Message_Exchange_Pattern = In_Out_MEP then
+      if Node.Message_Exchange_Pattern.IRI = In_Out_MEP then
          --  InOutComposition-2015: "The in-out message exchange pattern
          --  consists of exactly two messages, in order, as follows:
          --
@@ -156,7 +156,7 @@ package body WSDL.Analyzer is
             raise Program_Error;
          end if;
 
-      elsif Node.Message_Exchange_Pattern = Robust_In_Only_MEP then
+      elsif Node.Message_Exchange_Pattern.IRI = Robust_In_Only_MEP then
          --  RobustInOnlyComposition-2013: "The robust-in-only message exchange
          --  pattern consists of exactly one message as follows:
          --

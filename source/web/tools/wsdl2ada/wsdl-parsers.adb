@@ -52,6 +52,7 @@ with WSDL.AST.Messages;
 with WSDL.AST.Types;
 with WSDL.Constants;
 with WSDL.Diagnoses;
+with WSDL.Parsers.MEP;
 with WSDL.Parsers.SOAP;
 
 package body WSDL.Parsers is
@@ -99,7 +100,8 @@ package body WSDL.Parsers is
    --  Handles start of 'fault' element as child of 'interface' element.
 
    procedure Start_Interface_Operation_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Parent     : not null WSDL.AST.Interface_Access;
      Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean);
@@ -641,7 +643,8 @@ package body WSDL.Parsers is
             if Self.Current_State.Kind = WSDL_Interface then
                Self.Push (WSDL_Interface_Operation);
                Start_Interface_Operation_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Current_Interface,
                  Self.Current_Operation,
                  Success);
@@ -1047,15 +1050,17 @@ package body WSDL.Parsers is
    ---------------------------------------
 
    procedure Start_Interface_Operation_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Parent     : not null WSDL.AST.Interface_Access;
      Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean)
    is
       pragma Unreferenced (Success);
 
-      Name : constant League.Strings.Universal_String
+      Name    : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
+      MEP_IRI : League.Strings.Universal_String;
 
    begin
       Node := new WSDL.AST.Operations.Interface_Operation_Node;
@@ -1066,25 +1071,18 @@ package body WSDL.Parsers is
       --  Analyze 'pattern' attribute.
 
       if Attributes.Is_Specified (Pattern_Attribute) then
-         Node.Message_Exchange_Pattern := Attributes.Value (Pattern_Attribute);
+         MEP_IRI := Attributes.Value (Pattern_Attribute);
 
          --  InterfaceOperation-1018: This xs:anyURI MUST be an absolute IRI
          --  (see [IETF RFC 3987]).
          --
          --  XXX Not implemented yet.
 
-         --  MEP-1022: A message exchange pattern is itself uniquely identified
-         --  by an absolute IRI, which is used as the value of the {message
-         --  exchange pattern} property of the Interface Operation component,
-         --  and which specifies the fault propagation ruleset that its faults
-         --  obey. 
-         --
-         --  XXX Not implemented yet (should check whether specified MEP is
-         --  known to translator).
-
       else
-         Node.Message_Exchange_Pattern := In_Out_MEP;
+         MEP_IRI := In_Out_MEP;
       end if;
+
+      Node.Message_Exchange_Pattern := WSDL.Parsers.MEP.Resolve (Parser, MEP_IRI);
 
       --  Analyze 'style' attribute.
 
