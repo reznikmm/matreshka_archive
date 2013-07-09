@@ -870,6 +870,20 @@ package body WSDL.Parsers is
 
    begin
       Node.Parent := Parent;
+
+      --  InterfaceMessageReference-1025: An xs:token with one of the values in
+      --  or out, indicating whether the message is coming to the service or
+      --  going from the service, respectively.
+      --
+      --  This assertion is enforced by construction.
+
+      --  InterfaceMessageReference-1026: The direction MUST be the same as the
+      --  direction of the message identified by the {message label} property
+      --  in the {message exchange pattern} of the Interface Operation
+      --  component this is contained within.
+      --
+      --  This assertion is enforced by construction.
+
       Node.Direction := Direction;
       Parent.Interface_Message_References.Append (Node);
 
@@ -903,6 +917,17 @@ package body WSDL.Parsers is
       end if;
 
       --  Analyze 'element' attribute.
+
+      --  InterfaceMessageReference-1027: An xs:token with one of the values
+      --  #any, #none, #other, or #element.
+      --
+      --  This assertion is enforced by construction.
+
+      --  InterfaceMessageReference-1028: When the {message content model}
+      --  property has the value #any or #none, the {element declaration}
+      --  property MUST be empty.
+      --
+      --  This assertion is enforced by construction.
 
       if Attributes.Is_Specified (Element_Attribute) then
          declare

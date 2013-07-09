@@ -154,9 +154,27 @@ package WSDL.Assertions is
       --  An Interface Operation component MUST satisfy the specification
       --  defined by each operation style identified by its {style} property.
 
-      MessageLabel_1024);
+      MessageLabel_1024,
       --  The value of this property MUST match the name of a placeholder
       --  message defined by the message exchange pattern. 
+
+      InterfaceMessageReference_1025,
+      --  An xs:token with one of the values in or out, indicating whether the
+      --  message is coming to the service or going from the service,
+      --  respectively.
+
+      InterfaceMessageReference_1026,
+      --  The direction MUST be the same as the direction of the message
+      --  identified by the {message label} property in the {message exchange
+      --  pattern} of the Interface Operation component this is contained
+      --  within.
+
+      InterfaceMessageReference_1027,
+      --  An xs:token with one of the values #any, #none, #other, or #element.
+
+      InterfaceMessageReference_1028);
+      --  When the {message content model} property has the value #any or
+      --  #none, the {element declaration} property MUST be empty.
 
    procedure Report
     (File      : League.Strings.Universal_String;
