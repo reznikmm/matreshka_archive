@@ -108,7 +108,8 @@ package body WSDL.Parsers is
    --  Handles start of 'operation' element as child of 'interface' element.
 
    procedure Start_Input_Output_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
@@ -594,7 +595,8 @@ package body WSDL.Parsers is
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
                Self.Push (WSDL_Input);
                Start_Input_Output_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
                  WSDL.AST.In_Message,
@@ -689,7 +691,8 @@ package body WSDL.Parsers is
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
                Self.Push (WSDL_Output);
                Start_Input_Output_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
                  WSDL.AST.Out_Message,
@@ -850,7 +853,8 @@ package body WSDL.Parsers is
    --------------------------------
 
    procedure Start_Input_Output_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
@@ -858,8 +862,11 @@ package body WSDL.Parsers is
    is
       pragma Unreferenced (Success);
 
-      Node : constant WSDL.AST.Interface_Message_Access
+      use type WSDL.AST.Message_Directions;
+
+      Node  : constant WSDL.AST.Interface_Message_Access
         := new WSDL.AST.Messages.Interface_Message_Node;
+      Found : Boolean;
 
    begin
       Node.Parent := Parent;
@@ -870,6 +877,29 @@ package body WSDL.Parsers is
 
       if Attributes.Is_Specified (Message_Label_Attribute) then
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
+      end if;
+
+      --  MessageLabel-1024: The value of this property MUST match the name of
+      --  placeholder message defined by the message exchange pattern. 
+      --
+      --  Lookup for placeholder in the operation's MEP.
+
+      Found := False;
+
+      for J in Parent.Message_Exchange_Pattern.Placeholders'Range loop
+         if Parent.Message_Exchange_Pattern.Placeholders (J).Direction
+              = Direction
+           and Parent.Message_Exchange_Pattern.Placeholders (J).Label
+                 = Node.Message_Label
+         then
+            Found := True;
+         end if;
+      end loop;
+
+      if not Found then
+         Parser.Report (WSDL.Assertions.MessageLabel_1024);
+
+         raise WSDL_Error;
       end if;
 
       --  Analyze 'element' attribute.

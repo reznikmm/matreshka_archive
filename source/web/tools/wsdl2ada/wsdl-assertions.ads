@@ -150,9 +150,13 @@ package WSDL.Assertions is
       --  pattern} property of the Interface Operation component, and which
       --  specifies the fault propagation ruleset that its faults obey.
 
-      InterfaceOperation_1023);
+      InterfaceOperation_1023,
       --  An Interface Operation component MUST satisfy the specification
       --  defined by each operation style identified by its {style} property.
+
+      MessageLabel_1024);
+      --  The value of this property MUST match the name of a placeholder
+      --  message defined by the message exchange pattern. 
 
    procedure Report
     (File      : League.Strings.Universal_String;

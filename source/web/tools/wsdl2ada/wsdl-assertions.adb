@@ -94,7 +94,10 @@ package body WSDL.Assertions is
            MEP_1022                =>
              League.Strings.To_Universal_String ("MEP is not supported"),
            InterfaceOperation_1023 =>
-             League.Strings.To_Universal_String ("not supported"));
+             League.Strings.To_Universal_String ("not supported"),
+           MessageLabel_1024       =>
+             League.Strings.To_Universal_String
+              ("no such placeholder defined by the MEP"));
 
    ------------
    -- Report --
