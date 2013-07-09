@@ -45,7 +45,6 @@ with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
-with WSDL.AST.Messages;
 with WSDL.AST.Operations;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
@@ -129,12 +128,12 @@ package WSDL.Visitors is
 
    not overriding procedure Enter_Interface_Message
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Leave_Interface_Message
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Enter_Interface_Operation

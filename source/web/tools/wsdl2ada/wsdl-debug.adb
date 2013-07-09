@@ -50,7 +50,13 @@ with XML.SAX.Pretty_Writers;
 with WSDL.AST.Bindings;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Interfaces;
+pragma Unreferenced (WSDL.AST.Interfaces);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Messages;
+pragma Unreferenced (WSDL.AST.Messages);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Operations;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
@@ -120,12 +126,12 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface_Message
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Leave_Interface_Message
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Interface_Operation
@@ -268,7 +274,7 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface_Message
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       case Node.Direction is
@@ -395,7 +401,7 @@ package body WSDL.Debug is
 
    overriding procedure Leave_Interface_Message
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Messages.Interface_Message_Access;
+     Node    : not null WSDL.AST.Interface_Message_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       case Node.Direction is

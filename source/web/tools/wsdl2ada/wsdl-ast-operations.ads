@@ -46,7 +46,6 @@ with Ada.Containers.Vectors;
 with League.String_Vectors;
 
 limited with WSDL.AST.Bindings;
-with WSDL.AST.Messages;
 with WSDL.MEPs;
 
 package WSDL.AST.Operations is
@@ -56,8 +55,8 @@ package WSDL.AST.Operations is
    package Interface_Message_Vectors is
      new Ada.Containers.Vectors
           (Positive,
-           WSDL.AST.Messages.Interface_Message_Access,
-           WSDL.AST.Messages."=");
+           WSDL.AST.Interface_Message_Access,
+           WSDL.AST."=");
 
    package Interface_Fault_Vectors is
      new Ada.Containers.Vectors

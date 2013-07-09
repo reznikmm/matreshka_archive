@@ -63,8 +63,6 @@ package WSDL.AST.Messages is
       --  Name of the element which is used as content of the message.
    end record;
 
-   type Interface_Message_Access is access all Interface_Message_Node'Class;
-
    overriding procedure Enter
     (Self    : not null access Interface_Message_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;

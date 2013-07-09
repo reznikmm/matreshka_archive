@@ -44,6 +44,9 @@
 with League.Strings;
 
 with WSDL.AST.Messages;
+pragma Unreferenced (WSDL.AST.Messages);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.Constants;
 
 package body WSDL.Analyzer is
@@ -63,10 +66,10 @@ package body WSDL.Analyzer is
       pragma Unreferenced (Control);
 
       use type League.Strings.Universal_String;
-      use type WSDL.AST.Messages.Interface_Message_Access;
+      use type WSDL.AST.Interface_Message_Access;
 
-      Input_Message  : WSDL.AST.Messages.Interface_Message_Access;
-      Output_Message : WSDL.AST.Messages.Interface_Message_Access;
+      Input_Message  : WSDL.AST.Interface_Message_Access;
+      Output_Message : WSDL.AST.Interface_Message_Access;
 
    begin
       if Node.Message_Exchange_Pattern.IRI = In_Out_MEP then

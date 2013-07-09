@@ -51,6 +51,9 @@ with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports unreferenced unit.
 with WSDL.AST.Messages;
+pragma Unreferenced (WSDL.AST.Messages);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Services;
 with WSDL.Constants;
 with WSDL.Generator.Naming_Conventions;
@@ -171,15 +174,15 @@ package body WSDL.Generator is
       use type WSDL.AST.Bindings.Binding_Access;
       use type WSDL.AST.Message_Content_Models;
       use type WSDL.AST.Message_Directions;
-      use type WSDL.AST.Messages.Interface_Message_Access;
+      use type WSDL.AST.Interface_Message_Access;
 
       Binding_Node           : WSDL.AST.Bindings.Binding_Access;
       Operations             : Operation_Maps.Map;
       Interface_Type_Name    : League.Strings.Universal_String;
       Interface_Package_Name : League.Strings.Universal_String;
       SOAP_Action            : League.Strings.Universal_String;
-      Input_Message          : WSDL.AST.Messages.Interface_Message_Access;
-      Output_Message         : WSDL.AST.Messages.Interface_Message_Access;
+      Input_Message          : WSDL.AST.Interface_Message_Access;
+      Output_Message         : WSDL.AST.Interface_Message_Access;
       First_Operation        : Boolean;
 
    begin

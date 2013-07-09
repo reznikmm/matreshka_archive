@@ -858,7 +858,7 @@ package body WSDL.Parsers is
    is
       pragma Unreferenced (Success);
 
-      Node : constant WSDL.AST.Messages.Interface_Message_Access
+      Node : constant WSDL.AST.Interface_Message_Access
         := new WSDL.AST.Messages.Interface_Message_Node;
 
    begin
