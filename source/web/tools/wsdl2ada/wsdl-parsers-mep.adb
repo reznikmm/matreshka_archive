@@ -60,14 +60,44 @@ package body WSDL.Parsers.MEP is
       --  MEPs specified by Web Services Description Language (WSDL) Version
       --  2.0 Part 2: Adjuncts.
 
+      --  2.3.1 In-Only message exchange pattern
+
       if IRI = WSDL.Constants.In_Only_MEP then
-         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.In_Only_MEP);
+         return
+           new WSDL.MEPs.MEP'
+                (Length       => 1,
+                 IRI          => WSDL.Constants.In_Only_MEP,
+                 Placeholders =>
+                  (1 => (Label => WSDL.Constants.In_Label,
+                         Direction => WSDL.AST.In_Message,
+                         Message   => null)));
+
+      --  2.3.2 Robust In-Only message exchange pattern
 
       elsif IRI = WSDL.Constants.Robust_In_Only_MEP then
-         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.Robust_In_Only_MEP);
+         return
+           new WSDL.MEPs.MEP'
+                (Length       => 1,
+                 IRI          => WSDL.Constants.Robust_In_Only_MEP,
+                 Placeholders =>
+                  (1 => (Label => WSDL.Constants.In_Label,
+                         Direction => WSDL.AST.In_Message,
+                         Message   => null)));
+
+      --  2.3.3 In-Out message exchange pattern
 
       elsif IRI = WSDL.Constants.In_Out_MEP then
-         return new WSDL.MEPs.MEP'(IRI => WSDL.Constants.In_Out_MEP);
+         return
+           new WSDL.MEPs.MEP'
+                (Length       => 2,
+                 IRI          => WSDL.Constants.In_Out_MEP,
+                 Placeholders =>
+                  (1 => (Label => WSDL.Constants.In_Label,
+                         Direction => WSDL.AST.In_Message,
+                         Message   => null),
+                   2 => (Label => WSDL.Constants.Out_Label,
+                         Direction => WSDL.AST.Out_Message,
+                         Message   => null)));
 
       else
          --  MEP-1022: A message exchange pattern is itself uniquely identified

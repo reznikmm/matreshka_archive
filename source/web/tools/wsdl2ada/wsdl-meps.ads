@@ -45,12 +45,24 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with WSDL.AST;
+
 package WSDL.MEPs is
 
    pragma Preelaborate;
 
-   type MEP is limited record
-      IRI : League.Strings.Universal_String;
+   type Message_Placeholder is record
+      Label     : League.Strings.Universal_String;
+      Direction : WSDL.AST.Message_Directions;
+      Message   : WSDL.AST.Interface_Message_Access;
+   end record;
+
+   type Message_Placeholder_Array is
+     array (Positive range <>) of Message_Placeholder;
+
+   type MEP (Length : Natural) is limited record
+      IRI          : League.Strings.Universal_String;
+      Placeholders : Message_Placeholder_Array (1 .. Length);
    end record;
 
    type MEP_Access is access all MEP;
