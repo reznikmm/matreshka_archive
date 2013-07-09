@@ -41,17 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-limited with WSDL.AST.Operations;
 
 package WSDL.AST.Messages is
 
    pragma Preelaborate;
 
-   type Interface_Operation_Access is
-     access all WSDL.AST.Operations.Interface_Operation_Node'Class;
-
    type Interface_Message_Node is new Abstract_Node with record
-      Parent                : Interface_Operation_Access;
+      Parent                : WSDL.AST.Interface_Operation_Access;
       --  Value of {parent} property.
 
       Message_Label         : League.Strings.Universal_String;

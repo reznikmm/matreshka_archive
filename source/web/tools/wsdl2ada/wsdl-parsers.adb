@@ -862,7 +862,7 @@ package body WSDL.Parsers is
         := new WSDL.AST.Messages.Interface_Message_Node;
 
    begin
-      Node.Parent := WSDL.AST.Messages.Interface_Operation_Access (Parent);
+      Node.Parent := Parent;
       Node.Direction := Direction;
       Parent.Interface_Message_References.Append (Node);
 
