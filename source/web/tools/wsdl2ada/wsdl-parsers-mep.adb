@@ -67,6 +67,8 @@ package body WSDL.Parsers.MEP is
            new WSDL.MEPs.MEP'
                 (Length         => 1,
                  IRI            => WSDL.Constants.In_Only_MEP,
+                 Has_In         => True,
+                 Has_Out        => False,
                  Has_Single_In  => True,
                  Has_Single_Out => False,
                  Placeholders   =>
@@ -81,6 +83,8 @@ package body WSDL.Parsers.MEP is
            new WSDL.MEPs.MEP'
                 (Length         => 1,
                  IRI            => WSDL.Constants.Robust_In_Only_MEP,
+                 Has_In         => True,
+                 Has_Out        => False,
                  Has_Single_In  => True,
                  Has_Single_Out => False,
                  Placeholders   =>
@@ -95,6 +99,8 @@ package body WSDL.Parsers.MEP is
            new WSDL.MEPs.MEP'
                 (Length         => 2,
                  IRI            => WSDL.Constants.In_Out_MEP,
+                 Has_In         => True,
+                 Has_Out        => True,
                  Has_Single_In  => True,
                  Has_Single_Out => True,
                  Placeholders   =>

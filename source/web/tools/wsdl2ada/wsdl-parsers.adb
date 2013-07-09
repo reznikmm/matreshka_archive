@@ -893,6 +893,30 @@ package body WSDL.Parsers is
       Node.Direction := Direction;
       Parent.Interface_Message_References.Append (Node);
 
+      case Direction is
+         when WSDL.AST.In_Message =>
+            --  MessageLabel-1032: If the local name is input then the message
+            --  exchange pattern MUST have at least one placeholder message
+            --  with direction "In".
+
+            if not Parent.Message_Exchange_Pattern.Has_In then
+               Parser.Report (WSDL.Assertions.MessageLabel_1032);
+
+               raise WSDL_Error;
+            end if;
+
+         when WSDL.AST.Out_Message =>
+            --  MessageLabel-1033: If the local name is output then the message
+            --  exchange pattern MUST have at least one placeholder message
+            --  with direction "Out".
+
+            if not Parent.Message_Exchange_Pattern.Has_Out then
+               Parser.Report (WSDL.Assertions.MessageLabel_1033);
+
+               raise WSDL_Error;
+            end if;
+      end case;
+
       --  Analyze 'messageLabel' attribute.
 
       if Attributes.Is_Specified (Message_Label_Attribute) then

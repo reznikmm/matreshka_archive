@@ -62,6 +62,10 @@ package WSDL.MEPs is
 
    type MEP (Length : Natural) is limited record
       IRI            : League.Strings.Universal_String;
+      Has_In         : Boolean;
+      --  MEP has at least one 'in' placeholder message.
+      Has_Out        : Boolean;
+      --  MEP has at least one 'out' placeholder message.
       Has_Single_In  : Boolean;
       --  MEP has only one 'in' placeholder message.
       Has_Single_Out : Boolean;

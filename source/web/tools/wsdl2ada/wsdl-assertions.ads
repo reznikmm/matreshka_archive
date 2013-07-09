@@ -187,11 +187,19 @@ package WSDL.Assertions is
       --  actual value MUST match the {message label} of some placeholder
       --  message with {direction} equal to the message direction.
 
-      MessageLabel_1031);
+      MessageLabel_1031,
       --  If the messageLabel attribute information item of an interface
       --  message reference element information item is absent then there MUST
       --  be a unique placeholder message with {direction} equal to the message
       --  direction.
+
+      MessageLabel_1032,
+      --  If the local name is input then the message exchange pattern MUST
+      --  have at least one placeholder message with direction "In".
+
+      MessageLabel_1033);
+      --  If the local name is output then the message exchange pattern MUST
+      --  have at least one placeholder message with direction "Out".
 
    procedure Report
     (File      : League.Strings.Universal_String;
