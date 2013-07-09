@@ -96,8 +96,7 @@ package body WSDL.Assertions is
            InterfaceOperation_1023        =>
              League.Strings.To_Universal_String ("not supported"),
            MessageLabel_1024              =>
-             League.Strings.To_Universal_String
-              ("no such placeholder defined by the MEP"),
+             League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceMessageReference_1025 =>
              League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceMessageReference_1026 =>
@@ -108,7 +107,10 @@ package body WSDL.Assertions is
              League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceMessageReference_1029 =>
              League.Strings.To_Universal_String
-              ("effective message label must be unique"));
+              ("effective message label must be unique"),
+           MessageLabel_1030              =>
+             League.Strings.To_Universal_String
+              ("no such placeholder message defined by the MEP"));
 
    ------------
    -- Report --

@@ -176,10 +176,16 @@ package WSDL.Assertions is
       --  When the {message content model} property has the value #any or
       --  #none, the {element declaration} property MUST be empty.
 
-      InterfaceMessageReference_1029);
+      InterfaceMessageReference_1029,
       --  For each Interface Message Reference component in the {interface
       --  message references} property of an Interface Operation component, its
       --  {message label} property MUST be unique.
+
+      MessageLabel_1030);
+      --  If the messageLabel attribute information item of an interface
+      --  message reference element information item is present, then its
+      --  actual value MUST match the {message label} of some placeholder
+      --  message with {direction} equal to the message direction.
 
    procedure Report
     (File      : League.Strings.Universal_String;

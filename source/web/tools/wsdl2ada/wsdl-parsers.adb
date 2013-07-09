@@ -885,6 +885,11 @@ package body WSDL.Parsers is
       --
       --  This assertion is enforced by construction.
 
+      --  MessageLabel-1024: The value of this property MUST match the name of
+      --  placeholder message defined by the message exchange pattern. 
+      --
+      --  This assertion is enforced by construction.
+
       Node.Direction := Direction;
       Parent.Interface_Message_References.Append (Node);
 
@@ -927,11 +932,14 @@ package body WSDL.Parsers is
          end if;
       end loop;
 
-      --  MessageLabel-1024: The value of this property MUST match the name of
-      --  placeholder message defined by the message exchange pattern. 
-
       if not Found then
-         Parser.Report (WSDL.Assertions.MessageLabel_1024);
+         --  MessageLabel-1030: If the messageLabel attribute information item
+         --  of an interface message reference element information item is
+         --  present, then its actual value MUST match the {message label} of
+         --  some placeholder message with {direction} equal to the message
+         --  direction.
+
+         Parser.Report (WSDL.Assertions.MessageLabel_1030);
 
          raise WSDL_Error;
       end if;
