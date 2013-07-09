@@ -52,9 +52,6 @@ private with XML.SAX.Locators;
 private with WSDL.Assertions;
 private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
---private with WSDL.AST.Faults;
---private with WSDL.AST.Interfaces;
-private with WSDL.AST.Operations;
 private with WSDL.AST.Services;
 
 package WSDL.Parsers is
@@ -146,7 +143,7 @@ private
       Current_Interface : WSDL.AST.Interface_Access;
       --  Currently processed interface component.
 
-      Current_Operation : WSDL.AST.Operations.Interface_Operation_Access;
+      Current_Operation : WSDL.AST.Interface_Operation_Access;
       --  Currently processed interface operation component.
 
       Current_Binding   : WSDL.AST.Bindings.Binding_Access;

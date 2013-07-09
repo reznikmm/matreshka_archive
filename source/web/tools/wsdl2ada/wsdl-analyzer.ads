@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with WSDL.AST.Descriptions;
-private with WSDL.AST.Operations;
 private with WSDL.Iterators;
 with WSDL.Visitors;
 
@@ -62,7 +61,7 @@ private
 
    overriding procedure Enter_Interface_Operation
     (Self    : in out Analyzer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
 end WSDL.Analyzer;

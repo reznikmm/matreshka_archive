@@ -120,7 +120,7 @@ package WSDL.Iterators is
    not overriding procedure Visit_Interface_Operation
     (Self    : in out WSDL_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out Traverse_Control) is null;
 
    not overriding procedure Visit_Service

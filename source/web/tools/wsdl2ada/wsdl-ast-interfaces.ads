@@ -50,7 +50,6 @@ with League.Strings.Hash;
 
 with WSDL.AST.Components;
 with WSDL.AST.Faults;
-with WSDL.AST.Operations;
 
 package WSDL.AST.Interfaces is
 
@@ -62,10 +61,10 @@ package WSDL.AST.Interfaces is
    package Interface_Operation_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           WSDL.AST.Operations.Interface_Operation_Access,
+           WSDL.AST.Interface_Operation_Access,
            League.Strings.Hash,
            League.Strings."=",
-           WSDL.AST.Operations."=");
+           WSDL.AST."=");
 
    package Interface_Fault_Maps is
      new Ada.Containers.Hashed_Maps

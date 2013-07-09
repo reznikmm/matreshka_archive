@@ -49,6 +49,7 @@ with League.Strings;
 
 limited with WSDL.AST.Faults;
 limited with WSDL.AST.Interfaces;
+limited with WSDL.AST.Operations;
 limited with WSDL.Iterators;
 limited with WSDL.Visitors;
 
@@ -98,6 +99,9 @@ package WSDL.AST is
 
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;
+
+   type Interface_Operation_Access is
+     access all WSDL.AST.Operations.Interface_Operation_Node'Class;
 
    type Interface_Fault_Reference_Access is
      access all WSDL.AST.Faults.Interface_Fault_Reference_Node'Class;

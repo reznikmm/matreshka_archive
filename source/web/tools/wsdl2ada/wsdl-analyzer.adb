@@ -56,7 +56,7 @@ package body WSDL.Analyzer is
 
    overriding procedure Enter_Interface_Operation
     (Self    : in out Analyzer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
       pragma Unreferenced (Self);

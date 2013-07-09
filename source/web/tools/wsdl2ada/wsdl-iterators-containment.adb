@@ -112,7 +112,7 @@ package body WSDL.Iterators.Containment is
    overriding procedure Visit_Interface_Operation
     (Self    : in out Containment_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out Traverse_Control) is
    begin
       for J of Node.Interface_Message_References loop

@@ -139,12 +139,12 @@ package WSDL.Visitors is
 
    not overriding procedure Enter_Interface_Operation
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Leave_Interface_Operation
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Enter_Service

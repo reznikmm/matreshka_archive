@@ -48,7 +48,7 @@ with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
 with WSDL.AST.Interfaces;
 with WSDL.AST.Messages;
---with WSDL.AST.Operations;
+with WSDL.AST.Operations;
 with WSDL.AST.Types;
 with WSDL.Constants;
 with WSDL.Diagnoses;
@@ -103,14 +103,14 @@ package body WSDL.Parsers is
     (Parser     : WSDL_Parser;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Parent     : not null WSDL.AST.Interface_Access;
-     Node       : out WSDL.AST.Operations.Interface_Operation_Access;
+     Node       : out WSDL.AST.Interface_Operation_Access;
      Success    : in out Boolean);
    --  Handles start of 'operation' element as child of 'interface' element.
 
    procedure Start_Input_Output_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean);
    --  Handles start of 'input' and 'output' element as child of 'operation'
@@ -119,7 +119,7 @@ package body WSDL.Parsers is
    procedure Start_Input_Output_Fault_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean);
    --  Handles start of 'infault' and 'outfault' element as child of
@@ -822,7 +822,7 @@ package body WSDL.Parsers is
    procedure Start_Input_Output_Fault_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean)
    is
@@ -852,7 +852,7 @@ package body WSDL.Parsers is
    procedure Start_Input_Output_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Operations.Interface_Operation_Access;
+     Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
      Success    : in out Boolean)
    is
@@ -1053,7 +1053,7 @@ package body WSDL.Parsers is
     (Parser     : WSDL_Parser;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Parent     : not null WSDL.AST.Interface_Access;
-     Node       : out WSDL.AST.Operations.Interface_Operation_Access;
+     Node       : out WSDL.AST.Interface_Operation_Access;
      Success    : in out Boolean)
    is
       pragma Unreferenced (Success);

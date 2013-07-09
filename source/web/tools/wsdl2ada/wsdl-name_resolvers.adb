@@ -50,7 +50,7 @@ pragma Unreferenced (WSDL.AST.Interfaces);
 package body WSDL.Name_Resolvers is
 
    use type League.Strings.Universal_String;
-   use type WSDL.AST.Operations.Interface_Operation_Access;
+   use type WSDL.AST.Interface_Operation_Access;
 
    function Resolve_Binding
     (Root          : not null WSDL.AST.Descriptions.Description_Access;
@@ -69,13 +69,13 @@ package body WSDL.Name_Resolvers is
    function Resolve_Interface_Operation
     (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String)
-       return WSDL.AST.Operations.Interface_Operation_Access;
+       return WSDL.AST.Interface_Operation_Access;
    --  Resolves name of interface operation component.
 
    procedure Resolve_Interface_Operation
     (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String;
-     Result     : out WSDL.AST.Operations.Interface_Operation_Access);
+     Result     : out WSDL.AST.Interface_Operation_Access);
 
    -------------------
    -- Enter_Binding --
@@ -219,7 +219,7 @@ package body WSDL.Name_Resolvers is
    procedure Resolve_Interface_Operation
     (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String;
-     Result     : out WSDL.AST.Operations.Interface_Operation_Access) is
+     Result     : out WSDL.AST.Interface_Operation_Access) is
    begin
       Result := null;
 
@@ -245,9 +245,9 @@ package body WSDL.Name_Resolvers is
    function Resolve_Interface_Operation
     (Node       : not null WSDL.AST.Interface_Access;
      Local_Name : League.Strings.Universal_String)
-       return WSDL.AST.Operations.Interface_Operation_Access
+       return WSDL.AST.Interface_Operation_Access
    is
-      Aux : WSDL.AST.Operations.Interface_Operation_Access;
+      Aux : WSDL.AST.Interface_Operation_Access;
 
    begin
       Resolve_Interface_Operation (Node, Local_Name, Aux);

@@ -51,7 +51,6 @@ with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports unreferenced unit.
 with WSDL.AST.Messages;
-with WSDL.AST.Operations;
 with WSDL.AST.Services;
 with WSDL.Constants;
 with WSDL.Generator.Naming_Conventions;
@@ -63,9 +62,9 @@ package body WSDL.Generator is
    package Operation_Maps is
      new Ada.Containers.Ordered_Maps
           (League.Strings.Universal_String,
-           WSDL.AST.Operations.Interface_Operation_Access,
+           WSDL.AST.Interface_Operation_Access,
            League.Strings."<",
-           WSDL.AST.Operations."=");
+           WSDL.AST."=");
 
    procedure Put (Item : League.Strings.Universal_String);
 
@@ -83,7 +82,7 @@ package body WSDL.Generator is
        return Operation_Maps.Map;
 
    function Compute_SOAP_Action
-    (Operation_Node : not null WSDL.AST.Operations.Interface_Operation_Access;
+    (Operation_Node : not null WSDL.AST.Interface_Operation_Access;
      Binding_Node   : WSDL.AST.Bindings.Binding_Access)
        return League.Strings.Universal_String;
 
@@ -133,11 +132,11 @@ package body WSDL.Generator is
    -------------------------
 
    function Compute_SOAP_Action
-    (Operation_Node : not null WSDL.AST.Operations.Interface_Operation_Access;
+    (Operation_Node : not null WSDL.AST.Interface_Operation_Access;
      Binding_Node   : WSDL.AST.Bindings.Binding_Access)
        return League.Strings.Universal_String
    is
-      use type WSDL.AST.Operations.Interface_Operation_Access;
+      use type WSDL.AST.Interface_Operation_Access;
 
    begin
       for Binding_Operation of Binding_Node.Binding_Operations loop

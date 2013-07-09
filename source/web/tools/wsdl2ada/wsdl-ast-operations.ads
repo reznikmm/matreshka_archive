@@ -93,9 +93,6 @@ package WSDL.AST.Operations is
       --  Value of {interface fault references} property.
    end record;
 
-   type Interface_Operation_Access is
-     access all Interface_Operation_Node'Class;
-
    overriding procedure Enter
     (Self    : not null access Interface_Operation_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;

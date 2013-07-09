@@ -130,12 +130,12 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Leave_Interface_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Service
@@ -286,7 +286,7 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Interface_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
       Attributes : XML.SAX.Attributes.SAX_Attributes;
@@ -413,7 +413,7 @@ package body WSDL.Debug is
 
    overriding procedure Leave_Interface_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Interface_Operation_Access;
+     Node    : not null WSDL.AST.Interface_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       Self.Writer.End_Element (WSDL_Namespace_URI, Operation_Element);

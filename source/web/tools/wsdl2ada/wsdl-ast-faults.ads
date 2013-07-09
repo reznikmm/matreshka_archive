@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Operations;
 
 package WSDL.AST.Faults is
 
@@ -95,7 +94,7 @@ package WSDL.AST.Faults is
       Interface_Fault      : WSDL.AST.Faults.Interface_Fault_Access;
       --  Value of {interface fault} property.
 
-      Parent               : WSDL.AST.Operations.Interface_Operation_Access;
+      Parent               : WSDL.AST.Interface_Operation_Access;
       --  Value of {parent} property.
 
       Message_Label        : League.Strings.Universal_String;
