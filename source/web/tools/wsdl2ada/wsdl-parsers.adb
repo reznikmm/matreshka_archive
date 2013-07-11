@@ -130,7 +130,8 @@ package body WSDL.Parsers is
    --  'operation' element as child of 'interface' element.
 
    procedure Start_Binding_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Descriptions.Description_Access;
      Node       : out WSDL.AST.Bindings.Binding_Access;
@@ -340,7 +341,8 @@ package body WSDL.Parsers is
    ---------------------------
 
    procedure Start_Binding_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Descriptions.Description_Access;
      Node       : out WSDL.AST.Bindings.Binding_Access;
@@ -354,7 +356,9 @@ package body WSDL.Parsers is
       --  of a Description component, the {name} property MUST be unique."
 
       if Parent.Bindings.Contains (Name) then
-         raise Program_Error;
+         Parser.Report (WSDL.Assertions.Binding_1049);
+
+         raise WSDL_Error;
       end if;
 
       Node := new WSDL.AST.Bindings.Binding_Node;
@@ -480,7 +484,8 @@ package body WSDL.Parsers is
                Self.Current_State.Last_Child_Kind := Interface_Binding_Service;
                Self.Push (WSDL_Binding);
                Start_Binding_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Description,
                  Self.Current_Binding,

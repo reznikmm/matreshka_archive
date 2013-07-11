@@ -160,7 +160,10 @@ package body WSDL.Assertions is
            Binding_1047                   =>
              League.Strings.To_Universal_String ("not supported"),
            Binding_1048                   =>
-             League.Strings.To_Universal_String ("not supported"));
+             League.Strings.To_Universal_String ("not supported"),
+           Binding_1049                   =>
+             League.Strings.To_Universal_String
+              ("name of binding component must be unique"));
 
    ------------
    -- Report --

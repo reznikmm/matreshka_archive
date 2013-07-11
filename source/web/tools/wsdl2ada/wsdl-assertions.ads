@@ -277,8 +277,12 @@ package WSDL.Assertions is
       --  that are referenced from any of the operations in that Interface
       --  component.
 
-      Binding_1048);
+      Binding_1048,
       --  This xs:anyURI MUST be an absolute IRI as defined by [IETF RFC 3987].
+
+      Binding_1049);
+      --  For each Binding component in the {bindings} property of a
+      --  Description component, the {name} property MUST be unique.
 
    procedure Report
     (File      : League.Strings.Universal_String;
