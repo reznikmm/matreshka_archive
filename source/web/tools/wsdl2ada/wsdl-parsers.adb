@@ -52,6 +52,7 @@ with WSDL.AST.Operations;
 with WSDL.AST.Types;
 with WSDL.Constants;
 with WSDL.Diagnoses;
+with WSDL.MEPs;
 with WSDL.Parsers.MEP;
 with WSDL.Parsers.SOAP;
 
@@ -835,8 +836,9 @@ package body WSDL.Parsers is
    is
       pragma Unreferenced (Success);
 
-      Node : constant WSDL.AST.Interface_Fault_Reference_Access
+      Node              : constant WSDL.AST.Interface_Fault_Reference_Access
         := new WSDL.AST.Faults.Interface_Fault_Reference_Node;
+      Message_Direction : WSDL.AST.Message_Directions;
 
    begin
       Node.Parent := Parent;
@@ -871,10 +873,56 @@ package body WSDL.Parsers is
       Node.Interface_Fault_Name :=
         To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
 
+      --  Compute corresponding message direction depending on Fault
+      --  Propagation Rule.
+
+      case Parent.Message_Exchange_Pattern.FPR is
+         when WSDL.MEPs.Fault_Replaces_Message =>
+            Message_Direction := Direction;
+
+         when WSDL.MEPs.Message_Triggers_Fault =>
+            case Direction is
+               when WSDL.AST.In_Message =>
+                  Message_Direction := WSDL.AST.Out_Message;
+
+               when WSDL.AST.Out_Message =>
+                  Message_Direction := WSDL.AST.In_Message;
+            end case;
+
+         when WSDL.MEPs.No_Faults =>
+            --  Must never be happen, it violates MessageLabel-1034 and
+            --  MessageLabel-1035 assertions tested above.
+
+            raise Program_Error;
+      end case;
+
       --  Analyze 'messageLabel' attribute.
 
       if Attributes.Is_Specified (Message_Label_Attribute) then
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
+
+      else
+         --  InterfaceFaultReference-1040: The messageLabel attribute
+         --  information item MUST be present in the XML representation of an
+         --  Interface Fault Reference component with a given {direction}, if
+         --  the {message exchange pattern} of the parent Interface Operation
+         --  component has more than one fault with that direction.
+
+         case Node.Direction is
+            when WSDL.AST.In_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_Single_In_Fault then
+                  Parser.Report (WSDL.Assertions.InterfaceFaultReference_1040);
+
+                  raise WSDL_Error;
+               end if;
+
+            when WSDL.AST.Out_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_Single_Out_Fault then
+                  Parser.Report (WSDL.Assertions.InterfaceFaultReference_1040);
+
+                  raise WSDL_Error;
+               end if;
+         end case;
       end if;
    end Start_Input_Output_Fault_Element;
 

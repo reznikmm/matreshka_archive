@@ -79,24 +79,28 @@ package WSDL.MEPs is
      No_Faults);
 
    type MEP (Length : Natural) is limited record
-      IRI            : League.Strings.Universal_String;
-      Placeholders   : Message_Placeholder_Array (1 .. Length);
+      IRI                  : League.Strings.Universal_String;
+      Placeholders         : Message_Placeholder_Array (1 .. Length);
       --  Placeholder messages of the MEP.
-      FPR            : Fault_Propagation_Rules;
+      FPR                  : Fault_Propagation_Rules;
       --  Fault propagation rule of the MEP.
 
-      Has_In         : Boolean;
+      Has_In               : Boolean;
       --  MEP has at least one 'in' placeholder message.
-      Has_Out        : Boolean;
+      Has_Out              : Boolean;
       --  MEP has at least one 'out' placeholder message.
-      Has_Single_In  : Boolean;
+      Has_Single_In        : Boolean;
       --  MEP has only one 'in' placeholder message.
-      Has_Single_Out : Boolean;
+      Has_Single_Out       : Boolean;
       --  MEP has only one 'out' placeholder message.
-      Has_In_Fault   : Boolean;
+      Has_In_Fault         : Boolean;
       --  MEP supports at least one fault in the 'In' direction.
-      Has_Out_Fault  : Boolean;
+      Has_Out_Fault        : Boolean;
       --  MEP supports at least one fault in the 'Out' direction.
+      Has_Single_In_Fault  : Boolean;
+      --  MEP supports only one fault in the 'In' direction.
+      Has_Single_Out_Fault : Boolean;
+      --  MEP supports only one fault in the 'Out' direction.
    end record;
 
    type MEP_Access is access all MEP;

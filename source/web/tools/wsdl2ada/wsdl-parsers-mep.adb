@@ -65,53 +65,57 @@ package body WSDL.Parsers.MEP is
       if IRI = WSDL.Constants.In_Only_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length         => 1,
-                 IRI            => WSDL.Constants.In_Only_MEP,
-                 Placeholders   =>
+                (Length               => 1,
+                 IRI                  => WSDL.Constants.In_Only_MEP,
+                 Placeholders         =>
                   (1 =>
                     (Label     => WSDL.Constants.In_Label,
                      Direction => WSDL.AST.In_Message,
                      Message   => null,
                      Faults    =>
                        WSDL.MEPs.Interface_Fault_Reference_Maps.Empty_Map)),
-                 FPR            => WSDL.MEPs.No_Faults,
-                 Has_In         => True,
-                 Has_Out        => False,
-                 Has_Single_In  => True,
-                 Has_Single_Out => False,
-                 Has_In_Fault   => False,
-                 Has_Out_Fault  => False);
+                 FPR                  => WSDL.MEPs.No_Faults,
+                 Has_In               => True,
+                 Has_Out              => False,
+                 Has_Single_In        => True,
+                 Has_Single_Out       => False,
+                 Has_In_Fault         => False,
+                 Has_Out_Fault        => False,
+                 Has_Single_In_Fault  => False,
+                 Has_Single_Out_Fault => False);
 
       --  2.3.2 Robust In-Only message exchange pattern
 
       elsif IRI = WSDL.Constants.Robust_In_Only_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length         => 1,
-                 IRI            => WSDL.Constants.Robust_In_Only_MEP,
-                 Placeholders   =>
+                (Length               => 1,
+                 IRI                  => WSDL.Constants.Robust_In_Only_MEP,
+                 Placeholders         =>
                   (1 =>
                     (Label     => WSDL.Constants.In_Label,
                      Direction => WSDL.AST.In_Message,
                      Message   => null,
                      Faults    =>
                        WSDL.MEPs.Interface_Fault_Reference_Maps.Empty_Map)),
-                 FPR            => WSDL.MEPs.Message_Triggers_Fault,
-                 Has_In         => True,
-                 Has_Out        => False,
-                 Has_Single_In  => True,
-                 Has_Single_Out => False,
-                 Has_In_Fault   => False,
-                 Has_Out_Fault  => True);
+                 FPR                  => WSDL.MEPs.Message_Triggers_Fault,
+                 Has_In               => True,
+                 Has_Out              => False,
+                 Has_Single_In        => True,
+                 Has_Single_Out       => False,
+                 Has_In_Fault         => False,
+                 Has_Out_Fault        => True,
+                 Has_Single_In_Fault  => False,
+                 Has_Single_Out_Fault => True);
 
       --  2.3.3 In-Out message exchange pattern
 
       elsif IRI = WSDL.Constants.In_Out_MEP then
          return
            new WSDL.MEPs.MEP'
-                (Length         => 2,
-                 IRI            => WSDL.Constants.In_Out_MEP,
-                 Placeholders   =>
+                (Length               => 2,
+                 IRI                  => WSDL.Constants.In_Out_MEP,
+                 Placeholders         =>
                   (1 =>
                     (Label     => WSDL.Constants.In_Label,
                      Direction => WSDL.AST.In_Message,
@@ -124,13 +128,15 @@ package body WSDL.Parsers.MEP is
                      Message   => null,
                      Faults    =>
                        WSDL.MEPs.Interface_Fault_Reference_Maps.Empty_Map)),
-                 FPR            => WSDL.MEPs.Fault_Replaces_Message,
-                 Has_In         => True,
-                 Has_Out        => True,
-                 Has_Single_In  => True,
-                 Has_Single_Out => True,
-                 Has_In_Fault   => False,
-                 Has_Out_Fault  => True);
+                 FPR                  => WSDL.MEPs.Fault_Replaces_Message,
+                 Has_In               => True,
+                 Has_Out              => True,
+                 Has_Single_In        => True,
+                 Has_Single_Out       => True,
+                 Has_In_Fault         => False,
+                 Has_Out_Fault        => True,
+                 Has_Single_In_Fault  => False,
+                 Has_Single_Out_Fault => True);
 
       else
          --  MEP-1022: A message exchange pattern is itself uniquely identified

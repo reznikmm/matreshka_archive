@@ -205,7 +205,7 @@ package WSDL.Assertions is
       --  If the local name is infault then the message exchange pattern MUST
       --  support at least one fault in the "In" direction.
 
-      MessageLabel_1035);
+      MessageLabel_1035,
       --  If the local name is outfault then the message exchange pattern MUST
       --  support at least one fault in the "Out" direction.
 
@@ -217,6 +217,13 @@ package WSDL.Assertions is
 --      --  The direction MUST be consistent with the direction implied by the
 --      --  fault propagation ruleset used in the message exchange pattern of the
 --      --  operation.
+
+      InterfaceFaultReference_1040);
+      --  The messageLabel attribute information item MUST be present in the
+      --  XML representation of an Interface Fault Reference component with a
+      --  given {direction}, if the {message exchange pattern} of the parent
+      --  Interface Operation component has more than one fault with that
+      --  direction.
 
    procedure Report
     (File      : League.Strings.Universal_String;

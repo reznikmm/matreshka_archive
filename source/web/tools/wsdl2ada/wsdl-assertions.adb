@@ -113,8 +113,8 @@ package body WSDL.Assertions is
               ("no such placeholder message defined by the MEP"),
            MessageLabel_1031              =>
              League.Strings.To_Universal_String
-              ("MEP has more than one placeholder message, message label must"
-                 & " be specified"),
+              ("MEP has more than one placeholder message in this direction,"
+                 & " message label must be specified"),
            MessageLabel_1032              =>
              League.Strings.To_Universal_String
               ("MEP doesn't have placeholder message with direction ""In"""),
@@ -126,10 +126,14 @@ package body WSDL.Assertions is
               ("MEP doesn't support fault in the ""In"" direction"),
            MessageLabel_1035              =>
              League.Strings.To_Universal_String
-              ("MEP doesn't support fault in then ""Out"" direction"));
+              ("MEP doesn't support fault in then ""Out"" direction"),
 --           InterfaceFaultReference_1037   =>
 --             League.Strings.To_Universal_String ("enforced by construction"),
 --      InterfaceFaultReference_1038,
+           InterfaceFaultReference_1040   =>
+             League.Strings.To_Universal_String
+              ("MEP has more than one fault in this direction, message label"
+                 & " must be specified"));
 
    ------------
    -- Report --
