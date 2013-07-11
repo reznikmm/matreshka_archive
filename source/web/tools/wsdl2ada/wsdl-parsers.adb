@@ -926,6 +926,27 @@ package body WSDL.Parsers is
                end if;
          end case;
 
+         --  MessageLabel-1043: If the messageLabel attribute information item
+         --  of an interface fault reference element information item is absent
+         --  then there MUST be a unique placeholder message with {direction}
+         --  equal to the message direction.
+
+         case Message_Direction is
+            when WSDL.AST.In_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_In then
+                  Parser.Report (WSDL.Assertions.MessageLabel_1043);
+
+                  raise WSDL_Error;
+               end if;
+
+            when WSDL.AST.Out_Message =>
+               if not Parent.Message_Exchange_Pattern.Has_Out then
+                  Parser.Report (WSDL.Assertions.MessageLabel_1043);
+
+                  raise WSDL_Error;
+               end if;
+         end case;
+
          --  MessageLabel-1041: The messageLabel attribute information item of
          --  an interface fault reference element information item MUST be
          --  present if the message exchange pattern has more than one

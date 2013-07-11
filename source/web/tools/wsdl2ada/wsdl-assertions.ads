@@ -231,11 +231,17 @@ package WSDL.Assertions is
       --  exchange pattern has more than one placeholder message with
       --  {direction} equal to the message direction.
 
-      MessageLabel_1042);
+      MessageLabel_1042,
       --  If the messageLabel attribute information item of an interface fault
       --  reference element information item is present then its actual value
       --  MUST match the {message label} of some placeholder message with
       --  {direction} equal to the message direction.
+
+      MessageLabel_1043);
+      --  If the messageLabel attribute information item of an interface fault
+      --  reference element information item is absent then there MUST be a
+      --  unique placeholder message with {direction} equal to the message
+      --  direction.
 
    procedure Report
     (File      : League.Strings.Universal_String;
