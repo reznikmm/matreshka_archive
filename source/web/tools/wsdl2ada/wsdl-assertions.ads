@@ -218,12 +218,18 @@ package WSDL.Assertions is
 --      --  fault propagation ruleset used in the message exchange pattern of the
 --      --  operation.
 
-      InterfaceFaultReference_1040);
+      InterfaceFaultReference_1040,
       --  The messageLabel attribute information item MUST be present in the
       --  XML representation of an Interface Fault Reference component with a
       --  given {direction}, if the {message exchange pattern} of the parent
       --  Interface Operation component has more than one fault with that
       --  direction.
+
+      MessageLabel_1041);
+      --  The messageLabel attribute information item of an interface fault
+      --  reference element information item MUST be present if the message
+      --  exchange pattern has more than one placeholder message with
+      --  {direction} equal to the message direction.
 
    procedure Report
     (File      : League.Strings.Universal_String;

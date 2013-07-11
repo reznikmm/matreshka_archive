@@ -133,7 +133,11 @@ package body WSDL.Assertions is
            InterfaceFaultReference_1040   =>
              League.Strings.To_Universal_String
               ("MEP has more than one fault in this direction, message label"
-                 & " must be specified"));
+                 & " must be specified"),
+           MessageLabel_1041              =>
+             League.Strings.To_Universal_String
+              ("MEP has more than one placeholder message in this direction,"
+                 & " message label must be specified"));
 
    ------------
    -- Report --
