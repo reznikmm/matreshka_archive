@@ -956,11 +956,9 @@ package body WSDL.Parsers is
       for J in Parent.Message_Exchange_Pattern.Placeholders'Range loop
          if Parent.Message_Exchange_Pattern.Placeholders (J).Direction
               = Message_Direction
---           and (Node.Message_Label.Is_Empty
---                  or Parent.Message_Exchange_Pattern.Placeholders (J).Label
---                       = Node.Message_Label)
-           and Parent.Message_Exchange_Pattern.Placeholders (J).Label
-                 = Node.Message_Label
+           and (Node.Message_Label.Is_Empty
+                  or Parent.Message_Exchange_Pattern.Placeholders (J).Label
+                       = Node.Message_Label)
          then
 --            --  InterfaceMessageReference-1029: For each Interface Message
 --            --  Reference component in the {interface message references}
@@ -978,8 +976,8 @@ package body WSDL.Parsers is
 --            end if;
 --
 --            Parent.Message_Exchange_Pattern.Placeholders (J).Message := Node;
---            Node.Message_Label :=
---              Parent.Message_Exchange_Pattern.Placeholders (J).Label;
+            Node.Message_Label :=
+              Parent.Message_Exchange_Pattern.Placeholders (J).Label;
             Found := True;
 
             exit;
