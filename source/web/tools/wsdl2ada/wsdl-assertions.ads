@@ -209,14 +209,14 @@ package WSDL.Assertions is
       --  If the local name is outfault then the message exchange pattern MUST
       --  support at least one fault in the "Out" direction.
 
---      InterfaceFaultReference_1037,
---      --  The value of this property MUST match the name of a placeholder
---      --  message defined by the message exchange pattern.
---
---      InterfaceFaultReference_1038,
---      --  The direction MUST be consistent with the direction implied by the
---      --  fault propagation ruleset used in the message exchange pattern of the
---      --  operation.
+      InterfaceFaultReference_1037,
+      --  The value of this property MUST match the name of a placeholder
+      --  message defined by the message exchange pattern.
+
+      InterfaceFaultReference_1038,
+      --  The direction MUST be consistent with the direction implied by the
+      --  fault propagation ruleset used in the message exchange pattern of the
+      --  operation.
 
       InterfaceFaultReference_1040,
       --  The messageLabel attribute information item MUST be present in the

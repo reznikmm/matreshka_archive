@@ -127,9 +127,10 @@ package body WSDL.Assertions is
            MessageLabel_1035              =>
              League.Strings.To_Universal_String
               ("MEP doesn't support fault in then ""Out"" direction"),
---           InterfaceFaultReference_1037   =>
---             League.Strings.To_Universal_String ("enforced by construction"),
---      InterfaceFaultReference_1038,
+           InterfaceFaultReference_1037   =>
+             League.Strings.To_Universal_String ("enforced by construction"),
+           InterfaceFaultReference_1038   =>
+             League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceFaultReference_1040   =>
              League.Strings.To_Universal_String
               ("MEP has more than one fault in this direction, message label"

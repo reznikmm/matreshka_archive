@@ -846,6 +846,18 @@ package body WSDL.Parsers is
       Node.Parent := Parent;
       Parent.Interface_Fault_References.Append (Node);
 
+      --  InterfaceFaultReference-1037: The value of this property MUST match
+      --  the name of a placeholder message defined by the message exchange
+      --  pattern.
+      --
+      --  Enforced by construction.
+
+      --  InterfaceFaultReference-1038: The direction MUST be consistent with
+      --  the direction implied by the fault propagation ruleset used in the
+      --  message exchange pattern of the operation.
+      --
+      --  Enforced by construction.
+
       Node.Direction := Direction;
 
       case Node.Direction is
