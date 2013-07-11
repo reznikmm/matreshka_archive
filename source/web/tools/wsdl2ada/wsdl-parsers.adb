@@ -427,7 +427,7 @@ package body WSDL.Parsers is
       Self.Description.Target_Namespace :=
         Attributes.Value (Target_Namespace_Attribute);
 
-      --  Description-1006: IRI of target namespace must be absolute.
+      --  Description-1006: "IRI of target namespace must be absolute."
       --
       --  XXX Not implemented yet.
    end Start_Description_Element;
@@ -492,8 +492,8 @@ package body WSDL.Parsers is
          elsif Local_Name = Documentation_Element then
             if Self.Current_State.Kind = WSDL_Description then
                if Self.Current_State.Last_Child_Kind > Documentation then
-                  --  Description-1005: Invalid order of children elements of
-                  --  'description' element.
+                  --  Description-1005: "Invalid order of children elements of
+                  --  'description' element."
 
                   Self.Report (WSDL.Assertions.Description_1005);
 
@@ -554,8 +554,8 @@ package body WSDL.Parsers is
          elsif Local_Name = Include_Element then
             if Self.Current_State.Kind = WSDL_Description then
                if Self.Current_State.Last_Child_Kind > Include_Import then
-                  --  Description-1005: Invalid order of children elements of
-                  --  'description' element.
+                  --  Description-1005: "Invalid order of children elements of
+                  --  'description' element."
 
                   Self.Report (WSDL.Assertions.Description_1005);
 
@@ -629,8 +629,8 @@ package body WSDL.Parsers is
          elsif Local_Name = Import_Element then
             if Self.Current_State.Kind = WSDL_Description then
                if Self.Current_State.Last_Child_Kind > Include_Import then
-                  --  Description-1005: Invalid order of children elements of
-                  --  'description' element.
+                  --  "Description-1005: Invalid order of children elements of
+                  --  'description' element."
 
                   Self.Report (WSDL.Assertions.Description_1005);
 
@@ -725,8 +725,8 @@ package body WSDL.Parsers is
          elsif Local_Name = Types_Element then
             if Self.Current_State.Kind = WSDL_Description then
                if Self.Current_State.Last_Child_Kind > Types then
-                  --  Description-1005: Invalid order of children elements of
-                  --  'description' element.
+                  --  Description-1005: "Invalid order of children elements of
+                  --  'description' element."
 
                   Self.Report (WSDL.Assertions.Description_1005);
 
@@ -846,15 +846,15 @@ package body WSDL.Parsers is
       Node.Parent := Parent;
       Parent.Interface_Fault_References.Append (Node);
 
-      --  InterfaceFaultReference-1037: The value of this property MUST match
+      --  InterfaceFaultReference-1037: "The value of this property MUST match
       --  the name of a placeholder message defined by the message exchange
-      --  pattern.
+      --  pattern."
       --
       --  Enforced by construction.
 
-      --  InterfaceFaultReference-1038: The direction MUST be consistent with
+      --  InterfaceFaultReference-1038: "The direction MUST be consistent with
       --  the direction implied by the fault propagation ruleset used in the
-      --  message exchange pattern of the operation.
+      --  message exchange pattern of the operation."
       --
       --  Enforced by construction.
 
@@ -865,9 +865,9 @@ package body WSDL.Parsers is
 
       case Node.Direction is
          when WSDL.AST.In_Message =>
-            --  MessageLabel-1034: If the local name is infault then the
+            --  MessageLabel-1034: "If the local name is infault then the
             --  message exchange pattern MUST support at least one fault in the
-            --  "In" direction.
+            --  "In" direction."
 
             if not Parent.Message_Exchange_Pattern.Has_In_Fault then
                Parser.Report (WSDL.Assertions.MessageLabel_1034);
@@ -876,9 +876,9 @@ package body WSDL.Parsers is
             end if;
 
          when WSDL.AST.Out_Message =>
-            --  MessageLabel-1035: If the local name is outfault then the
+            --  MessageLabel-1035: "If the local name is outfault then the
             --  message exchange pattern MUST support at least one fault in the
-            --  "Out" direction.
+            --  "Out" direction."
 
             if not Parent.Message_Exchange_Pattern.Has_Out_Fault then
                Parser.Report (WSDL.Assertions.MessageLabel_1034);
@@ -916,11 +916,11 @@ package body WSDL.Parsers is
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
 
       else
-         --  InterfaceFaultReference-1040: The messageLabel attribute
+         --  InterfaceFaultReference-1040: "The messageLabel attribute
          --  information item MUST be present in the XML representation of an
          --  Interface Fault Reference component with a given {direction}, if
          --  the {message exchange pattern} of the parent Interface Operation
-         --  component has more than one fault with that direction.
+         --  component has more than one fault with that direction."
 
          case Node.Direction is
             when WSDL.AST.In_Message =>
@@ -938,10 +938,10 @@ package body WSDL.Parsers is
                end if;
          end case;
 
-         --  MessageLabel-1043: If the messageLabel attribute information item
+         --  MessageLabel-1043: "If the messageLabel attribute information item
          --  of an interface fault reference element information item is absent
          --  then there MUST be a unique placeholder message with {direction}
-         --  equal to the message direction.
+         --  equal to the message direction."
 
          case Message_Direction is
             when WSDL.AST.In_Message =>
@@ -959,11 +959,11 @@ package body WSDL.Parsers is
                end if;
          end case;
 
-         --  MessageLabel-1041: The messageLabel attribute information item of
+         --  MessageLabel-1041: "The messageLabel attribute information item of
          --  an interface fault reference element information item MUST be
          --  present if the message exchange pattern has more than one
          --  placeholder message with {direction} equal to the message
-         --  direction.
+         --  direction."
 
          case Message_Direction is
             when WSDL.AST.In_Message =>
@@ -993,11 +993,11 @@ package body WSDL.Parsers is
                   or Parent.Message_Exchange_Pattern.Placeholders (J).Label
                        = Node.Message_Label)
          then
-            --  InterfaceFaultReference-1039: For each Interface Fault
+            --  InterfaceFaultReference-1039: "For each Interface Fault
             --  Reference component in the {interface fault references}
             --  property of an Interface Operation component, the combination
             --  of its {interface fault} and {message label} properties MUST be
-            --  unique.
+            --  unique."
             --
             --  All declared faults corresponding to message placeholder are
             --  stored in maps to checks unique of their names.
@@ -1021,11 +1021,11 @@ package body WSDL.Parsers is
       end loop;
 
       if not Found then
-         --  MessageLabel-1042: If the messageLabel attribute information item
+         --  MessageLabel-1042: "If the messageLabel attribute information item
          --  of an interface fault reference element information item is
          --  present then its actual value MUST match the {message label} of
          --  some placeholder message with {direction} equal to the message
-         --  direction.
+         --  direction."
          --
          --  When messageLabel attribute of interface fault reference
          --  element is not specified, it always found because there is only
@@ -1062,21 +1062,21 @@ package body WSDL.Parsers is
       Node.Parent := Parent;
       Parent.Interface_Message_References.Append (Node);
 
-      --  InterfaceMessageReference-1025: An xs:token with one of the values in
-      --  or out, indicating whether the message is coming to the service or
-      --  going from the service, respectively.
+      --  InterfaceMessageReference-1025: "An xs:token with one of the values
+      --  in or out, indicating whether the message is coming to the service or
+      --  going from the service, respectively."
       --
       --  This assertion is enforced by construction.
 
-      --  InterfaceMessageReference-1026: The direction MUST be the same as the
-      --  direction of the message identified by the {message label} property
-      --  in the {message exchange pattern} of the Interface Operation
-      --  component this is contained within.
+      --  InterfaceMessageReference-1026: "The direction MUST be the same as
+      --  the direction of the message identified by the {message label}
+      --  property in the {message exchange pattern} of the Interface Operation
+      --  component this is contained within."
       --
       --  This assertion is enforced by construction.
 
-      --  MessageLabel-1024: The value of this property MUST match the name of
-      --  placeholder message defined by the message exchange pattern. 
+      --  MessageLabel-1024: "The value of this property MUST match the name of
+      --  placeholder message defined by the message exchange pattern."
       --
       --  This assertion is enforced by construction.
 
@@ -1084,9 +1084,9 @@ package body WSDL.Parsers is
 
       case Direction is
          when WSDL.AST.In_Message =>
-            --  MessageLabel-1032: If the local name is input then the message
+            --  MessageLabel-1032: "If the local name is input then the message
             --  exchange pattern MUST have at least one placeholder message
-            --  with direction "In".
+            --  with direction "In"."
 
             if not Parent.Message_Exchange_Pattern.Has_In then
                Parser.Report (WSDL.Assertions.MessageLabel_1032);
@@ -1095,9 +1095,9 @@ package body WSDL.Parsers is
             end if;
 
          when WSDL.AST.Out_Message =>
-            --  MessageLabel-1033: If the local name is output then the message
-            --  exchange pattern MUST have at least one placeholder message
-            --  with direction "Out".
+            --  MessageLabel-1033: "If the local name is output then the
+            --  message exchange pattern MUST have at least one placeholder
+            --  message with direction "Out"."
 
             if not Parent.Message_Exchange_Pattern.Has_Out then
                Parser.Report (WSDL.Assertions.MessageLabel_1033);
@@ -1112,10 +1112,10 @@ package body WSDL.Parsers is
          Node.Message_Label := Attributes.Value (Message_Label_Attribute);
 
       else
-         --  MessageLabel-1031: If the messageLabel attribute information item
+         --  MessageLabel-1031: "If the messageLabel attribute information item
          --  of an interface message reference element information item is
          --  absent then there MUST be a unique placeholder message with
-         --  {direction} equal to the message direction. 
+         --  {direction} equal to the message direction."
 
          case Direction is
             when WSDL.AST.In_Message =>
@@ -1145,10 +1145,10 @@ package body WSDL.Parsers is
                   or Parent.Message_Exchange_Pattern.Placeholders (J).Label
                        = Node.Message_Label)
          then
-            --  InterfaceMessageReference-1029: For each Interface Message
+            --  InterfaceMessageReference-1029: "For each Interface Message
             --  Reference component in the {interface message references}
             --  property of an Interface Operation component, its {message
-            --  label} property MUST be unique.
+            --  label} property MUST be unique."
             --
             --  This code assumes that MEP uses unique labels for messages and
             --  takes in sense the fact that Message member is filled by
@@ -1170,11 +1170,11 @@ package body WSDL.Parsers is
       end loop;
 
       if not Found then
-         --  MessageLabel-1030: If the messageLabel attribute information item
+         --  MessageLabel-1030: "If the messageLabel attribute information item
          --  of an interface message reference element information item is
          --  present, then its actual value MUST match the {message label} of
          --  some placeholder message with {direction} equal to the message
-         --  direction.
+         --  direction."
 
          Parser.Report (WSDL.Assertions.MessageLabel_1030);
 
@@ -1183,14 +1183,14 @@ package body WSDL.Parsers is
 
       --  Analyze 'element' attribute.
 
-      --  InterfaceMessageReference-1027: An xs:token with one of the values
-      --  #any, #none, #other, or #element.
+      --  InterfaceMessageReference-1027: "An xs:token with one of the values
+      --  #any, #none, #other, or #element."
       --
       --  This assertion is enforced by construction.
 
-      --  InterfaceMessageReference-1028: When the {message content model}
+      --  InterfaceMessageReference-1028: "When the {message content model}
       --  property has the value #any or #none, the {element declaration}
-      --  property MUST be empty.
+      --  property MUST be empty."
       --
       --  This assertion is enforced by construction.
 
@@ -1238,9 +1238,9 @@ package body WSDL.Parsers is
         := Attributes.Value (Name_Attribute);
 
    begin
-      --  Interface-1010: For each Interface component in the {interfaces}
+      --  Interface-1010: "For each Interface component in the {interfaces}
       --  property of a Description component, the {name} property MUST be
-      --  unique.
+      --  unique."
       --
       --  Check whether name of the interface component is not used by another
       --  component.
@@ -1269,8 +1269,8 @@ package body WSDL.Parsers is
             for J in 1 .. Values.Length loop
                Item := To_Qualified_Name (Namespaces, Values.Element (J));
 
-               --  Interface-1011: The list of xs:QName in an extends attribute
-               --  information item MUST NOT contain duplicates.
+               --  Interface-1011: "The list of xs:QName in an extends
+               --  attribute information item MUST NOT contain duplicates."
                --
                --  Check whether this namespace/name pair is not in the set
                --  already.
@@ -1293,9 +1293,9 @@ package body WSDL.Parsers is
            Attributes.Value (Style_Default_Attribute).Split
             (' ', League.Strings.Skip_Empty);
 
-         --  Interface-1012: The type of the styleDefault attribute information
-         --  item is list of xs:anyURI. Its value, if present, MUST contain
-         --  absolute IRIs (see [IETF RFC 3987]).
+         --  Interface-1012: "The type of the styleDefault attribute
+         --  information item is list of xs:anyURI. Its value, if present, MUST
+         --  contain absolute IRIs (see [IETF RFC 3987])."
          --
          --  XXX This check is not implemented.
       end if;
@@ -1329,12 +1329,12 @@ package body WSDL.Parsers is
       --  Note, there are two assertion is applied to {message content model}
       --  and {element declaration} properties of interface's fault component:
       --
-      --  InterfaceFault-1013: An xs:token with one of the values #any, #none,
-      --  #other, or #element.
+      --  InterfaceFault-1013: "An xs:token with one of the values #any, #none,
+      --  #other, or #element."
       --
-      --  InterfaceFault-1014: When the {message content model} property has
+      --  InterfaceFault-1014: "When the {message content model} property has
       --  the value #any or #none the {element declaration} property MUST be
-      --  empty.
+      --  empty."
       --
       --  Both assertions not need to be tested at runtime, they are enforced
       --  by construction.
@@ -1393,8 +1393,8 @@ package body WSDL.Parsers is
       if Attributes.Is_Specified (Pattern_Attribute) then
          MEP_IRI := Attributes.Value (Pattern_Attribute);
 
-         --  InterfaceOperation-1018: This xs:anyURI MUST be an absolute IRI
-         --  (see [IETF RFC 3987]).
+         --  InterfaceOperation-1018: "This xs:anyURI MUST be an absolute IRI
+         --  (see [IETF RFC 3987])."
          --
          --  XXX Not implemented yet.
 
@@ -1412,8 +1412,8 @@ package body WSDL.Parsers is
             (' ', League.Strings.Skip_Empty);
 
          for J in 1 .. Node.Style.Length loop
-            --  InterfaceOperation-1019: These xs:anyURIs MUST be absolute IRIs
-            --  (see [IETF RFC 3986]).
+            --  InterfaceOperation-1019: "These xs:anyURIs MUST be absolute
+            --  IRIs (see [IETF RFC 3986])."
             --
             --  XXX Not implemented yet.
 
