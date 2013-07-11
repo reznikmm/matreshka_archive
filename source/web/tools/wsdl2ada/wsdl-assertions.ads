@@ -243,11 +243,18 @@ package WSDL.Assertions is
       --  MUST match the {message label} of some placeholder message with
       --  {direction} equal to the message direction.
 
-      MessageLabel_1043);
+      MessageLabel_1043,
       --  If the messageLabel attribute information item of an interface fault
       --  reference element information item is absent then there MUST be a
       --  unique placeholder message with {direction} equal to the message
       --  direction.
+
+      Binding_1044);
+      --  If a Binding component specifies any operation-specific binding
+      --  details (by including Binding Operation components) or any fault
+      --  binding details (by including Binding Fault components), then it MUST
+      --  specify an interface the Binding component applies to, so as to
+      --  indicate which interface the operations come from.
 
    procedure Report
     (File      : League.Strings.Universal_String;

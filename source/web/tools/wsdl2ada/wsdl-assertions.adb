@@ -148,7 +148,11 @@ package body WSDL.Assertions is
               ("no such placeholder message defined by the MEP"),
            MessageLabel_1043              =>
              League.Strings.To_Universal_String
-              ("MEP doesn't have placeholder message with this direction"));
+              ("MEP doesn't have placeholder message with this direction"),
+           Binding_1044                   =>
+             League.Strings.To_Universal_String
+              ("interface must be specified for binding when it specify"
+                 & " operation or fault binding details"));
 
    ------------
    -- Report --

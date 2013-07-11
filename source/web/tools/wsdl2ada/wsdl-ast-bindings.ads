@@ -50,6 +50,12 @@ package WSDL.AST.Bindings is
 
    pragma Preelaborate;
 
+   package Binding_Fault_Vectors is
+     new Ada.Containers.Vectors
+          (Positive,
+           WSDL.AST.Binding_Fault_Access,
+           WSDL.AST."=");
+
    package Binding_Operation_Vectors is
      new Ada.Containers.Vectors
           (Positive,
@@ -78,6 +84,10 @@ package WSDL.AST.Bindings is
       --  Value of {type} property.
 
       Binding_Operations : Binding_Operation_Vectors.Vector;
+      --  Value of {binding operations} property.
+
+      Binding_Faults     : Binding_Fault_Vectors.Vector;
+      --  Value of {binding faults} property.
 
       SOAP               : SOAP_Binding_Extension;
       --  SOAP Binding specific components.

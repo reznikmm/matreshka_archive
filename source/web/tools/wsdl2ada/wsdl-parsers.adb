@@ -138,7 +138,8 @@ package body WSDL.Parsers is
    --  Handles start of 'interface' element.
 
    procedure End_Binding_Element
-    (Node    : WSDL.AST.Bindings.Binding_Access;
+    (Parser  : WSDL_Parser;
+     Node    : WSDL.AST.Bindings.Binding_Access;
      Success : in out Boolean);
    --  Handles start of 'interface' element.
 
@@ -170,14 +171,16 @@ package body WSDL.Parsers is
    -------------------------
 
    procedure End_Binding_Element
-    (Node    : WSDL.AST.Bindings.Binding_Access;
+    (Parser  : WSDL_Parser;
+     Node    : WSDL.AST.Bindings.Binding_Access;
      Success : in out Boolean)
    is
       pragma Unreferenced (Success);
 
    begin
-      if not Node.Binding_Operations.Is_Empty
-        and Node.Interface_Name.Local_Name.Is_Empty
+      if Node.Interface_Name.Local_Name.Is_Empty
+        and (not Node.Binding_Operations.Is_Empty
+               or not Node.Binding_Faults.Is_Empty)
       then
          --  Binding-1044: "If a Binding component specifies any
          --  operation-specific binding details (by including Binding Operation
@@ -186,7 +189,9 @@ package body WSDL.Parsers is
          --  component applies to, so as to indicate which interface the
          --  operations come from."
 
-         raise Program_Error;
+         Parser.Report (WSDL.Assertions.Binding_1044);
+
+         raise WSDL_Error;
       end if;
    end End_Binding_Element;
 
@@ -209,7 +214,7 @@ package body WSDL.Parsers is
 
       elsif Namespace_URI = WSDL_Namespace_URI then
          if Local_Name = Binding_Element then
-            End_Binding_Element (Self.Current_Binding, Success);
+            End_Binding_Element (Self, Self.Current_Binding, Success);
             Self.Pop;
 
          elsif Local_Name = Description_Element then
