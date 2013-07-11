@@ -60,6 +60,7 @@ package body WSDL.Parsers is
 
    use WSDL.Constants;
    use type League.Strings.Universal_String;
+   use type WSDL.AST.Message_Directions;
 
    procedure Push
     (Self : in out WSDL_Parser'Class; State : Parser_State_Kind);
@@ -839,6 +840,7 @@ package body WSDL.Parsers is
       Node              : constant WSDL.AST.Interface_Fault_Reference_Access
         := new WSDL.AST.Faults.Interface_Fault_Reference_Node;
       Message_Direction : WSDL.AST.Message_Directions;
+      Found             : Boolean;
 
    begin
       Node.Parent := Parent;
@@ -946,6 +948,60 @@ package body WSDL.Parsers is
                end if;
          end case;
       end if;
+
+      --  Lookup for placeholder message in the operation's MEP.
+
+      Found := False;
+
+      for J in Parent.Message_Exchange_Pattern.Placeholders'Range loop
+         if Parent.Message_Exchange_Pattern.Placeholders (J).Direction
+              = Message_Direction
+--           and (Node.Message_Label.Is_Empty
+--                  or Parent.Message_Exchange_Pattern.Placeholders (J).Label
+--                       = Node.Message_Label)
+           and Parent.Message_Exchange_Pattern.Placeholders (J).Label
+                 = Node.Message_Label
+         then
+--            --  InterfaceMessageReference-1029: For each Interface Message
+--            --  Reference component in the {interface message references}
+--            --  property of an Interface Operation component, its {message
+--            --  label} property MUST be unique.
+--            --
+--            --  This code assumes that MEP uses unique labels for messages and
+--            --  takes in sense the fact that Message member is filled by
+--            --  interface message reference once it is processed.
+--
+--            if Parent.Message_Exchange_Pattern.Placeholders (J).Message /= null then
+--               Parser.Report (WSDL.Assertions.InterfaceMessageReference_1029);
+--
+--               raise WSDL_Error;
+--            end if;
+--
+--            Parent.Message_Exchange_Pattern.Placeholders (J).Message := Node;
+--            Node.Message_Label :=
+--              Parent.Message_Exchange_Pattern.Placeholders (J).Label;
+            Found := True;
+
+            exit;
+         end if;
+      end loop;
+
+      if not Found then
+         --  MessageLabel-1042: If the messageLabel attribute information item
+         --  of an interface fault reference element information item is
+         --  present then its actual value MUST match the {message label} of
+         --  some placeholder message with {direction} equal to the message
+         --  direction.
+         --
+         --  When messageLabel attribute of interface fault reference
+         --  element is not specified, it always found because there is only
+         --  one placeholder message in the MEP. Thus, additional checks are
+         --  not needed here.
+
+         Parser.Report (WSDL.Assertions.MessageLabel_1042);
+
+         raise WSDL_Error;
+      end if;
    end Start_Input_Output_Fault_Element;
 
    --------------------------------
@@ -962,7 +1018,6 @@ package body WSDL.Parsers is
    is
       pragma Unreferenced (Success);
 
-      use type WSDL.AST.Message_Directions;
       use type WSDL.AST.Interface_Message_Access;
 
       Node  : constant WSDL.AST.Interface_Message_Access

@@ -137,7 +137,10 @@ package body WSDL.Assertions is
            MessageLabel_1041              =>
              League.Strings.To_Universal_String
               ("MEP has more than one placeholder message in this direction,"
-                 & " message label must be specified"));
+                  & " message label must be specified"),
+           MessageLabel_1042              =>
+             League.Strings.To_Universal_String
+              ("no such placeholder message defined by the MEP"));
 
    ------------
    -- Report --
