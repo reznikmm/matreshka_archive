@@ -66,6 +66,16 @@ package WSDL.Visitors is
      Node    : not null WSDL.AST.Bindings.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
+   not overriding procedure Enter_Binding_Fault
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
+   not overriding procedure Leave_Binding_Fault
+    (Self    : in out WSDL_Visitor;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is null;
+
    not overriding procedure Enter_Binding_Operation
     (Self    : in out WSDL_Visitor;
      Node    : not null WSDL.AST.Operations.Binding_Operation_Access;

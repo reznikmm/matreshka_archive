@@ -98,6 +98,9 @@ package WSDL.AST is
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
      Control  : in out WSDL.Iterators.Traverse_Control) is abstract;
 
+   type Binding_Fault_Access is
+     access all WSDL.AST.Faults.Binding_Fault_Node'Class;
+
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;
 

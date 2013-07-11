@@ -120,10 +120,10 @@ package WSDL.AST.Faults is
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
      Control  : in out WSDL.Iterators.Traverse_Control);
 
---   -----------------------
---   -- Binding Operation --
---   -----------------------
---
+   -------------------
+   -- Binding Fault --
+   -------------------
+
 --   type SOAP_Binding_Operation_Extension is record
 --      MEP    : League.Strings.Universal_String;
 --      --  Value of {soap mep} property.
@@ -131,8 +131,9 @@ package WSDL.AST.Faults is
 --      Action : League.Strings.Universal_String;
 --      --  Value of {soap action} property.
 --   end record;
---
---   type Binding_Operation_Node is new Abstract_Node with record
+
+   type Binding_Fault_Node is new Abstract_Node with record
+      null;
 --      Ref                 : Qualified_Name;
 --      --  Name of the related interface operation.
 --
@@ -144,25 +145,22 @@ package WSDL.AST.Faults is
 --
 --      SOAP                : SOAP_Binding_Operation_Extension;
 --      --  SOAP Binding extension information;
---   end record;
---
---   type Binding_Operation_Access is
---     access all Binding_Operation_Node'Class;
---
---   overriding procedure Enter
---    (Self    : not null access Binding_Operation_Node;
---     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control : in out WSDL.Iterators.Traverse_Control);
---
---   overriding procedure Leave
---    (Self    : not null access Binding_Operation_Node;
---     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control : in out WSDL.Iterators.Traverse_Control);
---
---   overriding procedure Visit
---    (Self     : not null access Binding_Operation_Node;
---     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
---     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control  : in out WSDL.Iterators.Traverse_Control);
+   end record;
+
+   overriding procedure Enter
+    (Self    : not null access Binding_Fault_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
+   overriding procedure Leave
+    (Self    : not null access Binding_Fault_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
+   overriding procedure Visit
+    (Self     : not null access Binding_Fault_Node;
+     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control  : in out WSDL.Iterators.Traverse_Control);
 
 end WSDL.AST.Faults;

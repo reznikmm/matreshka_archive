@@ -46,18 +46,18 @@ with WSDL.Visitors;
 
 package body WSDL.AST.Faults is
 
---   -----------
---   -- Enter --
---   -----------
---
---   overriding procedure Enter
---    (Self    : not null access Binding_Operation_Node;
---     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control : in out WSDL.Iterators.Traverse_Control) is
---   begin
---      Visitor.Enter_Binding_Operation
---       (Binding_Operation_Access (Self), Control);
---   end Enter;
+   -----------
+   -- Enter --
+   -----------
+
+   overriding procedure Enter
+    (Self    : not null access Binding_Fault_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Enter_Binding_Fault
+       (Binding_Fault_Access (Self), Control);
+   end Enter;
 
    -----------
    -- Enter --
@@ -85,18 +85,18 @@ package body WSDL.AST.Faults is
        (Interface_Fault_Reference_Access (Self), Control);
    end Enter;
 
---   -----------
---   -- Leave --
---   -----------
---
---   overriding procedure Leave
---    (Self    : not null access Binding_Operation_Node;
---     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control : in out WSDL.Iterators.Traverse_Control) is
---   begin
---      Visitor.Leave_Binding_Operation
---       (Binding_Operation_Access (Self), Control);
---   end Leave;
+   -----------
+   -- Leave --
+   -----------
+
+   overriding procedure Leave
+    (Self    : not null access Binding_Fault_Node;
+     Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Visitor.Leave_Binding_Fault
+       (Binding_Fault_Access (Self), Control);
+   end Leave;
 
    -----------
    -- Leave --
@@ -124,19 +124,19 @@ package body WSDL.AST.Faults is
        (Interface_Fault_Reference_Access (Self), Control);
    end Leave;
 
---   -----------
---   -- Visit --
---   -----------
---
---   overriding procedure Visit
---    (Self     : not null access Binding_Operation_Node;
---     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
---     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
---     Control  : in out WSDL.Iterators.Traverse_Control) is
---   begin
---      Iterator.Visit_Binding_Operation
---       (Visitor, Binding_Operation_Access (Self), Control);
---   end Visit;
+   -----------
+   -- Visit --
+   -----------
+
+   overriding procedure Visit
+    (Self     : not null access Binding_Fault_Node;
+     Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
+     Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
+     Control  : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Iterator.Visit_Binding_Fault
+       (Visitor, Binding_Fault_Access (Self), Control);
+   end Visit;
 
    -----------
    -- Visit --
