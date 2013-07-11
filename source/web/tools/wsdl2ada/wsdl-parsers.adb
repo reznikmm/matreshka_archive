@@ -118,7 +118,8 @@ package body WSDL.Parsers is
    --  element as child of 'interface' element.
 
    procedure Start_Input_Output_Fault_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
@@ -576,7 +577,8 @@ package body WSDL.Parsers is
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
                Self.Push (WSDL_Infault);
                Start_Input_Output_Fault_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
                  WSDL.AST.In_Message,
@@ -672,7 +674,8 @@ package body WSDL.Parsers is
             elsif Self.Current_State.Kind = WSDL_Interface_Operation then
                Self.Push (WSDL_Outfault);
                Start_Input_Output_Fault_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Current_Operation,
                  WSDL.AST.Out_Message,
@@ -823,7 +826,8 @@ package body WSDL.Parsers is
    --------------------------------------
 
    procedure Start_Input_Output_Fault_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Interface_Operation_Access;
      Direction  : WSDL.AST.Message_Directions;
@@ -837,9 +841,35 @@ package body WSDL.Parsers is
    begin
       Node.Parent := Parent;
       Parent.Interface_Fault_References.Append (Node);
+
+      Node.Direction := Direction;
+
+      case Node.Direction is
+         when WSDL.AST.In_Message =>
+            --  MessageLabel-1034: If the local name is infault then the
+            --  message exchange pattern MUST support at least one fault in the
+            --  "In" direction.
+
+            if not Parent.Message_Exchange_Pattern.Has_In_Fault then
+               Parser.Report (WSDL.Assertions.MessageLabel_1034);
+
+               raise WSDL_Error;
+            end if;
+
+         when WSDL.AST.Out_Message =>
+            --  MessageLabel-1035: If the local name is outfault then the
+            --  message exchange pattern MUST support at least one fault in the
+            --  "Out" direction.
+
+            if not Parent.Message_Exchange_Pattern.Has_Out_Fault then
+               Parser.Report (WSDL.Assertions.MessageLabel_1034);
+
+               raise WSDL_Error;
+            end if;
+      end case;
+
       Node.Interface_Fault_Name :=
         To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
-      Node.Direction := Direction;
 
       --  Analyze 'messageLabel' attribute.
 
@@ -871,6 +901,7 @@ package body WSDL.Parsers is
 
    begin
       Node.Parent := Parent;
+      Parent.Interface_Message_References.Append (Node);
 
       --  InterfaceMessageReference-1025: An xs:token with one of the values in
       --  or out, indicating whether the message is coming to the service or
@@ -891,7 +922,6 @@ package body WSDL.Parsers is
       --  This assertion is enforced by construction.
 
       Node.Direction := Direction;
-      Parent.Interface_Message_References.Append (Node);
 
       case Direction is
          when WSDL.AST.In_Message =>

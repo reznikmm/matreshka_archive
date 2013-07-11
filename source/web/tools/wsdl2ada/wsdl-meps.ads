@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 --  This package provides abstract declaration for MEP representation.
 ------------------------------------------------------------------------------
+with Ada.Containers.Hashed_Maps;
+
 with League.Strings;
 
 with WSDL.AST;
@@ -51,17 +53,38 @@ package WSDL.MEPs is
 
    pragma Preelaborate;
 
+   package Interface_Fault_Reference_Maps is
+     new Ada.Containers.Hashed_Maps
+          (WSDL.AST.Qualified_Name,
+           WSDL.AST.Interface_Fault_Reference_Access,
+           WSDL.AST.Hash,
+           WSDL.AST."=",
+           WSDL.AST."=");
+
    type Message_Placeholder is record
       Label     : League.Strings.Universal_String;
       Direction : WSDL.AST.Message_Directions;
       Message   : WSDL.AST.Interface_Message_Access;
+      --  Interface Message Reference actually mapped to this placeholder.
+      Faults    : Interface_Fault_Reference_Maps.Map;
+      --  Interface Fault References actually associated with this placeholder.
    end record;
 
    type Message_Placeholder_Array is
      array (Positive range <>) of Message_Placeholder;
 
+   type Fault_Propagation_Rules is
+    (Fault_Replaces_Message,
+     Message_Triggers_Fault,
+     No_Faults);
+
    type MEP (Length : Natural) is limited record
       IRI            : League.Strings.Universal_String;
+      Placeholders   : Message_Placeholder_Array (1 .. Length);
+      --  Placeholder messages of the MEP.
+      FPR            : Fault_Propagation_Rules;
+      --  Fault propagation rule of the MEP.
+
       Has_In         : Boolean;
       --  MEP has at least one 'in' placeholder message.
       Has_Out        : Boolean;
@@ -70,7 +93,10 @@ package WSDL.MEPs is
       --  MEP has only one 'in' placeholder message.
       Has_Single_Out : Boolean;
       --  MEP has only one 'out' placeholder message.
-      Placeholders   : Message_Placeholder_Array (1 .. Length);
+      Has_In_Fault   : Boolean;
+      --  MEP supports at least one fault in the 'In' direction.
+      Has_Out_Fault  : Boolean;
+      --  MEP supports at least one fault in the 'Out' direction.
    end record;
 
    type MEP_Access is access all MEP;

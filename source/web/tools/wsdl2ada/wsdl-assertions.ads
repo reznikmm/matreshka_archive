@@ -197,9 +197,26 @@ package WSDL.Assertions is
       --  If the local name is input then the message exchange pattern MUST
       --  have at least one placeholder message with direction "In".
 
-      MessageLabel_1033);
+      MessageLabel_1033,
       --  If the local name is output then the message exchange pattern MUST
       --  have at least one placeholder message with direction "Out".
+
+      MessageLabel_1034,
+      --  If the local name is infault then the message exchange pattern MUST
+      --  support at least one fault in the "In" direction.
+
+      MessageLabel_1035);
+      --  If the local name is outfault then the message exchange pattern MUST
+      --  support at least one fault in the "Out" direction.
+
+--      InterfaceFaultReference_1037,
+--      --  The value of this property MUST match the name of a placeholder
+--      --  message defined by the message exchange pattern.
+--
+--      InterfaceFaultReference_1038,
+--      --  The direction MUST be consistent with the direction implied by the
+--      --  fault propagation ruleset used in the message exchange pattern of the
+--      --  operation.
 
    procedure Report
     (File      : League.Strings.Universal_String;

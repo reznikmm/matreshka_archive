@@ -120,7 +120,16 @@ package body WSDL.Assertions is
               ("MEP doesn't have placeholder message with direction ""In"""),
            MessageLabel_1033              =>
              League.Strings.To_Universal_String
-              ("MEP doesn't have placeholder message with direction ""Out"""));
+              ("MEP doesn't have placeholder message with direction ""Out"""),
+           MessageLabel_1034              =>
+             League.Strings.To_Universal_String
+              ("MEP doesn't support fault in the ""In"" direction"),
+           MessageLabel_1035              =>
+             League.Strings.To_Universal_String
+              ("MEP doesn't support fault in then ""Out"" direction"));
+--           InterfaceFaultReference_1037   =>
+--             League.Strings.To_Universal_String ("enforced by construction"),
+--      InterfaceFaultReference_1038,
 
    ------------
    -- Report --
