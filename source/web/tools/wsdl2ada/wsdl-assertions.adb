@@ -152,7 +152,15 @@ package body WSDL.Assertions is
            Binding_1044                   =>
              League.Strings.To_Universal_String
               ("interface must be specified for binding when it specify"
-                 & " operation or fault binding details"));
+                 & " operation or fault binding details"),
+           Binding_1045                   =>
+             League.Strings.To_Universal_String ("not supported"),
+           Binding_1046                   =>
+             League.Strings.To_Universal_String ("not supported"),
+           Binding_1047                   =>
+             League.Strings.To_Universal_String ("not supported"),
+           Binding_1048                   =>
+             League.Strings.To_Universal_String ("not supported"));
 
    ------------
    -- Report --

@@ -249,12 +249,36 @@ package WSDL.Assertions is
       --  unique placeholder message with {direction} equal to the message
       --  direction.
 
-      Binding_1044);
+      Binding_1044,
       --  If a Binding component specifies any operation-specific binding
       --  details (by including Binding Operation components) or any fault
       --  binding details (by including Binding Fault components), then it MUST
       --  specify an interface the Binding component applies to, so as to
       --  indicate which interface the operations come from.
+
+      Binding_1045,
+      --  A Binding component that defines bindings for an Interface component
+      --  MUST define bindings for all the operations of that Interface
+      --  component.
+
+      Binding_1046,
+      --  Similarly, whenever a reusable Binding component (i.e. one that does
+      --  not specify an Interface component) is applied to a specific
+      --  Interface component in the context of an Endpoint component (see
+      --  2.13.1 The Endpoint Component), the Binding component MUST define
+      --  bindings for each Interface Operation and Interface Fault component
+      --  of the Interface component, via a combination of properties defined
+      --  on the Binding component itself and default binding rules specific to
+      --  its binding type.
+
+      Binding_1047,
+      --  A Binding component that defines bindings for an Interface component
+      --  MUST define bindings for all the faults of that Interface component
+      --  that are referenced from any of the operations in that Interface
+      --  component.
+
+      Binding_1048);
+      --  This xs:anyURI MUST be an absolute IRI as defined by [IETF RFC 3987].
 
    procedure Report
     (File      : League.Strings.Universal_String;

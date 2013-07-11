@@ -374,6 +374,11 @@ package body WSDL.Parsers is
 
       Node.Binding_Type := Attributes.Value (Type_Attribute);
 
+      --  Binding-1048: "This xs:anyURI MUST be an absolute IRI as defined by
+      --  [IETF RFC 3987]."
+      --
+      --  XXX Not implemented yet.
+
       --  Analyze SOAP Binding extension's attributes.
 
       if Node.Binding_Type = SOAP_Binding_Type then
