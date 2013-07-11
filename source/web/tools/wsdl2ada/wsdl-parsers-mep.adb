@@ -129,7 +129,7 @@ package body WSDL.Parsers.MEP is
                  Has_Out        => True,
                  Has_Single_In  => True,
                  Has_Single_Out => True,
-                 Has_In_Fault   => True,
+                 Has_In_Fault   => False,
                  Has_Out_Fault  => True);
 
       else
