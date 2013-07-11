@@ -858,6 +858,9 @@ package body WSDL.Parsers is
       --
       --  Enforced by construction.
 
+      Node.Interface_Fault_Name :=
+        To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
+
       Node.Direction := Direction;
 
       case Node.Direction is
@@ -883,9 +886,6 @@ package body WSDL.Parsers is
                raise WSDL_Error;
             end if;
       end case;
-
-      Node.Interface_Fault_Name :=
-        To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
 
       --  Compute corresponding message direction depending on Fault
       --  Propagation Rule.
@@ -993,22 +993,25 @@ package body WSDL.Parsers is
                   or Parent.Message_Exchange_Pattern.Placeholders (J).Label
                        = Node.Message_Label)
          then
---            --  InterfaceMessageReference-1029: For each Interface Message
---            --  Reference component in the {interface message references}
---            --  property of an Interface Operation component, its {message
---            --  label} property MUST be unique.
---            --
---            --  This code assumes that MEP uses unique labels for messages and
---            --  takes in sense the fact that Message member is filled by
---            --  interface message reference once it is processed.
---
---            if Parent.Message_Exchange_Pattern.Placeholders (J).Message /= null then
---               Parser.Report (WSDL.Assertions.InterfaceMessageReference_1029);
---
---               raise WSDL_Error;
---            end if;
---
---            Parent.Message_Exchange_Pattern.Placeholders (J).Message := Node;
+            --  InterfaceFaultReference-1039: For each Interface Fault
+            --  Reference component in the {interface fault references}
+            --  property of an Interface Operation component, the combination
+            --  of its {interface fault} and {message label} properties MUST be
+            --  unique.
+            --
+            --  All declared faults corresponding to message placeholder are
+            --  stored in maps to checks unique of their names.
+
+            if Parent.Message_Exchange_Pattern.Placeholders (J).Faults.Contains
+                (Node.Interface_Fault_Name)
+            then
+               Parser.Report (WSDL.Assertions.InterfaceFaultReference_1039);
+
+               raise WSDL_Error;
+            end if;
+
+            Parent.Message_Exchange_Pattern.Placeholders (J).Faults.Insert
+             (Node.Interface_Fault_Name, Node);
             Node.Message_Label :=
               Parent.Message_Exchange_Pattern.Placeholders (J).Label;
             Found := True;

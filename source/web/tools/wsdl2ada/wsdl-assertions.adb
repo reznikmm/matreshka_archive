@@ -131,6 +131,10 @@ package body WSDL.Assertions is
              League.Strings.To_Universal_String ("enforced by construction"),
            InterfaceFaultReference_1038   =>
              League.Strings.To_Universal_String ("enforced by construction"),
+           InterfaceFaultReference_1039   =>
+             League.Strings.To_Universal_String
+              ("combination of its interface fault and message label must be"
+                 & " unique"),
            InterfaceFaultReference_1040   =>
              League.Strings.To_Universal_String
               ("MEP has more than one fault in this direction, message label"

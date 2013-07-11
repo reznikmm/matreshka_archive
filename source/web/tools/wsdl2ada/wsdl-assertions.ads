@@ -218,6 +218,12 @@ package WSDL.Assertions is
       --  fault propagation ruleset used in the message exchange pattern of the
       --  operation.
 
+      InterfaceFaultReference_1039,
+      --  For each Interface Fault Reference component in the {interface fault
+      --  references} property of an Interface Operation component, the
+      --  combination of its {interface fault} and {message label} properties
+      --  MUST be unique.
+
       InterfaceFaultReference_1040,
       --  The messageLabel attribute information item MUST be present in the
       --  XML representation of an Interface Fault Reference component with a
