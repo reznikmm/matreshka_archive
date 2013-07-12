@@ -82,6 +82,7 @@ private
     (None,
      Document,
      WSDL_Binding,
+     WSDL_Binding_Fault,
      WSDL_Binding_Operation,
      WSDL_Description,
      WSDL_Endpoint,

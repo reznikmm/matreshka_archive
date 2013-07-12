@@ -80,6 +80,11 @@ private
      Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
+   overriding procedure Enter_Binding_Fault
+    (Self    : in out Name_Resolver;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
    overriding procedure Enter_Binding_Operation
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Operations.Binding_Operation_Access;

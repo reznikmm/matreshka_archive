@@ -87,6 +87,16 @@ package body WSDL.Debug is
      Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
+   overriding procedure Enter_Binding_Fault
+    (Self    : in out WSDL_Printer;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
+   overriding procedure Leave_Binding_Fault
+    (Self    : in out WSDL_Printer;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control);
+
    overriding procedure Enter_Binding_Operation
     (Self    : in out WSDL_Printer;
      Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
@@ -197,6 +207,18 @@ package body WSDL.Debug is
       Self.Writer.Start_Element
        (WSDL_Namespace_URI, Binding_Element, Attributes);
    end Enter_Binding;
+
+   -------------------------
+   -- Enter_Binding_Fault --
+   -------------------------
+
+   overriding procedure Enter_Binding_Fault
+    (Self    : in out WSDL_Printer;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Self.Writer.Start_Element (WSDL_Namespace_URI, Fault_Element);
+   end Enter_Binding_Fault;
 
    -----------------------------
    -- Enter_Binding_Operation --
@@ -346,6 +368,18 @@ package body WSDL.Debug is
    begin
       Self.Writer.End_Element (WSDL_Namespace_URI, Binding_Element);
    end Leave_Binding;
+
+   -------------------------
+   -- Leave_Binding_Fault --
+   -------------------------
+
+   overriding procedure Leave_Binding_Fault
+    (Self    : in out WSDL_Printer;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      Self.Writer.End_Element (WSDL_Namespace_URI, Fault_Element);
+   end Leave_Binding_Fault;
 
    -----------------------------
    -- Leave_Binding_Operation --

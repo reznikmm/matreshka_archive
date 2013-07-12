@@ -45,6 +45,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Faults;
+pragma Unreferenced (WSDL.AST.Faults);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
@@ -66,6 +70,10 @@ package body WSDL.Iterators.Containment is
      Node    : not null WSDL.AST.Binding_Access;
      Control : in out Traverse_Control) is
    begin
+      for J of Node.Binding_Faults loop
+         Self.Visit (Visitor, WSDL.AST.Node_Access (J), Control);
+      end loop;
+
       for J of Node.Binding_Operations loop
          Self.Visit (Visitor, WSDL.AST.Node_Access (J), Control);
       end loop;

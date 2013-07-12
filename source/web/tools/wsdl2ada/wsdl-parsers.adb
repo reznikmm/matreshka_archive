@@ -148,6 +148,13 @@ package body WSDL.Parsers is
      Success : in out Boolean);
    --  Handles start of 'interface' element.
 
+   procedure Start_Binding_Fault_Element
+    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Namespaces : Namespace_Maps.Map;
+     Parent     : WSDL.AST.Binding_Access;
+     Success    : in out Boolean);
+   --  Handles start of 'fault' element as child of 'binding' element.
+
    procedure Start_Binding_Operation_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
@@ -396,6 +403,30 @@ package body WSDL.Parsers is
       end if;
    end Start_Binding_Element;
 
+   ---------------------------------
+   -- Start_Binding_Fault_Element --
+   ---------------------------------
+
+   procedure Start_Binding_Fault_Element
+    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+     Namespaces : Namespace_Maps.Map;
+     Parent     : WSDL.AST.Binding_Access;
+     Success    : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
+      Node : WSDL.AST.Binding_Fault_Access;
+
+   begin
+      Node := new WSDL.AST.Faults.Binding_Fault_Node;
+      Node.Parent := Parent;
+      Parent.Binding_Faults.Append (Node);
+
+      --  Analyze 'ref' attribute.
+
+      Node.Ref := To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
+   end Start_Binding_Fault_Element;
+
    -------------------------------------
    -- Start_Binding_Operation_Element --
    -------------------------------------
@@ -558,13 +589,13 @@ package body WSDL.Parsers is
 --                 Self.Current_Fault,
                  Success);
 
---            elsif Self.Current_State.Kind = WSDL_Binding then
---               Self.Push (WSDL_Binding_Operation);
---               Start_Binding_Operation_Element
---                (Attributes,
---                 Self.Namespaces,
---                 Self.Current_Binding,
---                 Success);
+            elsif Self.Current_State.Kind = WSDL_Binding then
+               Self.Push (WSDL_Binding_Fault);
+               Start_Binding_Fault_Element
+                (Attributes,
+                 Self.Namespaces,
+                 Self.Current_Binding,
+                 Success);
 
             else
                raise Program_Error;

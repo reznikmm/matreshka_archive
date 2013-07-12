@@ -130,16 +130,15 @@ package WSDL.AST.Faults is
 --   end record;
 
    type Binding_Fault_Node is new Abstract_Node with record
-      null;
---      Ref                 : Qualified_Name;
---      --  Name of the related interface operation.
---
---      Parent              : Binding_Access;
---      --  Value of {parent} property.
---
---      Interface_Operation : Interface_Operation_Access;
---      --  Value of {interface operation} property.
---
+      Ref             : Qualified_Name;
+      --  Name of the related interface fault.
+
+      Parent          : Binding_Access;
+      --  Value of {parent} property.
+
+      Interface_Fault : Interface_Fault_Access;
+      --  Value of {interface fault} property.
+
 --      SOAP                : SOAP_Binding_Operation_Extension;
 --      --  SOAP Binding extension information;
    end record;

@@ -47,6 +47,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Faults;
+pragma Unreferenced (WSDL.AST.Faults);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports that unit is not referenced.
@@ -69,6 +73,12 @@ package body WSDL.Name_Resolvers is
      Local_Name    : League.Strings.Universal_String)
        return WSDL.AST.Interface_Access;
    --  Resolves name of interface component.
+
+   function Resolve_Interface_Fault
+    (Node : not null WSDL.AST.Interface_Access;
+     Name : WSDL.AST.Qualified_Name)
+       return WSDL.AST.Interface_Fault_Access;
+   --  Resolves name of interface operation component.
 
    function Resolve_Interface_Operation
     (Node       : not null WSDL.AST.Interface_Access;
@@ -103,6 +113,21 @@ package body WSDL.Name_Resolvers is
              Node.Interface_Name.Local_Name);
       end if;
    end Enter_Binding;
+
+   -------------------------
+   -- Enter_Binding_Fault --
+   -------------------------
+
+   overriding procedure Enter_Binding_Fault
+    (Self    : in out Name_Resolver;
+     Node    : not null WSDL.AST.Binding_Fault_Access;
+     Control : in out WSDL.Iterators.Traverse_Control) is
+   begin
+      --  Resolve interface fault component.
+
+      Node.Interface_Fault :=
+        Resolve_Interface_Fault (Node.Parent.Interface_Node, Node.Ref);
+   end Enter_Binding_Fault;
 
    -----------------------------
    -- Enter_Binding_Operation --
@@ -231,6 +256,37 @@ package body WSDL.Name_Resolvers is
 
       return Root.Interfaces.Element (Local_Name);
    end Resolve_Interface;
+
+   -----------------------------
+   -- Resolve_Interface_Fault --
+   -----------------------------
+
+   function Resolve_Interface_Fault
+    (Node : not null WSDL.AST.Interface_Access;
+     Name : WSDL.AST.Qualified_Name)
+       return WSDL.AST.Interface_Fault_Access
+   is
+      use type WSDL.AST.Interface_Fault_Access;
+
+      Result : WSDL.AST.Interface_Fault_Access;
+
+   begin
+      if Node.Parent.Target_Namespace = Name.Namespace_URI
+        and then Node.Interface_Faults.Contains (Name.Local_Name)
+      then
+         return Node.Interface_Faults.Element (Name.Local_Name);
+      end if;
+
+      for J of Node.Extended_Interfaces loop
+         Result := Resolve_Interface_Fault (J, Name);
+
+         if Result /= null then
+            return Result;
+         end if;
+      end loop;
+
+      raise Program_Error;
+   end Resolve_Interface_Fault;
 
    ---------------------------------
    -- Resolve_Interface_Operation --
