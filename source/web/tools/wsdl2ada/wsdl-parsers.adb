@@ -1335,7 +1335,7 @@ package body WSDL.Parsers is
 
       Name : constant League.Strings.Universal_String
         := Attributes.Value (Name_Attribute);
-      Node : WSDL.AST.Faults.Interface_Fault_Access;
+      Node : WSDL.AST.Interface_Fault_Access;
 
    begin
       Node := new WSDL.AST.Faults.Interface_Fault_Node;

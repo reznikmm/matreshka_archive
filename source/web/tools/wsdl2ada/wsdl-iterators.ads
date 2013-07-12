@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
-with WSDL.AST.Faults;
 with WSDL.AST.Operations;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
@@ -106,7 +105,7 @@ package WSDL.Iterators is
    not overriding procedure Visit_Interface_Fault
     (Self    : in out WSDL_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Faults.Interface_Fault_Access;
+     Node    : not null WSDL.AST.Interface_Fault_Access;
      Control : in out Traverse_Control) is null;
 
    not overriding procedure Visit_Interface_Fault_Reference

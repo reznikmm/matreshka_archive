@@ -107,6 +107,9 @@ package WSDL.AST is
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;
 
+   type Interface_Fault_Access is
+     access all WSDL.AST.Faults.Interface_Fault_Node'Class;
+
    type Interface_Message_Access is
      access all WSDL.AST.Messages.Interface_Message_Node'Class;
 

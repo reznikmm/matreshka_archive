@@ -49,7 +49,6 @@ with League.String_Vectors;
 with League.Strings.Hash;
 
 with WSDL.AST.Components;
-with WSDL.AST.Faults;
 
 package WSDL.AST.Interfaces is
 
@@ -69,10 +68,10 @@ package WSDL.AST.Interfaces is
    package Interface_Fault_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           WSDL.AST.Faults.Interface_Fault_Access,
+           WSDL.AST.Interface_Fault_Access,
            League.Strings.Hash,
            League.Strings."=",
-           WSDL.AST.Faults."=");
+           WSDL.AST."=");
 
    package Interface_Vectors is
      new Ada.Containers.Vectors (Positive, WSDL.AST.Interface_Access);

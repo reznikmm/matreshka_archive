@@ -64,9 +64,6 @@ package WSDL.AST.Faults is
       --  Name of the element which is used as content of the fault.
    end record;
 
-   type Interface_Fault_Access is
-     access all Interface_Fault_Node'Class;
-
    overriding procedure Enter
     (Self    : not null access Interface_Fault_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
@@ -91,7 +88,7 @@ package WSDL.AST.Faults is
       Interface_Fault_Name : Qualified_Name;
       --  QName of referenced interface fault component.
 
-      Interface_Fault      : WSDL.AST.Faults.Interface_Fault_Access;
+      Interface_Fault      : WSDL.AST.Interface_Fault_Access;
       --  Value of {interface fault} property.
 
       Parent               : WSDL.AST.Interface_Operation_Access;
