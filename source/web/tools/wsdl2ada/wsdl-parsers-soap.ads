@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Operations;
 
 private package WSDL.Parsers.SOAP is
 
@@ -54,7 +53,7 @@ private package WSDL.Parsers.SOAP is
 
    procedure Start_Binding_Operation_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
-     Node       : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node       : not null WSDL.AST.Binding_Operation_Access;
      Success    : in out Boolean);
    --  Process start of binding operation element by analyzing SOAP Extension's
    --  attributes.

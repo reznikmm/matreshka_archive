@@ -61,6 +61,9 @@ pragma Unreferenced (WSDL.AST.Messages);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
 with WSDL.AST.Operations;
+pragma Unreferenced (WSDL.AST.Operations);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Services;
 with WSDL.AST.Types;
 with WSDL.Constants;
@@ -99,12 +102,12 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Binding_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node    : not null WSDL.AST.Binding_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Leave_Binding_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node    : not null WSDL.AST.Binding_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Description
@@ -226,7 +229,7 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Binding_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node    : not null WSDL.AST.Binding_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       Self.Writer.Start_Element (WSDL_Namespace_URI, Operation_Element);
@@ -387,7 +390,7 @@ package body WSDL.Debug is
 
    overriding procedure Leave_Binding_Operation
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node    : not null WSDL.AST.Binding_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       Self.Writer.End_Element (WSDL_Namespace_URI, Operation_Element);

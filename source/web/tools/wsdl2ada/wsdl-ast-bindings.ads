@@ -44,7 +44,6 @@
 with Ada.Containers.Vectors;
 
 with WSDL.AST.Components;
-with WSDL.AST.Operations;
 
 package WSDL.AST.Bindings is
 
@@ -59,8 +58,8 @@ package WSDL.AST.Bindings is
    package Binding_Operation_Vectors is
      new Ada.Containers.Vectors
           (Positive,
-           WSDL.AST.Operations.Binding_Operation_Access,
-           WSDL.AST.Operations."=");
+           WSDL.AST.Binding_Operation_Access,
+           WSDL.AST."=");
 
    type SOAP_Binding_Extension is record
       Version             : League.Strings.Universal_String;

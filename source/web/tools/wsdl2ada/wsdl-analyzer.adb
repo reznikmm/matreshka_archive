@@ -47,6 +47,10 @@ with WSDL.AST.Messages;
 pragma Unreferenced (WSDL.AST.Messages);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Operations;
+pragma Unreferenced (WSDL.AST.Operations);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.Constants;
 
 package body WSDL.Analyzer is

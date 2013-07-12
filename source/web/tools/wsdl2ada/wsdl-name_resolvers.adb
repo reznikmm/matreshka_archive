@@ -54,6 +54,9 @@ pragma Unreferenced (WSDL.AST.Faults);
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports that unit is not referenced.
+with WSDL.AST.Operations;
+pragma Unreferenced (WSDL.AST.Operations);
+--  XXX GNAT 20130108 reports that unit is not referenced.
 
 package body WSDL.Name_Resolvers is
 
@@ -135,7 +138,7 @@ package body WSDL.Name_Resolvers is
 
    overriding procedure Enter_Binding_Operation
     (Self    : in out Name_Resolver;
-     Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node    : not null WSDL.AST.Binding_Operation_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
       pragma Unreferenced (Self);

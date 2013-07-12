@@ -104,6 +104,9 @@ package WSDL.AST is
    type Binding_Fault_Access is
      access all WSDL.AST.Faults.Binding_Fault_Node'Class;
 
+   type Binding_Operation_Access is
+     access all WSDL.AST.Operations.Binding_Operation_Node'Class;
+
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;
 

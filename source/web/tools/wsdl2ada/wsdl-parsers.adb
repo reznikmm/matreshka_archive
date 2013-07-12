@@ -451,11 +451,11 @@ package body WSDL.Parsers is
 --     Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean)
    is
-      Node : WSDL.AST.Operations.Binding_Operation_Access;
+      Node : WSDL.AST.Binding_Operation_Access;
 
    begin
       Node := new WSDL.AST.Operations.Binding_Operation_Node;
-      Node.Parent := WSDL.AST.Operations.Binding_Access (Parent);
+      Node.Parent := Parent;
       Parent.Binding_Operations.Append (Node);
 
       --  Analyze 'ref' attribute.

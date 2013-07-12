@@ -45,7 +45,6 @@ with Ada.Containers.Vectors;
 
 with League.String_Vectors;
 
-limited with WSDL.AST.Bindings;
 with WSDL.MEPs;
 
 package WSDL.AST.Operations is
@@ -63,9 +62,6 @@ package WSDL.AST.Operations is
           (Positive,
            WSDL.AST.Interface_Fault_Reference_Access,
            WSDL.AST."=");
-
-   type Binding_Access is
-     access all WSDL.AST.Bindings.Binding_Node'Class;
 
    -------------------------
    -- Interface Operation --
@@ -124,18 +120,15 @@ package WSDL.AST.Operations is
       Ref                 : Qualified_Name;
       --  Name of the related interface operation.
 
-      Parent              : Binding_Access;
+      Parent              : WSDL.AST.Binding_Access;
       --  Value of {parent} property.
 
-      Interface_Operation : Interface_Operation_Access;
+      Interface_Operation : WSDL.AST.Interface_Operation_Access;
       --  Value of {interface operation} property.
 
       SOAP                : SOAP_Binding_Operation_Extension;
       --  SOAP Binding extension information;
    end record;
-
-   type Binding_Operation_Access is
-     access all Binding_Operation_Node'Class;
 
    overriding procedure Enter
     (Self    : not null access Binding_Operation_Node;

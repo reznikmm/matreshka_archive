@@ -45,6 +45,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Operations;
+pragma Unreferenced (WSDL.AST.Operations);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.Constants;
 
 package body WSDL.Parsers.SOAP is
@@ -114,7 +118,7 @@ package body WSDL.Parsers.SOAP is
 
    procedure Start_Binding_Operation_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
-     Node       : not null WSDL.AST.Operations.Binding_Operation_Access;
+     Node       : not null WSDL.AST.Binding_Operation_Access;
      Success    : in out Boolean) is
    begin
       --  Analyze 'wsoap:mep' attribute.
