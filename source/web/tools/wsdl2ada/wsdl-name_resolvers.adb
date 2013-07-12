@@ -88,7 +88,10 @@ package body WSDL.Name_Resolvers is
    overriding procedure Enter_Binding
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Binding_Access;
-     Control : in out WSDL.Iterators.Traverse_Control) is
+     Control : in out WSDL.Iterators.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
    begin
       --  Resolve interface component when necessary.
 
@@ -108,7 +111,11 @@ package body WSDL.Name_Resolvers is
    overriding procedure Enter_Binding_Operation
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Operations.Binding_Operation_Access;
-     Control : in out WSDL.Iterators.Traverse_Control) is
+     Control : in out WSDL.Iterators.Traverse_Control)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Control);
+
    begin
       --  It is unclear from the specification how namespace URI should be
       --  used. From the other side, operations are identified uniquely in the
@@ -126,7 +133,10 @@ package body WSDL.Name_Resolvers is
    overriding procedure Enter_Endpoint
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Endpoints.Endpoint_Access;
-     Control : in out WSDL.Iterators.Traverse_Control) is
+     Control : in out WSDL.Iterators.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
    begin
       Node.Binding :=
         Resolve_Binding
@@ -142,7 +152,10 @@ package body WSDL.Name_Resolvers is
    overriding procedure Enter_Interface
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Interface_Access;
-     Control : in out WSDL.Iterators.Traverse_Control) is
+     Control : in out WSDL.Iterators.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
    begin
       for J of Node.Extends loop
          Node.Extended_Interfaces.Append
@@ -157,7 +170,10 @@ package body WSDL.Name_Resolvers is
    overriding procedure Enter_Service
     (Self    : in out Name_Resolver;
      Node    : not null WSDL.AST.Services.Service_Access;
-     Control : in out WSDL.Iterators.Traverse_Control) is
+     Control : in out WSDL.Iterators.Traverse_Control)
+   is
+      pragma Unreferenced (Control);
+
    begin
       --  Resolve interface by qualified name.
 
