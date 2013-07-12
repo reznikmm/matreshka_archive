@@ -43,6 +43,10 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with WSDL.AST.Bindings;
+pragma Unreferenced (WSDL.AST.Bindings);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports that unit is not referenced.
@@ -56,7 +60,7 @@ package body WSDL.Name_Resolvers is
     (Root          : not null WSDL.AST.Descriptions.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return WSDL.AST.Bindings.Binding_Access;
+       return WSDL.AST.Binding_Access;
    --  Resolves binding component by qualified name.
 
    function Resolve_Interface
@@ -83,7 +87,7 @@ package body WSDL.Name_Resolvers is
 
    overriding procedure Enter_Binding
     (Self    : in out Name_Resolver;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       --  Resolve interface component when necessary.
@@ -172,7 +176,7 @@ package body WSDL.Name_Resolvers is
     (Root          : not null WSDL.AST.Descriptions.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
-       return WSDL.AST.Bindings.Binding_Access is
+       return WSDL.AST.Binding_Access is
    begin
       --  QName-resolution-1064: "A Description component MUST NOT have such
       --  broken references."

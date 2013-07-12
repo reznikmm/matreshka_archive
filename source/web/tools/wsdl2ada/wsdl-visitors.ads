@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
@@ -58,12 +57,12 @@ package WSDL.Visitors is
 
    not overriding procedure Enter_Binding
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Leave_Binding
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Enter_Binding_Fault

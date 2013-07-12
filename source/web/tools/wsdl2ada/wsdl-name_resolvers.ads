@@ -52,7 +52,6 @@
 --   - binding operation to interface operation reference resolution:
 --     {extended_interface} property must be resolved already.
 ------------------------------------------------------------------------------
-private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 private with WSDL.AST.Endpoints;
 private with WSDL.AST.Operations;
@@ -78,7 +77,7 @@ private
 
    overriding procedure Enter_Binding
     (Self    : in out Name_Resolver;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Binding_Operation

@@ -51,7 +51,7 @@ package WSDL.Iterators.Containment is
    overriding procedure Visit_Binding
     (Self    : in out Containment_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out Traverse_Control);
 
    overriding procedure Visit_Description

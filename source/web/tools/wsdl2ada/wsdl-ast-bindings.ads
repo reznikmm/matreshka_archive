@@ -93,8 +93,6 @@ package WSDL.AST.Bindings is
       --  SOAP Binding specific components.
    end record;
 
-   type Binding_Access is access all Binding_Node'Class;
-
    overriding procedure Enter
     (Self    : not null access Binding_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;

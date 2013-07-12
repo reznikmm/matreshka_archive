@@ -45,7 +45,6 @@ with Ada.Containers.Hashed_Maps;
 
 with League.Strings.Hash;
 
-with WSDL.AST.Bindings;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
 
@@ -56,10 +55,10 @@ package WSDL.AST.Descriptions is
    package Binding_Maps is
      new Ada.Containers.Hashed_Maps
           (League.Strings.Universal_String,
-           WSDL.AST.Bindings.Binding_Access,
+           WSDL.AST.Binding_Access,
            League.Strings.Hash,
            League.Strings."=",
-           WSDL.AST.Bindings."=");
+           WSDL.AST."=");
 
    package Interface_Maps is
      new Ada.Containers.Hashed_Maps

@@ -47,7 +47,7 @@ private package WSDL.Parsers.SOAP is
 
    procedure Start_Binding_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
-     Node       : not null WSDL.AST.Bindings.Binding_Access;
+     Node       : not null WSDL.AST.Binding_Access;
      Success    : in out Boolean);
    --  Process start of binding element by analyzing SOAP Extension's
    --  attributes.

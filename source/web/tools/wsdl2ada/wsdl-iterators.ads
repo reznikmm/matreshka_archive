@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
@@ -71,7 +70,7 @@ package WSDL.Iterators is
    not overriding procedure Visit_Binding
     (Self    : in out WSDL_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Bindings.Binding_Access;
+     Node    : not null WSDL.AST.Binding_Access;
      Control : in out Traverse_Control) is null;
 
    not overriding procedure Visit_Binding_Fault

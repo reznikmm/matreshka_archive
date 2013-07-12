@@ -47,6 +47,9 @@ with Ada.Wide_Wide_Text_IO; use Ada.Wide_Wide_Text_IO;
 with League.Strings;
 
 with WSDL.AST.Bindings;
+pragma Unreferenced (WSDL.AST.Bindings);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports unreferenced unit.
@@ -78,7 +81,7 @@ package body WSDL.Generator is
 
    procedure Lookup_Binding
     (Interface_Node : not null WSDL.AST.Interface_Access;
-     Binding_Node   : out WSDL.AST.Bindings.Binding_Access);
+     Binding_Node   : out WSDL.AST.Binding_Access);
 
    function Compute_All_Operations
     (Interface_Node : not null WSDL.AST.Interface_Access)
@@ -86,7 +89,7 @@ package body WSDL.Generator is
 
    function Compute_SOAP_Action
     (Operation_Node : not null WSDL.AST.Interface_Operation_Access;
-     Binding_Node   : WSDL.AST.Bindings.Binding_Access)
+     Binding_Node   : WSDL.AST.Binding_Access)
        return League.Strings.Universal_String;
 
    ----------------------------
@@ -136,7 +139,7 @@ package body WSDL.Generator is
 
    function Compute_SOAP_Action
     (Operation_Node : not null WSDL.AST.Interface_Operation_Access;
-     Binding_Node   : WSDL.AST.Bindings.Binding_Access)
+     Binding_Node   : WSDL.AST.Binding_Access)
        return League.Strings.Universal_String
    is
       use type WSDL.AST.Interface_Operation_Access;
@@ -171,12 +174,12 @@ package body WSDL.Generator is
     (Service_Node : not null WSDL.AST.Services.Service_Access)
    is
       use type League.Strings.Universal_String;
-      use type WSDL.AST.Bindings.Binding_Access;
+      use type WSDL.AST.Binding_Access;
       use type WSDL.AST.Message_Content_Models;
       use type WSDL.AST.Message_Directions;
       use type WSDL.AST.Interface_Message_Access;
 
-      Binding_Node           : WSDL.AST.Bindings.Binding_Access;
+      Binding_Node           : WSDL.AST.Binding_Access;
       Operations             : Operation_Maps.Map;
       Interface_Type_Name    : League.Strings.Universal_String;
       Interface_Package_Name : League.Strings.Universal_String;
@@ -573,7 +576,7 @@ package body WSDL.Generator is
 
    procedure Lookup_Binding
     (Interface_Node : not null WSDL.AST.Interface_Access;
-     Binding_Node   : out WSDL.AST.Bindings.Binding_Access)
+     Binding_Node   : out WSDL.AST.Binding_Access)
    is
       use type WSDL.AST.Interface_Access;
 

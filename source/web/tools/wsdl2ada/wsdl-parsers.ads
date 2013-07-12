@@ -50,7 +50,6 @@ with XML.SAX.Content_Handlers;
 private with XML.SAX.Locators;
 
 private with WSDL.Assertions;
-private with WSDL.AST.Bindings;
 with WSDL.AST.Descriptions;
 private with WSDL.AST.Services;
 
@@ -146,7 +145,7 @@ private
       Current_Operation : WSDL.AST.Interface_Operation_Access;
       --  Currently processed interface operation component.
 
-      Current_Binding   : WSDL.AST.Bindings.Binding_Access;
+      Current_Binding   : WSDL.AST.Binding_Access;
       --  Currently processed binding component.
 
       Current_Service   : WSDL.AST.Services.Service_Access;

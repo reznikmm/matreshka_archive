@@ -43,6 +43,10 @@
 ------------------------------------------------------------------------------
 with League.String_Vectors;
 
+with WSDL.AST.Bindings;
+pragma Unreferenced (WSDL.AST.Bindings);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Components;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
@@ -134,20 +138,20 @@ package body WSDL.Parsers is
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Descriptions.Description_Access;
-     Node       : out WSDL.AST.Bindings.Binding_Access;
+     Node       : out WSDL.AST.Binding_Access;
      Success    : in out Boolean);
    --  Handles start of 'interface' element.
 
    procedure End_Binding_Element
     (Parser  : WSDL_Parser;
-     Node    : WSDL.AST.Bindings.Binding_Access;
+     Node    : WSDL.AST.Binding_Access;
      Success : in out Boolean);
    --  Handles start of 'interface' element.
 
    procedure Start_Binding_Operation_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Bindings.Binding_Access;
+     Parent     : WSDL.AST.Binding_Access;
 --     Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean);
    --  Handles start of 'operation' element as child of 'binding' element.
@@ -173,7 +177,7 @@ package body WSDL.Parsers is
 
    procedure End_Binding_Element
     (Parser  : WSDL_Parser;
-     Node    : WSDL.AST.Bindings.Binding_Access;
+     Node    : WSDL.AST.Binding_Access;
      Success : in out Boolean)
    is
       pragma Unreferenced (Success);
@@ -345,7 +349,7 @@ package body WSDL.Parsers is
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Descriptions.Description_Access;
-     Node       : out WSDL.AST.Bindings.Binding_Access;
+     Node       : out WSDL.AST.Binding_Access;
      Success    : in out Boolean)
    is
       Name : constant League.Strings.Universal_String
@@ -399,7 +403,7 @@ package body WSDL.Parsers is
    procedure Start_Binding_Operation_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Bindings.Binding_Access;
+     Parent     : WSDL.AST.Binding_Access;
 --     Node       : out WSDL.AST.Operations.Interface_Operation_Access;
      Success    : in out Boolean)
    is

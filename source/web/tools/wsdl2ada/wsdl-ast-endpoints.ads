@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Bindings;
 limited with WSDL.AST.Services;
 
 package WSDL.AST.Endpoints is
@@ -60,7 +59,7 @@ package WSDL.AST.Endpoints is
       Binding_Name : Qualified_Name;
       --  Name of the referenced binding component.
 
-      Binding      : WSDL.AST.Bindings.Binding_Access;
+      Binding      : WSDL.AST.Binding_Access;
       --  Value of {binding} property.
 
       Address      : League.Strings.Universal_String;

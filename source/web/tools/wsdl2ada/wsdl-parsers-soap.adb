@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with WSDL.AST.Bindings;
+pragma Unreferenced (WSDL.AST.Bindings);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.Constants;
 
 package body WSDL.Parsers.SOAP is
@@ -53,7 +57,7 @@ package body WSDL.Parsers.SOAP is
 
    procedure Start_Binding_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
-     Node       : not null WSDL.AST.Bindings.Binding_Access;
+     Node       : not null WSDL.AST.Binding_Access;
      Success    : in out Boolean) is
    begin
       --  Analyze 'wsoap:version' attribute.

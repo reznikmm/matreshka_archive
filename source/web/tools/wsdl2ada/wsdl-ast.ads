@@ -47,6 +47,7 @@ with Ada.Containers;
 
 with League.Strings;
 
+limited with WSDL.AST.Bindings;
 limited with WSDL.AST.Faults;
 limited with WSDL.AST.Interfaces;
 limited with WSDL.AST.Messages;
@@ -97,6 +98,8 @@ package WSDL.AST is
      Iterator : in out WSDL.Iterators.WSDL_Iterator'Class;
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
      Control  : in out WSDL.Iterators.Traverse_Control) is abstract;
+
+   type Binding_Access is access all WSDL.AST.Bindings.Binding_Node'Class;
 
    type Binding_Fault_Access is
      access all WSDL.AST.Faults.Binding_Fault_Node'Class;
