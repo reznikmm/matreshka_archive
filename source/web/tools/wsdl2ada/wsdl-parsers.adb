@@ -149,7 +149,8 @@ package body WSDL.Parsers is
    --  Handles start of 'interface' element.
 
    procedure Start_Binding_Fault_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Binding_Access;
      Success    : in out Boolean);
@@ -408,12 +409,16 @@ package body WSDL.Parsers is
    ---------------------------------
 
    procedure Start_Binding_Fault_Element
-    (Attributes : XML.SAX.Attributes.SAX_Attributes;
+    (Parser     : WSDL_Parser;
+     Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
      Parent     : WSDL.AST.Binding_Access;
      Success    : in out Boolean)
    is
       pragma Unreferenced (Success);
+
+      use type WSDL.AST.Binding_Fault_Access;
+      use type WSDL.AST.Qualified_Name;
 
       Node : WSDL.AST.Binding_Fault_Access;
 
@@ -425,6 +430,14 @@ package body WSDL.Parsers is
       --  Analyze 'ref' attribute.
 
       Node.Ref := To_Qualified_Name (Namespaces, Attributes.Value (Ref_Attribute));
+
+      for J of Parent.Binding_Faults loop
+         if J /= Node and J.Ref = Node.Ref then
+            Parser.Report (WSDL.Assertions.BindingFault_1050);
+
+            raise WSDL_Error;
+         end if;
+      end loop;
    end Start_Binding_Fault_Element;
 
    -------------------------------------
@@ -592,7 +605,8 @@ package body WSDL.Parsers is
             elsif Self.Current_State.Kind = WSDL_Binding then
                Self.Push (WSDL_Binding_Fault);
                Start_Binding_Fault_Element
-                (Attributes,
+                (Self,
+                 Attributes,
                  Self.Namespaces,
                  Self.Current_Binding,
                  Success);
