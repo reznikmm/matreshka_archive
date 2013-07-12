@@ -284,9 +284,14 @@ package WSDL.Assertions is
       --  For each Binding component in the {bindings} property of a
       --  Description component, the {name} property MUST be unique.
 
-      BindingFault_1050);
+      BindingFault_1050,
       --  For each Binding Fault component in the {binding faults} property of
       --  a Binding component, the {interface fault} property MUST be unique.
+
+      BindingOperation_1051);
+      --  For each Binding Operation component in the {binding operations}
+      --  property of a Binding component, the {interface operation} property
+      --  MUST be unique.
 
    procedure Report
     (File      : League.Strings.Universal_String;

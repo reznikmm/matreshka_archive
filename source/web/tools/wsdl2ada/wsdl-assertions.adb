@@ -167,7 +167,11 @@ package body WSDL.Assertions is
            BindingFault_1050              =>
              League.Strings.To_Universal_String
               ("duplicate specification of binding details for interface"
-                 & " fault"));
+                 & " fault"),
+           BindingOperation_1051          =>
+             League.Strings.To_Universal_String
+              ("duplicate specification of binding details for interface"
+                 & " operation"));
 
    ------------
    -- Report --
