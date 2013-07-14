@@ -52,7 +52,7 @@
 --   - binding operation to interface operation reference resolution:
 --     {extended_interface} property must be resolved already.
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
+with WSDL.AST;
 private with WSDL.AST.Endpoints;
 private with WSDL.AST.Services;
 private with WSDL.Iterators;
@@ -66,12 +66,12 @@ package WSDL.Name_Resolvers is
 
    procedure Set_Root
     (Self : in out Name_Resolver'Class;
-     Root : WSDL.AST.Descriptions.Description_Access);
+     Root : WSDL.AST.Description_Access);
 
 private
 
    type Name_Resolver is limited new WSDL.Visitors.WSDL_Visitor with record
-      Root : WSDL.AST.Descriptions.Description_Access;
+      Root : WSDL.AST.Description_Access;
    end record;
 
    overriding procedure Enter_Binding

@@ -45,6 +45,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Faults;
 pragma Unreferenced (WSDL.AST.Faults);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
@@ -90,7 +94,7 @@ package body WSDL.Iterators.Containment is
    overriding procedure Visit_Description
     (Self    : in out Containment_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out Traverse_Control)
    is
       use type WSDL.AST.Types.Types_Access;

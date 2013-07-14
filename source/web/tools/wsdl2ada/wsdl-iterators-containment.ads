@@ -57,7 +57,7 @@ package WSDL.Iterators.Containment is
    overriding procedure Visit_Description
     (Self    : in out Containment_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out Traverse_Control);
 
    overriding procedure Visit_Interface

@@ -96,8 +96,6 @@ package WSDL.AST.Descriptions is
       --  description element.
    end record;
 
-   type Description_Access is access all Description_Node'Class;
-
    overriding procedure Enter
     (Self    : not null access Description_Node;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;

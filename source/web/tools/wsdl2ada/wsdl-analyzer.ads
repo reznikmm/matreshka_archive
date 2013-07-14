@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
+with WSDL.AST;
 private with WSDL.Iterators;
 with WSDL.Visitors;
 
@@ -51,12 +51,12 @@ package WSDL.Analyzer is
 
    procedure Set_Root
     (Self : in out Analyzer'Class;
-     Root : WSDL.AST.Descriptions.Description_Access);
+     Root : WSDL.AST.Description_Access);
 
 private
 
    type Analyzer is limited new WSDL.Visitors.WSDL_Visitor with record
-      Root : WSDL.AST.Descriptions.Description_Access;
+      Root : WSDL.AST.Description_Access;
    end record;
 
    overriding procedure Enter_Interface_Operation

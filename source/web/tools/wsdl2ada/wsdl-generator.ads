@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,12 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
+with WSDL.AST;
 
 package WSDL.Generator is
 
    procedure Generate
-    (Description : not null WSDL.AST.Descriptions.Description_Access);
+    (Description : not null WSDL.AST.Description_Access);
    --  Generates code for all serives iof the given description.
 
 end WSDL.Generator;

@@ -50,6 +50,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
 --  XXX GNAT 20130108 reports unreferenced unit.
@@ -163,7 +167,7 @@ package body WSDL.Generator is
    --------------
 
    procedure Generate
-    (Description : not null WSDL.AST.Descriptions.Description_Access) is
+    (Description : not null WSDL.AST.Description_Access) is
    begin
       for Service_Node of Description.Services loop
          Generate_Service (Service_Node);

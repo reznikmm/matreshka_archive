@@ -232,7 +232,7 @@ package body WSDL.Analyzer is
 
    procedure Set_Root
     (Self : in out Analyzer'Class;
-     Root : WSDL.AST.Descriptions.Description_Access) is
+     Root : WSDL.AST.Description_Access) is
    begin
       Self.Root := Root;
    end Set_Root;

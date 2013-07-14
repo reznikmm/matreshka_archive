@@ -47,6 +47,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Components;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
@@ -85,7 +89,7 @@ package body WSDL.Parsers is
    --  Handles start of 'description' element.
 
    procedure Start_Types_Element
-    (Description : WSDL.AST.Descriptions.Description_Access;
+    (Description : WSDL.AST.Description_Access;
      Success     : in out Boolean);
    --  Handles start of 'types' element.
 
@@ -93,7 +97,7 @@ package body WSDL.Parsers is
     (Parser      : in out WSDL_Parser;
      Attributes  : XML.SAX.Attributes.SAX_Attributes;
      Namespaces  : Namespace_Maps.Map;
-     Description : WSDL.AST.Descriptions.Description_Access;
+     Description : WSDL.AST.Description_Access;
      Node        : out WSDL.AST.Interface_Access;
      Success     : in out Boolean);
    --  Handles start of 'interface' element.
@@ -138,7 +142,7 @@ package body WSDL.Parsers is
     (Parser     : WSDL_Parser;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Descriptions.Description_Access;
+     Parent     : WSDL.AST.Description_Access;
      Node       : out WSDL.AST.Binding_Access;
      Success    : in out Boolean);
    --  Handles start of 'interface' element.
@@ -169,7 +173,7 @@ package body WSDL.Parsers is
    procedure Start_Service_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Descriptions.Description_Access;
+     Parent     : WSDL.AST.Description_Access;
      Node       : out WSDL.AST.Services.Service_Access;
      Success    : in out Boolean);
    --  Handles start of 'service' element.
@@ -286,8 +290,7 @@ package body WSDL.Parsers is
    ---------------------
 
    function Get_Description
-    (Self : WSDL_Parser'Class)
-       return WSDL.AST.Descriptions.Description_Access is
+    (Self : WSDL_Parser'Class) return WSDL.AST.Description_Access is
    begin
       return Self.Description;
    end Get_Description;
@@ -358,7 +361,7 @@ package body WSDL.Parsers is
     (Parser     : WSDL_Parser;
      Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Descriptions.Description_Access;
+     Parent     : WSDL.AST.Description_Access;
      Node       : out WSDL.AST.Binding_Access;
      Success    : in out Boolean)
    is
@@ -1313,7 +1316,7 @@ package body WSDL.Parsers is
     (Parser      : in out WSDL_Parser;
      Attributes  : XML.SAX.Attributes.SAX_Attributes;
      Namespaces  : Namespace_Maps.Map;
-     Description : WSDL.AST.Descriptions.Description_Access;
+     Description : WSDL.AST.Description_Access;
      Node        : out WSDL.AST.Interface_Access;
      Success     : in out Boolean)
    is
@@ -1533,7 +1536,7 @@ package body WSDL.Parsers is
    procedure Start_Service_Element
     (Attributes : XML.SAX.Attributes.SAX_Attributes;
      Namespaces : Namespace_Maps.Map;
-     Parent     : WSDL.AST.Descriptions.Description_Access;
+     Parent     : WSDL.AST.Description_Access;
      Node       : out WSDL.AST.Services.Service_Access;
      Success    : in out Boolean)
    is
@@ -1566,7 +1569,7 @@ package body WSDL.Parsers is
    -------------------------
 
    procedure Start_Types_Element
-    (Description : WSDL.AST.Descriptions.Description_Access;
+    (Description : WSDL.AST.Description_Access;
      Success     : in out Boolean)
    is
       pragma Unreferenced (Success);

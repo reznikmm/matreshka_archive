@@ -48,6 +48,7 @@ with Ada.Containers;
 with League.Strings;
 
 limited with WSDL.AST.Bindings;
+limited with WSDL.AST.Descriptions;
 limited with WSDL.AST.Faults;
 limited with WSDL.AST.Interfaces;
 limited with WSDL.AST.Messages;
@@ -106,6 +107,9 @@ package WSDL.AST is
 
    type Binding_Operation_Access is
      access all WSDL.AST.Operations.Binding_Operation_Node'Class;
+
+   type Description_Access is
+     access all WSDL.AST.Descriptions.Description_Node'Class;
 
    type Interface_Access is
      access all WSDL.AST.Interfaces.Interface_Node'Class;

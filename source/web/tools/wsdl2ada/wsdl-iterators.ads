@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
@@ -86,7 +85,7 @@ package WSDL.Iterators is
    not overriding procedure Visit_Description
     (Self    : in out WSDL_Iterator;
      Visitor : in out WSDL.Visitors.WSDL_Visitor'Class;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out Traverse_Control) is null;
 
    not overriding procedure Visit_Endpoint

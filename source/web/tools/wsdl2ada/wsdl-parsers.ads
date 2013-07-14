@@ -50,7 +50,7 @@ with XML.SAX.Content_Handlers;
 private with XML.SAX.Locators;
 
 private with WSDL.Assertions;
-with WSDL.AST.Descriptions;
+with WSDL.AST;
 private with WSDL.AST.Services;
 
 package WSDL.Parsers is
@@ -59,7 +59,7 @@ package WSDL.Parsers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
 
    function Get_Description
-    (Self : WSDL_Parser'Class) return WSDL.AST.Descriptions.Description_Access;
+    (Self : WSDL_Parser'Class) return WSDL.AST.Description_Access;
 
 private
 
@@ -119,7 +119,7 @@ private
       --  SAX document locator to obtain file and position to report assertion
       --  violations.
 
-      Description       : WSDL.AST.Descriptions.Description_Access;
+      Description       : WSDL.AST.Description_Access;
       --  Root element of AST for the processed file.
 
       Current_State     : Parser_State;

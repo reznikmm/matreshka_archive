@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
+with WSDL.AST;
 
 package WSDL.Debug is
 
-   procedure Dump (Description : WSDL.AST.Descriptions.Description_Access);
+   procedure Dump (Description : WSDL.AST.Description_Access);
 
 end WSDL.Debug;

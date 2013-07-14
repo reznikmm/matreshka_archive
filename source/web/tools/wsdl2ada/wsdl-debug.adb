@@ -51,6 +51,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Endpoints;
 with WSDL.AST.Interfaces;
 pragma Unreferenced (WSDL.AST.Interfaces);
@@ -112,12 +116,12 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Description
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Leave_Description
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control);
 
    overriding procedure Enter_Endpoint
@@ -184,7 +188,7 @@ package body WSDL.Debug is
    -- Dump --
    ----------
 
-   procedure Dump (Description : WSDL.AST.Descriptions.Description_Access) is
+   procedure Dump (Description : WSDL.AST.Description_Access) is
       Printer  : WSDL_Printer;
       Iterator : WSDL.Iterators.Containment.Containment_Iterator;
       Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
@@ -241,7 +245,7 @@ package body WSDL.Debug is
 
    overriding procedure Enter_Description
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control)
    is
       Attributes : XML.SAX.Attributes.SAX_Attributes;
@@ -402,7 +406,7 @@ package body WSDL.Debug is
 
    overriding procedure Leave_Description
     (Self    : in out WSDL_Printer;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is
    begin
       Self.Writer.End_Element (WSDL_Namespace_URI, Description_Element);

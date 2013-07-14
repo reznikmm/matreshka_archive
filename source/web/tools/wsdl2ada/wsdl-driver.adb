@@ -49,7 +49,10 @@ with XML.SAX.Input_Sources.Streams.Files;
 with XML.SAX.Simple_Readers;
 
 with WSDL.Analyzer;
-with WSDL.AST;
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.Debug;
 with WSDL.Generator;
 with WSDL.Iterators.Containment;

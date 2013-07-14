@@ -47,6 +47,10 @@ with WSDL.AST.Bindings;
 pragma Unreferenced (WSDL.AST.Bindings);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
+--  components.
 with WSDL.AST.Faults;
 pragma Unreferenced (WSDL.AST.Faults);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
@@ -64,14 +68,14 @@ package body WSDL.Name_Resolvers is
    use type WSDL.AST.Interface_Operation_Access;
 
    function Resolve_Binding
-    (Root          : not null WSDL.AST.Descriptions.Description_Access;
+    (Root          : not null WSDL.AST.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return WSDL.AST.Binding_Access;
    --  Resolves binding component by qualified name.
 
    function Resolve_Interface
-    (Root          : not null WSDL.AST.Descriptions.Description_Access;
+    (Root          : not null WSDL.AST.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return WSDL.AST.Interface_Access;
@@ -217,7 +221,7 @@ package body WSDL.Name_Resolvers is
    ---------------------
 
    function Resolve_Binding
-    (Root          : not null WSDL.AST.Descriptions.Description_Access;
+    (Root          : not null WSDL.AST.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return WSDL.AST.Binding_Access is
@@ -241,7 +245,7 @@ package body WSDL.Name_Resolvers is
    -----------------------
 
    function Resolve_Interface
-    (Root          : not null WSDL.AST.Descriptions.Description_Access;
+    (Root          : not null WSDL.AST.Description_Access;
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return WSDL.AST.Interface_Access is
@@ -345,7 +349,7 @@ package body WSDL.Name_Resolvers is
 
    procedure Set_Root
     (Self : in out Name_Resolver'Class;
-     Root : WSDL.AST.Descriptions.Description_Access) is
+     Root : WSDL.AST.Description_Access) is
    begin
       Self.Root := Root;
    end Set_Root;

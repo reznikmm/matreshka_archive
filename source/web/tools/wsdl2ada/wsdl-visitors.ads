@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WSDL.AST.Descriptions;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Services;
 with WSDL.AST.Types;
@@ -85,12 +84,12 @@ package WSDL.Visitors is
 
    not overriding procedure Enter_Description
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Leave_Description
     (Self    : in out WSDL_Visitor;
-     Node    : not null WSDL.AST.Descriptions.Description_Access;
+     Node    : not null WSDL.AST.Description_Access;
      Control : in out WSDL.Iterators.Traverse_Control) is null;
 
    not overriding procedure Enter_Endpoint
