@@ -108,4 +108,13 @@ package WSDL.AST.Bindings is
      Visitor  : in out WSDL.Visitors.WSDL_Visitor'Class;
      Control  : in out WSDL.Iterators.Traverse_Control);
 
+   package Constructors is
+
+      function Create_Binding
+       (Parent : not null WSDL.AST.Description_Access;
+        Name   : League.Strings.Universal_String)
+          return not null WSDL.AST.Binding_Access;
+
+   end Constructors;
+
 end WSDL.AST.Bindings;

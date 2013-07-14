@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,39 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with WSDL.AST.Descriptions;
+pragma Unreferenced (WSDL.AST.Descriptions);
+--  GNAT Pro 7.2.0w (20130423) reports that this unit is not used.
 with WSDL.Iterators;
 with WSDL.Visitors;
 
 package body WSDL.AST.Bindings is
+
+   ------------------
+   -- Constructors --
+   ------------------
+
+   package body Constructors is
+
+      --------------------
+      -- Create_Binding --
+      --------------------
+
+      function Create_Binding
+       (Parent : not null WSDL.AST.Description_Access;
+        Name   : League.Strings.Universal_String)
+          return not null WSDL.AST.Binding_Access is
+      begin
+         return Result : constant not null WSDL.AST.Binding_Access
+           := new WSDL.AST.Bindings.Binding_Node
+         do
+            Result.Parent := Parent;
+            Result.Local_Name := Name;
+            Parent.Bindings.Insert (Name, Result);
+         end return;
+      end Create_Binding;
+
+   end Constructors;
 
    -----------
    -- Enter --

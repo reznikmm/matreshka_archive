@@ -377,10 +377,7 @@ package body WSDL.Parsers is
          raise WSDL_Error;
       end if;
 
-      Node := new WSDL.AST.Bindings.Binding_Node;
-      Node.Parent := Parent;
-      Node.Local_Name := Name;
-      Parent.Bindings.Insert (Name, Node);
+      Node := WSDL.AST.Bindings.Constructors.Create_Binding (Parent, Name);
 
       --  Analyze 'interface' attribute.
 
