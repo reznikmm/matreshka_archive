@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,20 +43,16 @@
 ------------------------------------------------------------------------------
 --  Components are direct children of 'description' element.
 ------------------------------------------------------------------------------
-limited with WSDL.AST.Descriptions;
 
 package WSDL.AST.Components is
 
    pragma Preelaborate;
 
-   type Description_Access is
-     access all WSDL.AST.Descriptions.Description_Node'Class;
-
    type Component_Node is abstract new Abstract_Node with record
-      Parent : Description_Access;
+      Parent     : WSDL.AST.Description_Access;
       --  Parent description element.
 
-      Local_Name     : League.Strings.Universal_String;
+      Local_Name : League.Strings.Universal_String;
       --  Name of the component.
    end record;
 

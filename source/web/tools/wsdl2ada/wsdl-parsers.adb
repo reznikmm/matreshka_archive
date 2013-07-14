@@ -51,7 +51,6 @@ with WSDL.AST.Descriptions;
 pragma Unreferenced (WSDL.AST.Descriptions);
 --  GNAT Pro 7.2.0w (20130423): package is needed to access to type's
 --  components.
-with WSDL.AST.Components;
 with WSDL.AST.Endpoints;
 with WSDL.AST.Faults;
 with WSDL.AST.Interfaces;
@@ -379,7 +378,7 @@ package body WSDL.Parsers is
       end if;
 
       Node := new WSDL.AST.Bindings.Binding_Node;
-      Node.Parent := WSDL.AST.Components.Description_Access (Parent);
+      Node.Parent := Parent;
       Node.Local_Name := Name;
       Parent.Bindings.Insert (Name, Node);
 
@@ -1340,7 +1339,7 @@ package body WSDL.Parsers is
       end if;
 
       Node := new WSDL.AST.Interfaces.Interface_Node;
-      Node.Parent := WSDL.AST.Components.Description_Access (Description);
+      Node.Parent := Description;
       Node.Local_Name := Name;
       Description.Interfaces.Insert (Name, Node);
 
@@ -1554,7 +1553,7 @@ package body WSDL.Parsers is
       end if;
 
       Node := new WSDL.AST.Services.Service_Node;
-      Node.Parent := WSDL.AST.Components.Description_Access (Parent);
+      Node.Parent := Parent;
       Node.Local_Name := Name;
       Parent.Services.Insert (Name, Node);
 
@@ -1576,8 +1575,7 @@ package body WSDL.Parsers is
 
    begin
       Description.Types := new WSDL.AST.Types.Types_Node;
-      Description.Types.Parent :=
-        WSDL.AST.Components.Description_Access (Description);
+      Description.Types.Parent := Description;
    end Start_Types_Element;
 
    -----------------------
