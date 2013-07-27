@@ -1,0 +1,298 @@
+diff -up matreshka-0.4.0/gnat/install/matreshka_amf.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_amf.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_amf.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_amf.gpr	2013-04-25 16:32:17.841940098 -0400
+@@ -41,11 +41,12 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "xml.gpr";
+ 
+-library project AMF is
++library project matreshka_amf is
+ 
+    Library_Name := "matreshka-amf" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -56,4 +57,4 @@ library project AMF is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end AMF;
++end matreshka_amf;
+diff -up matreshka-0.4.0/gnat/install/matreshka_amf_mofext.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_amf_mofext.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_amf_mofext.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_amf_mofext.gpr	2013-04-25 16:32:17.841940098 -0400
+@@ -41,12 +41,13 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "amf.gpr";
+ with "amf_uml.gpr";
+ 
+-library project AMF_MOFEXT is
++library project matreshka_amf_mofext is
+ 
+    Library_Name := "matreshka-amf-mofext" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -57,4 +58,4 @@ library project AMF_MOFEXT is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end AMF_MOFEXT;
++end matreshka_amf_mofext;
+diff -up matreshka-0.4.0/gnat/install/matreshka_amf_ocl.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_amf_ocl.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_amf_ocl.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_amf_ocl.gpr	2013-04-25 16:32:17.841940098 -0400
+@@ -41,12 +41,13 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "amf.gpr";
+ with "amf_uml.gpr";
+ 
+-library project AMF_OCL is
++library project matreshka_amf_ocl is
+ 
+    Library_Name := "matreshka-amf-ocl" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -57,4 +58,4 @@ library project AMF_OCL is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end AMF_OCL;
++end matreshka_amf_ocl;
+diff -up matreshka-0.4.0/gnat/install/matreshka_amf_uml.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_amf_uml.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_amf_uml.gpr.gprfix	2012-11-13 03:47:36.774931000 -0500
++++ matreshka-0.4.0/gnat/install/matreshka_amf_uml.gpr	2013-04-25 16:32:59.602940724 -0400
+@@ -41,12 +41,13 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 3403 $ $Date: 2012-11-13 12:47:36 +0400 (Tue, 13 Nov 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "amf.gpr";
+ with "amf_dd.gpr";
+ 
+-library project AMF_UML is
++library project matreshka_amf_ocl is
+ 
+    Library_Name := "matreshka-amf-uml" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -57,4 +58,4 @@ library project AMF_UML is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end AMF_UML;
++end matreshka_amf_uml;
+diff -up matreshka-0.4.0/gnat/install/matreshka_amf_utp.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_amf_utp.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_amf_utp.gpr.gprfix	2012-04-06 17:46:48.059682000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_amf_utp.gpr	2013-04-25 16:32:17.843940098 -0400
+@@ -41,12 +41,13 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2813 $ $Date: 2012-04-07 01:46:48 +0400 (Sat, 07 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "amf.gpr";
+ with "amf_uml.gpr";
+ 
+-library project AMF_UTP is
++library project matreshka_amf_utp is
+ 
+    Library_Name := "matreshka-amf-utp" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -57,4 +58,4 @@ library project AMF_UTP is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end AMF_UTP;
++end matreshka_amf_utp;
+diff -up matreshka-0.4.0/gnat/install/matreshka_fastcgi.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_fastcgi.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_fastcgi.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_fastcgi.gpr	2013-04-25 16:32:17.843940098 -0400
+@@ -41,10 +41,11 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ 
+-library project FastCGI is
++library project matreshka_fastcgi is
+ 
+    Library_Name := "matreshka-fastcgi" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -73,4 +74,4 @@ library project FastCGI is
+ 
+    end Naming;
+ 
+-end FastCGI;
++end matreshka_fastcgi;
+diff -up matreshka-0.4.0/gnat/install/matreshka_league.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_league.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_league.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_league.gpr	2013-04-25 16:32:17.843940098 -0400
+@@ -41,9 +41,10 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ 
+-library project League is
++library project matreshka_league is
+ 
+    Library_Name := "league" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -163,4 +164,4 @@ library project League is
+ 
+    end Naming;
+ 
+-end League;
++end matreshka_league;
+diff -up matreshka-0.4.0/gnat/install/matreshka_sql_firebird.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_sql_firebird.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_sql_firebird.gpr.gprfix	2013-04-25 16:32:17.844940098 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_sql_firebird.gpr	2013-04-25 16:33:37.434941292 -0400
+@@ -41,11 +41,12 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: $ $Date: $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "sql.gpr";
+ 
+-library project SQL_Firebird is
++library project matreshka_sql_firebird is
+ 
+    Library_Name := "matreshka-sql-firebird" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -64,4 +65,4 @@ library project SQL_Firebird is
+       for Linker_Options use Matreshka_Config.Firebird_Library_Options;
+    end Linker;
+ 
+-end SQL_Firebird;
++end matreshka_sql_firebird;
+diff -up matreshka-0.4.0/gnat/install/matreshka_sql.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_sql.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_sql.gpr.gprfix	2012-04-03 15:34:17.157717000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_sql.gpr	2013-04-25 16:32:17.845940098 -0400
+@@ -41,10 +41,11 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 2795 $ $Date: 2012-04-03 23:34:17 +0400 (Tue, 03 Apr 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ 
+-library project SQL is
++library project matreshka_sql is
+ 
+    Library_Name := "matreshka-sql" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -55,4 +56,4 @@ library project SQL is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end SQL;
++end matreshka_sql;
+diff -up matreshka-0.4.0/gnat/install/matreshka_sql_oracle.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_sql_oracle.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_sql_oracle.gpr.gprfix	2013-04-25 16:32:17.845940098 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_sql_oracle.gpr	2013-04-25 16:34:15.078941857 -0400
+@@ -41,11 +41,12 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 3324 $ $Date: 2012-11-09 23:58:25 +0400 (Fri, 09 Nov 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "sql.gpr";
+ 
+-library project SQL_Oracle is
++library project matreshka_sql_oracle is
+ 
+    Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -64,4 +65,4 @@ library project SQL_Oracle is
+       for Linker_Options use Matreshka_Config.OCI_Library_Options;
+    end Linker;
+ 
+-end SQL_Oracle;
++end matreshka_sql_oracle;
+diff -up matreshka-0.4.0/gnat/install/matreshka_sql_postgresql.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_sql_postgresql.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_sql_postgresql.gpr.gprfix	2013-04-25 16:32:17.846940098 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_sql_postgresql.gpr	2013-04-25 16:34:48.527942359 -0400
+@@ -41,11 +41,12 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 3324 $ $Date: 2012-11-09 23:58:25 +0400 (Fri, 09 Nov 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "sql.gpr";
+ 
+-library project SQL_PostgreSQL is
++library project matreshka_sql_postgresql is
+ 
+    Library_Name := "matreshka-sql-postgresql" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -64,4 +65,4 @@ library project SQL_PostgreSQL is
+       for Linker_Options use Matreshka_Config.PostgreSQL_Library_Options;
+    end Linker;
+ 
+-end SQL_PostgreSQL;
++end matreshka_sql_postgresql;
+diff -up matreshka-0.4.0/gnat/install/matreshka_sql_sqlite3.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_sql_sqlite3.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_sql_sqlite3.gpr.gprfix	2013-04-25 16:32:17.846940098 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_sql_sqlite3.gpr	2013-04-25 16:35:26.751942932 -0400
+@@ -41,11 +41,12 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 3324 $ $Date: 2012-11-09 23:58:25 +0400 (Fri, 09 Nov 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ with "sql.gpr";
+ 
+-library project SQL_SQLite3 is
++library project matreshka_sql_sqlite3 is
+ 
+    Library_Name := "matreshka-sql-sqlite3" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -64,4 +65,4 @@ library project SQL_SQLite3 is
+       for Linker_Options use Matreshka_Config.SQLite3_Library_Options;
+    end Linker;
+ 
+-end SQL_SQLite3;
++end matreshka_sql_sqlite3;
+diff -up matreshka-0.4.0/gnat/install/matreshka_xml.gpr.gprfix matreshka-0.4.0/gnat/install/matreshka_xml.gpr
+--- matreshka-0.4.0/gnat/install/matreshka_xml.gpr.gprfix	2012-09-28 13:01:17.393597000 -0400
++++ matreshka-0.4.0/gnat/install/matreshka_xml.gpr	2013-04-25 16:35:50.067943282 -0400
+@@ -41,10 +41,11 @@
+ ------------------------------------------------------------------------------
+ --  $Revision: 3110 $ $Date: 2012-09-28 21:01:17 +0400 (Fri, 28 Sep 2012) $
+ ------------------------------------------------------------------------------
++with "directories";
+ with "matreshka/matreshka_config.gpr";
+ with "league.gpr";
+ 
+-library project XML is
++library project matreshka_xml is
+ 
+    Library_Name := "matreshka-xml" & Matreshka_Config.RTL_Version_Suffix;
+ 
+@@ -55,4 +56,4 @@ library project XML is
+    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
+    for Externally_Built use "True";
+ 
+-end XML;
++end matreshka_xml;
