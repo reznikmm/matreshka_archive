@@ -1,21 +1,25 @@
-## rpmbuild cannot create debuginfo
-%define debug_package %{nil}
+%define _gprdir %_GNAT_project_dir
 Name:       matreshka
-Version:    0.6.0
-Release:    5%{?dist}
+Version:    0.4.0
+Release:    1%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
-URL:        http://forge.ada-ru.org/matreshka
-Source0:    http://forge.ada-ru.org/matreshka/downloads/%{name}-%{version}.tar.gz
+URL:        http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
+Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/download/file/13/%{name}-%{version}.tar.gz  
 ## fedora specific
-Patch1:          %{name}-gpr.patch
+Patch1:          %{name}-%{version}_gprnames.patch
 ## fedora has stable release ABI. so we haven't to specify RTL
-Patch3:          matreshka_RTL.patch
-BuildRequires:   fedora-gnat-project-common  >= 2
+Patch4:          %{name}-%{version}_gpr.patch
+BuildRequires:   gcc-gnat
+BuildRequires:   fedora-gnat-project-common  >= 3 
 BuildRequires:   chrpath
-BuildRequires:   gprbuild
-BuildRequires:   mysql-devel postgresql-devel sqlite-devel
+BuildRequires:   gprbuild valgrind
+BuildRequires:   postgresql-devel sqlite-devel
+
+# gcc-gnat only available on these:
+ExclusiveArch: %{ix86} x86_64 ia64 ppc ppc64 alpha
+
 %description
 Matreshka is a set of Ada libraries to help to develop information systems.
 It includes:
@@ -72,6 +76,46 @@ Requires:   fedora-gnat-project-common  >= 2
 %description fastcgi-devel
 %{summary}
 
+%package soap-core
+Summary:    Framework for work with SOAP 1.2
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}%{?_isa} = %{version}-%{release}
+
+%description soap-core
+Implementation of SOAP 1.2 in Matreshka.
+
+%package soap-core-devel
+Summary:    Devel package for Matreshka-soap-core
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-soap-core%{?_isa} = %{version}-%{release}
+Requires:   %{name}-devel%{?_isa}  = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description soap-core-devel
+%{summary}
+
+%package soap-wsse
+Summary:    WS-Security 1.1 implementation for Matreshka-soap-core
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-soap-core%{?_isa}  = %{version}-%{release}
+
+%description soap-wsse
+%{summary}.
+
+%package soap-wsse-devel
+Summary:    Devel package for Matreshka-soap-wsse
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-soap-wsse%{?_isa} = %{version}-%{release}
+Requires:   %{name}-soap-core-devel%{?_isa}  = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description soap-wsse-devel
+%{summary}
+
 %package sql-core
 Summary:    Framework for work with SQL databases based on Matreshka
 License:    BSD
@@ -113,7 +157,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %{summary}
 
 %package sql-postgresql
-Summary:    SQLite bindings for Ada
+Summary:    postgresql bindings for Ada
 License:    BSD
 Group:      System Environment/Libraries
 Requires:   %{name}%{?_isa}  = %{version}-%{release}
@@ -133,17 +177,175 @@ Requires:   fedora-gnat-project-common  >= 2
 %description sql-postgresql-devel
 %{summary}
 
+
+%package xml
+Summary:    Manipulate with XML streams and document
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}%{?_isa}  = %{version}-%{release}
+
+%description xml
+XML processor  provides capability to manipulate 
+with XML streams and documents; including:
+
+  SAX reader to read XML streams and documents; 
+  it supports XML1.0 (Fifth Edition), 
+  XML1.1 (Second Edition), 
+  Namespaces in XML  and XML Base specifications;
+  
+  SAX writer to generate XML streams 
+  and documents from application;
+  
+  XML Catalogs resolver . 
+%package xml-devel
+Summary:    Devel package for Matreshka-xml
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-xml%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description xml-devel
+%{summary}
+
+%package amf
+Summary:    Implementation of OMG's Meta Object Facility (MOF)
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}%{?_isa}  = %{version}-%{release}
+Requires:   %{name}-xml%{?_isa}  = %{version}-%{release}
+
+%description amf
+Ada Modeling Framework provides implementation of OMG's Meta Object Facility (MOF) 
+written completely in Ada. Extension modules is provided to analyze/modify:
+    UML models
+        MOF Extensions models to support metamodeling 0.3
+        OCL models 0.3 
+
+%package amf-devel
+Summary:    Devel package for Matreshka-amf
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-devel
+%{summary}
+
+%package amf-dd
+Summary:    Diagram Definition (DD) specification support for AMF
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+
+%description amf-dd
+Diagram Definition (DD) specification support for AMF.
+
+%package amf-dd-devel
+Summary:    Devel package for Matreshka-dd
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf-dd%{?_isa} = %{version}-%{release} 
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-dd-devel
+%{summary}
+
+%package amf-uml
+Summary:    Implementation of OMG's Meta Object Facility (MOF)
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+
+%description amf-uml
+Ada Modeling Framework provides implementation of OMG's Meta Object Facility (MOF) 
+written completely in Ada. Extension modules is provided to analyze/modify:
+    UML models
+        MOF Extensions models to support metamodeling 0.3
+        OCL models 0.3 
+
+%package amf-uml-devel
+Summary:    Devel package for Matreshka-uml
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf-uml%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-uml-devel
+%{summary}
+
+%package amf-utp
+Summary:    The UML Testing Profile for matreshka
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+
+%description amf-utp
+%{summary}
+
+
+%package amf-utp-devel
+Summary:    Devel package for Matreshka-uml
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf-utp%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-utp-devel
+%{summary}
+
+%package amf-ocl
+Summary:    The UML OCL for matreshka
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+
+%description amf-ocl
+%{summary}
+
+%package amf-ocl-devel
+Summary:    Devel package for Matreshka-amf-ocl
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf-ocl%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-ocl-devel
+%{summary}
+
+%package amf-mofext
+Summary:    The UML mofext for matreshka
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
+
+%description amf-mofext
+%{summary}
+
+
+%package amf-mofext-devel
+Summary:    Devel package for Matreshka-amf-mofext
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-amf-mofext%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description amf-mofext-devel
+%{summary}
+
 %prep
 %setup -q 
-%patch1 -p1
-%patch3 -p1
-## http://adaforge.qtada.com/matreshka/ticket/134
-sed 's/SMP_MFLAGS/GNAT_OPTFLAGS/' -i Makefile
+%patch1 -p1 -b .names
+cd gnat/install && for i in `ls *.gpr` ; do mv $i matreshka_$i ; done
+cd - 
+%patch4 -p1 -b .gprfix
 
 %build
+###export GPRBUILD_FLAGS="%{GPRbuild_optflags}"
+export GPRBUILD_FLAGS="%Gnatmake_optflags"
 make config 
 %configure
-make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}"
+make -j1
+## make  %{?_smp_mflags}
 
 %check 
 ## find libs without RPATH, Fedora specific
@@ -155,8 +357,6 @@ rm -rf %{buildroot}
 make install DESTDIR=%{buildroot} INSTALL_LIBRARY_DIR=%{buildroot}/%{_libdir} PREFIX=%{_prefix} INSTALL_PROJECT_DIR="%{buildroot}/%{_GNAT_project_dir}"
 ## Delete rpath
 chrpath --delete %{buildroot}%{_libdir}/lib*
-## https://bugzilla.redhat.com/show_bug.cgi?id=675557#c11
-cd %{buildroot}%{_GNAT_project_dir} && for file in $(ls *.gpr); do mv $file matreshka_$file; done 
 
 %post     -p /sbin/ldconfig
 %postun   -p /sbin/ldconfig
@@ -173,104 +373,96 @@ cd %{buildroot}%{_GNAT_project_dir} && for file in $(ls *.gpr); do mv $file matr
 %post   sql-postgresql  -p /sbin/ldconfig
 %postun sql-postgresql  -p /sbin/ldconfig
 
-%files
-%defattr(-,root,root,-)
-%doc AUTHORS LICENSE
-%{_libdir}/libleague.so.%{version}
+%files -f .objs/league-lib.files
+%doc CONTRIBUTORS  LICENSE
 
-%files devel
-%defattr(-,root,root,-)
+%files devel -f .objs/league-devel.files
 %doc README
-%dir %{_libdir}/%{name}
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/league
-%{_libdir}/libleague.so
-%{_libdir}/%{name}/xml*
-%{_libdir}/%{name}/league*
-%{_libdir}/%{name}/%{name}-internals-strings*
-%{_libdir}/%{name}/%{name}-internals-text*
-%{_libdir}/%{name}/%{name}-internals-translator*
-%{_libdir}/%{name}/%{name}-internals-unicode*
-%{_libdir}/%{name}/%{name}-internals-uri_utilities.ali
-%{_libdir}/%{name}/%{name}-internals-utf16.ali
-%{_libdir}/%{name}/%{name}-internals-xml*
-%{_libdir}/%{name}/%{name}-internals.ali
-%{_libdir}/%{name}/%{name}.ali
-%{_libdir}/%{name}/%{name}-internals-regexps*
-%{_libdir}/%{name}/%{name}-internals-settings*
-%{_libdir}/%{name}/%{name}-internals-simd*
-%{_libdir}/%{name}/%{name}-internals-calendar*
-%{_libdir}/%{name}/%{name}-internals-atomics*
-%{_libdir}/%{name}/%{name}-internals-host_types.ali
-%{_libdir}/%{name}/%{name}-internals-locales.ali
-%{_libdir}/%{name}/%{name}-internals-stream_element_vectors.ali
-%{_libdir}/%{name}/%{name}-internals-string_vectors.ali
-%{_GNAT_project_dir}/matreshka_league.gpr
-%{_GNAT_project_dir}/%{name}/config.gpr
 
+%files fastcgi -f .objs/fastcgi-lib.files
 
-%files fastcgi
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-fastcgi.so.%{version}
+%files fastcgi-devel -f .objs/fastcgi-devel.files
 
-%files fastcgi-devel
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-fastcgi.so
-%{_includedir}/matreshka/fastcgi/
-%{_libdir}/%{name}/%{name}-fastcgi*
-%{_libdir}/%{name}/fastcgi*
-%{_GNAT_project_dir}/matreshka_fastcgi.gpr
+%files soap-core -f .objs/soap-lib.files
+%{_bindir}/wsdl2ada
 
-%files sql-core
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql.so.%{version}
+%files soap-core-devel -f .objs/soap-devel.files
 
-%files sql-core-devel
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql.so
-%{_includedir}/%{name}/sql*
-%{_libdir}/%{name}/sql-databases-internals.ali
-%{_libdir}/%{name}/sql-databases.ali
-%{_libdir}/%{name}/sql-queries-internals.ali
-%{_libdir}/%{name}/sql-queries.ali
-%{_libdir}/%{name}/sql.ali
-%{_libdir}/%{name}/%{name}-internals-sql_parameter*
-%{_libdir}/%{name}/%{name}-internals-sql_drivers-dummy.ali
-%{_libdir}/%{name}/%{name}-internals-sql_drivers.ali
-%{_GNAT_project_dir}/matreshka_sql.gpr
+%files soap-wsse -f .objs/soap_wsse-lib.files
 
+%files soap-wsse-devel -f .objs/soap_wsse-devel.files
 
-%files sql-sqlite
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql-sqlite3.so.%{version}
+%files sql-core -f .objs/sql-lib.files
 
-%files sql-sqlite-devel
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql-sqlite3.so
-%{_libdir}/%{name}/%{name}-internals-sql_drivers-sqlite3*
-%{_GNAT_project_dir}/matreshka_sql_sqlite3.gpr
+%files sql-core-devel -f .objs/sql-devel.files
 
+%files sql-sqlite -f .objs/sql_sqlite3-lib.files
 
-%files sql-postgresql
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql-postgresql.so.%{version}
+%files sql-sqlite-devel -f .objs/sql_sqlite3-devel.files
 
-%files sql-postgresql-devel
-%defattr(-,root,root,-)
-%doc
-%{_libdir}/lib%{name}-sql-postgresql.so
-%{_libdir}/%{name}/%{name}-internals-sql_drivers-postgresql*
-%{_GNAT_project_dir}/matreshka_sql_postgresql.gpr
+%files sql-postgresql -f .objs/sql_postgresql-lib.files
+
+%files sql-postgresql-devel -f .objs/sql_postgresql-devel.files
+
+%files xml -f .objs/xml-lib.files
+
+%files xml-devel -f .objs/xml-devel.files
+
+%files amf -f .objs/amf-lib.files
+
+%files amf-devel -f .objs/amf-devel.files
+
+%files amf-dd -f .objs/amf_dd-lib.files
+
+%files amf-dd-devel -f .objs/amf_dd-devel.files
+
+%files amf-uml -f .objs/amf_uml-lib.files
+
+%files amf-uml-devel -f .objs/amf_uml-devel.files
+
+%files amf-utp -f .objs/amf_utp-lib.files
+
+%files amf-utp-devel -f .objs/amf_utp-devel.files
+
+%files amf-ocl -f .objs/amf_ocl-lib.files
+
+%files amf-ocl-devel -f .objs/amf_ocl-devel.files
+
+%files amf-mofext -f .objs/amf_mofext-lib.files
+
+%files amf-mofext-devel -f .objs/amf_mofext-devel.files
 
 %changelog
-* Wed Aug 17 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-5
+* Thu Apr 25 2013 Tom Callaway <spot@fedoraproject.org> - 0.4.0-1
+- update to 0.4.0
+
+* Tue Feb 12 2013 Pavel Zhukov <landgraf@fedoraproject.org> - 0.3.0-4
+- Revuild with new libgnat 4.8
+
+* Mon Dec 10 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.3.0-3
+- Add valgrind to BR (nedded for tests)
+
+* Sun Sep 30 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.3.0-2
+- Add gpr patch
+
+* Mon Sep 24 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.3.0-1
+- Release 0.3.0
+
+* Tue Apr 3 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.2.0-5
+- Fix projects names
+
+* Sun Mar 24 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.2.0-3
+- Update to 0.2.0
+- Fix filelist
+- Add files list
+
+* Wed Aug 31 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-9
+- fix BR, ExcludeArch 
+
+* Sat Aug 27 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-8
+- Fix Architectures in gpr
+
+* Wed Aug 17 2011 Pavel Zhukov <landgraf@fedoraproject.org> - 0.1.1-6
 - Add gpr patch
 - Remove unuseable code
 - Add optflags to check
