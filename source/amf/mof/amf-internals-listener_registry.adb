@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,6 +71,16 @@ package body AMF.Internals.Listener_Registry is
       Aux : Listener_Vectors.Vector := Registry;
 
    begin
+      --  Notify element itself.
+
+      if Element.all in AMF.Listeners.Abstract_Listener'Class then
+         AMF.Listeners.Abstract_Listener'Class
+          (Element.all).Attribute_Set
+            (Element, Property, Position, Old_Value, New_Value);
+      end if;
+
+      --  Notify registered listeners.
+
       for Item of Aux loop
          if Item.Instance = null or Element = Item.Instance then
             Item.Listener.Attribute_Set
@@ -125,6 +135,22 @@ package body AMF.Internals.Listener_Registry is
       Aux : Listener_Vectors.Vector := Registry;
 
    begin
+      --  Notify elements itself.
+
+      if First_Element.all in AMF.Listeners.Abstract_Listener'Class then
+         AMF.Listeners.Abstract_Listener'Class
+          (First_Element.all).Link_Add
+            (Association, First_Element, Second_Element);
+      end if;
+
+      if Second_Element.all in AMF.Listeners.Abstract_Listener'Class then
+         AMF.Listeners.Abstract_Listener'Class
+          (Second_Element.all).Link_Add
+            (Association, First_Element, Second_Element);
+      end if;
+
+      --  Notify registered listeners.
+
       for Item of Aux loop
          if Item.Instance = null
            or First_Element = Item.Instance
