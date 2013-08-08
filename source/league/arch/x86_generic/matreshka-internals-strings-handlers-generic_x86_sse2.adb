@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -111,8 +111,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
      Code : Matreshka.Internals.Unicode.Code_Point)
        return Natural
    is
-      Value  : v8hi_Unrestricted_Array;
+      Value : v8hi_Unrestricted_Array;
       for Value'Address use Item.Value'Address;
+      pragma Import (Ada, Value);
 
       function Index_16 return Natural;
 
