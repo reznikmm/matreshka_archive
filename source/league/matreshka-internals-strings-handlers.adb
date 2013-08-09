@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -103,6 +103,35 @@ package body Matreshka.Internals.Strings.Handlers is
 
       return 0;
    end Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   not overriding function Last_Index
+    (Self : Abstract_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point) return Natural
+   is
+      pragma Unreferenced (Self);
+
+      Position : Utf16_String_Index := Item.Unused;
+      Index    : Natural            := Item.Length;
+      C        : Code_Point;
+
+   begin
+      while Position > 0 loop
+         Unchecked_Previous (Item.Value, Position, C);
+
+         if C = Code then
+            return Index;
+         end if;
+
+         Index := Index - 1;
+      end loop;
+
+      return 0;
+   end Last_Index;
 
    -----------------
    -- Starts_With --

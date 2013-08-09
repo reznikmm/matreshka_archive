@@ -939,6 +939,44 @@ package body League.Strings is
       return Self.Data.Length = 0;
    end Is_Empty;
 
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     Character : League.Characters.Universal_Character'Class) return Natural
+   is
+      Code : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := League.Characters.Internals.Internal (Character);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return String_Handler.Last_Index (Self.Data, Code);
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural
+   is
+      Code : constant Matreshka.Internals.Unicode.Code_Unit_32
+        := Wide_Wide_Character'Pos (Character);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return String_Handler.Last_Index (Self.Data, Code);
+   end Last_Index;
+
    ------------
    -- Length --
    ------------

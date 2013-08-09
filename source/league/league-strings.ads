@@ -229,6 +229,15 @@ package League.Strings is
    --  Returns index of the first occurrence of the specified character in the
    --  string, or zero if there are no occurrences.
 
+   function Last_Index
+    (Self      : Universal_String'Class;
+     Character : League.Characters.Universal_Character'Class) return Natural;
+   function Last_Index
+    (Self      : Universal_String'Class;
+     Character : Wide_Wide_Character) return Natural;
+   --  Returns the index position of the last occurrence of the character in
+   --  this string, searching backward, or zero if character is not found.
+
    function Count
     (Self      : Universal_String'Class;
      Character : League.Characters.Universal_Character'Class) return Natural;

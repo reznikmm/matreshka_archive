@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -91,6 +91,13 @@ package Matreshka.Internals.Strings.Handlers is
        return Natural;
    --  Returns index of first occurrence of the specified character in the
    --  string.
+
+   not overriding function Last_Index
+    (Self : Abstract_String_Handler;
+     Item : Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Point) return Natural;
+   --  Returns the index position of the last occurrence of the character in
+   --  this string, searching backward, or zero if character is not found.
 
    not overriding function Count
     (Self : Abstract_String_Handler;
