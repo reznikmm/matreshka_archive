@@ -71,8 +71,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;
 
+   function mm_and_si128 (Left : v8hi; Right : v8hi) return v8hi;
    function mm_movemask_epi8 (Item : v8hi) return Interfaces.Unsigned_32;
-   --  Overloaded function to remove type conversions from primary code.
+   --  Overloaded functions to remove type conversions from primary code.
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -98,10 +99,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    begin
       Value (Index) :=
-        To_v8hi
-         (mm_and_si128
-           (To_v2di (Value (Index)),
-            To_v2di (Terminator_Mask_x86_64 (Offset))));
+        mm_and_si128 (Value (Index), Terminator_Mask_x86_64 (Offset));
    end Fill_Null_Terminator;
 
    -----------
@@ -144,7 +142,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  Pattern match mask.
          N              : Unsigned_32;
          --  Match code units exclusion mask.
-         TM             : v2di;
+         TM             : v8hi;
          TN             : v2di;
          Index          : Natural := 1;
 
@@ -155,10 +153,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
                --  Compute suggorage exclusion vector.
 
-               Surrogates :=
-                 To_v8hi
-                  (mm_and_si128
-                    (To_v2di (V), To_v2di (Surrogate_Kind_Mask_x86_64)));
+               Surrogates := mm_and_si128 (V, Surrogate_Kind_Mask_x86_64);
                Surrogates :=
                  mm_cmpeq_epi16 (Surrogates, Masked_High_Surrogate_x86_64);
 
@@ -221,18 +216,15 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Prepare masks to exclude trailing out-of-data code units.
 
-         TM := To_v2di (Terminator_Mask_x86_64 (Item.Unused mod 8));
+         TM := Terminator_Mask_x86_64 (Item.Unused mod 8);
          TN := To_v2di (mm_cmpeq_epi16 (V, V));
          --  This operation constructs 'one' vector.
-         TN := mm_andnot_si128 (TM, TN);
+         TN := mm_andnot_si128 (To_v2di (TM), TN);
 
          --  Compute surrogates exclusion vector and exclude trailing
          --  out-of-data code units.
 
-         Surrogates :=
-           To_v8hi
-            (mm_and_si128
-              (To_v2di (V), To_v2di (Surrogate_Kind_Mask_x86_64)));
+         Surrogates := mm_and_si128 (V, Surrogate_Kind_Mask_x86_64);
          Surrogates :=
            mm_cmpeq_epi16 (Surrogates, Masked_High_Surrogate_x86_64);
          Surrogates := To_v8hi (mm_or_si128 (To_v2di (Surrogates), TN));
@@ -241,7 +233,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  Compute match vector and exclude trailing out-of-data code units.
 
          Match := mm_cmpeq_epi16 (V, Pattern);
-         Match := To_v8hi (mm_and_si128 (To_v2di (Match), TM));
+         Match := mm_and_si128 (Match, TM);
          --  Hide matching codes outside of actual data.
 
          --  Compute masks.
@@ -556,6 +548,15 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
       return Left.Unused <= Right.Unused;
    end Is_Less_Or_Equal;
+
+   ------------------
+   -- mm_and_si128 --
+   ------------------
+
+   function mm_and_si128 (Left : v8hi; Right : v8hi) return v8hi is
+   begin
+      return To_v8hi (mm_and_si128 (To_v2di (Left), To_v2di (Right)));
+   end mm_and_si128;
 
    ----------------------
    -- mm_movemask_epi8 --
