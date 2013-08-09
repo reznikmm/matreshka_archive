@@ -50,6 +50,7 @@ with Configure.Architecture;
 with Configure.Instantiate;
 with Configure.Operating_System;
 with Configure.RTL_Version;
+with Configure.Tests.Modules.AMF;
 with Configure.Tests.Gprbuild;
 with Configure.Tests.Install;
 with Configure.Tests.Installation_Directories;
@@ -102,6 +103,7 @@ procedure Configure.Driver is
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
    Gprbuild_Test   : Configure.Tests.Gprbuild.Gprbuild_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
+   AMF_Test        : Configure.Tests.Modules.AMF.AMF_Test;
    MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
@@ -129,6 +131,11 @@ begin
       Dirs_Test.Help.Iterate (Help_Output'Access);
 
       Ada.Text_IO.New_Line;
+      Ada.Text_IO.Put_Line ("Modules:");
+
+      AMF_Test.Help.Iterate (Help_Output'Access);
+
+      Ada.Text_IO.New_Line;
       Ada.Text_IO.Put_Line ("Optional Packages:");
 
       OCI_Test.Help.Iterate (Help_Output'Access);
@@ -152,6 +159,7 @@ begin
    Dirs_Test.Execute (Arguments);
    Install_Test.Execute (Arguments);
    Gprbuild_Test.Execute (Arguments);
+   AMF_Test.Execute (Arguments);
    MySQL_Test.Execute (Arguments);
    OCI_Test.Execute (Arguments);
    PostgreSQL_Test.Execute (Arguments);
