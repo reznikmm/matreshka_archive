@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,59 +41,20 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
+--  Checks work of Last_Index operation.
+------------------------------------------------------------------------------
+with League.Strings;
 
-project Matreshka_League_Tests is
+procedure Test_315 is
+   S : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("abc abc");
 
-   for Main use
-    ("base64_test.adb",
-     "string_hash_test.adb",
-     "character_cursor_test.adb",
-     "grapheme_cluster_cursor_test.adb",
-     "case_conversion_test.adb",
-     "case_folding_test.adb",
-     "normalization_test.adb",
-     "additional_normalization_test.adb",
-     "collation_test.adb",
-     "string_performance.adb",
-     "fill_null_terminator_performance.adb",
-     "string_operations_test.adb",
-     "string_compare_test.adb",
-     "library_level_test.adb",
-     "regexp_ataresearch.adb",
-     "test_35.adb",
-     "test_104.adb",
-     "test_106.adb",
-     "test_139.adb",
-     "test_150.adb",
-     "test_165.adb",
-     "test_177.adb",
-     "test_193.adb",
-     "test_209.adb",
-     "test_290.adb",
-     "test_308.adb",
-     "test_315.adb",
-     "arguments_environment_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/league",
-     "../testsuite/league/TN-35",
-     "../testsuite/league/TN-104",
-     "../testsuite/league/TN-106",
-     "../testsuite/league/TN-139",
-     "../testsuite/league/TN-150",
-     "../testsuite/league/TN-165",
-     "../testsuite/league/TN-177",
-     "../testsuite/league/TN-193",
-     "../testsuite/league/TN-209",
-     "../testsuite/league/TN-290",
-     "../testsuite/league/TN-308",
-     "../testsuite/league/TN-315",
-     "../tools");
+begin
+   if S.Last_Index ('b') /= 6 then
+      raise Program_Error;
+   end if;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
-
-end Matreshka_League_Tests;
+   if S.Last_Index ('z') /= 0 then
+      raise Program_Error;
+   end if;
+end Test_315;
