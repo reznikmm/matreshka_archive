@@ -59,8 +59,22 @@ package body Configure.Tests.Modules.AMF is
       Self.Switches.Parse_Switches (Arguments);
 
       if Self.Switches.Is_Enabled then
-         Substitutions.Insert (Enable_AMF, To_Unbounded_String ("true"));
-         Self.Report_Status ("yes");
+         if Self.Switches.Is_Enable_Specified then
+            --  Command line switches takes preference.
+
+            Substitutions.Insert (Enable_AMF, To_Unbounded_String ("true"));
+            Self.Report_Status ("yes");
+
+         elsif Substitutions.Element (Operating_System_Name) = "Windows" then
+            --  On Windows it is impossible to build AMF due to GNAT bugs.
+
+            Substitutions.Insert (Enable_AMF, To_Unbounded_String (""));
+            Self.Report_Status ("no");
+
+         else
+            Substitutions.Insert (Enable_AMF, To_Unbounded_String ("true"));
+            Self.Report_Status ("yes");
+         end if;
 
       else
          Substitutions.Insert (Enable_AMF, To_Unbounded_String (""));
