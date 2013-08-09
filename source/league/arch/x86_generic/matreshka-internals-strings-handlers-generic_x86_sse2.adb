@@ -71,6 +71,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    type v8hi_Unrestricted_Array is array (Utf16_String_Index) of v8hi;
 
+   function mm_movemask_epi8 (Item : v8hi) return Interfaces.Unsigned_32;
+   --  Overloaded function to remove type conversions from primary code.
+
    --------------------------
    -- Fill_Null_Terminator --
    --------------------------
@@ -165,10 +168,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
                --  Compute masks.
 
-               Exclusion_Mask :=
-                 To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Surrogates)));
-               Match_Mask :=
-                 To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Match)));
+               Exclusion_Mask := mm_movemask_epi8 (Surrogates);
+               Match_Mask     := mm_movemask_epi8 (Match);
 
                N := ffs (Match_Mask);
 
@@ -245,9 +246,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Compute masks.
 
-         Exclusion_Mask :=
-           To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Surrogates)));
-         Match_Mask := To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Match)));
+         Exclusion_Mask := mm_movemask_epi8 (Surrogates);
+         Match_Mask     := mm_movemask_epi8 (Match);
 
          N := ffs (Match_Mask);
 
@@ -335,8 +335,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       begin
          loop
             if mm_movemask_epi8
-                (To_v16qi
-                  (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all)))
+                (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all))
                  /= 16#0000_FFFF#
             then
                return False;
@@ -384,11 +383,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       begin
          loop
             M :=
-              To_Unsigned_32
-               (mm_movemask_epi8
-                 (To_v16qi
-                   (mm_cmpeq_epi16
-                     (To_Pointer (LV).all, To_Pointer (RV).all))));
+              mm_movemask_epi8
+               (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -438,11 +434,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       begin
          loop
             M :=
-              To_Unsigned_32
-               (mm_movemask_epi8
-                 (To_v16qi
-                   (mm_cmpeq_epi16
-                     (To_Pointer (LV).all, To_Pointer (RV).all))));
+              mm_movemask_epi8
+               (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -492,11 +485,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       begin
          loop
             M :=
-              To_Unsigned_32
-               (mm_movemask_epi8
-                 (To_v16qi
-                   (mm_cmpeq_epi16
-                     (To_Pointer (LV).all, To_Pointer (RV).all))));
+              mm_movemask_epi8
+               (mm_cmpeq_epi16 (To_Pointer (LV).all, To_Pointer (RV).all));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -546,11 +536,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       begin
          loop
             M :=
-              To_Unsigned_32
-               (mm_movemask_epi8
-                 (To_v16qi
-                   (mm_cmpeq_epi16
-                     (To_Pointer (LV).all, To_Pointer (RV).all))));
+              mm_movemask_epi8
+               (mm_cmpeq_epi16
+                 (To_Pointer (LV).all, To_Pointer (RV).all));
 
             if M /= 16#0000_FFFF# then
                Index := J * 8 + Utf16_String_Index (ffs (not M) / 2);
@@ -568,5 +556,14 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
       return Left.Unused <= Right.Unused;
    end Is_Less_Or_Equal;
+
+   ----------------------
+   -- mm_movemask_epi8 --
+   ----------------------
+
+   function mm_movemask_epi8 (Item : v8hi) return Interfaces.Unsigned_32 is
+   begin
+      return To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Item)));
+   end mm_movemask_epi8;
 
 end Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
