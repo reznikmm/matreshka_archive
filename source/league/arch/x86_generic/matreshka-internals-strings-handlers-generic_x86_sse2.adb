@@ -220,7 +220,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Second step: process all string's vectors between first and last.
 
-         Vector := From_Vector;
+         Vector := From_Vector + 1;
 
          while Vector < To_Vector loop
             Current_Vector := Value (Vector);
