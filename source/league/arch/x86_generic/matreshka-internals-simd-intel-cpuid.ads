@@ -54,6 +54,9 @@ package Matreshka.Internals.SIMD.Intel.CPUID is
    function Has_AVX return Boolean;
    --  Returns True when the processor supports the AVX instruction extensions.
 
+   function Has_POPCNT return Boolean;
+   --  Returns True when the processor supports the POPCNT instruction.
+
    function Has_SSE2 return Boolean;
    --  Returns True when the processor supports the Streaming SIMD Extensions 2
    --  Instructions.

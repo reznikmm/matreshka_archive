@@ -179,6 +179,22 @@ package body Matreshka.Internals.SIMD.Intel.CPUID is
       return To_Features_ECX (ecx).AVX;
    end Has_AVX;
 
+   ----------------
+   -- Has_POPCNT --
+   ----------------
+
+   function Has_POPCNT return Boolean is
+      eax : Interfaces.Unsigned_32;
+      ebx : Interfaces.Unsigned_32;
+      ecx : Interfaces.Unsigned_32;
+      edx : Interfaces.Unsigned_32;
+
+   begin
+      CPUID (16#0000_0001#, eax, ebx, ecx, edx);
+
+      return To_Features_ECX (ecx).POPCNT;
+   end Has_POPCNT;
+
    --------------
    -- Has_SSE2 --
    --------------
