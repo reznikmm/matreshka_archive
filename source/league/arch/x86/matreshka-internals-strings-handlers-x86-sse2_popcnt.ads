@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,63 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides string handler optimized for SSE2 instructions set
---  on x86 and x86_64 processors.
-------------------------------------------------------------------------------
-with Interfaces;
+with Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
+with Matreshka.Internals.Strings.Handlers.X86_Utilities;
 
-generic
-   type Base_String_Handler is
-     abstract new Abstract_String_Handler with private;
-
-   with procedure Update_Index
-    (Mask  : Interfaces.Unsigned_32;
-     Index : in out Positive);
-   --  Update character index based on value of the exclusion mask. It
-   --  increments Index by 8 excluding 1 for each pair of 1 bits in exclusion
-   --  mask.
-
-package Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
-
-   pragma Preelaborate;
-
-   type X86_SSE2_String_Handler is new Base_String_Handler with null record;
-
-   overriding procedure Fill_Null_Terminator
-    (Self : X86_SSE2_String_Handler;
-     Item : not null Shared_String_Access);
-
-   overriding function Is_Equal
-    (Self  : X86_SSE2_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Less
-    (Self  : X86_SSE2_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Greater
-    (Self  : X86_SSE2_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Less_Or_Equal
-    (Self  : X86_SSE2_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Is_Greater_Or_Equal
-    (Self  : X86_SSE2_String_Handler;
-     Left  : not null Shared_String_Access;
-     Right : not null Shared_String_Access) return Boolean;
-
-   overriding function Index
-    (Self : X86_SSE2_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point)
-       return Natural;
-
-   Handler : aliased X86_SSE2_String_Handler;
-
-end Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
+package Matreshka.Internals.Strings.Handlers.X86.SSE2_POPCNT is
+  new Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2
+       (Matreshka.Internals.Strings.Handlers.X86.X86_String_Handler,
+        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_POPCNT);
+pragma Preelaborate (Matreshka.Internals.Strings.Handlers.X86.SSE2_POPCNT);

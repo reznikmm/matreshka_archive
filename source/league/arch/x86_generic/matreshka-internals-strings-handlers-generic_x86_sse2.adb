@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Conversion;
-with Interfaces;
 with System.Address_To_Access_Conversions;
 with System.Storage_Elements;
 
@@ -85,13 +84,6 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
    --  16#FFFF#, so its representation occupies one code unit.
    --
    --  Note, To_Position must be greater than From_Position.
-
-   procedure Update_Index
-    (Mask  : Unsigned_32;
-     Index : in out Positive);
-   --  Update character index based on value of the exclusion mask. It
-   --  increments Index by 8 excluding 1 for each pair of 1 bits in exclusion
-   --  mask.
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -601,46 +593,5 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
    begin
       return To_Unsigned_32 (mm_movemask_epi8 (To_v16qi (Item)));
    end mm_movemask_epi8;
-
-   ------------------
-   -- Update_Index --
-   ------------------
-
-   procedure Update_Index
-    (Mask  : Unsigned_32;
-     Index : in out Positive) is
-   begin
-      if (Mask and 2#00000000_00000011#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00000000_00001100#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00000000_00110000#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00000000_11000000#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00000011_00000000#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00001100_00000000#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#00110000_00000000#) = 0 then
-         Index := Index + 1;
-      end if;
-
-      if (Mask and 2#11000000_00000000#) = 0 then
-         Index := Index + 1;
-      end if;
-   end Update_Index;
 
 end Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;

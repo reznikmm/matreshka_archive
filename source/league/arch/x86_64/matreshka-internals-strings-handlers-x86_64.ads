@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,10 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Handlers.Portable;
 with Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2;
+with Matreshka.Internals.Strings.Handlers.X86_Utilities;
 
 package Matreshka.Internals.Strings.Handlers.X86_64 is
   new Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2
-       (Matreshka.Internals.Strings.Handlers.Portable.Portable_String_Handler);
+       (Matreshka.Internals.Strings.Handlers.Portable.Portable_String_Handler,
+        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Generic);
 pragma Preelaborate (Matreshka.Internals.Strings.Handlers.X86_64);
