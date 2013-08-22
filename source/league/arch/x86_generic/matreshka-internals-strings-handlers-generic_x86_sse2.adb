@@ -176,7 +176,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Update index of character. It will be index of found character.
 
-         Update_Index (Exclusion_Mask, Index);
+         Update_Index (Exclusion_Mask and 16#FFFF#, Index);
 
          return Index;
 
@@ -212,7 +212,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  Update index of character. It will be index of found character of
          --  index of first character in the next string's vector.
 
-         Update_Index (Exclusion_Mask, Index);
+         Update_Index (Exclusion_Mask and 16#FFFF#, Index);
 
          if Match_Mask /= 0 then
             return Index;
@@ -250,7 +250,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
             --  Update index of character. It will be index of found character
             --  of index of first character in the next string's vector.
 
-            Update_Index (Exclusion_Mask, Index);
+            Update_Index (Exclusion_Mask and 16#FFFF#, Index);
 
             if Match_Mask /= 0 then
                return Index;
@@ -295,7 +295,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  Update index of character. It will be index of found character of
          --  index of first character in the next string's vector.
 
-         Update_Index (Exclusion_Mask, Index);
+         Update_Index (Exclusion_Mask and 16#FFFF#, Index);
 
          return Index;
       end if;
