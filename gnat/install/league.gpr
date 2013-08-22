@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -121,6 +121,8 @@ library project League is
               use "matreshka-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86_64.ads";
+            for Implementation ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_64.adb";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
