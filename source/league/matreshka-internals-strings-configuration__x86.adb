@@ -48,6 +48,7 @@ with System.Machine_Code;
 with Matreshka.Internals.SIMD.Intel.CPUID;
 with Matreshka.Internals.Strings.Handlers.Portable;
 with Matreshka.Internals.Strings.Handlers.X86.SSE2;
+with Matreshka.Internals.Strings.Handlers.X86.SSE2_POPCNT;
 
 package body Matreshka.Internals.Strings.Configuration is
 
@@ -108,9 +109,16 @@ package body Matreshka.Internals.Strings.Configuration is
          String_Handler := Handlers.Portable.Handler'Access;
 
       elsif Matreshka.Internals.SIMD.Intel.CPUID.Has_SSE2 then
-         --  CPU supports SSE2 instructions set.
+         if Matreshka.Internals.SIMD.Intel.CPUID.Has_POPCNT then
+            --  CPU supports SSE instruction set and POPCNT instruction.
 
-         String_Handler := Handlers.X86.SSE2.Handler'Access;
+            String_Handler := Handlers.X86.SSE2_POPCNT.Handler'Access;
+
+         else
+            --  CPU supports SSE2 instructions set.
+
+            String_Handler := Handlers.X86.SSE2.Handler'Access;
+         end if;
 
       else
          --  CPU doesn't supports SSE2 instructions set.

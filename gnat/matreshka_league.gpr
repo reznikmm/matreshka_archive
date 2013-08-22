@@ -150,10 +150,36 @@ library project Matreshka_League is
                 & ("-msse2")
                 & Matreshka_Common.Optimization_Ada_Switches
                 & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86-sse2_popcnt.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse2", "-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
             for Switches ("matreshka-internals-strings-handlers-generic_x86_sse2.adb") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-msse2")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+
+         when "x86_64" =>
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86_64_popcnt.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
                 & Matreshka_Common.Optimization_Ada_Switches
                 & Matreshka_Common.Debug_Ada_Switches;
 
@@ -237,6 +263,8 @@ library project Matreshka_League is
               use "matreshka-atomics-generic_test_and_set__gcc__64.adb";
             for Specification ("Matreshka.Internals.Strings.Configuration")
               use "matreshka-internals-strings-configuration__x86_64.ads";
+            for Implementation ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_64.adb";
             for Specification ("Matreshka.Internals.Strings.Constants")
               use "matreshka-internals-strings-constants__x86.ads";
             for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")

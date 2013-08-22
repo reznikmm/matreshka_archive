@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,20 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is x86_64 specific version of the package.
-------------------------------------------------------------------------------
-with Matreshka.Internals.Strings.Handlers.X86_64;
+with Matreshka.Internals.SIMD.Intel.CPUID;
 
-package Matreshka.Internals.Strings.Configuration is
+with Matreshka.Internals.Strings.Handlers.X86_64_POPCNT;
 
-   pragma Preelaborate;
+package body Matreshka.Internals.Strings.Configuration is
 
-   String_Handler : not null access
-     Matreshka.Internals.Strings.Handlers.Abstract_String_Handler'Class
-       := Matreshka.Internals.Strings.Handlers.X86_64.Handler'Access;
-   --  Platform dependent strings handler to be used for operations on strings.
+   ----------------
+   -- Initialize --
+   ----------------
 
-   procedure Initialize;
-   --  Setup most optimal string handler.
+   procedure Initialize is
+   begin
+      if Matreshka.Internals.SIMD.Intel.CPUID.Has_POPCNT then
+         --  CPU supports SSE instruction set and POPCNT instruction.
+
+         String_Handler := Handlers.X86_64_POPCNT.Handler'Access;
+      end if;
+   end Initialize;
 
 end Matreshka.Internals.Strings.Configuration;
