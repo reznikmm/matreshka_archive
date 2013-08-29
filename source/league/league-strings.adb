@@ -899,7 +899,7 @@ package body League.Strings is
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return String_Handler.Index (Self.Data, C);
+      return String_Handler.Index (Self.Data, 1, 0, Self.Data.Unused, C);
    end Index;
 
    -----------
@@ -917,7 +917,7 @@ package body League.Strings is
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return String_Handler.Index (Self.Data, Code);
+      return String_Handler.Index (Self.Data, 1, 0, Self.Data.Unused, Code);
    end Index;
 
    ----------------

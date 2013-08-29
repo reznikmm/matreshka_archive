@@ -306,9 +306,12 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
    -----------
 
    overriding function Index
-    (Self : X86_SSE2_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point)
+    (Self          : X86_SSE2_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point)
        return Natural
    is
       Value : v8hi_Unrestricted_Array;
@@ -317,10 +320,12 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    begin
       if Code <= 16#FFFF# then
-         return Index_16 (Value, 1, 0, Item.Unused, Code);
+         return Index_16 (Value, From_Index, From_Position, To_Position, Code);
 
       else
-         return Base_String_Handler (Self).Index (Item, Code);
+         return
+           Base_String_Handler (Self).Index
+            (Item, From_Index, From_Position, To_Position, Code);
       end if;
    end Index;
 

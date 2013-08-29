@@ -80,19 +80,22 @@ package body Matreshka.Internals.Strings.Handlers is
    -----------
 
    not overriding function Index
-    (Self : Abstract_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point)
+    (Self          : Abstract_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point)
        return Natural
    is
       pragma Unreferenced (Self);
 
-      Position : Utf16_String_Index := 0;
-      Index    : Natural            := 0;
+      Position : Utf16_String_Index := From_Position;
+      Index    : Natural            := From_Index;
       C        : Code_Point;
 
    begin
-      while Position < Item.Unused loop
+      while Position < To_Position loop
          Unchecked_Next (Item.Value, Position, C);
          Index := Index + 1;
 

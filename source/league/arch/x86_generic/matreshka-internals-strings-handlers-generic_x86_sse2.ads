@@ -93,9 +93,12 @@ package Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
      Right : not null Shared_String_Access) return Boolean;
 
    overriding function Index
-    (Self : X86_SSE2_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point)
+    (Self          : X86_SSE2_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point)
        return Natural;
 
    Handler : aliased X86_SSE2_String_Handler;
