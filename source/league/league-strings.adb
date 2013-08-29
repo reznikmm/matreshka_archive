@@ -79,6 +79,33 @@ package body League.Strings is
    --  Detaches cursor from the list of cursors of Universal_String. Also
    --  reset associated object to null.
 
+   function From_Position
+    (Item  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Index : Positive) return Utf16_String_Index;
+   --  Computes position of the character with given index in internal data.
+   --  Returned position point to the first code unit of the character. Raises
+   --  Constraint_Error when Index is out of range.
+
+   function To_Position
+    (Item  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Index : Positive) return Utf16_String_Index;
+   --  Computes position of the next character after given index in internal
+   --  data. Raises Constraint_Error when Index is out of range.
+
+   function Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
+   function Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
+   function Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
+   --  Internal implementations to share common code.
+
    ---------
    -- "&" --
    ---------
@@ -649,29 +676,10 @@ package body League.Strings is
            League.Characters.Internals.Create
             (Code_Unit_32 (D.Value (Utf16_String_Index (Index - 1))));
 
-      elsif D.Unused = Utf16_String_Index (D.Length) * 2 then
+      else
          return
            League.Characters.Internals.Create
-            (Unchecked_To_Code_Point
-              (D.Value, Utf16_String_Index (Index - 1) * 2));
-
-      else
-         declare
-            M : Index_Map_Access := D.Index_Map;
-
-         begin
-            --  Calculate index map if it is unavailable for now.
-
-            if M = null then
-               Compute_Index_Map (D.all);
-               M := D.Index_Map;
-            end if;
-
-            return
-              League.Characters.Internals.Create
-               (Unchecked_To_Code_Point
-                 (D.Value, M.Map (Utf16_String_Index (Index - 1))));
-         end;
+            (Unchecked_To_Code_Point (D.Value, From_Position (D, Index)));
       end if;
    end Element;
 
@@ -799,6 +807,45 @@ package body League.Strings is
       end if;
    end Finalize;
 
+   -------------------
+   -- From_Position --
+   -------------------
+
+   function From_Position
+    (Item  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Index : Positive) return Utf16_String_Index
+   is
+      Map : Index_Map_Access;
+
+   begin
+      if Index > Item.Length then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      if Index = 1 then
+         return 0;
+      end if;
+
+      if Item.Unused = Utf16_String_Index (Item.Length) then
+         return Utf16_String_Index (Index - 1);
+
+      elsif Item.Unused = Utf16_String_Index (Item.Length) * 2 then
+         return Utf16_String_Index (Index - 1) * 2;
+
+      else
+         Map := Item.Index_Map;
+
+         --  Calculate index map if it is unavailable for now.
+
+         if Map = null then
+            Compute_Index_Map (Item.all);
+            Map := Item.Index_Map;
+         end if;
+
+         return Map.Map (Utf16_String_Index (Index - 1));
+      end if;
+   end From_Position;
+
    -----------------------------
    -- From_UTF_16_Wide_String --
    -----------------------------
@@ -888,18 +935,107 @@ package body League.Strings is
    -----------
 
    function Index
-    (Self      : Universal_String'Class;
-     Character : League.Characters.Universal_Character'Class) return Natural
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural
    is
-      C : constant Matreshka.Internals.Unicode.Code_Unit_32
-        := League.Characters.Internals.Internal (Character);
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Code is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
 
    begin
-      if not Is_Valid (C) then
+      if not Is_Valid (Code) then
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
-      return String_Handler.Index (Self.Data, 1, 0, Self.Data.Unused, C);
+      return String_Handler.Index (Item, 1, 0, Item.Unused, Code);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Code is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return
+        String_Handler.Index
+         (Item, From, From_Position (Item, From), Item.Unused, Code);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Code is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      if From > To then
+         --  Empty slice specified.
+
+         return 0;
+      end if;
+
+      return
+        String_Handler.Index
+         (Item,
+          From,
+          From_Position (Item, From),
+          To_Position (Item, To),
+          Code);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     Character : League.Characters.Universal_Character'Class) return Natural
+   is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      return
+        Index (Self.Data, League.Characters.Internals.Internal (Character));
    end Index;
 
    -----------
@@ -910,14 +1046,99 @@ package body League.Strings is
     (Self      : Universal_String'Class;
      Character : Wide_Wide_Character) return Natural
    is
-      Code : constant Code_Unit_32 := Wide_Wide_Character'Pos (Character);
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
 
    begin
-      if not Is_Valid (Code) then
-         raise Constraint_Error with "Illegal Unicode code point";
-      end if;
+      return Index (Self.Data, Wide_Wide_Character'Pos (Character));
+   end Index;
 
-      return String_Handler.Index (Self.Data, 1, 0, Self.Data.Unused, Code);
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     Character : League.Characters.Universal_Character'Class) return Natural
+   is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      return
+        Index
+         (Self.Data, From, League.Characters.Internals.Internal (Character));
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     Character : Wide_Wide_Character) return Natural
+   is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      return Index (Self.Data, From, Wide_Wide_Character'Pos (Character));
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural
+   is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      return
+        Index
+         (Self.Data,
+          From,
+          To,
+          League.Characters.Internals.Internal (Character));
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : Wide_Wide_Character) return Natural
+   is
+      --  Data component is non-null by convention, this allows to suppress
+      --  access check to improve performance.
+
+      pragma Assert (Self.Data /= null);
+      pragma Suppress (Access_Check);
+
+   begin
+      return Index (Self.Data, From, To, Wide_Wide_Character'Pos (Character));
    end Index;
 
    ----------------
@@ -1557,6 +1778,45 @@ package body League.Strings is
 
       return Wrap (Data);
    end To_NFKD;
+
+   -----------------
+   -- To_Position --
+   -----------------
+
+   function To_Position
+    (Item  : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Index : Positive) return Utf16_String_Index
+   is
+      Map : Index_Map_Access;
+
+   begin
+      if Index > Item.Length then
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      if Index = Item.Length then
+         return Item.Unused;
+      end if;
+
+      if Item.Unused = Utf16_String_Index (Item.Length) then
+         return Utf16_String_Index (Index);
+
+      elsif Item.Unused = Utf16_String_Index (Item.Length) * 2 then
+         return Utf16_String_Index (Index) * 2;
+
+      else
+         Map := Item.Index_Map;
+
+         --  Calculate index map if it is unavailable for now.
+
+         if Map = null then
+            Compute_Index_Map (Item.all);
+            Map := Item.Index_Map;
+         end if;
+
+         return Map.Map (Utf16_String_Index (Index));
+      end if;
+   end To_Position;
 
    ------------------------
    -- To_Simple_Casefold --
