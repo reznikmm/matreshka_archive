@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,6 +71,10 @@ procedure String_Performance is
    procedure Test_Compare;
 
    procedure Test_Append;
+
+   procedure Test_Index;
+
+   procedure Test_Last_Index;
 
    procedure Test_Initialization;
 
@@ -498,10 +502,6 @@ procedure String_Performance is
 
             for J in 1 .. Passes loop
                Y := Index (S, C);
---Put_Line (Integer'Image (Y));
---if Y /= S.Length then
---raise Program_Error;
---end if;
             end loop;
 
             Result.League_Duration := Clock - Start;
@@ -510,7 +510,6 @@ procedure String_Performance is
          Result.Passes := Passes;
       end Test;
 
---      Index_Passes : constant := 1000;
       Index_Passes : constant := 1_000_000;
 
       Result : Result_Type_Array (1 .. 5);
@@ -579,6 +578,71 @@ procedure String_Performance is
          Result_Type'(Ada_Duration, League_Duration, Passes));
    end Test_Initialization;
 
+   ---------------------
+   -- Test_Last_Index --
+   ---------------------
+
+   procedure Test_Last_Index is
+
+      ----------
+      -- Test --
+      ----------
+
+      procedure Test
+       (Size   : Positive;
+        Passes : Positive;
+        Result : out Result_Type)
+      is
+         Start : Time;
+         Y     : Natural;
+
+      begin
+         declare
+            S : Unbounded_Wide_String :=
+              To_Unbounded_Wide_String ('1' & Size * ' ');
+            C : Wide_String := "1";
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Index (S, C, Ada.Strings.Backward);
+            end loop;
+
+            Result.Ada_Duration := Clock - Start;
+         end;
+
+         declare
+            S : Universal_String :=
+              To_Universal_String ('1' & Size * ' ');
+            C : Universal_Character := To_Universal_Character ('1');
+
+         begin
+            Start := Clock;
+
+            for J in 1 .. Passes loop
+               Y := Last_Index (S, C);
+            end loop;
+
+            Result.League_Duration := Clock - Start;
+         end;
+
+         Result.Passes := Passes;
+      end Test;
+
+      Index_Passes : constant := 1_000_000;
+
+      Result : Result_Type_Array (1 .. 5);
+
+   begin
+      Test (1, Index_Passes, Result (1));
+      Test (10, Index_Passes, Result (2));
+      Test (100, Index_Passes / 2, Result (3));
+      Test (1000, Index_Passes / 10, Result (4));
+      Test (10000, Index_Passes / 50, Result (5));
+      Results ("Last_Index", Result);
+   end Test_Last_Index;
+
 begin
    Test_Initialization;
    Test_Copy_Of_Empty_String;
@@ -587,4 +651,5 @@ begin
    Test_Compare;
    Test_Append;
    Test_Index;
+   Test_Last_Index;
 end String_Performance;
