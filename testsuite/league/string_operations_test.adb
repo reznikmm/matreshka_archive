@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,6 +53,7 @@ procedure String_Operations_Test is
    use League.Strings;
 
    procedure Test_TN_219;
+   procedure Test_TN_319;
 
    --------------
    -- Test_219 --
@@ -72,6 +73,19 @@ procedure String_Operations_Test is
          raise Program_Error;
       end if;
    end Test_TN_219;
+
+   -----------------
+   -- Test_TN_319 --
+   -----------------
+
+   procedure Test_TN_319 is
+      S : constant Universal_String := To_Universal_String ("file:///test_226_0.xmi#test");
+
+   begin
+      if S.Index ('#') /= 23 then
+         raise Program_Error;
+      end if;
+   end Test_TN_319;
 
 begin
    --  Initial implementation of concatenation of character with empty string
@@ -204,4 +218,5 @@ begin
    end;
 
    Test_TN_219;
+   Test_TN_319;
 end String_Operations_Test;
