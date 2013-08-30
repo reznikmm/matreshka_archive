@@ -45,17 +45,17 @@ with Ada.Unchecked_Conversion;
 with System.Address_To_Access_Conversions;
 with System.Storage_Elements;
 
-with Matreshka.Internals.SIMD.Intel.SSE2;
 with Matreshka.Internals.Strings.Constants;
+with Matreshka.SIMD.Intel.SSE2;
 
 package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    use Interfaces;
-   use Matreshka.Internals.SIMD.Intel;
-   use Matreshka.Internals.SIMD.Intel.SSE2;
    use Matreshka.Internals.Strings.Constants;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
+   use Matreshka.SIMD.Intel;
+   use Matreshka.SIMD.Intel.SSE2;
    use type System.Storage_Elements.Storage_Offset;
 
    function ffs (A : Interfaces.Unsigned_32) return Interfaces.Unsigned_32;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,11 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SIMD.Intel.MMX;
+with Matreshka.SIMD.Intel.MMX;
 
-package body Matreshka.Internals.SIMD.Intel.SSE is
+package body Matreshka.SIMD.Intel.SSE is
 
-   use Matreshka.Internals.SIMD.Intel.MMX;
+   use Matreshka.SIMD.Intel.MMX;
 
    -----------------
    -- mm_cmpge_ss --
@@ -235,4 +235,4 @@ package body Matreshka.Internals.SIMD.Intel.SSE is
       return (0.0, 0.0, 0.0, 0.0);
    end mm_setzero_ps;
 
-end Matreshka.Internals.SIMD.Intel.SSE;
+end Matreshka.SIMD.Intel.SSE;

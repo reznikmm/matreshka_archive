@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,9 +44,9 @@
 --  This package provides access to Intel x86 MMX instructions set.
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.SIMD.Intel.MMX is
+package Matreshka.SIMD.Intel.MMX is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    procedure mm_empty;
    pragma Import (Intrinsic, mm_empty, "__builtin_ia32_emms");
@@ -246,4 +246,4 @@ package Matreshka.Internals.SIMD.Intel.MMX is
 
 --  _mm_set1_pi8
 
-end Matreshka.Internals.SIMD.Intel.MMX;
+end Matreshka.SIMD.Intel.MMX;

@@ -43,9 +43,9 @@
 ------------------------------------------------------------------------------
 with Interfaces;
 
-package Matreshka.Internals.SIMD.Intel.CPUID is
+package Matreshka.SIMD.Intel.CPUID is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    function Highest_CPUID
     (Extended : Boolean := False) return Interfaces.Unsigned_32;
@@ -61,4 +61,4 @@ package Matreshka.Internals.SIMD.Intel.CPUID is
    --  Returns True when the processor supports the Streaming SIMD Extensions 2
    --  Instructions.
 
-end Matreshka.Internals.SIMD.Intel.CPUID;
+end Matreshka.SIMD.Intel.CPUID;

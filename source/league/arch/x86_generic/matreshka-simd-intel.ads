@@ -51,7 +51,7 @@
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
-package Matreshka.Internals.SIMD.Intel is
+package Matreshka.SIMD.Intel is
 
    pragma Pure;
 
@@ -159,4 +159,4 @@ package Matreshka.Internals.SIMD.Intel is
    function To_v2si is new Ada.Unchecked_Conversion (v4hi, v2si);
    function To_v2si is new Ada.Unchecked_Conversion (v8qi, v2si);
 
-end Matreshka.Internals.SIMD.Intel;
+end Matreshka.SIMD.Intel;

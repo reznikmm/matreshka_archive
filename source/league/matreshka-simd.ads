@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This is a root package of hierarhy for Single Instruction Multiply Data
+--  support on different platforms. Each platform declare its own set of child
+--  packages.
 
-package body Matreshka.Internals.SIMD.Intel.MMX is
+package Matreshka.SIMD is
 
-   ---------------------
-   -- mm_setzero_si64 --
-   ---------------------
+   pragma Pure;
 
-   function mm_setzero_si64 return v2si is
-   begin
-      return (others => 0);
-   end mm_setzero_si64;
-
-end Matreshka.Internals.SIMD.Intel.MMX;
+end Matreshka.SIMD;

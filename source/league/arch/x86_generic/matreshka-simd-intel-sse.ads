@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,9 +44,9 @@
 --  This package provides access to Intel x86 SSE instructions set.
 ------------------------------------------------------------------------------
 
-package Matreshka.Internals.SIMD.Intel.SSE is
+package Matreshka.SIMD.Intel.SSE is
 
-   pragma Pure;
+   pragma Preelaborate;
 
    function mm_setzero_ps return v4sf;
    pragma Inline_Always (mm_setzero_ps);
@@ -458,4 +458,4 @@ package Matreshka.Internals.SIMD.Intel.SSE is
 
 --  _mm_pause
 
-end Matreshka.Internals.SIMD.Intel.SSE;
+end Matreshka.SIMD.Intel.SSE;

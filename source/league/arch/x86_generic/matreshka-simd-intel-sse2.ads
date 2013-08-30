@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,7 +45,7 @@
 ------------------------------------------------------------------------------
 with System;
 
-package Matreshka.Internals.SIMD.Intel.SSE2 is
+package Matreshka.SIMD.Intel.SSE2 is
 
    pragma Pure;
 
@@ -681,4 +681,4 @@ package Matreshka.Internals.SIMD.Intel.SSE2 is
 
 --  _mm_castsi128_pd
 
-end Matreshka.Internals.SIMD.Intel.SSE2;
+end Matreshka.SIMD.Intel.SSE2;

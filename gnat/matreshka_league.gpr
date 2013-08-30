@@ -132,13 +132,13 @@ library project Matreshka_League is
 
       case Matreshka_Config.Architecture is
          when "x86" =>
-            for Switches ("matreshka-internals-simd-intel-sse.adb") use
+            for Switches ("matreshka-simd-intel-sse.adb") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-msse")
                 & Matreshka_Common.Optimization_Ada_Switches
                 & Matreshka_Common.Debug_Ada_Switches;
-            for Switches ("matreshka-internals-simd-intel-sse2.adb") use
+            for Switches ("matreshka-simd-intel-sse2.adb") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-msse2")

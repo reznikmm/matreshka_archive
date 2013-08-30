@@ -44,7 +44,7 @@
 with Ada.Characters.Latin_1;
 with System.Machine_Code;
 
-package body Matreshka.Internals.SIMD.Intel.CPUID is
+package body Matreshka.SIMD.Intel.CPUID is
 
    use Ada.Characters.Latin_1;
 
@@ -234,4 +234,4 @@ package body Matreshka.Internals.SIMD.Intel.CPUID is
       return eax;
    end Highest_CPUID;
 
-end Matreshka.Internals.SIMD.Intel.CPUID;
+end Matreshka.SIMD.Intel.CPUID;

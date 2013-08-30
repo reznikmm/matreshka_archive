@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,7 +47,7 @@
 with Ada.Unchecked_Conversion;
 with Interfaces;
 
-package Matreshka.Internals.SIMD.ARM is
+package Matreshka.SIMD.ARM is
 
    pragma Pure;
 
@@ -159,4 +159,4 @@ package Matreshka.Internals.SIMD.ARM is
    function To_uint64x1_t is
      new Ada.Unchecked_Conversion (int64x1_t, uint64x1_t);
 
-end Matreshka.Internals.SIMD.ARM;
+end Matreshka.SIMD.ARM;

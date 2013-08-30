@@ -41,9 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.SIMD.Intel.CPUID;
-
 with Matreshka.Internals.Strings.Handlers.X86_64_POPCNT;
+with Matreshka.SIMD.Intel.CPUID;
 
 package body Matreshka.Internals.Strings.Configuration is
 
@@ -53,7 +52,7 @@ package body Matreshka.Internals.Strings.Configuration is
 
    procedure Initialize is
    begin
-      if Matreshka.Internals.SIMD.Intel.CPUID.Has_POPCNT then
+      if Matreshka.SIMD.Intel.CPUID.Has_POPCNT then
          --  CPU supports SSE instruction set and POPCNT instruction.
 
          String_Handler := Handlers.X86_64_POPCNT.Handler'Access;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,7 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package body Matreshka.Internals.SIMD.ARM.NEON is
+package body Matreshka.SIMD.ARM.NEON is
 
    function builtin_neon_vaddv8qi
     (A : int8x8_t; B : int8x8_t; C : Interfaces.Integer_32) return int8x8_t;
@@ -222,4 +222,4 @@ package body Matreshka.Internals.SIMD.ARM.NEON is
       return builtin_neon_vaddv16qi (A, B, 1);
    end vaddq_s8;
 
-end Matreshka.Internals.SIMD.ARM.NEON;
+end Matreshka.SIMD.ARM.NEON;

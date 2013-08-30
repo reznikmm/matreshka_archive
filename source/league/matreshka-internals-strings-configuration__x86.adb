@@ -45,7 +45,7 @@ with Ada.Characters.Latin_1;
 with Interfaces;
 with System.Machine_Code;
 
-with Matreshka.Internals.SIMD.Intel.CPUID;
+with Matreshka.SIMD.Intel.CPUID;
 with Matreshka.Internals.Strings.Handlers.Portable;
 with Matreshka.Internals.Strings.Handlers.X86.SSE2;
 with Matreshka.Internals.Strings.Handlers.X86.SSE2_POPCNT;
@@ -101,15 +101,15 @@ package body Matreshka.Internals.Strings.Configuration is
    procedure Initialize is
    begin
       if not Has_CPUID
-        or else Matreshka.Internals.SIMD.Intel.CPUID.Highest_CPUID < 1
+        or else Matreshka.SIMD.Intel.CPUID.Highest_CPUID < 1
       then
          --  CPU doesn't has CPUID instruction or doesn't support getting of
          --  features sets.
 
          String_Handler := Handlers.Portable.Handler'Access;
 
-      elsif Matreshka.Internals.SIMD.Intel.CPUID.Has_SSE2 then
-         if Matreshka.Internals.SIMD.Intel.CPUID.Has_POPCNT then
+      elsif Matreshka.SIMD.Intel.CPUID.Has_SSE2 then
+         if Matreshka.SIMD.Intel.CPUID.Has_POPCNT then
             --  CPU supports SSE instruction set and POPCNT instruction.
 
             String_Handler := Handlers.X86.SSE2_POPCNT.Handler'Access;
