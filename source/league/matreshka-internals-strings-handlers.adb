@@ -112,18 +112,21 @@ package body Matreshka.Internals.Strings.Handlers is
    ----------------
 
    not overriding function Last_Index
-    (Self : Abstract_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point) return Natural
+    (Self          : Abstract_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Index      : Positive;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural
    is
       pragma Unreferenced (Self);
 
-      Position : Utf16_String_Index := Item.Unused;
-      Index    : Natural            := Item.Length;
+      Position : Utf16_String_Index := To_Position;
+      Index    : Natural            := To_Index;
       C        : Code_Point;
 
    begin
-      while Position > 0 loop
+      while Position > From_Position loop
          Unchecked_Previous (Item.Value, Position, C);
 
          if C = Code then

@@ -99,11 +99,18 @@ package Matreshka.Internals.Strings.Handlers is
    --  slice for search.
 
    not overriding function Last_Index
-    (Self : Abstract_String_Handler;
-     Item : Matreshka.Internals.Strings.Shared_String_Access;
-     Code : Matreshka.Internals.Unicode.Code_Point) return Natural;
+    (Self          : Abstract_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Index      : Positive;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
    --  Returns the index position of the last occurrence of the character in
    --  this string, searching backward, or zero if character is not found.
+   --  From_Position specify position of first code unit of selected slice.
+   --  To_Index specify index of last character of the selected slice, while
+   --  To_Position specify first position of code point after last character in
+   --  the slice.
 
    not overriding function Count
     (Self : Abstract_String_Handler;
