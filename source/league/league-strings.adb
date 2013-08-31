@@ -109,6 +109,15 @@ package body League.Strings is
    function Last_Index
     (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
+   function Last_Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
+   function Last_Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
    --  Internal implementations to share common code.
 
    ---------
@@ -1195,6 +1204,66 @@ package body League.Strings is
    ----------------
 
    function Last_Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Code is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      return
+        String_Handler.Last_Index (Item, 0, To, To_Position (Item, To), Code);
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From : Positive;
+     To   : Natural;
+     Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Code is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if not Is_Valid (Code) then
+         raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      if From > To then
+         --  Empty slice selected.
+
+         return 0;
+      end if;
+
+      return
+        String_Handler.Last_Index
+         (Item, From_Position (Item, From), To, To_Position (Item, To), Code);
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
     (Self      : Universal_String'Class;
      Character : League.Characters.Universal_Character'Class) return Natural is
    begin
@@ -1212,6 +1281,64 @@ package body League.Strings is
      Character : Wide_Wide_Character) return Natural is
    begin
       return Last_Index (Self.Data, Wide_Wide_Character'Pos (Character));
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     To        : Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural is
+   begin
+      return
+        Last_Index
+         (Self.Data, To, League.Characters.Internals.Internal (Character));
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     To        : Natural;
+     Character : Wide_Wide_Character) return Natural is
+   begin
+      return Last_Index (Self.Data, To, Wide_Wide_Character'Pos (Character));
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural is
+   begin
+      return
+        Last_Index
+         (Self.Data,
+          From,
+          To,
+          League.Characters.Internals.Internal (Character));
+   end Last_Index;
+
+   ----------------
+   -- Last_Index --
+   ----------------
+
+   function Last_Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : Wide_Wide_Character) return Natural is
+   begin
+      return
+        Last_Index (Self.Data, From, To, Wide_Wide_Character'Pos (Character));
    end Last_Index;
 
    ------------

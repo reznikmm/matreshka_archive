@@ -253,6 +253,24 @@ package League.Strings is
    function Last_Index
     (Self      : Universal_String'Class;
      Character : Wide_Wide_Character) return Natural;
+   function Last_Index
+    (Self      : Universal_String'Class;
+     To        : Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural;
+   function Last_Index
+    (Self      : Universal_String'Class;
+     To        : Natural;
+     Character : Wide_Wide_Character) return Natural;
+   function Last_Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : League.Characters.Universal_Character'Class) return Natural;
+   function Last_Index
+    (Self      : Universal_String'Class;
+     From      : Positive;
+     To        : Natural;
+     Character : Wide_Wide_Character) return Natural;
    --  Returns the index position of the last occurrence of the character in
    --  this string, searching backward, or zero if character is not found.
 
