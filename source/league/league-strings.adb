@@ -965,6 +965,12 @@ package body League.Strings is
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
+      if Item.Length = 0 then
+         --  Empty string doesn't contains any character.
+
+         return 0;
+      end if;
+
       return String_Handler.Index (Item, 1, 0, Item.Unused, Code);
    end Index;
 
@@ -988,6 +994,12 @@ package body League.Strings is
    begin
       if not Is_Valid (Code) then
          raise Constraint_Error with "Illegal Unicode code point";
+      end if;
+
+      if From > Item.Length then
+         --  Empty slice, there are no characters in it.
+
+         return 0;
       end if;
 
       return
