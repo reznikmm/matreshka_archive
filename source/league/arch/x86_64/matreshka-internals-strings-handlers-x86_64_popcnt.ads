@@ -48,5 +48,6 @@ with Matreshka.Internals.Strings.Handlers.X86_Utilities;
 package Matreshka.Internals.Strings.Handlers.X86_64_POPCNT is
   new Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2
        (Matreshka.Internals.Strings.Handlers.Portable.Portable_String_Handler,
-        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Forward_POPCNT);
+        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Forward_POPCNT,
+        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Backward_POPCNT);
 pragma Preelaborate (Matreshka.Internals.Strings.Handlers.X86_64_POPCNT);

@@ -57,6 +57,13 @@ generic
    --  increments Index by 8 excluding 1 for each pair of 1 bits in exclusion
    --  mask.
 
+   with procedure Update_Index_Backward
+    (Mask  : Interfaces.Unsigned_32;
+     Index : in out Positive);
+   --  Update character index based on value of the exclusion mask. It
+   --  decrements Index by 8 excluding 1 for each pair of 1 bits in exclusion
+   --  mask.
+
 package Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    pragma Preelaborate;
@@ -100,6 +107,14 @@ package Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
      To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Code          : Matreshka.Internals.Unicode.Code_Point)
        return Natural;
+
+   overriding function Last_Index
+    (Self          : X86_SSE2_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Index      : Positive;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
 
    Handler : aliased X86_SSE2_String_Handler;
 
