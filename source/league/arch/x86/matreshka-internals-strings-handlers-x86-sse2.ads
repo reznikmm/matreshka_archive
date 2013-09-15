@@ -47,5 +47,5 @@ with Matreshka.Internals.Strings.Handlers.X86_Utilities;
 package Matreshka.Internals.Strings.Handlers.X86.SSE2 is
   new Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2
        (Matreshka.Internals.Strings.Handlers.X86.X86_String_Handler,
-        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Generic);
+        Matreshka.Internals.Strings.Handlers.X86_Utilities.Update_Index_Forward_Generic);
 pragma Preelaborate (Matreshka.Internals.Strings.Handlers.X86.SSE2);

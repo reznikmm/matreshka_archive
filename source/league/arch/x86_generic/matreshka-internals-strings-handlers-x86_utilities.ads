@@ -47,7 +47,7 @@ package Matreshka.Internals.Strings.Handlers.X86_Utilities is
 
    pragma Preelaborate;
 
-   procedure Update_Index_Generic
+   procedure Update_Index_Forward_Generic
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive);
    --  Update character index based on value of the exclusion mask. It
@@ -55,10 +55,10 @@ package Matreshka.Internals.Strings.Handlers.X86_Utilities is
    --  mask. This is generic version of function, it doesn't use and specific
    --  CPU instructions.
 
-   procedure Update_Index_POPCNT
+   procedure Update_Index_Forward_POPCNT
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive);
-   pragma Inline (Update_Index_POPCNT);
+   pragma Inline (Update_Index_Forward_POPCNT);
    --  Update character index based on value of the exclusion mask. It
    --  increments Index by 8 excluding 1 for each pair of 1 bits in exclusion
    --  mask. This version uses POPCNT instruction.

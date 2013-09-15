@@ -50,7 +50,7 @@ generic
    type Base_String_Handler is
      abstract new Abstract_String_Handler with private;
 
-   with procedure Update_Index
+   with procedure Update_Index_Forward
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive);
    --  Update character index based on value of the exclusion mask. It

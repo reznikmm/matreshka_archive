@@ -50,11 +50,11 @@ package body Matreshka.Internals.Strings.Handlers.X86_Utilities is
     (X : Interfaces.Unsigned_32) return Interfaces.Unsigned_32;
    pragma Import (Intrinsic, popcount, "__builtin_popcount");
 
-   --------------------------
-   -- Update_Index_Generic --
-   --------------------------
+   ----------------------------------
+   -- Update_Index_Forward_Generic --
+   ----------------------------------
 
-   procedure Update_Index_Generic
+   procedure Update_Index_Forward_Generic
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive) is
    begin
@@ -89,17 +89,17 @@ package body Matreshka.Internals.Strings.Handlers.X86_Utilities is
       if (Mask and 2#11000000_00000000#) = 0 then
          Index := Index + 1;
       end if;
-   end Update_Index_Generic;
+   end Update_Index_Forward_Generic;
 
-   -------------------------
-   -- Update_Index_POPCNT --
-   -------------------------
+   ---------------------------------
+   -- Update_Index_Forward_POPCNT --
+   ---------------------------------
 
-   procedure Update_Index_POPCNT
+   procedure Update_Index_Forward_POPCNT
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive) is
    begin
       Index := Index + 8 - Integer (popcount (Mask) / 2);
-   end Update_Index_POPCNT;
+   end Update_Index_Forward_POPCNT;
 
 end Matreshka.Internals.Strings.Handlers.X86_Utilities;
