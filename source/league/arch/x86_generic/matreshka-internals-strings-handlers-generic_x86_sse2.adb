@@ -56,6 +56,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
    use Matreshka.Internals.Utf16;
    use Matreshka.SIMD.Intel;
    use Matreshka.SIMD.Intel.SSE2;
+   use type System.Address;
    use type System.Storage_Elements.Storage_Offset;
 
    function ffs (A : Interfaces.Unsigned_32) return Interfaces.Unsigned_32;
@@ -143,7 +144,6 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       To_Offset      : constant Utf16_String_Index := (To_Position - 1) mod 8;
 
       Pattern        : constant v8hi := (others => Integer_16 (Code));
-      Vector         : Utf16_String_Index;
       Match_Mask     : Unsigned_32;
       Exclusion_Mask : Unsigned_32;
       Current_Vector : v8hi;
@@ -152,10 +152,11 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       Tail_Mask      : constant Unsigned_32
         := 16#FFFF_FFFF# / (2 ** Natural (32 - To_Offset * 2));
       Index          : Integer := From_Index;
+      Current        : System.Address := Value (From_Vector)'Address;
 
    begin
       if From_Vector = To_Vector then
-         Current_Vector := Value (From_Vector);
+         Current_Vector := To_Pointer (Current).all;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed leading and trailing code units. If
@@ -167,14 +168,13 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
             (mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
                and Head_Mask and Tail_Mask);
 
-         if Match_Mask /= 0 then
-            Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
-
-         else
+         if Match_Mask = 0 then
             --  No match found, return 0.
 
             return 0;
          end if;
+
+         Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
 
          --  Code units from high surrogate range must be ignored when
          --  computing index of character. Complete exclusion mask includes all
@@ -196,7 +196,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  First step: process vector which includes first character of the
          --  slice.
 
-         Current_Vector := Value (From_Vector);
+         Current_Vector := To_Pointer (Current).all;
+         Current := Current + 16;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed first code units. If match is found
@@ -232,10 +233,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Second step: process all string's vectors between first and last.
 
-         Vector := From_Vector + 1;
-
-         while Vector < To_Vector loop
-            Current_Vector := Value (Vector);
+         while Current /= Value (To_Vector)'Address loop
+            Current_Vector := To_Pointer (Current).all;
+            Current := Current + 16;
 
             --  Compute 'match' mask by compare vector of string with pattern.
             --  If match is found construct mask to exclude all trailing code
@@ -267,14 +267,12 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
             if Match_Mask /= 0 then
                return Index;
             end if;
-
-            Vector := Vector + 1;
          end loop;
 
          --  Third step: process vector which includes last character of the
          --  slice.
 
-         Current_Vector := Value (To_Vector);
+         Current_Vector := To_Pointer (Current).all;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed last code units. If match is found
@@ -640,7 +638,6 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       To_Offset      : constant Utf16_String_Index := (To_Position - 1) mod 8;
 
       Pattern        : constant v8hi := (others => Integer_16 (Code));
-      Vector         : Utf16_String_Index;
       Match_Mask     : Unsigned_32;
       Aux_Mask       : Unsigned_32;
       Exclusion_Mask : Unsigned_32;
@@ -650,10 +647,11 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       Tail_Mask      : constant Unsigned_32
         := 16#FFFF_FFFF# / (2 ** Natural (30 - To_Offset * 2));
       Index          : Integer := To_Index;
+      Current        : System.Address := Value (To_Vector)'Address;
 
    begin
       if From_Vector = To_Vector then
-         Current_Vector := Value (From_Vector);
+         Current_Vector := To_Pointer (Current).all;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed leading and trailing code units. If
@@ -692,7 +690,8 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          --  First step: process vector which includes last character of the
          --  slice.
 
-         Current_Vector := Value (To_Vector);
+         Current_Vector := To_Pointer (Current).all;
+         Current := Current - 16;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed last code units. If match is found
@@ -730,10 +729,9 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
          --  Second step: process all string's vectors between first and last.
 
-         Vector := To_Vector - 1;
-
-         while Vector > From_Vector loop
-            Current_Vector := Value (Vector);
+         while Current /= Value (From_Vector)'Address loop
+            Current_Vector := To_Pointer (Current).all;
+            Current := Current - 16;
 
             --  Compute 'match' mask by compare vector of string with pattern
             --  and excluding match of needed leading and trailing code units.
@@ -769,14 +767,12 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
             if Match_Mask /= 0 then
                return Index;
             end if;
-
-            Vector := Vector - 1;
          end loop;
 
          --  Third step: process vector which includes first character of the
          --  slice.
 
-         Current_Vector := Value (From_Vector);
+         Current_Vector := To_Pointer (Current).all;
 
          --  Compute 'match' mask by compare vector of string with pattern and
          --  excluding match of needed leading and trailing code units. If
