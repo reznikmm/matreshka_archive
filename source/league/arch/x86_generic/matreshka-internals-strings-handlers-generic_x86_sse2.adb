@@ -89,6 +89,18 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
    --
    --  Note, To_Position must be greater than From_Position.
 
+   function Index_16_Without_Surrogates
+    (Value         : v8hi_Unrestricted_Array;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
+   --  Implementation of Index operation when Code is less than or equal to
+   --  16#FFFF#, so its representation occupies one code unit. This function
+   --  assumes that string doesn't contain surrogate pairs.
+   --
+   --  Note, To_Position must be greater than From_Position.
+
    function Last_Index_16
     (Value         : v8hi_Unrestricted_Array;
      From_Position : Utf16_String_Index;
@@ -97,6 +109,16 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
      Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
    --  Implementation of Last_Index operation when Code is less than or equal
    --  to 16#FFFF#, so its representation occupies one code unit.
+
+   function Last_Index_16_Without_Surrogates
+    (Value         : v8hi_Unrestricted_Array;
+     From_Position : Utf16_String_Index;
+     To_Index      : Positive;
+     To_Position   : Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
+   --  Implementation of Last_Index operation when Code is less than or equal
+   --  to 16#FFFF#, so its representation occupies one code unit. This function
+   --  assumes that string doesn't contain surrogate pairs.
 
    --------------------------
    -- Fill_Null_Terminator --
@@ -124,6 +146,42 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       Value (Index) :=
         mm_and_si128 (Value (Index), Terminator_Mask_x86_64 (Offset));
    end Fill_Null_Terminator;
+
+   -----------
+   -- Index --
+   -----------
+
+   overriding function Index
+    (Self          : X86_SSE2_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point)
+       return Natural
+   is
+      Value : v8hi_Unrestricted_Array;
+      for Value'Address use Item.Value'Address;
+      pragma Import (Ada, Value);
+
+   begin
+      if Code <= 16#FFFF# then
+         if Utf16_String_Index (Item.Length) = Item.Unused then
+            return
+              Index_16_Without_Surrogates
+               (Value, From_Index, From_Position, To_Position, Code);
+
+         else
+            return
+              Index_16 (Value, From_Index, From_Position, To_Position, Code);
+         end if;
+
+      else
+         return
+           Base_String_Handler (Self).Index
+            (Item, From_Index, From_Position, To_Position, Code);
+      end if;
+   end Index;
 
    --------------
    -- Index_16 --
@@ -311,33 +369,170 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       end if;
    end Index_16;
 
-   -----------
-   -- Index --
-   -----------
+   ---------------------------------
+   -- Index_16_Without_Surrogates --
+   ---------------------------------
 
-   overriding function Index
-    (Self          : X86_SSE2_String_Handler;
-     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+   function Index_16_Without_Surrogates
+    (Value         : v8hi_Unrestricted_Array;
      From_Index    : Positive;
-     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
-     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Code          : Matreshka.Internals.Unicode.Code_Point)
-       return Natural
+     From_Position : Utf16_String_Index;
+     To_Position   : Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural
    is
-      Value : v8hi_Unrestricted_Array;
-      for Value'Address use Item.Value'Address;
-      pragma Import (Ada, Value);
+      pragma Suppress (All_Checks);
+
+      From_Vector    : constant Utf16_String_Index := From_Position / 8;
+      From_Offset    : constant Utf16_String_Index := From_Position mod 8;
+      To_Vector      : constant Utf16_String_Index := (To_Position - 1) / 8;
+      To_Offset      : constant Utf16_String_Index := (To_Position - 1) mod 8;
+
+      Pattern        : constant v8hi := (others => Integer_16 (Code));
+      Match_Mask     : Unsigned_32;
+      Exclusion_Mask : Unsigned_32;
+      Current_Vector : v8hi;
+      Head_Mask      : constant Unsigned_32
+        := 16#FFFF_FFFF# * (2 ** Natural (Unsigned_32 (From_Offset * 2)));
+      Tail_Mask      : constant Unsigned_32
+        := 16#FFFF_FFFF# / (2 ** Natural (32 - To_Offset * 2));
+      Index          : Integer := From_Index;
+      Current        : System.Address := Value (From_Vector)'Address;
 
    begin
-      if Code <= 16#FFFF# then
-         return Index_16 (Value, From_Index, From_Position, To_Position, Code);
+      if From_Vector = To_Vector then
+         Current_Vector := To_Pointer (Current).all;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed leading and trailing code units. If
+         --  match is found construct mask to exclude all leading and trailing
+         --  code units.
+
+         Match_Mask :=
+           ffs
+            (mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+               and Head_Mask and Tail_Mask);
+
+         if Match_Mask = 0 then
+            --  No match found, return 0.
+
+            return 0;
+         end if;
+
+         Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
+
+         --  Complete exclusion mask includes all leading code units as well as
+         --  all code units after found one.
+
+         Exclusion_Mask := Match_Mask or not Head_Mask;
+
+         --  Update index of character. It will be index of found character.
+
+         Update_Index_Forward (Exclusion_Mask and 16#FFFF#, Index);
+
+         return Index;
 
       else
-         return
-           Base_String_Handler (Self).Index
-            (Item, From_Index, From_Position, To_Position, Code);
+         --  First step: process vector which includes first character of the
+         --  slice.
+
+         Current_Vector := To_Pointer (Current).all;
+         Current := Current + 16;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed first code units. If match is found
+         --  construct mask to exclude all trailing code units.
+
+         Match_Mask :=
+           ffs
+            (mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+               and Head_Mask);
+
+         if Match_Mask /= 0 then
+            Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
+         end if;
+
+         --  Complete exclusion mask includes all leading code units as well as
+         --  all code units after found one.
+
+         Exclusion_Mask := Match_Mask or not Head_Mask;
+
+         --  Update index of character. It will be index of found character of
+         --  index of first character in the next string's vector.
+
+         Update_Index_Forward (Exclusion_Mask and 16#FFFF#, Index);
+
+         if Match_Mask /= 0 then
+            return Index;
+         end if;
+
+         --  Second step: process all string's vectors between first and last.
+
+         while Current /= Value (To_Vector)'Address loop
+            Current_Vector := To_Pointer (Current).all;
+            Current := Current + 16;
+
+            --  Compute 'match' mask by compare vector of string with pattern.
+            --  If match is found construct mask to exclude all trailing code
+            --  units.
+
+            Match_Mask :=
+              ffs
+               (mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern)));
+
+            if Match_Mask /= 0 then
+               Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
+            end if;
+
+            --  Complete exclusion mask includes all code units after found
+            --  one.
+
+            Exclusion_Mask := Match_Mask;
+
+            --  Update index of character. It will be index of found character
+            --  of index of first character in the next string's vector.
+
+            Update_Index_Forward (Exclusion_Mask and 16#FFFF#, Index);
+
+            if Match_Mask /= 0 then
+               return Index;
+            end if;
+         end loop;
+
+         --  Third step: process vector which includes last character of the
+         --  slice.
+
+         Current_Vector := To_Pointer (Current).all;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed last code units. If match is found
+         --  construct mask to exclude all trailing code units.
+
+         Match_Mask :=
+           ffs
+            (mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+               and Tail_Mask);
+
+         if Match_Mask /= 0 then
+            Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (Match_Mask - 1));
+
+         else
+            --  No match found, return 0.
+
+            return 0;
+         end if;
+
+         --  Complete exclusion mask includes all code units after found one.
+
+         Exclusion_Mask := Match_Mask;
+
+         --  Update index of character. It will be index of found character of
+         --  index of first character in the next string's vector.
+
+         Update_Index_Forward (Exclusion_Mask and 16#FFFF#, Index);
+
+         return Index;
       end if;
-   end Index;
+   end Index_16_Without_Surrogates;
 
    --------------
    -- Is_Equal --
@@ -609,8 +804,16 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
 
    begin
       if Code <= 16#FFFF# then
-         return
-           Last_Index_16 (Value, From_Position, To_Index, To_Position, Code);
+         if Utf16_String_Index (Item.Length) = Item.Unused then
+            return
+              Last_Index_16_Without_Surrogates
+               (Value, From_Position, To_Index, To_Position, Code);
+
+         else
+            return
+              Last_Index_16
+               (Value, From_Position, To_Index, To_Position, Code);
+         end if;
 
       else
          return
@@ -808,6 +1011,175 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
          return Index;
       end if;
    end Last_Index_16;
+
+   --------------------------------------
+   -- Last_Index_16_Without_Surrogates --
+   --------------------------------------
+
+   function Last_Index_16_Without_Surrogates
+    (Value         : v8hi_Unrestricted_Array;
+     From_Position : Utf16_String_Index;
+     To_Index      : Positive;
+     To_Position   : Utf16_String_Index;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural
+   is
+      pragma Suppress (All_Checks);
+
+      From_Vector    : constant Utf16_String_Index := From_Position / 8;
+      From_Offset    : constant Utf16_String_Index := From_Position mod 8;
+      To_Vector      : constant Utf16_String_Index := (To_Position - 1) / 8;
+      To_Offset      : constant Utf16_String_Index := (To_Position - 1) mod 8;
+
+      Pattern        : constant v8hi := (others => Integer_16 (Code));
+      Match_Mask     : Unsigned_32;
+      Aux_Mask       : Unsigned_32;
+      Exclusion_Mask : Unsigned_32;
+      Current_Vector : v8hi;
+      Head_Mask      : constant Unsigned_32
+        := 16#FFFF_FFFF# * (2 ** Natural (Unsigned_32 (From_Offset * 2)));
+      Tail_Mask      : constant Unsigned_32
+        := 16#FFFF_FFFF# / (2 ** Natural (30 - To_Offset * 2));
+      Index          : Integer := To_Index;
+      Current        : System.Address := Value (To_Vector)'Address;
+
+   begin
+      if From_Vector = To_Vector then
+         Current_Vector := To_Pointer (Current).all;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed leading and trailing code units. If
+         --  match is found construct mask to exclude all leading and trailing
+         --  code units.
+
+         Match_Mask :=
+           mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+             and Head_Mask and Tail_Mask;
+
+         if Match_Mask = 0 then
+            --  No match found, return 0.
+
+            return 0;
+         end if;
+
+         Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (32 - clz (Match_Mask)));
+
+         --  Complete exclusion mask includes all leading code units as well as
+         --  all code units after found one.
+
+         Exclusion_Mask := (not Match_Mask) or (not Tail_Mask);
+
+         --  Update index of character. It will be index of found character.
+
+         Update_Index_Backward (Exclusion_Mask and 16#FFFF#, Index);
+
+         return Index;
+
+      else
+         --  First step: process vector which includes last character of the
+         --  slice.
+
+         Current_Vector := To_Pointer (Current).all;
+         Current := Current - 16;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed last code units. If match is found
+         --  construct mask to exclude all trailing code units.
+
+         Match_Mask :=
+           mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+             and Tail_Mask;
+
+         if Match_Mask /= 0 then
+            Aux_Mask :=
+              16#FFFF_FFFF# * (2 ** Natural (32 - clz (Match_Mask)));
+
+         else
+            Aux_Mask := 16#FFFF_FFFF#;
+         end if;
+
+         --  Complete exclusion mask includes all leading code units as well as
+         --  all code units after found one.
+
+         Exclusion_Mask := (not Aux_Mask) or (not Tail_Mask);
+
+         --  Update index of character. It will be index of found character.
+
+         Update_Index_Backward (Exclusion_Mask and 16#FFFF#, Index);
+
+         if Match_Mask /= 0 then
+            return Index;
+         end if;
+
+         --  Second step: process all string's vectors between first and last.
+
+         while Current /= Value (From_Vector)'Address loop
+            Current_Vector := To_Pointer (Current).all;
+            Current := Current - 16;
+
+            --  Compute 'match' mask by compare vector of string with pattern
+            --  and excluding match of needed leading and trailing code units.
+            --  If match is found construct mask to exclude all leading and
+            --  trailing code units.
+
+            Match_Mask :=
+              mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern));
+
+            if Match_Mask /= 0 then
+               Aux_Mask :=
+                 16#FFFF_FFFF# * (2 ** Natural (32 - clz (Match_Mask)));
+
+            else
+               Aux_Mask := 16#FFFF_FFFF#;
+            end if;
+
+            --  Complete exclusion mask includes all leading code units as well
+            --  as all code units after found one.
+
+            Exclusion_Mask := not Aux_Mask;
+
+            --  Update index of character. It will be index of found character.
+
+            Update_Index_Backward (Exclusion_Mask and 16#FFFF#, Index);
+
+            if Match_Mask /= 0 then
+               return Index;
+            end if;
+         end loop;
+
+         --  Third step: process vector which includes first character of the
+         --  slice.
+
+         Current_Vector := To_Pointer (Current).all;
+
+         --  Compute 'match' mask by compare vector of string with pattern and
+         --  excluding match of needed leading and trailing code units. If
+         --  match is found construct mask to exclude all leading and trailing
+         --  code units.
+
+         Match_Mask :=
+           mm_movemask_epi8 (mm_cmpeq_epi16 (Current_Vector, Pattern))
+             and Head_Mask;
+
+         if Match_Mask = 0 then
+            --  No match found, return 0.
+
+            return 0;
+         end if;
+
+         Match_Mask := 16#FFFF_FFFF# * (2 ** Natural (32 - clz (Match_Mask)));
+
+         --  Complete exclusion mask includes all leading code units as well as
+         --  all code units after found one.
+
+         Exclusion_Mask := not Match_Mask;
+
+         --  Update index of character. It will be index of found character.
+
+         Update_Index_Backward (Exclusion_Mask and 16#FFFF#, Index);
+
+         return Index;
+      end if;
+   end Last_Index_16_Without_Surrogates;
 
    ------------------
    -- mm_and_si128 --
