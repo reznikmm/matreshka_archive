@@ -74,7 +74,7 @@ package Matreshka.Internals.Strings.Handlers.X86_Utilities is
    procedure Update_Index_Backward_POPCNT
     (Mask  : Interfaces.Unsigned_32;
      Index : in out Positive);
-   pragma Inline (Update_Index_Forward_POPCNT);
+   pragma Inline (Update_Index_Backward_POPCNT);
    --  Update character index based on value of the exclusion mask. It
    --  decrements Index by 8 excluding 1 for each pair of 1 bits in exclusion
    --  mask. This version uses POPCNT instruction.
