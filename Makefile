@@ -100,3 +100,6 @@ config:
 
 install:
 	${MAKE} -f Makefile.install
+
+# Disable parallel build, it is handled by gnatmake/gprbuild
+.NOTPARALLEL:

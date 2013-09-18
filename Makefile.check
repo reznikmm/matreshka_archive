@@ -129,3 +129,6 @@ amf-setup:
 	cp source/amf/mof/models/mapping.xml .objs/share/models
 	cp source/amf/uml/models/UML23/UML.xmi .objs/share/models/UML23
 	cp source/amf/uml/models/UML24/PrimitiveTypes.xmi .objs/share/models/UML24
+
+# Disable parallel build, it is handled by gnatmake/gprbuild
+.NOTPARALLEL:
