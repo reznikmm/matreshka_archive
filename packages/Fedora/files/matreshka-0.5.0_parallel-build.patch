@@ -1,0 +1,40 @@
+Index: /trunk/matreshka/Makefile
+===================================================================
+--- a/Makefile	(revision 4089)
++++ b/Makefile	(revision 4090)
+@@ -101,2 +101,5 @@
+ install:
+ 	${MAKE} -f Makefile.install
++
++# Disable parallel build, it is handled by gnatmake/gprbuild
++.NOTPARALLEL:
+Index: /trunk/matreshka/Makefile.build
+===================================================================
+--- a/Makefile.build	(revision 4089)
++++ b/Makefile.build	(revision 4090)
+@@ -84,2 +84,5 @@
+ utp: league xml amf uml
+ 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_utp.gpr
++
++# Disable parallel build, it is handled by gnatmake/gprbuild
++.NOTPARALLEL:
+Index: /trunk/matreshka/Makefile.check
+===================================================================
+--- a/Makefile.check	(revision 4089)
++++ b/Makefile.check	(revision 4090)
+@@ -130,2 +130,5 @@
+ 	cp source/amf/uml/models/UML23/UML.xmi .objs/share/models/UML23
+ 	cp source/amf/uml/models/UML24/PrimitiveTypes.xmi .objs/share/models/UML24
++
++# Disable parallel build, it is handled by gnatmake/gprbuild
++.NOTPARALLEL:
+Index: /trunk/matreshka/Makefile.install
+===================================================================
+--- a/Makefile.install	(revision 4089)
++++ b/Makefile.install	(revision 4090)
+@@ -477,2 +477,5 @@
+ 	rm -f amf_utp-src.lst amf_utp-ali.lst amf_utp-src.aux
+ 	rm -f amf_mofext-src.lst amf_mofext-ali.lst amf_mofext-src.aux
++
++# Disable parallel build, it is handled by gnatmake/gprbuild
++.NOTPARALLEL:

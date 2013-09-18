@@ -1,6 +1,6 @@
---- a/Makefile.install	2012-09-24 11:38:21.944575468 +0400
-+++ b/Makefile.install	2012-09-24 11:42:47.852567559 +0400
-@@ -56,7 +56,7 @@
+--- a/Makefile.install	2013-09-17 20:25:01.274310381 +0200
++++ b/Makefile.install	2013-09-17 20:33:07.439765212 +0200
+@@ -62,7 +62,7 @@
  	cat league-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
  	cat league-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
  	$(INSTALL_project) gnat/install/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/matreshka_config.gpr
@@ -9,7 +9,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libleague$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libleague$(RTL_VERSION).$(LIBEXT).$(VERSION) libleague$(RTL_VERSION).$(LIBEXT)
-@@ -68,7 +68,7 @@
+@@ -74,7 +74,7 @@
  	cat league-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/league/{}" > .objs/league-devel.files
  	cat league-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/league-devel.files
  	echo "%attr(-,root,root) %{_gprdir}/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
@@ -18,7 +18,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT)" >> .objs/league-devel.files
  
  fastcgi:
-@@ -78,7 +78,7 @@
+@@ -84,7 +84,7 @@
  	gnat ls -o -P gnat/matreshka_fastcgi.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > fastcgi-ali.lst
  	cat fastcgi-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/fastcgi
  	cat fastcgi-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -27,7 +27,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)
-@@ -89,7 +89,7 @@
+@@ -95,7 +95,7 @@
  endif
  	cat fastcgi-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/fastcgi/{}" > .objs/fastcgi-devel.files
  	cat fastcgi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/fastcgi-devel.files
@@ -35,8 +35,44 @@
 +	echo "%attr(-,root,root) %{_gprdir}/matreshka_fastcgi.gpr" >> .objs/fastcgi-devel.files
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)" >> .objs/fastcgi-devel.files
  
- sql:
-@@ -99,7 +99,7 @@
+ soap:
+@@ -105,7 +105,7 @@
+ 	gnat ls -o -P gnat/matreshka_soap.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > soap-ali.lst
+ 	cat soap-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/soap
+ 	cat soap-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+-	$(INSTALL_project) gnat/install/soap.gpr $(INSTALL_PROJECT_DIR)/soap.gpr
++	$(INSTALL_project) gnat/install/matreshka_soap.gpr $(INSTALL_PROJECT_DIR)/matreshka_soap.gpr
+ ifeq ($(OPERATING_SYSTEM), POSIX)
+ 	$(INSTALL) .libs/libmatreshka-soap$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-soap$(RTL_VERSION).$(LIBEXT).$(VERSION)
+ 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-soap$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-soap$(RTL_VERSION).$(LIBEXT)
+@@ -116,7 +116,7 @@
+ endif
+ 	cat soap-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/soap/{}" > .objs/soap-devel.files
+ 	cat soap-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/soap-devel.files
+-	echo "%attr(-,root,root) %{_gprdir}/soap.gpr" >> .objs/soap-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_soap.gpr" >> .objs/soap-devel.files
+ 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap$(RTL_VERSION).$(LIBEXT)" >> .objs/soap-devel.files
+ 
+ wsse:
+@@ -126,7 +126,7 @@
+ 	gnat ls -o -P gnat/matreshka_soap_wsse.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > soap_wsse-ali.lst
+ 	cat soap_wsse-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/soap/wsse
+ 	cat soap_wsse-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+-	$(INSTALL_project) gnat/install/soap_wsse.gpr $(INSTALL_PROJECT_DIR)/soap_wsse.gpr
++	$(INSTALL_project) gnat/install/matreshka_soap_wsse.gpr $(INSTALL_PROJECT_DIR)/matreshka_soap_wsse.gpr
+ ifeq ($(OPERATING_SYSTEM), POSIX)
+ 	$(INSTALL) .libs/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION)
+ 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)
+@@ -137,7 +137,7 @@
+ endif
+ 	cat soap_wsse-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/soap/wsse/{}" > .objs/soap_wsse-devel.files
+ 	cat soap_wsse-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/soap_wsse-devel.files
+-	echo "%attr(-,root,root) %{_gprdir}/soap_wsse.gpr" >> .objs/soap_wsse-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_soap_wsse.gpr" >> .objs/soap_wsse-devel.files
+ 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)" >> .objs/soap_wsse-devel.files
+ 
+ wsdl2ada:
+@@ -151,7 +151,7 @@
  	gnat ls -o -P gnat/matreshka_sql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql-ali.lst
  	cat sql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql
  	cat sql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -45,7 +81,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql$(RTL_VERSION).$(LIBEXT)
-@@ -110,7 +110,7 @@
+@@ -162,7 +162,7 @@
  endif
  	cat sql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/{}" > .objs/sql-devel.files
  	cat sql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql-devel.files
@@ -53,8 +89,26 @@
 +	echo "%attr(-,root,root) %{_gprdir}/matreshka_sql.gpr" >> .objs/sql-devel.files
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql-devel.files
  
+ mysql:
+@@ -172,7 +172,7 @@
+ 	gnat ls -o -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_mysql-ali.lst
+ 	cat sql_mysql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/mysql
+ 	cat sql_mysql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+-	$(INSTALL_project) gnat/install/sql_mysql.gpr $(INSTALL_PROJECT_DIR)/sql_mysql.gpr
++	$(INSTALL_project) gnat/install/matreshka_sql_mysql.gpr $(INSTALL_PROJECT_DIR)/matreshka_sql_mysql.gpr
+ ifeq ($(OPERATING_SYSTEM), POSIX)
+ 	$(INSTALL) .libs/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION)
+ 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)
+@@ -183,7 +183,7 @@
+ endif
+ 	cat sql_mysql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/mysql/{}" > .objs/sql_mysql-devel.files
+ 	cat sql_mysql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_mysql-devel.files
+-	echo "%attr(-,root,root) %{_gprdir}/sql_mysql.gpr" >> .objs/sql_mysql-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_sql_mysql.gpr" >> .objs/sql_mysql-devel.files
+ 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-mysql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_mysql-devel.files
+ 
  oci:
-@@ -120,7 +120,7 @@
+@@ -193,7 +193,7 @@
  	gnat ls -o -P gnat/matreshka_sql_oracle.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_oci-ali.lst
  	cat sql_oci-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/oci
  	cat sql_oci-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -63,16 +117,16 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)
-@@ -131,7 +131,7 @@
+@@ -204,7 +204,7 @@
  endif
  	cat sql_oci-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/oci/{}" > .objs/sql_oci-devel.files
  	cat sql_oci-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_oci-devel.files
--	echo "%attr(-,root,root) %{_gprdir}/sql_oci.gpr" >> .objs/sql_oci-devel.files
-+	echo "%attr(-,root,root) %{_gprdir}/matreshka_sql_oci.gpr" >> .objs/sql_oci-devel.files
+-	echo "%attr(-,root,root) %{_gprdir}/sql_oracle.gpr" >> .objs/sql_oci-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_sql_oracle.gpr" >> .objs/sql_oci-devel.files
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-oci$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_oci-devel.files
  
  postgresql:
-@@ -141,7 +141,7 @@
+@@ -214,7 +214,7 @@
  	gnat ls -o -P gnat/matreshka_sql_postgresql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_postgresql-ali.lst
  	cat sql_postgresql-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/postgresql
  	cat sql_postgresql-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -81,7 +135,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)
-@@ -152,7 +152,7 @@
+@@ -225,7 +225,7 @@
  endif
  	cat sql_postgresql-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/postgresql/{}" > .objs/sql_postgresql-devel.files
  	cat sql_postgresql-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_postgresql-devel.files
@@ -90,7 +144,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-postgresql$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_postgresql-devel.files
  
  sqlite3:
-@@ -162,7 +162,7 @@
+@@ -235,7 +235,7 @@
  	gnat ls -o -P gnat/matreshka_sql_sqlite3.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_sqlite3-ali.lst
  	cat sql_sqlite3-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/sqlite3
  	cat sql_sqlite3-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -99,7 +153,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)
-@@ -173,7 +173,7 @@
+@@ -246,7 +246,7 @@
  endif
  	cat sql_sqlite3-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/sqlite3/{}" > .objs/sql_sqlite3-devel.files
  	cat sql_sqlite3-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_sqlite3-devel.files
@@ -108,7 +162,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-sqlite3$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_sqlite3-devel.files
  
  firebird:
-@@ -183,7 +183,7 @@
+@@ -256,7 +256,7 @@
  	gnat ls -o -P gnat/matreshka_sql_firebird.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_firebird-ali.lst
  	cat sql_firebird-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/sql/firebird
  	cat sql_firebird-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -117,7 +171,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)
-@@ -194,7 +194,7 @@
+@@ -267,7 +267,7 @@
  endif
  	cat sql_firebird-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/sql/firebird/{}" > .objs/sql_firebird-devel.files
  	cat sql_firebird-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/sql_firebird-devel.files
@@ -126,7 +180,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-sql-firebird$(RTL_VERSION).$(LIBEXT)" >> .objs/sql_firebird-devel.files
  
  xml:
-@@ -204,7 +204,7 @@
+@@ -277,7 +277,7 @@
  	gnat ls -o -P gnat/matreshka_xml.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > xml-ali.lst
  	cat xml-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/xml
  	cat xml-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
@@ -135,7 +189,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-xml$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-xml$(RTL_VERSION).$(LIBEXT)
-@@ -215,7 +215,7 @@
+@@ -288,7 +288,7 @@
  endif
  	cat xml-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/xml/{}" > .objs/xml-devel.files
  	cat xml-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/xml-devel.files
@@ -144,7 +198,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-xml$(RTL_VERSION).$(LIBEXT)" >> .objs/xml-devel.files
  
  amf:
-@@ -230,7 +230,7 @@
+@@ -303,7 +303,7 @@
  	$(INSTALL_data) source/amf/mof/metamodels/mapping.xml $(INSTALL_SHARE_DIR)/amf/metamodels/mapping.xml
  	$(INSTALL_data) source/amf/mof/metamodels/CMOF24.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/CMOF24.cmof
  	$(INSTALL_data) source/amf/mof/models/mapping.xml $(INSTALL_SHARE_DIR)/amf/models/mapping.xml
@@ -153,7 +207,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-amf$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf$(RTL_VERSION).$(LIBEXT)
-@@ -244,7 +244,7 @@
+@@ -317,7 +317,7 @@
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/mapping.xml" >> .objs/amf-lib.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/CMOF24.cmof" >> .objs/amf-lib.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/mapping.xml" >> .objs/amf-lib.files
@@ -161,8 +215,26 @@
 +	echo "%attr(-,root,root) %{_gprdir}/matreshka_amf.gpr" >> .objs/amf-devel.files
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf$(RTL_VERSION).$(LIBEXT)" >> .objs/amf-devel.files
  
+ dd:
+@@ -330,7 +330,7 @@
+ 	$(INSTALL_data) source/amf/dd/metamodels/DC10.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/DC10.cmof
+ 	$(INSTALL_data) source/amf/dd/metamodels/DG10.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/DG10.cmof
+ 	$(INSTALL_data) source/amf/dd/metamodels/DI10.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/DI10.cmof
+-	$(INSTALL_project) gnat/install/amf_dd.gpr $(INSTALL_PROJECT_DIR)/amf_dd.gpr
++	$(INSTALL_project) gnat/install/matreshka_amf_dd.gpr $(INSTALL_PROJECT_DIR)/matreshka_amf_dd.gpr
+ ifeq ($(OPERATING_SYSTEM), POSIX)
+ 	$(INSTALL) .libs/libmatreshka-amf-dd$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-dd$(RTL_VERSION).$(LIBEXT).$(VERSION)
+ 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-dd$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-dd$(RTL_VERSION).$(LIBEXT)
+@@ -344,7 +344,7 @@
+ 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/DC10.cmof" >> .objs/amf_dd-lib.files
+ 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/DG10.cmof" >> .objs/amf_dd-lib.files
+ 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/DI10.cmof" >> .objs/amf_dd-lib.files
+-	echo "%attr(-,root,root) %{_gprdir}/amf_dd.gpr" >> .objs/amf_dd-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_amf_dd.gpr" >> .objs/amf_dd-devel.files
+ 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-dd$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_dd-devel.files
+ 
  uml:
-@@ -265,7 +265,7 @@
+@@ -366,7 +366,7 @@
  	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL2.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL2.xmi
  	$(INSTALL_data) source/amf/uml/models/UML24/StandardProfileL3.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/StandardProfileL3.xmi
  	$(INSTALL_data) source/amf/uml/models/UML24/UML.xmi $(INSTALL_SHARE_DIR)/amf/models/UML24/UML.xmi
@@ -171,7 +243,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)
-@@ -285,7 +285,7 @@
+@@ -387,7 +387,7 @@
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL2.xmi" >> .objs/amf_uml-lib.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/StandardProfileL3.xmi" >> .objs/amf_uml-lib.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/models/UML24/UML.xmi" >> .objs/amf_uml-lib.files
@@ -180,25 +252,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-uml$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_uml-devel.files
  
  ocl:
-@@ -296,7 +296,7 @@
- 	cat amf_ocl-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/ocl
- 	cat amf_ocl-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
- 	$(INSTALL_data) source/amf/ocl/metamodels/OCL23.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/OCL23.cmof
--	$(INSTALL_project) gnat/install/amf_ocl.gpr $(INSTALL_PROJECT_DIR)/amf_ocl.gpr
-+	$(INSTALL_project) gnat/install/matreshka_amf_ocl.gpr $(INSTALL_PROJECT_DIR)/matreshka_amf_ocl.gpr
- ifeq ($(OPERATING_SYSTEM), POSIX)
- 	$(INSTALL) .libs/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION)
- 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)
-@@ -308,7 +308,7 @@
- 	cat amf_ocl-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/ocl/{}" > .objs/amf_ocl-devel.files
- 	cat amf_ocl-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_ocl-devel.files
- 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/OCL23.cmof" >> .objs/amf_ocl-lib.files
--	echo "%attr(-,root,root) %{_gprdir}/amf_ocl.gpr" >> .objs/amf_ocl-devel.files
-+	echo "%attr(-,root,root) %{_gprdir}/matreshka_amf_ocl.gpr" >> .objs/amf_ocl-devel.files
- 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_ocl-devel.files
- 
- utp:
-@@ -319,7 +319,7 @@
+@@ -421,7 +421,7 @@
  	cat amf_utp-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/utp
  	cat amf_utp-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
  	$(INSTALL_data) source/amf/utp/metamodels/UTPSA11.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/UTPSA11.cmof
@@ -207,7 +261,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)
-@@ -331,7 +331,7 @@
+@@ -433,7 +433,7 @@
  	cat amf_utp-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/utp/{}" > .objs/amf_utp-devel.files
  	cat amf_utp-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_utp-devel.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/UTPSA11.cmof" >> .objs/amf_utp-lib.files
@@ -216,7 +270,7 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-utp$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_utp-devel.files
  
  mofext:
-@@ -342,7 +342,7 @@
+@@ -444,7 +444,7 @@
  	cat amf_mofext-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/mofext
  	cat amf_mofext-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
  	$(INSTALL_data) source/amf/mofext/metamodels/MOFEXT241.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/MOFEXT241.cmof
@@ -225,7 +279,7 @@
  ifeq ($(OPERATING_SYSTEM), POSIX)
  	$(INSTALL) .libs/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT).$(VERSION)
  	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT)
-@@ -354,7 +354,7 @@
+@@ -456,7 +456,7 @@
  	cat amf_mofext-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/mofext/{}" > .objs/amf_mofext-devel.files
  	cat amf_mofext-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_mofext-devel.files
  	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/MOFEXT241.cmof" >> .objs/amf_mofext-lib.files
@@ -234,3 +288,23 @@
  	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-mofext$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_mofext-devel.files
  
  cleanup:
+--- a/Makefile.install	2013-09-17 20:45:22.034475980 +0200
++++ b/Makefile.install	2013-09-17 20:45:38.142504803 +0200
+@@ -398,7 +398,7 @@
+ 	cat amf_ocl-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/amf/ocl
+ 	cat amf_ocl-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+ 	$(INSTALL_data) source/amf/ocl/metamodels/OCL23.cmof $(INSTALL_SHARE_DIR)/amf/metamodels/OCL23.cmof
+-	$(INSTALL_project) gnat/install/amf_ocl.gpr $(INSTALL_PROJECT_DIR)/amf_ocl.gpr
++	$(INSTALL_project) gnat/install/matreshka_amf_ocl.gpr $(INSTALL_PROJECT_DIR)/matreshka_amf_ocl.gpr
+ ifeq ($(OPERATING_SYSTEM), POSIX)
+ 	$(INSTALL) .libs/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION)
+ 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)
+@@ -410,7 +410,7 @@
+ 	cat amf_ocl-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/amf/ocl/{}" > .objs/amf_ocl-devel.files
+ 	cat amf_ocl-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/amf_ocl-devel.files
+ 	echo "%attr(-,root,root) %{_datadir}/matreshka/amf/metamodels/OCL23.cmof" >> .objs/amf_ocl-lib.files
+-	echo "%attr(-,root,root) %{_gprdir}/amf_ocl.gpr" >> .objs/amf_ocl-devel.files
++	echo "%attr(-,root,root) %{_gprdir}/matreshka_amf_ocl.gpr" >> .objs/amf_ocl-devel.files
+ 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-amf-ocl$(RTL_VERSION).$(LIBEXT)" >> .objs/amf_ocl-devel.files
+ 
+ utp:

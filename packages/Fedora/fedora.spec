@@ -1,7 +1,7 @@
 %define _gprdir %_GNAT_project_dir
 Name:       matreshka
-Version:    0.4.0
-Release:    1%{?dist}
+Version:    0.5.0
+Release:    3%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
@@ -11,6 +11,9 @@ Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/
 Patch1:          %{name}-%{version}_gprnames.patch
 ## fedora has stable release ABI. so we haven't to specify RTL
 Patch4:          %{name}-%{version}_gpr.patch
+## http://forge.ada-ru.org/matreshka/changeset/4090
+Patch2:          %{name}-%{version}_parallel-build.patch
+Patch3:         %{name}-%{version}_valgrind-suppressions.patch
 BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3 
 BuildRequires:   chrpath
@@ -335,6 +338,8 @@ Requires:   fedora-gnat-project-common  >= 2
 %prep
 %setup -q 
 %patch1 -p1 -b .names
+%patch2 -p1 
+%patch3 -p1 
 cd gnat/install && for i in `ls *.gpr` ; do mv $i matreshka_$i ; done
 cd - 
 %patch4 -p1 -b .gprfix
@@ -344,8 +349,8 @@ cd -
 export GPRBUILD_FLAGS="%Gnatmake_optflags"
 make config 
 %configure
-make -j1
-## make  %{?_smp_mflags}
+##make -j1
+make  %{?_smp_mflags}
 
 %check 
 ## find libs without RPATH, Fedora specific
@@ -433,6 +438,16 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-mofext-devel -f .objs/amf_mofext-devel.files
 
 %changelog
+* Wed Sep 18 2013 Pavel Zhukov <landgraf@fedoraproject.org> - 0.5.0-3
+- add valgrind suppressions 
+- fix parallel make
+
+* Tue Sep 17 2013 Pavel Zhukov <landgraf@fedoraproject.org> - 0.5.0-1
+- update to 0.5.0
+
+* Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.4.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Thu Apr 25 2013 Tom Callaway <spot@fedoraproject.org> - 0.4.0-1
 - update to 0.4.0
 
