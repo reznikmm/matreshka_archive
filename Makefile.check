@@ -25,8 +25,9 @@ ifdef HAS_SQLITE3
     endif
 endif
 
-# Run amf tests after any others because it fails on windows now
+ifdef ENABLE_AMF
 ALL_TARGETS += amf
+endif
 
 all: $(ALL_TARGETS)
 
