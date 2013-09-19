@@ -208,7 +208,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       Head_Mask      : constant Unsigned_32
         := 16#FFFF_FFFF# * (2 ** Natural (Unsigned_32 (From_Offset * 2)));
       Tail_Mask      : constant Unsigned_32
-        := 16#FFFF_FFFF# / (2 ** Natural (32 - To_Offset * 2));
+        := 16#FFFF_FFFF# / (2 ** Natural (30 - To_Offset * 2));
       Index          : Integer := From_Index;
       Current        : System.Address := Value (From_Vector)'Address;
 
@@ -394,7 +394,7 @@ package body Matreshka.Internals.Strings.Handlers.Generic_X86_SSE2 is
       Head_Mask      : constant Unsigned_32
         := 16#FFFF_FFFF# * (2 ** Natural (Unsigned_32 (From_Offset * 2)));
       Tail_Mask      : constant Unsigned_32
-        := 16#FFFF_FFFF# / (2 ** Natural (32 - To_Offset * 2));
+        := 16#FFFF_FFFF# / (2 ** Natural (30 - To_Offset * 2));
       Index          : Integer := From_Index;
       Current        : System.Address := Value (From_Vector)'Address;
 
