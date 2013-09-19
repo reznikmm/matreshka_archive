@@ -83,3 +83,6 @@ ocl: league xml amf uml
 
 utp: league xml amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_utp.gpr
+
+# Disable parallel build, it is handled by gnatmake/gprbuild
+.NOTPARALLEL:

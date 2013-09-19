@@ -476,3 +476,6 @@ cleanup:
 	rm -f amf_ocl-src.lst amf_ocl-ali.lst amf_ocl-src.aux
 	rm -f amf_utp-src.lst amf_utp-ali.lst amf_utp-src.aux
 	rm -f amf_mofext-src.lst amf_mofext-ali.lst amf_mofext-src.aux
+
+# Disable parallel build, it is handled by gnatmake/gprbuild
+.NOTPARALLEL:
