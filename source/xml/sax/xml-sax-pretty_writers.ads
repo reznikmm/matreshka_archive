@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,12 +57,6 @@ package XML.SAX.Pretty_Writers is
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with private;
 
-   not overriding function Text
-    (Self : SAX_Pretty_Writer) return League.Strings.Universal_String;
-
-   not overriding procedure Reset (Self : in out SAX_Pretty_Writer);
-   --  Reset writers state: cleanups internal xml buffer.
-
    not overriding procedure Set_Version
     (Self    : in out SAX_Pretty_Writer;
      Version : XML_Version);
@@ -78,9 +72,9 @@ package XML.SAX.Pretty_Writers is
    --  Sets value delimiter for attributes.
    --  '"' (apostrophe) is used by default
 
-   overriding procedure Set_Destination
-    (Self        : in out SAX_Pretty_Writer;
-     Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access);
+   overriding procedure Set_Output
+    (Self   : in out SAX_Pretty_Writer;
+     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access);
    --  Sets output destination to be used to output generated stream.
 
    overriding procedure Characters
@@ -211,9 +205,6 @@ private
    type SAX_Pretty_Writer is
      limited new XML.SAX.Writers.SAX_Writer with
    record
-      Text         : League.Strings.Universal_String;
-      --  Accumulated output text.
-
       Nesting      : Natural := 0;
       Version      : XML_Version := XML_1_0;
       Tag_Opened   : Boolean := False;

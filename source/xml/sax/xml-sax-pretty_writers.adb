@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -97,11 +97,11 @@ package body XML.SAX.Pretty_Writers is
 
    begin
       if Self.Tag_Opened then
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
          Self.Tag_Opened := False;
       end if;
 
-      Self.Text.Append (Self.Escape (Text));
+      Self.Destination.Put (Self.Escape (Text));
       Self.Chars := True;
    end Characters;
 
@@ -120,13 +120,13 @@ package body XML.SAX.Pretty_Writers is
       --  Closing DTD, which was opened before.
 
       if Self.DTD_Opened then
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
          Self.DTD_Opened := False;
       end if;
 
-      Self.Text.Append ("<!-- ");
-      Self.Text.Append (Text);
-      Self.Text.Append (" -->");
+      Self.Destination.Put ("<!-- ");
+      Self.Destination.Put (Text);
+      Self.Destination.Put (" -->");
    end Comment;
 
    ---------------
@@ -162,7 +162,7 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Success : in out Boolean) is
    begin
-      Self.Text.Append ('>');
+      Self.Destination.Put ('>');
       Self.DTD_Opened := False;
    end End_DTD;
 
@@ -196,7 +196,7 @@ package body XML.SAX.Pretty_Writers is
       --  Use empty tag when there are no any content inside the tag.
 
       if Self.Tag_Opened then
-         Self.Text.Append ("/>");
+         Self.Destination.Put ("/>");
          Self.Tag_Opened := False;
 
          --  Do automatic indentation then necessary.
@@ -215,17 +215,17 @@ package body XML.SAX.Pretty_Writers is
                Self.Chars := False;
 
             else
-               Self.Text.Append (League.Characters.Latin.Line_Feed);
+               Self.Destination.Put (League.Characters.Latin.Line_Feed);
 
                for J in 1 .. Self.Indent loop
-                  Self.Text.Append (' ');
+                  Self.Destination.Put (' ');
                end loop;
             end if;
          end if;
 
-         Self.Text.Append ("</");
+         Self.Destination.Put ("</");
          Output_Name (Self, Namespace_URI, Local_Name, Qualified_Name, Success);
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
       end if;
 
       --  Pop current element information.
@@ -413,7 +413,7 @@ package body XML.SAX.Pretty_Writers is
 
          --  Append qualified name of the tag.
 
-         Self.Text.Append (Qualified_Name);
+         Self.Destination.Put (Qualified_Name);
 
       else
          --  Namespaces mode.
@@ -448,12 +448,12 @@ package body XML.SAX.Pretty_Writers is
             --  Output namespace prexif when namespace is not default.
 
             if not Mappings.Element (Position).Is_Empty then
-               Self.Text.Append (Mappings.Element (Position));
-               Self.Text.Append (':');
+               Self.Destination.Put (Mappings.Element (Position));
+               Self.Destination.Put (':');
             end if;
          end;
 
-         Self.Text.Append (Local_Name);
+         Self.Destination.Put (Local_Name);
       end if;
    end Output_Name;
 
@@ -470,30 +470,10 @@ package body XML.SAX.Pretty_Writers is
       --  Closing DTD, which was opened before.
 
       if Self.DTD_Opened then
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
          Self.DTD_Opened := False;
       end if;
    end Processing_Instruction;
-
-   -----------
-   -- Reset --
-   -----------
-
-   not overriding procedure Reset (Self : in out SAX_Pretty_Writer) is
-   begin
-      Self.Text.Clear;
-   end Reset;
-
-   ---------------------
-   -- Set_Destination --
-   ---------------------
-
-   overriding procedure Set_Destination
-    (Self        : in out SAX_Pretty_Writer;
-     Destination : not null XML.SAX.Writers.SAX_Output_Destination_Access) is
-   begin
-      Self.Destination := Destination;
-   end Set_Destination;
 
    ----------------
    -- Set_Offset --
@@ -505,6 +485,17 @@ package body XML.SAX.Pretty_Writers is
    begin
       Self.Offset := Offset;
    end Set_Offset;
+
+   ----------------
+   -- Set_Output --
+   ----------------
+
+   overriding procedure Set_Output
+    (Self   : in out SAX_Pretty_Writer;
+     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access) is
+   begin
+      Self.Destination := Output;
+   end Set_Output;
 
    -------------------------
    -- Set_Value_Delimiter --
@@ -561,7 +552,7 @@ package body XML.SAX.Pretty_Writers is
       pragma Unreferenced (Success);
 
    begin
-      Self.Text.Append
+      Self.Destination.Put
        (League.Strings.To_Universal_String ("<?xml version=")
           & Self.Delimiter
           & Image (Self.Version)
@@ -587,12 +578,13 @@ package body XML.SAX.Pretty_Writers is
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean) is
    begin
-      Self.Text.Append ("<!DOCTYPE " & Name);
+      Self.Destination.Put ("<!DOCTYPE " & Name);
 
       if not Public_Id.Is_Empty then
-         Self.Text.Append (" PUBLIC " & Public_Id & " " & System_Id);
+         Self.Destination.Put (" PUBLIC " & Public_Id & " " & System_Id);
+
       elsif not System_Id.Is_Empty then
-         Self.Text.Append (" SYSTEM' " & System_Id);
+         Self.Destination.Put (" SYSTEM' " & System_Id);
       end if;
 
       Self.DTD_Opened := True;
@@ -613,14 +605,14 @@ package body XML.SAX.Pretty_Writers is
       --  Closing DTD, which was opened before.
 
       if Self.DTD_Opened then
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
          Self.DTD_Opened := False;
       end if;
 
       --  Closing Tag, which was opened before.
 
       if Self.Tag_Opened then
-         Self.Text.Append ('>');
+         Self.Destination.Put ('>');
          Self.Tag_Opened := False;
       end if;
 
@@ -645,17 +637,17 @@ package body XML.SAX.Pretty_Writers is
             Self.Chars := False;
 
          else
-            Self.Text.Append (League.Characters.Latin.Line_Feed);
+            Self.Destination.Put (League.Characters.Latin.Line_Feed);
 
             for J in 1 .. Self.Indent loop
-               Self.Text.Append (' ');
+               Self.Destination.Put (' ');
             end loop;
          end if;
 
          Self.Indent := Self.Indent + Self.Offset;
       end if;
 
-      Self.Text.Append ('<');
+      Self.Destination.Put ('<');
       Output_Name (Self, Namespace_URI, Local_Name, Qualified_Name, Success);
 
       if not Success then
@@ -669,20 +661,20 @@ package body XML.SAX.Pretty_Writers is
 
       begin
          while Banks.Has_Element (Position) loop
-            Self.Text.Append (' ');
-            Self.Text.Append (XMLNS_Prefix);
+            Self.Destination.Put (' ');
+            Self.Destination.Put (XMLNS_Prefix);
 
             if not Banks.Element (Position).Is_Empty then
                --  Non-default prefix.
 
-               Self.Text.Append (':');
-               Self.Text.Append (Banks.Element (Position));
+               Self.Destination.Put (':');
+               Self.Destination.Put (Banks.Element (Position));
             end if;
 
-            Self.Text.Append ('=');
-            Self.Text.Append (Self.Delimiter);
-            Self.Text.Append (Banks.Key (Position));
-            Self.Text.Append (Self.Delimiter);
+            Self.Destination.Put ('=');
+            Self.Destination.Put (Self.Delimiter);
+            Self.Destination.Put (Banks.Key (Position));
+            Self.Destination.Put (Self.Delimiter);
 
             Banks.Next (Position);
          end loop;
@@ -691,7 +683,7 @@ package body XML.SAX.Pretty_Writers is
       --  Output attributes.
 
       for J in 1 .. Attributes.Length loop
-         Self.Text.Append (' ');
+         Self.Destination.Put (' ');
          Output_Name
           (Self,
            Attributes.Namespace_URI (J),
@@ -703,10 +695,10 @@ package body XML.SAX.Pretty_Writers is
             return;
          end if;
 
-         Self.Text.Append ("=");
-         Self.Text.Append (Self.Delimiter);
-         Self.Text.Append (Self.Escape (Attributes.Value (J), True));
-         Self.Text.Append (Self.Delimiter);
+         Self.Destination.Put ("=");
+         Self.Destination.Put (Self.Delimiter);
+         Self.Destination.Put (Self.Escape (Attributes.Value (J), True));
+         Self.Destination.Put (Self.Delimiter);
       end loop;
 
       Self.Nesting := Self.Nesting + 1;
@@ -747,15 +739,5 @@ package body XML.SAX.Pretty_Writers is
 
       Self.Requested_NS.Include (Namespace_URI, Prefix);
    end Start_Prefix_Mapping;
-
-   ----------
-   -- Text --
-   ----------
-
-   not overriding function Text
-    (Self : SAX_Pretty_Writer) return League.Strings.Universal_String is
-   begin
-      return Self.Text;
-   end Text;
 
 end XML.SAX.Pretty_Writers;

@@ -61,9 +61,9 @@ package XML.SAX.Writers is
      and XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler;
 
-   not overriding procedure Set_Destination
-    (Self        : in out SAX_Writer;
-     Destination : not null SAX_Output_Destination_Access) is abstract;
+   not overriding procedure Set_Output
+    (Self   : in out SAX_Writer;
+     Output : not null SAX_Output_Destination_Access) is abstract;
    --  Sets output destination to be used to output generated XML stream.
 
    procedure Characters

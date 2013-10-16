@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Characters;
 with League.Strings;
 
 package XML.SAX.Output_Destinations is
@@ -59,5 +60,14 @@ package XML.SAX.Output_Destinations is
    not overriding procedure Put
     (Self : in out SAX_Output_Destination;
      Text : League.Strings.Universal_String) is abstract;
+   not overriding procedure Put
+    (Self : in out SAX_Output_Destination;
+     Text : Wide_Wide_String) is abstract;
+   not overriding procedure Put
+    (Self : in out SAX_Output_Destination;
+     Char : League.Characters.Universal_Character) is abstract;
+   not overriding procedure Put
+    (Self : in out SAX_Output_Destination;
+     Char : Wide_Wide_Character) is abstract;
 
 end XML.SAX.Output_Destinations;
