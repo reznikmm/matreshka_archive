@@ -45,6 +45,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings;
 with XML.SAX.Attributes;
+with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
 
 with WSDL.AST.Bindings;
@@ -81,6 +82,8 @@ package body WSDL.Debug is
    type WSDL_Printer is
      limited new WSDL.Visitors.WSDL_Visitor with
    record
+      Output : aliased
+        XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
       Writer : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
    end record;
 
@@ -194,6 +197,7 @@ package body WSDL.Debug is
       Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
 
    begin
+      Printer.Writer.Set_Output (Printer.Output'Unchecked_Access);
       Iterator.Visit (Printer, WSDL.AST.Node_Access (Description), Control);
    end Dump;
 
@@ -412,7 +416,8 @@ package body WSDL.Debug is
       Self.Writer.End_Element (WSDL_Namespace_URI, Description_Element);
       Self.Writer.End_Document;
 
-      Ada.Wide_Wide_Text_IO.Put_Line (Self.Writer.Text.To_Wide_Wide_String);
+      Ada.Wide_Wide_Text_IO.Put_Line
+       (Self.Output.Get_Text.To_Wide_Wide_String);
    end Leave_Description;
 
    --------------------

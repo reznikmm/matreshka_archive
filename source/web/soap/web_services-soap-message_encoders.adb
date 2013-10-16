@@ -46,6 +46,7 @@ with Ada.Unchecked_Deallocation;
 with League.Strings;
 with League.Text_Codecs;
 with XML.SAX.Attributes;
+with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
 with XML.SAX.Writers;
 
@@ -83,11 +84,14 @@ package body Web_Services.SOAP.Message_Encoders is
       Codec   : constant League.Text_Codecs.Text_Codec
         := League.Text_Codecs.Codec
             (League.Strings.To_Universal_String ("utf-8"));
+      Output  : aliased
+        XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
       Writer  : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
       Encoder :
         Web_Services.SOAP.Payloads.Encoders.SOAP_Payload_Encoder_Access;
 
    begin
+      Writer.Set_Output (Output'Unchecked_Access);
       Writer.Start_Document;
       Writer.Start_Prefix_Mapping (SOAP_Envelope_Prefix, SOAP_Envelope_URI);
 
@@ -144,7 +148,7 @@ package body Web_Services.SOAP.Message_Encoders is
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Body_Name);
       Writer.End_Element (SOAP_Envelope_URI, SOAP_Envelope_Name);
 
-      return Codec.Encode (Writer.Text);
+      return Codec.Encode (Output.Get_Text);
    end Encode;
 
    ------------------
