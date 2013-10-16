@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,14 +51,17 @@ with League.Strings;
 with Put_Line;
 with Read_File;
 with XML.SAX.Input_Sources.Strings;
-with XML.SAX.Simple_Readers;
+with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
+with XML.SAX.Simple_Readers;
 
 procedure Test_126 is
 
    use type League.Strings.Universal_String;
 
    Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Output : aliased
+     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
    Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
    Writer : aliased XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
 
@@ -67,23 +70,22 @@ procedure Test_126 is
      := Read_File (Root & "a.xml");
    Expected : constant League.Strings.Universal_String
      := Read_File (Root & "a-expected.xml");
-   Output   : League.Strings.Universal_String;
 
 begin
    Reader.Set_Content_Handler (Writer'Unchecked_Access);
+   Writer.Set_Output (Output'Unchecked_Access);
    Writer.Set_Value_Delimiter (League.Characters.To_Universal_Character ('"'));
 
    --  Parse XML document.
 
    Source.Set_String (Input);
    Reader.Parse (Source'Access);
-   Output := Writer.Text;
 
    --  Check output document.
 
-   if Output /= Expected then
+   if Output.Get_Text /= Expected then
       Put_Line ("Expected: '" & Expected & ''');
-      Put_Line ("Actual  : '" & Output & ''');
+      Put_Line ("Actual  : '" & Output.Get_Text & ''');
 
       raise Program_Error;
    end if;

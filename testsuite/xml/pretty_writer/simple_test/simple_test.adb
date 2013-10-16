@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,11 +47,14 @@ with League.Strings;
 
 with XML.SAX.Attributes;
 with XML.SAX.Attributes.Internals;
+with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
 
 use League.Strings;
 
 procedure Simple_Test is
+   Output         : aliased
+     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
    Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
    OK             : Boolean := True;
    Attrs          : XML.SAX.Attributes.SAX_Attributes;
@@ -69,9 +72,8 @@ procedure Simple_Test is
    end Assert;
 
 begin
-   --  Setting attributes
-
    --  Creating document
+   Writer.Set_Output (Output'Unchecked_Access);
    Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
 
    --  Adding first tag
@@ -175,6 +177,6 @@ begin
    Writer.End_Document (OK);
    Assert (OK);
 
-   Ada.Wide_Wide_Text_IO.Put_Line ("Result : "
-                                     & Writer.Text.To_Wide_Wide_String);
+   Ada.Wide_Wide_Text_IO.Put_Line
+    ("Result : " & Output.Get_Text.To_Wide_Wide_String);
 end Simple_Test;
