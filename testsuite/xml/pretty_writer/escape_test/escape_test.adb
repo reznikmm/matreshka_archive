@@ -46,7 +46,6 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 
 with XML.SAX.Attributes;
-with XML.SAX.Attributes.Internals;
 with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
 
@@ -58,10 +57,10 @@ procedure Escape_Test is
    Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
    OK             : Boolean := True;
    Attrs          : XML.SAX.Attributes.SAX_Attributes;
-   NS_URI         : Universal_String := To_Universal_String ("");
-   Local_Name     : Universal_String := To_Universal_String ("");
-   Qualified_Name : Universal_String := To_Universal_String ("A");
-   Reference      : Universal_String
+   NS_URI         : constant Universal_String := To_Universal_String ("");
+   Local_Name     : constant Universal_String := To_Universal_String ("");
+   Qualified_Name : constant Universal_String := To_Universal_String ("A");
+   Reference      : constant Universal_String
      := To_Universal_String ("<?xml version='1.1'?>"
                                & "<A>some_text</A>"
                                & "<A>alert('hello');</A>"
