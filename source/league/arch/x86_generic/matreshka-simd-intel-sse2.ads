@@ -47,7 +47,7 @@ with System;
 
 package Matreshka.SIMD.Intel.SSE2 is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 --  _mm_set_sd
 
