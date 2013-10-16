@@ -160,7 +160,10 @@ package body XML.SAX.Pretty_Writers is
 
    overriding procedure End_DTD
     (Self    : in out SAX_Pretty_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Destination.Put ('>');
       Self.DTD_Opened := False;
@@ -465,7 +468,10 @@ package body XML.SAX.Pretty_Writers is
     (Self    : in out SAX_Pretty_Writer;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       --  Closing DTD, which was opened before.
 
@@ -576,7 +582,10 @@ package body XML.SAX.Pretty_Writers is
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
-     Success   : in out Boolean) is
+     Success   : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Destination.Put ("<!DOCTYPE " & Name);
 
