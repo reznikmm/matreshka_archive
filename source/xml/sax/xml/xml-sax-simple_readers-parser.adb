@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -945,16 +945,18 @@ package body XML.SAX.Simple_Readers.Parser is
                     YY.Value_Stack (YY.TOS).Is_Whitespace);
 
                when 150 =>
+                  Actions.On_CDATA_Open (Self);
                   Actions.On_Character_Data
                    (Self,
                     YY.Value_Stack (YY.TOS).String,
                     YY.Value_Stack (YY.TOS).Is_Whitespace);
 
                when 151 =>
-                  null;
+                  Actions.On_CDATA_Close (Self);
 
                when 152 =>
-                  null;
+                  Actions.On_CDATA_Open (Self);
+                  Actions.On_CDATA_Close (Self);
 
                when 153 =>
                   Process_Comment

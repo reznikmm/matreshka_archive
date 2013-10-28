@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -1000,6 +1000,7 @@ content_item :
    }
 | Token_CData_Open Token_String_Segment
    {
+      Actions.On_CDATA_Open (Self);
       Actions.On_Character_Data
        (Self,
         $2.String,
@@ -1007,11 +1008,12 @@ content_item :
    }
   Token_CData_Close
    {
-      null;
+      Actions.On_CDATA_Close (Self);
    }
 | Token_CData_Open Token_CData_Close
    {
-      null;
+      Actions.On_CDATA_Open (Self);
+      Actions.On_CDATA_Close (Self);
    }
 | Token_Comment
    {
@@ -1120,6 +1122,10 @@ with Matreshka.Internals.XML.Symbol_Tables;
       procedure On_Standalone
        (Self : access Integer;
         Text : not null Matreshka.Internals.Strings.Shared_String_Access);
+
+      procedure On_CDATA_Open (Self : access Integer);
+
+      procedure On_CDATA_Close (Self : access Integer);
 
       procedure On_Character_Data
        (Self          : access Integer;

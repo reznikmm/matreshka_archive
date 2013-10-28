@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,6 +56,9 @@ private package XML.SAX.Simple_Readers.Callbacks is
     (Self : in out SAX_Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access);
    --  Calls handler's SAX_Content_Handler.Characters subprogram.
+
+   procedure Call_End_CDATA (Self : in out SAX_Simple_Reader'Class);
+   --  Calls handler's SAX_Lexical_Handler.End_CDATA subprogram.
 
    procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.End_Document subprogram.
@@ -132,6 +135,9 @@ private package XML.SAX.Simple_Readers.Callbacks is
 
    procedure Call_Set_Document_Locator (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.Set_Document_Locator subprogram.
+
+   procedure Call_Start_CDATA (Self : in out SAX_Simple_Reader'Class);
+   --  Calls handler's SAX_Lexical_Handler.Start_CDATA subprogram.
 
    procedure Call_Start_Document (Self : in out SAX_Simple_Reader'Class);
    --  Calls handler's SAX_Content_Handler.Start_Document subprogram.

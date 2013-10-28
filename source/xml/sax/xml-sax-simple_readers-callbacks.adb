@@ -95,6 +95,27 @@ package body XML.SAX.Simple_Readers.Callbacks is
            League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Comment;
 
+   --------------------
+   -- Call_End_CDATA --
+   --------------------
+
+   procedure Call_End_CDATA (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Self.Lexical_Handler.End_CDATA (Self.Continue);
+
+      if not Self.Continue then
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
+      end if;
+
+
+   exception
+      when E : others =>
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
+   end Call_End_CDATA;
+
    -----------------------
    -- Call_End_Document --
    -----------------------
@@ -489,6 +510,27 @@ package body XML.SAX.Simple_Readers.Callbacks is
           (Self,
            League.Strings.To_Universal_String ("exception come from handler"));
    end Call_Set_Document_Locator;
+
+   ----------------------
+   -- Call_Start_CDATA --
+   ----------------------
+
+   procedure Call_Start_CDATA (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Self.Lexical_Handler.Start_CDATA (Self.Continue);
+
+      if not Self.Continue then
+         Call_Fatal_Error (Self, Self.Content_Handler.Error_String);
+      end if;
+
+
+   exception
+      when E : others =>
+         Ada.Exceptions.Save_Occurrence (Self.User_Exception, E);
+         Call_Fatal_Error
+          (Self,
+           League.Strings.To_Universal_String ("exception come from handler"));
+   end Call_Start_CDATA;
 
    -------------------------
    -- Call_Start_Document --

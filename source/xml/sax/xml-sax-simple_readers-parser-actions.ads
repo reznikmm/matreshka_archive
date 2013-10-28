@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,12 @@ private package XML.SAX.Simple_Readers.Parser.Actions is
     (Self   : in out SAX_Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier);
    --  Process attribute declaration of CDATA type.
+
+   procedure On_CDATA_Open (Self : in out SAX_Simple_Reader'Class);
+   --  Process open of CDATA section.
+
+   procedure On_CDATA_Close (Self : in out SAX_Simple_Reader'Class);
+   --  Process close of CDATA section.
 
    procedure On_Character_Data
     (Self          : in out SAX_Simple_Reader'Class;

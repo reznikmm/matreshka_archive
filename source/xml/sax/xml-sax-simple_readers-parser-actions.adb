@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -196,6 +196,24 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_CDATA_Attribute'Access);
    end On_CDATA_Attribute_Declaration;
+
+   --------------------
+   -- On_CDATA_Close --
+   --------------------
+
+   procedure On_CDATA_Close (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Callbacks.Call_End_CDATA (Self);
+   end On_CDATA_Close;
+
+   -------------------
+   -- On_CDATA_Open --
+   -------------------
+
+   procedure On_CDATA_Open (Self : in out SAX_Simple_Reader'Class) is
+   begin
+      Callbacks.Call_Start_CDATA (Self);
+   end On_CDATA_Open;
 
    -----------------------
    -- On_Character_Data --
