@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,7 @@ with XML.SAX.Entity_Resolvers;
 with XML.SAX.Error_Handlers;
 with XML.SAX.Input_Sources;
 with XML.SAX.Locators;
+with XML.SAX.Lexical_Handlers;
 with XML.SAX.Parse_Exceptions;
 
 package SAX_Events_Writers is
@@ -59,7 +60,8 @@ package SAX_Events_Writers is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
-       and XML.SAX.Error_Handlers.SAX_Error_Handler with private;
+       and XML.SAX.Error_Handlers.SAX_Error_Handler
+       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with private;
 
    not overriding procedure Set_Testsuite_URI
     (Self : in out SAX_Events_Writer;
@@ -79,6 +81,10 @@ package SAX_Events_Writers is
    overriding procedure Characters
     (Self    : in out SAX_Events_Writer;
      Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
+
+   overriding procedure End_CDATA
+    (Self    : in out SAX_Events_Writer;
      Success : in out Boolean);
 
    overriding procedure End_Document
@@ -146,6 +152,10 @@ package SAX_Events_Writers is
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
+   overriding procedure Start_CDATA
+    (Self    : in out SAX_Events_Writer;
+     Success : in out Boolean);
+
    overriding procedure Start_Document
     (Self    : in out SAX_Events_Writer;
      Success : in out Boolean);
@@ -184,7 +194,8 @@ private
        and XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
-       and XML.SAX.Error_Handlers.SAX_Error_Handler with
+       and XML.SAX.Error_Handlers.SAX_Error_Handler
+       and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with
    record
       Fatal_Errors : Boolean := False;
       Errors       : Boolean := False;

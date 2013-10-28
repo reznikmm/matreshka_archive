@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -195,6 +195,7 @@ package body XMLConf.Testsuite_Handlers is
             Reader.Set_DTD_Handler (Writer'Unchecked_Access);
             Reader.Set_Error_Handler (Writer'Unchecked_Access);
             Reader.Set_Entity_Resolver (Writer'Unchecked_Access);
+            Reader.Set_Lexical_Handler (Writer'Unchecked_Access);
             Reader.Set_Feature
              (XML.SAX.Constants.Namespaces_Feature, Namespaces);
 

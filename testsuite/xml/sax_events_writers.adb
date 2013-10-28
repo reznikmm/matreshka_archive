@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -103,6 +103,17 @@ package body SAX_Events_Writers is
    begin
       Self.Add_Line (To_Universal_String ("</SAXEvents>"));
    end Done;
+
+   ---------------
+   -- End_CDATA --
+   ---------------
+
+   overriding procedure End_CDATA
+    (Self    : in out SAX_Events_Writer;
+     Success : in out Boolean) is
+   begin
+      Self.Add_Line (To_Universal_String ("  <endCDATA/>"));
+   end End_CDATA;
 
    ------------------
    -- End_Document --
@@ -502,6 +513,17 @@ package body SAX_Events_Writers is
    begin
       raise Constraint_Error;
    end Skipped_Entity;
+
+   --------------------
+   -- Start_Document --
+   --------------------
+
+   overriding procedure Start_CDATA
+    (Self    : in out SAX_Events_Writer;
+     Success : in out Boolean) is
+   begin
+      Self.Add_Line (To_Universal_String ("  <startCDATA/>"));
+   end Start_CDATA;
 
    --------------------
    -- Start_Document --
