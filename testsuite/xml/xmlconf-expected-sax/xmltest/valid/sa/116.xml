@@ -7,7 +7,9 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&#xA;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>doc</localName>

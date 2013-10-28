@@ -8,6 +8,7 @@
     <attributes/>
   </startElement>
   <characters>&#xA;</characters>
+  <startCDATA/>
   <characters>&#xA;</characters>
   <characters>&lt;</characters>
   <characters>!</characters>
@@ -58,6 +59,7 @@
   <characters>e</characters>
   <characters>s</characters>
   <characters>t</characters>
+  <endCDATA/>
   <characters>&#xA;</characters>
   <fatalError>[[14]&#x20;CharData]&#x20;Text&#x20;may&#x20;not&#x20;contain&#x20;a&#x20;literal&#x20;&apos;]]&gt;&apos;&#x20;sequence</fatalError>
   <endDocument/>

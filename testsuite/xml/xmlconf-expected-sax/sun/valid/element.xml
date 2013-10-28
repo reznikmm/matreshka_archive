@@ -157,6 +157,7 @@
     <qualifiedName>mixed1</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&lt;</characters>
   <characters>a</characters>
   <characters>l</characters>
@@ -166,6 +167,7 @@
   <characters>e</characters>
   <characters>d</characters>
   <characters>&gt;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>mixed1</localName>
@@ -203,6 +205,7 @@
     <qualifiedName>mixed2</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&lt;</characters>
   <characters>%</characters>
   <characters>&#x20;</characters>
@@ -226,6 +229,7 @@
   <characters>&#x20;</characters>
   <characters>%</characters>
   <characters>&gt;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>mixed2</localName>

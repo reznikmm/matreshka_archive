@@ -9,6 +9,7 @@
   </startElement>
   <characters>a</characters>
   <characters>&#x20;</characters>
+  <startCDATA/>
   <characters>c</characters>
   <characters>d</characters>
   <characters>a</characters>
@@ -22,6 +23,7 @@
   <characters>i</characters>
   <characters>o</characters>
   <characters>n</characters>
+  <endCDATA/>
   <characters>&#x20;</characters>
   <characters>i</characters>
   <characters>n</characters>

@@ -36,11 +36,13 @@
     <qualifiedName>root</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&#xA;</characters>
   <characters>&#x20;</characters>
   <characters>&#x20;</characters>
   <characters>&#x20;</characters>
   <characters>&#x20;</characters>
+  <endCDATA/>
   <startElement>
     <namespaceURI/>
     <localName>child</localName>
@@ -198,7 +200,9 @@
     <localName>child</localName>
     <qualifiedName>child</qualifiedName>
   </endElement>
+  <startCDATA/>
   <characters>&#xA;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>root</localName>

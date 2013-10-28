@@ -27,6 +27,7 @@
   <characters>n</characters>
   <characters>.</characters>
   <characters>&#x20;</characters>
+  <startCDATA/>
   <characters>T</characters>
   <characters>h</characters>
   <characters>i</characters>
@@ -48,6 +49,7 @@
   <characters>e</characters>
   <characters>x</characters>
   <characters>t</characters>
+  <endCDATA/>
   <characters>&#x20;</characters>
   <endElement>
     <namespaceURI/>

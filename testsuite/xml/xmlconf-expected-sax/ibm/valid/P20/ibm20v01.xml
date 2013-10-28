@@ -27,6 +27,8 @@
   <characters>n</characters>
   <characters>.</characters>
   <characters>&#x20;</characters>
+  <startCDATA/>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>student</localName>

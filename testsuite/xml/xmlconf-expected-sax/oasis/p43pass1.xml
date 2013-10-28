@@ -19,6 +19,7 @@
   <characters>&#x20;</characters>
   <characters>&#xA;</characters>
   <characters>&#xA;</characters>
+  <startCDATA/>
   <characters>&#xA;</characters>
   <characters>&lt;</characters>
   <characters>e</characters>
@@ -91,7 +92,9 @@
   <characters>m</characters>
   <characters>&gt;</characters>
   <characters>&#xA;</characters>
+  <endCDATA/>
   <characters>&#xA;</characters>
+  <startCDATA/>
   <characters>&#xA;</characters>
   <characters>&lt;</characters>
   <characters>e</characters>
@@ -164,6 +167,7 @@
   <characters>m</characters>
   <characters>&gt;</characters>
   <characters>&#xA;</characters>
+  <endCDATA/>
   <characters>&#xA;</characters>
   <processingInstruction>
     <target>pi</target>

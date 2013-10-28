@@ -270,6 +270,7 @@
   <characters>t</characters>
   <characters>:</characters>
   <characters>&#x20;</characters>
+  <startCDATA/>
   <characters>&#x20;</characters>
   <characters>&lt;</characters>
   <characters>h</characters>
@@ -329,6 +330,7 @@
   <characters>l</characters>
   <characters>&gt;</characters>
   <characters>&#x20;</characters>
+  <endCDATA/>
   <characters>&#xA;</characters>
   <characters>&#x20;</characters>
   <characters>&#x20;</characters>

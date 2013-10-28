@@ -7,6 +7,7 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&lt;</characters>
   <characters>/</characters>
   <characters>d</characters>

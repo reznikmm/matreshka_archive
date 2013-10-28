@@ -17,6 +17,7 @@
     <qualifiedName>doc</qualifiedName>
     <attributes/>
   </startElement>
+  <startCDATA/>
   <characters>&lt;</characters>
   <characters>!</characters>
   <characters>A</characters>
@@ -46,6 +47,7 @@
   <characters>"</characters>
   <characters>&gt;</characters>
   <characters>&#xA;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>doc</localName>

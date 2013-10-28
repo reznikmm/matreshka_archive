@@ -35,6 +35,8 @@
     <qualifiedName>a</qualifiedName>
   </endElement>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
+  <startCDATA/>
+  <endCDATA/>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <startElement>
     <namespaceURI/>
@@ -48,7 +50,9 @@
     <qualifiedName>a</qualifiedName>
   </endElement>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
+  <startCDATA/>
   <characters>&#x20;</characters>
+  <endCDATA/>
   <ignorableWhitespace>&#xA;</ignorableWhitespace>
   <startElement>
     <namespaceURI/>

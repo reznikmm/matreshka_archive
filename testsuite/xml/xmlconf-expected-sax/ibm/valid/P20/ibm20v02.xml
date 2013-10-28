@@ -27,6 +27,7 @@
   <characters>n</characters>
   <characters>.</characters>
   <characters>&#x20;</characters>
+  <startCDATA/>
   <characters>&lt;</characters>
   <characters>t</characters>
   <characters>e</characters>
@@ -60,6 +61,7 @@
   <characters>n</characters>
   <characters>g</characters>
   <characters>&gt;</characters>
+  <endCDATA/>
   <endElement>
     <namespaceURI/>
     <localName>student</localName>
