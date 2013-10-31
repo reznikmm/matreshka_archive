@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,14 +52,15 @@ package League.Characters.Latin is
 
    --  C0 Controls and Basic Latin
 
-   Character_Tabulation   : constant Universal_Character;
-   Line_Feed              : constant Universal_Character;
+   Character_Tabulation   : constant Universal_Character;  --  0009
+   Line_Feed              : constant Universal_Character;  --  000A
 
-   Carriage_Return        : constant Universal_Character;
+   Form_Feed              : constant Universal_Character;  --  000C
+   Carriage_Return        : constant Universal_Character;  --  000D
 
    Space                  : constant Universal_Character;  --  0020
    Exclamation_Mark       : constant Universal_Character;  --  0021
-
+   Quotation_Mark         : constant Universal_Character;  --  0022
    Number_Sign            : constant Universal_Character;  --  0023
    Dollar_Sign            : constant Universal_Character;  --  0024
    Percent_Sign           : constant Universal_Character;  --  0025
@@ -86,9 +87,9 @@ package League.Characters.Latin is
    Digit_Nine             : constant Universal_Character;  --  0039
    Colon                  : constant Universal_Character;  --  003A
    Semicolon              : constant Universal_Character;  --  003B
-
+   Less_Than_Sign         : constant Universal_Character;  --  003C
    Equals_Sign            : constant Universal_Character;  --  003D
-
+   Greater_Than_Sign      : constant Universal_Character;  --  003E
    Question_Mark          : constant Universal_Character;  --  003F
 
    Commercial_At          : constant Universal_Character;  --  0040
@@ -102,9 +103,9 @@ package League.Characters.Latin is
 
    Right_Square_Bracket   : constant Universal_Character;  --  005D
 
-   Low_Line               : constant Universal_Character;
-
-   Latin_Small_Letter_A   : constant Universal_Character;
+   Low_Line               : constant Universal_Character;  --  005F
+   Grave_Accent           : constant Universal_Character;  --  0060
+   Latin_Small_Letter_A   : constant Universal_Character;  --  0061
 
    Latin_Small_Letter_F   : constant Universal_Character;
 
@@ -121,11 +122,12 @@ private
    Character_Tabulation   : constant Universal_Character := (Code => 16#0009#);
    Line_Feed              : constant Universal_Character := (Code => 16#000A#);
 
+   Form_Feed              : constant Universal_Character := (Code => 16#000C#);
    Carriage_Return        : constant Universal_Character := (Code => 16#000D#);
 
    Space                  : constant Universal_Character := (Code => 16#0020#);
    Exclamation_Mark       : constant Universal_Character := (Code => 16#0021#);
-
+   Quotation_Mark         : constant Universal_Character := (Code => 16#0022#);
    Number_Sign            : constant Universal_Character := (Code => 16#0023#);
    Dollar_Sign            : constant Universal_Character := (Code => 16#0024#);
    Percent_Sign           : constant Universal_Character := (Code => 16#0025#);
@@ -152,9 +154,9 @@ private
 
    Colon                  : constant Universal_Character := (Code => 16#003A#);
    Semicolon              : constant Universal_Character := (Code => 16#003B#);
-
+   Less_Than_Sign         : constant Universal_Character := (Code => 16#003C#);
    Equals_Sign            : constant Universal_Character := (Code => 16#003D#);
-
+   Greater_Than_Sign      : constant Universal_Character := (Code => 16#003E#);
    Question_Mark          : constant Universal_Character := (Code => 16#003F#);
    Commercial_At          : constant Universal_Character := (Code => 16#0040#);
    Latin_Capital_Letter_A : constant Universal_Character := (Code => 16#0041#);
@@ -168,7 +170,7 @@ private
    Right_Square_Bracket   : constant Universal_Character := (Code => 16#005D#);
 
    Low_Line               : constant Universal_Character := (Code => 16#005F#);
-
+   Grave_Accent           : constant Universal_Character := (Code => 16#0060#);
    Latin_Small_Letter_A   : constant Universal_Character := (Code => 16#0061#);
 
    Latin_Small_Letter_F   : constant Universal_Character := (Code => 16#0066#);
