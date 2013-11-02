@@ -614,7 +614,10 @@ package body XML.SAX.HTML5_Writers is
    overriding procedure Comment
     (Self    : in out HTML5_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       --  XXX Content of Text must be checked here to be conformant to HTML5
       --  definition of comment.
@@ -838,7 +841,10 @@ package body XML.SAX.HTML5_Writers is
 
    overriding procedure End_CDATA
     (Self    : in out HTML5_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.CDATA_Mode := False;
 
@@ -861,6 +867,9 @@ package body XML.SAX.HTML5_Writers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Success);
+
       Foreign_Closed : Boolean := False;
       History        : Omit_History_Kinds := None;
 
@@ -1389,7 +1398,10 @@ package body XML.SAX.HTML5_Writers is
 
    overriding procedure Start_CDATA
     (Self    : in out HTML5_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.Omit = Foreign then
          Self.Output.Put ('>');
@@ -1412,7 +1424,10 @@ package body XML.SAX.HTML5_Writers is
 
    overriding procedure Start_Document
     (Self    : in out HTML5_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Diagnosis.Clear;
       Self.State := (Element_Kind => Normal);
@@ -1433,7 +1448,13 @@ package body XML.SAX.HTML5_Writers is
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
-     Success   : in out Boolean) is
+     Success   : in out Boolean)
+   is
+      pragma Unreferenced (Name);
+      pragma Unreferenced (Public_Id);
+      pragma Unreferenced (System_Id);
+      pragma Unreferenced (Success);
+
    begin
       Self.Write_DOCTYPE;
    end Start_DTD;
@@ -1450,6 +1471,8 @@ package body XML.SAX.HTML5_Writers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean)
    is
+      pragma Unreferenced (Qualified_Name);
+
       History : Omit_History_Kinds := None;
 
    begin
