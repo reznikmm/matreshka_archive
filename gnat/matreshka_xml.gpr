@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,7 +49,7 @@ library project Matreshka_Xml is
 
    Library_Name := "matreshka-xml" & Matreshka_Config.RTL_Version_Suffix;
 
-   for Source_Dirs use ("../source/xml/catalogs");
+   for Source_Dirs use ("../source/xml/catalogs", "../source/xml/templates");
    for Object_Dir use "../.objs/xml";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
