@@ -45,9 +45,10 @@
 --  from XHTML5 SAX events streams. This writer doesn't fix any potential
 --  issues in generated document right now. It provides some optimization of
 --  output data:
---   - close tag for void elements are omitted;
+--   - all attributes are output using most compact syntax;
 --   - boolean attributes are output using empty attribute syntax;
---   - all attributes are output using most compact syntax.
+--   - all optional tags are omitted when allowed;
+--   - close tag for void elements are omitted.
 ------------------------------------------------------------------------------
 private with Ada.Containers.Vectors;
 
@@ -96,6 +97,9 @@ private
      Tr_End_Tag,
      Td_End_Tag,
      Th_End_Tag);
+   --  Current state of handling of tag omit. None means no tag omited right
+   --  now, Foreign is used to control handling of foreign tags, others are
+   --  corresponds to currently processed tag omit.
 
    type Omit_History_Kinds is
     (None,
@@ -103,6 +107,9 @@ private
      Tbody_End_Tag,
      Thead_End_Tag,
      Tfoot_End_Tag);
+   --  Context of handling optional tags requires knownledge of previously
+   --  omited tags. None means that no significant tag omit state before, other
+   --  corresponds to previously omited tag.
 
    type Writer_State is record
       Element_Kind : Element_Kinds := Normal;
@@ -128,7 +135,9 @@ private
       --  In CDATA mode writer doesn't escape text.
 
       Omit            : Simple_Omit_Kinds := None;
+      --  Currently omitted tag.
       History         : Omit_History_Kinds := None;
+      --  Previous state of tags omit handling.
    end record;
 
    overriding procedure Set_Output
