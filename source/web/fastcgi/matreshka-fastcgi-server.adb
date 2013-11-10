@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,25 +49,16 @@ with Matreshka.Internals.Unicode.Characters.Latin;
 with Matreshka.FastCGI.Query_Items;
 with FastCGI.Requests.Internals;
 with FastCGI.Replies.Internals;
+with Matreshka.FastCGI.Protocol;
 
 package body Matreshka.FastCGI.Server is
 
    use Ada.Streams;
    use League.Stream_Element_Vectors;
    use Matreshka.Internals.Unicode.Characters.Latin;
+   use Matreshka.FastCGI.Protocol;
 
    function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type;
-
-   type FCGI_Header is record
-      Version               : Ada.Streams.Stream_Element;
-      Packet_Type           : Ada.Streams.Stream_Element;
-      Request_Id_Byte_1     : Ada.Streams.Stream_Element;
-      Request_Id_Byte_0     : Ada.Streams.Stream_Element;
-      Content_Length_Byte_1 : Ada.Streams.Stream_Element;
-      Content_Length_Byte_0 : Ada.Streams.Stream_Element;
-      Padding_Length        : Ada.Streams.Stream_Element;
-      Reserved              : Ada.Streams.Stream_Element;
-   end record;
 
    type FCGI_Begin_Request_Body is record
       Role_Byte_1 : Ada.Streams.Stream_Element;
@@ -92,19 +83,6 @@ package body Matreshka.FastCGI.Server is
    end record;
 
    type FCGI_Role is mod 2 ** 16;
-
-   FCGI_Version           : constant := 1;
-
-   FCGI_Begin_Request     : constant := 1;
-   FCGI_Abort_Request     : constant := 2;
-   FCGI_End_Request       : constant := 3;
-   FCGI_Params            : constant := 4;
-   FCGI_Stdin             : constant := 5;
-   FCGI_Stdout            : constant := 6;
-   FCGI_Stderr            : constant := 7;
-   FCGI_Data              : constant := 8;
-   FCGI_Get_Values        : constant := 9;
-   FCGI_Get_Values_Result : constant := 10;
 
    FCGI_Keep_Conn         : constant := 1;
 
@@ -149,7 +127,7 @@ package body Matreshka.FastCGI.Server is
 
    procedure Send_Header
     (Socket         : GNAT.Sockets.Socket_Type;
-     Packet_Type    : Ada.Streams.Stream_Element;
+     Packet_Type    : Matreshka.FastCGI.Protocol.FCGI_Packet_Type;
      Request_Id     : FCGI_Request_Identifier;
      Content_Length : Ada.Streams.Stream_Element_Offset;
      Padding_Length : Ada.Streams.Stream_Element_Offset);
@@ -301,8 +279,8 @@ package body Matreshka.FastCGI.Server is
       ------------------------
 
       procedure Send_Output_Stream
-       (Package_Type : Stream_Element;
-        Data         : League.Stream_Element_Vectors.Stream_Element_Vector)
+       (Packet_Type : Matreshka.FastCGI.Protocol.FCGI_Packet_Type;
+        Data        : League.Stream_Element_Vectors.Stream_Element_Vector)
       is
          Buffer  : constant Stream_Element_Array
            := Data.To_Stream_Element_Array;
@@ -319,7 +297,7 @@ package body Matreshka.FastCGI.Server is
             end if;
 
             Send_Header
-             (Socket, Package_Type, Dsc.Request_Id, Buffer'Length, Length);
+             (Socket, Packet_Type, Dsc.Request_Id, Buffer'Length, Length);
 
             GNAT.Sockets.Send_Socket (Socket, Buffer, Last);
 
@@ -338,7 +316,7 @@ package body Matreshka.FastCGI.Server is
 
          --  Send empty output packet to mark end of data.
 
-         Send_Header (Socket, Package_Type, Dsc.Request_Id, 0, 0);
+         Send_Header (Socket, Packet_Type, Dsc.Request_Id, 0, 0);
       end Send_Output_Stream;
 
       Request : Standard.FastCGI.Requests.Request
@@ -448,17 +426,13 @@ package body Matreshka.FastCGI.Server is
             raise Program_Error;
          end if;
 
-         if Header.Version /= FCGI_Version then
+         if Get_Version (Header) /= Supported_FCGI_Version then
             raise Program_Error;
          end if;
 
-         Request_Id :=
-           FCGI_Request_Identifier (Header.Request_Id_Byte_1) * 2 ** 8
-             + FCGI_Request_Identifier (Header.Request_Id_Byte_0);
-         Content_Length :=
-           Stream_Element_Offset (Header.Content_Length_Byte_1) * 2 ** 8
-             + Stream_Element_Offset (Header.Content_Length_Byte_0);
-         Padding_Length := Stream_Element_Offset (Header.Padding_Length);
+         Request_Id := Get_Request_Id (Header);
+         Content_Length := Get_Content_Length (Header);
+         Padding_Length := Get_Padding_Length (Header);
 
          declare
             Buffer :
@@ -475,7 +449,7 @@ package body Matreshka.FastCGI.Server is
                end if;
             end if;
 
-            case Header.Packet_Type is
+            case Get_Packet_Type (Header) is
                when FCGI_Begin_Request =>
                   Process_Begin_Request
                    (Socket, Request_Id, Buffer (1 .. Content_Length));
@@ -639,7 +613,7 @@ package body Matreshka.FastCGI.Server is
 
    procedure Send_Header
     (Socket         : GNAT.Sockets.Socket_Type;
-     Packet_Type    : Ada.Streams.Stream_Element;
+     Packet_Type    : Matreshka.FastCGI.Protocol.FCGI_Packet_Type;
      Request_Id     : FCGI_Request_Identifier;
      Content_Length : Ada.Streams.Stream_Element_Offset;
      Padding_Length : Ada.Streams.Stream_Element_Offset)
@@ -650,13 +624,8 @@ package body Matreshka.FastCGI.Server is
       Last   : Ada.Streams.Stream_Element_Offset;
 
    begin
-      Header.Version               := FCGI_Version;
-      Header.Packet_Type           := Packet_Type;
-      Header.Request_Id_Byte_1     := Stream_Element (Request_Id / 256);
-      Header.Request_Id_Byte_0     := Stream_Element (Request_Id mod 256);
-      Header.Content_Length_Byte_1 := Stream_Element (Content_Length / 256);
-      Header.Content_Length_Byte_0 := Stream_Element (Content_Length mod 256);
-      Header.Padding_Length        := Stream_Element (Padding_Length);
+      Initialize
+       (Header, Packet_Type, Request_Id, Content_Length, Padding_Length);
 
       GNAT.Sockets.Send_Socket (Socket, Buffer, Last);
 
