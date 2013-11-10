@@ -115,13 +115,15 @@ package body Matreshka.FastCGI.Protocol is
       use Ada.Streams;
 
    begin
-      Header.Version               := Stream_Element (Supported_FCGI_Version);
-      Header.Packet_Type           := Stream_Element (Packet_Type);
-      Header.Request_Id_Byte_1     := Stream_Element (Request_Id / 256);
-      Header.Request_Id_Byte_0     := Stream_Element (Request_Id mod 256);
-      Header.Content_Length_Byte_1 := Stream_Element (Content_Length / 256);
-      Header.Content_Length_Byte_0 := Stream_Element (Content_Length mod 256);
-      Header.Padding_Length        := Stream_Element (Padding_Length);
+      Header :=
+       (Version               => Stream_Element (Supported_FCGI_Version),
+        Packet_Type           => Stream_Element (Packet_Type),
+        Request_Id_Byte_1     => Stream_Element (Request_Id / 256),
+        Request_Id_Byte_0     => Stream_Element (Request_Id mod 256),
+        Content_Length_Byte_1 => Stream_Element (Content_Length / 256),
+        Content_Length_Byte_0 => Stream_Element (Content_Length mod 256),
+        Padding_Length        => Stream_Element (Padding_Length),
+        Reserved              => 0);
    end Initialize;
 
 end Matreshka.FastCGI.Protocol;

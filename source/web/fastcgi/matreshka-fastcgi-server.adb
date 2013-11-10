@@ -95,9 +95,6 @@ package body Matreshka.FastCGI.Server is
    FCGI_Overloaded        : constant := 2;
    FCGI_Unknown_Role      : constant := 3;
 
-   subtype FCGI_Header_Stream_Element_Array is
-     Ada.Streams.Stream_Element_Array (1 .. 8);
-
    subtype FCGI_End_Request_Body_Stream_Element_Array is
      Ada.Streams.Stream_Element_Array (1 .. 8);
 
@@ -408,7 +405,7 @@ package body Matreshka.FastCGI.Server is
     (Socket  : GNAT.Sockets.Socket_Type;
      Handler : Standard.FastCGI.Application.Callback)
    is
-      Buffer         : FCGI_Header_Stream_Element_Array;
+      Buffer         : Raw_FCGI_Header;
       Header         : FCGI_Header;
       for Header'Address use Buffer'Address;
       Last           : Stream_Element_Offset;
@@ -618,7 +615,7 @@ package body Matreshka.FastCGI.Server is
      Content_Length : Ada.Streams.Stream_Element_Offset;
      Padding_Length : Ada.Streams.Stream_Element_Offset)
    is
-      Buffer : FCGI_Header_Stream_Element_Array := (others => 0);
+      Buffer : Raw_FCGI_Header;
       Header : FCGI_Header;
       for Header'Address use Buffer'Address;
       Last   : Ada.Streams.Stream_Element_Offset;

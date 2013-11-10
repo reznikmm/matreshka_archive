@@ -79,6 +79,8 @@ package Matreshka.FastCGI.Protocol is
 
    type FCGI_Header is private;
 
+   subtype Raw_FCGI_Header is Ada.Streams.Stream_Element_Array (0 .. 7);
+
    function Get_Version (Header : FCGI_Header) return FCGI_Version;
    pragma Inline (Get_Version);
 
