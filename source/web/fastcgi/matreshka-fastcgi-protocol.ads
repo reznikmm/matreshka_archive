@@ -73,6 +73,25 @@ package Matreshka.FastCGI.Protocol is
    subtype FCGI_Padding_Length is Ada.Streams.Stream_Element_Offset
      range 0 .. 65_535;
 
+   type FCGI_Role is mod 2 ** 16;
+
+   FCGI_Responder  : constant FCGI_Role := 1;
+   FCGI_Authorizer : constant FCGI_Role := 2;
+   FCGI_Filter     : constant FCGI_Role := 3;
+
+   type FCGI_Flags is record
+      FCGI_Keep_Conn : Boolean;
+      Reserved_1     : Boolean;
+      Reserved_2     : Boolean;
+      Reserved_3     : Boolean;
+      Reserved_4     : Boolean;
+      Reserved_5     : Boolean;
+      Reserved_6     : Boolean;
+      Reserved_7     : Boolean;
+   end record;
+   pragma Pack (FCGI_Flags);
+   for FCGI_Flags'Size use 8;
+
    -----------------
    -- FCGI_Header --
    -----------------
@@ -106,6 +125,21 @@ package Matreshka.FastCGI.Protocol is
      Content_Length : FCGI_Content_Length;
      Padding_Length : FCGI_Padding_Length);
 
+   -------------------------------
+   -- FCGI_Begin_Request_Record --
+   -------------------------------
+
+   type FCGI_Begin_Request_Record is private;
+
+   subtype Raw_FCGI_Begin_Request_Record
+     is Ada.Streams.Stream_Element_Array (0 .. 7);
+
+   function Get_Role (Item : FCGI_Begin_Request_Record) return FCGI_Role;
+   pragma Inline (Get_Role);
+
+   function Get_Flags (Item : FCGI_Begin_Request_Record) return FCGI_Flags;
+   pragma Inline (Get_Flags);
+
 private
 
    type FCGI_Header is record
@@ -117,6 +151,17 @@ private
       Content_Length_Byte_0 : Ada.Streams.Stream_Element;
       Padding_Length        : Ada.Streams.Stream_Element;
       Reserved              : Ada.Streams.Stream_Element;
+   end record;
+
+   type FCGI_Begin_Request_Record is record
+      Role_Byte_1 : Ada.Streams.Stream_Element;
+      Role_Byte_0 : Ada.Streams.Stream_Element;
+      Flags       : Ada.Streams.Stream_Element;
+      Reserved_1  : Ada.Streams.Stream_Element;
+      Reserved_2  : Ada.Streams.Stream_Element;
+      Reserved_3  : Ada.Streams.Stream_Element;
+      Reserved_4  : Ada.Streams.Stream_Element;
+      Reserved_5  : Ada.Streams.Stream_Element;
    end record;
 
 end Matreshka.FastCGI.Protocol;

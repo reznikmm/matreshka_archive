@@ -41,8 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  Definition of data structures of FastCGI protocol.
-------------------------------------------------------------------------------
+with Ada.Unchecked_Conversion;
 
 package body Matreshka.FastCGI.Protocol is
 
@@ -60,6 +59,17 @@ package body Matreshka.FastCGI.Protocol is
         FCGI_Content_Length (Header.Content_Length_Byte_1) * 2 ** 8
           + FCGI_Content_Length (Header.Content_Length_Byte_0);
    end Get_Content_Length;
+
+   ---------------
+   -- Get_Flags --
+   ---------------
+
+   function Get_Flags (Item : FCGI_Begin_Request_Record) return FCGI_Flags is
+      function To_Flags is
+        new Ada.Unchecked_Conversion (Ada.Streams.Stream_Element, FCGI_Flags);
+   begin
+      return To_Flags (Item.Flags);
+   end Get_Flags;
 
    ---------------------
    -- Get_Packet_Type --
@@ -91,6 +101,17 @@ package body Matreshka.FastCGI.Protocol is
         FCGI_Request_Identifier (Header.Request_Id_Byte_1) * 2 ** 8
           + FCGI_Request_Identifier (Header.Request_Id_Byte_0);
    end Get_Request_Id;
+
+   --------------
+   -- Get_Role --
+   --------------
+
+   function Get_Role (Item : FCGI_Begin_Request_Record) return FCGI_Role is
+   begin
+      return
+        FCGI_Role (Item.Role_Byte_1) * 2 ** 8
+          + FCGI_Role (Item.Role_Byte_0);
+   end Get_Role;
 
    -----------------
    -- Get_Version --

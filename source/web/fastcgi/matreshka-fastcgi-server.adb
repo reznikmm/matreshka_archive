@@ -60,17 +60,6 @@ package body Matreshka.FastCGI.Server is
 
    function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type;
 
-   type FCGI_Begin_Request_Body is record
-      Role_Byte_1 : Ada.Streams.Stream_Element;
-      Role_Byte_0 : Ada.Streams.Stream_Element;
-      Flags       : Ada.Streams.Stream_Element;
-      Reserved_1  : Ada.Streams.Stream_Element;
-      Reserved_2  : Ada.Streams.Stream_Element;
-      Reserved_3  : Ada.Streams.Stream_Element;
-      Reserved_4  : Ada.Streams.Stream_Element;
-      Reserved_5  : Ada.Streams.Stream_Element;
-   end record;
-
    type FCGI_End_Request_Body is record
       App_Status_Byte_3 : Ada.Streams.Stream_Element;
       App_Status_Byte_2 : Ada.Streams.Stream_Element;
@@ -81,14 +70,6 @@ package body Matreshka.FastCGI.Server is
       Reserved_2        : Ada.Streams.Stream_Element;
       Reserved_3        : Ada.Streams.Stream_Element;
    end record;
-
-   type FCGI_Role is mod 2 ** 16;
-
-   FCGI_Keep_Conn         : constant := 1;
-
-   FCGI_Responder         : constant FCGI_Role := 1;
-   FCGI_Authorizer        : constant FCGI_Role := 2;
-   FCGI_Filter            : constant FCGI_Role := 3;
 
    FCGI_Request_Complete  : constant := 0;
    FCGI_Cant_Mpx_Conn     : constant := 1;
@@ -375,11 +356,9 @@ package body Matreshka.FastCGI.Server is
      Request_Id : FCGI_Request_Identifier;
      Buffer     : Stream_Element_Array)
    is
-      Request : FCGI_Begin_Request_Body;
+      Request : FCGI_Begin_Request_Record;
       for Request'Address use Buffer'Address;
-      Role    : constant FCGI_Role
-        := FCGI_Role (Request.Role_Byte_1) * 2 ** 8
-             + FCGI_Role (Request.Role_Byte_0);
+      Role    : constant FCGI_Role := Get_Role (Request);
 
    begin
       if Role /= FCGI_Responder then
