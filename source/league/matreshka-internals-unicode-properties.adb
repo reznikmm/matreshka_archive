@@ -110,6 +110,18 @@ package body Matreshka.Internals.Unicode.Properties is
            (Matreshka.Internals.Unicode.Ucd.Unified_Ideograph);
    end Is_Unified_Ideograph;
 
+   --------------------
+   -- Is_White_Space --
+   --------------------
+
+   function Is_White_Space (Code : Code_Point) return Boolean is
+   begin
+      return
+        Element
+         (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).B
+           (Matreshka.Internals.Unicode.Ucd.White_Space);
+   end Is_White_Space;
+
    ---------------
    -- Lowercase --
    ---------------

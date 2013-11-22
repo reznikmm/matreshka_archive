@@ -89,6 +89,16 @@ package League.Characters is
    --  plus stability extensions, minus Pattern_Syntax and Pattern_White_Space
    --  code points."
 
+   function Is_White_Space (Self : Universal_Character'Class) return Boolean;
+   --  Returns True when character is white space:
+   --
+   --  "Spaces, separator characters and other control characters which should
+   --  be treated by programming languages as "white space" for the purpose of
+   --  parsing elements. See also Line_Break, Grapheme_Cluster_Break,
+   --  Sentence_Break, and Word_Break, which classify space characters and
+   --  related controls somewhat differently for particular text segmentation
+   --  contexts."
+
    function Lowercase (Self : Universal_Character'Class) return Boolean;
    --  Returns True when character is lowercase letter.
 

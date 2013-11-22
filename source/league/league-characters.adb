@@ -244,6 +244,18 @@ package body League.Characters is
       return Matreshka.Internals.Unicode.Is_Valid (Self.Code);
    end Is_Valid;
 
+   --------------------
+   -- Is_White_Space --
+   --------------------
+
+   function Is_White_Space (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.Code in Matreshka.Internals.Unicode.Code_Point
+          and then Matreshka.Internals.Unicode.Properties.Is_White_Space
+                    (Self.Code);
+   end Is_White_Space;
+
    ---------------
    -- Lowercase --
    ---------------

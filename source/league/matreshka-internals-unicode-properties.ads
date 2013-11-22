@@ -63,6 +63,10 @@ package Matreshka.Internals.Unicode.Properties is
    pragma Inline (Is_ID_Continue);
    --  Code points which continue identifier.
 
+   function Is_White_Space (Code : Code_Point) return Boolean;
+   pragma Inline (Is_White_Space);
+   --  Code points which is white space.
+
    function Lowercase (Code : Code_Point) return Boolean
      with Inline => True;
    --  Code points which lowercase character.
