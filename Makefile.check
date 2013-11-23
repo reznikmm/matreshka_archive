@@ -46,7 +46,7 @@ endif
 	.objs/case_folding_test
 	.objs/normalization_test $(UNIDATA)
 	.objs/additional_normalization_test
-	.objs/collation_test $(UCADATA)
+	.objs/collation_test $(CLDRDATA)
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
 	.objs/escape_test
 	.objs/simple_test
