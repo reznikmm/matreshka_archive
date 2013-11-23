@@ -1,7 +1,7 @@
 
-UNIDATA = data/unicode/6.2.0/ucd
-UCADATA = data/UCA/6.2.0
-CLDR = data/cldr/22
+UNIDATA = data/unicode/6.3.0/ucd
+UCADATA = data/UCA/6.3.0
+CLDR = data/cldr/24
 
 override SMP_MFLAGS ?= -j0
 ## Distribution-specific OPTFLAGS
@@ -27,7 +27,7 @@ gen-ucd:
 	rm -rf .new
 	mkdir .new
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
-	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) source/league/ucd > .new/sources.ada
+	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) $(CLDR) > .new/sources.ada
 	gnatchop -gnat05 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ./tools/move-if-changed .new/{} source/league/ucd/{}
 	rm -rf .new
