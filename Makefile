@@ -1,7 +1,7 @@
 
 UNIDATA = data/unicode/6.3.0/ucd
 UCADATA = data/UCA/6.3.0
-CLDR = data/cldr/24
+CLDRDATA = data/cldr/24
 
 override SMP_MFLAGS ?= -j0
 ## Distribution-specific OPTFLAGS
@@ -21,13 +21,13 @@ all: Makefile.config
 	${MAKE} -f Makefile.build SMP_MFLAGS="$(SMP_MFLAGS)"
 
 check: all
-	${MAKE} -f Makefile.check SMP_MFLAGS="$(SMP_MFLAGS)" UNIDATA=$(UNIDATA) UCADATA=$(UCADATA)
+	${MAKE} -f Makefile.check SMP_MFLAGS="$(SMP_MFLAGS)" UNIDATA=$(UNIDATA) UCADATA=$(UCADATA) CLDRDATA=$(CLDRDATA)
 
 gen-ucd:
 	rm -rf .new
 	mkdir .new
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools.gpr
-	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) $(CLDR) > .new/sources.ada
+	.objs/tools/gen_ucd $(UNIDATA) $(UCADATA) $(CLDRDATA) > .new/sources.ada
 	gnatchop -gnat05 -w .new/sources.ada .new
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ./tools/move-if-changed .new/{} source/league/ucd/{}
 	rm -rf .new
