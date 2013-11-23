@@ -228,18 +228,21 @@ package Matreshka.Internals.Unicode.Ucd is
 
    type Word_Break is
     (CR,
-     Extend_Num_Let,
+     LF,
+     Newline,
      Extend,
+     Regional_Indicator,
      Format,
      Katakana,
+     Hebrew_Letter,
      A_Letter,
-     LF,
+     Single_Quote,
+     Double_Quote,
      Mid_Num_Let,
      Mid_Letter,
      Mid_Num,
-     Newline,
      Numeric,
-     Regional_Indicator,
+     Extend_Num_Let,
      Other);
    for Word_Break'Size use 8;
 
