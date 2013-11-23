@@ -151,7 +151,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0006 is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#1C# .. 16#1D# =>  --  061C .. 061D
+         16#1C#           =>  --  061C
+          (Format, 0,
+           Control, Format, Format, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Bidi_Control
+              | Case_Ignorable
+              | Default_Ignorable_Code_Point
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#1D#           =>  --  061D
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,

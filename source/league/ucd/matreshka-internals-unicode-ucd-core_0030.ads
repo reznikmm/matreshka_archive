@@ -53,7 +53,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
    Group_0030 : aliased constant Core_Second_Stage
      := (16#00#           =>  --  3000
           (Space_Separator, 0,
-           Other, Other, Sp, Ideographic,
+           Other, Other, Sp, Break_After,
            (Yes, Yes, No, No), Wide,
            (White_Space
               | Grapheme_Base
@@ -364,9 +364,22 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#31# .. 16#35# =>  --  3031 .. 3035
+         16#31# .. 16#34# =>  --  3031 .. 3034
           (Modifier_Letter, 0,
            Other, Katakana, O_Letter, Ideographic,
+           (Yes, Yes, Yes, Yes), None,
+           (Extender
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#35#           =>  --  3035
+          (Modifier_Letter, 0,
+           Other, Katakana, O_Letter, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Extender
               | Alphabetic

@@ -911,7 +911,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
            (others => False)),
          16#D0# .. 16#EA# =>  --  05D0 .. 05EA
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Hebrew_Letter,
+           Other, Hebrew_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base
@@ -927,7 +927,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
            (others => False)),
          16#F0# .. 16#F2# =>  --  05F0 .. 05F2
           (Other_Letter, 0,
-           Other, A_Letter, O_Letter, Hebrew_Letter,
+           Other, Hebrew_Letter, O_Letter, Hebrew_Letter,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
               | Grapheme_Base

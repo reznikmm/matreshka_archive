@@ -128,11 +128,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#0E#           =>  --  180E
-          (Space_Separator, 0,
-           Other, Other, Sp, Glue,
+          (Format, 0,
+           Control, Format, Format, Glue,
            (Yes, Yes, Yes, Yes), None,
-           (White_Space
-              | Grapheme_Base => True,
+           (Case_Ignorable
+              | Default_Ignorable_Code_Point
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#0F#           =>  --  180F
           (Unassigned, 0,

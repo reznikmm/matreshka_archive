@@ -1752,9 +1752,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#D2# .. 16#D7# =>  --  02D2 .. 02D7
+         16#D2# .. 16#D6# =>  --  02D2 .. 02D6
           (Modifier_Symbol, 0,
            Other, Other, Other, Alphabetic,
+           (Yes, Yes, Yes, Yes), None,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Base => True,
+            others => False)),
+         16#D7#           =>  --  02D7
+          (Modifier_Symbol, 0,
+           Other, Mid_Letter, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
               | Case_Ignorable

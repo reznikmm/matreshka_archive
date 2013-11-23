@@ -84,13 +84,24 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#19# .. 16#1B# =>  --  1A19 .. 1A1B
+         16#19# .. 16#1A# =>  --  1A19 .. 1A1A
           (Spacing_Mark, 0,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#1B#           =>  --  1A1B
+          (Nonspacing_Mark, 0,
+           Extend, Extend, Extend, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
               | ID_Continue
               | XID_Continue => True,
             others => False)),

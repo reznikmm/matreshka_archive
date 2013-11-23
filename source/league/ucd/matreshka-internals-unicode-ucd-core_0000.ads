@@ -98,7 +98,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
             others => False)),
          16#22#           =>  --  0022
           (Other_Punctuation, 0,
-           Other, Other, Close, Quotation,
+           Other, Double_Quote, Close, Quotation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Quotation_Mark
@@ -134,7 +134,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0000 is
             others => False)),
          16#27#           =>  --  0027
           (Other_Punctuation, 0,
-           Other, Mid_Num_Let, Close, Quotation,
+           Other, Single_Quote, Close, Quotation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Quotation_Mark

@@ -572,11 +572,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Math
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#65# .. 16#69# =>  --  2065 .. 2069
+         16#65#           =>  --  2065
           (Unassigned, 0,
            Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
+              | Default_Ignorable_Code_Point
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#66# .. 16#69# =>  --  2066 .. 2069
+          (Format, 0,
+           Control, Format, Format, Combining_Mark,
+           (Yes, Yes, Yes, Yes), None,
+           (Bidi_Control
+              | Case_Ignorable
               | Default_Ignorable_Code_Point
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
@@ -613,6 +622,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
+         16#72# .. 16#73# =>  --  2072 .. 2073
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
          16#74#           =>  --  2074
           (Other_Number, 0,
            Other, Other, Other, Ambiguous,
@@ -750,6 +764,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Math
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
+         16#8F#           =>  --  208F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
+           (Yes, Yes, Yes, Yes), None,
+           (others => False)),
          16#90# .. 16#9C# =>  --  2090 .. 209C
           (Modifier_Letter, 0,
            Other, A_Letter, Lower, Alphabetic,
@@ -766,12 +785,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A0# .. 16#A6# =>  --  20A0 .. 20A6
-          (Currency_Symbol, 0,
-           Other, Other, Other, Prefix_Numeric,
+         16#9D# .. 16#9F# =>  --  209D .. 209F
+          (Unassigned, 0,
+           Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
+           (others => False)),
          16#A7#           =>  --  20A7
           (Currency_Symbol, 0,
            Other, Other, Other, Postfix_Numeric,
@@ -786,24 +804,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#A9# .. 16#B5# =>  --  20A9 .. 20B5
-          (Currency_Symbol, 0,
-           Other, Other, Other, Prefix_Numeric,
-           (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
          16#B6#           =>  --  20B6
           (Currency_Symbol, 0,
            Other, Other, Other, Postfix_Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
-         16#B7# .. 16#BA# =>  --  20B7 .. 20BA
-          (Currency_Symbol, 0,
+         16#BB# .. 16#CF# =>  --  20BB .. 20CF
+          (Unassigned, 0,
            Other, Other, Other, Prefix_Numeric,
            (Yes, Yes, Yes, Yes), None,
-           (Grapheme_Base => True,
-            others => False)),
+           (others => False)),
          16#D0# .. 16#D1# =>  --  20D0 .. 20D1
           (Nonspacing_Mark, 230,
            Extend, Extend, Extend, Combining_Mark,
@@ -962,10 +973,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           =>
+         16#F1# .. 16#FF# =>  --  20F1 .. 20FF
           (Unassigned, 0,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
-           (others => False)));
+           (others => False)),
+         others           =>
+          (Currency_Symbol, 0,
+           Other, Other, Other, Prefix_Numeric,
+           (Yes, Yes, Yes, Yes), None,
+           (Grapheme_Base => True,
+            others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0020;
