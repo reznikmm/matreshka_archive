@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,10 +57,11 @@ with Ucd_Data;
 procedure Gen_Ucd is
    Unidata_Directory : constant String := Ada.Command_Line.Argument (1);
    Uca_Directory     : constant String := Ada.Command_Line.Argument (2);
+   Cldr_Directory    : constant String := Ada.Command_Line.Argument (3);
 
 begin
    Ucd_Data.Load (Unidata_Directory);
-   Uca_Data.Load (Uca_Directory);
+   Uca_Data.Load (Cldr_Directory);
    Ada.Text_IO.Put_Line (Ada.Text_IO.Standard_Error, "Generating ...");
    Gen_Props;
    Gen_Cases;

@@ -180,6 +180,9 @@ procedure Gen_Props is
    WB_Extend_Image         : aliased constant String := "Extend";
    WB_Regional_Indicator_Image :
      aliased constant String := "Regional_Indicator";
+   WB_Hebrew_Letter_Image  : aliased constant String := "Hebrew_Letter";
+   WB_Single_Quote_Image   : aliased constant String := "Single_Quote";
+   WB_Double_Quote_Image   : aliased constant String := "Double_Quote";
 
    Word_Break_Image : constant array (Word_Break) of Constant_String_Access
      := (Other              => WB_Other_Image'Access,
@@ -195,7 +198,10 @@ procedure Gen_Props is
          Extend_Num_Let     => WB_Extend_Num_Let_Image'Access,
          Format             => WB_Format_Image'Access,
          Extend             => WB_Extend_Image'Access,
-         Regional_Indicator => WB_Regional_Indicator_Image'Access);
+         Regional_Indicator => WB_Regional_Indicator_Image'Access,
+         Hebrew_Letter      => WB_Hebrew_Letter_Image'Access,
+         Single_Quote       => WB_Single_Quote_Image'Access,
+         Double_Quote       => WB_Double_Quote_Image'Access);
 
    SB_Other_Image      : aliased constant String := "Other";
    SB_CR_Image         : aliased constant String := "CR";

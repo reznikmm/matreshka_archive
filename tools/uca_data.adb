@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,7 +53,7 @@ package body Uca_Data is
    use Matreshka.Internals.Unicode.Ucd;
    use Utils;
 
-   All_Keys_Name : constant String := "CollationAuxiliary/allkeys_CLDR.txt";
+   All_Keys_Name : constant String := "common/uca/allkeys_CLDR.txt";
 
    type All_Keys_Parser is
      new Unicode_Data_File_Parsers.Unicode_Data_File_Parser with null record;

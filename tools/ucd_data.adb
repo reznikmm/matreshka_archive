@@ -1462,21 +1462,24 @@ package body Ucd_Data is
 
       type Constant_String_Access is access constant String;
 
-      WB_CR_Image           : aliased constant String := "CR";
-      WB_ExtendNumLet_Image : aliased constant String := "ExtendNumLet";
-      WB_Extend_Image       : aliased constant String := "Extend";
-      WB_Format_Image       : aliased constant String := "Format";
-      WB_Katakana_Image     : aliased constant String := "Katakana";
-      WB_ALetter_Image      : aliased constant String := "ALetter";
-      WB_LF_Image           : aliased constant String := "LF";
-      WB_MidNumLet_Image    : aliased constant String := "MidNumLet";
-      WB_MidLetter_Image    : aliased constant String := "MidLetter";
-      WB_MidNum_Image       : aliased constant String := "MidNum";
-      WB_Newline_Image      : aliased constant String := "Newline";
-      WB_Numeric_Image      : aliased constant String := "Numeric";
-      WB_Other_Image        : aliased constant String := "Other";
+      WB_CR_Image            : aliased constant String := "CR";
+      WB_ExtendNumLet_Image  : aliased constant String := "ExtendNumLet";
+      WB_Extend_Image        : aliased constant String := "Extend";
+      WB_Format_Image        : aliased constant String := "Format";
+      WB_Katakana_Image      : aliased constant String := "Katakana";
+      WB_ALetter_Image       : aliased constant String := "ALetter";
+      WB_LF_Image            : aliased constant String := "LF";
+      WB_MidNumLet_Image     : aliased constant String := "MidNumLet";
+      WB_MidLetter_Image     : aliased constant String := "MidLetter";
+      WB_MidNum_Image        : aliased constant String := "MidNum";
+      WB_Newline_Image       : aliased constant String := "Newline";
+      WB_Numeric_Image       : aliased constant String := "Numeric";
+      WB_Other_Image         : aliased constant String := "Other";
       WB_Regional_Indicator_Image :
         aliased constant String := "Regional_Indicator";
+      WB_Hebrew_Letter_Image : aliased constant String := "Hebrew_Letter";
+      WB_Single_Quote_Image  : aliased constant String := "Single_Quote";
+      WB_Double_Quote_Image  : aliased constant String := "Double_Quote";
 
       Mapping : constant array (Word_Break) of Constant_String_Access :=
        (CR                 => WB_CR_Image'Access,
@@ -1492,7 +1495,10 @@ package body Ucd_Data is
         Newline            => WB_Newline_Image'Access,
         Numeric            => WB_Numeric_Image'Access,
         Other              => WB_Other_Image'Access,
-        Regional_Indicator => WB_Regional_Indicator_Image'Access);
+        Regional_Indicator => WB_Regional_Indicator_Image'Access,
+        Hebrew_Letter      => WB_Hebrew_Letter_Image'Access,
+        Single_Quote       => WB_Single_Quote_Image'Access,
+        Double_Quote       => WB_Double_Quote_Image'Access);
 
    begin
       for J in Mapping'Range loop

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -344,7 +344,7 @@ begin
    Put_File_Header
     ("Localization, Internationalization, Globalization for Ada",
      2009,
-     2011);
+     2013);
    Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
    Ada.Text_IO.Put_Line
