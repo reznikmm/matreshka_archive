@@ -79,6 +79,7 @@ endif
 league-valgrind: league
 	$(VALGRIND) $(VALGRIND_FLAGS) .objs/library_level_test
 	$(VALGRIND) $(VALGRIND_FLAGS) --leak-check=full .objs/test_193
+	$(VALGRIND) $(VALGRIND_FLAGS) .objs/test_331
 
 soap:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap_tests.gpr
