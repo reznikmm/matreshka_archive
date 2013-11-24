@@ -227,9 +227,8 @@ package body League.JSON.Objects is
 
    begin
       if Matreshka.JSON_Types.Value_Maps.Has_Element (Position) then
-
          return
-           League.JSON.Values.Internals.Wrap
+           League.JSON.Values.Internals.Create
             (Matreshka.JSON_Types.Value_Maps.Element (Position));
 
       else
