@@ -94,7 +94,10 @@ package body XML.Templates.Processors is
    overriding procedure Characters
     (Self    : in out Template_Processor;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       if Self.Accumulate /= 0 then
          Self.Stream.Append ((XML.Templates.Streams.Text, Text));
@@ -230,10 +233,9 @@ package body XML.Templates.Processors is
                Self.Namespaces.Pop_Context;
 
                declare
-                  Container : League.JSON.Arrays.JSON_Array
+                  Container : constant League.JSON.Arrays.JSON_Array
                     := League.Holders.JSON_Arrays.Element
                         (Self.Container_Value);
-                  Object    : League.JSON.Values.JSON_Value;
                   Holder    : League.Holders.Holder;
                   Success   : Boolean := True;
 

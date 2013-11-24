@@ -129,7 +129,6 @@ package body XML.Templates.Processors.Parser is
    is
       Scanner   : Scanner_Type;
       JS_Object : League.JSON.Objects.JSON_Object;
-      JS_Value  : League.JSON.Values.JSON_Value;
 
    begin
       Scanner.Text := Text;
