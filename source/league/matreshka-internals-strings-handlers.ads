@@ -90,8 +90,7 @@ package Matreshka.Internals.Strings.Handlers is
      From_Index    : Positive;
      From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
      To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Code          : Matreshka.Internals.Unicode.Code_Point)
-       return Natural;
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural;
    --  Returns index of first occurrence of the specified character in the
    --  string. From_Index and From_Position specify index of character and its
    --  position in internal representation from which search should start.

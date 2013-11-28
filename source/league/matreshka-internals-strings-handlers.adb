@@ -85,8 +85,7 @@ package body Matreshka.Internals.Strings.Handlers is
      From_Index    : Positive;
      From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
      To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
-     Code          : Matreshka.Internals.Unicode.Code_Point)
-       return Natural
+     Code          : Matreshka.Internals.Unicode.Code_Point) return Natural
    is
       pragma Unreferenced (Self);
 
