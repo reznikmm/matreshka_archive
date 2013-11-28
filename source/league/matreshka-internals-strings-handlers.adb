@@ -144,11 +144,11 @@ package body Matreshka.Internals.Strings.Handlers is
       else
          Position := From_Position;
          Index    := From_Index;
-         Last     := To_Position - Item.Unused;
+         Last     := To_Position - Pattern.Unused;
 
          while Position <= Last loop
-            if Item.Value (Position .. Position + Item.Unused - 1)
-                 = Item.Value (0 .. Item.Unused - 1)
+            if Item.Value (Position .. Position + Pattern.Unused - 1)
+                 = Pattern.Value (0 .. Pattern.Unused - 1)
             then
                return Index;
             end if;
