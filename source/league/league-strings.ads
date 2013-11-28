@@ -247,6 +247,33 @@ package League.Strings is
    --  Returns index of the first occurrence of the specified character in the
    --  string, or zero if there are no occurrences.
 
+   function Index
+    (Self    : Universal_String'Class;
+     Pattern : Universal_String'Class) return Natural;
+   function Index
+    (Self    : Universal_String'Class;
+     Pattern : Wide_Wide_String) return Natural;
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     Pattern : Universal_String'Class) return Natural;
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     Pattern : Wide_Wide_String) return Natural;
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     To      : Natural;
+     Pattern : Universal_String'Class) return Natural;
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     To      : Natural;
+     Pattern : Wide_Wide_String) return Natural;
+   --  Returns index of the first occurrence of the specified pattern in the
+   --  string, or zero if there are no occurrences.
+
    function Last_Index
     (Self      : Universal_String'Class;
      Character : League.Characters.Universal_Character'Class) return Natural;

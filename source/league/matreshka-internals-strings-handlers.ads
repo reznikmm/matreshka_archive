@@ -97,6 +97,20 @@ package Matreshka.Internals.Strings.Handlers is
    --  To_Position specify position in internal data which is outside of the
    --  slice for search.
 
+   not overriding function Index
+    (Self          : Abstract_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Pattern       : Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural;
+   --  Returns index of the first occurrence of the specified pattern in the
+   --  string. From_Index and From_Position specify index of character and its
+   --  position in internal representation from which search should start.
+   --  To_Position specify position in internal data which is outside of the
+   --  slice for search.
+
    not overriding function Last_Index
     (Self          : Abstract_String_Handler;
      Item          : Matreshka.Internals.Strings.Shared_String_Access;

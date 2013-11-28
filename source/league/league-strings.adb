@@ -106,6 +106,23 @@ package body League.Strings is
      Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
    --  Internal implementations to share common code.
 
+   function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural;
+   function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From    : Positive;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural;
+   function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From    : Positive;
+     To      : Natural;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural;
+   --  Internal implementations to share common code.
+
    function Last_Index
     (Item : not null Matreshka.Internals.Strings.Shared_String_Access;
      Code : Matreshka.Internals.Unicode.Code_Unit_32) return Natural;
@@ -1050,6 +1067,104 @@ package body League.Strings is
    -----------
 
    function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Everything is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+
+   begin
+      if Item.Length = 0 then
+         --  Empty string doesn't match any pattern.
+
+         return 0;
+      end if;
+
+      return String_Handler.Index (Item, 1, 0, Item.Unused, Pattern);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From    : Positive;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Everything is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if From > Item.Length then
+         --  Empty slice specified.
+
+         return 0;
+      end if;
+
+      return
+        String_Handler.Index
+         (Item, From, From_Position (Item, From), Item.Unused, Pattern);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Item    : not null Matreshka.Internals.Strings.Shared_String_Access;
+     From    : Positive;
+     To      : Natural;
+     Pattern : not null Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural
+   is
+      --  String_Handler is not null by convention, access check can be
+      --  suppressed.
+      pragma Assert (String_Handler /= null);
+      pragma Suppress (Access_Check);
+
+      --  Everything is tested to be in range, range check can be suppressed.
+      pragma Suppress (Range_Check);
+
+   begin
+      if Item.Length = 0 then
+         --  Empty string doesn't match any pattern.
+
+         return 0;
+
+      elsif From > To then
+         --  Empty slice specified.
+
+         return 0;
+      end if;
+
+      return
+        String_Handler.Index
+         (Item,
+          From,
+          From_Position (Item, From),
+          To_Position (Item, To),
+          Pattern);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
     (Self      : Universal_String'Class;
      Character : League.Characters.Universal_Character'Class) return Natural
    is
@@ -1165,6 +1280,87 @@ package body League.Strings is
 
    begin
       return Index (Self.Data, From, To, Wide_Wide_Character'Pos (Character));
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     Pattern : Universal_String'Class) return Natural is
+   begin
+      return Index (Self.Data, Pattern.Data);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     Pattern : Wide_Wide_String) return Natural
+   is
+      Aux : constant Universal_String := To_Universal_String (Pattern);
+
+   begin
+      return Index (Self.Data, Aux.Data);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     Pattern : Universal_String'Class) return Natural is
+   begin
+      return Index (Self.Data, From, Pattern.Data);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     Pattern : Wide_Wide_String) return Natural
+   is
+      Aux : constant Universal_String := To_Universal_String (Pattern);
+
+   begin
+      return Index (Self.Data, From, Aux.Data);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     To      : Natural;
+     Pattern : Universal_String'Class) return Natural is
+   begin
+      return Index (Self.Data, From, To, Pattern.Data);
+   end Index;
+
+   -----------
+   -- Index --
+   -----------
+
+   function Index
+    (Self    : Universal_String'Class;
+     From    : Positive;
+     To      : Natural;
+     Pattern : Wide_Wide_String) return Natural
+   is
+      Aux : constant Universal_String := To_Universal_String (Pattern);
+
+   begin
+      return Index (Self.Data, From, To, Aux.Data);
    end Index;
 
    ----------------

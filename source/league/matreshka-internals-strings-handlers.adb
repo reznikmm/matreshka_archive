@@ -106,6 +106,61 @@ package body Matreshka.Internals.Strings.Handlers is
       return 0;
    end Index;
 
+   -----------
+   -- Index --
+   -----------
+
+   not overriding function Index
+    (Self          : Abstract_String_Handler;
+     Item          : Matreshka.Internals.Strings.Shared_String_Access;
+     From_Index    : Positive;
+     From_Position : Matreshka.Internals.Utf16.Utf16_String_Index;
+     To_Position   : Matreshka.Internals.Utf16.Utf16_String_Index;
+     Pattern       : Matreshka.Internals.Strings.Shared_String_Access)
+       return Natural
+   is
+      pragma Unreferenced (Self);
+
+      Position : Utf16_String_Index;
+      Index    : Positive;
+      Last     : Utf16_String_Index;
+      C        : Code_Point;
+
+   begin
+      if Pattern.Length = 0 then
+         return 0;
+
+      elsif Pattern.Length = 1 then
+         Position := 0;
+         Unchecked_Next (Pattern.Value, Position, C);
+
+         return
+           Abstract_String_Handler'Class
+            (Self).Index (Item, From_Index, From_Position, To_Position, C);
+
+      elsif To_Position - From_Position < Item.Unused then
+         return 0;
+
+      else
+         Position := From_Position;
+         Index    := From_Index;
+         Last     := To_Position - Item.Unused;
+
+         while Position <= Last loop
+            if Item.Value (Position .. Position + Item.Unused - 1)
+                 = Item.Value (0 .. Item.Unused - 1)
+            then
+               return Index;
+            end if;
+
+            Unchecked_Next (Item.Value, Position);
+            Index := Index + 1;
+         end loop;
+
+         return 0;
+      end if;
+   end Index;
+
    ----------------
    -- Last_Index --
    ----------------
