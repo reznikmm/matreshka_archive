@@ -1,19 +1,16 @@
 %define _gprdir %_GNAT_project_dir
 Name:       matreshka
-Version:    0.5.0
-Release:    3%{?dist}
+Version:    0.5.1
+Release:    1%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
-URL:        http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka
-Source0:    http://adaforge.qtada.com/cgi-bin/tracker.fcgi/matreshka/downloader/download/file/13/%{name}-%{version}.tar.gz  
+URL:        http://forge.ada-ru.org/matreshka
+Source0:    http://forge.ada-ru.org/matreshka/downloads/%{name}-%{version}.tar.gz
 ## fedora specific
 Patch1:          %{name}-%{version}_gprnames.patch
 ## fedora has stable release ABI. so we haven't to specify RTL
 Patch4:          %{name}-%{version}_gpr.patch
-## http://forge.ada-ru.org/matreshka/changeset/4090
-Patch2:          %{name}-%{version}_parallel-build.patch
-Patch3:         %{name}-%{version}_valgrind-suppressions.patch
 BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3 
 BuildRequires:   chrpath
@@ -338,18 +335,14 @@ Requires:   fedora-gnat-project-common  >= 2
 %prep
 %setup -q 
 %patch1 -p1 -b .names
-%patch2 -p1 
-%patch3 -p1 
 cd gnat/install && for i in `ls *.gpr` ; do mv $i matreshka_$i ; done
 cd - 
 %patch4 -p1 -b .gprfix
 
 %build
-###export GPRBUILD_FLAGS="%{GPRbuild_optflags}"
 export GPRBUILD_FLAGS="%Gnatmake_optflags"
 make config 
 %configure
-##make -j1
 make  %{?_smp_mflags}
 
 %check 
@@ -438,6 +431,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-mofext-devel -f .objs/amf_mofext-devel.files
 
 %changelog
+* Thu Sep 19 2013 Pavel Zhukov <landgraf@fedoraproject.org> - 0.5.1-1
+- Bugfix release 0.5.1
+
 * Wed Sep 18 2013 Pavel Zhukov <landgraf@fedoraproject.org> - 0.5.0-3
 - add valgrind suppressions 
 - fix parallel make
@@ -466,7 +462,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 * Tue Apr 3 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.2.0-5
 - Fix projects names
 
-* Sun Mar 24 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.2.0-3
+* Sat Mar 24 2012 Pavel Zhukov <landgraf@fedoraproject.org> - 0.2.0-3
 - Update to 0.2.0
 - Fix filelist
 - Add files list
