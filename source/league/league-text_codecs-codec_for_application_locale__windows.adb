@@ -46,7 +46,7 @@
 with Interfaces.C;
 
 separate (League.Text_Codecs)
-function Codec_For_Appication_Locale return Text_Codec is
+function Codec_For_Application_Locale return Text_Codec is
 
    function GetACP return Interfaces.C.unsigned;
    pragma Import (Stdcall, GetACP, "GetACP");
