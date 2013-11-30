@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,82 +41,116 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This version of subprogram for Windows.
+--  This version of subprogram intended to be used on POSIX systems.
 ------------------------------------------------------------------------------
-with Interfaces.C;
+with Ada.Characters.Conversions;
+with Ada.Strings.Fixed;
+with Interfaces.C.Strings;
 
 separate (League.Text_Codecs)
-procedure Initialize is
-
-   function GetACP return Interfaces.C.unsigned;
-   pragma Import (Stdcall, GetACP, "GetACP");
+function Codec_For_Application_Locale return Text_Codec is
 
    function Determine_Encoding return League.Strings.Universal_String;
-   --  Determines system locale code page and returns name of the character
-   --  encoding.
+   --  Determines application locale encoding and returns its name.
+
+   function Encoding_Component
+    (Locale : String) return League.Strings.Universal_String;
+   --  Returns encoding/character set component of locale specification, or
+   --  empty string when there are no such component specified.
+   --
+   --  language[_territory][.codeset][@variant]
+
+   function Get_Environment_Variable (Name : String) return String;
+   --  Returns value of the specified environment variable, or empty string
+   --  if variable is not defined.
 
    ------------------------
    -- Determine_Encoding --
    ------------------------
 
    function Determine_Encoding return League.Strings.Universal_String is
+      LC_CTYPE_Encoding : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LC_TYPE"));
+      LC_ALL_Encoding   : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LC_ALL"));
+      LANG_Encoding     : constant League.Strings.Universal_String
+        := Encoding_Component (Get_Environment_Variable ("LANG"));
+
    begin
-      case GetACP is
-         when 1250 =>
-            --  ANSI Central European; Central European (Windows)
+      --  Analyze LC_CTYPE, LC_ALL, LANG for codeset part, use first found,
+      --  otherwise fallback to ISO-8859-1.
 
-            return League.Strings.To_Universal_String ("windows-1250");
+      if not LC_CTYPE_Encoding.Is_Empty then
+         return LC_CTYPE_Encoding;
 
-         when 1251 =>
-            --  ANSI Cyrillic; Cyrillic (Windows)
+      elsif not LC_ALL_Encoding.Is_Empty then
+         return LC_ALL_Encoding;
 
-            return League.Strings.To_Universal_String ("windows-1251");
+      elsif not LANG_Encoding.Is_Empty then
+         return LANG_Encoding;
 
-         when 1252 =>
-            --  ANSI Latin 1; Western European (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1252");
-
-         when 1253 =>
-            --  ANSI Greek; Greek (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1253");
-
-         when 1254 =>
-            --  ANSI Turkish; Turkish (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1254");
-
-         when 1255 =>
-            --  ANSI Hebrew; Hebrew (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1255");
-
-         when 1256 =>
-            --  ANSI Arabic; Arabic (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1256");
-
-         when 1257 =>
-            --  ANSI Baltic; Baltic (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1257");
-
-         when 1258 =>
-            --  ANSI/OEM Vietnamese; Vietnamese (Windows)
-
-            return League.Strings.To_Universal_String ("windows-1258");
-
-         when others =>
-            return League.Strings.Empty_Universal_String;
-      end case;
+      else
+         return League.Strings.To_Universal_String ("ISO-8859-1");
+      end if;
    end Determine_Encoding;
 
-begin
-   --  XXX It would be nice to develop special coder and decoder which use
-   --  Windows API functions MultiByteToWideChar and WideCharToMultiByte to
-   --  convert data. It allows to support any character encoding, not only
-   --  known.
+   ------------------------
+   -- Encoding_Component --
+   ------------------------
 
-   Locale_Codec := Codec (Determine_Encoding);
-end Initialize;
+   function Encoding_Component
+    (Locale : String) return League.Strings.Universal_String
+   is
+      Dot_Index : constant Natural := Ada.Strings.Fixed.Index (Locale, ".");
+      At_Index  : constant Natural := Ada.Strings.Fixed.Index (Locale, "@");
+
+   begin
+      if Dot_Index = 0 then
+         return League.Strings.Empty_Universal_String;
+
+      else
+         if At_Index = 0 then
+            return
+              League.Strings.To_Universal_String
+               (Ada.Characters.Conversions.To_Wide_Wide_String
+                 (Locale (Dot_Index + 1 .. Locale'Last)));
+
+         else
+            return
+              League.Strings.To_Universal_String
+               (Ada.Characters.Conversions.To_Wide_Wide_String
+                 (Locale (Dot_Index + 1 .. At_Index - 1)));
+         end if;
+      end if;
+   end Encoding_Component;
+
+   ------------------------------
+   -- Get_Environment_Variable --
+   ------------------------------
+
+   function Get_Environment_Variable (Name : String) return String is
+      use type Interfaces.C.Strings.chars_ptr;
+
+      function getenv
+       (Name : Interfaces.C.Strings.chars_ptr)
+          return Interfaces.C.Strings.chars_ptr;
+      pragma Import (C, getenv);
+
+      C_Name  : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.New_String (Name);
+      C_Value : constant Interfaces.C.Strings.chars_ptr := getenv (C_Name);
+
+   begin
+      Interfaces.C.Strings.Free (C_Name);
+
+      if C_Value = Interfaces.C.Strings.Null_Ptr then
+         return "";
+
+      else
+         return Interfaces.C.Strings.Value (C_Value);
+      end if;
+   end Get_Environment_Variable;
+
+begin
+   return Codec (Determine_Encoding);
+end Codec_For_Application_Locale;

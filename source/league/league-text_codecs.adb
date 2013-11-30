@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,11 +51,6 @@ package body League.Text_Codecs is
    use Matreshka.Internals.Stream_Element_Vectors;
    use Matreshka.Internals.Text_Codecs;
 
-   procedure Initialize;
-   --  Initialize application locale codec.
-
-   Locale_Codec : Text_Codec;
-
    -----------
    -- Codec --
    -----------
@@ -79,10 +74,7 @@ package body League.Text_Codecs is
    -- Codec_For_Application_Locale --
    ----------------------------------
 
-   function Codec_For_Application_Locale return Text_Codec is
-   begin
-      return Locale_Codec;
-   end Codec_For_Application_Locale;
+   function Codec_For_Application_Locale return Text_Codec is separate;
 
    ------------
    -- Decode --
@@ -158,12 +150,6 @@ package body League.Text_Codecs is
       return League.Stream_Element_Vectors.Internals.Wrap (Result);
    end Encode;
 
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is separate;
-
    --------------------------
    -- To_Exception_Message --
    --------------------------
@@ -172,8 +158,7 @@ package body League.Text_Codecs is
     (Item : League.Strings.Universal_String) return String
    is
       Stream : constant Ada.Streams.Stream_Element_Array
-        := League.Text_Codecs.Locale_Codec.Encode
-            (Item).To_Stream_Element_Array;
+        := Codec_For_Application_Locale.Encode (Item).To_Stream_Element_Array;
       Result : String (1 .. Stream'Length);
       for Result'Address use Stream'Address;
       pragma Import (Ada, Result);
@@ -182,6 +167,4 @@ package body League.Text_Codecs is
       return Result;
    end To_Exception_Message;
 
-begin
-   Initialize;
 end League.Text_Codecs;
