@@ -492,16 +492,16 @@ package body XML.SAX.Pretty_Writers is
       Self.Offset := Offset;
    end Set_Offset;
 
-   ----------------
-   -- Set_Output --
-   ----------------
+   ----------------------------
+   -- Set_Output_Destination --
+   ----------------------------
 
-   overriding procedure Set_Output
-    (Self   : in out SAX_Pretty_Writer;
-     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access) is
+   procedure Set_Output_Destination
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Output : not null SAX_Output_Destination_Access) is
    begin
       Self.Destination := Output;
-   end Set_Output;
+   end Set_Output_Destination;
 
    -------------------------
    -- Set_Value_Delimiter --

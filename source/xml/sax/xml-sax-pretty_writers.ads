@@ -48,9 +48,13 @@ private with Ada.Containers.Vectors;
 with League.Characters;
 with League.Strings.Hash;
 with XML.SAX.Attributes;
+with XML.SAX.Output_Destinations;
 with XML.SAX.Writers;
 
 package XML.SAX.Pretty_Writers is
+
+   type SAX_Output_Destination_Access is
+     access all XML.SAX.Output_Destinations.SAX_Output_Destination'Class;
 
    type XML_Version is (XML_1_0, XML_1_1);
 
@@ -72,9 +76,9 @@ package XML.SAX.Pretty_Writers is
    --  Sets value delimiter for attributes.
    --  '"' (apostrophe) is used by default
 
-   overriding procedure Set_Output
-    (Self   : in out SAX_Pretty_Writer;
-     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access);
+   procedure Set_Output_Destination
+    (Self   : in out SAX_Pretty_Writer'Class;
+     Output : not null SAX_Output_Destination_Access);
    --  Sets output destination to be used to output generated stream.
 
    overriding procedure Characters
@@ -210,7 +214,7 @@ private
       Tag_Opened   : Boolean := False;
       DTD_Opened   : Boolean := False;
       Error        : League.Strings.Universal_String;
-      Destination  : XML.SAX.Writers.SAX_Output_Destination_Access;
+      Destination  : SAX_Output_Destination_Access;
 
       Indent       : Natural := 0;
       Offset       : Natural := 0;
