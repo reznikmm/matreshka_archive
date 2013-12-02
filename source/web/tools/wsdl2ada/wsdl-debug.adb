@@ -197,7 +197,7 @@ package body WSDL.Debug is
       Control  : WSDL.Iterators.Traverse_Control := WSDL.Iterators.Continue;
 
    begin
-      Printer.Writer.Set_Output (Printer.Output'Unchecked_Access);
+      Printer.Writer.Set_Output_Destination (Printer.Output'Unchecked_Access);
       Iterator.Visit (Printer, WSDL.AST.Node_Access (Description), Control);
    end Dump;
 
