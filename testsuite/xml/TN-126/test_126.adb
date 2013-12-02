@@ -73,7 +73,7 @@ procedure Test_126 is
 
 begin
    Reader.Set_Content_Handler (Writer'Unchecked_Access);
-   Writer.Set_Output (Output'Unchecked_Access);
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
    Writer.Set_Value_Delimiter (League.Characters.To_Universal_Character ('"'));
 
    --  Parse XML document.

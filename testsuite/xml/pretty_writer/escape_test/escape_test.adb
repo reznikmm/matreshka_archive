@@ -81,7 +81,7 @@ procedure Escape_Test is
 
 begin
    --  Creating document
-   Writer.Set_Output (Output'Unchecked_Access);
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
    Writer.Set_Version (XML.SAX.Pretty_Writers.XML_1_1);
 
    --  Adding first tag
