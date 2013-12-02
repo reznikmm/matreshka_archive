@@ -1381,16 +1381,16 @@ package body XML.SAX.HTML5_Writers is
           or Tag = Wbr_Tag;
    end Is_Void_Element;
 
-   ----------------
-   -- Set_Output --
-   ----------------
+   ----------------------------
+   -- Set_Output_Destination --
+   ----------------------------
 
-   overriding procedure Set_Output
-    (Self   : in out HTML5_Writer;
-     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access) is
+   procedure Set_Output_Destination
+    (Self   : in out HTML5_Writer'Class;
+     Output : not null SAX_Output_Destination_Access) is
    begin
       Self.Output := Output;
-   end Set_Output;
+   end Set_Output_Destination;
 
    -----------------
    -- Start_CDATA --

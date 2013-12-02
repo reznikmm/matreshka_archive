@@ -54,11 +54,19 @@ private with Ada.Containers.Vectors;
 
 private with League.Strings;
 private with XML.SAX.Attributes;
+with XML.SAX.Output_Destinations;
 with XML.SAX.Writers;
 
 package XML.SAX.HTML5_Writers is
 
+   type SAX_Output_Destination_Access is
+     access all XML.SAX.Output_Destinations.SAX_Output_Destination'Class;
+
    type HTML5_Writer is limited new XML.SAX.Writers.SAX_Writer with private;
+
+   procedure Set_Output_Destination
+    (Self   : in out HTML5_Writer'Class;
+     Output : not null SAX_Output_Destination_Access);
 
 private
 
@@ -120,7 +128,7 @@ private
 
    type HTML5_Writer is
      limited new XML.SAX.Writers.SAX_Writer with record
-      Output          : XML.SAX.Writers.SAX_Output_Destination_Access;
+      Output          : SAX_Output_Destination_Access;
       Diagnosis       : League.Strings.Universal_String;
       State           : Writer_State;
       Stack           : State_Stacks.Vector;
@@ -139,10 +147,6 @@ private
       History         : Omit_History_Kinds := None;
       --  Previous state of tags omit handling.
    end record;
-
-   overriding procedure Set_Output
-    (Self   : in out HTML5_Writer;
-     Output : not null XML.SAX.Writers.SAX_Output_Destination_Access);
 
    overriding procedure Characters
     (Self    : in out HTML5_Writer;
