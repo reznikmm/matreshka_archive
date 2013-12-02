@@ -91,7 +91,7 @@ package body Web_Services.SOAP.Message_Encoders is
         Web_Services.SOAP.Payloads.Encoders.SOAP_Payload_Encoder_Access;
 
    begin
-      Writer.Set_Output (Output'Unchecked_Access);
+      Writer.Set_Output_Destination (Output'Unchecked_Access);
       Writer.Start_Document;
       Writer.Start_Prefix_Mapping (SOAP_Envelope_Prefix, SOAP_Envelope_URI);
 
