@@ -785,7 +785,7 @@ is
    Writer      : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
 
 begin
-   Writer.Set_Output (Output'Unchecked_Access);
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
    Writer.Set_Offset (2);
    Writer.Start_Document;
 
