@@ -96,11 +96,12 @@ package body Matreshka.Internals.Strings.Handlers is
    begin
       while Position < To_Position loop
          Unchecked_Next (Item.Value, Position, C);
-         Index := Index + 1;
 
          if C = Code then
             return Index;
          end if;
+
+         Index := Index + 1;
       end loop;
 
       return 0;
