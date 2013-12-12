@@ -56,6 +56,9 @@ package XML.SAX.Output_Destinations.Strings is
        return League.Strings.Universal_String;
    --  Returns accumulated text.
 
+   procedure Clear (Self : in out SAX_String_Output_Destination);
+   --  Reset Self to empty state
+
    overriding function Get_Encoding
     (Self : SAX_String_Output_Destination)
        return League.Strings.Universal_String;

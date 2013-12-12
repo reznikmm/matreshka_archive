@@ -44,6 +44,15 @@
 
 package body XML.SAX.Output_Destinations.Strings is
 
+   -----------
+   -- Clear --
+   -----------
+
+   procedure Clear (Self : in out SAX_String_Output_Destination) is
+   begin
+      Self.Text.Clear;
+   end Clear;
+
    ------------------
    -- Get_Encoding --
    ------------------
