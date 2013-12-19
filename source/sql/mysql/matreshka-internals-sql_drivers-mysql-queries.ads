@@ -58,11 +58,11 @@ private
 
    type Value_Record is record
       Null_Value      : aliased my_bool;
-      Tiny_Value      : aliased Interfaces.C.signed_char;
-      Short_Value     : aliased Interfaces.C.short;
+      Tiny_Value      : aliased Interfaces.Integer_8;
+      Short_Value     : aliased Interfaces.Integer_16;
       Int_24_Value    : aliased Interfaces.C.int;
-      Long_Value      : aliased Interfaces.C.int;
-      Long_Long_Value : aliased Interfaces.C.long;
+      Long_Value      : aliased Interfaces.Integer_32;
+      Long_Long_Value : aliased Interfaces.Integer_64;
       Float_Value     : aliased Interfaces.C.c_float;
       Double_Value    : aliased Interfaces.C.double;
       Length_Value    : aliased Interfaces.C.unsigned_long;

@@ -149,7 +149,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Queries is
 
          elsif League.Holders.Is_Abstract_Integer (Value) then
             Values (J).Long_Long_Value :=
-              Interfaces.C.long
+              Interfaces.Integer_64
                (League.Holders.Universal_Integer'
                  (League.Holders.Element (Value)));
             Binds (J).buffer_type := MYSQL_TYPE_LONGLONG;
