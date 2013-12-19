@@ -46,7 +46,7 @@
 ------------------------------------------------------------------------------
 with League.Calendars.ISO_8601;
 with League.Holders.Integers;
-with League.Holders.Long_Integers;
+with League.Holders.Long_Long_Integers;
 with League.Holders.Floats;
 with League.Holders.Long_Floats;
 with League.Strings;
@@ -148,10 +148,10 @@ begin
          Query.Bind_Value (+":int", League.Holders.Integers.To_Holder (-4));
          Query.Bind_Value
           (+":big",
-           League.Holders.Long_Integers.To_Holder (-9223372036854775807));
+           League.Holders.Long_Long_Integers.To_Holder (-9223372036854775807));
          Query.Bind_Value
           (+":ubig",
-           League.Holders.Long_Integers.To_Holder (9223372036854775807));
+           League.Holders.Long_Long_Integers.To_Holder (9223372036854775807));
          Query.Bind_Value (+":floatv", League.Holders.Floats.To_Holder (2.6));
          Query.Bind_Value
           (+":doublev", League.Holders.Long_Floats.To_Holder (-4.3));
@@ -202,13 +202,13 @@ begin
             raise Program_Error;
          end if;
 
-         if League.Holders.Long_Integers.Element (Query.Value (7))
+         if League.Holders.Long_Long_Integers.Element (Query.Value (7))
               /= -9223372036854775807
          then
             raise Program_Error;
          end if;
 
-         if League.Holders.Long_Integers.Element (Query.Value (8))
+         if League.Holders.Long_Long_Integers.Element (Query.Value (8))
               /= 9223372036854775807
          then
             raise Program_Error;
