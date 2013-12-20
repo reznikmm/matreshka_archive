@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka/matreshka_config.gpr";
+with "matreshka_config.gpr";
 
 library project League is
 
