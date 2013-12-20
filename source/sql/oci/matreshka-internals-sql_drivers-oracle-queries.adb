@@ -739,6 +739,9 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
             Free (Self.Columns);
          end;
       end if;
+
+      --  Call Invalidate of parent tagged type.
+      Abstract_Query (Self.all).Invalidate;
    end Invalidate;
 
    ---------------
