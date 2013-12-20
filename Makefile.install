@@ -1,11 +1,13 @@
 include Makefile.config
 DESTDIR ?=
-INSTALL_PROJECT_DIR ?= $(DESTDIR)$(GPRDIR)
-INSTALL_INCLUDE_DIR ?= $(DESTDIR)$(PREFIX)/include/matreshka
-INSTALL_SHARE_DIR   ?= $(DESTDIR)$(PREFIX)/share/matreshka
-INSTALL_EXEC_DIR    ?= $(DESTDIR)$(BINDIR)
-INSTALL_LIBRARY_DIR ?= $(DESTDIR)$(LIBDIR)
-INSTALL_ALI_DIR ?= ${INSTALL_LIBRARY_DIR}/matreshka
+DATAROOTDIR ?= $(PREFIX)/share
+INSTALL_PROJECT_DIR    ?= $(DESTDIR)$(GPRDIR)
+INSTALL_INCLUDE_DIR    ?= $(DESTDIR)$(PREFIX)/include/matreshka
+INSTALL_SHARE_DIR      ?= $(DESTDIR)$(DATAROOTDIR)/matreshka
+INSTALL_GDB_PLUGIN_DIR ?= $(DESTDIR)$(DATAROOTDIR)/gdb/python/matreshka
+INSTALL_EXEC_DIR       ?= $(DESTDIR)$(BINDIR)
+INSTALL_LIBRARY_DIR    ?= $(DESTDIR)$(LIBDIR)
+INSTALL_ALI_DIR        ?= ${INSTALL_LIBRARY_DIR}/matreshka
 INSTALL_ali = $(INSTALL) -m 444
 INSTALL_project = $(INSTALL) -m 644
 INSTALL_source = $(INSTALL) -m 644
@@ -55,12 +57,14 @@ endif
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/league
 	$(INSTALL) -d ${INSTALL_PROJECT_DIR}/matreshka
 	$(INSTALL) -d ${INSTALL_ALI_DIR}
+	$(INSTALL) -d $(INSTALL_GDB_PLUGIN_DIR)
 	# GNATMAKE doesn't copy matreshka.ali and matreshka-internals.ali into
 	# .libs directory
 	gnat ls -d -s -P gnat/matreshka_league.gpr | sort | uniq | grep -v '^$$' > league-src.lst
 	gnat ls -o -P gnat/matreshka_league.gpr | sort | uniq | sed -e 's/.o$$/.ali/' | grep -v '^$$' > league-ali.lst
 	cat league-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/league
 	cat league-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_data) gdb/python/matreshka.py $(INSTALL_GDB_PLUGIN_DIR)/matreshka.py
 	$(INSTALL_project) gnat/install/matreshka_config.gpr  $(INSTALL_PROJECT_DIR)/matreshka/matreshka_config.gpr
 	$(INSTALL_project) gnat/install/league.gpr  $(INSTALL_PROJECT_DIR)/league.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
@@ -73,6 +77,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 endif
 	cat league-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/league/{}" > .objs/league-devel.files
 	cat league-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/league-devel.files
+	echo "%attr(-,root,root) %{_datadir}/gdb/python/matreshka/matreshka.py" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/matreshka_config.gpr" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/league.gpr" >> .objs/league-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libleague$(RTL_VERSION).$(LIBEXT)" >> .objs/league-devel.files
