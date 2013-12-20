@@ -126,7 +126,8 @@ begin
               & "  floatv    FLOAT NOT NULL,"
               & "  doublev   DOUBLE NOT NULL,"
               & "  c10       CHAR(10) NOT NULL,"
-              & "  vchar     VARCHAR (20) NOT NULL)");
+              & "  vchar     VARCHAR (20) NOT NULL)"
+              & " CHARACTER SET utf8");
          Query.Execute;
 
          --  Insert data.
