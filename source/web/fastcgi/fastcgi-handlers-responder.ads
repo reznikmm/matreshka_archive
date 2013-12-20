@@ -42,13 +42,17 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Streams;
+private with GNAT.Sockets;
 
 with FastCGI.Field_Names;
 with FastCGI.Field_Values;
+with Matreshka.FastCGI.Descriptors;
 
 package FastCGI.Handlers.Responder is
 
    type Abstract_Responder is abstract tagged limited private;
+
+   type Responder_Access is access all Abstract_Responder'Class;
 
    --  Request interface
 
@@ -97,8 +101,31 @@ package FastCGI.Handlers.Responder is
 --   function Is_Content_Length_Valid
 --    (Self : Abstract_Handler'Class) return Boolean;
 
+   function To_Descriptor
+    (Item : Responder_Access)
+       return Matreshka.FastCGI.Descriptors.Descriptor_Access;
+
 private
 
-   type Abstract_Responder is abstract tagged limited null record;
+   type Abstract_Responder is
+     abstract new Matreshka.FastCGI.Descriptors.Abstract_Descriptor
+       with null record;
+
+   overriding procedure Internal_Begin_Request
+    (Self       : in out Abstract_Responder;
+     Socket     : GNAT.Sockets.Socket_Type;
+     Request_Id : Matreshka.FastCGI.FCGI_Request_Identifier);
+
+   overriding procedure Internal_Param
+    (Self  : in out Abstract_Responder;
+     Name  : FastCGI.Field_Names.Field_Name;
+     Value : FastCGI.Field_Values.Field_Value);
+
+   overriding procedure Internal_End_Params
+    (Self : in out Abstract_Responder);
+
+   overriding procedure Internal_Stdin
+    (Self   : in out Abstract_Responder;
+     Buffer : Ada.Streams.Stream_Element_Array);
 
 end FastCGI.Handlers.Responder;

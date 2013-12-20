@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,46 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.FastCGI.Server;
-with Matreshka.FastCGI.Streaming_Server;
+with FastCGI.Application;
 
-package body FastCGI.Application is
-
-   -------------
-   -- Execute --
-   -------------
-
-   procedure Execute (Handler : FastCGI.Application.Callback) is
-   begin
-      Matreshka.FastCGI.Server.Execute (Handler);
-   end Execute;
-
-   -------------
-   -- Execute --
-   -------------
+package Matreshka.FastCGI.Streaming_Server is
 
    procedure Execute
-    (Responder_Factory : FastCGI.Application.Responder_Factory) is
-   begin
-      Matreshka.FastCGI.Streaming_Server.Execute (Responder_Factory);
-   end Execute;
+    (Responder_Factory : Standard.FastCGI.Application.Responder_Factory);
 
-   --------------
-   -- Finalize --
-   --------------
-
-   procedure Finalize is
-   begin
-      null;
-   end Finalize;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-end FastCGI.Application;
+end Matreshka.FastCGI.Streaming_Server;

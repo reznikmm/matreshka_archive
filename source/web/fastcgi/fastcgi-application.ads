@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with FastCGI.Handlers.Responder;
 with FastCGI.Requests;
 with FastCGI.Replies;
 
@@ -52,10 +53,18 @@ package FastCGI.Application is
        Reply   : out FastCGI.Replies.Reply;
        Status  : out Integer);
 
+   type Responder_Factory is
+     not null access function
+       return FastCGI.Handlers.Responder.Responder_Access;
+
    procedure Initialize;
    --  Initializes module.
 
    procedure Execute (Handler : FastCGI.Application.Callback);
+   --  Executes main loop.
+
+   procedure Execute
+    (Responder_Factory : FastCGI.Application.Responder_Factory);
    --  Executes main loop.
 
    procedure Finalize;

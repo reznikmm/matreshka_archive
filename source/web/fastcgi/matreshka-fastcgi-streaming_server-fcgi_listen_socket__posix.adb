@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,46 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.FastCGI.Server;
-with Matreshka.FastCGI.Streaming_Server;
+with Ada.Unchecked_Conversion;
 
-package body FastCGI.Application is
+separate (Matreshka.FastCGI.Streaming_Server)
+function FCGI_Listen_Socket return GNAT.Sockets.Socket_Type is
 
-   -------------
-   -- Execute --
-   -------------
+   function To_Socket_Type is
+     new Ada.Unchecked_Conversion (Integer, GNAT.Sockets.Socket_Type);
 
-   procedure Execute (Handler : FastCGI.Application.Callback) is
-   begin
-      Matreshka.FastCGI.Server.Execute (Handler);
-   end Execute;
-
-   -------------
-   -- Execute --
-   -------------
-
-   procedure Execute
-    (Responder_Factory : FastCGI.Application.Responder_Factory) is
-   begin
-      Matreshka.FastCGI.Streaming_Server.Execute (Responder_Factory);
-   end Execute;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   procedure Finalize is
-   begin
-      null;
-   end Finalize;
-
-   ----------------
-   -- Initialize --
-   ----------------
-
-   procedure Initialize is
-   begin
-      null;
-   end Initialize;
-
-end FastCGI.Application;
+begin
+   return To_Socket_Type (0);
+end FCGI_Listen_Socket;

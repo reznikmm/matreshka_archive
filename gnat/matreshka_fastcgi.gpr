@@ -79,10 +79,14 @@ library project Matreshka_FastCGI is
          when "POSIX" =>
             for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
               use "matreshka-fastcgi-server-fcgi_listen_socket__posix.adb";
+            for Implementation ("Matreshka.FastCGI.Streaming_Server.FCGI_Listen_Socket")
+              use "matreshka-fastcgi-streaming_server-fcgi_listen_socket__posix.adb";
 
          when "Windows" =>
             for Implementation ("Matreshka.FastCGI.Server.FCGI_Listen_Socket")
               use "matreshka-fastcgi-server-fcgi_listen_socket__windows.adb";
+            for Implementation ("Matreshka.FastCGI.Streaming_Server.FCGI_Listen_Socket")
+              use "matreshka-fastcgi-streaming_server-fcgi_listen_socket__windows.adb";
       end case;
 
    end Naming;
