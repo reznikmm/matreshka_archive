@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -427,28 +427,28 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
             when 45 =>
                --  Unicode property specification
 
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_UNICODE);
 
                return Token_Property_Begin_Positive;
 
             when 46 =>
                --  Unicode property specification
 
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_POSIX);
 
                return Token_Property_Begin_Positive;
 
             when 47 =>
                --  Unicode property specification
 
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_UNICODE);
 
                return Token_Property_Begin_Negative;
 
             when 48 =>
                --  Unicode property specification
 
-               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+               Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_POSIX);
 
                return Token_Property_Begin_Negative;
 
@@ -1220,6 +1220,13 @@ package body Matreshka.Internals.Regexps.Compiler.Scanner is
                return Error;
 
             when 161 =>
+               --  Unexpected end of string in property specification
+
+               YYError (Self, Unexpected_End_Of_Property_Specification, 0);
+
+               return Error;
+
+            when 162 =>
                --  Unexpected end of string in property specification
 
                YYError (Self, Unexpected_End_Of_Property_Specification, 0);
