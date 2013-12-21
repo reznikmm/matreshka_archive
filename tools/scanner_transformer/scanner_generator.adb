@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -270,7 +270,7 @@ package body Scanner_Generator is
              (Output,
               "Localization, Internationalization, Globalization for Ada",
               2010,
-              2010);
+              2013);
 
          when XML =>
             Wide_Put_File_Header
