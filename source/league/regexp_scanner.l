@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -147,7 +147,8 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 %x CHARACTER_CLASS
 %x MULTIPLICITY
 %x COMMENT
-%x PROPERTY_SPECIFICATION
+%x PROPERTY_SPECIFICATION_UNICODE
+%x PROPERTY_SPECIFICATION_POSIX
 
 %%
 
@@ -452,7 +453,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>\\p\{ {
    --  Unicode property specification
 
-   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_UNICODE);
 
    return Token_Property_Begin_Positive;
 }
@@ -460,7 +461,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>"[:" {
    --  Unicode property specification
 
-   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_POSIX);
 
    return Token_Property_Begin_Positive;
 }
@@ -468,7 +469,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>\\P\{ {
    --  Unicode property specification
 
-   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_UNICODE);
 
    return Token_Property_Begin_Negative;
 }
@@ -476,12 +477,12 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
 <INITIAL,CHARACTER_CLASS>"[:^" {
    --  Unicode property specification
 
-   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION);
+   Enter_Start_Condition (Self, PROPERTY_SPECIFICATION_POSIX);
 
    return Token_Property_Begin_Negative;
 }
 
-<PROPERTY_SPECIFICATION>\} {
+<PROPERTY_SPECIFICATION_UNICODE>\} {
    --  End of Unicode property specification
 
    if Self.Character_Class_Mode then
@@ -494,7 +495,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_End;
 }
 
-<PROPERTY_SPECIFICATION>":]" {
+<PROPERTY_SPECIFICATION_POSIX>":]" {
    --  End of Unicode property specification
 
    if Self.Character_Class_Mode then
@@ -507,7 +508,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_End;
 }
 
-<PROPERTY_SPECIFICATION>{ASCII_HEX_DIGIT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{ASCII_HEX_DIGIT} {
    --  ASCII_Hex_Digit
 
    YYLVal := (Property_Keyword, ASCII_Hex_Digit);
@@ -515,7 +516,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{ALPHABETIC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{ALPHABETIC} {
    --  Alphabetic
 
    YYLVal := (Property_Keyword, Alphabetic);
@@ -523,7 +524,8 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{BIDI_CONTROL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{BIDI_CONTROL} {
+
    --  Bidi_Control
 
    YYLVal := (Property_Keyword, Bidi_Control);
@@ -531,7 +533,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{BIDI_MIRRORED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{BIDI_MIRRORED} {
    --  Bidi_Mirrored
 
 --  XXX Bidi_Mirrored is absent in UCD now
@@ -541,7 +543,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    raise Program_Error;
 }
 
-<PROPERTY_SPECIFICATION>{CASED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CASED} {
    --  Cased
 
    YYLVal := (Property_Keyword, Cased);
@@ -549,7 +551,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CASE_IGNORABLE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CASE_IGNORABLE} {
    --  Case_Ignorable
 
    YYLVal := (Property_Keyword, Case_Ignorable);
@@ -557,7 +559,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_CASEFOLDED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_CASEFOLDED} {
    --  Changes_When_Casefolded
 
    YYLVal := (Property_Keyword, Changes_When_Casefolded);
@@ -565,7 +567,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_CASEMAPPED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_CASEMAPPED} {
    --  Changes_When_Casemapped
 
    YYLVal := (Property_Keyword, Changes_When_Casemapped);
@@ -573,7 +575,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_LOWERCASED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_LOWERCASED} {
    --  Changes_When_Lowercased
 
    YYLVal := (Property_Keyword, Changes_When_Lowercased);
@@ -581,7 +583,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_NFKC_CASEFOLDED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_NFKC_CASEFOLDED} {
    --  Changes_When_NFKC_Casefolded
 
    YYLVal := (Property_Keyword, Changes_When_NFKC_Casefolded);
@@ -589,7 +591,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_TITLECASED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_TITLECASED} {
    --  Changes_When_Titlecased
 
    YYLVal := (Property_Keyword, Changes_When_Titlecased);
@@ -597,7 +599,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CHANGES_WHEN_UPPERCASED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CHANGES_WHEN_UPPERCASED} {
    --  Changes_When_Uppercased
 
    YYLVal := (Property_Keyword, Changes_When_Uppercased);
@@ -605,7 +607,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{COMPOSITION_EXCLUSION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{COMPOSITION_EXCLUSION} {
    --  Composition_Exclusion
 
    YYLVal := (Property_Keyword, Composition_Exclusion);
@@ -613,7 +615,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{FULL_COMPOSITION_EXCLUSION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{FULL_COMPOSITION_EXCLUSION} {
    --  Full_Composition_Exclusion
 
    YYLVal := (Property_Keyword, Full_Composition_Exclusion);
@@ -621,7 +623,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DASH} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DASH} {
    --  Dash
 
    YYLVal := (Property_Keyword, Dash);
@@ -629,7 +631,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DEPRECATED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DEPRECATED} {
    --  Deprecated
 
    YYLVal := (Property_Keyword, Deprecated);
@@ -637,7 +639,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DEFAULT_IGNORABLE_CODE_POINT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DEFAULT_IGNORABLE_CODE_POINT} {
    --  Default_Ignorable_Code_Point
 
    YYLVal := (Property_Keyword, Default_Ignorable_Code_Point);
@@ -645,7 +647,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DIACRITIC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DIACRITIC} {
    --  Diacritic
 
    YYLVal := (Property_Keyword, Diacritic);
@@ -653,7 +655,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{EXTENDER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{EXTENDER} {
    --  Extender
 
    YYLVal := (Property_Keyword, Extender);
@@ -661,7 +663,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{GRAPHEME_BASE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{GRAPHEME_BASE} {
    --  Grapheme_Base
 
    YYLVal := (Property_Keyword, Grapheme_Base);
@@ -669,7 +671,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{GRAPHEME_EXTEND} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{GRAPHEME_EXTEND} {
    --  Grapheme_Extend
 
    YYLVal := (Property_Keyword, Grapheme_Extend);
@@ -677,7 +679,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{GRAPHEME_LINK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{GRAPHEME_LINK} {
    --  Grapheme_Link
 
    YYLVal := (Property_Keyword, Grapheme_Link);
@@ -685,7 +687,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{HEX_DIGIT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{HEX_DIGIT} {
    --  Hex_Digit
 
    YYLVal := (Property_Keyword, Hex_Digit);
@@ -693,7 +695,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{HYPHEN} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{HYPHEN} {
    --  Hyphen
 
    YYLVal := (Property_Keyword, Hyphen);
@@ -701,7 +703,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{ID_CONTINUE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{ID_CONTINUE} {
    --  ID_Continue
 
    YYLVal := (Property_Keyword, ID_Continue);
@@ -709,7 +711,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{IDEOGRAPHIC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{IDEOGRAPHIC} {
    --  Ideographic
 
    YYLVal := (Property_Keyword, Ideographic);
@@ -717,7 +719,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{ID_START} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{ID_START} {
    --  ID_Start
 
    YYLVal := (Property_Keyword, ID_Start);
@@ -725,7 +727,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{IDS_BINARY_OPERATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{IDS_BINARY_OPERATOR} {
    --  IDS_Binary_Operator
 
    YYLVal := (Property_Keyword, IDS_Binary_Operator);
@@ -733,7 +735,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{IDS_TRINARY_OPERATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{IDS_TRINARY_OPERATOR} {
    --  IDS_Trinary_Operator
 
    YYLVal := (Property_Keyword, IDS_Trinary_Operator);
@@ -741,7 +743,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{JOIN_CONTROL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{JOIN_CONTROL} {
    --  Join_Control
 
    YYLVal := (Property_Keyword, Join_Control);
@@ -749,7 +751,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LOGICAL_ORDER_EXCEPTION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LOGICAL_ORDER_EXCEPTION} {
    --  Logical_Order_Exception
 
    YYLVal := (Property_Keyword, Logical_Order_Exception);
@@ -757,7 +759,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LOWERCASE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LOWERCASE} {
    --  Lowercase
 
    YYLVal := (Property_Keyword, Lowercase);
@@ -765,7 +767,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{MATH} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{MATH} {
    --  Math
 
    YYLVal := (Property_Keyword, Math);
@@ -773,7 +775,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{NONCHARACTER_CODE_POINT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{NONCHARACTER_CODE_POINT} {
    --  Noncharacter_Code_Point
 
    YYLVal := (Property_Keyword, Noncharacter_Code_Point);
@@ -781,7 +783,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_ALPHABETIC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_ALPHABETIC} {
    --  Other_Alphabetic
 
    YYLVal := (Property_Keyword, Other_Alphabetic);
@@ -789,7 +791,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_DEFAULT_IGNORABLE_CODE_POINT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_DEFAULT_IGNORABLE_CODE_POINT} {
    --  Other_Default_Ignorable_Code_Point
 
    YYLVal := (Property_Keyword, Other_Default_Ignorable_Code_Point);
@@ -797,7 +799,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_GRAPHEME_EXTEND} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_GRAPHEME_EXTEND} {
    --  Other_Grapheme_Extend
 
    YYLVal := (Property_Keyword, Other_Grapheme_Extend);
@@ -805,7 +807,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_ID_CONTINUE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_ID_CONTINUE} {
    --  Other_ID_Continue
 
    YYLVal := (Property_Keyword, Other_ID_Continue);
@@ -813,7 +815,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_ID_START} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_ID_START} {
    --  Other_ID_Start
 
    YYLVal := (Property_Keyword, Other_ID_Start);
@@ -821,7 +823,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_LOWERCASE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_LOWERCASE} {
    --  Other_Lowercase
 
    YYLVal := (Property_Keyword, Other_Lowercase);
@@ -829,7 +831,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_MATH} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_MATH} {
    --  Other_Math
 
    YYLVal := (Property_Keyword, Other_Math);
@@ -837,7 +839,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_UPPERCASE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_UPPERCASE} {
    --  Other_Uppercase
 
    YYLVal := (Property_Keyword, Other_Uppercase);
@@ -845,7 +847,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{PATTERN_SYNTAX} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{PATTERN_SYNTAX} {
    --  Pattern_Syntax
 
    YYLVal := (Property_Keyword, Pattern_Syntax);
@@ -853,7 +855,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{PATTERN_WHITE_SPACE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{PATTERN_WHITE_SPACE} {
    --  Pattern_White_Space
 
    YYLVal := (Property_Keyword, Pattern_White_Space);
@@ -861,7 +863,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{QUOTATION_MARK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{QUOTATION_MARK} {
    --  Quotation_Mark
 
    YYLVal := (Property_Keyword, Quotation_Mark);
@@ -869,7 +871,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{RADICAL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{RADICAL} {
    --  Radical
 
    YYLVal := (Property_Keyword, Radical);
@@ -877,7 +879,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SOFT_DOTTED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SOFT_DOTTED} {
    --  Soft_Dotted
 
    YYLVal := (Property_Keyword, Soft_Dotted);
@@ -885,7 +887,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{STERM} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{STERM} {
    --  STerm
 
    YYLVal := (Property_Keyword, STerm);
@@ -893,7 +895,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{TERMINAL_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{TERMINAL_PUNCTUATION} {
    --  Terminal_Punctuation
 
    YYLVal := (Property_Keyword, Terminal_Punctuation);
@@ -901,7 +903,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{UNIFIED_IDEOGRAPH} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{UNIFIED_IDEOGRAPH} {
    --  Unified_Ideograph
 
    YYLVal := (Property_Keyword, Unified_Ideograph);
@@ -909,7 +911,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{UPPERCASE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{UPPERCASE} {
    --  Uppercase
 
    YYLVal := (Property_Keyword, Uppercase);
@@ -917,7 +919,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{VARIATION_SELECTOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{VARIATION_SELECTOR} {
    --  Variation_Selector
 
    YYLVal := (Property_Keyword, Variation_Selector);
@@ -925,7 +927,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{WHITE_SPACE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{WHITE_SPACE} {
    --  White_Space
 
    YYLVal := (Property_Keyword, White_Space);
@@ -933,7 +935,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{XID_CONTINUE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{XID_CONTINUE} {
    --  XID_Continue
 
    YYLVal := (Property_Keyword, XID_Continue);
@@ -941,7 +943,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{XID_START} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{XID_START} {
    --  XID_Start
 
    YYLVal := (Property_Keyword, XID_Start);
@@ -949,7 +951,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{EXPANDS_ON_NFC} {
    --  Expands_On_NFC
 
    YYLVal := (Property_Keyword, Expands_On_NFC);
@@ -957,7 +959,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFD} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{EXPANDS_ON_NFD} {
    --  Expands_On_NFD
 
    YYLVal := (Property_Keyword, Expands_On_NFD);
@@ -965,7 +967,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFKC} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{EXPANDS_ON_NFKC} {
    --  Expands_On_NFKC
 
    YYLVal := (Property_Keyword, Expands_On_NFKC);
@@ -973,7 +975,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{EXPANDS_ON_NFKD} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{EXPANDS_ON_NFKD} {
    --  Expands_On_NFKD
 
    YYLVal := (Property_Keyword, Expands_On_NFKD);
@@ -981,7 +983,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER} {
    --  Other
 
    YYLVal := (Property_Keyword, Other);
@@ -989,7 +991,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CONTROL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CONTROL} {
    --  Control
 
    YYLVal := (Property_Keyword, Control);
@@ -997,7 +999,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{FORMAT} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{FORMAT} {
    --  Format
 
    YYLVal := (Property_Keyword, Format);
@@ -1005,7 +1007,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{UNASSIGNED} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{UNASSIGNED} {
    --  Unassigned
 
    YYLVal := (Property_Keyword, Unassigned);
@@ -1013,7 +1015,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{PRIVATE_USE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{PRIVATE_USE} {
    --  Private_Use
 
    YYLVal := (Property_Keyword, Private_Use);
@@ -1021,7 +1023,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SURROGATE} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SURROGATE} {
    --  Surrogate
 
    YYLVal := (Property_Keyword, Surrogate);
@@ -1029,7 +1031,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LETTER} {
    --  Letter
 
    YYLVal := (Property_Keyword, Letter);
@@ -1037,7 +1039,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CASED_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CASED_LETTER} {
    --  Cased_Letter
 
    YYLVal := (Property_Keyword, Cased_Letter);
@@ -1045,7 +1047,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LOWERCASE_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LOWERCASE_LETTER} {
    --  Lowercase_Letter
 
    YYLVal := (Property_Keyword, Lowercase_Letter);
@@ -1053,7 +1055,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{MODIFIER_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{MODIFIER_LETTER} {
    --  Modifier_Letter
 
    YYLVal := (Property_Keyword, Modifier_Letter);
@@ -1061,7 +1063,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_LETTER} {
    --  Other_Letter
 
    YYLVal := (Property_Keyword, Other_Letter);
@@ -1069,7 +1071,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{TITLECASE_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{TITLECASE_LETTER} {
    --  Titlecase_Letter
 
    YYLVal := (Property_Keyword, Titlecase_Letter);
@@ -1077,7 +1079,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{UPPERCASE_LETTER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{UPPERCASE_LETTER} {
    --  Uppercase_Letter
 
    YYLVal := (Property_Keyword, Uppercase_Letter);
@@ -1085,7 +1087,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{MARK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{MARK} {
    --  Mark
 
    YYLVal := (Property_Keyword, Mark);
@@ -1093,7 +1095,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SPACING_MARK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SPACING_MARK} {
    --  Spacing_Mark
 
    YYLVal := (Property_Keyword, Spacing_Mark);
@@ -1101,7 +1103,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{ENCLOSING_MARK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{ENCLOSING_MARK} {
    --  Enclosing_Mark
 
    YYLVal := (Property_Keyword, Enclosing_Mark);
@@ -1109,7 +1111,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{NONSPACING_MARK} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{NONSPACING_MARK} {
    --  Nonspacing_Mark
 
    YYLVal := (Property_Keyword, Nonspacing_Mark);
@@ -1117,7 +1119,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{NUMBER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{NUMBER} {
    --  Number
 
    YYLVal := (Property_Keyword, Number);
@@ -1125,7 +1127,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DECIMAL_NUMBER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DECIMAL_NUMBER} {
    --  Decimal_Number
 
    YYLVal := (Property_Keyword, Decimal_Number);
@@ -1133,7 +1135,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LETTER_NUMBER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LETTER_NUMBER} {
    --  Letter_Number
 
    YYLVal := (Property_Keyword, Letter_Number);
@@ -1141,7 +1143,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_NUMBER} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_NUMBER} {
    --  Other_Number
 
    YYLVal := (Property_Keyword, Other_Number);
@@ -1149,7 +1151,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{PUNCTUATION} {
    --  Punctuation
 
    YYLVal := (Property_Keyword, Punctuation);
@@ -1157,7 +1159,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CONNECTOR_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CONNECTOR_PUNCTUATION} {
    --  Connector_Punctuation
 
    YYLVal := (Property_Keyword, Connector_Punctuation);
@@ -1165,7 +1167,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{DASH_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{DASH_PUNCTUATION} {
    --  Dash_Punctuation
 
    YYLVal := (Property_Keyword, Dash_Punctuation);
@@ -1173,7 +1175,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CLOSE_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CLOSE_PUNCTUATION} {
    --  Close_Punctuation
 
    YYLVal := (Property_Keyword, Close_Punctuation);
@@ -1181,7 +1183,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{FINAL_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{FINAL_PUNCTUATION} {
    --  Final_Punctuation
 
    YYLVal := (Property_Keyword, Final_Punctuation);
@@ -1189,7 +1191,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{INITIAL_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{INITIAL_PUNCTUATION} {
    --  Initial_Punctuation
 
    YYLVal := (Property_Keyword, Initial_Punctuation);
@@ -1197,7 +1199,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_PUNCTUATION} {
    --  Other_Punctuation
 
    YYLVal := (Property_Keyword, Other_Punctuation);
@@ -1205,7 +1207,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OPEN_PUNCTUATION} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OPEN_PUNCTUATION} {
    --  Open_Punctuation
 
    YYLVal := (Property_Keyword, Open_Punctuation);
@@ -1213,7 +1215,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SYMBOL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SYMBOL} {
    --  Symbol
 
    YYLVal := (Property_Keyword, Symbol);
@@ -1221,7 +1223,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{CURRENCY_SYMBOL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{CURRENCY_SYMBOL} {
    --  Currency_Symbol
 
    YYLVal := (Property_Keyword, Currency_Symbol);
@@ -1229,7 +1231,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{MODIFIER_SYMBOL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{MODIFIER_SYMBOL} {
    --  Modifier_Symbol
 
    YYLVal := (Property_Keyword, Modifier_Symbol);
@@ -1237,7 +1239,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{MATH_SYMBOL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{MATH_SYMBOL} {
    --  Math_Symbol
 
    YYLVal := (Property_Keyword, Math_Symbol);
@@ -1245,7 +1247,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{OTHER_SYMBOL} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{OTHER_SYMBOL} {
    --  Other_Symbol
 
    YYLVal := (Property_Keyword, Other_Symbol);
@@ -1253,7 +1255,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SEPARATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SEPARATOR} {
    --  Separator
 
    YYLVal := (Property_Keyword, Separator);
@@ -1261,7 +1263,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{LINE_SEPARATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{LINE_SEPARATOR} {
    --  Line_Separator
 
    YYLVal := (Property_Keyword, Line_Separator);
@@ -1269,7 +1271,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{PARAGRAPH_SEPARATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{PARAGRAPH_SEPARATOR} {
    --  Paragraph_Separator
 
    YYLVal := (Property_Keyword, Paragraph_Separator);
@@ -1277,7 +1279,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>{SPACE_SEPARATOR} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>{SPACE_SEPARATOR} {
    --  Space_Separator
 
    YYLVal := (Property_Keyword, Space_Separator);
@@ -1285,7 +1287,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Token_Property_Keyword;
 }
 
-<PROPERTY_SPECIFICATION>\p{Pattern_Syntax} {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>\p{Pattern_Syntax} {
    --  Pattern syntax character in property specification
 
    YYError (Self, Unrecognized_Character_In_Property_Specification, 0);
@@ -1293,7 +1295,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Error;
 }
 
-<PROPERTY_SPECIFICATION><<EOF>> {
+<PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX><<EOF>> {
    --  Unexpected end of string in property specification
 
    YYError (Self, Unexpected_End_Of_Property_Specification, 0);
@@ -1301,7 +1303,7 @@ SPACE_SEPARATOR		[Ss][Pp][Aa][Cc][Ee](_|-|\p{Pattern_White_Space}*)[Ss][Ee][Pp][
    return Error;
 }
 
-<INITIAL,CHARACTER_CLASS,MULTIPLICITY,PROPERTY_SPECIFICATION>\p{Pattern_White_Space}+ {
+<INITIAL,CHARACTER_CLASS,MULTIPLICITY,PROPERTY_SPECIFICATION_UNICODE,PROPERTY_SPECIFICATION_POSIX>\p{Pattern_White_Space}+ {
    --  Sequence of whitespaces is ignored in all modes
 
    null;
