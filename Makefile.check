@@ -56,6 +56,7 @@ endif
 	.objs/regexp_ataresearch testsuite/league/ataresearch/basic.dat testsuite/league/ataresearch/matreshka/basic.dat
 	.objs/escape_test
 	.objs/simple_test
+	.objs/test_7
 	.objs/test_35
 	.objs/test_104
 	.objs/test_106
