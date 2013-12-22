@@ -45,59 +45,41 @@
 --  delimiters of different styles.
 ------------------------------------------------------------------------------
 with League.Application;
+pragma Unreferenced (League.Application);
+--  Adding this unit to application closure activates system capabilities
+--  checks to select appropriate string handling implementation.
 with League.Regexps;
 with League.Strings;
 
-procedure Main is
-   use League.Regexps;
-   use League.Strings;
+procedure Test_7 is
 
-   P1 : constant Universal_String := To_Universal_String ("\p{upper:]");
-   P2 : constant Universal_String := To_Universal_String ("[:upper}");
-   P3 : constant Universal_String := To_Universal_String ("\P{upper:]");
-   P4 : constant Universal_String := To_Universal_String ("[:upper}");
-   --  Constants are needed to workaround bug with to early finalization of
-   --  temporary objects in GNAT GPL 2013 and GNAT Pro 7.2.
-   R  : Regexp_Pattern;
+   procedure Do_Test (Pattern : Wide_Wide_String);
+
+   -------------
+   -- Do_Test --
+   -------------
+
+   procedure Do_Test (Pattern : Wide_Wide_String) is
+      P : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String (Pattern);
+      R : League.Regexps.Regexp_Pattern;
+      pragma Unreferenced (R);
+      --  It is expected that Compile will raise exception and R will never be
+      --  assigned.
+
+   begin
+      R := League.Regexps.Compile (P);
+
+      raise Program_Error;
+
+   exception
+      when Constraint_Error =>
+         null;
+   end Do_Test;
 
 begin
-   begin
-      R := Compile (P1);
-
-      raise Program_Error;
-
-   exception
-      when Constraint_Error =>
-         null;
-   end;
-
-   begin
-      R := Compile (P2);
-
-      raise Program_Error;
-
-   exception
-      when Constraint_Error =>
-         null;
-   end;
-
-   begin
-      R := Compile (P3);
-
-      raise Program_Error;
-
-   exception
-      when Constraint_Error =>
-         null;
-   end;
-
-   begin
-      R := Compile (P4);
-
-      raise Program_Error;
-
-   exception
-      when Constraint_Error =>
-         null;
-   end;
-end Main;
+   Do_Test ("\p{upper:]");
+   Do_Test ("[:upper}");
+   Do_Test ("\P{upper:]");
+   Do_Test ("[:upper}");
+end Test_7;
