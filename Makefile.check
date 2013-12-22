@@ -10,10 +10,12 @@ ifdef HAS_VALGRIND
 endif
 
 ifdef HAS_MYSQL
-    ALL_TARGETS += mysql
+    ifdef HAS_WORKING_MYSQL_SERVER
+        ALL_TARGETS += mysql
 
-    ifdef HAS_VALGRIND
-        ALL_TARGETS += mysql-valgrind
+        ifdef HAS_VALGRIND
+            ALL_TARGETS += mysql-valgrind
+        endif
     endif
 endif
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,8 +48,10 @@ with Configure.Builder;
 
 package body Configure.Tests.MySQL is
 
-   Has_MySQL             : constant Unbounded_String := +"HAS_MYSQL";
-   MySQL_Library_Options : constant Unbounded_String
+   Has_MySQL                : constant Unbounded_String := +"HAS_MYSQL";
+   Has_Working_MySQL_Server : constant Unbounded_String
+     := +"HAS_WORKING_MYSQL_SERVER";
+   MySQL_Library_Options    : constant Unbounded_String
      := +"MYSQL_LIBRARY_OPTIONS";
 
    -------------
@@ -69,6 +71,64 @@ package body Configure.Tests.MySQL is
 
       function MySQL_Libs return String_Vectors.Vector;
       --  Returns command line switches for linker.
+
+      function Has_MySQL_Client return Boolean;
+      --  Returns True when mysql command line client is found.
+
+      function Execute_MySQL_Script (File_Name : String) return Boolean;
+      --  Returns True when mysql command line client successfully executes
+      --  specified script.
+
+      --------------------------
+      -- Execute_MySQL_Script --
+      --------------------------
+
+      function Execute_MySQL_Script (File_Name : String) return Boolean is
+      begin
+         declare
+            Status : aliased Integer;
+            Output : constant String :=
+              Get_Command_Output
+               ("mysql",
+                (1 => new String'("--execute=source " & File_Name),
+                 2 => new String'("--version")),
+                "",
+                Status'Access,
+                True);
+
+         begin
+            return Status = 0;
+         end;
+
+      exception
+         when GNAT.Expect.Invalid_Process =>
+            return False;
+      end Execute_MySQL_Script;
+
+      ----------------------
+      -- Has_MySQL_Client --
+      ----------------------
+
+      function Has_MySQL_Client return Boolean is
+      begin
+         declare
+            Status : aliased Integer;
+            Output : constant String :=
+              Get_Command_Output
+               ("mysql",
+                (1 => new String'("--version")),
+                "",
+                Status'Access,
+                True);
+
+         begin
+            return Status = 0;
+         end;
+
+      exception
+         when GNAT.Expect.Invalid_Process =>
+            return False;
+      end Has_MySQL_Client;
 
       ----------------------
       -- Has_MySQL_Config --
@@ -238,6 +298,23 @@ package body Configure.Tests.MySQL is
 
       else
          Substitutions.Insert (Has_MySQL, To_Unbounded_String ("true"));
+      end if;
+
+      --  Lookup for mysql command line client and availability of server for
+      --  testing purposes.
+
+      Self.Report_Check
+       ("checking whether MySQL server can be used for testing");
+
+      if Has_MySQL_Client
+        and then Execute_MySQL_Script ("config.tests/mysql/check.sql")
+      then
+         Self.Report_Status ("yes");
+         Substitutions.Insert
+          (Has_Working_MySQL_Server, To_Unbounded_String ("true"));
+
+      else
+         Self.Report_Status ("no");
       end if;
    end Execute;
 
