@@ -91,7 +91,7 @@ package body Configure.Tests.MySQL is
               Get_Command_Output
                ("mysql",
                 (1 => new String'("--execute=source " & File_Name),
-                 2 => new String'("--version")),
+                 2 => new String'("test")),
                 "",
                 Status'Access,
                 True);
