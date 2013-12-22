@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -117,14 +117,18 @@ package body League.Regexps is
 
    function Compile
     (Expression : League.Strings.Universal_String'Class)
-       return Regexp_Pattern is
+       return Regexp_Pattern
+   is
+      Aux : constant Matreshka.Internals.Regexps.Shared_Pattern_Access
+        := Matreshka.Internals.Regexps.Compiler.Compile
+            (League.Strings.Internals.Internal (Expression));
+      --  GNAT GPL 2013, FSF GCC 4.8 is unable to generate correct finalization
+      --  code when this returned value is assigned to Shared in qualified
+      --  expression below to finalize temporary object in case of exception
+      --  from Compile.
+
    begin
-      return
-        Regexp_Pattern'
-         (Ada.Finalization.Controlled with
-            Shared =>
-              Matreshka.Internals.Regexps.Compiler.Compile
-               (League.Strings.Internals.Internal (Expression)));
+      return Regexp_Pattern'(Ada.Finalization.Controlled with Shared => Aux);
    end Compile;
 
    --------------
