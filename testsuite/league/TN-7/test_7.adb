@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  Check whether regular expression compiler detect that expression use
+--  delimiters of different styles.
+------------------------------------------------------------------------------
 with League.Application;
 with League.Regexps;
 with League.Strings;
@@ -49,12 +52,17 @@ procedure Main is
    use League.Regexps;
    use League.Strings;
 
---   S : Universal_String := To_Universal_String ("12345.6789");
-   R : Regexp_Pattern;
+   P1 : constant Universal_String := To_Universal_String ("\p{upper:]");
+   P2 : constant Universal_String := To_Universal_String ("[:upper}");
+   P3 : constant Universal_String := To_Universal_String ("\P{upper:]");
+   P4 : constant Universal_String := To_Universal_String ("[:upper}");
+   --  Constants are needed to workaround bug with to early finalization of
+   --  temporary objects in GNAT GPL 2013 and GNAT Pro 7.2.
+   R  : Regexp_Pattern;
 
 begin
    begin
-      R := Compile (To_Universal_String ("\p{upper:]"));
+      R := Compile (P1);
 
       raise Program_Error;
 
@@ -64,7 +72,7 @@ begin
    end;
 
    begin
-      R := Compile (To_Universal_String ("[:upper}"));
+      R := Compile (P2);
 
       raise Program_Error;
 
@@ -74,7 +82,7 @@ begin
    end;
 
    begin
-      R := Compile (To_Universal_String ("\P{upper:]"));
+      R := Compile (P3);
 
       raise Program_Error;
 
@@ -84,7 +92,7 @@ begin
    end;
 
    begin
-      R := Compile (To_Universal_String ("[:^upper}"));
+      R := Compile (P4);
 
       raise Program_Error;
 
