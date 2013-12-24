@@ -49,7 +49,7 @@ Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
 Source:         matreshka-0.6.0.tar.gz
 ##  Patch:
-BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config valgrind
+BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config valgrind gprbuild
 ##  PreReq:
 ##  Provides:
 %description
@@ -404,6 +404,9 @@ component of Matreshka framework for Ada developers.
 %dir %{_prefix}/lib/gnat
 %dir %{_prefix}/lib/gnat/matreshka
 %dir %{_libdir}/matreshka
+%dir %{_datadir}/gdb
+%dir %{_datadir}/gdb/python
+%dir %{_datadir}/gdb/python/matreshka
 
 %files -n libmatreshka-xml%{PACKAGE_SUFFIX} -f .objs/xml-lib.files
 %defattr(-,root,root)
