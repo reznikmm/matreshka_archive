@@ -1,6 +1,6 @@
 %define _gprdir %_GNAT_project_dir
 Name:       matreshka
-Version:    0.5.1
+Version:    0.6.1
 Release:    1%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
