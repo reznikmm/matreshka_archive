@@ -41,13 +41,13 @@
 ##--------------------------------------------------------------------------##
 
 Name:           matreshka
-Version:        0.6.0
+Version:        0.7.0
 Release:        1
 License:        BSD
 Summary:        Matreshka components for Ada programmers
 Url:            http://forge.ada-ru.org/matreshka
 Group:          System/Libraries
-Source:         matreshka-0.6.0.tar.gz
+Source:         matreshka-0.7.0.tar.gz
 ##  Patch:
 BuildRequires:  gcc-ada libmysqlclient-devel postgresql-devel sqlite3-devel pkg-config valgrind gprbuild
 ##  PreReq:
