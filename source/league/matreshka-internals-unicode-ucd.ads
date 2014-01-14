@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -100,17 +100,6 @@ package Matreshka.Internals.Unicode.Ucd is
      Paragraph_Separator,
      Space_Separator);
    for General_Category'Size use 8;
-
---   subtype Other is General_Category range Control .. Surrogate;
---   subtype Letter is General_Category range Lowercase_Letter .. Other_Letter;
---   subtype Cased_Letter is Letter range Lowercase_Letter .. Uppercase_Letter;
---   subtype Mark is General_Category range Spacing_Mark .. Nonspacing_Mark;
---   subtype Number is General_Category range Decimal_Number .. Other_Number;
---   subtype Punctuation is General_Category
---     range Connector_Punctuation .. Open_Punctuation;
---   subtype Symbol is General_Category range Currency_Symbol .. Other_Symbol;
---   subtype Separator is General_Category
---     range Line_Separator .. Space_Separator;
 
    type Canonical_Combining_Class is mod 256;
 
