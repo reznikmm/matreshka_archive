@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,9 +43,16 @@
 ------------------------------------------------------------------------------
 pragma Ada_2012;
 
+with League.Characters;
+
 package Matreshka.Internals.Unicode.Properties is
 
    pragma Preelaborate;
+
+   function General_Category
+    (Code : Code_Point)
+       return League.Characters.General_Category_Values;
+   pragma Inline (General_Category);
 
    function Is_Unified_Ideograph (Code : Code_Point) return Boolean;
    pragma Inline (Is_Unified_Ideograph);

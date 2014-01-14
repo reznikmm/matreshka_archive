@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,62 @@ package League.Characters is
    pragma Preelaborate;
    pragma Remote_Types;
 
+   type General_Category_Values is
+    (Uppercase_Letter,
+     Lowercase_Letter,
+     Titlecase_Letter,
+     Modifier_Letter,
+     Other_Letter,
+     Nonspacing_Mark,
+     Spacing_Mark,
+     Enclosing_Mark,
+     Decimal_Number,
+     Letter_Number,
+     Other_Number,
+     Connector_Punctuation,
+     Dash_Punctuation,
+     Open_Punctuation,
+     Close_Punctuation,
+     Initial_Punctuation,
+     Final_Punctuation,
+     Other_Punctuation,
+     Math_Symbol,
+     Currency_Symbol,
+     Modifier_Symbol,
+     Other_Symbol,
+     Space_Separator,
+     Line_Separator,
+     Paragraph_Separator,
+     Control,
+     Format,
+     Surrogate,
+     Private_Use,
+     Unassigned);
+
+--   subtype Cased_Letter is General_Category_Values
+--     range Uppercase_Letter .. Titlecase_Letter;
+--
+--   subtype Letter is General_Category_Values
+--     range Uppercase_Letter .. Other_Letter;
+--
+--   subtype Mark is General_Category_Values
+--     range Nonspacing_Mark .. Enclosing_Mark;
+--
+--   subtype Number is General_Category_Values
+--     range Decimal_Number .. Other_Number;
+--
+--   subtype Punctuation is General_Category_Values
+--     range Connector_Punctuation .. Other_Punctuation;
+--
+--   subtype Symbol is General_Category_Values
+--     range Math_Symbol .. Other_Symbol;
+--
+--   subtype Separator is General_Category_Values
+--     range Space_Separator .. Paragraph_Separator;
+--
+--   subtype Other is General_Category_Values
+--     range Control .. Unassigned;
+
    type Universal_Character is tagged private;
    pragma Preelaborable_Initialization (Universal_Character);
 
@@ -66,6 +122,10 @@ package League.Characters is
    function Is_Valid (Self : Universal_Character'Class) return Boolean;
    --  Returns True when code point of the specified character is inside valid
    --  code point range and it is not a surrogate code point.
+
+   function General_Category
+    (Self : Universal_Character'Class) return General_Category_Values;
+   --  Returns general category of the specified character.
 
    function Is_Noncharacter_Code_Point
     (Self : Universal_Character'Class) return Boolean;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -196,6 +196,22 @@ package body League.Characters is
    begin
       return Wide_Wide_Character'Pos (Left) >= Right.Code;
    end ">=";
+
+   ----------------------
+   -- General_Category --
+   ----------------------
+
+   function General_Category
+    (Self : Universal_Character'Class) return General_Category_Values is
+   begin
+      if Self.Code in Matreshka.Internals.Unicode.Code_Point then
+         return
+           Matreshka.Internals.Unicode.Properties.General_Category (Self.Code);
+
+      else
+         raise Constraint_Error with "Invalid Unicode code point";
+      end if;
+   end General_Category;
 
    --------------------
    -- Is_ID_Continue --

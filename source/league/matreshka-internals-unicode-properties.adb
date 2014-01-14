@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,56 @@ package body Matreshka.Internals.Unicode.Properties is
            Matreshka.Internals.Unicode.Ucd.Case_Mapping_First_Stage);
 
    pragma Inline (Element);
+
+   ----------------------
+   -- General_Category --
+   ----------------------
+
+   function General_Category
+    (Code : Code_Point)
+       return League.Characters.General_Category_Values
+   is
+      use all type League.Characters.General_Category_Values;
+      use all type Matreshka.Internals.Unicode.UCD.General_Category;
+
+      To : constant array (Matreshka.Internals.Unicode.UCD.General_Category)
+             of League.Characters.General_Category_Values
+        := (Uppercase_Letter      => Uppercase_Letter,
+            Lowercase_Letter      => Lowercase_Letter,
+            Titlecase_Letter      => Titlecase_Letter,
+            Modifier_Letter       => Modifier_Letter,
+            Other_Letter          => Other_Letter,
+            Nonspacing_Mark       => Nonspacing_Mark,
+            Spacing_Mark          => Spacing_Mark,
+            Enclosing_Mark        => Enclosing_Mark,
+            Decimal_Number        => Decimal_Number,
+            Letter_Number         => Letter_Number,
+            Other_Number          => Other_Number,
+            Connector_Punctuation => Connector_Punctuation,
+            Dash_Punctuation      => Dash_Punctuation,
+            Open_Punctuation      => Open_Punctuation,
+            Close_Punctuation     => Close_Punctuation,
+            Initial_Punctuation   => Initial_Punctuation,
+            Final_Punctuation     => Final_Punctuation,
+            Other_Punctuation     => Other_Punctuation,
+            Math_Symbol           => Math_Symbol,
+            Currency_Symbol       => Currency_Symbol,
+            Modifier_Symbol       => Modifier_Symbol,
+            Other_Symbol          => Other_Symbol,
+            Space_Separator       => Space_Separator,
+            Line_Separator        => Line_Separator,
+            Paragraph_Separator   => Paragraph_Separator,
+            Control               => Control,
+            Format                => Format,
+            Surrogate             => Surrogate,
+            Private_Use           => Private_Use,
+            Unassigned            => Unassigned);
+   begin
+      return
+        To
+         (Element
+           (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).GC);
+   end General_Category;
 
    --------------------
    -- Is_ID_Continue --
