@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,64 @@ with Configure.Instantiate;
 package body Configure.Builder is
 
    use GNAT.Expect;
+
+   -----------
+   -- Build --
+   -----------
+
+   function Build
+    (Test      : Configure.Abstract_Tests.Abstract_Test'Class;
+     Directory : String) return Boolean
+   is
+      Result : Boolean;
+
+   begin
+      --  Generate project file from template when necessary.
+
+      if Ada.Directories.Exists (Directory & "check.gpr.in") then
+         Configure.Instantiate (Directory & "check.gpr", True);
+      end if;
+
+      --  Run builder.
+
+      begin
+         declare
+            Status : aliased Integer;
+            Output : constant String :=
+              Get_Command_Output
+               ("gnatmake",
+                (1 => new String'("-p"),
+                 2 => new String'("-P" & Directory & "/check.gpr")),
+                "",
+                Status'Access,
+                True);
+
+         begin
+            Test.Report_Log (Output);
+            Result := Status = 0;
+         end;
+
+      exception
+         when GNAT.Expect.Invalid_Process =>
+            Result := False;
+      end;
+
+      --  Cleanup build directory.
+
+      if Ada.Directories.Exists (Directory & "_build") then
+         Ada.Directories.Delete_Tree (Directory & "_build");
+      end if;
+
+      --  Remove generated project file when necessary.
+
+      if Ada.Directories.Exists (Directory & "check.gpr.in")
+        and Ada.Directories.Exists (Directory & "check.gpr")
+      then
+         Ada.Directories.Delete_File (Directory & "check.gpr");
+      end if;
+
+      return Result;
+   end Build;
 
    -----------
    -- Build --

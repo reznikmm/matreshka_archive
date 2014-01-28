@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -84,6 +84,7 @@ package body Configure.Tests.OCI is
       OCI_DLL_Name : constant String := "oci.dll";
       OCI_DLL_Path : constant GNAT.Strings.String_Access
         := GNAT.OS_Lib.Locate_Exec_On_Path (OCI_DLL_Name);
+
    begin
       --  Command line parameter has preference other automatic detection.
 
@@ -134,7 +135,7 @@ package body Configure.Tests.OCI is
          Self.Report_Check
           ("checking whether OCI library is usable");
 
-         if Configure.Builder.Build ("config.tests/oci/") then
+         if Configure.Builder.Build (Self, "config.tests/oci/") then
             Self.Report_Status ("yes");
 
          else
