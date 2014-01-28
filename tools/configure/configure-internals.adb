@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,61 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Characters.Latin_1;
-with Ada.Strings.Fixed;
-with Ada.Text_IO;
 
-with Configure.Internals;
+package body Configure.Internals is
 
-package body Configure.Abstract_Tests is
+   --------------------
+   -- Close_Log_File --
+   --------------------
 
-   use Ada.Text_IO;
-   use Configure.Internals;
-
-   ------------------
-   -- Report_Check --
-   ------------------
-
-   procedure Report_Check (Self : in out Abstract_Test'Class; Message : String) is
-      Name : constant String  := Self.Name;
-      Last : constant Natural := Integer'Min (Name'Length, 10);
-      Msg  : String           := "[          ] " & Message & "...";
-
+   procedure Close_Log_File is
    begin
-      Msg (2 .. Last + 1) := Name (1 .. Last);
-      Self.Test_Log_Prefix :=
-        To_Unbounded_String (Msg (Msg'First .. Msg'Last - 3));
-      Put (Standard_Error, Msg);
-      Flush (Standard_Error);
-      Put_Line (Log_Output, Msg);
-      Flush (Log_Output);
-   end Report_Check;
+      Ada.Text_IO.Close (Log_Output);
+   end Close_Log_File;
 
-   ----------------
-   -- Report_Log --
-   ----------------
+   ---------------------
+   -- Create_Log_File --
+   ---------------------
 
-   procedure Report_Log (Self : Abstract_Test'Class; Message : String) is
+   procedure Create_Log_File is
    begin
-      Put_Line (Log_Output, Message);
-      Flush (Log_Output);
-   end Report_Log;
+      Ada.Text_IO.Create (Log_Output, Ada.Text_IO.Out_File, "config.log");
+   end Create_Log_File;
 
-   -------------------
-   -- Report_Status --
-   -------------------
-
-   procedure Report_Status (Self : Abstract_Test'Class; Message : String) is
-      use Ada.Characters.Latin_1;
-      use Ada.Strings.Fixed;
-
-      Msg : constant String := ": " & Message;
-
-   begin
-      Put_Line (Standard_Error, (3 * BS) & Msg);
-      Flush (Standard_Error);
-      Put_Line (Log_Output, To_String (Self.Test_Log_Prefix) & Msg);
-      Flush (Log_Output);
-   end Report_Status;
-
-end Configure.Abstract_Tests;
+end Configure.Internals;

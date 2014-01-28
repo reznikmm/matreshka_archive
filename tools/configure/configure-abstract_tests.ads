@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -62,14 +62,19 @@ package Configure.Abstract_Tests is
    --  Executes test's actions. All used arguments must be removed from
    --  Arguments.
 
-   procedure Report_Check (Self : Abstract_Test'Class; Message : String);
+   procedure Report_Check (Self : in out Abstract_Test'Class; Message : String);
    --  Outputs check message.
 
    procedure Report_Status (Self : Abstract_Test'Class; Message : String);
    --  Outputs check status message.
 
+   procedure Report_Log (Self : Abstract_Test'Class; Message : String);
+   --  Outputs log message.
+
 private
 
-   type Abstract_Test is abstract tagged limited null record;
+   type Abstract_Test is abstract tagged limited record
+      Test_Log_Prefix : Ada.Strings.Unbounded.Unbounded_String;
+   end record;
 
 end Configure.Abstract_Tests;

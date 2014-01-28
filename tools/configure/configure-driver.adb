@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,6 +48,7 @@ with Ada.Text_IO;
 
 with Configure.Architecture;
 with Configure.Instantiate;
+with Configure.Internals;
 with Configure.Operating_System;
 with Configure.RTL_Version;
 with Configure.Tests.Modules.AMF;
@@ -146,6 +147,10 @@ begin
       return;
    end if;
 
+   --  Create log file.
+
+   Configure.Internals.Create_Log_File;
+
    --  Convert command line arguments into the vector.
 
    for J in 1 .. Ada.Command_Line.Argument_Count loop
@@ -216,6 +221,10 @@ begin
    Configure.Instantiate ("Makefile.config");
    Configure.Instantiate ("gnat/install/matreshka_config.gpr");
    Configure.Instantiate ("gnat/matreshka_config.gpr");
+
+   --  Close log file.
+
+   Configure.Internals.Close_Log_File;
 
 exception
    when Internal_Error =>
