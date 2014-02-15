@@ -154,7 +154,7 @@ package Matreshka.Internals.SQL_Drivers is
     (Self : not null access Abstract_Query'Class) return Boolean;
    --  Returns True when query object is valid.
 
-   function Is_Valid
+   not overriding function Is_Valid
     (Self : not null access Abstract_Query) return Boolean is abstract;
    --  Returns True if the query is currently positioned on a valid record;
    --  otherwise returns false.

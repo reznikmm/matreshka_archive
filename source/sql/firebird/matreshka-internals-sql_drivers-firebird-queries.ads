@@ -81,6 +81,7 @@ private
       Cursor_Name : Isc_String (1 .. 10);
       Status      : aliased Isc_Results := (others => 0);
       Error       : League.Strings.Universal_String;
+      Is_Valid    : Boolean := False;
    end record;
 
    overriding procedure Bind_Value
@@ -108,6 +109,9 @@ private
     (Self : not null access Firebird_Query) return Boolean;
 
    overriding function Next
+    (Self : not null access Firebird_Query) return Boolean;
+
+   overriding function Is_Valid
     (Self : not null access Firebird_Query) return Boolean;
 
    overriding function Prepare

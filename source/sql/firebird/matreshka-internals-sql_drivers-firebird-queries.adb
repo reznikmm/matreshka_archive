@@ -169,6 +169,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
             end if;
       end case;
 
+      Self.Is_Valid := False;
       return True;
 
    exception
@@ -294,6 +295,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
       Self.Sql_Params.Codec := Codec;
       Self.Sql_Record.Utf   := Utf;
       Self.Sql_Params.Utf   := Utf;
+      Self.Is_Valid := False;
 
       SQL_Drivers.Initialize (Self, Database_Access (Database));
    end Initialize;
@@ -328,6 +330,16 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
       return Self.State = Active;
    end Is_Active;
 
+   --------------
+   -- Is_Valid --
+   --------------
+
+   overriding function Is_Valid
+    (Self : not null access Firebird_Query) return Boolean is
+   begin
+      return Self.Is_Valid;
+   end Is_Valid;
+
    ----------
    -- Next --
    ----------
@@ -349,6 +361,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
       if Result > 0 then
          if Result = 100 then
+            Self.Is_Valid := False;
             return False;
 
          else
@@ -358,11 +371,13 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
 
             begin
                if Check_For_Error (Self.Status'Access, EC) then
+                  Self.Is_Valid := False;
                   return False;
 
                else
                   Self.Error := Get_Error (Self.Status'Access);
                   Self.Finish;
+                  Self.Is_Valid := False;
 
                   return False;
                end if;
@@ -370,6 +385,7 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Queries is
          end if;
 
       else
+         Self.Is_Valid := True;
          return True;
       end if;
    end Next;

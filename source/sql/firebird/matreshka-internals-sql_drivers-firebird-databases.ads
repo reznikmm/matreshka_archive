@@ -106,7 +106,7 @@ private
 
    overriding function Open
     (Self    : not null access Firebird_Database;
-     Options : League.Strings.Universal_String) return Boolean;
+     Options : SQL.Options.SQL_Options) return Boolean;
 
    procedure Check_Result
     (Self   : not null access Firebird_Database;

@@ -213,20 +213,25 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
    overriding function Open
     (Self    : not null access Firebird_Database;
-     Options : League.Strings.Universal_String) return Boolean
+     Options : SQL.Options.SQL_Options) return Boolean 
    is
       use type Isc_Result_Code;
       use League.Strings;
 
       Result : Isc_Result_Code := 0;
 
+      Database_Name : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("database");
+      Password_Name : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("password");
+      User_Name     : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String ("user");
+
       function Get_User     return League.Strings.Universal_String;
       function Get_Password return League.Strings.Universal_String;
       function Get_Database return Isc_String;
       procedure Create_Codec;
 
-      Pwd_Separator : constant Natural := Options.Index ('/');
-      DB_Separator  : constant Natural := Options.Index ('@');
       Charset       : constant League.Strings.Universal_String :=
         League.Strings.To_Universal_String ("UTF8");        
 
@@ -304,22 +309,9 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
          Empty : constant Isc_String (1 .. 0) := (others => Interfaces.C.nul);
 
       begin
-         if DB_Separator /= 0 then
-            declare
-               V_Item : constant Ada.Streams.Stream_Element_Array :=
-                 ASCII_Codec.Encode
-                   (Options.Slice (DB_Separator + 1, Options.Length)).
-                 To_Stream_Element_Array;
-
-               S_Item : String (1 .. V_Item'Length);
-
-               for S_Item'Address use V_Item'Address;
-               pragma Import (Ada, S_Item);
-
-            begin
-               return Interfaces.C.To_C (S_Item);
-            end;
-
+         if Options.Is_Set (Database_Name) then
+            return Interfaces.C.To_C
+              (Options.Get (Database_Name).To_UTF_8_String);
          else
             return Empty;
          end if;
@@ -331,14 +323,8 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       function Get_Password return League.Strings.Universal_String is
       begin
-         if Pwd_Separator /= 0 then
-            if DB_Separator /= 0 then
-               return Options.Slice (Pwd_Separator + 1, DB_Separator - 1);
-
-            else
-               return Options.Slice (Pwd_Separator + 1, Options.Length);
-            end if;
-
+         if Options.Is_Set (Password_Name) then
+            return Options.Get (Password_Name);
          else
             return League.Strings.Empty_Universal_String;
          end if;
@@ -350,14 +336,10 @@ package body Matreshka.Internals.SQL_Drivers.Firebird.Databases is
 
       function Get_User return League.Strings.Universal_String is
       begin
-         if Pwd_Separator /= 0 then
-            return Options.Slice (1, Pwd_Separator - 1);
-
-         elsif DB_Separator /= 0 then
-            return Options.Slice (1, DB_Separator - 1);
-
+         if Options.Is_Set (User_Name) then
+            return Options.Get (User_Name);
          else
-            return Options;
+            return League.Strings.Empty_Universal_String;
          end if;
       end Get_User;
 
