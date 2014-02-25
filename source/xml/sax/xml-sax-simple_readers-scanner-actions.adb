@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -815,11 +815,12 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
 
    begin
       if Self.External_Subset_Entity /= No_Entity
+        and Self.Validation.Load_DTD
         and not Self.External_Subset_Done
       then
-         --  External subset is declared and not processed, push it into the
-         --  scanner stack to process before report of close of document type
-         --  declaration.
+         --  External subset is declared, need to be loaded and not processed,
+         --  push it into the scanner stack to process before reporting of
+         --  close of document type declaration.
 
          Self.External_Subset_Done := True;
          YY_Move_Backward (Self);

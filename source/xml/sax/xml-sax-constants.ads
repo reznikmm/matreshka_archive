@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,5 +57,8 @@ package XML.SAX.Constants is
    Validation_Feature         : constant League.Strings.Universal_String
     := League.Strings.To_Universal_String
         ("http://xml.org/sax/features/validation");
+   Load_External_DTD_Feature  : constant League.Strings.Universal_String
+    := League.Strings.To_Universal_String
+        ("http://apache.org/xml/features/nonvalidating/load-external-dtd");
 
 end XML.SAX.Constants;

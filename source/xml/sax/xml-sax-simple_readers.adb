@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -199,6 +199,9 @@ package body XML.SAX.Simple_Readers is
 
       elsif Name = XML.SAX.Constants.Validation_Feature then
          return Self.Configuration.Enable_Validation;
+
+      elsif Name = XML.SAX.Constants.Load_External_DTD_Feature then
+         return Self.Configuration.Load_External_DTD;
       end if;
 
       raise Constraint_Error;
@@ -237,7 +240,10 @@ package body XML.SAX.Simple_Readers is
    overriding function Has_Feature
     (Self : not null access constant SAX_Simple_Reader;
      Name : League.Strings.Universal_String)
-       return Boolean is
+       return Boolean
+   is
+      pragma Unreferenced (Self);
+
    begin
       if Name = XML.SAX.Constants.Namespaces_Feature then
          return True;
@@ -246,6 +252,9 @@ package body XML.SAX.Simple_Readers is
          return True;
 
       elsif Name = XML.SAX.Constants.Validation_Feature then
+         return True;
+
+      elsif Name = XML.SAX.Constants.Load_External_DTD_Feature then
          return True;
 
       else
@@ -387,7 +396,14 @@ package body XML.SAX.Simple_Readers is
       Self.Namespaces.Enabled  := Self.Configuration.Enable_Namespaces;
       Self.Namespaces.Prefixes := Self.Configuration.Enable_Prefixes;
       Self.Validation.Enabled  := Self.Configuration.Enable_Validation;
+      Self.Validation.Load_DTD := Self.Configuration.Load_External_DTD;
       Self.Validation.Has_DTD  := False;
+
+      if Self.Validation.Enabled then
+         --  This feature is always on when validation is on.
+
+         Self.Validation.Load_DTD := True;
+      end if;
 
       Callbacks.Call_Set_Document_Locator (Self.all);
       Self.Version := XML_1_0;
@@ -516,6 +532,9 @@ package body XML.SAX.Simple_Readers is
 
       elsif Name = XML.SAX.Constants.Validation_Feature then
          Self.Configuration.Enable_Validation := Value;
+
+      elsif Name = XML.SAX.Constants.Load_External_DTD_Feature then
+         Self.Configuration.Load_External_DTD := Value;
       end if;
    end Set_Feature;
 
