@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -119,6 +119,12 @@ package League.Strings is
     (Self : Universal_String'Class;
      Low  : Positive;
      High : Natural) return Universal_String;
+--   procedure Slice
+--    (Self : in out Universal_String'Class;
+--     Low  : Positive;
+--     High : Natural);
+   --  Returns slice of the string. Raises Constraint_Error when given indices
+   --  specifies non-empty and out of bounds range.
 
    procedure Slice
     (Self : in out Universal_String'Class; Low : Positive; High : Natural);
@@ -219,6 +225,44 @@ package League.Strings is
    --  Splits the string into substrings wherever Separator occurs, and returns
    --  the list of those strings. If Separator does not match anywhere in the
    --  string, returns a single-element list containing this string.
+
+   function Head
+    (Self  : Universal_String'Class;
+     Count : Natural) return Universal_String;
+--   procedure Head
+--    (Self  : in out Universal_String'Class;
+--     Count : Natural);
+   --  Returns specified number of starting characters of the string. Raises
+   --  Constraint_Error when length of the string is less then number of
+   --  requested characters.
+
+   function Tail
+    (Self  : Universal_String'Class;
+     Count : Natural) return Universal_String;
+--   procedure Tail
+--    (Self  : in out Universal_String'Class;
+--     Count : Natural);
+   --  Returns specified number of ending characters of the string. Raises
+   --  Constraint_Error when length of the string is less then number of
+   --  requested characters.
+
+   function Head_To
+    (Self : Universal_String'Class;
+     To   : Natural) return Universal_String renames Head;
+--   procedure Head_To
+--    (Self : in out Universal_String'Class;
+--     To   : Natural);
+   --  Returns leading characters up to and including specified position.
+   --  Raises Constraint_Error when length of the string is less than requested
+   --  position.
+
+   function Tail_From
+    (Self : Universal_String'Class;
+     From : Positive) return Universal_String;
+--   procedure Tail_From
+--    (Self : in out Universal_String'Class;
+--     From : Positive);
+   --  Returns tailing characters starting from the given position.
 
    function Index
     (Self      : Universal_String'Class;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -960,6 +960,25 @@ package body League.Strings is
    begin
       return Hash (Self.Data);
    end Hash;
+
+   ----------
+   -- Head --
+   ----------
+
+   function Head
+    (Self  : Universal_String'Class;
+     Count : Natural) return Universal_String is
+   begin
+      if Count > Self.Length then
+         raise Constraint_Error with "String is too small";
+
+      elsif Count = 0 then
+         return Empty_Universal_String;
+
+      else
+         return Self.Slice (1, Count);
+      end if;
+   end Head;
 
    -----------
    -- Index --
@@ -2019,6 +2038,41 @@ package body League.Strings is
    begin
       return Self.Starts_With (To_Universal_String (Pattern));
    end Starts_With;
+
+   ----------
+   -- Tail --
+   ----------
+
+   function Tail
+    (Self  : Universal_String'Class;
+     Count : Natural) return Universal_String is
+   begin
+      if Count > Self.Length then
+         raise Constraint_Error with "String is too small";
+
+      elsif Count = 0 then
+         return Empty_Universal_String;
+
+      else
+         return Self.Slice (Self.Length - Count + 1, Self.Length);
+      end if;
+   end Tail;
+
+   ---------------
+   -- Tail_From --
+   ---------------
+
+   function Tail_From
+    (Self : Universal_String'Class;
+     From : Positive) return Universal_String is
+   begin
+      if From > Self.Length then
+         return Empty_Universal_String;
+
+      else
+         return Self.Slice (From, Self.Length);
+      end if;
+   end Tail_From;
 
    -----------------
    -- To_Casefold --
