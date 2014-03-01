@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,37 +71,31 @@ package XML.SAX.Readers is
    type SAX_Reader is limited interface;
 
    not overriding function Content_Handler
-    (Self : not null access constant SAX_Reader)
-       return SAX_Content_Handler_Access is abstract;
+    (Self : SAX_Reader) return SAX_Content_Handler_Access is abstract;
    --  Returns the current content handler, or null if none has been
    --  registered.
 
    not overriding function Declaration_Handler
-    (Self : not null access constant SAX_Reader)
-       return SAX_Declaration_Handler_Access is abstract;
+    (Self : SAX_Reader) return SAX_Declaration_Handler_Access is abstract;
    --  Returns the current declaration handler, or null if has not been
    --  registered.
 
    not overriding function DTD_Handler
-    (Self : not null access constant SAX_Reader)
-       return SAX_DTD_Handler_Access is abstract;
+    (Self : SAX_Reader) return SAX_DTD_Handler_Access is abstract;
    --  Returns the current DTD handler, or null if none has been registered.
 
    not overriding function Entity_Resolver
-    (Self : not null access constant SAX_Reader)
-       return SAX_Entity_Resolver_Access is abstract;
+    (Self : SAX_Reader) return SAX_Entity_Resolver_Access is abstract;
    --  Returns the current entity resolver, or null if none has been
    --  registered.
 
    not overriding function Error_Handler
-    (Self : not null access constant SAX_Reader)
-       return SAX_Error_Handler_Access is abstract;
+    (Self : SAX_Reader) return SAX_Error_Handler_Access is abstract;
    --  Returns the current error handler, or null if none has been registered.
 
    not overriding function Feature
-    (Self : not null access constant SAX_Reader;
-     Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+    (Self : SAX_Reader;
+     Name : League.Strings.Universal_String) return Boolean is abstract;
    --  Look up the value of a feature flag. Returns value of the feature or
    --  false if feature is not recognized or not acceptable at this time.
    --
@@ -116,40 +110,38 @@ package XML.SAX.Readers is
    --  http://xml.org/sax/features/namespace-prefixes feature names.
 
    not overriding function Has_Feature
-    (Self : not null access constant SAX_Reader;
-     Name : League.Strings.Universal_String)
-       return Boolean is abstract;
+    (Self : SAX_Reader;
+     Name : League.Strings.Universal_String) return Boolean is abstract;
    --  Returns True if the reader has the feature called Name; otherwise
    --  returns False.
 
    not overriding function Lexical_Handler
-    (Self : not null access constant SAX_Reader)
-       return SAX_Lexical_Handler_Access is abstract;
+    (Self : SAX_Reader) return SAX_Lexical_Handler_Access is abstract;
    --  Returns the current lexical handler, or null if none has been
    --  registered.
 
    not overriding procedure Set_Content_Handler
-    (Self    : not null access SAX_Reader;
+    (Self    : in out SAX_Reader;
      Handler : SAX_Content_Handler_Access) is abstract;
 
    not overriding procedure Set_Declaration_Handler
-    (Self    : not null access SAX_Reader;
+    (Self    : in out SAX_Reader;
      Handler : SAX_Declaration_Handler_Access) is abstract;
 
    not overriding procedure Set_DTD_Handler
-    (Self    : not null access SAX_Reader;
+    (Self    : in out SAX_Reader;
      Handler : SAX_DTD_Handler_Access) is abstract;
 
    not overriding procedure Set_Entity_Resolver
-    (Self     : not null access SAX_Reader;
+    (Self     : in out SAX_Reader;
      Resolver : SAX_Entity_Resolver_Access) is abstract;
 
    not overriding procedure Set_Error_Handler
-    (Self    : not null access SAX_Reader;
+    (Self    : in out SAX_Reader;
      Handler : SAX_Error_Handler_Access) is abstract;
 
    not overriding procedure Set_Feature
-    (Self  : not null access SAX_Reader;
+    (Self  : in out SAX_Reader;
      Name  : League.Strings.Universal_String;
      Value : Boolean) is abstract;
    --  Set the value of a feature flag.
@@ -164,7 +156,7 @@ package XML.SAX.Readers is
    --  http://xml.org/sax/features/namespace-prefixes to false.
 
    not overriding procedure Set_Lexical_Handler
-    (Self    : not null access SAX_Reader;
+    (Self    : in out SAX_Reader;
      Handler : SAX_Lexical_Handler_Access) is abstract;
 
 end XML.SAX.Readers;
