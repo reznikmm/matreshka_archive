@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
+limited with League.JSON.Documents;
 limited with League.JSON.Values;
 private with Matreshka.JSON_Types;
 
@@ -116,6 +117,10 @@ package League.JSON.Arrays is
    function To_JSON_Value
     (Self : JSON_Array'Class) return League.JSON.Values.JSON_Value;
    --  Converts JSON_Array into JSON_Value.
+
+   function To_JSON_Document
+    (Self : JSON_Array'Class) return League.JSON.Documents.JSON_Document;
+   --  Converts JSON_Array into JSON_Document.
 
 private
 

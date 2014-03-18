@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.JSON.Documents.Internals;
 with League.JSON.Values.Internals;
+with Matreshka.JSON_Documents;
 
 package body League.JSON.Objects is
 
@@ -194,6 +196,23 @@ package body League.JSON.Objects is
          return League.JSON.Values.Empty_JSON_Value;
       end if;
    end Take;
+
+   ----------------------
+   -- To_JSON_Document --
+   ----------------------
+
+   function To_JSON_Document
+    (Self : JSON_Object'Class) return League.JSON.Documents.JSON_Document is
+   begin
+      Matreshka.JSON_Types.Reference (Self.Data);
+
+      return
+        League.JSON.Documents.Internals.Wrap
+         (new Matreshka.JSON_Documents.Shared_JSON_Document'
+               (Counter      => <>,
+                Array_Value  => null,
+                Object_Value => Self.Data));
+   end To_JSON_Document;
 
    -------------------
    -- To_JSON_Value --

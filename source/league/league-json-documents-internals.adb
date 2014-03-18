@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,91 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-private with Ada.Finalization;
 
-with League.String_Vectors;
-with League.Strings;
-limited with League.JSON.Documents;
-limited with League.JSON.Values;
-private with Matreshka.JSON_Types;
+package body League.JSON.Documents.Internals is
 
-package League.JSON.Objects is
+   ------------
+   -- Create --
+   ------------
 
-   pragma Preelaborate;
+   function Create
+    (Data : not null Matreshka.JSON_Documents.Shared_JSON_Document_Access)
+       return League.JSON.Documents.JSON_Document is
+   begin
+      Matreshka.JSON_Documents.Reference (Data);
 
-   type JSON_Object is tagged private;
-   pragma Preelaborable_Initialization (JSON_Object);
+      return (Ada.Finalization.Controlled with Data => Data);
+   end Create;
 
-   Empty_JSON_Object : constant JSON_Object;
+   --------------
+   -- Internal --
+   --------------
 
-   function Contains
-    (Self : JSON_Object'Class;
-     Key  : League.Strings.Universal_String) return Boolean;
-   --  Returns True if the object contains key Key.
+   function Internal
+    (Self : League.JSON.Documents.JSON_Document)
+       return not null Matreshka.JSON_Documents.Shared_JSON_Document_Access is
+   begin
+      return Self.Data;
+   end Internal;
 
-   procedure Insert
-    (Self  : in out JSON_Object'Class;
-     Key   : League.Strings.Universal_String;
-     Value : League.JSON.Values.JSON_Value);
-   --  Inserts a new item with the key key and a value of value.
-   --
-   --  If there is already an item with the key key then that item's value is
-   --  replaced with value.
+   ----------
+   -- Wrap --
+   ----------
 
-   function Is_Empty (Self : JSON_Object'Class) return Boolean;
-   --  Returns True if the object is empty.
+   function Wrap
+    (Data : not null Matreshka.JSON_Documents.Shared_JSON_Document_Access)
+       return League.JSON.Documents.JSON_Document is
+   begin
+      return (Ada.Finalization.Controlled with Data => Data);
+   end Wrap;
 
-   function Keys
-    (Self : JSON_Object'Class)
-       return League.String_Vectors.Universal_String_Vector;
-   --  Returns a list of all keys in this object.
-
-   function Length (Self : JSON_Object'Class) return Natural;
-   --  Returns the number of (key, value) pairs stored in the object.
-
-   procedure Remove
-    (Self : in out JSON_Object'Class;
-     Key  : League.Strings.Universal_String);
-   --  Removes key from the object.
-
-   function Take
-    (Self : in out JSON_Object'Class;
-     Key  : League.Strings.Universal_String)
-       return League.JSON.Values.JSON_Value;
-   --  Removes key from the object.
-   --
-   --  Returns a JSON_Value containing the value referenced by key. If key was
-   --  not contained in the object, the returned JSON_Value is Undefined.
-
-   function Value
-    (Self : JSON_Object'Class;
-     Key  : League.Strings.Universal_String)
-       return League.JSON.Values.JSON_Value;
-   --  Returns a JSON_Value representing the value for the key Key.
-   --
-   --  The returned JSON_Value is Undefined, if the key does not exist.
-
-   function To_JSON_Value
-    (Self : JSON_Object) return League.JSON.Values.JSON_Value;
-   --  Returns specified JSON_Object as JSON_Value.
-
-   function To_JSON_Document
-    (Self : JSON_Object'Class) return League.JSON.Documents.JSON_Document;
-   --  Creates JSON_Document from this JSON_Object.
-
-private
-
-   type JSON_Object is new Ada.Finalization.Controlled with record
-      Data : Matreshka.JSON_Types.Shared_JSON_Object_Access
-        := Matreshka.JSON_Types.Empty_Shared_JSON_Object'Access;
-   end record;
-
-   overriding procedure Adjust (Self : in out JSON_Object);
-
-   overriding procedure Finalize (Self : in out JSON_Object);
-
-   Empty_JSON_Object : constant JSON_Object
-     := (Ada.Finalization.Controlled with
-           Data => Matreshka.JSON_Types.Empty_Shared_JSON_Object'Access);
-
-end League.JSON.Objects;
+end League.JSON.Documents.Internals;

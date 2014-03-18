@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -397,44 +397,6 @@ package body League.JSON.Documents is
    begin
       return Matreshka.JSON_Generator.Generate (Self);
    end To_JSON;
-
-   ----------------------
-   -- To_JSON_Document --
-   ----------------------
-
-   function To_JSON_Document
-    (Value : League.JSON.Arrays.JSON_Array) return JSON_Document is
-   begin
-      return Self : constant JSON_Document
-        := (Ada.Finalization.Controlled with
-              Data => new Matreshka.JSON_Documents.Shared_JSON_Document'
-                           (Counter      => <>,
-                            Array_Value  =>
-                              League.JSON.Arrays.Internals.Internal (Value),
-                            Object_Value => null))
-      do
-         Matreshka.JSON_Types.Reference (Self.Data.Array_Value);
-      end return;
-   end To_JSON_Document;
-
-   ----------------------
-   -- To_JSON_Document --
-   ----------------------
-
-   function To_JSON_Document
-    (Value : League.JSON.Objects.JSON_Object) return JSON_Document is
-   begin
-      return Self : constant JSON_Document
-        := (Ada.Finalization.Controlled with
-              Data => new Matreshka.JSON_Documents.Shared_JSON_Document'
-                           (Counter      => <>,
-                            Array_Value  => null,
-                            Object_Value =>
-                              League.JSON.Objects.Internals.Internal (Value)))
-      do
-         Matreshka.JSON_Types.Reference (Self.Data.Object_Value);
-      end return;
-   end To_JSON_Document;
 
    ---------------
    -- To_Object --
