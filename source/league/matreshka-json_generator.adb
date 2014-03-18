@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -233,10 +233,10 @@ package body Matreshka.JSON_Generator is
 
    begin
       if Document.Is_Object then
-         Generate_Object (Document.To_Object);
+         Generate_Object (Document.To_JSON_Object);
 
       elsif Document.Is_Array then
-         Generate_Array (Document.To_Array);
+         Generate_Array (Document.To_JSON_Array);
       end if;
 
       return Result;

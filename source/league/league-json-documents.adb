@@ -341,21 +341,6 @@ package body League.JSON.Documents is
       Matreshka.JSON_Types.Reference (Self.Data.Object_Value);
    end Set_Object;
 
-   --------------
-   -- To_Array --
-   --------------
-
-   function To_Array
-    (Self : JSON_Document'Class) return League.JSON.Arrays.JSON_Array is
-   begin
-      if Self.Data.Array_Value /= null then
-         return League.JSON.Arrays.Internals.Create (Self.Data.Array_Value);
-
-      else
-         return League.JSON.Arrays.Empty_JSON_Array;
-      end if;
-   end To_Array;
-
    -------------
    -- To_JSON --
    -------------
@@ -398,11 +383,26 @@ package body League.JSON.Documents is
       return Matreshka.JSON_Generator.Generate (Self);
    end To_JSON;
 
-   ---------------
-   -- To_Object --
-   ---------------
+   -------------------
+   -- To_JSON_Array --
+   -------------------
 
-   function To_Object
+   function To_JSON_Array
+    (Self : JSON_Document'Class) return League.JSON.Arrays.JSON_Array is
+   begin
+      if Self.Data.Array_Value /= null then
+         return League.JSON.Arrays.Internals.Create (Self.Data.Array_Value);
+
+      else
+         return League.JSON.Arrays.Empty_JSON_Array;
+      end if;
+   end To_JSON_Array;
+
+   --------------------
+   -- To_JSON_Object --
+   --------------------
+
+   function To_JSON_Object
     (Self : JSON_Document'Class) return League.JSON.Objects.JSON_Object is
    begin
       if Self.Data.Object_Value /= null then
@@ -411,6 +411,6 @@ package body League.JSON.Documents is
       else
          return League.JSON.Objects.Empty_JSON_Object;
       end if;
-   end To_Object;
+   end To_JSON_Object;
 
 end League.JSON.Documents;

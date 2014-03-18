@@ -104,13 +104,13 @@ package League.JSON.Documents is
      Value : League.JSON.Objects.JSON_Object);
    --  Sets object as the main object of this document.
 
-   function To_Array
+   function To_JSON_Array
     (Self : JSON_Document'Class) return League.JSON.Arrays.JSON_Array;
    --  Returns the JSON_Array contained in the document.
    --
    --  Returns an empty array if the document contains an object.
 
-   function To_Object
+   function To_JSON_Object
     (Self : JSON_Document'Class) return League.JSON.Objects.JSON_Object;
    --  Returns the JSON_Object contained in the document.
    --
