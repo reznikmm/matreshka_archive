@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -240,22 +240,25 @@ package body XML.Templates.Processors is
                   Success   : Boolean := True;
 
                begin
-                  for Index in 1 .. Container.Length loop
-                     To_Holder (Container.Element (Index), Holder, Success);
+                  if not Container.Is_Empty then
+                     for Index in 1 .. Container.Length loop
+                        To_Holder (Container.Element (Index), Holder, Success);
 
-                     if not Success then
-                        return;
-                     end if;
+                        if not Success then
+                           return;
+                        end if;
 
-                     Self.Parameters.Include (Self.Object_Name, Holder);
-                     Self.Process_Stream (Self.Stream, Success);
+                        Self.Parameters.Include (Self.Object_Name, Holder);
+                        Self.Process_Stream (Self.Stream, Success);
 
-                     if not Success then
-                        return;
-                     end if;
-                  end loop;
+                        if not Success then
+                           return;
+                        end if;
+                     end loop;
 
-                  Self.Parameters.Delete (Self.Object_Name);
+                     Self.Parameters.Delete (Self.Object_Name);
+                  end if;
+
                   Self.Stream.Clear;
                end;
             end if;
