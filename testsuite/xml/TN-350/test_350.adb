@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,45 +41,63 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_xml.gpr";
+with Ada.Characters.Wide_Wide_Latin_1;
 
-project Matreshka_XML_Tests is
+with League.Holders.JSON_Arrays;
+with League.JSON.Arrays;
+with League.Strings;
 
-   for Main use
-    ("xmlconf_test.adb",
-     "xmlcatconf-driver.adb",
-     "test_126.adb",
-     "test_157.adb",
-     "test_20.adb",
-     "test_245.adb",
-     "test_26.adb",
-     "test_350.adb",
-     "test_41.adb",
-     "test_99.adb",
-     "simple_test.adb",
-     "escape_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-126",
-     "../testsuite/xml/TN-157",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-245",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/TN-350",
-     "../testsuite/xml/TN-41",
-     "../testsuite/xml/TN-99",
-     "../testsuite/xml/pretty_writer/simple_test",
-     "../testsuite/xml/pretty_writer/escape_test");
+with XML.SAX.Input_Sources.Strings;
+with XML.SAX.Output_Destinations.Strings;
+with XML.SAX.HTML5_Writers;
+with XML.SAX.Simple_Readers;
+with XML.Templates.Processors;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+procedure Test_350 is
 
-   package Builder is
-      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
-   end Builder;
+   use type League.Strings.Universal_String;
 
-end Matreshka_XML_Tests;
+   Source : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+       ("<html xmlns='http://www.w3.org/1999/xhtml'"
+            & " xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
+        & "<body>"
+        & "<ul>"
+        & "<mtl:for each='item in items'>"
+        & "<li>${item}</li>"
+        & "</mtl:for>"
+        & "</ul>"
+        & "</body>"
+        & "</html>");
+   Expected : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+       ("<!DOCTYPE html>"
+        & Ada.Characters.Wide_Wide_Latin_1.LF
+        & "<ul></ul>");
+
+   Input     : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Reader    : XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Processor : aliased XML.Templates.Processors.Template_Processor;
+   Writer    : aliased XML.SAX.HTML5_Writers.HTML5_Writer;
+   Output    : aliased
+     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
+
+begin
+   Reader.Set_Content_Handler (Processor'Unchecked_Access);
+   Reader.Set_Lexical_Handler (Processor'Unchecked_Access);
+   Processor.Set_Content_Handler (Writer'Unchecked_Access);
+   Processor.Set_Lexical_Handler (Writer'Unchecked_Access);
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
+
+   Processor.Set_Parameter
+     (League.Strings.To_Universal_String ("items"),
+      League.Holders.JSON_Arrays.To_Holder
+        (League.JSON.Arrays.Empty_JSON_Array));
+
+   Input.Set_String (Source);
+   Reader.Parse (Input'Unchecked_Access);
+
+   if Output.Get_Text /= Expected then
+      raise Program_Error;
+   end if;
+end Test_350;

@@ -82,6 +82,7 @@ endif
 	.objs/test_126 testsuite/xml/TN-126/
 	.objs/test_157
 	.objs/test_245
+	.objs/test_350
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --valid --not-wellformed --invalid
 	.objs/xmlconf_test testsuite/xml/xmlconf/xmlconf.xml --validating --valid --not-wellformed
 	.objs/xmlcatconf_test testsuite/xml/xmlcatconf/xmlcatconf.xml
