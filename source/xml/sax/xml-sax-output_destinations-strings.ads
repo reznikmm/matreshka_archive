@@ -46,42 +46,42 @@ package XML.SAX.Output_Destinations.Strings is
 
    pragma Preelaborate;
 
-   type SAX_String_Output_Destination is
+   type String_Output_Destination is
      limited new XML.SAX.Output_Destinations.SAX_Output_Destination
        with private;
 
    type SAX_Output_Destination is limited interface;
 
    function Get_Text
-    (Self : SAX_String_Output_Destination)
+    (Self : String_Output_Destination)
        return League.Strings.Universal_String;
    --  Returns accumulated text.
 
-   procedure Clear (Self : in out SAX_String_Output_Destination);
+   procedure Clear (Self : in out String_Output_Destination);
    --  Reset Self to empty state
 
    overriding function Get_Encoding
-    (Self : SAX_String_Output_Destination)
+    (Self : String_Output_Destination)
        return League.Strings.Universal_String;
    --  Returns character encoding used to convert Unicode character code point
    --  into the external items.
 
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Text : League.Strings.Universal_String);
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Text : Wide_Wide_String);
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Char : League.Characters.Universal_Character);
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Char : Wide_Wide_Character);
 
 private
 
-   type SAX_String_Output_Destination is
+   type String_Output_Destination is
      limited new XML.SAX.Output_Destinations.SAX_Output_Destination with record
       Text : League.Strings.Universal_String;
    end record;

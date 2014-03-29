@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,7 +48,7 @@ package body XML.SAX.Output_Destinations.Strings is
    -- Clear --
    -----------
 
-   procedure Clear (Self : in out SAX_String_Output_Destination) is
+   procedure Clear (Self : in out String_Output_Destination) is
    begin
       Self.Text.Clear;
    end Clear;
@@ -58,8 +58,7 @@ package body XML.SAX.Output_Destinations.Strings is
    ------------------
 
    overriding function Get_Encoding
-    (Self : SAX_String_Output_Destination)
-       return League.Strings.Universal_String
+    (Self : String_Output_Destination) return League.Strings.Universal_String
    is
       pragma Unreferenced (Self);
 
@@ -72,7 +71,7 @@ package body XML.SAX.Output_Destinations.Strings is
    --------------
 
    function Get_Text
-    (Self : SAX_String_Output_Destination)
+    (Self : String_Output_Destination)
        return League.Strings.Universal_String is
    begin
       return Self.Text;
@@ -83,7 +82,7 @@ package body XML.SAX.Output_Destinations.Strings is
    ---------
 
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Text : League.Strings.Universal_String) is
    begin
       Self.Text.Append (Text);
@@ -93,7 +92,7 @@ package body XML.SAX.Output_Destinations.Strings is
    -- Put --
    ---------
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Char : League.Characters.Universal_Character) is
    begin
       Self.Text.Append (Char);
@@ -104,7 +103,7 @@ package body XML.SAX.Output_Destinations.Strings is
    ---------
 
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Char : Wide_Wide_Character) is
    begin
       Self.Text.Append (Char);
@@ -115,7 +114,7 @@ package body XML.SAX.Output_Destinations.Strings is
    ---------
 
    overriding procedure Put
-    (Self : in out SAX_String_Output_Destination;
+    (Self : in out String_Output_Destination;
      Text : Wide_Wide_String) is
    begin
       Self.Text.Append (Text);
