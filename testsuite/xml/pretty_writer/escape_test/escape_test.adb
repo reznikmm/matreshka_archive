@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,15 +46,15 @@ with Ada.Wide_Wide_Text_IO;
 with League.Strings;
 
 with XML.SAX.Attributes;
-with XML.SAX.Output_Destinations.Strings;
+with XML.SAX.String_Output_Destinations;
 with XML.SAX.Pretty_Writers;
 
 use League.Strings;
 
 procedure Escape_Test is
    Output         : aliased
-     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
-   Writer         : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
+   Writer         : XML.SAX.Pretty_Writers.Pretty_Writer;
    OK             : Boolean := True;
    Attrs          : XML.SAX.Attributes.SAX_Attributes;
    NS_URI         : constant Universal_String := To_Universal_String ("");

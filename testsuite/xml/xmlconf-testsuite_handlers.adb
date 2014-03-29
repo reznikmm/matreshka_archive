@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,7 +50,7 @@ with League.String_Vectors;
 with Put_Line;
 with Read_File;
 with XML.SAX.Constants;
-with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.File_Input_Sources;
 with XML.SAX.Simple_Readers;
 with XMLConf.Canonical_Writers;
 with SAX_Events_Writers;
@@ -154,9 +154,8 @@ package body XMLConf.Testsuite_Handlers is
       --  SAX test.
 
       declare
-         Source    : aliased
-           XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-         Reader    : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+         Source    : aliased XML.SAX.File_Input_Sources.File_Input_Source;
+         Reader    : aliased XML.SAX.Simple_Readers.Simple_Reader;
          Writer    : aliased SAX_Events_Writers.SAX_Events_Writer;
          Expected  : League.Strings.Universal_String;
 
@@ -166,20 +165,20 @@ package body XMLConf.Testsuite_Handlers is
          if not Validating_Expected_Data.Is_Empty
            and then Ada.Directories.Exists
                      (Ada.Characters.Conversions.To_String
-                       (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                       (XML.SAX.File_Input_Sources.URI_To_File_Name
                          (Validating_Expected_Data).To_Wide_Wide_String))
          then
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
-                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                 (XML.SAX.File_Input_Sources.URI_To_File_Name
                    (Validating_Expected_Data).To_Wide_Wide_String));
 
          else
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
-                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                 (XML.SAX.File_Input_Sources.URI_To_File_Name
                    (Expected_Data).To_Wide_Wide_String));
          end if;
 
@@ -270,9 +269,8 @@ package body XMLConf.Testsuite_Handlers is
 
       if not Failed and not Output.Is_Empty then
          declare
-            Source   : aliased
-              XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-            Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+            Source   : aliased XML.SAX.File_Input_Sources.File_Input_Source;
+            Reader   : aliased XML.SAX.Simple_Readers.Simple_Reader;
             Writer   : aliased XMLConf.Canonical_Writers.Canonical_Writer;
             Expected : League.Strings.Universal_String;
 
@@ -280,7 +278,7 @@ package body XMLConf.Testsuite_Handlers is
             Expected :=
               Read_File
                (Ada.Characters.Conversions.To_String
-                 (XML.SAX.Input_Sources.Streams.Files.URI_To_File_Name
+                 (XML.SAX.File_Input_Sources.URI_To_File_Name
                    (Base_URI.Resolve
                      (League.IRIs.From_Universal_String
                        (Output)).To_Universal_String).To_Wide_Wide_String));

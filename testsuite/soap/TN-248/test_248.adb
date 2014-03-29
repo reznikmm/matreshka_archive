@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,8 +46,8 @@ with Ada.Unchecked_Deallocation;
 
 with League.Strings;
 with League.Text_Codecs;
-with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
 
 with Web_Services.SOAP.Message_Decoders;
 with Web_Services.SOAP.Message_Encoders;
@@ -71,10 +71,10 @@ procedure Test_248 is
    is
       use type League.Strings.Universal_String;
 
-      Source  : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+      Source  : aliased XML.SAX.String_Input_Sources.String_Input_Source;
       Decoder :
         aliased Web_Services.SOAP.Message_Decoders.SOAP_Message_Decoder;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
       Encoder : Web_Services.SOAP.Message_Encoders.SOAP_Message_Encoder;
       Codec   : League.Text_Codecs.Text_Codec :=
         League.Text_Codecs.Codec

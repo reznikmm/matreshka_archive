@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,15 +48,15 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
-with XML.SAX.Input_Sources.Strings;
 with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
 
 with Test_157_Handlers;
 
 procedure Test_157 is
-   Source  : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Source  : aliased XML.SAX.String_Input_Sources.String_Input_Source;
    Handler : aliased Test_157_Handlers.Handler;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
 
 begin
    Source.Set_String

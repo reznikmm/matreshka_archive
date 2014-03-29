@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,7 +60,7 @@ procedure Test_26 is
 
    Source   : aliased
      XML.SAX.Input_Sources.Streams.Test_Sockets.Test_Socket_Input_Source;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Reader   : aliased XML.SAX.Simple_Readers.Simple_Reader;
    Writer   : aliased SAX_Events_Writers.SAX_Events_Writer;
 
 begin

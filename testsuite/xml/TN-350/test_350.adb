@@ -47,10 +47,10 @@ with League.Holders.JSON_Arrays;
 with League.JSON.Arrays;
 with League.Strings;
 
-with XML.SAX.Input_Sources.Strings;
-with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.HTML5_Writers;
 with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
+with XML.SAX.String_Output_Destinations;
 with XML.Templates.Processors;
 
 procedure Test_350 is
@@ -75,12 +75,12 @@ procedure Test_350 is
             & Ada.Characters.Wide_Wide_Latin_1.LF
             & "<ul></ul>");
 
-   Input     : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
-   Reader    : XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Input     : aliased XML.SAX.String_Input_Sources.String_Input_Source;
+   Reader    : XML.SAX.Simple_Readers.Simple_Reader;
    Processor : aliased XML.Templates.Processors.Template_Processor;
    Writer    : aliased XML.SAX.HTML5_Writers.HTML5_Writer;
    Output    : aliased
-     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
 
 begin
    Reader.Set_Content_Handler (Processor'Unchecked_Access);

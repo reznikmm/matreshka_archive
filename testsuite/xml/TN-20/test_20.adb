@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,18 +47,20 @@
 with Ada.Command_Line;
 
 with League.Strings;
+
+with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
+
 with Put_Line;
 with Read_File;
 with SAX_Events_Writers;
-with XML.SAX.Input_Sources.Strings;
-with XML.SAX.Simple_Readers;
 
 procedure Test_20 is
 
    use type League.Strings.Universal_String;
 
-   Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
-   Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Source : aliased XML.SAX.String_Input_Sources.String_Input_Source;
+   Reader : aliased XML.SAX.Simple_Readers.Simple_Reader;
    Writer : aliased SAX_Events_Writers.SAX_Events_Writer;
 
    Root   : constant String := Ada.Command_Line.Argument (1);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,7 +49,7 @@ with Ada.Text_IO;
 
 with League.Application;
 with League.Strings;
-with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.File_Input_Sources;
 with XML.SAX.Simple_Readers;
 
 with XMLConf.Testsuite_Handlers;
@@ -64,8 +64,8 @@ procedure XMLConf_Test is
 
    Data       : constant League.Strings.Universal_String
      := League.Application.Arguments.Element (1);
-   Source     : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader     : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Source     : aliased XML.SAX.File_Input_Sources.File_Input_Source;
+   Reader     : aliased XML.SAX.Simple_Readers.Simple_Reader;
    Handler    : aliased XMLConf.Testsuite_Handlers.Testsuite_Handler;
    Enabled    : Test_Flags := (others => True);
    Validating : Boolean := False;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,15 +42,15 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Application;
-with XML.SAX.Input_Sources.Streams.Files;
+with XML.SAX.File_Input_Sources;
 with XML.SAX.Simple_Readers;
 
 with XMLCatConf.Testsuite_Handlers;
 
 procedure XMLCatConf.Driver is
-   Source   : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
+   Source   : aliased XML.SAX.File_Input_Sources.File_Input_Source;
    Handler  : aliased XMLCatConf.Testsuite_Handlers.Testsuite_Handler;
-   Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Reader   : aliased XML.SAX.Simple_Readers.Simple_Reader;
 
 begin
    Source.Open_By_File_Name (League.Application.Arguments.Element (1));

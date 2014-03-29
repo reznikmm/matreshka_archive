@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,20 +50,20 @@ with League.Characters;
 with League.Strings;
 with Put_Line;
 with Read_File;
-with XML.SAX.Input_Sources.Strings;
-with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
 with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
+with XML.SAX.String_Output_Destinations;
 
 procedure Test_126 is
 
    use type League.Strings.Universal_String;
 
-   Source : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
+   Source : aliased XML.SAX.String_Input_Sources.String_Input_Source;
    Output : aliased
-     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
-   Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
-   Writer : aliased XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
+   Reader : aliased XML.SAX.Simple_Readers.Simple_Reader;
+   Writer : aliased XML.SAX.Pretty_Writers.Pretty_Writer;
 
    Root     : constant String := Ada.Command_Line.Argument (1);
    Input    : constant League.Strings.Universal_String
