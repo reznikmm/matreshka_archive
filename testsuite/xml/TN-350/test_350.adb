@@ -59,21 +59,21 @@ procedure Test_350 is
 
    Source : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
-       ("<html xmlns='http://www.w3.org/1999/xhtml'"
+         ("<html xmlns='http://www.w3.org/1999/xhtml'"
             & " xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
-        & "<body>"
-        & "<ul>"
-        & "<mtl:for each='item in items'>"
-        & "<li>${item}</li>"
-        & "</mtl:for>"
-        & "</ul>"
-        & "</body>"
-        & "</html>");
+            & "<body>"
+            & "<ul>"
+            & "<mtl:for each='item in items'>"
+            & "<li>${item}</li>"
+            & "</mtl:for>"
+            & "</ul>"
+            & "</body>"
+            & "</html>");
    Expected : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
-       ("<!DOCTYPE html>"
-        & Ada.Characters.Wide_Wide_Latin_1.LF
-        & "<ul></ul>");
+         ("<!DOCTYPE html>"
+            & Ada.Characters.Wide_Wide_Latin_1.LF
+            & "<ul></ul>");
 
    Input     : aliased XML.SAX.Input_Sources.Strings.String_Input_Source;
    Reader    : XML.SAX.Simple_Readers.SAX_Simple_Reader;
