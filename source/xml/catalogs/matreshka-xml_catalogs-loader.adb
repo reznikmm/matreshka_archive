@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,7 +58,7 @@ package body Matreshka.XML_Catalogs.Loader is
    is
       Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
       Handler : aliased Matreshka.XML_Catalogs.Handlers.XML_Catalog_Handler;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
 
    begin
       Handler.Set_Default_Prefer_Mode (Prefer);
@@ -81,7 +81,7 @@ package body Matreshka.XML_Catalogs.Loader is
    is
       Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
       Handler : aliased Matreshka.XML_Catalogs.Handlers.XML_Catalog_Handler;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
 
    begin
       Handler.Set_Default_Prefer_Mode (Prefer);

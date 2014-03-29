@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,8 +46,8 @@ with Ada.Containers.Hashed_Sets;
 with League.Holders;
 with League.Strings;
 with XML.SAX.Attributes;
-with XML.SAX.Output_Destinations.Strings;
 with XML.SAX.Pretty_Writers;
+with XML.SAX.String_Output_Destinations;
 with XML.SAX.Writers;
 
 with AMF.CMOF.Associations;
@@ -781,8 +781,8 @@ is
    Element     : AMF.Elements.Element_Access;
    The_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    Output      : aliased
-     XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
-   Writer      : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
+   Writer      : XML.SAX.Pretty_Writers.Pretty_Writer;
 
 begin
    Writer.Set_Output_Destination (Output'Unchecked_Access);

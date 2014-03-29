@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,7 +64,7 @@ package body League.Translator is
       Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
       Handler :
         aliased Matreshka.Internals.Translator.XLIFF_Readers.XLIFF_Reader;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
 
    begin
       Source.Open_By_File_Name (File);

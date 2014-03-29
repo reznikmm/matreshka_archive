@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -76,7 +76,7 @@ package body Web_Services.SOAP.Dispatcher is
           Stream_Element_Array_Input_Source;
       Decoder : aliased
         Web_Services.SOAP.Message_Decoders.SOAP_Message_Decoder;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
       Input   : Web_Services.SOAP.Messages.SOAP_Message_Access;
       Output  : Web_Services.SOAP.Messages.SOAP_Message_Access;
       Handler : Web_Services.SOAP.Handlers.SOAP_Message_Handler;

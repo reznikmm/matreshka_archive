@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -160,7 +160,7 @@ package body AMF.Internals.XMI_Readers is
                Source   : XML.SAX.Input_Sources.SAX_Input_Source_Access;
                Resolver : aliased
                  AMF.Internals.XMI_Entity_Resolvers.XMI_Entity_Resolver;
-               Reader   : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+               Reader   : aliased XML.SAX.Simple_Readers.Simple_Reader;
                Handler  : aliased
                  AMF.Internals.XMI_Handlers.XMI_Handler (Self'Access);
                Success  : Boolean := True;

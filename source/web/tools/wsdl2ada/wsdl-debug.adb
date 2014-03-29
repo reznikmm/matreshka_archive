@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,7 +45,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with League.Strings;
 with XML.SAX.Attributes;
-with XML.SAX.Output_Destinations.Strings;
+with XML.SAX.String_Output_Destinations;
 with XML.SAX.Pretty_Writers;
 
 with WSDL.AST.Bindings;
@@ -83,8 +83,8 @@ package body WSDL.Debug is
      limited new WSDL.Visitors.WSDL_Visitor with
    record
       Output : aliased
-        XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
-      Writer : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+        XML.SAX.String_Output_Destinations.String_Output_Destination;
+      Writer : XML.SAX.Pretty_Writers.Pretty_Writer;
    end record;
 
    overriding procedure Enter_Binding

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,7 +46,7 @@ with Ada.Unchecked_Deallocation;
 with League.Strings;
 with League.Text_Codecs;
 with XML.SAX.Attributes;
-with XML.SAX.Output_Destinations.Strings;
+with XML.SAX.String_Output_Destinations;
 with XML.SAX.Pretty_Writers;
 with XML.SAX.Writers;
 
@@ -85,8 +85,8 @@ package body Web_Services.SOAP.Message_Encoders is
         := League.Text_Codecs.Codec
             (League.Strings.To_Universal_String ("utf-8"));
       Output  : aliased
-        XML.SAX.Output_Destinations.Strings.SAX_String_Output_Destination;
-      Writer  : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
+        XML.SAX.String_Output_Destinations.String_Output_Destination;
+      Writer  : XML.SAX.Pretty_Writers.Pretty_Writer;
       Encoder :
         Web_Services.SOAP.Payloads.Encoders.SOAP_Payload_Encoder_Access;
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,16 +41,15 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
 with League.Text_Codecs;
+
+with XML.SAX.Input_Sources.Streams.Element_Arrays;
+with XML.SAX.Simple_Readers;
 
 with Web_Services.SOAP.Constants;
 with Web_Services.SOAP.Message_Decoders;
 with Web_Services.SOAP.Message_Encoders;
 with Web_Services.SOAP.Modules.Registry;
-
-with XML.SAX.Input_Sources.Streams.Element_Arrays;
-with XML.SAX.Simple_Readers;
 
 package body Web_Services.SOAP.Clients is
 
@@ -160,7 +159,8 @@ package body Web_Services.SOAP.Clients is
           Stream_Element_Array_Input_Source;
       Decoder : aliased
         Web_Services.SOAP.Message_Decoders.SOAP_Message_Decoder;
-      Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
+
    begin
       --  Parse request data.
 
