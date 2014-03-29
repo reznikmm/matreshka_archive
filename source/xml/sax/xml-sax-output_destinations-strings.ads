@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,7 +47,8 @@ package XML.SAX.Output_Destinations.Strings is
    pragma Preelaborate;
 
    type SAX_String_Output_Destination is
-     limited new XML.SAX.Output_Destinations.SAX_Output_Destination with private;
+     limited new XML.SAX.Output_Destinations.SAX_Output_Destination
+       with private;
 
    type SAX_Output_Destination is limited interface;
 
