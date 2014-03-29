@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,7 +47,7 @@
 private package XML.SAX.Simple_Readers.Analyzer is
 
    procedure Analyze_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class);
+    (Self : in out Simple_Reader'Class);
    --  Analyzes document type declaration.
    --  XXX It will report declarations of notations, entities, elements and
    --  attributes in right order.

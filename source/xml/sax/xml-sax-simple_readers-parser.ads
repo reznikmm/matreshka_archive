@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,7 +45,7 @@ pragma Ada_2012;
 
 private package XML.SAX.Simple_Readers.Parser is
 
-   procedure YYParse (Self : in out SAX_Simple_Reader);
+   procedure YYParse (Self : in out Simple_Reader);
    --  Parse XML document.
 
    procedure Initialize (State : in out Parser_State_Information);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -68,7 +68,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
 
 
    procedure Analyze_Attribute_Declaration
-    (Self        : in out SAX_Simple_Reader'Class;
+    (Self        : in out Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Constructor : not null access procedure
                     (Self      : in out Attribute_Table;
@@ -87,7 +87,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------
 
    procedure Analyze_Attribute_Declaration
-    (Self        : in out SAX_Simple_Reader'Class;
+    (Self        : in out Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Constructor : not null access procedure
                     (Self      : in out Attribute_Table;
@@ -168,7 +168,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------
 
    procedure On_Any_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Set_Is_Any (Self.Elements, Self.Current_Element, True);
    end On_Any_Declaration;
@@ -178,7 +178,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------
 
    procedure On_Attribute_Default_Declaration
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Default : Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if not Self.Attribute_Redefined then
@@ -191,7 +191,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------
 
    procedure On_CDATA_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_CDATA_Attribute'Access);
@@ -201,7 +201,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_CDATA_Close --
    --------------------
 
-   procedure On_CDATA_Close (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_CDATA_Close (Self : in out Simple_Reader'Class) is
    begin
       Callbacks.Call_End_CDATA (Self);
    end On_CDATA_Close;
@@ -210,7 +210,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_CDATA_Open --
    -------------------
 
-   procedure On_CDATA_Open (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_CDATA_Open (Self : in out Simple_Reader'Class) is
    begin
       Callbacks.Call_Start_CDATA (Self);
    end On_CDATA_Open;
@@ -220,7 +220,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------
 
    procedure On_Character_Data
-    (Self          : in out SAX_Simple_Reader'Class;
+    (Self          : in out Simple_Reader'Class;
      Text          : not null Matreshka.Internals.Strings.Shared_String_Access;
      Is_Whitespace : Boolean)
    is
@@ -257,7 +257,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Element_Attribute
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier;
      Value  : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -298,7 +298,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------
 
    procedure On_Element_Attribute_Name
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Normalize_Value   := False;
@@ -330,7 +330,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Empty_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Set_Is_Empty (Self.Elements, Self.Current_Element, True);
    end On_Empty_Declaration;
@@ -339,7 +339,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_Empty_Element_Tag --
    --------------------------
 
-   procedure On_Empty_Element_Tag (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_Empty_Element_Tag (Self : in out Simple_Reader'Class) is
    begin
       On_Start_Tag (Self);
 
@@ -355,7 +355,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_End_Of_Document --
    ------------------------
 
-   procedure On_End_Of_Document (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_End_Of_Document (Self : in out Simple_Reader'Class) is
    begin
       Callbacks.Call_End_Document (Self);
    end On_End_Of_Document;
@@ -365,7 +365,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------------
 
    procedure On_End_Of_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Analyzer.Analyze_Document_Type_Declaration (Self);
       Callbacks.Call_End_DTD (Self);
@@ -378,7 +378,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------
 
    procedure On_End_Tag
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier)
    is
 
@@ -444,7 +444,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_Entities_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -456,7 +456,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Entity_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -468,7 +468,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------------
 
    procedure On_Enumeration_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Notation_Attribute := False;
@@ -481,7 +481,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------------
 
    procedure On_Fixed_Attribute_Default_Declaration
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Default : Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if not Self.Attribute_Redefined then
@@ -495,7 +495,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------
 
    procedure On_General_Entity_Declaration
-    (Self        : in out SAX_Simple_Reader'Class;
+    (Self        : in out Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String;
@@ -577,7 +577,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------
 
    procedure On_Id_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_Id_Attribute'Access);
@@ -623,7 +623,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------
 
    procedure On_IdRef_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration (Self, Symbol, New_IdRef_Attribute'Access);
@@ -634,7 +634,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_IdRefs_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -646,7 +646,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------------------------------------
 
    procedure On_Implied_Attribute_Default_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       if not Self.Attribute_Redefined then
          Set_Is_Implied (Self.Attributes, Self.Current_Attribute, True);
@@ -658,7 +658,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ----------------------------------
 
    procedure On_Mixed_Content_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Is_Any : Boolean) is
    begin
       Set_Is_Mixed_Content (Self.Elements, Self.Current_Element, True);
@@ -687,7 +687,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------------------------
 
    procedure On_Name_In_Mixed_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Set_Has_Children (Self.Elements, Self.Current_Element, True);
    end On_Name_In_Mixed_Content_Declaration;
@@ -697,7 +697,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------
 
    procedure On_NmToken_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -709,7 +709,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_NmTokens_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Analyze_Attribute_Declaration
@@ -721,7 +721,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_No_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       if Self.Validation.Enabled then
          --  Document doesn't have document type declaration.
@@ -746,7 +746,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ---------------------------------------
 
    procedure On_Notation_Attribute_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Notation_Attribute := True;
@@ -759,7 +759,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------
 
    procedure On_Notation_Declaration
-    (Self      : in out SAX_Simple_Reader'Class;
+    (Self      : in out Simple_Reader'Class;
      Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      System_Id : not null Matreshka.Internals.Strings.Shared_String_Access)
@@ -796,7 +796,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------
 
    procedure On_Open_Of_Tag
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       --  Save name of element and resolve it.
@@ -810,7 +810,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Parameter_Entity_Declaration
-    (Self        : in out SAX_Simple_Reader'Class;
+    (Self        : in out Simple_Reader'Class;
      Symbol      : Matreshka.Internals.XML.Symbol_Identifier;
      Is_External : Boolean;
      Value       : League.Strings.Universal_String)
@@ -876,7 +876,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------
 
    procedure On_Processing_Instruction
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -941,7 +941,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -----------------------------------------------
 
    procedure On_Required_Attribute_Default_Declaration
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       if not Self.Attribute_Redefined then
          Set_Is_Required (Self.Attributes, Self.Current_Attribute, True);
@@ -953,7 +953,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------
 
    procedure On_Standalone
-    (Self : in out SAX_Simple_Reader'Class;
+    (Self : in out Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       if Text.Unused = 2
@@ -982,7 +982,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------------------------
 
    procedure On_Start_Of_Attribute_List_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Symbol_Identifier) is
    begin
       Self.Current_Element := Element (Self.Symbols, Symbol);
@@ -1031,7 +1031,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    --------------------------
 
    procedure On_Start_Of_Document
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Callbacks.Call_Start_Document (Self);
    end On_Start_Of_Document;
@@ -1041,7 +1041,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------------
 
    procedure On_Start_Of_Document_Type_Declaration
-    (Self     : in out SAX_Simple_Reader'Class;
+    (Self     : in out Simple_Reader'Class;
      Name     : Matreshka.Internals.XML.Symbol_Identifier;
      External : Boolean) is
    begin
@@ -1075,7 +1075,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------------------
 
    procedure On_Start_Of_Element_Declaration
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Symbol : Matreshka.Internals.XML.Symbol_Identifier) is
    begin
       Self.Current_Element := Element (Self.Symbols, Symbol);
@@ -1110,7 +1110,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -- On_Start_Tag --
    ------------------
 
-   procedure On_Start_Tag (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_Start_Tag (Self : in out Simple_Reader'Class) is
 
       procedure Convert;
       --  Converts internal set of element's attributes into user visible set.
@@ -1631,7 +1631,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    -------------------------
 
    procedure On_Text_Declaration
-    (Self     : in out SAX_Simple_Reader'Class;
+    (Self     : in out Simple_Reader'Class;
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is
@@ -1698,7 +1698,7 @@ package body XML.SAX.Simple_Readers.Parser.Actions is
    ------------------------
 
    procedure On_XML_Declaration
-    (Self     : in out SAX_Simple_Reader'Class;
+    (Self     : in out Simple_Reader'Class;
      Version  : not null Matreshka.Internals.Strings.Shared_String_Access;
      Encoding : not null Matreshka.Internals.Strings.Shared_String_Access)
    is

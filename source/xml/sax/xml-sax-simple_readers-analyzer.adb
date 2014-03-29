@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,7 +55,7 @@ package body XML.SAX.Simple_Readers.Analyzer is
    ---------------------------------------
 
    procedure Analyze_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class)
+    (Self : in out Simple_Reader'Class)
    is
       Current         : Entity_Identifier;
       Current_Element : Element_Identifier;

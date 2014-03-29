@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -55,7 +55,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ---------------------
 
    procedure Call_Characters
-    (Self : in out SAX_Simple_Reader'Class;
+    (Self : in out Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Content_Handler.Characters
@@ -78,7 +78,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------
 
    procedure Call_Comment
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Comment : League.Strings.Universal_String) is
    begin
       Self.Lexical_Handler.Comment (Comment, Self.Continue);
@@ -99,7 +99,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Call_End_CDATA --
    --------------------
 
-   procedure Call_End_CDATA (Self : in out SAX_Simple_Reader'Class) is
+   procedure Call_End_CDATA (Self : in out Simple_Reader'Class) is
    begin
       Self.Lexical_Handler.End_CDATA (Self.Continue);
 
@@ -120,7 +120,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Call_End_Document --
    -----------------------
 
-   procedure Call_End_Document (Self : in out SAX_Simple_Reader'Class) is
+   procedure Call_End_Document (Self : in out Simple_Reader'Class) is
    begin
       Self.Content_Handler.End_Document (Self.Continue);
 
@@ -140,7 +140,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Call_End_DTD --
    ------------------
 
-   procedure Call_End_DTD (Self : in out SAX_Simple_Reader'Class) is
+   procedure Call_End_DTD (Self : in out Simple_Reader'Class) is
    begin
       Self.Lexical_Handler.End_DTD (Self.Continue);
 
@@ -161,7 +161,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------------
 
    procedure Call_End_Element
-    (Self           : in out SAX_Simple_Reader'Class;
+    (Self           : in out Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -192,7 +192,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -----------------------------
 
    procedure Call_End_Prefix_Mapping
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Prefix : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Content_Handler.End_Prefix_Mapping
@@ -216,7 +216,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------
 
    procedure Call_Error
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Self.Error_Handler.Error
@@ -245,7 +245,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_External_Entity_Declaration
-    (Self      : in out SAX_Simple_Reader'Class;
+    (Self      : in out Simple_Reader'Class;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String) is
@@ -270,7 +270,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ----------------------
 
    procedure Call_Fatal_Error
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Self.Error_Handler.Fatal_Error
@@ -300,7 +300,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Ignorable_Whitespace
-    (Self : in out SAX_Simple_Reader'Class;
+    (Self : in out Simple_Reader'Class;
      Text : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
       Self.Content_Handler.Ignorable_Whitespace
@@ -323,7 +323,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_Internal_Entity_Declaration
-    (Self  : in out SAX_Simple_Reader'Class;
+    (Self  : in out Simple_Reader'Class;
      Name  : League.Strings.Universal_String;
      Value : League.Strings.Universal_String) is
    begin
@@ -347,7 +347,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Notation_Declaration
-    (Self      : in out SAX_Simple_Reader'Class;
+    (Self      : in out Simple_Reader'Class;
      Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      System_Id : not null Matreshka.Internals.Strings.Shared_String_Access) is
@@ -376,7 +376,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ---------------------------------
 
    procedure Call_Processing_Instruction
-    (Self   : in out SAX_Simple_Reader'Class;
+    (Self   : in out Simple_Reader'Class;
      Target : Matreshka.Internals.XML.Symbol_Identifier;
      Data   : not null Matreshka.Internals.Strings.Shared_String_Access) is
    begin
@@ -403,7 +403,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------
 
    procedure Call_Resolve_Entity
-    (Self      : in out SAX_Simple_Reader'Class;
+    (Self      : in out Simple_Reader'Class;
      Entity    : Matreshka.Internals.XML.Entity_Identifier;
      Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      Base_URI  : not null Matreshka.Internals.Strings.Shared_String_Access;
@@ -496,7 +496,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Set_Document_Locator
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       Self.Content_Handler.Set_Document_Locator
        (XML.SAX.Locators.Internals.Create
@@ -515,7 +515,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Call_Start_CDATA --
    ----------------------
 
-   procedure Call_Start_CDATA (Self : in out SAX_Simple_Reader'Class) is
+   procedure Call_Start_CDATA (Self : in out Simple_Reader'Class) is
    begin
       Self.Lexical_Handler.Start_CDATA (Self.Continue);
 
@@ -536,7 +536,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -- Call_Start_Document --
    -------------------------
 
-   procedure Call_Start_Document (Self : in out SAX_Simple_Reader'Class) is
+   procedure Call_Start_Document (Self : in out Simple_Reader'Class) is
    begin
       Self.Content_Handler.Start_Document (Self.Continue);
 
@@ -557,7 +557,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------
 
    procedure Call_Start_DTD
-    (Self      : in out SAX_Simple_Reader'Class;
+    (Self      : in out Simple_Reader'Class;
      Name      : Matreshka.Internals.XML.Symbol_Identifier;
      Public_Id : not null Matreshka.Internals.Strings.Shared_String_Access;
      System_Id : not null Matreshka.Internals.Strings.Shared_String_Access) is
@@ -586,7 +586,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------------
 
    procedure Call_Start_Element
-    (Self           : in out SAX_Simple_Reader'Class;
+    (Self           : in out Simple_Reader'Class;
      Namespace_URI  :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Local_Name     :
@@ -619,7 +619,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    -------------------------------
 
    procedure Call_Start_Prefix_Mapping
-    (Self          : in out SAX_Simple_Reader'Class;
+    (Self          : in out Simple_Reader'Class;
      Prefix         :
        not null Matreshka.Internals.Strings.Shared_String_Access;
      Namespace_URI  :
@@ -647,7 +647,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    --------------------------------------
 
    procedure Call_Unparsed_Entity_Declaration
-    (Self          : in out SAX_Simple_Reader'Class;
+    (Self          : in out Simple_Reader'Class;
      Name          : League.Strings.Universal_String;
      Public_Id     : League.Strings.Universal_String;
      System_Id     : League.Strings.Universal_String;
@@ -673,7 +673,7 @@ package body XML.SAX.Simple_Readers.Callbacks is
    ------------------
 
    procedure Call_Warning
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Message : League.Strings.Universal_String) is
    begin
       Self.Error_Handler.Warning

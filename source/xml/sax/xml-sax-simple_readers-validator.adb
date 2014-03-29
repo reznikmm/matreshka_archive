@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package body XML.SAX.Simple_Readers.Validator is
    -- Validate_Element --
    ----------------------
 
-   procedure Validate_Element (Self : in out SAX_Simple_Reader'Class) is
+   procedure Validate_Element (Self : in out Simple_Reader'Class) is
       use type Ada.Containers.Count_Type;
 
    begin

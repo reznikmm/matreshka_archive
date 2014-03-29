@@ -77,24 +77,24 @@ with XML.SAX.Readers;
 
 package XML.SAX.Simple_Readers is
 
-   type SAX_Simple_Reader is
+   type Simple_Reader is
      limited new XML.SAX.Readers.SAX_Reader with private;
 
    not overriding procedure Parse
-    (Self   : in out SAX_Simple_Reader;
+    (Self   : in out Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
    --  Reads data from the specified input source till end of data is reached
    --  and parse it. Reader can be used to read data several times, each time
    --  it process separate XML document.
 
    not overriding procedure Set_Input_Source
-    (Self   : in out SAX_Simple_Reader;
+    (Self   : in out Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class);
    --  Sets input source to read data from it in incremental mode. It must be
    --  called once to set input source, and procedure Parse without input
    --  source parameter must be used to process chunks of data.
 
-   not overriding procedure Parse (Self : in out SAX_Simple_Reader);
+   not overriding procedure Parse (Self : in out Simple_Reader);
    --  Reads next chunk of data from the input source and parse it. Input
    --  source must be setted by call to procedure Set_Input_Source.
 
@@ -311,7 +311,7 @@ private
    type Simple_Shared_Locator is tagged;
    type Simple_Shared_Locator_Access is access all Simple_Shared_Locator'Class;
 
-   type SAX_Simple_Reader is new Ada.Finalization.Limited_Controlled
+   type Simple_Reader is new Ada.Finalization.Limited_Controlled
      and XML.SAX.Readers.SAX_Reader with
    record
       --  Handlers
@@ -442,71 +442,71 @@ private
       --  Expected name of the root element.
    end record;
 
-   overriding procedure Initialize (Self : in out SAX_Simple_Reader);
+   overriding procedure Initialize (Self : in out Simple_Reader);
    --  Initialize internal state of the reader.
 
-   overriding procedure Finalize (Self : in out SAX_Simple_Reader);
+   overriding procedure Finalize (Self : in out Simple_Reader);
    --  Finalize internal state of the reader.
 
    overriding function Content_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Content_Handler_Access;
 
    overriding function Declaration_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Declaration_Handler_Access;
 
    overriding function DTD_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_DTD_Handler_Access;
 
    overriding function Entity_Resolver
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Entity_Resolver_Access;
 
    overriding function Error_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Error_Handler_Access;
 
    overriding function Feature
-    (Self : SAX_Simple_Reader;
+    (Self : Simple_Reader;
      Name : League.Strings.Universal_String) return Boolean;
 
    overriding function Has_Feature
-    (Self : SAX_Simple_Reader;
+    (Self : Simple_Reader;
      Name : League.Strings.Universal_String) return Boolean;
 
    overriding function Lexical_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Lexical_Handler_Access;
 
    overriding procedure Set_Content_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Content_Handler_Access);
 
    overriding procedure Set_Declaration_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Declaration_Handler_Access);
 
    overriding procedure Set_DTD_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_DTD_Handler_Access);
 
    overriding procedure Set_Entity_Resolver
-    (Self     : in out SAX_Simple_Reader;
+    (Self     : in out Simple_Reader;
      Resolver : XML.SAX.Readers.SAX_Entity_Resolver_Access);
 
    overriding procedure Set_Error_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Error_Handler_Access);
 
    overriding procedure Set_Feature
-    (Self  : in out SAX_Simple_Reader;
+    (Self  : in out Simple_Reader;
      Name  : League.Strings.Universal_String;
      Value : Boolean);
 
    overriding procedure Set_Lexical_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Lexical_Handler_Access);
 
    -------------
@@ -515,7 +515,7 @@ private
 
    type Simple_Shared_Locator is
      new Matreshka.Internals.SAX_Locators.Shared_Abstract_Locator with record
-      Reader : access SAX_Simple_Reader'Class;
+      Reader : access Simple_Reader'Class;
    end record;
 
    overriding function Line

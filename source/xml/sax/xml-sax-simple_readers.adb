@@ -54,7 +54,7 @@ package body XML.SAX.Simple_Readers is
    use XML.SAX.Readers;
    use type League.Strings.Universal_String;
 
-   procedure Reset (Self : in out SAX_Simple_Reader);
+   procedure Reset (Self : in out Simple_Reader);
    --  Resets reader to start to read data from new input source.
 
    --------------
@@ -98,8 +98,7 @@ package body XML.SAX.Simple_Readers is
    ---------------------
 
    overriding function Content_Handler
-    (Self : SAX_Simple_Reader)
-       return XML.SAX.Readers.SAX_Content_Handler_Access is
+    (Self : Simple_Reader) return XML.SAX.Readers.SAX_Content_Handler_Access is
    begin
       if Self.Content_Handler = Default_Handler'Access then
          return null;
@@ -114,7 +113,7 @@ package body XML.SAX.Simple_Readers is
    -------------------------
 
    overriding function Declaration_Handler
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Declaration_Handler_Access is
    begin
       if Self.Declaration_Handler = Default_Handler'Access then
@@ -130,8 +129,7 @@ package body XML.SAX.Simple_Readers is
    -----------------
 
    overriding function DTD_Handler
-    (Self : SAX_Simple_Reader)
-       return XML.SAX.Readers.SAX_DTD_Handler_Access is
+    (Self : Simple_Reader) return XML.SAX.Readers.SAX_DTD_Handler_Access is
    begin
       if Self.DTD_Handler = Default_Handler'Access then
          return null;
@@ -160,7 +158,7 @@ package body XML.SAX.Simple_Readers is
    ---------------------
 
    overriding function Entity_Resolver
-    (Self : SAX_Simple_Reader)
+    (Self : Simple_Reader)
        return XML.SAX.Readers.SAX_Entity_Resolver_Access is
    begin
       return Self.Entity_Resolver;
@@ -171,8 +169,7 @@ package body XML.SAX.Simple_Readers is
    -------------------
 
    overriding function Error_Handler
-    (Self : SAX_Simple_Reader)
-       return XML.SAX.Readers.SAX_Error_Handler_Access is
+    (Self : Simple_Reader) return XML.SAX.Readers.SAX_Error_Handler_Access is
    begin
       if Self.Error_Handler = Default_Handler'Access then
          return null;
@@ -187,7 +184,7 @@ package body XML.SAX.Simple_Readers is
    -------------
 
    overriding function Feature
-    (Self : SAX_Simple_Reader;
+    (Self : Simple_Reader;
      Name : League.Strings.Universal_String)
        return Boolean is
    begin
@@ -211,7 +208,7 @@ package body XML.SAX.Simple_Readers is
    -- Finalize --
    --------------
 
-   overriding procedure Finalize (Self : in out SAX_Simple_Reader) is
+   overriding procedure Finalize (Self : in out Simple_Reader) is
       Locator : Matreshka.Internals.SAX_Locators.Shared_Locator_Access
         := Matreshka.Internals.SAX_Locators.Shared_Locator_Access
             (Self.Locator);
@@ -238,7 +235,7 @@ package body XML.SAX.Simple_Readers is
    -----------------
 
    overriding function Has_Feature
-    (Self : SAX_Simple_Reader;
+    (Self : Simple_Reader;
      Name : League.Strings.Universal_String) return Boolean
    is
       pragma Unreferenced (Self);
@@ -265,7 +262,7 @@ package body XML.SAX.Simple_Readers is
    -- Initialize --
    ----------------
 
-   overriding procedure Initialize (Self : in out SAX_Simple_Reader) is
+   overriding procedure Initialize (Self : in out Simple_Reader) is
    begin
       Matreshka.Internals.XML.Attributes.Initialize (Self.Attribute_Set);
       Matreshka.Internals.XML.Base_Scopes.Initialize (Self.Bases);
@@ -292,8 +289,7 @@ package body XML.SAX.Simple_Readers is
    ---------------------
 
    overriding function Lexical_Handler
-    (Self : SAX_Simple_Reader)
-       return XML.SAX.Readers.SAX_Lexical_Handler_Access is
+    (Self : Simple_Reader) return XML.SAX.Readers.SAX_Lexical_Handler_Access is
    begin
       if Self.Lexical_Handler = Default_Handler'Access then
          return null;
@@ -335,7 +331,7 @@ package body XML.SAX.Simple_Readers is
    -----------
 
    procedure Parse
-    (Self   : in out SAX_Simple_Reader;
+    (Self   : in out Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
       Self.Set_Input_Source (Source);
@@ -347,7 +343,7 @@ package body XML.SAX.Simple_Readers is
    -- Parse --
    -----------
 
-   not overriding procedure Parse (Self : in out SAX_Simple_Reader) is
+   not overriding procedure Parse (Self : in out Simple_Reader) is
    begin
       if Self.Configuration.Reset then
          Reset (Self);
@@ -375,7 +371,7 @@ package body XML.SAX.Simple_Readers is
    -- Reset --
    -----------
 
-   procedure Reset (Self : in out SAX_Simple_Reader) is
+   procedure Reset (Self : in out Simple_Reader) is
       use Matreshka.Internals.XML;
       use Matreshka.Internals.XML.Entity_Tables;
 
@@ -444,7 +440,7 @@ package body XML.SAX.Simple_Readers is
    -------------------------
 
    overriding procedure Set_Content_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Content_Handler_Access) is
    begin
       if Handler = null then
@@ -460,7 +456,7 @@ package body XML.SAX.Simple_Readers is
    -----------------------------
 
    overriding procedure Set_Declaration_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Declaration_Handler_Access) is
    begin
       if Handler = null then
@@ -476,7 +472,7 @@ package body XML.SAX.Simple_Readers is
    ---------------------
 
    overriding procedure Set_DTD_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_DTD_Handler_Access) is
    begin
       if Handler = null then
@@ -492,7 +488,7 @@ package body XML.SAX.Simple_Readers is
    -------------------------
 
    overriding procedure Set_Entity_Resolver
-    (Self     : in out SAX_Simple_Reader;
+    (Self     : in out Simple_Reader;
      Resolver : XML.SAX.Readers.SAX_Entity_Resolver_Access) is
    begin
       Self.Entity_Resolver := Resolver;
@@ -503,7 +499,7 @@ package body XML.SAX.Simple_Readers is
    -----------------------
 
    overriding procedure Set_Error_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Error_Handler_Access) is
    begin
       if Handler = null then
@@ -519,7 +515,7 @@ package body XML.SAX.Simple_Readers is
    -----------------
 
    overriding procedure Set_Feature
-    (Self  : in out SAX_Simple_Reader;
+    (Self  : in out Simple_Reader;
      Name  : League.Strings.Universal_String;
      Value : Boolean) is
    begin
@@ -542,7 +538,7 @@ package body XML.SAX.Simple_Readers is
    ----------------------
 
    not overriding procedure Set_Input_Source
-    (Self   : in out SAX_Simple_Reader;
+    (Self   : in out Simple_Reader;
      Source : not null access XML.SAX.Input_Sources.SAX_Input_Source'Class) is
    begin
       Self.Configuration.Source := Source.all'Unchecked_Access;
@@ -555,7 +551,7 @@ package body XML.SAX.Simple_Readers is
    -------------------------
 
    overriding procedure Set_Lexical_Handler
-    (Self    : in out SAX_Simple_Reader;
+    (Self    : in out Simple_Reader;
      Handler : XML.SAX.Readers.SAX_Lexical_Handler_Access) is
    begin
       if Handler = null then

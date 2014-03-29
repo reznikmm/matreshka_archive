@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,7 +46,7 @@
 
 package XML.SAX.Simple_Readers.Validator is
 
-   procedure Validate_Element (Self : in out SAX_Simple_Reader'Class);
+   procedure Validate_Element (Self : in out Simple_Reader'Class);
    --  Validate current element.
 
 end XML.SAX.Simple_Readers.Validator;

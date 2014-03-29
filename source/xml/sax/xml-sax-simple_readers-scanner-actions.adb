@@ -58,7 +58,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    use Matreshka.Internals.XML.Symbol_Tables;
 
    procedure Resolve_Symbol
-    (Self            : in out SAX_Simple_Reader'Class;
+    (Self            : in out Simple_Reader'Class;
      Trim_Left       : Natural;
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
@@ -75,7 +75,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --  Error when error is detected and Symbol when symbol is resolved.
 
    procedure Character_Reference_To_Code_Point
-    (Self  : in out SAX_Simple_Reader'Class;
+    (Self  : in out Simple_Reader'Class;
      Hex   : Boolean;
      Code  : out Code_Point;
      Valid : out Boolean);
@@ -88,7 +88,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure Character_Reference_To_Code_Point
-    (Self  : in out SAX_Simple_Reader'Class;
+    (Self  : in out Simple_Reader'Class;
      Hex   : Boolean;
      Code  : out Code_Point;
      Valid : out Boolean)
@@ -222,7 +222,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Asterisk_In_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -242,7 +242,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------
 
    function On_Attribute_Name_In_Attribute_List_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -281,7 +281,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Attribute_Type
-    (Self       : in out SAX_Simple_Reader'Class;
+    (Self       : in out Simple_Reader'Class;
      Type_Token : Token) return Token is
    begin
       --  Checks ithat whitespace before attribute type keyword is detected
@@ -308,7 +308,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure On_Attribute_Value_Character_Data
-    (Self : in out SAX_Simple_Reader'Class)
+    (Self : in out Simple_Reader'Class)
    is
       Next : Utf16_String_Index := Self.Scanner_State.YY_Base_Position;
       Code : Code_Point;
@@ -394,7 +394,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Attribute_Value_Close_Delimiter
-    (Self  : in out SAX_Simple_Reader'Class) return Boolean
+    (Self  : in out Simple_Reader'Class) return Boolean
    is
       --  NOTE: Attribute value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -439,7 +439,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Attribute_Value_In_XML_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Set_String_Internal
        (Item          => Self.YYLVal,
@@ -455,7 +455,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    function On_Attribute_Value_Open_Delimiter
-    (Self  : in out SAX_Simple_Reader'Class;
+    (Self  : in out Simple_Reader'Class;
      State : Interfaces.Unsigned_32) return Boolean is
    begin
       if not Self.Whitespace_Matched then
@@ -479,7 +479,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    procedure On_Attribute_Value_Open_Delimiter
-    (Self  : in out SAX_Simple_Reader'Class;
+    (Self  : in out Simple_Reader'Class;
      State : Interfaces.Unsigned_32) is
    begin
       --  NOTE: Attribute value delimiter can be ' or " and both are
@@ -506,7 +506,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_CDATA --
    --------------
 
-   function On_CDATA (Self : in out SAX_Simple_Reader'Class) return Token is
+   function On_CDATA (Self : in out Simple_Reader'Class) return Token is
    begin
       --  Segment of CDATA section (production [20]) optionally terminated by
       --  end of CDATA section mark (production [21]).
@@ -558,7 +558,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Character_Data
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       C : constant Code_Point
         := Code_Point
@@ -646,7 +646,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------
 
    function On_Character_Reference
-    (Self : in out SAX_Simple_Reader'Class;
+    (Self : in out Simple_Reader'Class;
      Hex  : Boolean) return Token
    is
       Code  : Code_Point;
@@ -694,7 +694,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------
 
    function On_Character_Reference_In_Attribute_Value
-    (Self : in out SAX_Simple_Reader'Class;
+    (Self : in out Simple_Reader'Class;
      Hex  : Boolean) return Boolean
    is
       Code  : Code_Point;
@@ -734,7 +734,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Close_Of_CDATA
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Pop_Start_Condition (Self);
 
@@ -746,7 +746,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Close_Of_Conditional_Section
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if Self.Conditional_Depth = 0 then
          Callbacks.Call_Fatal_Error
@@ -790,7 +790,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------
 
    function On_Close_Of_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -808,7 +808,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Close_Of_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Boolean
+    (Self : in out Simple_Reader'Class) return Boolean
    is
       Success : Boolean;
       pragma Unreferenced (Success);
@@ -854,7 +854,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------
 
    function On_Close_Of_Empty_Element_Tag
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -884,7 +884,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Close_Of_Processing_Instruction
-    (Self     : in out SAX_Simple_Reader'Class;
+    (Self     : in out Simple_Reader'Class;
      Is_Empty : Boolean) return Token is
    begin
       if Is_Empty then
@@ -916,7 +916,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------
 
    function On_Close_Of_Tag
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -946,7 +946,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------
 
    function On_Close_Of_XML_Or_Text_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Set_String_Internal
        (Item          => Self.YYLVal,
@@ -974,7 +974,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------------
 
    function On_Close_Parenthesis_In_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  Whitespace can't be present between close parenthesis and
       --  multiplicity indicator if any, so reset whitespace matching flag.
@@ -989,7 +989,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------------
 
    function On_Close_Parenthesis_In_Notation_Attribute
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  Resets whitespace matching flag.
 
@@ -1003,7 +1003,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------
 
    procedure On_Conditional_Section_Directive
-    (Self    : in out SAX_Simple_Reader'Class;
+    (Self    : in out Simple_Reader'Class;
      Include : Boolean) is
    begin
       --  XXX Syntax check must be added!
@@ -1021,7 +1021,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------
 
    procedure On_Content_Of_Ignore_Conditional_Section
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       YY_Move_Backward (Self);
       YY_Move_Backward (Self);
@@ -1033,7 +1033,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------
 
    function On_Default_Declaration
-    (Self          : in out SAX_Simple_Reader'Class;
+    (Self          : in out Simple_Reader'Class;
      State         : Interfaces.Unsigned_32;
      Default_Token : Token) return Token is
    begin
@@ -1062,7 +1062,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------
 
    function On_Element_Name_In_Attribute_List_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1101,7 +1101,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------
 
    function On_Encoding_Keyword
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -1123,7 +1123,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Entity_Value_Close_Delimiter
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       --  NOTE: Entity value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -1157,7 +1157,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Entity_Value_Open_Delimiter
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  NOTE: Entity value delimiter can be ' or " and both are
       --  represented as single UTF-16 code unit, thus expensive UTF-16
@@ -1195,7 +1195,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------------
 
    function On_General_Entity_Reference_In_Attribute_Value
-    (Self : in out SAX_Simple_Reader'Class) return Boolean
+    (Self : in out Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1352,7 +1352,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------
 
    function On_General_Entity_Reference_In_Document_Content
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1526,7 +1526,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------------
 
    function On_General_Entity_Reference_In_Entity_Value
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -1553,7 +1553,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------
 
    function On_Less_Than_Sign_In_Attribute_Value
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  [3.1 WFC: No < in Attribute Values]
       --
@@ -1575,7 +1575,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------------------
 
    function On_Name_In_Attribute_List_Declaration_Notation
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1615,7 +1615,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Name_In_Element_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1643,7 +1643,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_Name_In_Element_Declaration_Children
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1670,7 +1670,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------
 
    function On_Name_In_Element_Start_Tag
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1701,7 +1701,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------
 
    function On_Name_In_Entity_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1743,7 +1743,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------------
 
    function On_Name_In_Entity_Declaration_Notation
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1782,7 +1782,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_NDATA --
    --------------
 
-   function On_NDATA (Self : in out SAX_Simple_Reader'Class) return Token is
+   function On_NDATA (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          --  XXX This is recoverable error.
@@ -1807,7 +1807,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -- On_No_XML_Declaration --
    ---------------------------
 
-   procedure On_No_XML_Declaration (Self : in out SAX_Simple_Reader'Class) is
+   procedure On_No_XML_Declaration (Self : in out Simple_Reader'Class) is
    begin
       --  Move scanner's position back to the start of the document or external
       --  parsed entity. Entity's XML version and encoding are set up
@@ -1822,7 +1822,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------------
 
    function On_Open_Of_Attribute_List_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Enter_Start_Condition (Self, Tables.ATTLIST_NAME);
       Self.Whitespace_Matched := False;
@@ -1835,7 +1835,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------
 
    function On_Open_Of_CDATA
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Condition : Interfaces.Unsigned_32;
 
@@ -1864,7 +1864,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Conditional_Section
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  [XML [28b], [31]] Conditional section can be present only in external
       --  subset of DTD.
@@ -1898,7 +1898,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------------------
 
    function  On_Open_Of_Conditional_Section_Content
-    (Self : in out SAX_Simple_Reader'Class) return Boolean is
+    (Self : in out Simple_Reader'Class) return Boolean is
    begin
       --  XXX Syntax rules must be checked!
 
@@ -1938,7 +1938,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------
 
    function On_Open_Of_Document_Type_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1961,7 +1961,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Open_Of_Element_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Enter_Start_Condition (Self, Tables.ELEMENT_NAME);
 
@@ -1973,7 +1973,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------
 
    function On_Open_Of_End_Tag
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -1996,7 +1996,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------------
 
    function On_Open_Of_Internal_Subset
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       case Self.Version is
          when XML_1_0 =>
@@ -2014,7 +2014,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------------
 
    function On_Open_Of_Notation_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2037,7 +2037,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------
 
    function On_Open_Of_Processing_Instruction
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2062,7 +2062,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------------
 
    function On_Open_Of_Start_Tag
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qname_Error : Boolean;
 
@@ -2085,7 +2085,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_Open_Of_XML_Or_Text_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Self.Whitespace_Matched := False;
 
@@ -2100,7 +2100,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------------------
 
    function On_Open_Parenthesis_In_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       use type Interfaces.Unsigned_32;
 
@@ -2130,7 +2130,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------
 
    function On_Open_Parenthesis_In_Notation_Attribute
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       --  Checks ithat whitespace before open parenthesis is detected
       --  and report error when check fail.
@@ -2154,7 +2154,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Document_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2209,7 +2209,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Entity_Value
-    (Self : in out SAX_Simple_Reader'Class) return Boolean
+    (Self : in out Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2286,7 +2286,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------------------
 
    function On_Parameter_Entity_Reference_In_Markup_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Boolean
+    (Self : in out Simple_Reader'Class) return Boolean
    is
       Qualified_Name : Symbol_Identifier;
       Qname_Error    : Boolean;
@@ -2345,7 +2345,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------
 
    function On_Percent_Sign
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2369,7 +2369,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------------------
 
    function On_Plus_In_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2389,7 +2389,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_Public_Literal
-    (Self : in out SAX_Simple_Reader'Class) return Token
+    (Self : in out Simple_Reader'Class) return Token
    is
       Next         : Utf16_String_Index
         := Self.Scanner_State.YY_Base_Position + 1;
@@ -2479,7 +2479,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_Question_Mark_In_Content_Declaration
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2499,7 +2499,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------
 
    function On_Standalone_Keyword
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2521,7 +2521,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ----------------------------------------
 
    function On_System_Keyword_In_Document_Type
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Reset_Whitespace_Matched (Self);
       Push_And_Enter_Start_Condition
@@ -2535,7 +2535,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    function On_System_Keyword_In_Entity_Or_Notation
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Reset_Whitespace_Matched (Self);
       Push_Current_And_Enter_Start_Condition (Self, Tables.EXTERNAL_ID_SYS);
@@ -2548,7 +2548,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------
 
    function On_System_Literal
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2575,7 +2575,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -----------------------------
 
    function On_Unexpected_Character
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       Callbacks.Call_Fatal_Error
        (Self,
@@ -2589,7 +2589,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ------------------------
 
    function On_Version_Keyword
-    (Self : in out SAX_Simple_Reader'Class) return Token is
+    (Self : in out Simple_Reader'Class) return Token is
    begin
       if not Self.Whitespace_Matched then
          Callbacks.Call_Fatal_Error
@@ -2611,7 +2611,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    -------------------------------
 
    function On_Whitespace_In_Document
-    (Self : in out SAX_Simple_Reader'Class) return Boolean
+    (Self : in out Simple_Reader'Class) return Boolean
    is
       C : constant Code_Point
         := Code_Point
@@ -2655,7 +2655,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    ---------------------------------------------
 
    procedure On_Whitespace_In_Processing_Instruction
-    (Self : in out SAX_Simple_Reader'Class) is
+    (Self : in out Simple_Reader'Class) is
    begin
       --  Whitespace between processing instruction's target and data are
       --  required, so set flag which indicates their presence.
@@ -2676,7 +2676,7 @@ package body XML.SAX.Simple_Readers.Scanner.Actions is
    --------------------
 
    procedure Resolve_Symbol
-    (Self            : in out SAX_Simple_Reader'Class;
+    (Self            : in out Simple_Reader'Class;
      Trim_Left       : Natural;
      Trim_Right      : Natural;
      Trim_Whitespace : Boolean;
