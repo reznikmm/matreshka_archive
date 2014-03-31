@@ -63,7 +63,7 @@ procedure Test_126 is
    Output : aliased
      XML.SAX.String_Output_Destinations.String_Output_Destination;
    Reader : aliased XML.SAX.Simple_Readers.Simple_Reader;
-   Writer : aliased XML.SAX.Pretty_Writers.Pretty_Writer;
+   Writer : aliased XML.SAX.Pretty_Writers.XML_Pretty_Writer;
 
    Root     : constant String := Ada.Command_Line.Argument (1);
    Input    : constant League.Strings.Universal_String

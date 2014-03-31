@@ -54,7 +54,7 @@ use League.Strings;
 procedure Simple_Test is
    Output         : aliased
      XML.SAX.String_Output_Destinations.String_Output_Destination;
-   Writer         : XML.SAX.Pretty_Writers.Pretty_Writer;
+   Writer         : XML.SAX.Pretty_Writers.XML_Pretty_Writer;
    OK             : Boolean := True;
    Attrs          : XML.SAX.Attributes.SAX_Attributes;
    NS_URI         : constant Universal_String := To_Universal_String ("");
