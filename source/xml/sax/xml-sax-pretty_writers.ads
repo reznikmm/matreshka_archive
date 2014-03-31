@@ -58,104 +58,104 @@ package XML.SAX.Pretty_Writers is
 
    type XML_Version is (XML_1_0, XML_1_1);
 
-   type Pretty_Writer is limited new XML.SAX.Writers.SAX_Writer with private;
+   type XML_Pretty_Writer is limited new XML.SAX.Writers.SAX_Writer with private;
 
    not overriding procedure Set_Version
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Version : XML_Version);
 
    not overriding procedure Set_Offset
-    (Self   : in out Pretty_Writer;
+    (Self   : in out XML_Pretty_Writer;
      Offset : Natural);
    --  Sets offset for indentation.
 
    not overriding procedure Set_Value_Delimiter
-    (Self      : in out Pretty_Writer;
+    (Self      : in out XML_Pretty_Writer;
      Delimiter : League.Characters.Universal_Character);
    --  Sets value delimiter for attributes.
    --  '"' (apostrophe) is used by default
 
    procedure Set_Output_Destination
-    (Self   : in out Pretty_Writer'Class;
+    (Self   : in out XML_Pretty_Writer'Class;
      Output : not null SAX_Output_Destination_Access);
    --  Sets output destination to be used to output generated stream.
 
    overriding procedure Characters
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Comment
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure End_CDATA
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Success : in out Boolean);
 
    overriding procedure End_Document
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Success : in out Boolean);
 
    overriding procedure End_DTD
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Success : in out Boolean);
 
    overriding procedure End_Element
-    (Self           : in out Pretty_Writer;
+    (Self           : in out XML_Pretty_Writer;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean);
 
    overriding procedure End_Entity
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure End_Prefix_Mapping
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Prefix  : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String;
      Success : in out Boolean);
 
    overriding function Error_String
-    (Self : Pretty_Writer) return League.Strings.Universal_String;
+    (Self : XML_Pretty_Writer) return League.Strings.Universal_String;
 
    overriding procedure Ignorable_Whitespace
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Text    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Processing_Instruction
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Skipped_Entity
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Start_CDATA
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Success : in out Boolean);
 
    overriding procedure Start_Document
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Success : in out Boolean);
 
    overriding procedure Start_DTD
-    (Self      : in out Pretty_Writer;
+    (Self      : in out XML_Pretty_Writer;
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
      Success   : in out Boolean);
 
    overriding procedure Start_Element
-    (Self           : in out Pretty_Writer;
+    (Self           : in out XML_Pretty_Writer;
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
@@ -163,12 +163,12 @@ package XML.SAX.Pretty_Writers is
      Success        : in out Boolean);
 
    overriding procedure Start_Entity
-    (Self    : in out Pretty_Writer;
+    (Self    : in out XML_Pretty_Writer;
      Name    : League.Strings.Universal_String;
      Success : in out Boolean);
 
    overriding procedure Start_Prefix_Mapping
-    (Self          : in out Pretty_Writer;
+    (Self          : in out XML_Pretty_Writer;
      Prefix        : League.Strings.Universal_String
        := League.Strings.Empty_Universal_String;
      Namespace_URI : League.Strings.Universal_String;
@@ -205,7 +205,7 @@ private
    --  Merges namespaces declared for current element into the set of all
    --  namespaces.
 
-   type Pretty_Writer is limited new XML.SAX.Writers.SAX_Writer with record
+   type XML_Pretty_Writer is limited new XML.SAX.Writers.SAX_Writer with record
       Nesting      : Natural := 0;
       Version      : XML_Version := XML_1_0;
       Tag_Opened   : Boolean := False;
@@ -233,7 +233,7 @@ private
    end record;
 
    function Escape
-    (Self       : Pretty_Writer;
+    (Self       : XML_Pretty_Writer;
      Text       : League.Strings.Universal_String;
      Escape_All : Boolean := False)
        return League.Strings.Universal_String;
