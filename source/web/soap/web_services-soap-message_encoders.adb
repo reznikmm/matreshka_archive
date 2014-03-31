@@ -86,7 +86,7 @@ package body Web_Services.SOAP.Message_Encoders is
             (League.Strings.To_Universal_String ("utf-8"));
       Output  : aliased
         XML.SAX.String_Output_Destinations.String_Output_Destination;
-      Writer  : XML.SAX.Pretty_Writers.Pretty_Writer;
+      Writer  : XML.SAX.Pretty_Writers.XML_Pretty_Writer;
       Encoder :
         Web_Services.SOAP.Payloads.Encoders.SOAP_Payload_Encoder_Access;
 

@@ -782,7 +782,7 @@ is
    The_Package : AMF.CMOF.Packages.CMOF_Package_Access;
    Output      : aliased
      XML.SAX.String_Output_Destinations.String_Output_Destination;
-   Writer      : XML.SAX.Pretty_Writers.Pretty_Writer;
+   Writer      : XML.SAX.Pretty_Writers.XML_Pretty_Writer;
 
 begin
    Writer.Set_Output_Destination (Output'Unchecked_Access);

@@ -84,7 +84,7 @@ package body WSDL.Debug is
    record
       Output : aliased
         XML.SAX.String_Output_Destinations.String_Output_Destination;
-      Writer : XML.SAX.Pretty_Writers.Pretty_Writer;
+      Writer : XML.SAX.Pretty_Writers.XML_Pretty_Writer;
    end record;
 
    overriding procedure Enter_Binding
