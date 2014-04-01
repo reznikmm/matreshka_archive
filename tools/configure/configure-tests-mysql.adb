@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -283,6 +283,8 @@ package body Configure.Tests.MySQL is
 
       if not Substitutions.Contains (MySQL_Library_Options) then
          Substitutions.Insert
+          (Has_Working_MySQL_Server, Null_Unbounded_String);
+         Substitutions.Insert
           (MySQL_Library_Options, Null_Unbounded_String);
          Substitutions.Insert (Has_MySQL, Null_Unbounded_String);
 
@@ -298,23 +300,25 @@ package body Configure.Tests.MySQL is
 
       else
          Substitutions.Insert (Has_MySQL, To_Unbounded_String ("true"));
-      end if;
 
-      --  Lookup for mysql command line client and availability of server for
-      --  testing purposes.
+         --  Lookup for mysql command line client and availability of server
+         --  for testing purposes.
 
-      Self.Report_Check
-       ("checking whether MySQL server can be used for testing");
+         Self.Report_Check
+          ("checking whether MySQL server can be used for testing");
 
-      if Has_MySQL_Client
-        and then Execute_MySQL_Script ("config.tests/mysql/check.sql")
-      then
-         Self.Report_Status ("yes");
-         Substitutions.Insert
-          (Has_Working_MySQL_Server, To_Unbounded_String ("true"));
+         if Has_MySQL_Client
+           and then Execute_MySQL_Script ("config.tests/mysql/check.sql")
+         then
+            Self.Report_Status ("yes");
+            Substitutions.Insert
+             (Has_Working_MySQL_Server, To_Unbounded_String ("true"));
 
-      else
-         Self.Report_Status ("no");
+         else
+            Self.Report_Status ("no");
+            Substitutions.Insert
+             (MySQL_Library_Options, Null_Unbounded_String);
+         end if;
       end if;
    end Execute;
 
