@@ -39,7 +39,7 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
 --                                                                          --
 ------------------------------------------------------------------------------
---  $Revision: 2359 $ $Date: 2011-12-27 12:20:56 +0400 (Tue, 27 Dec 2011) $
+--  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 with GNAT.Expect;
