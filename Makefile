@@ -1,7 +1,7 @@
 
 UNIDATA = data/unicode/6.3.0/ucd
 UCADATA = data/UCA/6.3.0
-CLDRDATA = data/cldr/24
+CLDRDATA = data/cldr/25
 
 override SMP_MFLAGS ?= -j0
 ## Distribution-specific OPTFLAGS
