@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -161,7 +161,7 @@ package body Matreshka.Internals.Stream_Element_Vectors is
 
       M      : constant League.Hash_Type := 16#5BD1E995#;
       H      : League.Hash_Type := League.Hash_Type (Item.Length);
-      K      : league.Hash_Type;
+      K      : League.Hash_Type;
       Index  : Ada.Streams.Stream_Element_Offset := 0;
       Length : Ada.Streams.Stream_Element_Offset := (Item.Length + 3) / 4;
       Data   :
