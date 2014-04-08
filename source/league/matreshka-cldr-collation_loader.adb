@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Directories;
-
 with League.Application;
 with Matreshka.Config;
 with Matreshka.CLDR.AllKeys_Reader;

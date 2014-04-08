@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.CLDR.Collation_Data;
 with Matreshka.CLDR.Collation_Rules_Parser;
 
 package body Matreshka.CLDR.LDML_Parsers is

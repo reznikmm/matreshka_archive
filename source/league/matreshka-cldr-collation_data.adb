@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
-with Matreshka.Internals.Unicode.Ucd;
-
 package body Matreshka.CLDR.Collation_Data is
 
    procedure Free is
@@ -157,9 +155,9 @@ package body Matreshka.CLDR.Collation_Data is
    is
       use type Matreshka.Internals.Unicode.Ucd.Collation_Weight;
 
-      Reset_Record    : Collation_Record_Access
+      Reset_Record    : constant Collation_Record_Access
         := Lookup (Data, (1 => Reset_Code));
-      Relation_Record : Collation_Record_Access
+      Relation_Record : constant Collation_Record_Access
         := Lookup (Data, (1 => Relation_Code));
 
       procedure Update_Primary

@@ -57,8 +57,6 @@ package body Matreshka.CLDR.Collation_Compiler is
      array (Matreshka.Internals.Unicode.Ucd.First_Stage_Index)
        of Collation_Second_Stage_Access;
 
-   type Collation_First_Stage_Access is access all Collation_First_Stage;
-
    type Contractor_Array_Access is
      access all Matreshka.Internals.Unicode.Ucd.Contractor_Array;
 
