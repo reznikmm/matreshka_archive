@@ -221,6 +221,7 @@ begin
    Configure.Instantiate ("Makefile.config");
    Configure.Instantiate ("gnat/install/matreshka_config.gpr");
    Configure.Instantiate ("gnat/matreshka_config.gpr");
+   Configure.Instantiate ("source/league/matreshka-config.ads");
 
    --  Close log file.
 
