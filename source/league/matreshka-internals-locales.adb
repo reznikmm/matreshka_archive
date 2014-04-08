@@ -47,6 +47,10 @@ with Matreshka.Internals.Locales.Defaults;
 
 package body Matreshka.Internals.Locales is
 
+   Application_Locale : Locale_Data_Access := null;
+   Thread_Locale      : Locale_Data_Access := null;
+   pragma Thread_Local_Storage (Thread_Locale);
+
    -----------------
    -- Dereference --
    -----------------
@@ -58,7 +62,7 @@ package body Matreshka.Internals.Locales is
 
    begin
       if Matreshka.Atomics.Counters.Decrement (Self.Counter) then
-         pragma Assert (Self /= Defaults.Default_Locale_Data'Access);
+         pragma Assert (Self /= Defaults.Default_Locale'Access);
 
          Free (Self);
       end if;
@@ -90,13 +94,23 @@ package body Matreshka.Internals.Locales is
    ----------------
 
    function Get_Locale return not null Locale_Data_Access is
-      Result : constant not null Locale_Data_Access
-        := Matreshka.Internals.Locales.Defaults.Default_Locale_Data'Access;
-
    begin
-      Reference (Result);
+      if Thread_Locale /= null then
+         Reference (Thread_Locale);
 
-      return Result;
+         return Thread_Locale;
+
+      elsif Application_Locale /= null then
+         Reference (Application_Locale);
+
+         return Application_Locale;
+
+      else
+         Reference
+          (Matreshka.Internals.Locales.Defaults.Default_Locale'Access);
+
+         return Matreshka.Internals.Locales.Defaults.Default_Locale'Access;
+      end if;
    end Get_Locale;
 
    ---------------
@@ -107,5 +121,22 @@ package body Matreshka.Internals.Locales is
    begin
       Matreshka.Atomics.Counters.Increment (Self.Counter);
    end Reference;
+
+   -----------------------
+   -- Set_Thread_Locale --
+   -----------------------
+
+   procedure Set_Thread_Locale (Self : Locale_Data_Access) is
+   begin
+      if Thread_Locale /= null then
+         Dereference (Thread_Locale);
+      end if;
+
+      Thread_Locale := Self;
+
+      if Thread_Locale /= null then
+         Reference (Thread_Locale);
+      end if;
+   end Set_Thread_Locale;
 
 end Matreshka.Internals.Locales;

@@ -83,9 +83,12 @@ package Matreshka.Internals.Locales is
    procedure Dereference (Self : in out Locale_Data_Access);
 
    function Get_Locale return not null Locale_Data_Access;
-   --  Returns current locale. Reference counter of locale is automatically
-   --  incremented, so caller is responsible to call Dereference for free
-   --  locale then it is no longer needed.
+   --  Returns effective locale for current thread. Reference counter of locale
+   --  is automatically incremented, so caller is responsible to call
+   --  Dereference for free locale then it is no longer needed.
+
+   procedure Set_Thread_Locale (Self : Locale_Data_Access);
+   --  Sets locale for the current thread.
 
    function Get_Core
     (Self : not null access Locale_Data'Class;

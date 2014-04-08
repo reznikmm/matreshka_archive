@@ -54,7 +54,7 @@ package Matreshka.Internals.Locales.Defaults is
 
    pragma Preelaborate;
 
-   Default_Locale_Data : aliased Locale_Data
+   Default_Locale : aliased Locale_Data
      := (Core      => Unicode.Ucd.Core.Property'Access,
          Casing    =>
           (Expansion => Unicode.Ucd.Cases.Data'Access,
