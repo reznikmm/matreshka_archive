@@ -51,6 +51,7 @@ package Matreshka.CLDR.LDML_Parsers is
 
    type LDML_Parser is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+      Ignore_Depth : Natural := 0;
       Collect_Text : Boolean := False;
       Text         : League.Strings.Universal_String;
       Collations   :

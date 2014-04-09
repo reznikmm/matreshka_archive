@@ -97,7 +97,10 @@ package body Matreshka.CLDR.LDML_Parsers is
      Qualified_Name : League.Strings.Universal_String;
      Success        : in out Boolean) is
    begin
-      if Qualified_Name = Cr_Tag then
+      if Self.Ignore_Depth /= 0 then
+         Self.Ignore_Depth := Self.Ignore_Depth - 1;
+
+      elsif Qualified_Name = Cr_Tag then
          Collation_Rules_Parser.Parse_Collation_Rules
           (Self.Collations.all, Self.Text.To_Wide_Wide_String);
          Self.Collect_Text := False;
@@ -137,12 +140,17 @@ package body Matreshka.CLDR.LDML_Parsers is
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean) is
    begin
-      if Qualified_Name = Collations_Tag then
+      if Self.Ignore_Depth /= 0 then
+         Self.Ignore_Depth := Self.Ignore_Depth;
+
+      elsif Qualified_Name = Collations_Tag then
          null;
 
       elsif Qualified_Name = Collation_Tag then
          if Attributes.Value (Type_Attribute) /= Standard_Image then
-            raise Program_Error;
+            --  Ignore all collations except 'standard'.
+
+            Self.Ignore_Depth := 1;
          end if;
 
       elsif Qualified_Name = Cr_Tag then
