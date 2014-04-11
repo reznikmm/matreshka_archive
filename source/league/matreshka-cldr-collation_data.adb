@@ -159,73 +159,15 @@ package body Matreshka.CLDR.Collation_Data is
         := Lookup (Data, (1 => Reset_Code));
       Relation_Record : constant Collation_Record_Access
         := Lookup (Data, (1 => Relation_Code));
-
-      procedure Update_Primary
-       (Item           : Collation_Record_Access;
-        Minimum_Weight : Matreshka.Internals.Unicode.Ucd.Collation_Weight);
-
-      procedure Update_Trinary
-       (Item             : Collation_Record_Access;
-        Primary_Weight   : Matreshka.Internals.Unicode.Ucd.Collation_Weight;
-        Secondary_Weight : Matreshka.Internals.Unicode.Ucd.Collation_Weight;
-        Minimum_Weight   : Matreshka.Internals.Unicode.Ucd.Collation_Weight);
-
-      --------------------
-      -- Update_Primary --
-      --------------------
-
-      procedure Update_Primary
-       (Item           : Collation_Record_Access;
-        Minimum_Weight : Matreshka.Internals.Unicode.Ucd.Collation_Weight)
-      is
-         Current_Record : Collation_Record_Access := Item;
-
-      begin
-         if Current_Record.Collations (1).Primary < Minimum_Weight then
-            Current_Record.Collations (1).Primary := Minimum_Weight;
-         end if;
-
-         Current_Record := Current_Record.Greater_Or_Equal;
-
-         if Current_Record.Collations (1).Primary < Minimum_Weight then
-            raise Program_Error;
-         end if;
-      end Update_Primary;
-
-      --------------------
-      -- Update_Trinary --
-      --------------------
-
-      procedure Update_Trinary
-       (Item             : Collation_Record_Access;
-        Primary_Weight   : Matreshka.Internals.Unicode.Ucd.Collation_Weight;
-        Secondary_Weight : Matreshka.Internals.Unicode.Ucd.Collation_Weight;
-        Minimum_Weight   : Matreshka.Internals.Unicode.Ucd.Collation_Weight)
-      is
-         Current_Record : Collation_Record_Access := Item;
-
-      begin
-         if Current_Record.Collations (1).Primary = Primary_Weight
-           and Current_Record.Collations (1).Secondary = Secondary_Weight
-         then
-            if Current_Record.Collations (1).Trinary < Minimum_Weight then
-               Current_Record.Collations (1).Trinary := Minimum_Weight;
-
-               Current_Record := Current_Record.Greater_Or_Equal;
-
-               if Current_Record.Collations (1).Primary = Primary_Weight
-                 and Current_Record.Collations (1).Secondary = Secondary_Weight
-               then
-                  raise Program_Error;
-               end if;
-            end if;
-         end if;
-      end Update_Trinary;
+      Next_Record     : Collation_Record_Access;
 
    begin
       --  Detach relation collation record.
 
       Detach (Data, Relation_Record);
+
+      --  Constructs collation elements.
+
       Free (Relation_Record.Collations);
       Relation_Record.Collations :=
         new Collation_Element_Array'(Reset_Record.Collations.all);
@@ -234,19 +176,39 @@ package body Matreshka.CLDR.Collation_Data is
          raise Program_Error;
       end if;
 
-      Attach (Data, Reset_Record, Relation_Record);
-
       case Operator is
          when Identically =>
-            null;
+            raise Program_Error;
 
          when Primary =>
             Relation_Record.Collations (1).Primary :=
               Relation_Record.Collations (1).Primary + 1;
+            Relation_Record.Collations (1).Secondary := 16#0020#;
+            Relation_Record.Collations (1).Trinary := 16#0002#;
 
-            Update_Primary
-             (Relation_Record.Greater_Or_Equal,
-              Relation_Record.Collations (1).Primary + 1);
+            --  Skip all elements with primary weight equal to reset position.
+
+            Next_Record := Reset_Record.Greater_Or_Equal;
+
+            while Next_Record.Collations (1).Primary
+                    = Reset_Record.Collations (1).Primary
+            loop
+               Next_Record := Next_Record.Greater_Or_Equal;
+            end loop;
+
+            --  And insert new collation record before it.
+
+            Attach (Data, Next_Record.Less_Or_Equal, Relation_Record);
+
+            if Next_Record.Collations (1).Primary
+                 <= Relation_Record.Collations (1).Primary
+            then
+               --  Reordering of the following records are not supported (and
+               --  generally not need to be supported due to construction of
+               --  initial data).
+
+               raise Program_Error;
+            end if;
 
          when Secondary =>
             raise Program_Error;
@@ -255,11 +217,34 @@ package body Matreshka.CLDR.Collation_Data is
             Relation_Record.Collations (1).Trinary :=
               Relation_Record.Collations (1).Trinary + 1;
 
-            Update_Trinary
-             (Relation_Record.Greater_Or_Equal,
-              Relation_Record.Collations (1).Primary,
-              Relation_Record.Collations (1).Secondary,
-              Relation_Record.Collations (1).Trinary + 1);
+            Next_Record := Reset_Record.Greater_Or_Equal;
+
+            --  Skip all elements with primary, secondary and trinary weights
+            --  equal to reset positon.
+
+            while Next_Record.Collations (1).Primary
+                    = Reset_Record.Collations (1).Primary
+              and Next_Record.Collations (1).Secondary
+                    = Reset_Record.Collations (1).Secondary
+              and Next_Record.Collations (1).Trinary
+                    = Reset_Record.Collations (1).Trinary
+            loop
+               Next_Record := Next_Record.Greater_Or_Equal;
+            end loop;
+
+            --  And insert new collation record before it.
+
+            Attach (Data, Next_Record.Less_Or_Equal, Relation_Record);
+
+            if Next_Record.Collations (1).Primary
+                 = Relation_Record.Collations (1).Primary
+             and Next_Record.Collations (1).Secondary
+                   = Relation_Record.Collations (1).Secondary
+             and Next_Record.Collations (1).Trinary
+                   <= Relation_Record.Collations (1).Trinary
+            then
+               raise Program_Error;
+            end if;
       end case;
    end Reorder;
 
