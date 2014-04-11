@@ -94,51 +94,55 @@ package body Matreshka.CLDR.Collation_Rules_Parser is
    begin
       Skip_Spaces (Buffer, Index, Buffer'Last);
 
-      if Buffer (Index) /= '&' then
-         raise Program_Error;
-      end if;
-
-      Index := Index + 1;
-
-      Parse_String (Buffer, Index, Buffer'Last, Reset, Success);
-
-      if not Success then
-         raise Program_Error;
-      end if;
-
       while Index <= Buffer'Last loop
-         Skip_Spaces (Buffer, Index, Buffer'Last);
+         if Buffer (Index) /= '&' then
+            raise Program_Error;
+         end if;
 
-         exit when Index > Buffer'Last;
+         Index := Index + 1;
 
-         Parse_Relation_Operator
-          (Buffer, Index, Buffer'Last, Operator, Success);
+         Parse_String (Buffer, Index, Buffer'Last, Reset, Success);
 
          if not Success then
             raise Program_Error;
          end if;
 
-         Parse_String (Buffer, Index, Buffer'Last, Next, Success);
+         while Index <= Buffer'Last loop
+            Skip_Spaces (Buffer, Index, Buffer'Last);
 
-         if not Success then
-            raise Program_Error;
-         end if;
+            exit when Index > Buffer'Last;
 
-         if Reset.Length /= 1 then
-            raise Program_Error;
+            exit when Buffer (Index) = '&';
 
-         elsif Next.Length /= 1 then
-            raise Program_Error;
+            Parse_Relation_Operator
+             (Buffer, Index, Buffer'Last, Operator, Success);
 
-         else
-            Matreshka.CLDR.Collation_Data.Reorder
-             (Data,
-              Wide_Wide_Character'Pos (Reset (1).To_Wide_Wide_Character),
-              Operator,
-              Wide_Wide_Character'Pos (Next (1).To_Wide_Wide_Character));
-         end if;
+            if not Success then
+               raise Program_Error;
+            end if;
 
-         Reset := Next;
+            Parse_String (Buffer, Index, Buffer'Last, Next, Success);
+
+            if not Success then
+               raise Program_Error;
+            end if;
+
+            if Reset.Length /= 1 then
+               raise Program_Error;
+
+            elsif Next.Length /= 1 then
+               raise Program_Error;
+
+            else
+               Matreshka.CLDR.Collation_Data.Reorder
+                (Data,
+                 Wide_Wide_Character'Pos (Reset (1).To_Wide_Wide_Character),
+                 Operator,
+                 Wide_Wide_Character'Pos (Next (1).To_Wide_Wide_Character));
+            end if;
+
+            Reset := Next;
+         end loop;
       end loop;
    end Parse_Collation_Rules;
 
