@@ -45,6 +45,8 @@ with Ada.Unchecked_Deallocation;
 
 package body Matreshka.CLDR.Collation_Data is
 
+   use type Matreshka.Internals.Unicode.Ucd.Collation_Weight;
+
    procedure Free is
      new Ada.Unchecked_Deallocation
           (Collation_Record, Collation_Record_Access);
@@ -69,6 +71,9 @@ package body Matreshka.CLDR.Collation_Data is
      Item : Collation_Record_Access);
    --  Detach given collation record from the list of relative position of
    --  collation records.
+
+   procedure Recompute_Trinary (Current_Record : Collation_Record_Access);
+   --  Resolves conflict at trinary level.
 
    ------------
    -- Attach --
@@ -143,6 +148,29 @@ package body Matreshka.CLDR.Collation_Data is
       return Current;
    end Lookup;
 
+   -----------------------
+   -- Recompute_Trinary --
+   -----------------------
+
+   procedure Recompute_Trinary (Current_Record : Collation_Record_Access) is
+      Next_Record : constant Collation_Record_Access
+        := Current_Record.Greater_Or_Equal;
+
+   begin
+      Current_Record.Collations (1).Trinary :=
+        Current_Record.Collations (1).Trinary + 1;
+
+      if Next_Record.Collations (1).Primary
+           = Current_Record.Collations (1).Primary
+        and Next_Record.Collations (1).Secondary
+              = Current_Record.Collations (1).Secondary
+        and Next_Record.Collations (1).Trinary
+              <= Current_Record.Collations (1).Trinary
+      then
+         raise Program_Error;
+      end if;
+   end Recompute_Trinary;
+
    -------------
    -- Reorder --
    -------------
@@ -153,8 +181,6 @@ package body Matreshka.CLDR.Collation_Data is
      Operator      : Collation_Operator;
      Relation_Code : Matreshka.Internals.Unicode.Code_Point)
    is
-      use type Matreshka.Internals.Unicode.Ucd.Collation_Weight;
-
       Reset_Record    : constant Collation_Record_Access
         := Lookup (Data, (1 => Reset_Code));
       Relation_Record : constant Collation_Record_Access
@@ -269,7 +295,7 @@ package body Matreshka.CLDR.Collation_Data is
              and Next_Record.Collations (1).Trinary
                    <= Relation_Record.Collations (1).Trinary
             then
-               raise Program_Error;
+               Recompute_Trinary (Next_Record);
             end if;
       end case;
    end Reorder;
