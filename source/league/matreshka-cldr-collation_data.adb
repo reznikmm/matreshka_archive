@@ -211,7 +211,33 @@ package body Matreshka.CLDR.Collation_Data is
             end if;
 
          when Secondary =>
-            raise Program_Error;
+            Relation_Record.Collations (1).Secondary :=
+              Relation_Record.Collations (1).Secondary + 1;
+
+            Next_Record := Reset_Record.Greater_Or_Equal;
+
+            --  Skip all elements with primary and secondary weights equal to
+            --  reset positon.
+
+            while Next_Record.Collations (1).Primary
+                    = Reset_Record.Collations (1).Primary
+              and Next_Record.Collations (1).Secondary
+                    = Reset_Record.Collations (1).Secondary
+            loop
+               Next_Record := Next_Record.Greater_Or_Equal;
+            end loop;
+
+            --  And insert new collation record before it.
+
+            Attach (Data, Next_Record.Less_Or_Equal, Relation_Record);
+
+            if Next_Record.Collations (1).Primary
+                 = Relation_Record.Collations (1).Primary
+             and Next_Record.Collations (1).Secondary
+                   <= Relation_Record.Collations (1).Secondary
+            then
+               raise Program_Error;
+            end if;
 
          when Trinary =>
             Relation_Record.Collations (1).Trinary :=
