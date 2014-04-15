@@ -141,7 +141,7 @@ package body Matreshka.CLDR.LDML_Parsers is
      Success        : in out Boolean) is
    begin
       if Self.Ignore_Depth /= 0 then
-         Self.Ignore_Depth := Self.Ignore_Depth;
+         Self.Ignore_Depth := Self.Ignore_Depth + 1;
 
       elsif Qualified_Name = Collations_Tag then
          null;
