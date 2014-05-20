@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -63,7 +63,7 @@ procedure Configure.RTL_Version is
    procedure Detect_RTL_Version is
       GCC_Process : Process_Descriptor;
       Result      : Expect_Match;
-      Matches     : Match_Array (0 .. 3);
+      Matches     : Match_Array (0 .. 4);
       GCC_Version : Unbounded_String;
       Pro_Version : Unbounded_String;
       GPL_Version : Unbounded_String;
@@ -78,11 +78,18 @@ procedure Configure.RTL_Version is
          Expect
           (GCC_Process,
            Result,
-           "gcc \S+ [0-9]+\.[0-9]+\.[0-9]+.*(GNAT Pro ([0-9]+\.[0-9]+)\.[0-9]+w?|GNAT GPL ([0-9][0-9][0-9][0-9]))",
-            Matches);
+           "gcc \S+ [0-9]+\.[0-9]+\.[0-9]+.*"
+             & "(GNAT Pro ([0-9]+\.[0-9]+)\.[0-9]+w?"
+             & "|GNAT GPL ([0-9][0-9][0-9][0-9])"
+             & "|GNAT GPL gpl-([0-9][0-9][0-9][0-9]))",
+           Matches);
 
          if Matches (1) /= No_Match then
-            if Matches (3) /= No_Match then
+            if Matches (4) /= No_Match then
+               GPL_Version :=
+                 +Expect_Out (GCC_Process) (Matches (4).First .. Matches (4).Last);
+
+            elsif Matches (3) /= No_Match then
                GPL_Version :=
                  +Expect_Out (GCC_Process) (Matches (3).First .. Matches (3).Last);
 
