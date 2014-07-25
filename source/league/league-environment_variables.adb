@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,8 +61,7 @@ package body League.Environment_Variables is
       use type Universal_String_Maps.Map;
 
    begin
-      return
-        Universal_String_Maps.Map (Left) = Universal_String_Maps.Map (Right);
+      return Left.Data = Right.Data;
    end "=";
 
    -----------
@@ -71,7 +70,7 @@ package body League.Environment_Variables is
 
    procedure Clear (Self : in out Environment_Variable_Set'Class) is
    begin
-      Universal_String_Maps.Map (Self).Clear;
+      Self.Data.Clear;
    end Clear;
 
    --------------
@@ -83,7 +82,7 @@ package body League.Environment_Variables is
      Name : League.Strings.Universal_String) return Boolean
    is
       Key      : constant Key_Type := To_Key (Name);
-      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
+      Position : constant Universal_String_Maps.Cursor := Self.Data.Find (Key);
 
    begin
       return Universal_String_Maps.Has_Element (Position);
@@ -108,14 +107,14 @@ package body League.Environment_Variables is
      Value : League.Strings.Universal_String)
    is
       Key      : constant Key_Type := To_Key (Name);
-      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
+      Position : constant Universal_String_Maps.Cursor := Self.Data.Find (Key);
 
    begin
       if Universal_String_Maps.Has_Element (Position) then
-         Self.Replace_Element (Position, Value);
+         Self.Data.Replace_Element (Position, Value);
 
       else
-         Self.Insert (Key, Value);
+         Self.Data.Insert (Key, Value);
       end if;
    end Insert;
 
@@ -128,11 +127,11 @@ package body League.Environment_Variables is
      Name  : League.Strings.Universal_String)
    is
       Key      : constant Key_Type := To_Key (Name);
-      Position : Universal_String_Maps.Cursor := Self.Find (Key);
+      Position : Universal_String_Maps.Cursor := Self.Data.Find (Key);
 
    begin
       if Universal_String_Maps.Has_Element (Position) then
-         Self.Delete (Position);
+         Self.Data.Delete (Position);
       end if;
    end Remove;
 
@@ -155,7 +154,7 @@ package body League.Environment_Variables is
          return League.Strings.Universal_String
    is
       Key      : constant Key_Type                     := To_Key (Name);
-      Position : constant Universal_String_Maps.Cursor := Self.Find (Key);
+      Position : constant Universal_String_Maps.Cursor := Self.Data.Find (Key);
 
    begin
       if Universal_String_Maps.Has_Element (Position) then

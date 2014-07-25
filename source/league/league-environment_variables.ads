@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -93,7 +93,8 @@ private
            "=",
            League.Strings."=");
 
-   type Environment_Variable_Set is
-     new Universal_String_Maps.Map with null record;
+   type Environment_Variable_Set is tagged record
+      Data : Universal_String_Maps.Map;
+   end record;
 
 end League.Environment_Variables;
