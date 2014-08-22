@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -336,6 +336,8 @@ package body Matreshka.Internals.Strings.Operations is
 
          else
             Free (Destination.Index_Map);
+            Destination.Index_Map := null;
+            --  GNAT GPL 2014: Index_Map doesn't sets to null by Free.
          end if;
 
          Destination.Value (First + By.Unused .. New_Size - 1) :=
