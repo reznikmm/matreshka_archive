@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Strings;
+private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 
 package DOMConf.Test_Parsers is
@@ -52,9 +53,26 @@ package DOMConf.Test_Parsers is
 private
 
    type Test_Parser is
-     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with null record;
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+      Ignore : Natural := 0;
+   end record;
 
    overriding function Error_String
     (Self : Test_Parser) return League.Strings.Universal_String;
+
+   overriding procedure Start_Element
+    (Self           : in out Test_Parser;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean);
+
+   overriding procedure End_Element
+    (Self           : in out Test_Parser;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
 
 end DOMConf.Test_Parsers;
