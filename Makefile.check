@@ -74,6 +74,7 @@ endif
 	.objs/test_322
 	.objs/test_324
 	.objs/test_333
+	.objs/test_368
 	echo Tests below is for XML module
 	.objs/test_20 testsuite/xml/TN-20/
 	.objs/test_26 testsuite/xml/TN-26/26-expected.xml
