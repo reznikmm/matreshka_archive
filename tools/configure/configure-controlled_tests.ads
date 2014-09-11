@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -79,11 +79,11 @@ package Configure.Controlled_Tests is
    --  Arguments.
 
    not overriding function Enable_Switch
-     (Self : Controlled_Test) return String;
+    (Self : Controlled_Test) return String;
    --  Returns --enable-NAME.
 
    not overriding function Disable_Switch
-     (Self : Controlled_Test) return String;
+    (Self : Controlled_Test) return String;
    --  Returns --disable-NAME.
 
 private
