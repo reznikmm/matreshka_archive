@@ -138,7 +138,7 @@ library project Matreshka_League is
                 & ("-msse")
                 & Matreshka_Common.Optimization_Ada_Switches
                 & Matreshka_Common.Debug_Ada_Switches;
-            for Switches ("matreshka-simd-intel-sse2.adb") use
+            for Switches ("matreshka-simd-intel-sse2.ads") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-msse2")
