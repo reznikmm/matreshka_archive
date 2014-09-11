@@ -93,7 +93,7 @@ package body Configure.Tests.Gprbuild is
 
          Gprbuild_Process : Process_Descriptor;
          Result           : Expect_Match;
-         Matches          : Match_Array (0 .. 1);
+         Matches          : Match_Array (0 .. 3);
 
       begin
          Non_Blocking_Spawn
@@ -103,10 +103,13 @@ package body Configure.Tests.Gprbuild is
            4096,
            True);
          Expect
-          (Gprbuild_Process, Result, "GPRBUILD (GPL 2014|2014)", Matches);
+          (Gprbuild_Process,
+           Result,
+           "(GPRBUILD ((GPL 2014|2014)|.*?)) \(",
+           Matches);
          Close (Gprbuild_Process);
 
-         if Matches (0) /= No_Match then
+         if Matches (3) /= No_Match then
             Substitutions.Insert (Has_Gprbuild2014_Name, +"true");
             Self.Report_Status ("GPL 2014 workaround activated");
 
