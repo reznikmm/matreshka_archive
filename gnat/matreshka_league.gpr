@@ -162,7 +162,7 @@ library project Matreshka_League is
                 & ("-msse2")
                 & Matreshka_Common.Optimization_Ada_Switches
                 & Matreshka_Common.Debug_Ada_Switches;
-            for Switches ("matreshka-internals-strings-handlers-x86_utilities.ads") use
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.adb") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-mpopcnt")
@@ -170,7 +170,7 @@ library project Matreshka_League is
                 & Matreshka_Common.Debug_Ada_Switches;
 
          when "x86_64" =>
-            for Switches ("matreshka-internals-strings-handlers-x86_utilities.ads") use
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.adb") use
               Matreshka_Common.Common_Ada_Switches
                 & Matreshka_Common.Platform_Ada_Switches
                 & ("-mpopcnt")
