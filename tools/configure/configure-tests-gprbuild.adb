@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,14 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Configure.Abstract_Tests;
-
-with GNAT.Strings;
+with GNAT.Expect;
 with GNAT.OS_Lib;
+with GNAT.Regpat;
+with GNAT.Strings;
+
+with Configure.Abstract_Tests;
 
 package body Configure.Tests.Gprbuild is
 
-   Gprbuild_Name : constant Unbounded_String := +"GPRBUILD";
+   Gprbuild_Name         : constant Unbounded_String := +"GPRBUILD";
+   Has_Gprbuild2014_Name : constant Unbounded_String := +"HAS_GPRBUILD2014";
 
    -------------
    -- Execute --
@@ -64,16 +67,54 @@ package body Configure.Tests.Gprbuild is
         := GNAT.OS_Lib.Locate_Exec_On_Path ("gprbuild");
 
    begin
-      if Gprbuild_Path = null then
-         Self.Report_Check ("Required command not found: 'gprbuild'");
+      --  Check whether 'gprbuild' executable is available.
 
-         Self.Report_Status ("Exiting");
+      Self.Report_Check ("looking for GPRbuild");
+
+      if Gprbuild_Path = null then
+         Self.Report_Status ("not found");
          
          raise Internal_Error;
       end if;
-      
+
       Substitutions.Insert
        (Gprbuild_Name, Convert_Windows_Path (+Gprbuild_Path.all));
+
+      Self.Report_Status (Gprbuild_Path.all);
+
+      --  Check version of GPRbuild, GPRBUILD GPL 2014 has critial bug and
+      --  workaround should be activated.
+
+      Self.Report_Check ("checking GPRbuild version");
+
+      declare
+         use GNAT.Expect;
+         use GNAT.Regpat;
+
+         Gprbuild_Process : Process_Descriptor;
+         Result           : Expect_Match;
+         Matches          : Match_Array (0 .. 1);
+
+      begin
+         Non_Blocking_Spawn
+          (Gprbuild_Process,
+           Gprbuild_Path.all,
+           (1 => new String'("--version")),
+           4096,
+           True);
+         Expect
+          (Gprbuild_Process, Result, "GPRBUILD (GPL 2014|2014)", Matches);
+         Close (Gprbuild_Process);
+
+         if Matches (0) /= No_Match then
+            Substitutions.Insert (Has_Gprbuild2014_Name, +"true");
+            Self.Report_Status ("GPL 2014 workaround activated");
+
+         else
+            Substitutions.Insert (Has_Gprbuild2014_Name, Null_Unbounded_String);
+            Self.Report_Status ("ok");
+         end if;
+      end;
    end Execute;
 
    ----------
