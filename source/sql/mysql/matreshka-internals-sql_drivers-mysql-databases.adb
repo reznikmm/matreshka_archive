@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,7 +50,7 @@ package body Matreshka.Internals.SQL_Drivers.MySQL.Databases is
 
 
    UTF8_Encoding : constant Interfaces.C.char_array
-     := "utf8" & Interfaces.C.nul;
+     := "utf8mb4" & Interfaces.C.nul;
 
    procedure Set_MySQL_Error (Self : not null access MySQL_Database'Class);
    --  Sets error message to reported by database.
