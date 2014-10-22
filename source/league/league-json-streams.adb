@@ -208,7 +208,6 @@ package body League.JSON.Streams is
      Item : League.JSON.Values.JSON_Value) is
    begin
       Self.Update (Item);
-      Self.Current.Modified := True;
    end Write;
 
    -----------------------
@@ -297,9 +296,7 @@ package body League.JSON.Streams is
                Self.Current.Current_Array.Append (Value);
             end if;
 
-            if Self.Current.Kind = Array_State then
-               Self.Current.Index := Self.Current.Index + 1;
-            end if;
+            Self.Current.Index := Self.Current.Index + 1;
 
          when Object_State =>
             Self.Current.Current_Object.Insert
