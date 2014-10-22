@@ -47,7 +47,7 @@ with Ada.Streams;
 private with League.JSON.Arrays;
 with League.JSON.Documents;
 private with League.JSON.Objects;
-private with League.JSON.Values;
+with League.JSON.Values;
 with League.Strings;
 
 package League.JSON.Streams is
@@ -75,6 +75,16 @@ package League.JSON.Streams is
    procedure Set_JSON_Document
     (Self : not null access JSON_Stream'Class;
      Data : League.JSON.Documents.JSON_Document);
+
+   function Read
+    (Self : in out JSON_Stream'Class)
+       return League.JSON.Values.JSON_Value;
+   --  Reads current value and updates stream's position.
+
+   procedure Write
+    (Self : in out JSON_Stream'Class;
+     Item : League.JSON.Values.JSON_Value);
+   --  Writes value into the stream and updates stream's position.
 
 private
 
@@ -109,15 +119,5 @@ private
    overriding procedure Write
      (Stream : in out JSON_Stream;
       Item   : Ada.Streams.Stream_Element_Array);
-
-   function Read
-    (Self : in out JSON_Stream'Class)
-       return League.JSON.Values.JSON_Value;
-   --  Reads current value and updates stream's position.
-
-   procedure Write
-    (Self : in out JSON_Stream'Class;
-     Item : League.JSON.Values.JSON_Value);
-   --  Writes value into the stream and updates stream's position.
 
 end League.JSON.Streams;

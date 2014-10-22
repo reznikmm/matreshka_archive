@@ -44,6 +44,8 @@
 with System;
 
 with League.Characters.Internals;
+with League.JSON.Streams;
+with League.JSON.Values;
 with League.Strings.Internals;
 with League.String_Vectors.Internals;
 with Matreshka.Internals.Locales;
@@ -1704,31 +1706,37 @@ package body League.Strings is
       Unused : Utf16_String_Index;
 
    begin
-      --  Read length of the string.
-
-      Natural'Read (Stream, Length);
-
-      --  XXX Value validation must be done before any other operations.
-      --  XXX Object mutation can be used here.
-
-      Dereference (Item.Data);
-
-      if Length = 0 then
-         --  Empty string, resuse shared empty object.
-
-         Item.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
+      if Stream.all in League.JSON.Streams.JSON_Stream'Class then
+         Item :=
+           League.JSON.Streams.JSON_Stream'Class (Stream.all).Read.To_String;
 
       else
-         --  Non-empty string, receive index of first unused code unit,
-         --  allocate new shared object and receive actual data.
+         --  Read length of the string.
 
-         Utf16_String_Index'Read (Stream, Unused);
-         Item.Data := Allocate (Unused);
-         Item.Data.Unused := Unused;
-         Item.Data.Length := Length;
-         Utf16_String'Read
-          (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
-         String_Handler.Fill_Null_Terminator (Item.Data);
+         Natural'Read (Stream, Length);
+
+         --  XXX Value validation must be done before any other operations.
+         --  XXX Object mutation can be used here.
+
+         Dereference (Item.Data);
+
+         if Length = 0 then
+            --  Empty string, resuse shared empty object.
+
+            Item.Data := Matreshka.Internals.Strings.Shared_Empty'Access;
+
+         else
+            --  Non-empty string, receive index of first unused code unit,
+            --  allocate new shared object and receive actual data.
+
+            Utf16_String_Index'Read (Stream, Unused);
+            Item.Data := Allocate (Unused);
+            Item.Data.Unused := Unused;
+            Item.Data.Length := Length;
+            Utf16_String'Read
+             (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+            String_Handler.Fill_Null_Terminator (Item.Data);
+         end if;
       end if;
    end Read;
 
@@ -2574,17 +2582,23 @@ package body League.Strings is
     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
      Item   : Universal_String) is
    begin
-      --  Write length of the string into the stream.
+      if Stream.all in League.JSON.Streams.JSON_Stream'Class then
+         League.JSON.Streams.JSON_Stream'Class (Stream.all).Write
+          (League.JSON.Values.To_JSON_Value (Item));
 
-      Natural'Write (Stream, Item.Data.Length);
+      else
+         --  Write length of the string into the stream.
 
-      --  For non-empty string writes index of first unused code unit and data
-      --  iteself.
+         Natural'Write (Stream, Item.Data.Length);
 
-      if Item.Data.Length /= 0 then
-         Utf16_String_Index'Write (Stream, Item.Data.Unused);
-         Matreshka.Internals.Utf16.Utf16_String'Write
-          (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+         --  For non-empty string writes index of first unused code unit and data
+         --  iteself.
+
+         if Item.Data.Length /= 0 then
+            Utf16_String_Index'Write (Stream, Item.Data.Unused);
+            Matreshka.Internals.Utf16.Utf16_String'Write
+             (Stream, Item.Data.Value (0 .. Item.Data.Unused - 1));
+         end if;
       end if;
    end Write;
 
