@@ -51,7 +51,9 @@ package League.JSON.Arrays is
 
    pragma Preelaborate;
 
-   type JSON_Array is tagged private;
+   type JSON_Array is tagged private
+     with Iterator_Element  => League.JSON.Values.JSON_Value,
+          Constant_Indexing => Element;
    pragma Preelaborable_Initialization (JSON_Array);
 
    Empty_JSON_Array : constant JSON_Array;

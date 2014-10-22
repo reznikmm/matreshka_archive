@@ -53,7 +53,9 @@ package League.JSON.Objects is
 
    pragma Preelaborate;
 
-   type JSON_Object is tagged private;
+   type JSON_Object is tagged private
+     with Iterator_Element  => League.JSON.Values.JSON_Value,
+          Constant_Indexing => Value;
    pragma Preelaborable_Initialization (JSON_Object);
 
    Empty_JSON_Object : constant JSON_Object;
