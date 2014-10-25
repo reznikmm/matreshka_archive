@@ -49,17 +49,6 @@ package XML.SAX.Lexical_Handlers is
 
    type SAX_Lexical_Handler is limited interface;
 
-   --  The reader calls this subprogram to signal the end of a prefix mapping
-   --  for the prefix Prefix.
-   --
-   --  These events always occur immediately after the corresponding
-   --  End_Element event, but the order of End_Prefix_Mapping events is not
-   --  otherwise guaranteed.
-   --
-   --  If this subprogram sets Success to False the reader stops parsing and
-   --  reports an error. The reader uses the function Error_String to get the
-   --  error message.
-
    not overriding procedure Comment
     (Self    : in out SAX_Lexical_Handler;
      Text    : League.Strings.Universal_String;
