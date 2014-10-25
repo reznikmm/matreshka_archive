@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -98,7 +98,7 @@ package XML.Templates.Streams is
             Data   : League.Strings.Universal_String;
 
          when Start_DTD =>
-            Name : League.Strings.Universal_String;
+            Name      : League.Strings.Universal_String;
             Public_Id : League.Strings.Universal_String;
             System_Id : League.Strings.Universal_String;
 
