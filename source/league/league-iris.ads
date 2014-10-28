@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -191,6 +191,11 @@ package League.IRIs is
    --  merged path.
 
    function "=" (Left : IRI; Right : IRI) return Boolean;
+
+   procedure Append_Segment
+    (Self    : in out IRI'Class;
+     Segment : League.Strings.Universal_String);
+   --  Appends specified segment to IRI's path.
 
 private
 

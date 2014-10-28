@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -72,6 +72,17 @@ package body League.IRIs is
       raise Program_Error;
       return "=" (Left, Right);
    end "=";
+
+   --------------------
+   -- Append_Segment --
+   --------------------
+
+   procedure Append_Segment
+    (Self    : in out IRI'Class;
+     Segment : League.Strings.Universal_String) is
+   begin
+      Self.Path.Append (Segment);
+   end Append_Segment;
 
    ---------------
    -- Authority --
