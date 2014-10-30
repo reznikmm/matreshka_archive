@@ -44,11 +44,16 @@
 --  This package provides a convenient interface for working with
 --  Internationalized Resource Identifiers (IRIs), as defined by RFC 3987; and
 --  Uniform Resource Identifier (URI), as defined by RFC 3986.
+--
+--  All IRI components are represented without any escaping or encoding, except
+--  subprograms with identifiers with word 'Encoded'. All Set_ subprograms
+--  without word 'Encoded' attempt to decode/unescape provided value when
+--  possible; while 'Encoded' variants assumes what value is properly encoded.
 ------------------------------------------------------------------------------
 private with Ada.Finalization;
 
 with League.Stream_Element_Vectors;
-private with League.String_Vectors;
+with League.String_Vectors;
 with League.Strings;
 
 package League.IRIs is
@@ -142,7 +147,8 @@ package League.IRIs is
 
    procedure Set_Port (Self : in out IRI'Class; To : Natural);
 
-   function Path (Self : IRI'Class) return League.Strings.Universal_String;
+   function Path
+    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector;
 
    function Encoded_Path
     (Self : IRI'Class)

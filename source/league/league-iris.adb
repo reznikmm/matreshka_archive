@@ -1460,17 +1460,10 @@ package body League.IRIs is
    -- Path --
    ----------
 
-   function Path (Self : IRI'Class) return League.Strings.Universal_String is
+   function Path
+    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector is
    begin
-      return Result : League.Strings.Universal_String do
-         for J in 1 .. Self.Path.Length loop
-            if J /= 1 or (J = 1 and Self.Path_Is_Absolute) then
-               Result.Append (Solidus);
-            end if;
-
-            Result.Append (Self.Path.Element (J));
-         end loop;
-      end return;
+      return Self.Path;
    end Path;
 
    ----------
