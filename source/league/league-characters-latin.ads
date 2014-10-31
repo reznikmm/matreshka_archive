@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -76,14 +76,14 @@ package League.Characters.Latin is
    Solidus                : constant Universal_Character;  --  002F
 
    Digit_Zero             : constant Universal_Character;  --  0030
-
+   Digit_One              : constant Universal_Character;  --  0031
    Digit_Two              : constant Universal_Character;  --  0032
    Digit_Three            : constant Universal_Character;  --  0033
-
+   Digit_Four             : constant Universal_Character;  --  0034
    Digit_Five             : constant Universal_Character;  --  0035
-
+   Digit_Six              : constant Universal_Character;  --  0036
    Digit_Seven            : constant Universal_Character;  --  0037
-
+   Digit_Eight            : constant Universal_Character;  --  0038
    Digit_Nine             : constant Universal_Character;  --  0039
    Colon                  : constant Universal_Character;  --  003A
    Semicolon              : constant Universal_Character;  --  003B
@@ -95,8 +95,10 @@ package League.Characters.Latin is
    Commercial_At          : constant Universal_Character;  --  0040
    Latin_Capital_Letter_A : constant Universal_Character;  --  0041
    Latin_Capital_Letter_B : constant Universal_Character;  --  0042
-
-   Latin_Capital_Letter_F : constant Universal_Character;
+   Latin_Capital_Letter_C : constant Universal_Character;  --  0043
+   Latin_Capital_Letter_D : constant Universal_Character;  --  0044
+   Latin_Capital_Letter_E : constant Universal_Character;  --  0045
+   Latin_Capital_Letter_F : constant Universal_Character;  --  0046
 
    Latin_Capital_Letter_Z : constant Universal_Character;
    Left_Square_Bracket    : constant Universal_Character;  --  005B
@@ -141,27 +143,30 @@ private
    Hyphen_Minus           : constant Universal_Character := (Code => 16#002D#);
    Full_Stop              : constant Universal_Character := (Code => 16#002E#);
    Solidus                : constant Universal_Character := (Code => 16#002F#);
-   Digit_Zero             : constant Universal_Character := (Code => 16#0030#);
 
+   Digit_Zero             : constant Universal_Character := (Code => 16#0030#);
+   Digit_One              : constant Universal_Character := (Code => 16#0031#);
    Digit_Two              : constant Universal_Character := (Code => 16#0032#);
    Digit_Three            : constant Universal_Character := (Code => 16#0033#);
-
+   Digit_Four             : constant Universal_Character := (Code => 16#0034#);
    Digit_Five             : constant Universal_Character := (Code => 16#0035#);
-
+   Digit_Six              : constant Universal_Character := (Code => 16#0036#);
    Digit_Seven            : constant Universal_Character := (Code => 16#0037#);
-
+   Digit_Eight            : constant Universal_Character := (Code => 16#0038#);
    Digit_Nine             : constant Universal_Character := (Code => 16#0039#);
-
    Colon                  : constant Universal_Character := (Code => 16#003A#);
    Semicolon              : constant Universal_Character := (Code => 16#003B#);
    Less_Than_Sign         : constant Universal_Character := (Code => 16#003C#);
    Equals_Sign            : constant Universal_Character := (Code => 16#003D#);
    Greater_Than_Sign      : constant Universal_Character := (Code => 16#003E#);
    Question_Mark          : constant Universal_Character := (Code => 16#003F#);
+
    Commercial_At          : constant Universal_Character := (Code => 16#0040#);
    Latin_Capital_Letter_A : constant Universal_Character := (Code => 16#0041#);
    Latin_Capital_Letter_B : constant Universal_Character := (Code => 16#0042#);
-
+   Latin_Capital_Letter_C : constant Universal_Character := (Code => 16#0043#);
+   Latin_Capital_Letter_D : constant Universal_Character := (Code => 16#0044#);
+   Latin_Capital_Letter_E : constant Universal_Character := (Code => 16#0045#);
    Latin_Capital_Letter_F : constant Universal_Character := (Code => 16#0046#);
 
    Latin_Capital_Letter_Z : constant Universal_Character := (Code => 16#005A#);
