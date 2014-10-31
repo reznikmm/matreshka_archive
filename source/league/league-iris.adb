@@ -46,6 +46,7 @@ with League.Characters.Latin;
 package body League.IRIs is
 
    use League.Characters.Latin;
+   use type League.Characters.Universal_Character;
 
    package IRI_Parser is
 
@@ -60,6 +61,18 @@ package body League.IRIs is
    end URI_Parser;
 
    procedure Normalize_Path (Self : in out IRI'Class);
+
+   function Is_ALPHA
+    (C : League.Characters.Universal_Character) return Boolean;
+   --  Returns True when specified character is ALPHA.
+
+   function Is_IUnreserved
+    (C : League.Characters.Universal_Character) return Boolean;
+   --  Returns True when specified character is iunreserved.
+
+   function Is_Sub_Delims
+    (C : League.Characters.Universal_Character) return Boolean;
+   --  Returns True when specified character is sub-delims.
 
    ---------
    -- "=" --
@@ -284,8 +297,6 @@ package body League.IRIs is
 
    package body IRI_Parser is
 
-      use type League.Characters.Universal_Character;
-
       --  All Parse_'production' subprograms has the same profile:
       --
       --   - Self: object where parsed data is stored;
@@ -414,10 +425,6 @@ package body League.IRIs is
 
       --  Character classification subprograms.
 
-      function Is_ALPHA
-       (C : League.Characters.Universal_Character) return Boolean;
-      --  Returns True when specified character is ALPHA.
-
       function Is_DIGIT
        (C : League.Characters.Universal_Character) return Boolean;
       --  Returns True when specified character is DIGIT.
@@ -426,29 +433,9 @@ package body League.IRIs is
        (C : League.Characters.Universal_Character) return Boolean;
       --  Returns True when specified character is HEXDIG.
 
-      function Is_IUnreserved
-       (C : League.Characters.Universal_Character) return Boolean;
-      --  Returns True when specified character is iunreserved.
-
       function Is_IPrivate
        (C : League.Characters.Universal_Character) return Boolean;
       --  Returns True when specified character is iprivate.
-
-      function Is_Sub_Delims
-       (C : League.Characters.Universal_Character) return Boolean;
-      --  Returns True when specified character is sub-delims.
-
-      --------------
-      -- Is_ALPHA --
-      --------------
-
-      function Is_ALPHA
-       (C : League.Characters.Universal_Character) return Boolean is
-      begin
-         return
-          (Latin_Capital_Letter_A <= C and C <= Latin_Capital_Letter_Z)
-             or (Latin_Small_Letter_A <= C and C <= Latin_Small_Letter_Z);
-      end Is_ALPHA;
 
       --------------
       -- Is_DIGIT --
@@ -490,62 +477,6 @@ package body League.IRIs is
 
          return Is_IUnreserved (C);
       end Is_IPrivate;
-
-      --------------------
-      -- Is_IUnreserved --
-      --------------------
-
-      function Is_IUnreserved
-       (C : League.Characters.Universal_Character) return Boolean is
-      begin
-         --  [RFC 3987]
-         --
-         --  iunreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~" / ucschar
-         --
-         --  ucschar        = %xA0-D7FF / %xF900-FDCF / %xFDF0-FFEF
-         --                    / %x10000-1FFFD / %x20000-2FFFD / %x30000-3FFFD
-         --                    / %x40000-4FFFD / %x50000-5FFFD / %x60000-6FFFD
-         --                    / %x70000-7FFFD / %x80000-8FFFD / %x90000-9FFFD
-         --                    / %xA0000-AFFFD / %xB0000-BFFFD / %xC0000-CFFFD
-         --                    / %xD0000-DFFFD / %xE1000-EFFFD
-
-         --  XXX Compatibility with Legacy IRI must be checked!
-
-         --  XXX Not implemented completely.
-
-         return
-           Is_ALPHA (C)
-             or (Digit_Zero <= C and C <= Digit_Nine)
-             or C = Hyphen_Minus
-             or C = Full_Stop
-             or C = Low_Line
-             or C = Tilde
-             or (C.Is_Valid and No_Break_Space <= C);
-      end Is_IUnreserved;
-
-      -------------------
-      -- Is_Sub_Delims --
-      -------------------
-
-      function Is_Sub_Delims
-       (C : League.Characters.Universal_Character) return Boolean is
-      begin
-         --  sub-delims     = "!" / "$" / "&" / "'" / "(" / ")"
-         --                     / "*" / "+" / "," / ";" / "="
-
-         return
-           C = Exclamation_Mark
-             or C = Dollar_Sign
-             or C = Ampersand
-             or C = Apostrophe
-             or C = Left_Parenthesis
-             or C = Right_Parenthesis
-             or C = Asterisk
-             or C = Plus_Sign
-             or C = Comma
-             or C = Semicolon
-             or C = Equals_Sign;
-      end Is_Sub_Delims;
 
       ----------------------
       -- Parse_IAuthority --
@@ -1463,6 +1394,74 @@ package body League.IRIs is
    end IRI_Parser;
 
    --------------
+   -- Is_ALPHA --
+   --------------
+
+   function Is_ALPHA
+    (C : League.Characters.Universal_Character) return Boolean is
+   begin
+      return
+       (Latin_Capital_Letter_A <= C and C <= Latin_Capital_Letter_Z)
+          or (Latin_Small_Letter_A <= C and C <= Latin_Small_Letter_Z);
+   end Is_ALPHA;
+
+   --------------------
+   -- Is_IUnreserved --
+   --------------------
+
+   function Is_IUnreserved
+    (C : League.Characters.Universal_Character) return Boolean is
+   begin
+      --  [RFC 3987]
+      --
+      --  iunreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~" / ucschar
+      --
+      --  ucschar        = %xA0-D7FF / %xF900-FDCF / %xFDF0-FFEF
+      --                    / %x10000-1FFFD / %x20000-2FFFD / %x30000-3FFFD
+      --                    / %x40000-4FFFD / %x50000-5FFFD / %x60000-6FFFD
+      --                    / %x70000-7FFFD / %x80000-8FFFD / %x90000-9FFFD
+      --                    / %xA0000-AFFFD / %xB0000-BFFFD / %xC0000-CFFFD
+      --                    / %xD0000-DFFFD / %xE1000-EFFFD
+
+      --  XXX Compatibility with Legacy IRI must be checked!
+
+      --  XXX Not implemented completely.
+
+      return
+        Is_ALPHA (C)
+          or (Digit_Zero <= C and C <= Digit_Nine)
+          or C = Hyphen_Minus
+          or C = Full_Stop
+          or C = Low_Line
+          or C = Tilde
+          or (C.Is_Valid and No_Break_Space <= C);
+   end Is_IUnreserved;
+
+   -------------------
+   -- Is_Sub_Delims --
+   -------------------
+
+   function Is_Sub_Delims
+    (C : League.Characters.Universal_Character) return Boolean is
+   begin
+      --  sub-delims     = "!" / "$" / "&" / "'" / "(" / ")"
+      --                     / "*" / "+" / "," / ";" / "="
+
+      return
+        C = Exclamation_Mark
+          or C = Dollar_Sign
+          or C = Ampersand
+          or C = Apostrophe
+          or C = Left_Parenthesis
+          or C = Right_Parenthesis
+          or C = Asterisk
+          or C = Plus_Sign
+          or C = Comma
+          or C = Semicolon
+          or C = Equals_Sign;
+   end Is_Sub_Delims;
+
+   --------------
    -- Is_Valid --
    --------------
 
@@ -1788,7 +1787,94 @@ package body League.IRIs is
    -------------------------
 
    function To_Universal_String
-    (Self : IRI'Class) return League.Strings.Universal_String is
+    (Self : IRI'Class) return League.Strings.Universal_String
+   is
+      procedure Append_IPChar
+       (Result    : in out League.Strings.Universal_String;
+        Character : League.Characters.Universal_Character);
+      --  Append character. All characters except ipchar are encoded.
+
+      procedure Append_ISegment
+       (Result  : in out League.Strings.Universal_String;
+        Segment : League.Strings.Universal_String);
+      --  Append isegment. Encode all non ipchar characters.
+
+      -------------------
+      -- Append_IPChar --
+      -------------------
+
+      procedure Append_IPChar
+       (Result    : in out League.Strings.Universal_String;
+        Character : League.Characters.Universal_Character)
+      is
+         To_HEX :
+           constant array (Natural range 0 .. 15)
+             of League.Characters.Universal_Character
+               := (Digit_Zero,
+                   Digit_One,
+                   Digit_Two,
+                   Digit_Three,
+                   Digit_Four,
+                   Digit_Five,
+                   Digit_Six,
+                   Digit_Seven,
+                   Digit_Eight,
+                   Digit_Nine,
+                   Latin_Capital_Letter_A,
+                   Latin_Capital_Letter_B,
+                   Latin_Capital_Letter_C,
+                   Latin_Capital_Letter_D,
+                   Latin_Capital_Letter_E,
+                   Latin_Capital_Letter_F);
+
+      begin
+         --  [RFC 3987]
+         --
+         --  ipchar         = iunreserved / pct-encoded / sub-delims / ":"
+         --                  / "@"
+         --
+         --  Note: isegment-nz-nc doesn't allow ":" character, because it
+         --  conflicts with scheme production.
+
+         if Is_IUnreserved (Character)
+           or else Is_Sub_Delims (Character)
+           or else Character = Colon
+           or else (not Self.Scheme.Is_Empty
+                      and then Character = Commercial_At)
+         then
+            Result.Append (Character);
+
+         else
+            declare
+               Code : constant Natural
+                 := Wide_Wide_Character'Pos (Character.To_Wide_Wide_Character);
+
+            begin
+               if Code <= 16#7F# then
+                  Result.Append (Percent_Sign);
+                  Result.Append (To_Hex (Code / 16 mod 16));
+                  Result.Append (To_Hex (Code mod 16));
+
+               else
+                  raise Program_Error;
+               end if;
+            end;
+         end if;
+      end Append_IPChar;
+
+      ---------------------
+      -- Append_ISegment --
+      ---------------------
+
+      procedure Append_ISegment
+       (Result  : in out League.Strings.Universal_String;
+        Segment : League.Strings.Universal_String) is
+      begin
+         for J in 1 .. Segment.Length loop
+            Append_IPChar (Result, Segment (J));
+         end loop;
+      end Append_ISegment;
+
    begin
       return Result : League.Strings.Universal_String do
          --  Append scheme when defined.
@@ -1813,7 +1899,7 @@ package body League.IRIs is
                Result.Append (Solidus);
             end if;
 
-            Result.Append (Self.Path.Element (J));
+            Append_ISegment (Result, Self.Path.Element (J));
          end loop;
 
          --  Append query.
