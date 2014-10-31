@@ -586,6 +586,9 @@ package body League.IRIs is
          if Current <= Image.Length
            and then Image.Element (Current) = Colon
          then
+            Current := Current + 1;
+            --  Skip colon charater.
+
             Parse_Port (Self, Image, Current, Success);
 
             if not Success then
@@ -1353,10 +1356,30 @@ package body League.IRIs is
         First   : in out Positive;
         Success : out Boolean)
       is
-      begin
-         --  XXX Not implemented.
+         --  [RFC 3987]
+         --
+         --  port           = *DIGIT
 
-         raise Program_Error;
+         C       : League.Characters.Universal_Character;
+         Current : Positive := First;
+
+      begin
+         Self.Port := 0;
+
+         while Current <= Image.Length loop
+            C := Image.Element (Current);
+
+            exit when not IS_DIGIT (C);
+
+            Self.Port :=
+              Self.Port * 10
+                + (Wide_Wide_Character'Pos (C.To_Wide_Wide_Character)
+                     - Wide_Wide_Character'Pos('0'));
+            Current := Current + 1;
+         end loop;
+
+         Success := True;
+         First := Current;
       end Parse_Port;
 
       ------------------
