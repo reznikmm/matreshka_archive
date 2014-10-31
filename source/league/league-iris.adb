@@ -106,8 +106,14 @@ package body League.IRIs is
          --  Append port.
 
          if Self.Port /= 0 then
-            Result.Append (Colon);
-            Result.Append (Integer'Wide_Wide_Image (Self.Port));
+            declare
+               Image : constant Wide_Wide_String
+                 := Integer'Wide_Wide_Image (Self.Port);
+
+            begin
+               Result.Append (Colon);
+               Result.Append (Image (Image'First + 1 .. Image'Last));
+            end;
          end if;
       end return;
    end Authority;
