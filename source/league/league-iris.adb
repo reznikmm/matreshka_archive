@@ -1495,10 +1495,7 @@ package body League.IRIs is
 
    function Port (Self : IRI'Class; Default : Natural := 0) return Natural is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Port unimplemented");
-      raise Program_Error;
-      return Port (Self, Default);
+      return Self.Port;
    end Port;
 
    -----------
