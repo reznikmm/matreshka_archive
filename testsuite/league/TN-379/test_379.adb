@@ -51,7 +51,7 @@ procedure Test_379 is
    use type League.Strings.Universal_String;
 
    Image : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("http://forge.ada-ru.org:8080/");
+     := League.Strings.To_Universal_String ("http://forge.ada-ru.org:8080");
    URL   : League.IRIs.IRI;
 
 begin
