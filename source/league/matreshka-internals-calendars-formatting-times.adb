@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -78,11 +78,19 @@ package body Matreshka.Internals.Calendars.Formatting.Times is
      Output  : in out League.Strings.Universal_String;
      Time    : Relative_Time;
      Leap    : Relative_Time;
-     Padding : Positive) is
-   begin
-      --  XXX Not yet implemented.
+     Padding : Positive)
+   is
+      Image  : constant Wide_Wide_String
+        := Matreshka.Internals.Calendars.Times.Nano_Second_100_Number'
+             Wide_Wide_Image
+              (Matreshka.Internals.Calendars.Times.Nanosecond_100
+                (Time, Leap));
+      Buffer : Wide_Wide_String := "0000000";
 
-      null;
+   begin
+      Buffer (Buffer'Last - Image'Length + 2 .. Buffer'Last) :=
+        Image (Image'First + 1 .. Image'Last);
+      Output.Append (Buffer (1 .. Padding));
    end Append_Fractional_Second;
 
    --------------------------
