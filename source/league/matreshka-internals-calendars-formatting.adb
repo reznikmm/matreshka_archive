@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -539,7 +539,7 @@ package body Matreshka.Internals.Calendars.Formatting is
                --  Fractional Second - truncates (like other time fields) to
                --  the count of letters.
 
-               Parse_Field (2, Index, Count);
+               Parse_Field (7, Index, Count);
                Time_Printer.Append_Fractional_Second
                 (Result, Time, Leap, Count);
 
