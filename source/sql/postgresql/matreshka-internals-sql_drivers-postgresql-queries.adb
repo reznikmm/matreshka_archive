@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@ with Ada.Streams;
 with Ada.Unchecked_Conversion;
 with System;
 
+with League.Calendars.ISO_8601;
 with League.Text_Codecs;
 with Matreshka.Internals.SQL_Parameter_Rewriters.PostgreSQL;
 
@@ -59,6 +60,11 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    --  responsible to set client encodings to UTF-8.
    Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
+
+   Timestamp_Format : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("yyyy-MM-dd HH:mm:ss.SSSSSS");
+   --  PostgreSQL supports up to 6 digits in fractional seconds, while
+   --  Matreshka supports 7 digits.
 
    ----------------
    -- Bind_Value --
@@ -132,6 +138,13 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
               Interfaces.C.Strings.New_String
                (League.Holders.Universal_Float'Image
                  (League.Holders.Element (Value)));
+
+         elsif League.Holders.Is_Date_Time (Value) then
+            Params (J) :=
+              Interfaces.C.Strings.New_String
+               (League.Calendars.ISO_8601.Image
+                 (Timestamp_Format,
+                  League.Holders.Element (Value)).To_UTF_8_String);
          end if;
       end loop;
 
@@ -445,6 +458,68 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                begin
                   League.Holders.Replace_Element
                    (Value, League.Holders.Universal_Float'Value (Image));
+               end;
+            end if;
+
+         when Databases.Timestamp_Data =>
+            --  Process TIMESTAMP data.
+
+            League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+
+            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
+               declare
+                  use type League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+                  Image          : constant String
+                    := Interfaces.C.Strings.Value
+                        (PQgetvalue (Self.Result, Self.Row, Column));
+                  Year           : League.Calendars.ISO_8601.Year_Number;
+                  Month          : League.Calendars.ISO_8601.Month_Number;
+                  Day            : League.Calendars.ISO_8601.Day_Number;
+                  Hour           : League.Calendars.ISO_8601.Hour_Number;
+                  Minute         : League.Calendars.ISO_8601.Minute_Number;
+                  Second         : League.Calendars.ISO_8601.Second_Number;
+                  Nanosecond_100 :
+                    League.Calendars.ISO_8601.Nanosecond_100_Number;
+                  Multiplicator  :
+                    League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+               begin
+                  Year :=
+                    League.Calendars.ISO_8601.Year_Number'Value
+                     (Image (1 .. 4));
+                  Month :=
+                    League.Calendars.ISO_8601.Month_Number'Value
+                     (Image (6 .. 7));
+                  Day :=
+                    League.Calendars.ISO_8601.Day_Number'Value
+                     (Image (9 .. 10));
+                  Hour :=
+                    League.Calendars.ISO_8601.Hour_Number'Value
+                     (Image (12 .. 13));
+                  Minute :=
+                    League.Calendars.ISO_8601.Minute_Number'Value
+                     (Image (15 .. 16));
+                  Second :=
+                    League.Calendars.ISO_8601.Second_Number'Value
+                     (Image (18 .. 19));
+
+                  Nanosecond_100 := 0;
+                  Multiplicator  := 1_000_000;
+
+                  for J in 21 .. Image'Last loop
+                     Nanosecond_100 :=
+                       Nanosecond_100
+                         + (Character'Pos (Image (J)) - Character'Pos ('0'))
+                              * Multiplicator;
+
+                     Multiplicator := Multiplicator / 10;
+                  end loop;
+
+                  League.Holders.Replace_Element
+                   (Value,
+                    League.Calendars.ISO_8601.Create
+                     (Year, Month, Day, Hour, Minute, Second, Nanosecond_100));
                end;
             end if;
       end case;

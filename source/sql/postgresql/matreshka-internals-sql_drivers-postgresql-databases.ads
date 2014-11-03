@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,7 +49,7 @@ package Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
 
    type PostgreSQL_Database is new Abstract_Database with private;
 
-   type Data_Types is (Text_Data, Integer_Data, Float_Data);
+   type Data_Types is (Text_Data, Integer_Data, Float_Data, Timestamp_Data);
 
    function Allocate_Statement_Name
     (Self : not null access PostgreSQL_Database'Class)

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -191,6 +191,9 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
             elsif Name = "varchar" then
                Self.Type_Map.Insert (Type_Oid, Text_Data);
 
+            elsif Name = "timestamp" then
+               Self.Type_Map.Insert (Type_Oid, Timestamp_Data);
+
             else
                Self.Type_Map.Insert (Type_Oid, Text_Data);
             end if;
@@ -320,6 +323,30 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
          end if;
 
          Interfaces.C.Strings.Free (Encoding);
+      end;
+
+      --  Set DATESTYLE to ISO.
+
+      declare
+         Query  : Interfaces.C.Strings.chars_ptr
+           := Interfaces.C.Strings.New_String ("SET DATESTYLE TO 'ISO, DMY'");
+         Result : constant PGresult_Access := PQexec (Self.Handle, Query);
+
+      begin
+         Interfaces.C.Strings.Free (Query);
+         PQclear (Result);
+      end;
+
+      --  Set TIMEZONE to UTC.
+
+      declare
+         Query  : Interfaces.C.Strings.chars_ptr
+           := Interfaces.C.Strings.New_String ("SET TIMEZONE TO 'UTC'");
+         Result : constant PGresult_Access := PQexec (Self.Handle, Query);
+
+      begin
+         Interfaces.C.Strings.Free (Query);
+         PQclear (Result);
       end;
 
       --  Initialize internal data.
