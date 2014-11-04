@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,12 +43,43 @@
 ------------------------------------------------------------------------------
 with Ada.Strings.Fixed;
 
+with League.Calendars.ISO_8601;
+
 package body Matreshka.Internals.SQL_Drivers.Oracle.Utils is
 
    Invert : constant array (Boolean) of
      System.Storage_Elements.Storage_Element := (True => 16#FF#, False => 0);
 
    Sign : constant array (Boolean) of Character := (True => '-', False => '+');
+
+   -----------------
+   -- Decode_Date --
+   -----------------
+
+   function Decode_Date (Buffer : OCIDate) return League.Calendars.Date is
+   begin
+      return League.Calendars.ISO_8601.Create
+        (Year  => League.Calendars.ISO_8601.Year_Number (Buffer.Year),
+         Month => League.Calendars.ISO_8601.Month_Number (Buffer.Month),
+         Day   => League.Calendars.ISO_8601.Day_Number (Buffer.Day));
+   end Decode_Date;
+
+   -----------------
+   -- Encode_Date --
+   -----------------
+
+   function Encode_Date (Value : League.Calendars.Date) return OCIDate is
+      Year   : League.Calendars.ISO_8601.Year_Number;
+      Month  : League.Calendars.ISO_8601.Month_Number;
+      Day    : League.Calendars.ISO_8601.Day_Number;
+   begin
+      League.Calendars.ISO_8601.Split (Value, Year, Month, Day);
+
+      return (Year => Interfaces.Integer_16 (Year),
+              Month => Interfaces.Unsigned_8 (Month),
+              Day => Interfaces.Unsigned_8 (Day),
+              HH => 0, MM => 0, SS => 0);
+   end Encode_Date;
 
    -------------------
    -- Decode_Number --

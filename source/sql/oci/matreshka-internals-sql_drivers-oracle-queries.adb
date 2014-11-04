@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Ada.Unchecked_Deallocation;
 
+with League.Calendars.ISO_8601;
 with League.Strings.Internals;
 with Matreshka.Internals.Utf16;
 with Matreshka.Internals.Strings.C;
@@ -103,6 +104,8 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
      (Left  : Matreshka.Internals.Utf16.Utf16_String_Index;
       Right : Ub4) return Matreshka.Internals.Utf16.Utf16_String_Index;
 
+   UTC_TZ : constant Wide_String := "+00:00";
+
    ---------
    -- "+" --
    ---------
@@ -146,7 +149,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
          Plugin     : Plug_In_Access := Plug_In_Access (Self.DB.Plugins);
          Control    : Plug_In.Control_Side := Plug_In.Driver;
          Extra_Type : Data_Type;
-         Extra_Size : System.Storage_Elements.Storage_Count;
+         Extra_Size : System.Storage_Elements.Storage_Count := 0;
       begin
          while Plugin /= null loop
             Plugin.Check_Parameter
@@ -270,6 +273,84 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
             if not League.Holders.Is_Empty (Value) then
                Item.Float := League.Holders.Element (Value);
+            end if;
+
+         elsif League.Holders.Is_Date (Value) then
+            declare
+               Aux   : League.Calendars.Date;
+
+            begin
+               Code :=
+                 OCIBindByName
+                   (Self.Handle,
+                    Item.Bind'Access,
+                    Self.DB.Error,
+                    League.Strings.Internals.Internal (Name).Value,
+                    Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
+                    Item.Date'Address,
+                    Item.Date'Size / 8,
+                    SQLT_ODT,
+                    Item.Is_Null'Access);
+
+               if not League.Holders.Is_Empty (Value) then
+                  Aux := League.Holders.Element (Value);
+                  Item.Date := Utils.Encode_Date (Aux);
+               end if;
+
+            end;
+
+         elsif League.Holders.Is_Date_Time (Value) then
+            if Item.Timestamp = null then
+               Code := OCIDescriptorAlloc
+                 (Databases.Env,
+                  Item.Timestamp'Access,
+                  OCI_DTYPE_TIMESTAMP_TZ);
+            end if;
+
+            Code :=
+              OCIBindByName
+                (Self.Handle,
+                 Item.Bind'Access,
+                 Self.DB.Error,
+                 League.Strings.Internals.Internal (Name).Value,
+                 Ub4 (League.Strings.Internals.Internal (Name).Unused) * 2,
+                 Item.Timestamp'Address,
+                 Item.Timestamp'Size / 8,
+                 SQLT_TIMESTAMP_TZ,
+                 Item.Is_Null'Access);
+
+            if not League.Holders.Is_Empty (Value) then
+               declare
+                  use type Size_T;
+
+                  Aux      : constant League.Calendars.Date_Time :=
+                    League.Holders.Element (Value);
+                  Year     : League.Calendars.ISO_8601.Year_Number;
+                  Month    : League.Calendars.ISO_8601.Month_Number;
+                  Day      : League.Calendars.ISO_8601.Day_Number;
+                  Hour     : League.Calendars.ISO_8601.Hour_Number;
+                  Minute   : League.Calendars.ISO_8601.Minute_Number;
+                  Second   : League.Calendars.ISO_8601.Second_Number;
+                  Fraction : League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+               begin
+                  League.Calendars.ISO_8601.Split
+                    (Aux, Year, Month, Day, Hour, Minute, Second, Fraction);
+
+                  Code := OCIDateTimeConstruct
+                    (Env    => Databases.Env,
+                     Error  => Self.DB.Error,
+                     Date   => Item.Timestamp,
+                     Year   => Sb2 (Year),
+                     Month  => Ub1 (Month),
+                     Day    => Ub1 (Day),
+                     Hour   => Ub1 (Hour),
+                     Min    => Ub1 (Minute),
+                     Sec    => Ub1 (Second),
+                     Fract  => Ub4 (Fraction) * 100,
+                     TZ     => UTC_TZ (UTC_TZ'First)'Address,
+                     TZ_Len => UTC_TZ'Length * 2);
+               end;
             end if;
 
          elsif League.Holders.Is_Empty (Value) then
@@ -641,6 +722,49 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
                      end if;
                   end if;
 
+               elsif Column.Column_Type in SQLT_DAT then
+                  Self.Columns (J).Column_Type := Date_Column;
+                  Code :=
+                    OCIDefineByPos
+                      (Stmt         => Self.Handle,
+                       Target       => Self.Columns (J).Define'Access,
+                       Error        => Self.DB.Error,
+                       Position     => Ub4 (J),
+                       Value        => Self.Columns (J).Date'Address,
+                       Value_Length => Self.Columns (J).Date'Size / 8,
+                       Value_Type   => SQLT_ODT,
+                       Indicator    => Self.Columns (J).Is_Null'Access);
+
+                  if Databases.Check_Error (Self.DB, Code) then
+                     return False;
+                  end if;
+
+               elsif Column.Column_Type in
+                 SQLT_TIMESTAMP | SQLT_TIMESTAMP_TZ | SQLT_TIMESTAMP_LTZ
+               then
+                  if Self.Columns (J).Timestamp = null then
+                     Code := OCIDescriptorAlloc
+                       (Databases.Env,
+                        Self.Columns (J).Timestamp'Access,
+                        OCI_DTYPE_TIMESTAMP_TZ);
+                  end if;
+
+                  Self.Columns (J).Column_Type := Time_Column;
+                  Code :=
+                    OCIDefineByPos
+                      (Stmt         => Self.Handle,
+                       Target       => Self.Columns (J).Define'Access,
+                       Error        => Self.DB.Error,
+                       Position     => Ub4 (J),
+                       Value        => Self.Columns (J).Timestamp'Address,
+                       Value_Length => Self.Columns (J).Timestamp'Size / 8,
+                       Value_Type   => SQLT_TIMESTAMP_TZ,
+                       Indicator    => Self.Columns (J).Is_Null'Access);
+
+                  if Databases.Check_Error (Self.DB, Code) then
+                     return False;
+                  end if;
+
                else
                   exit;
                   --  raise Constraint_Error with "Unsupported type";
@@ -703,9 +827,21 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
       ----------
 
       procedure Drop (Pos : Parameter_Maps.Cursor) is
+         Code : Error_Code;
          Item : Bound_Value_Access := Parameter_Maps.Element (Pos);
 
       begin
+         if Item /= null and then Item.Timestamp /= null then
+            Code := OCIHandleFree
+              (Item.Timestamp, OCI_DTYPE_TIMESTAMP_TZ);
+
+            if Databases.Check_Error (Self.DB, Code) then
+               null;  --  How to report errors?
+            end if;
+
+            Item.Timestamp := null;
+         end if;
+
          Free (Item);
          Self.Parameters.Replace_Element (Pos, null);
       end Drop;
@@ -733,6 +869,11 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
             for J in Self.Columns'Range loop
                if Self.Columns (J).String /= null then
                   Dereference (Self.Columns (J).String);
+               elsif Self.Columns (J).Timestamp /= null then
+                  Code := OCIHandleFree
+                    (Self.Columns (J).Timestamp, OCI_DTYPE_TIMESTAMP_TZ);
+
+                  Self.Columns (J).Timestamp := null;
                end if;
             end loop;
 
@@ -1034,6 +1175,72 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
          if Self.Columns (Index).Is_Null = 0 then
             League.Holders.Replace_Element (Value, Self.Columns (Index).Float);
          end if;
+
+      elsif Self.Columns (Index).Column_Type = Date_Column then
+         League.Holders.Set_Tag (Value, League.Holders.Date_Tag);
+
+         if Self.Columns (Index).Is_Null = 0 then
+            League.Holders.Replace_Element
+              (Value, Utils.Decode_Date (Self.Columns (Index).Date));
+         end if;
+
+      elsif Self.Columns (Index).Column_Type = Time_Column then
+         League.Holders.Set_Tag (Value, League.Holders.Date_Time_Tag);
+
+         if Self.Columns (Index).Is_Null = 0 then
+            declare
+               Aux   : League.Calendars.Date_Time;
+               Code  : Error_Code;
+               Year  : aliased Sb2;
+               Month : aliased Ub1;
+               Day   : aliased Ub1;
+               Hour  : aliased Ub1;
+               Min   : aliased Ub1;
+               Sec   : aliased Ub1;
+               Fract : aliased Ub4;
+            begin
+               Code :=
+                 OCIDateTimeGetDate
+                   (Env   => Databases.Env,
+                    Error => Self.DB.Error,
+                    Date  => Self.Columns (Index).Timestamp,
+                    Year  => Year'Access,
+                    Month => Month'Access,
+                    Day   => Day'Access);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return Value;
+               end if;
+
+               Code :=
+                 OCIDateTimeGetTime
+                   (Env   => Databases.Env,
+                    Error => Self.DB.Error,
+                    Date  => Self.Columns (Index).Timestamp,
+                    Hour  => Hour'Access,
+                    Min   => Min'Access,
+                    Sec   => Sec'Access,
+                    Fract => Fract'Access);
+
+               if Databases.Check_Error (Self.DB, Code) then
+                  return Value;
+               end if;
+
+               Aux := League.Calendars.ISO_8601.Create
+                 (League.Calendars.ISO_8601.Year_Number (Year),
+                  League.Calendars.ISO_8601.Month_Number (Month),
+                  League.Calendars.ISO_8601.Day_Number (Day),
+                  League.Calendars.ISO_8601.Hour_Number (Hour),
+                  League.Calendars.ISO_8601.Minute_Number (Min),
+                  League.Calendars.ISO_8601.Second_Number (Sec),
+                  League.Calendars.ISO_8601.Nanosecond_100_Number
+                    (Fract / 100));
+               --  ???  where timezone should go???
+
+               League.Holders.Replace_Element (Value, Aux);
+            end;
+         end if;
+
       end if;
 
       return Value;

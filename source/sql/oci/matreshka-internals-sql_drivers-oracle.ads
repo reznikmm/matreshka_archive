@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -93,6 +93,9 @@ package Matreshka.Internals.SQL_Drivers.Oracle is
    OCI_HTYPE_SVCCTX  : constant Handle_Type := 3;
    OCI_HTYPE_STMT    : constant Handle_Type := 4;
    OCI_DTYPE_PARAM   : constant Handle_Type := 53;
+   OCI_DTYPE_TIMESTAMP     : constant Handle_Type := 68;
+   OCI_DTYPE_TIMESTAMP_TZ  : constant Handle_Type := 69;
+   OCI_DTYPE_TIMESTAMP_LTZ : constant Handle_Type := 70;
 
    type Data_Type is new Ub2;
 
@@ -109,6 +112,7 @@ package Matreshka.Internals.SQL_Drivers.Oracle is
    SQLT_AFC           : constant Data_Type := 96;
    SQLT_IBFLOAT       : constant Data_Type := 100;
    SQLT_IBDOUBLE      : constant Data_Type := 101;
+   SQLT_ODT           : constant Data_Type := 156;
    SQLT_TIMESTAMP     : constant Data_Type := 187;
    SQLT_TIMESTAMP_TZ  : constant Data_Type := 188;
    SQLT_INTERVAL_YM   : constant Data_Type := 189;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -190,7 +190,8 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
 
    procedure Create_Environment (Self : not null access OCI_Database) is
       Created : aliased Environment;
-      Code    : Error_Code := OCIEnvNlsCreate (Created'Access, OCI_THREADED);
+      Code    : Error_Code := OCIEnvNlsCreate
+        (Created'Access, OCI_THREADED + OCI_OBJECT);
       Success : Boolean;
 
    begin

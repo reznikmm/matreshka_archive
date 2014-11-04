@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,9 @@
 ------------------------------------------------------------------------------
 
 with System.Storage_Elements;
+with Interfaces;
+
+with League.Calendars;
 
 package Matreshka.Internals.SQL_Drivers.Oracle.Utils is
 
@@ -53,5 +56,19 @@ package Matreshka.Internals.SQL_Drivers.Oracle.Utils is
    procedure Encode_Number
      (Image  : String;
       Buffer : in out Storage_Array);
+
+   type OCIDate is record
+      Year  : Interfaces.Integer_16;
+      Month : Interfaces.Unsigned_8;
+      Day   : Interfaces.Unsigned_8;
+      HH    : Interfaces.Unsigned_8;
+      MM    : Interfaces.Unsigned_8;
+      SS    : Interfaces.Unsigned_8;
+   end record
+     with Pack, Convention => C;
+
+   function Encode_Date (Value : League.Calendars.Date) return OCIDate;
+
+   function Decode_Date (Buffer : OCIDate) return League.Calendars.Date;
 
 end Matreshka.Internals.SQL_Drivers.Oracle.Utils;
