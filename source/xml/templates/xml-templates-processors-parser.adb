@@ -51,10 +51,10 @@ package body XML.Templates.Processors.Parser is
    type Token_Kinds is
     (Token_Identifier,
      Token_Full_Stop,
-     Token_In,
+     Token_Of,
      Token_Not,
      Token_End_Of_Expression);
-   subtype Keyword_Token is Token_Kinds range Token_In .. Token_Not;
+   subtype Keyword_Token is Token_Kinds range Token_Of .. Token_Not;
 
    type Scanner_Type is tagged record
       Text    : League.Strings.Universal_String;
@@ -70,7 +70,7 @@ package body XML.Templates.Processors.Parser is
 
    Keywords : constant array (Keyword_Token)
      of League.Strings.Universal_String
-       := (Token_In  => League.Strings.To_Universal_String ("in"),
+       := (Token_Of  => League.Strings.To_Universal_String ("of"),
            Token_Not => League.Strings.To_Universal_String ("not"));
 
    -----------------------------
@@ -103,10 +103,10 @@ package body XML.Templates.Processors.Parser is
             return;
       end case;
 
-      --  Lookup for 'in' keyword.
+      --  Lookup for 'Of' keyword.
 
       case Scanner.Next_Token is
-         when Token_In =>
+         when Token_Of =>
             null;
 
          when others =>
