@@ -63,7 +63,7 @@ procedure Test_350 is
             & " xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
             & "<body>"
             & "<ul>"
-            & "<mtl:for each='item in items'>"
+            & "<mtl:for each='item of items'>"
             & "<li>${item}</li>"
             & "</mtl:for>"
             & "</ul>"
