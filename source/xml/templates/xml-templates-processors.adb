@@ -724,16 +724,20 @@ package body XML.Templates.Processors is
    is
       use type League.Characters.Universal_Character;
 
-      procedure Process_Expression (Text : League.Strings.Universal_String);
+      procedure Process_Expression
+       (Text    : League.Strings.Universal_String;
+        Success : in out Boolean);
       --  Parse and execute expression.
 
       ------------------------
       -- Process_Expression --
       ------------------------
 
-      procedure Process_Expression (Text : League.Strings.Universal_String) is
-         Value   : League.Holders.Holder;
-         Success : Boolean;
+      procedure Process_Expression
+       (Text    : League.Strings.Universal_String;
+        Success : in out Boolean)
+      is
+         Value : League.Holders.Holder;
 
       begin
          Parser.Evaluate_Simple_Expression
@@ -853,8 +857,12 @@ package body XML.Templates.Processors is
 
                else
                   Last := Dollar - 1;
-                  Process_Expression (Text.Slice (First, Last));
+                  Process_Expression (Text.Slice (First, Last), Success);
                   First := Dollar + 1;
+
+                  if not Success then
+                     return;
+                  end if;
                end if;
             end if;
          end if;
