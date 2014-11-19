@@ -58,14 +58,12 @@ package body XML.Templates.Processors is
      := League.Strings.To_Universal_String
          ("http://forge.ada-ru.org/matreshka/template");
 
-   Each_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("each");
-   If_Name   : constant League.Strings.Universal_String
+   Expression_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("expression");
+   If_Name         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("if");
-   For_Name  : constant League.Strings.Universal_String
+   For_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("for");
-   Test_Name : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String ("test");
 
    procedure Substitute
     (Self         : in out Template_Processor'Class;
@@ -588,8 +586,19 @@ package body XML.Templates.Processors is
 
          if Namespace_URI = Template_URI then
             if Local_Name = For_Name then
+               if not Attributes.Is_Specified (Expression_Name) then
+                  --  Expression is not specified.
+
+                  Self.Diagnosis :=
+                    League.Strings.To_Universal_String
+                     ("'expression' attribute is not specified");
+                  Success := False;
+
+                  return;
+               end if;
+
                Parser.Evaluate_For_Expression
-                (Attributes (Each_Name),
+                (Attributes (Expression_Name),
                  Self.Parameters,
                  Self.Object_Name,
                  Self.Container_Value,
@@ -604,8 +613,22 @@ package body XML.Templates.Processors is
                Self.Accumulate := 1;
 
             elsif Local_Name = If_Name then
+               if not Attributes.Is_Specified (Expression_Name) then
+                  --  Expression is not specified.
+
+                  Self.Diagnosis :=
+                    League.Strings.To_Universal_String
+                     ("'expression' attribute is not specified");
+                  Success := False;
+
+                  return;
+               end if;
+
                Parser.Evaluate_Simple_Expression
-                (Attributes (Test_Name), Self.Parameters, Value, Success);
+                (Attributes (Expression_Name),
+                 Self.Parameters,
+                 Value,
+                 Success);
 
                if not Success then
                   return;
