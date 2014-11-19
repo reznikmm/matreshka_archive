@@ -102,7 +102,11 @@ procedure Test_386 is
       pragma Unreferenced (Occurrence);
 
    begin
-      Self.Error_Reported := True;
+      if Occurrence.Message.To_Wide_Wide_String
+           = "'expression' attribute is not specified"
+      then
+         Self.Error_Reported := True;
+      end if;
    end Fatal_Error;
 
    ----------------
