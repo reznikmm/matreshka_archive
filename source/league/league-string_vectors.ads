@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -127,6 +127,28 @@ package League.String_Vectors is
      Pattern : Wide_Wide_String) return Natural;
    --  Returns index of the first element which match to item, or zero
    --  overwise.
+
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     String : League.Strings.Universal_String'Class) return Boolean;
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     String : Wide_Wide_String) return Boolean;
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     Vector : Universal_String_Vector'Class) return Boolean;
+   --  Returns True when vector starts from the given string/vector.
+
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     String : League.Strings.Universal_String'Class) return Boolean;
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     String : Wide_Wide_String) return Boolean;
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     Vector : Universal_String_Vector'Class) return Boolean;
+   --  Returns True when vector starts from the given string/vector.
 
    function "="
     (Left  : Universal_String_Vector;

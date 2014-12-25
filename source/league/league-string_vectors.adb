@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -153,6 +153,58 @@ package body League.String_Vectors is
 
       return League.Strings.Internals.Create (Self.Data.Value (Position));
    end Element;
+
+   ---------------
+   -- Ends_With --
+   ---------------
+
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     String : League.Strings.Universal_String'Class) return Boolean
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      return
+        Self.Length >= 1
+          and then Self (Self.Length)
+                     = League.Strings.Universal_String (String);
+   end Ends_With;
+
+   ---------------
+   -- Ends_With --
+   ---------------
+
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     Vector : Universal_String_Vector'Class) return Boolean
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      if Self.Length >= Vector.Length then
+         for J in reverse 1 .. Vector.Length loop
+            if Self (Self.Length - Vector.Length + J) /= Vector (J) then
+               return False;
+            end if;
+         end loop;
+
+         return True;
+      end if;
+
+      return False;
+   end Ends_With;
+
+   ---------------
+   -- Ends_With --
+   ---------------
+
+   function Ends_With
+    (Self   : Universal_String_Vector'Class;
+     String : Wide_Wide_String) return Boolean is
+   begin
+      return Self.Ends_With (League.Strings.To_Universal_String (String));
+   end Ends_With;
 
    --------------
    -- Finalize --
@@ -365,6 +417,57 @@ package body League.String_Vectors is
       Matreshka.Internals.String_Vectors.Replace
        (Self.Data, Position, League.Strings.Internals.Internal (Item));
    end Replace;
+
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     String : League.Strings.Universal_String'Class) return Boolean
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      return
+        Self.Length >= 1
+          and then Self (1) = League.Strings.Universal_String (String);
+   end Starts_With;
+
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     Vector : Universal_String_Vector'Class) return Boolean
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      if Self.Length >= Vector.Length then
+         for J in 1 .. Vector.Length loop
+            if Self (J) /= Vector (J) then
+               return False;
+            end if;
+         end loop;
+
+         return True;
+      end if;
+
+      return False;
+   end Starts_With;
+
+   -----------------
+   -- Starts_With --
+   -----------------
+
+   function Starts_With
+    (Self   : Universal_String_Vector'Class;
+     String : Wide_Wide_String) return Boolean is
+   begin
+      return Self.Starts_With (League.Strings.To_Universal_String (String));
+   end Starts_With;
 
    -----------
    -- Write --
