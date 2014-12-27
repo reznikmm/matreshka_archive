@@ -1424,6 +1424,12 @@ package body League.Strings is
          raise Constraint_Error with "Illegal Unicode code point";
       end if;
 
+      if Item.Length = 0 then
+         --  Empty string doesn't contains any character.
+
+         return 0;
+      end if;
+
       return
         String_Handler.Last_Index (Item, 0, Item.Length, Item.Unused, Code);
    end Last_Index;
