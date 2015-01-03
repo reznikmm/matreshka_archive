@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,6 +71,12 @@ package League.String_Vectors is
    function Element
     (Self  : Universal_String_Vector'Class;
      Index : Positive) return League.Strings.Universal_String;
+
+   function Slice
+    (Self : Universal_String_Vector'Class;
+     Low  : Positive;
+     High : Natural) return Universal_String_Vector;
+   --  Returns slice of vector.
 
    procedure Clear (Self : in out Universal_String_Vector'Class);
 

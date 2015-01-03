@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.String_Vectors.Internals;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings.Configuration;
 
@@ -417,6 +418,46 @@ package body League.String_Vectors is
       Matreshka.Internals.String_Vectors.Replace
        (Self.Data, Position, League.Strings.Internals.Internal (Item));
    end Replace;
+
+   -----------
+   -- Slice --
+   -----------
+
+   function Slice
+    (Self : Universal_String_Vector'Class;
+     Low  : Positive;
+     High : Natural) return Universal_String_Vector
+   is
+      SD : constant not null
+        Matreshka.Internals.String_Vectors.Shared_String_Vector_Access
+          := Self.Data;
+      TD : Matreshka.Internals.String_Vectors.Shared_String_Vector_Access;
+
+   begin
+      if Low > High then
+         --  By Ada conventions, slice is empty when Low is greater than High.
+         --  Actual values of Low and High is not important here.
+
+         return Empty_Universal_String_Vector;
+
+      elsif Low > Self.Length or else High > Self.Length then
+         --  Otherwise, both Low and High should be less or equal to Length.
+
+         raise Constraint_Error with "Index is out of range";
+      end if;
+
+      TD := Allocate (String_Vector_Index (High - Low + 1));
+
+      for J in String_Vector_Index (High - 1)
+                 .. String_Vector_Index (Low - 1)
+      loop
+         Reference (SD.Value (J));
+         TD.Value (TD.Unused) := SD.Value (J);
+         TD.Unused := TD.Unused + 1;
+      end loop;
+
+      return League.String_Vectors.Internals.Wrap (TD);
+   end Slice;
 
    -----------------
    -- Starts_With --
