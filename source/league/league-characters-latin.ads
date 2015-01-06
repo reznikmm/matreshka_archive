@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,11 +52,44 @@ package League.Characters.Latin is
 
    --  C0 Controls and Basic Latin
 
+   Nul                    : constant Universal_Character;  --  0000
+   Start_Of_Heading       : constant Universal_Character;  --  0001
+   Start_Of_Text          : constant Universal_Character;  --  0002
+   End_Of_Text            : constant Universal_Character;  --  0003
+   End_Of_Transmission    : constant Universal_Character;  --  0004
+   Enquiry                : constant Universal_Character;  --  0005
+   Acknowledge            : constant Universal_Character;  --  0006
+   Bell                   : constant Universal_Character;  --  0007
+   Backspace              : constant Universal_Character;  --  0008
    Character_Tabulation   : constant Universal_Character;  --  0009
    Line_Feed              : constant Universal_Character;  --  000A
-
+   Line_Tabulation        : constant Universal_Character;  --  000B
    Form_Feed              : constant Universal_Character;  --  000C
    Carriage_Return        : constant Universal_Character;  --  000D
+   Shift_Out              : constant Universal_Character;  --  000E
+   Shift_In               : constant Universal_Character;  --  000F
+
+   Data_Link_Escape       : constant Universal_Character;  --  0010
+   Device_Control_One     : constant Universal_Character;  --  0011
+   Device_Control_Two     : constant Universal_Character;  --  0012
+   Device_Control_Three   : constant Universal_Character;  --  0013
+   Device_Control_Four    : constant Universal_Character;  --  0014
+   Negative_Acknowledge   : constant Universal_Character;  --  0015
+   Synchronous_Idle       : constant Universal_Character;  --  0016
+   End_Of_Transmission_Block :
+                            constant Universal_Character;  --  0017
+   Cancel                 : constant Universal_Character;  --  0018
+   End_Of_Medium          : constant Universal_Character;  --  0019
+   Substitute             : constant Universal_Character;  --  001A
+   Escape                 : constant Universal_Character;  --  001B
+   Information_Separator_Four :
+                            constant Universal_Character;  --  001C
+   Information_Separator_Three :
+                            constant Universal_Character;  --  001D
+   Information_Separator_Two :
+                            constant Universal_Character;  --  001E
+   Information_Separator_One :
+                            constant Universal_Character;  --  001F
 
    Space                  : constant Universal_Character;  --  0020
    Exclamation_Mark       : constant Universal_Character;  --  0021
@@ -121,11 +154,44 @@ package League.Characters.Latin is
 
 private
 
+   Nul                    : constant Universal_Character := (Code => 16#0000#);
+   Start_Of_Heading       : constant Universal_Character := (Code => 16#0001#);
+   Start_Of_Text          : constant Universal_Character := (Code => 16#0002#);
+   End_Of_Text            : constant Universal_Character := (Code => 16#0003#);
+   End_Of_Transmission    : constant Universal_Character := (Code => 16#0004#);
+   Enquiry                : constant Universal_Character := (Code => 16#0005#);
+   Acknowledge            : constant Universal_Character := (Code => 16#0006#);
+   Bell                   : constant Universal_Character := (Code => 16#0007#);
+   Backspace              : constant Universal_Character := (Code => 16#0008#);
    Character_Tabulation   : constant Universal_Character := (Code => 16#0009#);
    Line_Feed              : constant Universal_Character := (Code => 16#000A#);
-
+   Line_Tabulation        : constant Universal_Character := (Code => 16#000B#);
    Form_Feed              : constant Universal_Character := (Code => 16#000C#);
    Carriage_Return        : constant Universal_Character := (Code => 16#000D#);
+   Shift_Out              : constant Universal_Character := (Code => 16#000E#);
+   Shift_In               : constant Universal_Character := (Code => 16#000F#);
+
+   Data_Link_Escape       : constant Universal_Character := (Code => 16#0010#);
+   Device_Control_One     : constant Universal_Character := (Code => 16#0011#);
+   Device_Control_Two     : constant Universal_Character := (Code => 16#0012#);
+   Device_Control_Three   : constant Universal_Character := (Code => 16#0013#);
+   Device_Control_Four    : constant Universal_Character := (Code => 16#0014#);
+   Negative_Acknowledge   : constant Universal_Character := (Code => 16#0015#);
+   Synchronous_Idle       : constant Universal_Character := (Code => 16#0016#);
+   End_Of_Transmission_Block :
+                            constant Universal_Character := (Code => 16#0017#);
+   Cancel                 : constant Universal_Character := (Code => 16#0018#);
+   End_Of_Medium          : constant Universal_Character := (Code => 16#0019#);
+   Substitute             : constant Universal_Character := (Code => 16#001A#);
+   Escape                 : constant Universal_Character := (Code => 16#001B#);
+   Information_Separator_Four :
+                            constant Universal_Character := (Code => 16#001C#);
+   Information_Separator_Three :
+                            constant Universal_Character := (Code => 16#001D#);
+   Information_Separator_Two :
+                            constant Universal_Character := (Code => 16#001E#);
+   Information_Separator_One :
+                            constant Universal_Character := (Code => 16#001F#);
 
    Space                  : constant Universal_Character := (Code => 16#0020#);
    Exclamation_Mark       : constant Universal_Character := (Code => 16#0021#);
