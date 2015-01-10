@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -56,10 +56,14 @@ package body League.Base_64 is
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-
    function Decode
     (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit)
        return Ada.Streams.Stream_Element;
+
+   procedure Decode
+    (Item    : Matreshka.Internals.Utf16.Utf16_Code_Unit;
+     Value   : out Ada.Streams.Stream_Element;
+     Success : out Boolean);
 
    Encode : constant
      array (Ada.Streams.Stream_Element range 0 .. 63)
@@ -122,129 +126,43 @@ package body League.Base_64 is
       end case;
    end Decode;
 
-   ----------------
-   -- To_Base_64 --
-   ----------------
+   ------------
+   -- Decode --
+   ------------
 
-   function To_Base_64
-    (Data : League.Stream_Element_Vectors.Stream_Element_Vector)
-       return League.Strings.Universal_String
-   is
-      Source : constant
-        Matreshka.Internals.Stream_Element_Vectors.Shared_Stream_Element_Vector_Access
-          := League.Stream_Element_Vectors.Internals.Internal (Data);
-      Target : Matreshka.Internals.Strings.Shared_String_Access;
-      First  : Ada.Streams.Stream_Element_Offset := 0;
-      Unused : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
-      Aux    : Ada.Streams.Stream_Element;
-
+   procedure Decode
+    (Item    : Matreshka.Internals.Utf16.Utf16_Code_Unit;
+     Value   : out Ada.Streams.Stream_Element;
+     Success : out Boolean) is
    begin
-      --  Return empty string when data is empty.
+      Success := True;
 
-      if Source.Length = 0 then
-         return League.Strings.Empty_Universal_String;
-      end if;
+      case Item is
+         when Character'Pos ('A') .. Character'Pos ('Z') =>
+            Value :=
+              Ada.Streams.Stream_Element (Item) - Character'Pos ('A');
 
-      --  Allocate string for result. (Length + 2) / 3 * 4 is exact required
-      --  length for the result.
+         when Character'Pos ('a') .. Character'Pos ('z') =>
+            Value :=
+              Ada.Streams.Stream_Element (Item) - Character'Pos ('a') + 26;
 
-      Target :=
-        Matreshka.Internals.Strings.Allocate
-         (Matreshka.Internals.Utf16.Utf16_String_Index
-           ((Source.Length + 2) / 3 * 4));
+         when Character'Pos ('0') .. Character'Pos ('9') =>
+            Value :=
+              Ada.Streams.Stream_Element (Item) - Character'Pos ('0') + 52;
 
-      --  Encode each triplet of bytes when available.
+         when Character'Pos ('+') =>
+            Value := 62;
 
-      while Source.Length - First >= 3 loop
-         declare
-            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
-            S2 : constant Ada.Streams.Stream_Element := Source.Value (First + 1);
-            S3 : constant Ada.Streams.Stream_Element := Source.Value (First + 2);
+         when Character'Pos ('/') =>
+            Value := 63;
 
-         begin
-            Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
+         when Character'Pos ('=') =>
+            Value := 0;
 
-            Aux :=
-             ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Aux :=
-             ((S2 and 2#0000_1111#) * 4) or ((S3 and 2#1100_0000#) / 64);
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Aux := S3 and 2#0011_1111#;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-         end;
-
-         First := First + 3;
-      end loop;
-
-      if Source.Length - First = 1 then
-         declare
-            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
-
-         begin
-            Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Aux := (S1 and 2#0000_0011#) * 16;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Target.Value (Unused) := Character'Pos ('=');
-            Unused := Unused + 1;
-
-            Target.Value (Unused) := Character'Pos ('=');
-            Unused := Unused + 1;
-         end;
-
-      elsif Source.Length - First = 2 then
-         declare
-            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
-            S2 : constant Ada.Streams.Stream_Element := Source.Value (First + 1);
-
-         begin
-            Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Aux :=
-             ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Aux := (S2 and 2#0000_1111#) * 4;
-            Target.Value (Unused) := Encode (Aux);
-            Unused := Unused + 1;
-
-            Target.Value (Unused) := Character'Pos ('=');
-            Unused := Unused + 1;
-         end;
-      end if;
-
-      Target.Unused := Unused;
-      Target.Length := Integer (Target.Unused);
-      --  All characters of base64 character set occupy one code unit, thus
-      --  length of the string is always equal to the number of used code
-      --  units.
-
-      Matreshka.Internals.Strings.Configuration.String_Handler.Fill_Null_Terminator
-       (Target);
-
-      return League.Strings.Internals.Wrap (Target);
-
-   exception
-      when others =>
-         Matreshka.Internals.Strings.Dereference (Target);
-
-         raise;
-   end To_Base_64;
+         when others =>
+            Success := False;
+      end case;
+   end Decode;
 
    ------------------
    -- From_Base_64 --
@@ -254,12 +172,14 @@ package body League.Base_64 is
     (Data : League.Strings.Universal_String)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
-      use type Matreshka.Internals.Stream_Element_Vectors.Shared_Stream_Element_Vector_Access;
+      use type Matreshka.Internals.Stream_Element_Vectors
+                 .Shared_Stream_Element_Vector_Access;
 
       Source : constant Matreshka.Internals.Strings.Shared_String_Access
         := League.Strings.Internals.Internal (Data);
       Target :
-        Matreshka.Internals.Stream_Element_Vectors.Shared_Stream_Element_Vector_Access;
+        Matreshka.Internals.Stream_Element_Vectors
+          .Shared_Stream_Element_Vector_Access;
       Unused : Ada.Streams.Stream_Element_Offset := 0;
       First  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
 
@@ -329,5 +249,232 @@ package body League.Base_64 is
 
          raise;
    end From_Base_64;
+
+   ------------------
+   -- From_Base_64 --
+   ------------------
+
+   procedure From_Base_64
+    (Data    : League.Strings.Universal_String;
+     Value   : in out League.Stream_Element_Vectors.Stream_Element_Vector;
+     Success : out Boolean)
+   is
+      Source : constant Matreshka.Internals.Strings.Shared_String_Access
+        := League.Strings.Internals.Internal (Data);
+      Size   : constant Ada.Streams.Stream_Element_Offset
+        := Ada.Streams.Stream_Element_Offset (Source.Length) / 4 * 3;
+      Target :
+        Matreshka.Internals.Stream_Element_Vectors
+          .Shared_Stream_Element_Vector_Access
+          := League.Stream_Element_Vectors.Internals.Internal (Value);
+      Unused : Ada.Streams.Stream_Element_Offset := 0;
+      First  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+
+   begin
+      if Source.Length = 0 then
+         Value.Clear;
+         Success := True;
+
+         return;
+      end if;
+
+      if Source.Length mod 4 /= 0 then
+         Value.Clear;
+         Success := False;
+
+         return;
+      end if;
+
+      --  Check whether storage of passed internal object can be reused, and
+      --  create new shared object if can't.
+
+      if not Matreshka.Internals.Stream_Element_Vectors.Can_Be_Reused
+          (Target, Size)
+      then
+         Target :=
+           Matreshka.Internals.Stream_Element_Vectors.Allocate (Size);
+         League.Stream_Element_Vectors.Internals.Replace (Value, Target);
+      end if;
+
+      while Source.Unused > First loop
+         declare
+            S1 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
+              := Source.Value (First);
+            S2 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
+              := Source.Value (First + 1);
+            S3 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
+              := Source.Value (First + 2);
+            S4 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
+              := Source.Value (First + 3);
+            A1 : Ada.Streams.Stream_Element;
+            A2 : Ada.Streams.Stream_Element;
+            A3 : Ada.Streams.Stream_Element;
+            A4 : Ada.Streams.Stream_Element;
+
+         begin
+            Decode (S1, A1, Success);
+
+            exit when not Success;
+
+            Decode (S2, A2, Success);
+
+            exit when not Success;
+
+            Target.Value (Unused) := (A1 * 4) or ((A2 and 2#0011_0000#) / 16);
+            Unused := Unused + 1;
+
+            if S3 /= Character'Pos ('=') then
+               Decode (S3, A3, Success);
+
+               exit when not Success;
+
+               Target.Value (Unused) :=
+                ((A2 and 2#0000_1111#) * 16) or ((A3 and 2#0011_1100#) / 4);
+               Unused := Unused + 1;
+
+               if S4 /= Character'Pos ('=') then
+                  Decode (S4, A4, Success);
+
+                  exit when not Success;
+
+                  Target.Value (Unused) := ((A3 and 2#0000_0011#) * 64) or A4;
+                  Unused := Unused + 1;
+               end if;
+            end if;
+
+            First := First + 4;
+         end;
+      end loop;
+
+      Target.Length := Unused;
+   end From_Base_64;
+
+   ----------------
+   -- To_Base_64 --
+   ----------------
+
+   function To_Base_64
+    (Data : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return League.Strings.Universal_String
+   is
+      Source : constant
+        Matreshka.Internals.Stream_Element_Vectors
+          .Shared_Stream_Element_Vector_Access
+            := League.Stream_Element_Vectors.Internals.Internal (Data);
+      Target : Matreshka.Internals.Strings.Shared_String_Access;
+      First  : Ada.Streams.Stream_Element_Offset := 0;
+      Unused : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Aux    : Ada.Streams.Stream_Element;
+
+   begin
+      --  Return empty string when data is empty.
+
+      if Source.Length = 0 then
+         return League.Strings.Empty_Universal_String;
+      end if;
+
+      --  Allocate string for result. (Length + 2) / 3 * 4 is exact required
+      --  length for the result.
+
+      Target :=
+        Matreshka.Internals.Strings.Allocate
+         (Matreshka.Internals.Utf16.Utf16_String_Index
+           ((Source.Length + 2) / 3 * 4));
+
+      --  Encode each triplet of bytes when available.
+
+      while Source.Length - First >= 3 loop
+         declare
+            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
+            S2 : constant Ada.Streams.Stream_Element
+              := Source.Value (First + 1);
+            S3 : constant Ada.Streams.Stream_Element
+              := Source.Value (First + 2);
+
+         begin
+            Aux := (S1 and 2#1111_1100#) / 4;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux :=
+             ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux :=
+             ((S2 and 2#0000_1111#) * 4) or ((S3 and 2#1100_0000#) / 64);
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux := S3 and 2#0011_1111#;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+         end;
+
+         First := First + 3;
+      end loop;
+
+      if Source.Length - First = 1 then
+         declare
+            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
+
+         begin
+            Aux := (S1 and 2#1111_1100#) / 4;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux := (S1 and 2#0000_0011#) * 16;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Target.Value (Unused) := Character'Pos ('=');
+            Unused := Unused + 1;
+
+            Target.Value (Unused) := Character'Pos ('=');
+            Unused := Unused + 1;
+         end;
+
+      elsif Source.Length - First = 2 then
+         declare
+            S1 : constant Ada.Streams.Stream_Element := Source.Value (First);
+            S2 : constant Ada.Streams.Stream_Element
+              := Source.Value (First + 1);
+
+         begin
+            Aux := (S1 and 2#1111_1100#) / 4;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux :=
+             ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Aux := (S2 and 2#0000_1111#) * 4;
+            Target.Value (Unused) := Encode (Aux);
+            Unused := Unused + 1;
+
+            Target.Value (Unused) := Character'Pos ('=');
+            Unused := Unused + 1;
+         end;
+      end if;
+
+      Target.Unused := Unused;
+      Target.Length := Integer (Target.Unused);
+      --  All characters of base64 character set occupy one code unit, thus
+      --  length of the string is always equal to the number of used code
+      --  units.
+
+      Matreshka.Internals.Strings.Configuration.String_Handler
+        .Fill_Null_Terminator (Target);
+
+      return League.Strings.Internals.Wrap (Target);
+
+   exception
+      when others =>
+         Matreshka.Internals.Strings.Dereference (Target);
+
+         raise;
+   end To_Base_64;
 
 end League.Base_64;

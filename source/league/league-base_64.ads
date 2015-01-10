@@ -58,6 +58,15 @@ package League.Base_64 is
     (Data : League.Strings.Universal_String)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
    --  Converts base64 textual representation of data into original binary
-   --  form. This subprogram doesn't handle line feed.
+   --  form. This subprogram doesn't handle line feed. Raises Constraint_Error
+   --  when Data can't be converted.
+
+   procedure From_Base_64
+    (Data    : League.Strings.Universal_String;
+     Value   : in out League.Stream_Element_Vectors.Stream_Element_Vector;
+     Success : out Boolean);
+   --  Converts base64 textual representation of data into original binary
+   --  form. This subprogram doesn't handle line feed. Sets Success to False
+   --  when Data can't be converted.
 
 end League.Base_64;
