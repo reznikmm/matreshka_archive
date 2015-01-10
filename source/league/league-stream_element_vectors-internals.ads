@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,7 +57,15 @@ package League.Stream_Element_Vectors.Internals is
 
    function Internal
     (Item : Stream_Element_Vector)
-       return MISEV.Shared_Stream_Element_Vector_Access;
+       return MISEV.Shared_Stream_Element_Vector_Access
+         with Inline;
    --  Returns internal shared segment of stream element vector.
+
+   procedure Replace
+    (Vector : in out Stream_Element_Vector;
+     Item   : not null MISEV.Shared_Stream_Element_Vector_Access);
+   --  Replaces internal shared element by new one. Reference counter of
+   --  old element has been decremented, but reference counter of new element
+   --  is not touched.
 
 end League.Stream_Element_Vectors.Internals;

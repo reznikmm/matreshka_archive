@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,6 +54,23 @@ package body League.Stream_Element_Vectors.Internals is
    begin
       return Item.Data;
    end Internal;
+
+   -------------
+   -- Replace --
+   -------------
+
+   procedure Replace
+    (Vector : in out Stream_Element_Vector;
+     Item   : not null MISEV.Shared_Stream_Element_Vector_Access)
+   is
+      use type MISEV.Shared_Stream_Element_Vector_Access;
+
+   begin
+      if Vector.Data /= Item then
+         MISEV.Dereference (Vector.Data);
+         Vector.Data := Item;
+      end if;
+   end Replace;
 
    ----------
    -- Wrap --
