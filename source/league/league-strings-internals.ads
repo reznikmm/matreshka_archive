@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -63,7 +63,8 @@ package League.Strings.Internals is
    --  Reference counter is incremented.
 
    function Internal (Item : Universal_String'Class)
-     return not null Matreshka.Internals.Strings.Shared_String_Access;
+     return not null Matreshka.Internals.Strings.Shared_String_Access
+       with Inline;
    --  Returns shared string. Reference counter of the returned string is
    --  not changed.
 
