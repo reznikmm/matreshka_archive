@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -117,6 +117,20 @@ package body Matreshka.Internals.Stream_Element_Vectors is
          return new Shared_Stream_Element_Vector (Aligned_Size (Size) - 1);
       end if;
    end Allocate;
+
+   -------------------
+   -- Can_Be_Reused --
+   -------------------
+
+   function Can_Be_Reused
+    (Self : not null Shared_Stream_Element_Vector_Access;
+     Size : Ada.Streams.Stream_Element_Offset) return Boolean is
+   begin
+      return
+        Self /= Empty_Shared_Stream_Element_Vector'Access
+          and Self.Size >= Size
+          and Matreshka.Atomics.Counters.Is_One (Self.Counter);
+   end Can_Be_Reused;
 
    -----------------
    -- Dereference --

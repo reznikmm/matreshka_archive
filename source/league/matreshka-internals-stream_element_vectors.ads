@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -86,6 +86,15 @@ package Matreshka.Internals.Stream_Element_Vectors is
    --  Allocates new instance of stream element vector with specified size.
    --  Actual size of the allocated object can be greater. Returns reference to
    --  Empty_Shared_Stream_Element_Vector when Size is zero.
+
+   function Can_Be_Reused
+    (Self : not null Shared_Stream_Element_Vector_Access;
+     Size : Ada.Streams.Stream_Element_Offset) return Boolean
+       with Inline;
+   --  Returns True when specified shared stream element vecotr can be reused
+   --  safely. There are two criteria: reference counter must be one (it means
+   --  this object is not used anywhere); and size of the object is sufficient
+   --  to store at least specified amount of stream elements.
 
    procedure Fill_Tail (Item : not null Shared_Stream_Element_Vector_Access);
    --  Fill tail of internal array by zero elements to align data for 32-bits.
