@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Base_64;
+with League.Base_Codecs;
 with League.Stream_Element_Vectors;
 with League.Strings;
 
@@ -110,9 +110,9 @@ procedure Base64_Test is
       use type League.Strings.Universal_String;
 
       X : constant League.Strings.Universal_String
-        := League.Base_64.To_Base_64 (Data.Source);
+        := League.Base_Codecs.To_Base_64 (Data.Source);
       Y : constant League.Stream_Element_Vectors.Stream_Element_Vector
-        := League.Base_64.From_Base_64 (X);
+        := League.Base_Codecs.From_Base_64 (X);
 
    begin
       if Data.Encoded /= X then
