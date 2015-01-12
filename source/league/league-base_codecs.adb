@@ -323,7 +323,7 @@ package body League.Base_Codecs is
     (Data : League.Strings.Universal_String)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
-      Aux   : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Aux     : League.Stream_Element_Vectors.Stream_Element_Vector;
       Success : Boolean;
 
    begin
