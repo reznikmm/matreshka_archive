@@ -448,8 +448,8 @@ package body League.String_Vectors is
 
       TD := Allocate (String_Vector_Index (High - Low + 1));
 
-      for J in String_Vector_Index (High - 1)
-                 .. String_Vector_Index (Low - 1)
+      for J in String_Vector_Index (Low - 1)
+                 .. String_Vector_Index (High - 1)
       loop
          Reference (SD.Value (J));
          TD.Value (TD.Unused) := SD.Value (J);
