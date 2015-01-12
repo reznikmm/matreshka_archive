@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Base_64;
+with League.Base_Codecs;
 with Web_Services.SOAP.Security.Constants;
 
 package body Web_Services.SOAP.Security.Headers.Decoders is
@@ -106,7 +106,7 @@ package body Web_Services.SOAP.Security.Headers.Decoders is
                when Digest =>
                   begin
                      Self.Token.Digest :=
-                       League.Base_64.From_Base_64 (Self.Text);
+                       League.Base_Codecs.From_Base_64 (Self.Text);
 
                   exception
                      when Constraint_Error =>
@@ -122,7 +122,7 @@ package body Web_Services.SOAP.Security.Headers.Decoders is
 
          elsif Local_Name = Nonce_Element then
             begin
-               Self.Token.Nonce := League.Base_64.From_Base_64 (Self.Text);
+               Self.Token.Nonce := League.Base_Codecs.From_Base_64 (Self.Text);
                Self.Text.Clear;
                Self.Collect := False;
 

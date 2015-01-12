@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Base_64;
+with League.Base_Codecs;
 with XML.SAX.Attributes;
 
 with Web_Services.SOAP.Constants;
@@ -118,11 +118,11 @@ package body Web_Services.SOAP.Security.Headers.Encoders is
             Attributes.Set_Value (Type_Attribute, Password_Digest_URI);
             Writer.Start_Element
              (WSSE_Namespace_URI, Password_Element, Attributes);
-            Writer.Characters (League.Base_64.To_Base_64 (Token.Digest));
+            Writer.Characters (League.Base_Codecs.To_Base_64 (Token.Digest));
             Writer.End_Element (WSSE_Namespace_URI, Password_Element);
 
             Writer.Start_Element (WSSE_Namespace_URI, Nonce_Element);
-            Writer.Characters (League.Base_64.To_Base_64 (Token.Nonce));
+            Writer.Characters (League.Base_Codecs.To_Base_64 (Token.Nonce));
             Writer.End_Element (WSSE_Namespace_URI, Nonce_Element);
 
             Writer.Start_Element (WSU_Namespace_URI, Created_Element);
