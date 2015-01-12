@@ -41,10 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+--  This package provides implementation of codecs for 'baseXX' encoding
+--  according to RFC 4648.
+--
+--  Supported encodings:
+--   - base64
+------------------------------------------------------------------------------
 with League.Stream_Element_Vectors;
 with League.Strings;
 
-package League.Base_64 is
+package League.Base_Codecs is
 
    pragma Preelaborate;
 
@@ -69,4 +75,4 @@ package League.Base_64 is
    --  form. This subprogram doesn't handle line feed. Sets Success to False
    --  when Data can't be converted.
 
-end League.Base_64;
+end League.Base_Codecs;

@@ -49,7 +49,7 @@ with Matreshka.Internals.Stream_Element_Vectors;
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Utf16;
 
-package body League.Base_64 is
+package body League.Base_Codecs is
 
    use type Ada.Streams.Stream_Element;
    use type Ada.Streams.Stream_Element_Offset;
@@ -477,4 +477,4 @@ package body League.Base_64 is
          raise;
    end To_Base_64;
 
-end League.Base_64;
+end League.Base_Codecs;
