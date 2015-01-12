@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -65,6 +65,10 @@ package body League.IRIs is
    function Is_ALPHA
     (C : League.Characters.Universal_Character) return Boolean;
    --  Returns True when specified character is ALPHA.
+
+   function Is_DIGIT
+    (C : League.Characters.Universal_Character) return Boolean;
+   --  Returns True when specified character is DIGIT.
 
    function Is_IUnreserved
     (C : League.Characters.Universal_Character) return Boolean;
@@ -425,10 +429,6 @@ package body League.IRIs is
 
       --  Character classification subprograms.
 
-      function Is_DIGIT
-       (C : League.Characters.Universal_Character) return Boolean;
-      --  Returns True when specified character is DIGIT.
-
       function Is_HEXDIG
        (C : League.Characters.Universal_Character) return Boolean;
       --  Returns True when specified character is HEXDIG.
@@ -436,16 +436,6 @@ package body League.IRIs is
       function Is_IPrivate
        (C : League.Characters.Universal_Character) return Boolean;
       --  Returns True when specified character is iprivate.
-
-      --------------
-      -- Is_DIGIT --
-      --------------
-
-      function Is_DIGIT
-       (C : League.Characters.Universal_Character) return Boolean is
-      begin
-         return Digit_Zero <= C and C <= Digit_Nine;
-      end Is_DIGIT;
 
       ---------------
       -- Is_HEXDIG --
@@ -1393,6 +1383,15 @@ package body League.IRIs is
 
    end IRI_Parser;
 
+   -----------------
+   -- Is_Absolute --
+   -----------------
+
+   function Is_Absolute (Self : IRI'Class) return Boolean is
+   begin
+      return not Self.Scheme.Is_Empty;
+   end Is_Absolute;
+
    --------------
    -- Is_ALPHA --
    --------------
@@ -1404,6 +1403,16 @@ package body League.IRIs is
        (Latin_Capital_Letter_A <= C and C <= Latin_Capital_Letter_Z)
           or (Latin_Small_Letter_A <= C and C <= Latin_Small_Letter_Z);
    end Is_ALPHA;
+
+   --------------
+   -- Is_DIGIT --
+   --------------
+
+   function Is_DIGIT
+    (C : League.Characters.Universal_Character) return Boolean is
+   begin
+      return Digit_Zero <= C and C <= Digit_Nine;
+   end Is_DIGIT;
 
    --------------------
    -- Is_IUnreserved --
@@ -1436,6 +1445,15 @@ package body League.IRIs is
           or C = Tilde
           or (C.Is_Valid and No_Break_Space <= C);
    end Is_IUnreserved;
+
+   ----------------------
+   -- Is_Path_Absolute --
+   ----------------------
+
+   function Is_Path_Absolute (Self : IRI'Class) return Boolean is
+   begin
+      return Self.Path_Is_Absolute;
+   end Is_Path_Absolute;
 
    -------------------
    -- Is_Sub_Delims --
@@ -1694,9 +1712,21 @@ package body League.IRIs is
    procedure Set_Host
     (Self : in out IRI'Class; To : League.Strings.Universal_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Host unimplemented");
-      raise Program_Error;
+      --  [RFC 3987]
+      --
+      --  ihost          = IP-literal / IPv4address / ireg-name
+      --
+      --  IP-literal     = "[" ( IPv6address / IPvFuture  ) "]"
+      --
+      --  IPv4address    = dec-octet "." dec-octet "." dec-octet "."
+      --                  dec-octet
+      --
+      --  ireg-name      = *( iunreserved / pct-encoded / sub-delims )
+
+      --  XXX Check for valid 'ihost' production should be added.
+
+      Self.Has_Authority := True;
+      Self.Host := To;
    end Set_Host;
 
    -------------
@@ -1721,15 +1751,22 @@ package body League.IRIs is
       raise Program_Error;
    end Set_Path;
 
+   -----------------------
+   -- Set_Path_Absolute --
+   -----------------------
+
+   procedure Set_Path_Absolute (Self : in out IRI'Class; To : Boolean) is
+   begin
+      Self.Path_Is_Absolute := To;
+   end Set_Path_Absolute;
+
    --------------
    -- Set_Port --
    --------------
 
    procedure Set_Port (Self : in out IRI'Class; To : Natural) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Port unimplemented");
-      raise Program_Error;
+      Self.Port := To;
    end Set_Port;
 
    ---------------
@@ -1749,11 +1786,35 @@ package body League.IRIs is
    ----------------
 
    procedure Set_Scheme
-    (Self : in out IRI'Class; To : League.Strings.Universal_String) is
+    (Self : in out IRI'Class; To : League.Strings.Universal_String)
+   is
+      C : League.Characters.Universal_Character;
+
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Scheme unimplemented");
-      raise Program_Error;
+      if not To.Is_Empty then
+         --  [RFC 3987]
+         --
+         --  scheme         = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+
+         if not Is_ALPHA (To (1)) then
+            raise Constraint_Error with "Invalid scheme";
+         end if;
+
+         for J in 2 .. To.Length loop
+            C := To (J);
+
+            if not Is_ALPHA (C)
+              and then not Is_DIGIT (C)
+              and then C /= Plus_Sign
+              and then C /= Hyphen_Minus
+              and then C /= Full_Stop
+            then
+               raise Constraint_Error with "Invalid scheme";
+            end if;
+         end loop;
+      end if;
+
+      Self.Scheme := To;
    end Set_Scheme;
 
    -------------------

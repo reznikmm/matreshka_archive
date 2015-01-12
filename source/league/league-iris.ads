@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -102,6 +102,9 @@ package League.IRIs is
     (Self : in out IRI'Class;
      To   : League.Stream_Element_Vectors.Stream_Element_Vector);
 
+   function Is_Absolute (Self : IRI'Class) return Boolean;
+   --  Returns True when object represents absolute IRI.
+
    function Authority
     (Self : IRI'Class) return League.Strings.Universal_String;
 
@@ -149,6 +152,12 @@ package League.IRIs is
 
    function Path
     (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector;
+
+   function Is_Path_Absolute (Self : IRI'Class) return Boolean;
+   --  Returns True if path component represents absolute path.
+
+   procedure Set_Path_Absolute (Self : in out IRI'Class; To : Boolean);
+   --  Mark path as absolute.
 
    function Encoded_Path
     (Self : IRI'Class)
@@ -208,12 +217,12 @@ private
    type IRI is new Ada.Finalization.Controlled with record
       Scheme           : League.Strings.Universal_String;
 
-      Has_Authority    : Boolean;
+      Has_Authority    : Boolean := False;
       User_Info        : League.Strings.Universal_String;
       Host             : League.Strings.Universal_String;
       Port             : Natural := 0;
 
-      Path_Is_Absolute : Boolean;
+      Path_Is_Absolute : Boolean := True;
       Path             : League.String_Vectors.Universal_String_Vector;
 
       Query            : League.Strings.Universal_String;
