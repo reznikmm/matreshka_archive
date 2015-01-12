@@ -56,10 +56,6 @@ package body League.Base_Codecs is
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-   function Decode_64
-    (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit)
-       return Ada.Streams.Stream_Element;
-
    procedure Decode_64
     (Item    : Matreshka.Internals.Utf16.Utf16_Code_Unit;
      Value   : out Ada.Streams.Stream_Element;
@@ -121,28 +117,6 @@ package body League.Base_Codecs is
              Character'Pos ('5'), Character'Pos ('6'), Character'Pos ('7'),
              Character'Pos ('8'), Character'Pos ('9'), Character'Pos ('-'),
              Character'Pos ('_'));
-
-   ---------------
-   -- Decode_64 --
-   ---------------
-
-   function Decode_64
-    (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit)
-       return Ada.Streams.Stream_Element
-   is
-      Aux     : Ada.Streams.Stream_Element;
-      Success : Boolean;
-
-   begin
-      Decode_64 (Item, Aux, Success);
-
-      if Success then
-         return Aux;
-
-      else
-         raise Constraint_Error with "Mailformed base64 data";
-      end if;
-   end Decode_64;
 
    ---------------
    -- Decode_64 --
@@ -228,82 +202,18 @@ package body League.Base_Codecs is
     (Data : League.Strings.Universal_String)
        return League.Stream_Element_Vectors.Stream_Element_Vector
    is
-      use type Matreshka.Internals.Stream_Element_Vectors
-                 .Shared_Stream_Element_Vector_Access;
-
-      Source : constant Matreshka.Internals.Strings.Shared_String_Access
-        := League.Strings.Internals.Internal (Data);
-      Target :
-        Matreshka.Internals.Stream_Element_Vectors
-          .Shared_Stream_Element_Vector_Access;
-      Unused : Ada.Streams.Stream_Element_Offset := 0;
-      First  : Matreshka.Internals.Utf16.Utf16_String_Index := 0;
+      Aux     : League.Stream_Element_Vectors.Stream_Element_Vector;
+      Success : Boolean;
 
    begin
-      if Source.Length = 0 then
-         return League.Stream_Element_Vectors.Empty_Stream_Element_Vector;
+      From_Base_64 (Data, Aux, Success);
+
+      if Success then
+         return Aux;
+
+      else
+         raise Constraint_Error with "Mailformed base64url data";
       end if;
-
-      if Source.Length mod 4 /= 0 then
-         raise Constraint_Error with "Mailformed base64 data";
-      end if;
-
-      Target :=
-        Matreshka.Internals.Stream_Element_Vectors.Allocate
-         (Ada.Streams.Stream_Element_Offset (Source.Length) / 4 * 3);
-
-      while Source.Unused > First loop
-         declare
-            S1 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
-              := Source.Value (First);
-            S2 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
-              := Source.Value (First + 1);
-            S3 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
-              := Source.Value (First + 2);
-            S4 : constant Matreshka.Internals.Utf16.Utf16_Code_Unit
-              := Source.Value (First + 3);
-            A1 : Ada.Streams.Stream_Element;
-            A2 : Ada.Streams.Stream_Element;
-            A3 : Ada.Streams.Stream_Element;
-            A4 : Ada.Streams.Stream_Element;
-
-         begin
-            A1 := Decode_64 (S1);
-            A2 := Decode_64 (S2);
-
-            Target.Value (Unused) := (A1 * 4) or ((A2 and 2#0011_0000#) / 16);
-            Unused := Unused + 1;
-
-            if S3 /= Character'Pos ('=') then
-               A3 := Decode_64 (S3);
-
-               Target.Value (Unused) :=
-                ((A2 and 2#0000_1111#) * 16) or ((A3 and 2#0011_1100#) / 4);
-               Unused := Unused + 1;
-
-               if S4 /= Character'Pos ('=') then
-                  A4 := Decode_64 (S4);
-
-                  Target.Value (Unused) := ((A3 and 2#0000_0011#) * 64) or A4;
-                  Unused := Unused + 1;
-               end if;
-            end if;
-
-            First := First + 4;
-         end;
-      end loop;
-
-      Target.Length := Unused;
-
-      return League.Stream_Element_Vectors.Internals.Wrap (Target);
-
-   exception
-      when others =>
-         if Target /= null then
-            Matreshka.Internals.Stream_Element_Vectors.Dereference (Target);
-         end if;
-
-         raise;
    end From_Base_64;
 
    ------------------
