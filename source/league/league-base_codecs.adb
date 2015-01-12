@@ -365,7 +365,7 @@ package body League.Base_Codecs is
          return;
       end if;
 
-      if Source.Length mod 4 /= 0 then
+      if Source.Length mod 4 = 0 then
          --  Check whether storage of passed internal object can be reused, and
          --  create new shared object if can't.
 
