@@ -46,6 +46,7 @@
 --
 --  Supported encodings:
 --   - base64
+--   - base64url
 ------------------------------------------------------------------------------
 with League.Stream_Element_Vectors;
 with League.Strings;
@@ -76,6 +77,31 @@ package League.Base_Codecs is
      Value   : in out League.Stream_Element_Vectors.Stream_Element_Vector;
      Success : out Boolean);
    --  Converts base64 textual representation of data into original binary
+   --  form. This subprogram doesn't handle line feed. Sets Success to False
+   --  when Data can't be converted.
+
+   ---------------
+   -- base64url --
+   ---------------
+
+   function To_Base_64_URL
+    (Data : League.Stream_Element_Vectors.Stream_Element_Vector)
+       return League.Strings.Universal_String;
+   --  Converts binary data into base64 textual representation. It doesn't
+   --  insert any line feeds.
+
+   function From_Base_64_URL
+    (Data : League.Strings.Universal_String)
+       return League.Stream_Element_Vectors.Stream_Element_Vector;
+   --  Converts base64url textual representation of data into original binary
+   --  form. This subprogram doesn't handle line feed. Raises Constraint_Error
+   --  when Data can't be converted.
+
+   procedure From_Base_64_URL
+    (Data    : League.Strings.Universal_String;
+     Value   : in out League.Stream_Element_Vectors.Stream_Element_Vector;
+     Success : out Boolean);
+   --  Converts base64url textual representation of data into original binary
    --  form. This subprogram doesn't handle line feed. Sets Success to False
    --  when Data can't be converted.
 
