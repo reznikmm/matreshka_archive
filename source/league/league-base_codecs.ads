@@ -54,6 +54,10 @@ package League.Base_Codecs is
 
    pragma Preelaborate;
 
+   ------------
+   -- base64 --
+   ------------
+
    function To_Base_64
     (Data : League.Stream_Element_Vectors.Stream_Element_Vector)
        return League.Strings.Universal_String;

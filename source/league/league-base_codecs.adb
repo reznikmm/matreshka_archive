@@ -56,16 +56,16 @@ package body League.Base_Codecs is
    use type Matreshka.Internals.Utf16.Utf16_Code_Unit;
    use type Matreshka.Internals.Utf16.Utf16_String_Index;
 
-   function Decode
+   function Decode_64
     (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit)
        return Ada.Streams.Stream_Element;
 
-   procedure Decode
+   procedure Decode_64
     (Item    : Matreshka.Internals.Utf16.Utf16_Code_Unit;
      Value   : out Ada.Streams.Stream_Element;
      Success : out Boolean);
 
-   Encode : constant
+   Encode_64 : constant
      array (Ada.Streams.Stream_Element range 0 .. 63)
        of Matreshka.Internals.Utf16.Utf16_Code_Unit
          := (Character'Pos ('A'), Character'Pos ('B'), Character'Pos ('C'),
@@ -91,46 +91,33 @@ package body League.Base_Codecs is
              Character'Pos ('8'), Character'Pos ('9'), Character'Pos ('+'),
              Character'Pos ('/'));
 
-   ------------
-   -- Decode --
-   ------------
+   ---------------
+   -- Decode_64 --
+   ---------------
 
-   function Decode
+   function Decode_64
     (Item : Matreshka.Internals.Utf16.Utf16_Code_Unit)
-       return Ada.Streams.Stream_Element is
+       return Ada.Streams.Stream_Element
+   is
+      Aux     : Ada.Streams.Stream_Element;
+      Success : Boolean;
+
    begin
-      case Item is
-         when Character'Pos ('A') .. Character'Pos ('Z') =>
-            return
-              Ada.Streams.Stream_Element (Item) - Character'Pos ('A');
+      Decode_64 (Item, Aux, Success);
 
-         when Character'Pos ('a') .. Character'Pos ('z') =>
-            return
-              Ada.Streams.Stream_Element (Item) - Character'Pos ('a') + 26;
+      if Success then
+         return Aux;
 
-         when Character'Pos ('0') .. Character'Pos ('9') =>
-            return
-              Ada.Streams.Stream_Element (Item) - Character'Pos ('0') + 52;
+      else
+         raise Constraint_Error with "Mailformed base64 data";
+      end if;
+   end Decode_64;
 
-         when Character'Pos ('+') =>
-            return 62;
+   ---------------
+   -- Decode_64 --
+   ---------------
 
-         when Character'Pos ('/') =>
-            return 63;
-
-         when Character'Pos ('=') =>
-            return 0;
-
-         when others =>
-            raise Constraint_Error with "Mailformed base64 data";
-      end case;
-   end Decode;
-
-   ------------
-   -- Decode --
-   ------------
-
-   procedure Decode
+   procedure Decode_64
     (Item    : Matreshka.Internals.Utf16.Utf16_Code_Unit;
      Value   : out Ada.Streams.Stream_Element;
      Success : out Boolean) is
@@ -162,7 +149,7 @@ package body League.Base_Codecs is
          when others =>
             Success := False;
       end case;
-   end Decode;
+   end Decode_64;
 
    ------------------
    -- From_Base_64 --
@@ -212,21 +199,21 @@ package body League.Base_Codecs is
             A4 : Ada.Streams.Stream_Element;
 
          begin
-            A1 := Decode (S1);
-            A2 := Decode (S2);
+            A1 := Decode_64 (S1);
+            A2 := Decode_64 (S2);
 
             Target.Value (Unused) := (A1 * 4) or ((A2 and 2#0011_0000#) / 16);
             Unused := Unused + 1;
 
             if S3 /= Character'Pos ('=') then
-               A3 := Decode (S3);
+               A3 := Decode_64 (S3);
 
                Target.Value (Unused) :=
                 ((A2 and 2#0000_1111#) * 16) or ((A3 and 2#0011_1100#) / 4);
                Unused := Unused + 1;
 
                if S4 /= Character'Pos ('=') then
-                  A4 := Decode (S4);
+                  A4 := Decode_64 (S4);
 
                   Target.Value (Unused) := ((A3 and 2#0000_0011#) * 64) or A4;
                   Unused := Unused + 1;
@@ -312,11 +299,11 @@ package body League.Base_Codecs is
             A4 : Ada.Streams.Stream_Element;
 
          begin
-            Decode (S1, A1, Success);
+            Decode_64 (S1, A1, Success);
 
             exit when not Success;
 
-            Decode (S2, A2, Success);
+            Decode_64 (S2, A2, Success);
 
             exit when not Success;
 
@@ -324,7 +311,7 @@ package body League.Base_Codecs is
             Unused := Unused + 1;
 
             if S3 /= Character'Pos ('=') then
-               Decode (S3, A3, Success);
+               Decode_64 (S3, A3, Success);
 
                exit when not Success;
 
@@ -333,7 +320,7 @@ package body League.Base_Codecs is
                Unused := Unused + 1;
 
                if S4 /= Character'Pos ('=') then
-                  Decode (S4, A4, Success);
+                  Decode_64 (S4, A4, Success);
 
                   exit when not Success;
 
@@ -393,21 +380,21 @@ package body League.Base_Codecs is
 
          begin
             Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux :=
              ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux :=
              ((S2 and 2#0000_1111#) * 4) or ((S3 and 2#1100_0000#) / 64);
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux := S3 and 2#0011_1111#;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
          end;
 
@@ -420,11 +407,11 @@ package body League.Base_Codecs is
 
          begin
             Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux := (S1 and 2#0000_0011#) * 16;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Target.Value (Unused) := Character'Pos ('=');
@@ -442,16 +429,16 @@ package body League.Base_Codecs is
 
          begin
             Aux := (S1 and 2#1111_1100#) / 4;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux :=
              ((S1 and 2#0000_0011#) * 16) or ((S2 and 2#1111_0000#) / 16);
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Aux := (S2 and 2#0000_1111#) * 4;
-            Target.Value (Unused) := Encode (Aux);
+            Target.Value (Unused) := Encode_64 (Aux);
             Unused := Unused + 1;
 
             Target.Value (Unused) := Character'Pos ('=');
