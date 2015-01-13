@@ -286,15 +286,6 @@ package body League.IRIs is
       end return;
    end From_Universal_String;
 
-   ----------
-   -- Host --
-   ----------
-
-   function Host (Self : IRI'Class) return League.Strings.Universal_String is
-   begin
-      return Self.Host;
-   end Host;
-
    ----------------
    -- IRI_Parser --
    ----------------
@@ -1491,6 +1482,46 @@ package body League.IRIs is
       return Is_Valid (Self);
    end Is_Valid;
 
+   --------------
+   -- Get_Host --
+   --------------
+
+   function Get_Host
+    (Self : IRI'Class) return League.Strings.Universal_String is
+   begin
+      return Self.Host;
+   end Get_Host;
+
+   --------------
+   -- Get_Path --
+   --------------
+
+   function Get_Path
+    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector is
+   begin
+      return Self.Path;
+   end Get_Path;
+
+   --------------
+   -- Get_Port --
+   --------------
+
+   function Get_Port
+    (Self : IRI'Class; Default : Natural := 0) return Natural is
+   begin
+      return Self.Port;
+   end Get_Port;
+
+   ----------------
+   -- Get_Scheme --
+   ----------------
+
+   function Get_Scheme
+    (Self : IRI'Class) return League.Strings.Universal_String is
+   begin
+      return Self.Scheme;
+   end Get_Scheme;
+
    --------------------
    -- Normalize_Path --
    --------------------
@@ -1501,25 +1532,6 @@ package body League.IRIs is
 
       null;
    end Normalize_Path;
-
-   ----------
-   -- Path --
-   ----------
-
-   function Path
-    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector is
-   begin
-      return Self.Path;
-   end Path;
-
-   ----------
-   -- Port --
-   ----------
-
-   function Port (Self : IRI'Class; Default : Natural := 0) return Natural is
-   begin
-      return Self.Port;
-   end Port;
 
    -----------
    -- Query --
@@ -1566,15 +1578,17 @@ package body League.IRIs is
       end return;
    end Resolve;
 
-   ------------
-   -- Scheme --
-   ------------
+   -----------------------
+   -- Set_Absolute_Path --
+   -----------------------
 
-   function Scheme
-    (Self : IRI'Class) return League.Strings.Universal_String is
+   procedure Set_Absolute_Path
+    (Self : in out IRI'Class;
+     To   : League.String_Vectors.Universal_String_Vector) is
    begin
-      return Self.Scheme;
-   end Scheme;
+      Self.Path := To;
+      Self.Path_Is_Absolute := True;
+   end Set_Absolute_Path;
 
    -------------------
    -- Set_Authority --
@@ -1739,18 +1753,6 @@ package body League.IRIs is
       IRI_Parser.Parse_IRI_Reference (Self, To);
    end Set_IRI;
 
-   --------------
-   -- Set_Path --
-   --------------
-
-   procedure Set_Path
-    (Self : in out IRI'Class; To : League.Strings.Universal_String) is
-   begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Path unimplemented");
-      raise Program_Error;
-   end Set_Path;
-
    -----------------------
    -- Set_Path_Absolute --
    -----------------------
@@ -1780,6 +1782,18 @@ package body League.IRIs is
       pragma Compile_Time_Warning (Standard.True, "Set_Query unimplemented");
       raise Program_Error;
    end Set_Query;
+
+   -----------------------
+   -- Set_Relative_Path --
+   -----------------------
+
+   procedure Set_Relative_Path
+    (Self : in out IRI'Class;
+     To   : League.String_Vectors.Universal_String_Vector) is
+   begin
+      Self.Path := To;
+      Self.Path_Is_Absolute := False;
+   end Set_Relative_Path;
 
    ----------------
    -- Set_Scheme --

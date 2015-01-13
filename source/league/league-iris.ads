@@ -89,7 +89,11 @@ package League.IRIs is
 
    procedure Clear (Self : in out IRI'Class);
 
-   function Scheme (Self : IRI'Class) return League.Strings.Universal_String;
+   function Get_Scheme
+    (Self : IRI'Class) return League.Strings.Universal_String
+       with Inline;
+   --  Returns the scheme of the URL. If an empty string is returned, this
+   --  means the scheme is undefined and the URL is then relative.
 
    function Encoded_Scheme
     (Self : IRI'Class)
@@ -133,25 +137,43 @@ package League.IRIs is
     (Self : in out IRI'Class;
      To   : League.Stream_Element_Vectors.Stream_Element_Vector);
 
-   function Host (Self : IRI'Class) return League.Strings.Universal_String;
+   function Get_Host (Self : IRI'Class) return League.Strings.Universal_String
+     with Inline;
+   --  Returns the host of the URL if it is defined; otherwise an empty string
+   --  is returned.
+
+   procedure Set_Host
+    (Self : in out IRI'Class; To : League.Strings.Universal_String);
+   --  Sets the host of the URL to host. The host is part of the authority.
 
    function Encoded_Host
     (Self : IRI'Class)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
 
-   procedure Set_Host
-    (Self : in out IRI'Class; To : League.Strings.Universal_String);
-
    procedure Set_Encoded_Host
     (Self : in out IRI'Class;
      To   : League.Stream_Element_Vectors.Stream_Element_Vector);
 
-   function Port (Self : IRI'Class; Default : Natural := 0) return Natural;
+   function Get_Port (Self : IRI'Class; Default : Natural := 0) return Natural
+     with Inline;
+   --  Returns the port of the URL.
 
    procedure Set_Port (Self : in out IRI'Class; To : Natural);
+   --  Sets the port of the URL to port. The port is part of the authority of
+   --  the URL.
 
-   function Path
-    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector;
+   function Get_Path
+    (Self : IRI'Class) return League.String_Vectors.Universal_String_Vector
+       with Inline;
+   --  Returns the path of the URL.
+
+   procedure Set_Absolute_Path
+    (Self : in out IRI'Class;
+     To   : League.String_Vectors.Universal_String_Vector);
+   procedure Set_Relative_Path
+    (Self : in out IRI'Class;
+     To   : League.String_Vectors.Universal_String_Vector);
+   --  Sets the path of the URL. 
 
    function Is_Path_Absolute (Self : IRI'Class) return Boolean;
    --  Returns True if path component represents absolute path.
@@ -162,9 +184,6 @@ package League.IRIs is
    function Encoded_Path
     (Self : IRI'Class)
        return League.Stream_Element_Vectors.Stream_Element_Vector;
-
-   procedure Set_Path
-    (Self : in out IRI'Class; To : League.Strings.Universal_String);
 
    procedure Set_Encoded_Path
     (Self : in out IRI'Class;
