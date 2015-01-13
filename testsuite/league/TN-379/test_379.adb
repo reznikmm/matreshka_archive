@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,7 +57,7 @@ procedure Test_379 is
 begin
    URL.Set_IRI (Image);
 
-   if URL.Port /= 8080 then
+   if URL.Get_Port /= 8080 then
       raise Program_Error;
    end if;
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -73,7 +73,7 @@ package body XML.SAX.Simple_Readers.Resolver is
               (League.IRIs.From_Universal_String (System_Id));
 
    begin
-      if Absolute_System_Id.Scheme = File_Scheme then
+      if Absolute_System_Id.Get_Scheme = File_Scheme then
          Source := new XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
          XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
           (Source.all).Open_By_URI (Absolute_System_Id.To_Universal_String);
