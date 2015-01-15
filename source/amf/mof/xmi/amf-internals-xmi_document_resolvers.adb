@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -102,7 +102,7 @@ package body AMF.Internals.XMI_Document_Resolvers is
           & "')");
 
       begin
-         if not Parsed_URI.Scheme.Is_Empty then
+         if not Parsed_URI.Get_Scheme.Is_Empty then
             XML.SAX.Input_Sources.Streams.Files.File_Input_Source'Class
              (Source.all).Open_By_URI (New_URI);
 
