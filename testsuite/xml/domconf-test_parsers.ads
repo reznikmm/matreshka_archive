@@ -45,6 +45,8 @@ with League.Strings;
 private with XML.SAX.Attributes;
 with XML.SAX.Content_Handlers;
 
+with DOMConf.Scripts;
+
 package DOMConf.Test_Parsers is
 
    type Test_Parser is
@@ -54,7 +56,9 @@ private
 
    type Test_Parser is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
-      Ignore : Natural := 0;
+      Ignore   : Natural := 0;
+      Previous : DOMConf.Scripts.Instruction_Access;
+      Script   : DOMConf.Scripts.Instruction_Access;
    end record;
 
    overriding function Error_String

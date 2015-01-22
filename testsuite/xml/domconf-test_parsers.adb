@@ -75,6 +75,8 @@ package body DOMConf.Test_Parsers is
 
    Name_Attribute : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("name");
+   Type_Attribute : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("type");
 
    Namespace_Aware_Value : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("namespaceAware");
@@ -173,7 +175,31 @@ package body DOMConf.Test_Parsers is
             null;
 
          elsif Local_Name = Var_Tag then
-            null;
+            declare
+               use type DOMConf.Scripts.Instruction_Access;
+
+               Name_Value : constant League.Strings.Universal_String
+                 := Attributes.Value (Name_Attribute);
+               Type_Value : constant League.Strings.Universal_String
+                 := Attributes.Value (Type_Attribute);
+               Aux        : DOMConf.Scripts.Instruction_Access;
+
+            begin
+               Aux :=
+                 new DOMConf.Scripts.Instruction'
+                      (Kind => DOMConf.Scripts.Variable,
+                       Next => null);
+
+               if Self.Previous /= null then
+                  Self.Previous.Next := Aux;
+               end if;
+
+               if Self.Script = null then
+                  Self.Script := Aux;
+               end if;
+
+               Self.Previous := Aux;
+            end;
 
          else
             raise Program_Error
