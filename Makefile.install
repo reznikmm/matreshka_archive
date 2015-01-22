@@ -24,7 +24,7 @@ LIBEXT = dll
 EXEEXT = .exe
 endif
 
-INSTALL_TARGETS = league cldr_data xml fastcgi soap wsse wsdl2ada sql
+INSTALL_TARGETS = league cldr_data xml fastcgi servlet soap wsse wsdl2ada sql
 
 ifdef ENABLE_AMF
 INSTALL_TARGETS += amf dd uml mofext ocl utp
@@ -106,6 +106,27 @@ endif
 	cat fastcgi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/fastcgi.gpr" >> .objs/fastcgi-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-fastcgi$(RTL_VERSION).$(LIBEXT)" >> .objs/fastcgi-devel.files
+
+servlet:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/servlet
+	gnat ls -d -s -P gnat/matreshka_servlet.gpr | sort | uniq | grep -v '^$$' > servlet-src.aux
+	diff -u league-src.lst servlet-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > servlet-src.lst
+	gnat ls -o -P gnat/matreshka_servlet.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > servlet-ali.lst
+	cat servlet-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/servlet
+	cat servlet-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/servlet.gpr $(INSTALL_PROJECT_DIR)/servlet.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-servlet$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/servlet-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)" > .objs/servlet-lib.files
+endif
+	cat servlet-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/servlet/{}" > .objs/servlet-devel.files
+	cat servlet-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/servlet-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/matreshka/servlet.gpr" >> .objs/servlet-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)" >> .objs/servlet-devel.files
 
 soap:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/soap
@@ -694,6 +715,7 @@ cleanup:
 	rm -f league-src.lst league-ali.lst
 	rm -f xml-src.lst xml-ali.lst xml-src.aux
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
+	rm -f servlet-src.lst servlet-ali.lst servlet-src.aux
 	rm -f soap-src.lst soap-ali.lst soap-src.aux
 	rm -f soap_wsse-src.lst soap_wsse-ali.lst soap_wsse-src.aux
 	rm -f sql-src.lst sql-ali.lst sql-src.aux

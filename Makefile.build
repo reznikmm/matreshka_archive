@@ -5,7 +5,7 @@ GNATMAKE = gnatmake
 endif
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
-ALL_TARGETS = league xml fastcgi soap wsse wsdl2ada sql
+ALL_TARGETS = league xml fastcgi servlet soap wsse wsdl2ada sql
 
 ifdef ENABLE_AMF
 ALL_TARGETS += amf dd uml mofext ocl utp
@@ -56,6 +56,9 @@ xml: league
 
 fastcgi: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_fastcgi.gpr
+
+servlet: league
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_servlet.gpr
 
 soap: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap.gpr
