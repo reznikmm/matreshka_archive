@@ -55,4 +55,4 @@ library project Servlet is
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
-end FastCGI;
+end Servlet;
