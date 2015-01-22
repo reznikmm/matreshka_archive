@@ -58,7 +58,6 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
-private with Matreshka.Servlets;
 with Servlet.Configs;
 with Servlet.Servlets;
 
@@ -91,7 +90,7 @@ package Servlet.Generic_Servlets is
 private
 
    type Generic_Servlet is
-     abstract limited new Matreshka.Servlets.Abstract_Servlet
+     abstract limited new Servlet.Servlets.Servlet
        and Servlet.Configs.Servlet_Config with
    record
       Config : access Servlet.Configs.Servlet_Config'Class;
