@@ -128,12 +128,17 @@ endif
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/servlet.gpr" >> .objs/servlet-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)" >> .objs/servlet-devel.files
 
+#	gnat ls -d -s -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' > sql_mysql-src.aux
+#	cat league-src.lst sql-src.aux | diff -u - sql_mysql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_mysql-src.lst
+#	gnat ls -o -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_mysql-ali.lst
 spikedog-api:
-	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog-api
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog/api
 	gnat ls -d -s -P gnat/matreshka_spikedog_api.gpr | sort | uniq | grep -v '^$$' > spikedog-api-src.aux
-	diff -u league-src.lst spikedog-api-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > spikedog-api-src.lst
+#	diff -u league-src.lst spikedog-api-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > spikedog-api-src.lst
+	cat league-src.lst servlet-src.aux | diff -u - spikedog-api-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > spikedog-api-src.lst
 	gnat ls -o -P gnat/matreshka_spikedog_api.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > spikedog-api-ali.lst
-	cat spikedog-api-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/spikedog-api
+	cat spikedog-api-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/spikedog/api
 	cat spikedog-api-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
 	$(INSTALL_project) gnat/install/spikedog_api.gpr $(INSTALL_PROJECT_DIR)/spikedog_api.gpr
 ifeq ($(OPERATING_SYSTEM), POSIX)
@@ -144,7 +149,7 @@ else ifeq ($(OPERATING_SYSTEM), Windows)
 	$(INSTALL) .libs/libspikedog-api$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libspikedog-api$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_bindir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" > .objs/spikedog-api-lib.files
 endif
-	cat spikedog-api-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/spikedog-api/{}" > .objs/spikedog-api-devel.files
+	cat spikedog-api-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/spikedog/api/{}" > .objs/spikedog-api-devel.files
 	cat spikedog-api-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/spikedog-api-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/spikedog_api.gpr" >> .objs/spikedog-api-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" >> .objs/spikedog-api-devel.files

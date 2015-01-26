@@ -44,7 +44,7 @@
 with "matreshka_config.gpr";
 with "league.gpr";
 
-library project Servlet is
+library project Spikedog_API is
 
    Library_Name := "spikedog-api" & Matreshka_Config.RTL_Version_Suffix;
 
@@ -55,4 +55,4 @@ library project Servlet is
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
-end Servlet;
+end Spikedog_API;
