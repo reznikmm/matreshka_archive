@@ -24,7 +24,7 @@ LIBEXT = dll
 EXEEXT = .exe
 endif
 
-INSTALL_TARGETS = league cldr_data xml fastcgi servlet soap wsse wsdl2ada sql
+INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api soap wsse wsdl2ada sql
 
 ifdef ENABLE_AMF
 INSTALL_TARGETS += amf dd uml mofext ocl utp
@@ -127,6 +127,27 @@ endif
 	cat servlet-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/servlet-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/servlet.gpr" >> .objs/servlet-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)" >> .objs/servlet-devel.files
+
+spikedog-api:
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog-api
+	gnat ls -d -s -P gnat/matreshka_spikedog_api.gpr | sort | uniq | grep -v '^$$' > spikedog-api-src.aux
+	diff -u league-src.lst spikedog-api-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > spikedog-api-src.lst
+	gnat ls -o -P gnat/matreshka_spikedog_api.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > spikedog-api-ali.lst
+	cat spikedog-api-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/spikedog-api
+	cat spikedog-api-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/spikedog_api.gpr $(INSTALL_PROJECT_DIR)/spikedog_api.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION) libspikedog-api$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/spikedog-api-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libspikedog-api$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libspikedog-api$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" > .objs/spikedog-api-lib.files
+endif
+	cat spikedog-api-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/spikedog-api/{}" > .objs/spikedog-api-devel.files
+	cat spikedog-api-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/spikedog-api-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/matreshka/spikedog_api.gpr" >> .objs/spikedog-api-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" >> .objs/spikedog-api-devel.files
 
 soap:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/soap
