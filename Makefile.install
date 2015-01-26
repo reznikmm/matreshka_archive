@@ -742,6 +742,7 @@ cleanup:
 	rm -f xml-src.lst xml-ali.lst xml-src.aux
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
 	rm -f servlet-src.lst servlet-ali.lst servlet-src.aux
+	rm -f spikedog-api-src.lst spikedog-api-ali.lst spikedog-api-src.aux
 	rm -f soap-src.lst soap-ali.lst soap-src.aux
 	rm -f soap_wsse-src.lst soap_wsse-ali.lst soap_wsse-src.aux
 	rm -f sql-src.lst sql-ali.lst sql-src.aux
