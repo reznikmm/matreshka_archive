@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with "matreshka_config.gpr";
 with "league.gpr";
+with "servlet.gpr";
 
 library project Spikedog_API is
 
