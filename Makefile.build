@@ -5,7 +5,7 @@ GNATMAKE = gnatmake
 endif
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
-ALL_TARGETS = league xml fastcgi servlet spikedog-api soap wsse wsdl2ada sql
+ALL_TARGETS = league xml fastcgi servlet spikedog-api spikedog-core soap wsse wsdl2ada sql
 
 ifdef ENABLE_AMF
 ALL_TARGETS += amf dd uml mofext ocl utp
@@ -62,6 +62,9 @@ servlet: league
 
 spikedog-api:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_api.gpr
+
+spikedog-core:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_core.gpr
 
 soap: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap.gpr

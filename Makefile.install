@@ -24,7 +24,7 @@ LIBEXT = dll
 EXEEXT = .exe
 endif
 
-INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api soap wsse wsdl2ada sql
+INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api spikedog-core soap wsse wsdl2ada sql
 
 ifdef ENABLE_AMF
 INSTALL_TARGETS += amf dd uml mofext ocl utp
@@ -128,10 +128,7 @@ endif
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/servlet.gpr" >> .objs/servlet-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-servlet$(RTL_VERSION).$(LIBEXT)" >> .objs/servlet-devel.files
 
-#	gnat ls -d -s -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' > sql_mysql-src.aux
-#	cat league-src.lst sql-src.aux | diff -u - sql_mysql-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > sql_mysql-src.lst
-#	gnat ls -o -P gnat/matreshka_sql_mysql.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > sql_mysql-ali.lst
-spikedog-api:
+spikedog-api: servlet
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog/api
 	gnat ls -d -s -P gnat/matreshka_spikedog_api.gpr | sort | uniq | grep -v '^$$' > spikedog-api-src.aux
@@ -153,6 +150,27 @@ endif
 	cat spikedog-api-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/spikedog-api-devel.files
 	echo "%attr(-,root,root) %{_gprdir}/matreshka/spikedog_api.gpr" >> .objs/spikedog-api-devel.files
 	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" >> .objs/spikedog-api-devel.files
+
+spikedog-core: spikedog-api
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog/core
+	gnat ls -d -s -P gnat/matreshka_spikedog_core.gpr | sort | uniq | grep -v '^$$' > spikedog-core-src.aux
+	cat league-src.lst servlet-src.aux spikedog-api-src.aux | sort | uniq | diff -u - spikedog-core-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > spikedog-core-src.lst
+	gnat ls -o -P gnat/matreshka_spikedog_core.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > spikedog-core-ali.lst
+	cat spikedog-core-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/spikedog/core
+	cat spikedog-core-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/spikedog_core.gpr $(INSTALL_PROJECT_DIR)/spikedog_core.gpr
+ifeq ($(OPERATING_SYSTEM), POSIX)
+	$(INSTALL) .libs/libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION) $(INSTALL_LIBRARY_DIR)/libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION)
+	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION) libspikedog-core$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/spikedog-core-lib.files
+else ifeq ($(OPERATING_SYSTEM), Windows)
+	$(INSTALL) .libs/libspikedog-core$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libspikedog-core$(RTL_VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_bindir}/libspikedog-core$(RTL_VERSION).$(LIBEXT)" > .objs/spikedog-core-lib.files
+endif
+	cat spikedog-core-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/spikedog/core/{}" > .objs/spikedog-core-devel.files
+	cat spikedog-core-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/spikedog-core-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/matreshka/spikedog_core.gpr" >> .objs/spikedog-core-devel.files
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-core$(RTL_VERSION).$(LIBEXT)" >> .objs/spikedog-core-devel.files
 
 soap:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/soap
@@ -743,6 +761,7 @@ cleanup:
 	rm -f fastcgi-src.lst fastcgi-ali.lst fastcgi-src.aux
 	rm -f servlet-src.lst servlet-ali.lst servlet-src.aux
 	rm -f spikedog-api-src.lst spikedog-api-ali.lst spikedog-api-src.aux
+	rm -f spikedog-core-src.lst spikedog-core-ali.lst spikedog-core-src.aux
 	rm -f soap-src.lst soap-ali.lst soap-src.aux
 	rm -f soap_wsse-src.lst soap_wsse-ali.lst soap_wsse-src.aux
 	rm -f sql-src.lst sql-ali.lst sql-src.aux
