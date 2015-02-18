@@ -208,6 +208,12 @@ package body Matreshka.Servlet_Containers is
       elsif Path.Ends_With (".txt") then
          return League.Strings.To_Universal_String ("text/plain");
 
+      elsif Path.Ends_With (".frag") then
+         return League.Strings.To_Universal_String ("x-shader/x-fragment");
+
+      elsif Path.Ends_With (".vert") then
+         return League.Strings.To_Universal_String ("x-shader/x-vertex");
+
       else
          return League.Strings.Empty_Universal_String;
       end if;
