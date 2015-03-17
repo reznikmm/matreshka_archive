@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -63,7 +63,7 @@ package XML.SAX.Input_Sources.Streams.Sockets is
 
 private
 
-   type Socket_Input_Source is new Stream_Input_Source with record
+   type Socket_Input_Source is limited new Stream_Input_Source with record
       Socket : GNAT.Sockets.Socket_Type;
    end record;
 

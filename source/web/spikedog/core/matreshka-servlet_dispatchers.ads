@@ -146,7 +146,7 @@ private
            League.Strings."=",
            Matreshka.Servlet_Registrations."=");
 
-   type Context_Dispatcher is new Segment_Dispatcher with record
+   type Context_Dispatcher is limited new Segment_Dispatcher with record
       Root_Servlet       :
         Matreshka.Servlet_Registrations.Servlet_Registration_Access;
       Default_Servlet    :

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -311,7 +311,7 @@ private
    type Simple_Shared_Locator is tagged;
    type Simple_Shared_Locator_Access is access all Simple_Shared_Locator'Class;
 
-   type Simple_Reader is new Ada.Finalization.Limited_Controlled
+   type Simple_Reader is limited new Ada.Finalization.Limited_Controlled
      and XML.SAX.Readers.SAX_Reader with
    record
       --  Handlers
