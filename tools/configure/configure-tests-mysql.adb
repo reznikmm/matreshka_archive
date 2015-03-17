@@ -317,7 +317,7 @@ package body Configure.Tests.MySQL is
          else
             Self.Report_Status ("no");
             Substitutions.Insert
-             (MySQL_Library_Options, Null_Unbounded_String);
+             (Has_Working_MySQL_Server, Null_Unbounded_String);
          end if;
       end if;
    end Execute;
