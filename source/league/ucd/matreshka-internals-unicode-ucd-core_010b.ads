@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
 
    Group_010B : aliased constant Core_Second_Stage
      := (16#00# .. 16#35# =>  --  010B00 .. 010B35
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,20 +63,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
               | XID_Start => True,
             others => False)),
          16#39#           =>  --  010B39
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#3A# .. 16#3F# =>  --  010B3A .. 010B3F
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#40# .. 16#55# =>  --  010B40 .. 010B55
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -87,13 +87,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
               | XID_Start => True,
             others => False)),
          16#58# .. 16#5F# =>  --  010B58 .. 010B5F
-          (Other_Number, 0,
+          (Other_Number, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#60# .. 16#72# =>  --  010B60 .. 010B72
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -104,13 +104,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
               | XID_Start => True,
             others => False)),
          16#78# .. 16#7F# =>  --  010B78 .. 010B7F
-          (Other_Number, 0,
+          (Other_Number, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

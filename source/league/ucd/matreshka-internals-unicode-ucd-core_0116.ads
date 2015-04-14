@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
 
    Group_0116 : aliased constant Core_Second_Stage
      := (16#80# .. 16#AA# =>  --  011680 .. 0116AA
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Start => True,
             others => False)),
          16#AB#           =>  --  0116AB
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -74,7 +74,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#AC#           =>  --  0116AC
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -84,7 +84,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#AD#           =>  --  0116AD
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -95,7 +95,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#AE# .. 16#AF# =>  --  0116AE .. 0116AF
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -105,7 +105,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#B0# .. 16#B5# =>  --  0116B0 .. 0116B5
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -116,7 +116,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#B6#           =>  --  0116B6
-          (Spacing_Mark, 9,
+          (Spacing_Mark, 9, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -126,7 +126,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#B7#           =>  --  0116B7
-          (Nonspacing_Mark, 7,
+          (Nonspacing_Mark, 7, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -136,7 +136,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          16#C0# .. 16#C9# =>  --  0116C0 .. 0116C9
-          (Decimal_Number, 0,
+          (Decimal_Number, 0, Neutral,
            Other, Numeric, Numeric, Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
@@ -144,7 +144,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0116 is
               | XID_Continue => True,
             others => False)),
          others           =>
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

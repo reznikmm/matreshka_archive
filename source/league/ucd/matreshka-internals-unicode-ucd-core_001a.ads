@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
 
    Group_001A : aliased constant Core_Second_Stage
      := (16#00# .. 16#16# =>  --  1A00 .. 1A16
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Start => True,
             others => False)),
          16#17#           =>  --  1A17
-          (Nonspacing_Mark, 230,
+          (Nonspacing_Mark, 230, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -74,7 +74,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#18#           =>  --  1A18
-          (Nonspacing_Mark, 220,
+          (Nonspacing_Mark, 220, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -85,7 +85,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#19# .. 16#1A# =>  --  1A19 .. 1A1A
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -95,7 +95,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#1B#           =>  --  1A1B
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -106,13 +106,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#1E# .. 16#1F# =>  --  1A1E .. 1A1F
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#20# .. 16#54# =>  --  1A20 .. 1A54
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -123,7 +123,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Start => True,
             others => False)),
          16#55#           =>  --  1A55
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -133,7 +133,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#56#           =>  --  1A56
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -144,7 +144,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#57#           =>  --  1A57
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -154,7 +154,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#58# .. 16#5E# =>  --  1A58 .. 1A5E
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -165,7 +165,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#60#           =>  --  1A60
-          (Nonspacing_Mark, 9,
+          (Nonspacing_Mark, 9, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -175,7 +175,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#61#           =>  --  1A61
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -185,7 +185,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#62#           =>  --  1A62
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -196,7 +196,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#63# .. 16#64# =>  --  1A63 .. 1A64
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Other, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -206,7 +206,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#65# .. 16#6C# =>  --  1A65 .. 1A6C
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -217,7 +217,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#6D# .. 16#72# =>  --  1A6D .. 1A72
-          (Spacing_Mark, 0,
+          (Spacing_Mark, 0, Neutral,
            Spacing_Mark, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -227,7 +227,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#73# .. 16#74# =>  --  1A73 .. 1A74
-          (Nonspacing_Mark, 0,
+          (Nonspacing_Mark, 0, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -238,7 +238,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#75# .. 16#7C# =>  --  1A75 .. 1A7C
-          (Nonspacing_Mark, 230,
+          (Nonspacing_Mark, 230, Neutral,
            Extend, Extend, Extend, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -248,7 +248,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#7F#           =>  --  1A7F
-          (Nonspacing_Mark, 220,
+          (Nonspacing_Mark, 220, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -258,7 +258,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#80# .. 16#89# =>  --  1A80 .. 1A89
-          (Decimal_Number, 0,
+          (Decimal_Number, 0, Neutral,
            Other, Numeric, Numeric, Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
@@ -266,7 +266,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#90# .. 16#99# =>  --  1A90 .. 1A99
-          (Decimal_Number, 0,
+          (Decimal_Number, 0, Neutral,
            Other, Numeric, Numeric, Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
@@ -274,13 +274,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Continue => True,
             others => False)),
          16#A0# .. 16#A6# =>  --  1AA0 .. 1AA6
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#A7#           =>  --  1AA7
-          (Modifier_Letter, 0,
+          (Modifier_Letter, 0, Neutral,
            Other, Other, O_Letter, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Extender
@@ -293,7 +293,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | XID_Start => True,
             others => False)),
          16#A8# .. 16#AB# =>  --  1AA8 .. 1AAB
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, S_Term, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -301,13 +301,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
               | Grapheme_Base => True,
             others => False)),
          16#AC# .. 16#AD# =>  --  1AAC .. 1AAD
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Complex_Context,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

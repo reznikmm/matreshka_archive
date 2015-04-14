@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,42 +52,42 @@ package Matreshka.Internals.Unicode.Ucd.Core_0100 is
 
    Group_0100 : aliased constant Core_Second_Stage
      := (16#0C#           =>  --  01000C
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#27#           =>  --  010027
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#3B#           =>  --  01003B
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#3E#           =>  --  01003E
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#4E# .. 16#4F# =>  --  01004E .. 01004F
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#5E# .. 16#7F# =>  --  01005E .. 01007F
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#FB# .. 16#FF# =>  --  0100FB .. 0100FF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

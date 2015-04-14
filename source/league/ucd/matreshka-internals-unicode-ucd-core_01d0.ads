@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,12 +52,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D0 is
 
    Group_01D0 : aliased constant Core_Second_Stage
      := (16#F6# .. 16#FF# =>  --  01D0F6 .. 01D0FF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

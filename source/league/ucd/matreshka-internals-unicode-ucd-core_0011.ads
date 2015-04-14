@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
 
    Group_0011 : aliased constant Core_Second_Stage
      := (16#5F#           =>  --  115F
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            L, A_Letter, O_Letter, JL,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
@@ -66,7 +66,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#60#           =>  --  1160
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            V, A_Letter, O_Letter, JV,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point
@@ -80,7 +80,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#61# .. 16#75# =>  --  1161 .. 1175
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            V, A_Letter, O_Letter, JV,
            (Maybe, Yes, Maybe, Yes), None,
            (Alphabetic
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Start => True,
             others => False)),
          16#76# .. 16#A7# =>  --  1176 .. 11A7
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            V, A_Letter, O_Letter, JV,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -102,7 +102,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Start => True,
             others => False)),
          16#A8# .. 16#C2# =>  --  11A8 .. 11C2
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            T, A_Letter, O_Letter, JT,
            (Maybe, Yes, Maybe, Yes), None,
            (Alphabetic
@@ -113,7 +113,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Start => True,
             others => False)),
          16#C3# .. 16#FF# =>  --  11C3 .. 11FF
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            T, A_Letter, O_Letter, JT,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -124,7 +124,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Start => True,
             others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            L, A_Letter, O_Letter, JL,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

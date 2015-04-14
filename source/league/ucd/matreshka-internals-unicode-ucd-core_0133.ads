@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
 
    Group_0133 : aliased constant Core_Second_Stage
      := (16#79#           =>  --  013379
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
               | XID_Start => True,
             others => False)),
          16#7A# .. 16#7B# =>  --  01337A .. 01337B
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -74,7 +74,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
               | XID_Start => True,
             others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

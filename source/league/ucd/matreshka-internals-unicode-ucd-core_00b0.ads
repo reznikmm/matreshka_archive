@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
 
    Group_00B0 : aliased constant Core_Second_Stage
      := (16#0C#           =>  --  B00C
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#28#           =>  --  B028
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#44#           =>  --  B044
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#60#           =>  --  B060
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -104,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#7C#           =>  --  B07C
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -117,7 +117,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#98#           =>  --  B098
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -130,7 +130,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#B4#           =>  --  B0B4
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -143,7 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#D0#           =>  --  B0D0
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -156,7 +156,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          16#EC#           =>  --  B0EC
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -169,7 +169,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B0 is
               | Expands_On_NFKD => True,
             others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LVT, A_Letter, O_Letter, H3,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0034 is
 
    Group_0034 : aliased constant Core_Second_Stage
      := (others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic

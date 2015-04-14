@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
 
    Group_00D7 : aliased constant Core_Second_Stage
      := (16#18#           =>  --  D718
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | Expands_On_NFKD => True,
             others => False)),
          16#34#           =>  --  D734
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | Expands_On_NFKD => True,
             others => False)),
          16#50#           =>  --  D750
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | Expands_On_NFKD => True,
             others => False)),
          16#6C#           =>  --  D76C
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -104,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | Expands_On_NFKD => True,
             others => False)),
          16#88#           =>  --  D788
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -117,12 +117,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | Expands_On_NFKD => True,
             others => False)),
          16#A4# .. 16#AF# =>  --  D7A4 .. D7AF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#B0# .. 16#C6# =>  --  D7B0 .. D7C6
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            V, A_Letter, O_Letter, JV,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -133,12 +133,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | XID_Start => True,
             others => False)),
          16#C7# .. 16#CA# =>  --  D7C7 .. D7CA
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#CB# .. 16#FB# =>  --  D7CB .. D7FB
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            T, A_Letter, O_Letter, JT,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -149,12 +149,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | XID_Start => True,
             others => False)),
          16#FC# .. 16#FF# =>  --  D7FC .. D7FF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Wide,
            LVT, A_Letter, O_Letter, H3,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic

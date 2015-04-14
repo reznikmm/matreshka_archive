@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,13 +52,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D2 is
 
    Group_01D2 : aliased constant Core_Second_Stage
      := (16#00# .. 16#41# =>  --  01D200 .. 01D241
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#42# .. 16#44# =>  --  01D242 .. 01D244
-          (Nonspacing_Mark, 230,
+          (Nonspacing_Mark, 230, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -67,13 +67,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D2 is
               | XID_Continue => True,
             others => False)),
          16#45#           =>  --  01D245
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

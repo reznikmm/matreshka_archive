@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,57 +52,57 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F4 is
 
    Group_01F4 : aliased constant Core_Second_Stage
      := (16#3F#           =>  --  01F43F
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#41#           =>  --  01F441
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#A0#           =>  --  01F4A0
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#A2#           =>  --  01F4A2
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#A4#           =>  --  01F4A4
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#AF#           =>  --  01F4AF
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#B1# .. 16#B2# =>  --  01F4B1 .. 01F4B2
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#F8#           =>  --  01F4F8
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#FD# .. 16#FF# =>  --  01F4FD .. 01F4FF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0,
+          (Other_Symbol, 0, Neutral,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

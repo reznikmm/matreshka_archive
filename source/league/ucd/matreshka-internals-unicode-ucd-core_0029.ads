@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
 
    Group_0029 : aliased constant Core_Second_Stage
      := (16#83#           =>  --  2983
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -61,7 +61,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#84#           =>  --  2984
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -70,7 +70,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#85#           =>  --  2985
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Narrow,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -79,7 +79,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#86#           =>  --  2986
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Narrow,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -88,7 +88,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#87#           =>  --  2987
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -97,7 +97,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#88#           =>  --  2988
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -106,7 +106,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#89#           =>  --  2989
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -115,7 +115,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8A#           =>  --  298A
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -124,7 +124,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8B#           =>  --  298B
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -133,7 +133,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8C#           =>  --  298C
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -142,7 +142,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8D#           =>  --  298D
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -151,7 +151,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8E#           =>  --  298E
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -160,7 +160,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#8F#           =>  --  298F
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -169,7 +169,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#90#           =>  --  2990
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -178,7 +178,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#91#           =>  --  2991
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -187,7 +187,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#92#           =>  --  2992
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -196,7 +196,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#93#           =>  --  2993
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -205,7 +205,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#94#           =>  --  2994
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -214,7 +214,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#95#           =>  --  2995
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -223,7 +223,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#96#           =>  --  2996
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -232,7 +232,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#97#           =>  --  2997
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -241,7 +241,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#98#           =>  --  2998
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -250,7 +250,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#D8#           =>  --  29D8
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -259,7 +259,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#D9#           =>  --  29D9
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -268,7 +268,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#DA#           =>  --  29DA
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -277,7 +277,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#DB#           =>  --  29DB
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -286,7 +286,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#FC#           =>  --  29FC
-          (Open_Punctuation, 0,
+          (Open_Punctuation, 0, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -295,7 +295,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          16#FD#           =>  --  29FD
-          (Close_Punctuation, 0,
+          (Close_Punctuation, 0, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -304,7 +304,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0029 is
               | Math => True,
             others => False)),
          others           =>
-          (Math_Symbol, 0,
+          (Math_Symbol, 0, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax

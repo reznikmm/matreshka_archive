@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
 
    Group_0E00 : aliased constant Core_Second_Stage
      := (16#01#           =>  --  0E0001
-          (Format, 0,
+          (Format, 0, Neutral,
            Control, Format, Format, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Deprecated
@@ -61,7 +61,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#20# .. 16#7F# =>  --  0E0020 .. 0E007F
-          (Format, 0,
+          (Format, 0, Neutral,
            Control, Format, Format, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Deprecated
@@ -70,7 +70,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point

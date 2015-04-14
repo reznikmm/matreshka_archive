@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
 
    Group_002D : aliased constant Core_Second_Stage
      := (16#00# .. 16#25# =>  --  2D00 .. 2D25
-          (Lowercase_Letter, 0,
+          (Lowercase_Letter, 0, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -68,12 +68,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | XID_Start => True,
             others => False)),
          16#26#           =>  --  2D26
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#27#           =>  --  2D27
-          (Lowercase_Letter, 0,
+          (Lowercase_Letter, 0, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -89,12 +89,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | XID_Start => True,
             others => False)),
          16#28# .. 16#2C# =>  --  2D28 .. 2D2C
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#2D#           =>  --  2D2D
-          (Lowercase_Letter, 0,
+          (Lowercase_Letter, 0, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -110,17 +110,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | XID_Start => True,
             others => False)),
          16#2E# .. 16#2F# =>  --  2D2E .. 2D2F
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#68# .. 16#6E# =>  --  2D68 .. 2D6E
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#6F#           =>  --  2D6F
-          (Modifier_Letter, 0,
+          (Modifier_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, No, No), Super,
            (Alphabetic
@@ -133,18 +133,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#70#           =>  --  2D70
-          (Other_Punctuation, 0,
+          (Other_Punctuation, 0, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#71# .. 16#7E# =>  --  2D71 .. 2D7E
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#7F#           =>  --  2D7F
-          (Nonspacing_Mark, 9,
+          (Nonspacing_Mark, 9, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -154,52 +154,52 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | XID_Continue => True,
             others => False)),
          16#97# .. 16#9F# =>  --  2D97 .. 2D9F
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#A7#           =>  --  2DA7
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#AF#           =>  --  2DAF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#B7#           =>  --  2DB7
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#BF#           =>  --  2DBF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#C7#           =>  --  2DC7
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#CF#           =>  --  2DCF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#D7#           =>  --  2DD7
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#DF#           =>  --  2DDF
-          (Unassigned, 0,
+          (Unassigned, 0, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#E0# .. 16#FF# =>  --  2DE0 .. 2DFF
-          (Nonspacing_Mark, 230,
+          (Nonspacing_Mark, 230, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -210,7 +210,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_002D is
               | XID_Continue => True,
             others => False)),
          others           =>
-          (Other_Letter, 0,
+          (Other_Letter, 0, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
