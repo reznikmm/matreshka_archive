@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -271,6 +271,22 @@ package body League.Characters is
           and then Matreshka.Internals.Unicode.Properties.Is_White_Space
                     (Self.Code);
    end Is_White_Space;
+
+   ----------------------
+   -- East_Asian_Width --
+   ----------------------
+
+   function East_Asian_Width
+    (Self : Universal_Character'Class) return East_Asian_Width_Values is
+   begin
+      if Self.Code in Matreshka.Internals.Unicode.Code_Point then
+         return
+           Matreshka.Internals.Unicode.Properties.East_Asian_Width (Self.Code);
+
+      else
+         raise Constraint_Error with "Invalid Unicode code point";
+      end if;
+   end East_Asian_Width;
 
    ---------------
    -- Lowercase --

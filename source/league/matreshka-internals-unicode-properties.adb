@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,30 @@ package body Matreshka.Internals.Unicode.Properties is
            Matreshka.Internals.Unicode.Ucd.Case_Mapping_First_Stage);
 
    pragma Inline (Element);
+
+   ----------------------
+   -- East_Asian_Width --
+   ----------------------
+
+   function East_Asian_Width
+    (Code : Code_Point) return League.Characters.East_Asian_Width_Values
+   is
+      use all type League.Characters.East_Asian_Width_Values;
+      use all type Matreshka.Internals.Unicode.Ucd.East_Asian_Width;
+
+      To : constant array (Matreshka.Internals.Unicode.Ucd.East_Asian_Width)
+             of League.Characters.East_Asian_Width_Values
+        := (Ambiguous => Ambiguous,
+            Fullwidth => Fullwidth,
+            Halfwidth => Halfwidth,
+            Neutral   => Neutral,
+            Narrow    => Narrow,
+            Wide      => Wide);
+
+   begin
+      return
+        To (Element (Matreshka.Internals.Unicode.Ucd.Core.Property, Code).EA);
+   end East_Asian_Width;
 
    ----------------------
    -- General_Category --

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -110,6 +110,14 @@ package League.Characters is
 --   subtype Other is General_Category_Values
 --     range Control .. Unassigned;
 
+   type East_Asian_Width_Values is
+    (Ambiguous,
+     Fullwidth,
+     Halfwidth,
+     Neutral,
+     Narrow,
+     Wide);
+
    type Universal_Character is tagged private;
    pragma Preelaborable_Initialization (Universal_Character);
 
@@ -158,6 +166,10 @@ package League.Characters is
    --  Sentence_Break, and Word_Break, which classify space characters and
    --  related controls somewhat differently for particular text segmentation
    --  contexts."
+
+   function East_Asian_Width
+    (Self : Universal_Character'Class) return East_Asian_Width_Values;
+   --  Returns value of East Asian Width property of specified character.
 
    function Lowercase (Self : Universal_Character'Class) return Boolean;
    --  Returns True when character is lowercase letter.

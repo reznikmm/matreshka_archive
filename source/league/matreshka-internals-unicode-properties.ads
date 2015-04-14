@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -73,6 +73,11 @@ package Matreshka.Internals.Unicode.Properties is
    function Is_White_Space (Code : Code_Point) return Boolean;
    pragma Inline (Is_White_Space);
    --  Code points which is white space.
+
+   function East_Asian_Width
+    (Code : Code_Point) return League.Characters.East_Asian_Width_Values;
+   pragma Inline (East_Asian_Width);
+   --  Returns East Asian Width property.
 
    function Lowercase (Code : Code_Point) return Boolean
      with Inline => True;
