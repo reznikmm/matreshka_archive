@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,6 +57,8 @@ package body Ucd_Data is
    PropList_Name                   : constant String := "PropList.txt";
    DerivedCoreProperties_Name      : constant String
      := "DerivedCoreProperties.txt";
+   EastAsianWidth_Name             : constant String
+     := "EastAsianWidth.txt";
    GraphemeBreakProperty_Name      : constant String
      := "auxiliary/GraphemeBreakProperty.txt";
    WordBreakProperty_Name          : constant String
@@ -89,6 +91,10 @@ package body Ucd_Data is
 
    procedure Load_DerivedCoreProperties (Unidata_Directory : String);
    --  Parse DerivedCoreProperties.txt file and fill internal data structurs by
+   --  the parsed values.
+
+   procedure Load_EastAsianWidth (Unidata_Directory : String);
+   --  Parse EastAsianWidth.txt file and fill internal data structurs by --
    --  the parsed values.
 
    procedure Load_GraphemeBreakProperty (Unidata_Directory : String);
@@ -141,6 +147,9 @@ package body Ucd_Data is
    function Value (Item : String) return Grapheme_Cluster_Break;
    --  Converts text representation of the Grapheme_Cluster_Break into the
    --  value.
+
+   function Value (Item : String) return East_Asian_Width;
+   --  Converts text representation of the East_Asian_Width into value.
 
    function Value (Item : String) return Word_Break;
    --  Converts text representation of the Word_Break into the value.
@@ -304,6 +313,7 @@ package body Ucd_Data is
                 LB  => Unknown,          --  see LineBreak.txt
                 NQC => (others => Yes),  --  see DerivedNormalizationProps.txt
                 DT  => None,             --  see UCD.html
+                EA  => Neutral,          --  see EastAsianWidth.txt
                 B   => (others => False)));
 
       Cases :=
@@ -330,6 +340,10 @@ package body Ucd_Data is
       --  it is possible to use it for verification purposes only.
 
       Load_DerivedCoreProperties (Unidata_Directory);
+
+      --  Load EastAsianWidth.txt
+
+      Load_EastAsianWidth (Unidata_Directory);
 
       --  Load GraphemeBreakProperty.txt, WordBreakProperty.txt.
 
@@ -571,6 +585,38 @@ package body Ucd_Data is
 
       Ucd_Input.Close (File);
    end Load_DerivedNormalizationProps;
+
+   -------------------------
+   -- Load_EastAsianWidth --
+   -------------------------
+
+   procedure Load_EastAsianWidth (Unidata_Directory : String) is
+      File  : Ucd_Input.File_Type;
+      First : Code_Point;
+      Last  : Code_Point;
+      Prop  : East_Asian_Width;
+
+   begin
+      Ada.Text_IO.Put_Line
+       (Ada.Text_IO.Standard_Error, "   ... " & EastAsianWidth_Name);
+
+      Ucd_Input.Open
+       (File, Unidata_Directory & '/' & EastAsianWidth_Name);
+
+      while not Ucd_Input.End_Of_Data (File) loop
+         First := Ucd_Input.First_Code_Point (File);
+         Last  := Ucd_Input.Last_Code_Point (File);
+         Prop  := Value (Ucd_Input.Field (File));
+
+         for J in First .. Last loop
+            Core (J).EA := Prop;
+         end loop;
+
+         Ucd_Input.Next_Record (File);
+      end loop;
+
+      Ucd_Input.Close (File);
+   end Load_EastAsianWidth;
 
    --------------------------------
    -- Load_GraphemeBreakProperty --
@@ -1228,6 +1274,39 @@ package body Ucd_Data is
       end loop;
 
       raise Constraint_Error with "Invalid image of Decomposition_Type";
+   end Value;
+
+   -----------
+   -- Value --
+   -----------
+
+   function Value (Item : String) return East_Asian_Width is
+
+      type Constant_String_Access is access constant String;
+
+      A_Image  : aliased constant String := "A";
+      F_Image  : aliased constant String := "F";
+      H_Image  : aliased constant String := "H";
+      N_Image  : aliased constant String := "N";
+      Na_Image : aliased constant String := "Na";
+      W_Image  : aliased constant String := "W";
+
+      Mapping : constant array (East_Asian_Width) of Constant_String_Access
+        := (Ambiguous => A_Image'Access,
+            Fullwidth => F_Image'Access,
+            Halfwidth => H_Image'Access,
+            Neutral   => N_Image'Access,
+            Narrow    => Na_Image'Access,
+            Wide      => W_Image'Access);
+
+   begin
+      for J in Mapping'Range loop
+         if Mapping (J).all = Item then
+            return J;
+         end if;
+      end loop;
+
+      raise Constraint_Error with "Invalid image of General_Category";
    end Value;
 
    -----------

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -199,6 +199,15 @@ package Matreshka.Internals.Unicode.Ucd is
    for Boolean_Values'Component_Size use 1;
    for Boolean_Values'Size use 64;  --  52 bits used for now
 
+   type East_Asian_Width is
+    (Ambiguous,
+     Fullwidth,
+     Halfwidth,
+     Neutral,
+     Narrow,
+     Wide);
+   for East_Asian_Width'Size use 8;
+
    type Grapheme_Cluster_Break is
     (Control,
      CR,
@@ -332,6 +341,7 @@ package Matreshka.Internals.Unicode.Ucd is
    type Core_Values is record
       GC  : General_Category;            --   8  (5) bits
       CCC : Canonical_Combining_Class;   --   8      bits
+      EA  : East_Asian_Width;            --   8  (3) bits
       GCB : Grapheme_Cluster_Break;      --   8  (4) bits
       WB  : Word_Break;                  --   8  (4) bits
       SB  : Sentence_Break;              --   8  (4) bits
@@ -340,7 +350,7 @@ package Matreshka.Internals.Unicode.Ucd is
       DT  : Decomposition_Type;          --   8  (5) bits
       B   : Boolean_Values;              --  64 (52) bits
    end record;
-   for Core_Values'Size use 128;
+   for Core_Values'Size use 136;
    for Core_Values use record
       B   at 0 range   0 ..  63;
       GC  at 0 range  64 ..  71;
@@ -351,6 +361,7 @@ package Matreshka.Internals.Unicode.Ucd is
       LB  at 0 range 104 .. 111;
       NQC at 0 range 112 .. 119;
       DT  at 0 range 120 .. 127;
+      EA  at 0 range 128 .. 135;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;

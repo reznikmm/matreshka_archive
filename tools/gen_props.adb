@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -164,6 +164,22 @@ procedure Gen_Props is
            LV                 => GCB_LV_Image'Access,
            LVT                => GCB_LVT_Image'Access,
            Regional_Indicator => GCB_Regional_Indicator_Image'Access);
+
+   Ambiguous_Image : aliased constant String := "Ambiguous";
+   Fullwidth_Image : aliased constant String := "Fullwidth";
+   Halfwidth_Image : aliased constant String := "Halfwidth";
+   Neutral_Image   : aliased constant String := "Neutral";
+   Narrow_Image    : aliased constant String := "Narrow";
+   Wide_Image      : aliased constant String := "Wide";
+
+   East_Asian_Width_Image : constant
+     array (East_Asian_Width) of Constant_String_Access
+       := (Ambiguous => Ambiguous_Image'Access,
+           Fullwidth => Fullwidth_Image'Access,
+           Halfwidth => Halfwidth_Image'Access,
+           Neutral   => Neutral_Image'Access,
+           Narrow    => Narrow_Image'Access,
+           Wide      => Wide_Image'Access);
 
    WB_Other_Image          : aliased constant String := "Other";
    WB_CR_Image             : aliased constant String := "CR";
@@ -536,6 +552,8 @@ procedure Gen_Props is
           & General_Category_Image (Item.GC).all
           & ','
           & Canonical_Combining_Class'Image (Item.CCC)
+          & ", "
+          & East_Asian_Width_Image (Item.EA).all
           & ",");
       Ada.Text_IO.Set_Col (Indent);
       Ada.Text_IO.Put
@@ -703,7 +721,7 @@ begin
             Put_File_Header
              ("Localization, Internationalization, Globalization for Ada",
               2012,
-              2013);
+              2015);
             Ada.Text_IO.New_Line;
             Ada.Text_IO.Put_Line
              ("pragma Restrictions (No_Elaboration_Code);");
