@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -168,7 +168,9 @@ package body Servlet.HTTP_Servlets is
             HTTP_Servlet'Class (Self).Do_Trace (HTTP_Request, HTTP_Response);
 
          when Servlet.HTTP_Requests.Connect =>
-            raise Program_Error;
+            --  "CONNECT" method is not implemented.
+
+            HTTP_Response.Set_Status (Servlet.HTTP_Responses.Not_Implemented);
       end case;
    end Service;
 
