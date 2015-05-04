@@ -51,7 +51,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Delete
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       Response.Set_Status (Servlet.HTTP_Responses.Not_Implemented);
    end Do_Delete;
@@ -63,7 +67,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Get
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       Response.Set_Status (Servlet.HTTP_Responses.Not_Implemented);
    end Do_Get;
@@ -87,7 +95,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Options
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       Response.Set_Status (Servlet.HTTP_Responses.OK);
    end Do_Options;
@@ -99,7 +111,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Post
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       Response.Set_Status (Servlet.HTTP_Responses.Not_Implemented);
    end Do_Post;
@@ -111,7 +127,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Put
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       Response.Set_Status (Servlet.HTTP_Responses.Not_Implemented);
    end Do_Put;
@@ -123,7 +143,11 @@ package body Servlet.HTTP_Servlets is
    not overriding procedure Do_Trace
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class;
-     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class) is
+     Response : in out Servlet.HTTP_Responses.HTTP_Servlet_Response'Class)
+   is
+      pragma Unreferenced (Self);
+      pragma Unreferenced (Request);
+
    begin
       --  XXX It should be implemented according to RFC 2616.
 
