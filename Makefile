@@ -72,6 +72,20 @@ gen-csmib:
 	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} ./tools/move-if-changed .new/{} source/league/iana/{}
 	rm -rf .new
 
+gen-uaflex: all
+	rm -rf .new
+	mkdir .new
+	cd .new; ../.objs/uaflex/uaflex --types UAFLEX.Lexer_Types \
+		--scanner UAFLEX.Scanners \
+		--handler UAFLEX.Handlers --tokens Parser_Tokens \
+		../source/uaflex/uaflex.l
+	head --lines=43 source/uaflex/uaflex.ads > .new/header
+	ls .new/*.ad[sb] | xargs -L1 cat .new/header > .new/sources.ada
+	gnatchop -gnat05 -w .new/sources.ada .new
+	ls .new/*.ad[sb] | xargs -L1 basename | xargs -I{} \
+		./tools/move-if-changed .new/{} source/uaflex/generated/{}
+	rm -rf .new
+
 yy_tools:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_aflex.gpr
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/tools_ayacc.gpr

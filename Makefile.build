@@ -5,7 +5,8 @@ GNATMAKE = gnatmake
 endif
 GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 
-ALL_TARGETS = league xml fastcgi servlet spikedog-api spikedog-core soap wsse wsdl2ada sql
+ALL_TARGETS = league xml fastcgi servlet spikedog-api spikedog-core soap wsse\
+               wsdl2ada sql uaflex
 
 ifdef ENABLE_AMF
 ALL_TARGETS += amf dd uml mofext ocl utp
@@ -110,6 +111,9 @@ ocl: league xml amf uml
 
 utp: league xml amf uml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_utp.gpr
+
+uaflex: league
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_uaflex.gpr
 
 # Disable parallel build, it is handled by gnatmake/gprbuild
 .NOTPARALLEL:

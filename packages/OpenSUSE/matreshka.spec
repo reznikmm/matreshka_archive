@@ -6,7 +6,7 @@
 ##                                                                          ##
 ##--------------------------------------------------------------------------##
 ##                                                                          ##
-## Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                ##
+## Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                ##
 ## All rights reserved.                                                     ##
 ##                                                                          ##
 ## Redistribution and use in source and binary forms, with or without       ##
@@ -152,6 +152,13 @@ Group: Development/Libraries/Other
 Summary: WSDL to Ada translator
 %description -n matreshka-wsdl2ada%{PACKAGE_SUFFIX}
 WSDL 2.0 to Ada translator of Matreshka
+
+%package -n matreshka-uaflex%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary: Unicode aware lexical analyser generator in Ada
+%description -n matreshka-uaflex%{PACKAGE_SUFFIX}
+Uaflex reads description of lexical tokes and generates Ada code with scan
+tables and OOP handlers.
 
 %package -n libmatreshka-sql%{PACKAGE_SUFFIX}
 Group: Development/Libraries/Other

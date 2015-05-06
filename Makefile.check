@@ -151,5 +151,13 @@ amf-setup:
 	cp source/amf/uml/models/UML23/UML.xmi .objs/share/models/UML23
 	cp source/amf/uml/models/UML24/PrimitiveTypes.xmi .objs/share/models/UML24
 
+uaflex: UAFLEX=.objs/uaflex/uaflex \
+ --types AAA --scanner AAA.Scanners --handler AAA.Handlers \
+ --tokens Parser_Tokens
+
+uaflex:
+	cd .objs; ../$(UAFLEX) ../testsuite/uaflex/uaflex.TN167.just_read
+	cd .objs; ../$(UAFLEX) ../testsuite/uaflex/uaflex.TN171.just_read
+
 # Disable parallel build, it is handled by gnatmake/gprbuild
 .NOTPARALLEL:
