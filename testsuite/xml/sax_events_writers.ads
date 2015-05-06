@@ -190,7 +190,7 @@ package SAX_Events_Writers is
 private
 
    type SAX_Events_Writer is
-     new Ada.Finalization.Limited_Controlled
+     limited new Ada.Finalization.Limited_Controlled
        and XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.DTD_Handlers.SAX_DTD_Handler
        and XML.SAX.Entity_Resolvers.SAX_Entity_Resolver
