@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,7 @@ with Configure.Instantiate;
 with Configure.Internals;
 with Configure.Operating_System;
 with Configure.RTL_Version;
+with Configure.Tests.Asis;
 with Configure.Tests.Modules.AMF;
 with Configure.Tests.Gprbuild;
 with Configure.Tests.Install;
@@ -104,6 +105,7 @@ procedure Configure.Driver is
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
    Gprbuild_Test   : Configure.Tests.Gprbuild.Gprbuild_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
+   Asis_Test       : Configure.Tests.Asis.Asis_Test;
    AMF_Test        : Configure.Tests.Modules.AMF.AMF_Test;
    MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
    OCI_Test        : Configure.Tests.OCI.OCI_Test;
@@ -164,6 +166,7 @@ begin
    Dirs_Test.Execute (Arguments);
    Install_Test.Execute (Arguments);
    Gprbuild_Test.Execute (Arguments);
+   Asis_Test.Execute (Arguments);
    AMF_Test.Execute (Arguments);
    MySQL_Test.Execute (Arguments);
    OCI_Test.Execute (Arguments);
