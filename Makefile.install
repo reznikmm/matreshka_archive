@@ -8,6 +8,7 @@ INSTALL_GDB_PLUGIN_DIR ?= $(DESTDIR)$(DATAROOTDIR)/gdb/python/matreshka
 INSTALL_EXEC_DIR       ?= $(DESTDIR)$(BINDIR)
 INSTALL_LIBRARY_DIR    ?= $(DESTDIR)$(LIBDIR)
 INSTALL_ALI_DIR        ?= ${INSTALL_LIBRARY_DIR}/matreshka
+INSTALL_GPRCONFIG_DIR   = $(DESTDIR)$(DATAROOTDIR)/gprconfig
 INSTALL_ali = $(INSTALL) -m 444
 INSTALL_project = $(INSTALL) -m 644
 INSTALL_source = $(INSTALL) -m 644
@@ -28,7 +29,7 @@ INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api \
                   spikedog-core soap wsse wsdl2ada sql uaflex
 
 ifdef HAS_ASIS
-ALL_TARGETS += a2js
+INSTALL_TARGETS += a2js
 endif
 
 ifdef ENABLE_AMF
@@ -225,7 +226,11 @@ wsdl2ada:
 
 a2js:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
+	$(INSTALL) -d $(INSTALL_GPRCONFIG_DIR)
 	$(INSTALL) .objs/a2js/a2js$(EXEEXT) $(INSTALL_EXEC_DIR)/a2js$(EXEEXT)
+	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-compilers.xml $(INSTALL_GPRCONFIG_DIR)/a2js-compilers.xml
+	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-configurations.xml $(INSTALL_GPRCONFIG_DIR)/a2js-configurations.xml
+	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-targets.xml $(INSTALL_GPRCONFIG_DIR)/a2js-targets.xml
 
 uaflex:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
