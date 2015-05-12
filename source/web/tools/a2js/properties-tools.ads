@@ -1,0 +1,83 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--                               Web Framework                              --
+--                                                                          --
+--                              Tools Component                             --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+with Asis;
+with League.Strings;
+
+package Properties.Tools is
+
+   function Get_Aspect
+     (Element : Asis.Declaration;
+      Name    : Wide_String) return Wide_String;
+
+   function Library_Level_Header
+     (Unit : Asis.Compilation_Unit) return League.Strings.Universal_String;
+
+   function Corresponding_Type_Subprograms
+     (Definition : Asis.Definition) return Asis.Declaration_List;
+   --  For given type definition return list of primitive subprograms
+
+   function Corresponding_Type_Components
+     (Definition : Asis.Definition) return Asis.Declaration_List;
+   --  For given (non-array complex) type definition return list of component
+
+   function Corresponding_Type_Discriminants
+     (Definition : Asis.Definition) return Asis.Declaration_List;
+   --  For given (non-array complex) type definition return list of discr-s.
+
+   function Is_Primitive_Subprogram
+     (Definition : Asis.Definition;
+      Subprogram : Asis.Declaration) return Boolean;
+   --  Check if given Subprogram is primitive subprograms for given type
+
+   function Corresponding_Type
+     (Declaration : Asis.Declaration) return Asis.Declaration;
+   --  Return type declaration for given primitive subprogram
+
+   function Is_Equal_Type
+     (Left  : Asis.Declaration;
+      Right : Asis.Declaration) return Boolean;
+
+   function Enclosing_Declaration (X : Asis.Element) return Asis.Declaration;
+
+end Properties.Tools;

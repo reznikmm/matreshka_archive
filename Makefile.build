@@ -8,6 +8,10 @@ GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
 ALL_TARGETS = league xml fastcgi servlet spikedog-api spikedog-core soap wsse\
                wsdl2ada sql uaflex
 
+ifdef HAS_ASIS
+ALL_TARGETS += a2js
+endif
+
 ifdef ENABLE_AMF
 ALL_TARGETS += amf dd uml mofext ocl utp
 endif
@@ -75,6 +79,9 @@ wsse: soap
 
 wsdl2ada: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_wsdl2ada.gpr
+
+a2js: league
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_a2js.gpr
 
 sql: league
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql.gpr
