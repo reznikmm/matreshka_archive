@@ -139,6 +139,26 @@ package League.Characters is
     (Self : Universal_Character'Class) return Boolean;
    --  Code points permanently reserved for internal use.
 
+   function Is_Digit (Self : Universal_Character'Class) return Boolean;
+   --  Returns True when character's general catewgory is one of Number
+   --  categories:
+   --
+   --   - Decimal_Number
+   --   - Letter_Number
+   --   - Other_Number
+
+   function Is_Punctuation (Self : Universal_Character'Class) return Boolean;
+   --  Returns True when character's general catewgory is one of Punctuation
+   --  categories:
+   --
+   --   - Connector_Punctuation
+   --   - Dash_Punctuation
+   --   - Open_Punctuation
+   --   - Close_Punctuation
+   --   - Initial_Punctuation
+   --   - Final_Punctuation
+   --   - Other_Punctuation
+
    function Is_ID_Start (Self : Universal_Character'Class) return Boolean;
    --  Returns True when character is start character of identifier:
    --

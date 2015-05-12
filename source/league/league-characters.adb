@@ -213,6 +213,15 @@ package body League.Characters is
       end if;
    end General_Category;
 
+   --------------
+   -- Is_Digit --
+   --------------
+
+   function Is_Digit (Self : Universal_Character'Class) return Boolean is
+   begin
+      return Self.General_Category in Decimal_Number .. Other_Number;
+   end Is_Digit;
+
    --------------------
    -- Is_ID_Continue --
    --------------------
@@ -250,6 +259,16 @@ package body League.Characters is
             Matreshka.Internals.Unicode.Properties.Is_Noncharacter_Code_Point
              (Self.Code);
    end Is_Noncharacter_Code_Point;
+
+   --------------------
+   -- Is_Punctuation --
+   --------------------
+
+   function Is_Punctuation (Self : Universal_Character'Class) return Boolean is
+   begin
+      return
+        Self.General_Category in Connector_Punctuation .. Other_Punctuation;
+   end Is_Punctuation;
 
    --------------
    -- Is_Valid --
