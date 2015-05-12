@@ -27,6 +27,10 @@ endif
 INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api \
                   spikedog-core soap wsse wsdl2ada sql uaflex
 
+ifdef HAS_ASIS
+ALL_TARGETS += a2js
+endif
+
 ifdef ENABLE_AMF
 INSTALL_TARGETS += amf dd uml mofext ocl utp
 endif
@@ -218,6 +222,10 @@ endif
 wsdl2ada:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
 	$(INSTALL) .objs/wsdl2ada/wsdl2ada$(EXEEXT) $(INSTALL_EXEC_DIR)/wsdl2ada$(EXEEXT)
+
+a2js:
+	$(INSTALL) -d $(INSTALL_EXEC_DIR)
+	$(INSTALL) .objs/a2js/a2js$(EXEEXT) $(INSTALL_EXEC_DIR)/a2js$(EXEEXT)
 
 uaflex:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
