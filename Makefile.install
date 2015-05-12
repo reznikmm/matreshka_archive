@@ -229,7 +229,7 @@ a2js:
 
 uaflex:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
-	$(INSTALL) .objs/uaflex/uaflex(EXEEXT) $(INSTALL_EXEC_DIR)/uaflex$(EXEEXT)
+	$(INSTALL) .objs/uaflex/uaflex$(EXEEXT) $(INSTALL_EXEC_DIR)/uaflex$(EXEEXT)
 
 sql:
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql
