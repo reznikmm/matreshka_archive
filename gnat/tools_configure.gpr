@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,7 +50,7 @@ project Tools_Configure is
    for Source_Dirs use ("../tools/configure");
 
    package Compiler is
-      for Default_Switches ("Ada") use ("-g", "-gnat05", "-gnato", "-fstack-check");
+      for Default_Switches ("Ada") use ("-g", "-gnat12", "-gnato", "-fstack-check");
    end Compiler;
 
    package Builder is
