@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,6 +50,14 @@ library project Matreshka_SQL_Oracle is
 
    Library_Name := "matreshka-sql-oci" & Matreshka_Config.RTL_Version_Suffix;
 
+   case Matreshka_Config.Operating_System is
+      when "POSIX" | "Windows" =>
+         null;
+
+      when "MacOS" =>
+        Library_Name := Library_Name & Matreshka_Config.Version;
+   end case;
+
    for Source_Dirs use ("../source/sql/oci");
    for Object_Dir use "../.objs/sql/oci";
    for Library_Kind use "dynamic";
@@ -57,7 +65,15 @@ library project Matreshka_SQL_Oracle is
    for Library_Dir use "../.libs";
    for Library_ALI_Dir use "../.libs/matreshka";
    for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
-   for Library_Options use Matreshka_Config.OCI_Library_Options;
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" =>
+         for Library_Version use
+           "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+
+      when "MacOS" | "Windows" =>
+         null;
+   end case;
 
    -------------
    -- Builder --

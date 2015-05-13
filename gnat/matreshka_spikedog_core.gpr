@@ -50,13 +50,29 @@ library project Matreshka_Spikedog_Core is
 
    Library_Name := "spikedog-core" & Matreshka_Config.RTL_Version_Suffix;
 
+   case Matreshka_Config.Operating_System is
+      when "POSIX" | "Windows" =>
+         null;
+
+      when "MacOS" =>
+        Library_Name := Library_Name & Matreshka_Config.Version;
+   end case;
+
    for Source_Dirs use ("../source/web/spikedog/core");
    for Object_Dir use "../.objs/web/spikedog/core";
    for Library_Kind use "dynamic";
    for Library_Name use Library_Name;
    for Library_Dir use "../.libs";
    for Library_ALI_Dir use "../.libs/matreshka";
-   for Library_Version use "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" =>
+         for Library_Version use
+           "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+
+      when "MacOS" | "Windows" =>
+         null;
+   end case;
 
    -------------
    -- Builder --
