@@ -49,7 +49,6 @@ with Ada.Text_IO;
 with Configure.Architecture;
 with Configure.Instantiate;
 with Configure.Internals;
-with Configure.Operating_System;
 with Configure.RTL_Version;
 with Configure.Tests.Asis;
 with Configure.Tests.Modules.AMF;
@@ -58,6 +57,7 @@ with Configure.Tests.Install;
 with Configure.Tests.Installation_Directories;
 with Configure.Tests.MySQL;
 with Configure.Tests.OCI;
+with Configure.Tests.Operating_System;
 with Configure.Tests.PostgreSQL;
 with Configure.Tests.SQLite3;
 with Configure.Tests.Firebird;
@@ -101,16 +101,21 @@ procedure Configure.Driver is
    end Is_Help_Requested;
 
    Arguments       : Unbounded_String_Vector;
+   Operating_System_Test : aliased
+     Configure.Tests.Operating_System.Operating_System_Test;
    Dirs_Test       :
      Configure.Tests.Installation_Directories.Installation_Directories_Test;
    Gprbuild_Test   : Configure.Tests.Gprbuild.Gprbuild_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
    Asis_Test       : Configure.Tests.Asis.Asis_Test;
-   AMF_Test        : Configure.Tests.Modules.AMF.AMF_Test;
+   AMF_Test        :
+     Configure.Tests.Modules.AMF.AMF_Test (Operating_System_Test'Access);
    MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
-   OCI_Test        : Configure.Tests.OCI.OCI_Test;
+   OCI_Test        :
+     Configure.Tests.OCI.OCI_Test (Operating_System_Test'Access);
    PostgreSQL_Test : Configure.Tests.PostgreSQL.PostgreSQL_Test;
-   SQLite3_Test    : Configure.Tests.SQLite3.SQLite3_Test;
+   SQLite3_Test    :
+     Configure.Tests.SQLite3.SQLite3_Test (Operating_System_Test'Access);
    Firebird_Test   : Configure.Tests.Firebird.Firebird_Test;
    Valgrind_Test   : Configure.Tests.Valgrind.Valgrind_Test;
 
@@ -161,7 +166,7 @@ begin
 
    Configure.Version;
    Configure.Architecture;
-   Configure.Operating_System;
+   Operating_System_Test.Execute (Arguments);
    Configure.RTL_Version;
    Dirs_Test.Execute (Arguments);
    Install_Test.Execute (Arguments);

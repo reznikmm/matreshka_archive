@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -68,10 +68,12 @@ package body Configure.Tests.SQLite3 is
      Arguments : in out Unbounded_String_Vector)
    is
       use type GNAT.Strings.String_Access;
+      use all type Configure.Tests.Operating_System.Operating_Systems;
 
       SQLite3_DLL_Name : constant String := "sqlite3.dll";
       SQLite3_DLL_Path : constant GNAT.Strings.String_Access
         := GNAT.OS_Lib.Locate_Exec_On_Path (SQLite3_DLL_Name);
+
    begin
       --  Command line parameter has preference other automatic detection.
 
@@ -138,7 +140,9 @@ package body Configure.Tests.SQLite3 is
                Self.Report_Status ("no (not found)");
             end if;
 
-	 elsif Is_Windows and SQLite3_DLL_Path /= null then
+	 elsif Self.Operating_System_Test.Get_Operating_System = Windows
+           and SQLite3_DLL_Path /= null
+         then
 	    Substitutions.Insert
 	      (SQLite3_Library_Options,
 	       +"""-L"

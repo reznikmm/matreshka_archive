@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,7 @@ package body Configure.Tests.OCI is
     (Self      : in out OCI_Test;
      Arguments : in out Unbounded_String_Vector)
    is
+      use all type Configure.Tests.Operating_System.Operating_Systems;
 
       function OCI_Library_Name return String;
       --  Returns platform dependent name of OCI library.
@@ -71,7 +72,7 @@ package body Configure.Tests.OCI is
 
       function OCI_Library_Name return String is
       begin
-         if Is_Windows then
+         if Self.Operating_System_Test.Get_Operating_System = Windows then
             return "oci";
 
          else
@@ -111,7 +112,9 @@ package body Configure.Tests.OCI is
 
             Self.Report_Status ("yes (environment variable)");
 
-         elsif Is_Windows and OCI_DLL_Path /= null then
+         elsif Self.Operating_System_Test.Get_Operating_System = Windows
+           and OCI_DLL_Path /= null
+         then
             Substitutions.Insert
              (OCI_Library_Options,
               +"""-L"

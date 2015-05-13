@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -76,8 +76,6 @@ package Configure is
 
    Architecture_Name          : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("ARCHITECTURE");
-   Operating_System_Name      : constant Ada.Strings.Unbounded.Unbounded_String
-     := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
    RTL_Version_Suffix_Name    : constant Ada.Strings.Unbounded.Unbounded_String
      := Ada.Strings.Unbounded.To_Unbounded_String ("RTL_VERSION_SUFFIX");
 

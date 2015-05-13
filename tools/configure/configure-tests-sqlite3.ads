@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,10 +49,13 @@
 ------------------------------------------------------------------------------
 with Configure.Abstract_Tests;
 private with Configure.Component_Switches;
+with Configure.Tests.Operating_System;
 
 package Configure.Tests.SQLite3 is
 
-   type SQLite3_Test is
+   type SQLite3_Test
+    (Operating_System_Test : not null access
+       Configure.Tests.Operating_System.Operating_System_Test'Class) is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
    overriding function Name (Self : SQLite3_Test) return String;
@@ -70,7 +73,9 @@ package Configure.Tests.SQLite3 is
 
 private
 
-   type SQLite3_Test is
+   type SQLite3_Test
+    (Operating_System_Test : not null access
+       Configure.Tests.Operating_System.Operating_System_Test'Class) is
      new Configure.Abstract_Tests.Abstract_Test with record
       Switches : Configure.Component_Switches.Component_Switches
         := Configure.Component_Switches.Create

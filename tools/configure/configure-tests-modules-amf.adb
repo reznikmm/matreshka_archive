@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,7 +52,10 @@ package body Configure.Tests.Modules.AMF is
 
    overriding procedure Execute
     (Self      : in out AMF_Test;
-     Arguments : in out Unbounded_String_Vector) is
+     Arguments : in out Unbounded_String_Vector)
+   is
+      use all type Configure.Tests.Operating_System.Operating_Systems;
+
    begin
       Self.Report_Check ("checking whether to build AMF module");
 
@@ -65,7 +68,7 @@ package body Configure.Tests.Modules.AMF is
             Substitutions.Insert (Enable_AMF, To_Unbounded_String ("true"));
             Self.Report_Status ("yes");
 
-         elsif Substitutions.Element (Operating_System_Name) = "Windows" then
+         elsif Self.Operating_System_Test.Get_Operating_System = Windows then
             --  On Windows it is impossible to build AMF due to GNAT bugs.
 
             Substitutions.Insert (Enable_AMF, To_Unbounded_String (""));

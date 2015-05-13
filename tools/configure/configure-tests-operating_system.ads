@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,40 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This procedure detects operating system.
-with GNAT.Regexp;
+--  This test detects target operating system.
+------------------------------------------------------------------------------
+with Configure.Abstract_Tests;
 
-procedure Configure.Operating_System is
+package Configure.Tests.Operating_System is
 
-   use Ada.Strings.Unbounded;
-   use GNAT.Regexp;
+   type Operating_System_Test is
+     new Configure.Abstract_Tests.Abstract_Test with private;
 
-   function "+" (Item : String) return Unbounded_String
-     renames To_Unbounded_String;
+   type Operating_Systems is (POSIX, Windows);
 
-   function "+" (Item : Unbounded_String) return String renames To_String;
+   overriding function Name (Self : Operating_System_Test) return String;
+   --  Returns name of the test to be used in reports.
 
-   procedure Detect_Operating_System;
-   --  Detects operating system by analyzing target triplet.
+   overriding function Help
+    (Self : Operating_System_Test) return Unbounded_String_Vector;
+   --  Returns help information for test.
 
-   -----------------------------
-   -- Detect_Operating_System --
-   -----------------------------
+   overriding procedure Execute
+    (Self      : in out Operating_System_Test;
+     Arguments : in out Unbounded_String_Vector);
+   --  Executes test's actions. All used arguments must be removed from
+   --  Arguments.
 
-   procedure Detect_Operating_System is
-   begin
-      if Match
-          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
-      then
-         Substitutions.Insert (Operating_System_Name, +"Windows");
-         Is_Windows := True;
-      else
-         Substitutions.Insert (Operating_System_Name, +"POSIX");
-      end if;
-   end Detect_Operating_System;
+   function Get_Operating_System
+    (Self : Operating_System_Test) return Operating_Systems;
+   --  Returns detected target operating system.
 
-begin
-   Detect_Operating_System;
-end Configure.Operating_System;
+private
+
+   type Operating_System_Test is
+     new Configure.Abstract_Tests.Abstract_Test with record
+      Executed         : Boolean := False;
+      Operating_System : Operating_Systems;
+   end record;
+
+end Configure.Tests.Operating_System;

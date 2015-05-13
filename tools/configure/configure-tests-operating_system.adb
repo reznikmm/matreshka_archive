@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,47 +41,77 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This test make decision to build AMF component based on command line
---  switches and on operating system.
---
---  It sets following substitutions variables:
---   - ENABLE_AMF
-------------------------------------------------------------------------------
-with Configure.Abstract_Tests;
-private with Configure.Component_Switches;
-with Configure.Tests.Operating_System;
+with GNAT.Regexp;
 
-package Configure.Tests.Modules.AMF is
+package body Configure.Tests.Operating_System is
 
-   type AMF_Test
-    (Operating_System_Test : not null access
-       Configure.Tests.Operating_System.Operating_System_Test'Class) is
-     new Configure.Abstract_Tests.Abstract_Test with private;
+   Operating_System_Name : constant Ada.Strings.Unbounded.Unbounded_String
+     := Ada.Strings.Unbounded.To_Unbounded_String ("OPERATING_SYSTEM");
 
-   overriding function Name (Self : AMF_Test) return String;
-   --  Returns name of the test to be used in reports.
+   --------------------------
+   -- Get_Operating_System --
+   --------------------------
 
-   overriding function Help
-    (Self : AMF_Test) return Unbounded_String_Vector;
-   --  Returns help information for test.
+   function Get_Operating_System
+    (Self : Operating_System_Test) return Operating_Systems is
+   begin
+      if Self.Executed then
+         return Self.Operating_System;
+
+      else
+         raise Program_Error with "operating system test was not executed";
+      end if;
+   end Get_Operating_System;
+
+   -------------
+   -- Execute --
+   -------------
 
    overriding procedure Execute
-    (Self      : in out AMF_Test;
-     Arguments : in out Unbounded_String_Vector);
-   --  Executes test's actions. All used arguments must be removed from
-   --  Arguments.
+    (Self      : in out Operating_System_Test;
+     Arguments : in out Unbounded_String_Vector)
+   is
+      use GNAT.Regexp;
 
-private
+   begin
+      --  Command line parameter has preference other automatic detection.
 
-   type AMF_Test
-    (Operating_System_Test : not null access
-       Configure.Tests.Operating_System.Operating_System_Test'Class) is
-     new Configure.Abstract_Tests.Abstract_Test with record
-      Switches : Configure.Component_Switches.Component_Switches
-        := Configure.Component_Switches.Create
-            (Name           => "amf",
-             Description    => "build of AMF module",
-             Libdir_Enabled => False);
-   end record;
+      Self.Report_Check ("detecting target operating system");
 
-end Configure.Tests.Modules.AMF;
+      if Match
+          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-mingw.*"))
+      then
+         Self.Operating_System := Windows;
+         Substitutions.Insert (Operating_System_Name, +"Windows");
+         Is_Windows := True;
+         Self.Report_Status ("Windows");
+
+      else
+         Self.Operating_System := POSIX;
+         Substitutions.Insert (Operating_System_Name, +"POSIX");
+         Self.Report_Status ("POSIX");
+      end if;
+
+      Self.Executed := True;
+   end Execute;
+
+   ----------
+   -- Help --
+   ----------
+
+   overriding function Help
+    (Self : Operating_System_Test) return Unbounded_String_Vector is
+   begin
+      return Result : Unbounded_String_Vector;
+   end Help;
+
+   ----------
+   -- Name --
+   ----------
+
+   overriding function Name (Self : Operating_System_Test) return String is
+   begin
+      return "os";
+   end Name;
+
+end Configure.Tests.Operating_System;
