@@ -53,7 +53,7 @@ library project Matreshka_League is
          null;
 
       when "MacOS" =>
-        Library_Name := Library_Name & Matreshka_Config.Version;
+        Library_Name := Library_Name & "." & Matreshka_Config.Version;
    end case;
 
    for Object_Dir use "../.objs/league";

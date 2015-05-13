@@ -54,7 +54,7 @@ library project Matreshka_SQL is
          null;
 
       when "MacOS" =>
-        Library_Name := Library_Name & Matreshka_Config.Version;
+        Library_Name := Library_Name & "." & Matreshka_Config.Version;
    end case;
 
    for Source_Dirs use ("../source/sql");
