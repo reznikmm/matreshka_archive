@@ -86,6 +86,14 @@ package body Configure.Tests.Operating_System is
          Is_Windows := True;
          Self.Report_Status ("Windows");
 
+      elsif Match
+          (+Target_Triplet, Compile ("[a-zA-Z0-9_]*-[a-zA-Z0-9_]*-darwin.*"))
+      then
+         Self.Operating_System := MacOS;
+         Substitutions.Insert (Operating_System_Name, +"MacOS");
+         Is_Windows := True;
+         Self.Report_Status ("Windows");
+
       else
          Self.Operating_System := POSIX;
          Substitutions.Insert (Operating_System_Name, +"POSIX");

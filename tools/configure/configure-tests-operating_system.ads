@@ -50,7 +50,7 @@ package Configure.Tests.Operating_System is
    type Operating_System_Test is
      new Configure.Abstract_Tests.Abstract_Test with private;
 
-   type Operating_Systems is (POSIX, Windows);
+   type Operating_Systems is (POSIX, MacOS, Windows);
 
    overriding function Name (Self : Operating_System_Test) return String;
    --  Returns name of the test to be used in reports.
