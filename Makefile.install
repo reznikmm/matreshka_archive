@@ -227,10 +227,15 @@ wsdl2ada:
 a2js:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
 	$(INSTALL) -d $(INSTALL_GPRCONFIG_DIR)
+	$(INSTALL) -d $(INSTALL_SHARE_DIR)/a2js/rtl
 	$(INSTALL) .objs/a2js/a2js$(EXEEXT) $(INSTALL_EXEC_DIR)/a2js$(EXEEXT)
 	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-compilers.xml $(INSTALL_GPRCONFIG_DIR)/a2js-compilers.xml
 	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-configurations.xml $(INSTALL_GPRCONFIG_DIR)/a2js-configurations.xml
 	$(INSTALL_data) source/web/tools/a2js/gprconfig/a2js-targets.xml $(INSTALL_GPRCONFIG_DIR)/a2js-targets.xml
+	$(INSTALL_data) source/web/tools/a2js/rtl/ada.js $(INSTALL_SHARE_DIR)/a2js/rtl/ada.js
+	$(INSTALL_data) source/web/tools/a2js/rtl/standard.js $(INSTALL_SHARE_DIR)/a2js/rtl/standard.js
+	$(INSTALL_data) source/web/tools/a2js/rtl/system.js $(INSTALL_SHARE_DIR)/a2js/rtl/system.js
+	$(INSTALL_data) source/web/tools/a2js/rtl/system-storage_elements.js $(INSTALL_SHARE_DIR)/a2js/rtl/system-storage_elements.js
 
 uaflex:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
