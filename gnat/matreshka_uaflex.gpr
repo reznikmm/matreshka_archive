@@ -45,7 +45,7 @@
 with "matreshka_common";
 with "matreshka_league.gpr";
 
-project UAFLEX is
+project Matreshka_Uaflex is
 
    for Main use ("uaflex-driver.adb");
    for Source_Dirs use ("../source/uaflex",
@@ -79,4 +79,4 @@ project UAFLEX is
 
    package Compiler renames Matreshka_Common.Compiler;
 
-end UAFLEX;
+end Matreshka_Uaflex;

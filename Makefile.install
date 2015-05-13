@@ -161,8 +161,8 @@ ifeq ($(OPERATING_SYSTEM), POSIX)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION) libspikedog-api$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/spikedog-api-lib.files
 else ifeq ($(OPERATING_SYSTEM), MacOS)
-	$(INSTALL) .libs/libmatreshka-spikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libmatreshka-spikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT)
-	echo "%attr(-,root,root) %{_libdir}/libmatreshka-spikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/spikedog-api-lib.files
+	$(INSTALL) .libs/libspikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libspikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-api$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/spikedog-api-lib.files
 else ifeq ($(OPERATING_SYSTEM), Windows)
 	$(INSTALL) .libs/libspikedog-api$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libspikedog-api$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_bindir}/libspikedog-api$(RTL_VERSION).$(LIBEXT)" > .objs/spikedog-api-lib.files
@@ -185,8 +185,8 @@ ifeq ($(OPERATING_SYSTEM), POSIX)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION) libspikedog-core$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libspikedog-core$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/spikedog-core-lib.files
 else ifeq ($(OPERATING_SYSTEM), MacOS)
-	$(INSTALL) .libs/libmatreshka-spikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libmatreshka-spikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT)
-	echo "%attr(-,root,root) %{_libdir}/libmatreshka-spikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/spikedog-core-lib.files
+	$(INSTALL) .libs/libspikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libspikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libspikedog-core$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/spikedog-core-lib.files
 else ifeq ($(OPERATING_SYSTEM), Windows)
 	$(INSTALL) .libs/libspikedog-core$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libspikedog-core$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_bindir}/libspikedog-core$(RTL_VERSION).$(LIBEXT)" > .objs/spikedog-core-lib.files
@@ -233,8 +233,8 @@ ifeq ($(OPERATING_SYSTEM), POSIX)
 	cd $(INSTALL_LIBRARY_DIR) && ${LN_S} libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION) libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT).$(VERSION)" > .objs/soap_wsse-lib.files
 else ifeq ($(OPERATING_SYSTEM), MacOS)
-	$(INSTALL) .libs/libmatreshka-soap_wsse$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libmatreshka-soap_wsse$(RTL_VERSION).$(VERSION).$(LIBEXT)
-	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap_wsse$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/soap_wsse-lib.files
+	$(INSTALL) .libs/libmatreshka-soap-wsse$(RTL_VERSION).$(VERSION).$(LIBEXT) $(INSTALL_LIBRARY_DIR)/libmatreshka-soap-wsse$(RTL_VERSION).$(VERSION).$(LIBEXT)
+	echo "%attr(-,root,root) %{_libdir}/libmatreshka-soap-wsse$(RTL_VERSION).$(VERSION).$(LIBEXT)" > .objs/soap_wsse-lib.files
 else ifeq ($(OPERATING_SYSTEM), Windows)
 	$(INSTALL) .libs/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT) $(INSTALL_EXEC_DIR)/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)
 	echo "%attr(-,root,root) %{_bindir}/libmatreshka-soap-wsse$(RTL_VERSION).$(LIBEXT)" > .objs/soap_wsse-lib.files
