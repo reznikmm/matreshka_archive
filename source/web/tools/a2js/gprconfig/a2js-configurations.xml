@@ -57,7 +57,7 @@
    end Naming;
 
    package Compiler is
-      for Driver ("Ada") use "asis2js";
+      for Driver ("Ada") use "a2js";
       for Object_File_Suffix ("Ada") use ".js";
       for Language_Kind ("Ada") use "unit_based";
       for Dependency_Kind ("Ada") use "ALI_File";

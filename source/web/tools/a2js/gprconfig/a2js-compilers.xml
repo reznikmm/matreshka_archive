@@ -47,7 +47,7 @@
 <gprconfig>
   <compiler_description>
     <name>A2JS</name>
-    <executable>asis2js</executable>
+    <executable>a2js</executable>
     <version>0.1</version>
     <languages>Ada</languages>
     <target>javascript</target>
