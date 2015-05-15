@@ -52,20 +52,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
 
    Group_0018 : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>  --  1800 .. 1801
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#02#           =>  --  1802
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Continue, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#03#           =>  --  1803
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Term, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -73,14 +73,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Grapheme_Base => True,
             others => False)),
          16#04# .. 16#05# =>  --  1804 .. 1805
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#06#           =>  --  1806
-          (Dash_Punctuation, 0, Neutral,
+          (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_Before,
            (Yes, Yes, Yes, Yes), None,
            (Dash
@@ -88,20 +88,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Grapheme_Base => True,
             others => False)),
          16#07#           =>  --  1807
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#08#           =>  --  1808
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Continue, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#09#           =>  --  1809
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Term, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -109,14 +109,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Grapheme_Base => True,
             others => False)),
          16#0A#           =>  --  180A
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Extender
               | Grapheme_Base => True,
             others => False)),
          16#0B# .. 16#0D# =>  --  180B .. 180D
-          (Nonspacing_Mark, 0, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Variation_Selector
@@ -128,7 +128,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#0E#           =>  --  180E
-          (Format, 0, Neutral,
+          (Format, Neutral,
            Control, Format, Format, Glue,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -136,12 +136,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#0F#           =>  --  180F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#10# .. 16#19# =>  --  1810 .. 1819
-          (Decimal_Number, 0, Neutral,
+          (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
@@ -149,12 +149,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | XID_Continue => True,
             others => False)),
          16#1A# .. 16#1F# =>  --  181A .. 181F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#43#           =>  --  1843
-          (Modifier_Letter, 0, Neutral,
+          (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Extender
@@ -167,12 +167,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | XID_Start => True,
             others => False)),
          16#78# .. 16#7F# =>  --  1878 .. 187F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#A9#           =>  --  18A9
-          (Nonspacing_Mark, 228, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -183,17 +183,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0018 is
               | XID_Continue => True,
             others => False)),
          16#AB# .. 16#AF# =>  --  18AB .. 18AF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#F6# .. 16#FF# =>  --  18F6 .. 18FF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

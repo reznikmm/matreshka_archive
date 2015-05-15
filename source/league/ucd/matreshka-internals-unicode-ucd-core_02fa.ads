@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_02FA is
 
    Group_02FA : aliased constant Core_Second_Stage
      := (16#00# .. 16#1D# =>  --  02FA00 .. 02FA1D
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (No, No, No, No), Canonical,
            (Ideographic
@@ -66,7 +66,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_02FA is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Wide,
+          (Unassigned, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

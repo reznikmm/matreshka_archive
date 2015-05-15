@@ -52,12 +52,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
 
    Group_01D1 : aliased constant Core_Second_Stage
      := (16#27# .. 16#28# =>  --  01D127 .. 01D128
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#5E# .. 16#64# =>  --  01D15E .. 01D164
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (No, No, No, No), Canonical,
            (Grapheme_Base
@@ -69,7 +69,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#65#           =>  --  01D165
-          (Spacing_Mark, 216, Neutral,
+          (Spacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Grapheme_Extend
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#66#           =>  --  01D166
-          (Spacing_Mark, 216, Neutral,
+          (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base
@@ -86,7 +86,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#67# .. 16#69# =>  --  01D167 .. 01D169
-          (Nonspacing_Mark, 1, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -96,7 +96,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#6D#           =>  --  01D16D
-          (Spacing_Mark, 226, Neutral,
+          (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -105,7 +105,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#6E# .. 16#72# =>  --  01D16E .. 01D172
-          (Spacing_Mark, 216, Neutral,
+          (Spacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -115,7 +115,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#73# .. 16#7A# =>  --  01D173 .. 01D17A
-          (Format, 0, Neutral,
+          (Format, Neutral,
            Control, Format, Format, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -123,7 +123,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7B# .. 16#82# =>  --  01D17B .. 01D182
-          (Nonspacing_Mark, 220, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -132,18 +132,8 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#85# .. 16#89# =>  --  01D185 .. 01D189
-          (Nonspacing_Mark, 230, Neutral,
-           Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
-           (Diacritic
-              | Case_Ignorable
-              | Grapheme_Extend
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#8A# .. 16#8B# =>  --  01D18A .. 01D18B
-          (Nonspacing_Mark, 220, Neutral,
+         16#85# .. 16#8B# =>  --  01D185 .. 01D18B
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -153,7 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#AA# .. 16#AD# =>  --  01D1AA .. 01D1AD
-          (Nonspacing_Mark, 230, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -163,7 +153,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | XID_Continue => True,
             others => False)),
          16#BB# .. 16#C0# =>  --  01D1BB .. 01D1C0
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (No, No, No, No), Canonical,
            (Grapheme_Base
@@ -175,12 +165,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DE# .. 16#FF# =>  --  01D1DE .. 01D1FF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

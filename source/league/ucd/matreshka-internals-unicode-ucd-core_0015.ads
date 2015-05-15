@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0015 is
 
    Group_0015 : aliased constant Core_Second_Stage
      := (others           =>
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

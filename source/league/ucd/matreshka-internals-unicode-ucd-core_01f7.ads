@@ -52,13 +52,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F7 is
 
    Group_01F7 : aliased constant Core_Second_Stage
      := (16#00# .. 16#73# =>  --  01F700 .. 01F773
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

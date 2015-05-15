@@ -52,22 +52,22 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
 
    Group_0013 : aliased constant Core_Second_Stage
      := (16#11#           =>  --  1311
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#16# .. 16#17# =>  --  1316 .. 1317
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#5B# .. 16#5C# =>  --  135B .. 135C
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#5D# .. 16#5E# =>  --  135D .. 135E
-          (Nonspacing_Mark, 230, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -76,7 +76,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | XID_Continue => True,
             others => False)),
          16#5F#           =>  --  135F
-          (Nonspacing_Mark, 230, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -87,20 +87,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | XID_Continue => True,
             others => False)),
          16#60#           =>  --  1360
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#61#           =>  --  1361
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#62#           =>  --  1362
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Term, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -108,14 +108,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | Grapheme_Base => True,
             others => False)),
          16#63# .. 16#66# =>  --  1363 .. 1366
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#67# .. 16#68# =>  --  1367 .. 1368
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Term, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -123,7 +123,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | Grapheme_Base => True,
             others => False)),
          16#69# .. 16#71# =>  --  1369 .. 1371
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Other_ID_Continue
@@ -132,34 +132,34 @@ package Matreshka.Internals.Unicode.Ucd.Core_0013 is
               | XID_Continue => True,
             others => False)),
          16#72# .. 16#7C# =>  --  1372 .. 137C
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#7D# .. 16#7F# =>  --  137D .. 137F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#90# .. 16#99# =>  --  1390 .. 1399
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#9A# .. 16#9F# =>  --  139A .. 139F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#F5# .. 16#FF# =>  --  13F5 .. 13FF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

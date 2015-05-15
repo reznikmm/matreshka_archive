@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0034 is
 
    Group_0034 : aliased constant Core_Second_Stage
      := (others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic

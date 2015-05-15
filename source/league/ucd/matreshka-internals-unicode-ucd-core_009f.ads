@@ -52,12 +52,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_009F is
 
    Group_009F : aliased constant Core_Second_Stage
      := (16#CD# .. 16#FF# =>  --  9FCD .. 9FFF
-          (Unassigned, 0, Wide,
+          (Unassigned, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic

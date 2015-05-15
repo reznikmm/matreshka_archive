@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
 
    Group_01D6 : aliased constant Core_Second_Stage
      := (16#00# .. 16#07# =>  --  01D600 .. 01D607
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -68,7 +68,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#22# .. 16#29# =>  --  01D622 .. 01D629
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -84,7 +84,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2A# .. 16#2B# =>  --  01D62A .. 01D62B
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -101,7 +101,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2C# .. 16#3B# =>  --  01D62C .. 01D63B
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -117,7 +117,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#56# .. 16#5D# =>  --  01D656 .. 01D65D
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -133,7 +133,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5E# .. 16#5F# =>  --  01D65E .. 01D65F
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -150,7 +150,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#60# .. 16#6F# =>  --  01D660 .. 01D66F
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -166,7 +166,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#8A# .. 16#91# =>  --  01D68A .. 01D691
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -182,7 +182,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#92# .. 16#93# =>  --  01D692 .. 01D693
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -199,7 +199,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#94# .. 16#A5# =>  --  01D694 .. 01D6A5
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -215,12 +215,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#A6# .. 16#A7# =>  --  01D6A6 .. 01D6A7
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#C1#           =>  --  01D6C1
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Grapheme_Base
@@ -228,7 +228,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#C2# .. 16#DA# =>  --  01D6C2 .. 01D6DA
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -244,7 +244,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DB#           =>  --  01D6DB
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Grapheme_Base
@@ -252,7 +252,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DC# .. 16#E1# =>  --  01D6DC .. 01D6E1
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -268,7 +268,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FB#           =>  --  01D6FB
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Grapheme_Base
@@ -276,7 +276,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FC# .. 16#FF# =>  --  01D6FC .. 01D6FF
-          (Lowercase_Letter, 0, Neutral,
+          (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math
@@ -292,7 +292,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D6 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
-          (Uppercase_Letter, 0, Neutral,
+          (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
            (Yes, Yes, No, No), Font,
            (Other_Math

@@ -52,13 +52,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0FFF is
 
    Group_0FFF : aliased constant Core_Second_Stage
      := (16#FE# .. 16#FF# =>  --  0FFFFE .. 0FFFFF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Noncharacter_Code_Point => True,
             others => False)),
          others           =>
-          (Private_Use, 0, Ambiguous,
+          (Private_Use, Ambiguous,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

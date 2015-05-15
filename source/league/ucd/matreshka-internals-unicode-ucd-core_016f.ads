@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
 
    Group_016F : aliased constant Core_Second_Stage
      := (16#00# .. 16#44# =>  --  016F00 .. 016F44
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
               | XID_Start => True,
             others => False)),
          16#50#           =>  --  016F50
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -74,7 +74,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
               | XID_Start => True,
             others => False)),
          16#51# .. 16#7E# =>  --  016F51 .. 016F7E
-          (Spacing_Mark, 0, Neutral,
+          (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Other_Alphabetic
@@ -84,7 +84,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
               | XID_Continue => True,
             others => False)),
          16#8F# .. 16#92# =>  --  016F8F .. 016F92
-          (Nonspacing_Mark, 0, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -94,7 +94,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
               | XID_Continue => True,
             others => False)),
          16#93# .. 16#9F# =>  --  016F93 .. 016F9F
-          (Modifier_Letter, 0, Neutral,
+          (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Diacritic
@@ -107,7 +107,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016F is
               | XID_Start => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

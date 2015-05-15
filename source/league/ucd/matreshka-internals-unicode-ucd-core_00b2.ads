@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
 
    Group_00B2 : aliased constant Core_Second_Stage
      := (16#04#           =>  --  B204
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#20#           =>  --  B220
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#3C#           =>  --  B23C
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#58#           =>  --  B258
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -104,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#74#           =>  --  B274
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -117,7 +117,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#90#           =>  --  B290
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -130,7 +130,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#AC#           =>  --  B2AC
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -143,7 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#C8#           =>  --  B2C8
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -156,7 +156,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          16#E4#           =>  --  B2E4
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic
@@ -169,7 +169,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00B2 is
               | Expands_On_NFKD => True,
             others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            LVT, A_Letter, O_Letter, H3,
            (Yes, No, Yes, No), Canonical,
            (Alphabetic

@@ -52,37 +52,37 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F0 is
 
    Group_01F0 : aliased constant Core_Second_Stage
      := (16#2C# .. 16#2F# =>  --  01F02C .. 01F02F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#94# .. 16#9F# =>  --  01F094 .. 01F09F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#AF# .. 16#B0# =>  --  01F0AF .. 01F0B0
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#BF# .. 16#C0# =>  --  01F0BF .. 01F0C0
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#D0#           =>  --  01F0D0
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#E0# .. 16#FF# =>  --  01F0E0 .. 01F0FF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

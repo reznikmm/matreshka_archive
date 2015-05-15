@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0102 is
 
    Group_0102 : aliased constant Core_Second_Stage
      := (16#80# .. 16#9C# =>  --  010280 .. 01029C
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0102 is
               | XID_Start => True,
             others => False)),
          16#A0# .. 16#D0# =>  --  0102A0 .. 0102D0
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -74,7 +74,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0102 is
               | XID_Start => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

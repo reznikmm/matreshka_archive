@@ -52,14 +52,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0014 is
 
    Group_0014 : aliased constant Core_Second_Stage
      := (16#00#           =>  --  1400
-          (Dash_Punctuation, 0, Neutral,
+          (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Dash
               | Grapheme_Base => True,
             others => False)),
          others           =>
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

@@ -52,29 +52,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
 
    Group_0101 : aliased constant Core_Second_Stage
      := (16#00# .. 16#02# =>  --  010100 .. 010102
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#03# .. 16#06# =>  --  010103 .. 010106
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#07# .. 16#33# =>  --  010107 .. 010133
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#34# .. 16#36# =>  --  010134 .. 010136
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#40# .. 16#74# =>  --  010140 .. 010174
-          (Letter_Number, 0, Neutral,
+          (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -85,29 +85,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
               | XID_Start => True,
             others => False)),
          16#75# .. 16#78# =>  --  010175 .. 010178
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#8A#           =>  --  01018A
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#8B# .. 16#8F# =>  --  01018B .. 01018F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#9C# .. 16#CF# =>  --  01019C .. 0101CF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#FD#           =>  --  0101FD
-          (Nonspacing_Mark, 220, Neutral,
+          (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Yes, Yes, Yes, Yes), None,
            (Case_Ignorable
@@ -116,12 +116,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
               | XID_Continue => True,
             others => False)),
          16#FE# .. 16#FF# =>  --  0101FE .. 0101FF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,

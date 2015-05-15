@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E02 is
 
    Group_0E02 : aliased constant Core_Second_Stage
      := (others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Control, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Other_Default_Ignorable_Code_Point

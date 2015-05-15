@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A0 is
 
    Group_00A0 : aliased constant Core_Second_Stage
      := (16#15#           =>  --  A015
-          (Modifier_Letter, 0, Wide,
+          (Modifier_Letter, Wide,
            Other, A_Letter, O_Letter, Nonstarter,
            (Yes, Yes, Yes, Yes), None,
            (Extender
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A0 is
               | XID_Start => True,
             others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

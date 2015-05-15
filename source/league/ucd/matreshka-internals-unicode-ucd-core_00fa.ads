@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
 
    Group_00FA : aliased constant Core_Second_Stage
      := (16#0E# .. 16#0F# =>  --  FA0E .. FA0F
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#11#           =>  --  FA11
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#13# .. 16#14# =>  --  FA13 .. FA14
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#1F#           =>  --  FA1F
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -104,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#21#           =>  --  FA21
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -117,7 +117,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#23# .. 16#24# =>  --  FA23 .. FA24
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -130,7 +130,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#27# .. 16#29# =>  --  FA27 .. FA29
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
@@ -143,17 +143,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | XID_Start => True,
             others => False)),
          16#6E# .. 16#6F# =>  --  FA6E .. FA6F
-          (Unassigned, 0, Wide,
+          (Unassigned, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#DA# .. 16#FF# =>  --  FADA .. FAFF
-          (Unassigned, 0, Wide,
+          (Unassigned, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (No, No, No, No), Canonical,
            (Ideographic

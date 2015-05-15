@@ -52,13 +52,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_010E is
 
    Group_010E : aliased constant Core_Second_Stage
      := (16#60# .. 16#7E# =>  --  010E60 .. 010E7E
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

@@ -52,7 +52,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
 
    Group_01F2 : aliased constant Core_Second_Stage
      := (16#00# .. 16#01# =>  --  01F200 .. 01F201
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
@@ -60,21 +60,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#02#           =>  --  01F202
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#10# .. 16#12# =>  --  01F210 .. 01F212
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#13#           =>  --  01F213
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
@@ -82,14 +82,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#14# .. 16#3A# =>  --  01F214 .. 01F23A
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Square,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#40# .. 16#48# =>  --  01F240 .. 01F248
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Compat,
            (Grapheme_Base
@@ -97,14 +97,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#50# .. 16#51# =>  --  01F250 .. 01F251
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

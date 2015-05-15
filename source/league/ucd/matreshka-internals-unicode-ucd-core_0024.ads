@@ -52,26 +52,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
 
    Group_0024 : aliased constant Core_Second_Stage
      := (16#27# .. 16#3F# =>  --  2427 .. 243F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
          16#4B# .. 16#5F# =>  --  244B .. 245F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
          16#60# .. 16#68# =>  --  2460 .. 2468
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#69# .. 16#73# =>  --  2469 .. 2473
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Circle,
            (Grapheme_Base
@@ -79,7 +79,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#74# .. 16#9B# =>  --  2474 .. 249B
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Compat,
            (Grapheme_Base
@@ -87,7 +87,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#9C# .. 16#B5# =>  --  249C .. 24B5
-          (Other_Symbol, 0, Ambiguous,
+          (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Compat,
            (Grapheme_Base
@@ -95,7 +95,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#B6# .. 16#CF# =>  --  24B6 .. 24CF
-          (Other_Symbol, 0, Ambiguous,
+          (Other_Symbol, Ambiguous,
            Other, A_Letter, Upper, Ambiguous,
            (Yes, Yes, No, No), Circle,
            (Other_Alphabetic
@@ -110,7 +110,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D0# .. 16#E9# =>  --  24D0 .. 24E9
-          (Other_Symbol, 0, Ambiguous,
+          (Other_Symbol, Ambiguous,
            Other, A_Letter, Lower, Ambiguous,
            (Yes, Yes, No, No), Circle,
            (Other_Alphabetic
@@ -125,26 +125,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EA#           =>  --  24EA
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, No, No), Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#EB# .. 16#FE# =>  --  24EB .. 24FE
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#FF#           =>  --  24FF
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax

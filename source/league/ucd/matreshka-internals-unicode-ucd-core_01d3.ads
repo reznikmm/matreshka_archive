@@ -52,19 +52,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D3 is
 
    Group_01D3 : aliased constant Core_Second_Stage
      := (16#00# .. 16#56# =>  --  01D300 .. 01D356
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#60# .. 16#71# =>  --  01D360 .. 01D371
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)));

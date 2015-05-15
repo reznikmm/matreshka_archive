@@ -52,23 +52,23 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
 
    Group_00A4 : aliased constant Core_Second_Stage
      := (16#8D# .. 16#8F# =>  --  A48D .. A48F
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#90# .. 16#C6# =>  --  A490 .. A4C6
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#C7# .. 16#CF# =>  --  A4C7 .. A4CF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#D0# .. 16#F7# =>  --  A4D0 .. A4F7
-          (Other_Letter, 0, Neutral,
+          (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -79,7 +79,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
               | XID_Start => True,
             others => False)),
          16#F8# .. 16#FD# =>  --  A4F8 .. A4FD
-          (Modifier_Letter, 0, Neutral,
+          (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic
@@ -91,14 +91,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
               | XID_Start => True,
             others => False)),
          16#FE#           =>  --  A4FE
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#FF#           =>  --  A4FF
-          (Other_Punctuation, 0, Neutral,
+          (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
            (Yes, Yes, Yes, Yes), None,
            (STerm
@@ -106,7 +106,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
               | Grapheme_Base => True,
             others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Alphabetic

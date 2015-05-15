@@ -52,165 +52,165 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
 
    Group_0027 : aliased constant Core_Second_Stage
      := (16#00#           =>  --  2700
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax => True,
             others => False)),
          16#01# .. 16#04# =>  --  2701 .. 2704
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#08# .. 16#0D# =>  --  2708 .. 270D
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#3D#           =>  --  273D
-          (Other_Symbol, 0, Ambiguous,
+          (Other_Symbol, Ambiguous,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#57#           =>  --  2757
-          (Other_Symbol, 0, Ambiguous,
+          (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#5B# .. 16#5E# =>  --  275B .. 275E
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Close, Quotation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#62# .. 16#63# =>  --  2762 .. 2763
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Exclamation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#68#           =>  --  2768
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#69#           =>  --  2769
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6A#           =>  --  276A
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6B#           =>  --  276B
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6C#           =>  --  276C
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6D#           =>  --  276D
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6E#           =>  --  276E
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#6F#           =>  --  276F
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#70#           =>  --  2770
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#71#           =>  --  2771
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#72#           =>  --  2772
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#73#           =>  --  2773
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#74#           =>  --  2774
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#75#           =>  --  2775
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#76# .. 16#7F# =>  --  2776 .. 277F
-          (Other_Number, 0, Ambiguous,
+          (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#80# .. 16#93# =>  --  2780 .. 2793
-          (Other_Number, 0, Neutral,
+          (Other_Number, Neutral,
            Other, Other, Other, Ambiguous,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          16#C0# .. 16#C4# =>  --  27C0 .. 27C4
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
@@ -218,7 +218,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#C5#           =>  --  27C5
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -227,7 +227,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#C6#           =>  --  27C6
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -236,7 +236,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#C7# .. 16#E5# =>  --  27C7 .. 27E5
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
@@ -244,7 +244,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#E6#           =>  --  27E6
-          (Open_Punctuation, 0, Narrow,
+          (Open_Punctuation, Narrow,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -253,7 +253,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#E7#           =>  --  27E7
-          (Close_Punctuation, 0, Narrow,
+          (Close_Punctuation, Narrow,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -262,7 +262,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#E8#           =>  --  27E8
-          (Open_Punctuation, 0, Narrow,
+          (Open_Punctuation, Narrow,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -271,7 +271,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#E9#           =>  --  27E9
-          (Close_Punctuation, 0, Narrow,
+          (Close_Punctuation, Narrow,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -280,7 +280,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#EA#           =>  --  27EA
-          (Open_Punctuation, 0, Narrow,
+          (Open_Punctuation, Narrow,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -289,7 +289,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#EB#           =>  --  27EB
-          (Close_Punctuation, 0, Narrow,
+          (Close_Punctuation, Narrow,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -298,7 +298,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#EC#           =>  --  27EC
-          (Open_Punctuation, 0, Narrow,
+          (Open_Punctuation, Narrow,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -307,7 +307,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#ED#           =>  --  27ED
-          (Close_Punctuation, 0, Narrow,
+          (Close_Punctuation, Narrow,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -316,7 +316,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#EE#           =>  --  27EE
-          (Open_Punctuation, 0, Neutral,
+          (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -325,7 +325,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#EF#           =>  --  27EF
-          (Close_Punctuation, 0, Neutral,
+          (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
            (Yes, Yes, Yes, Yes), None,
            (Other_Math
@@ -334,7 +334,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          16#F0# .. 16#FF# =>  --  27F0 .. 27FF
-          (Math_Symbol, 0, Neutral,
+          (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax
@@ -342,7 +342,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
               | Math => True,
             others => False)),
          others           =>
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Pattern_Syntax

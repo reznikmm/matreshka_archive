@@ -52,38 +52,38 @@ package Matreshka.Internals.Unicode.Ucd.Core_002F is
 
    Group_002F : aliased constant Core_Second_Stage
      := (16#D6# .. 16#EF# =>  --  2FD6 .. 2FEF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#F0# .. 16#F1# =>  --  2FF0 .. 2FF1
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (IDS_Binary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#F2# .. 16#F3# =>  --  2FF2 .. 2FF3
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (IDS_Trinary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#F4# .. 16#FB# =>  --  2FF4 .. 2FFB
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (IDS_Binary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#FC# .. 16#FF# =>  --  2FFC .. 2FFF
-          (Unassigned, 0, Neutral,
+          (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          others           =>
-          (Other_Symbol, 0, Wide,
+          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, No, No), Compat,
            (Radical

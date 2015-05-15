@@ -52,18 +52,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_004D is
 
    Group_004D : aliased constant Core_Second_Stage
      := (16#B6# .. 16#BF# =>  --  4DB6 .. 4DBF
-          (Unassigned, 0, Wide,
+          (Unassigned, Wide,
            Other, Other, Other, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (others => False)),
          16#C0# .. 16#FF# =>  --  4DC0 .. 4DFF
-          (Other_Symbol, 0, Neutral,
+          (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Yes, Yes, Yes, Yes), None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Other_Letter, 0, Wide,
+          (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Yes, Yes, Yes, Yes), None,
            (Ideographic
