@@ -49,7 +49,10 @@ package Matreshka.Internals.Unicode.UCD.Properties is
    pragma Preelaborate;
 
    function Get_CCC (Code : Code_Point) return Canonical_Combining_Class;
-   --  Returns values of Canonical_Combining_Class property for given code
+   --  Returns value of Canonical_Combining_Class property for given code
    --  point.
+
+   function Get_NQC (Code : Code_Point) return Normalization_Quick_Checks;
+   --  Returns values of *_Quick_Check properties for given code point.
 
 end Matreshka.Internals.Unicode.UCD.Properties;

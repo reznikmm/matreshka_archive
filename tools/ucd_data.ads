@@ -102,6 +102,9 @@ package Ucd_Data is
    type Character_Normalization_Information is record
       CCC    : Matreshka.Internals.Unicode.Ucd.Canonical_Combining_Class
         := Matreshka.Internals.Unicode.Ucd.Not_Reordered;  --  see UCD.html
+      NQC    : Matreshka.Internals.Unicode.Ucd.Normalization_Quick_Checks
+        := (others => Matreshka.Internals.Unicode.Ucd.Yes);
+          --  see DerivedNormalizationProps.txt
       Values : Normalization_Values;
    end record;
 

@@ -312,7 +312,6 @@ package body Ucd_Data is
                 WB  => Other,            --  see WordBreakProperty.txt
                 SB  => Other,            --  see SentenceBreakProperty.txt
                 LB  => Unknown,          --  see LineBreak.txt
-                NQC => (others => Yes),  --  see DerivedNormalizationProps.txt
                 DT  => None,             --  see UCD.html
                 EA  => Neutral,          --  see EastAsianWidth.txt
                 B   => (others => False)));
@@ -327,7 +326,9 @@ package body Ucd_Data is
 
       Norms :=
         new Normalization_Values_Array'
-             (others => (CCC => Not_Reordered, Values => (others => null)));
+             (others => (CCC    => Not_Reordered,
+                         NQC    => (others => Yes),
+                         Values => (others => null)));
 
       --  Load UnicodeData.txt, PropList.txt.
 
@@ -547,16 +548,16 @@ package body Ucd_Data is
                   Core (J).B (Full_Composition_Exclusion) := True;
 
                when NFD_QC =>
-                  Core (J).NQC (NFD) := Value (Ucd_Input.Field (File));
+                  Norms (J).NQC (NFD) := Value (Ucd_Input.Field (File));
 
                when NFC_QC =>
-                  Core (J).NQC (NFC) := Value (Ucd_Input.Field (File));
+                  Norms (J).NQC (NFC) := Value (Ucd_Input.Field (File));
 
                when NFKD_QC =>
-                  Core (J).NQC (NFKD) := Value (Ucd_Input.Field (File));
+                  Norms (J).NQC (NFKD) := Value (Ucd_Input.Field (File));
 
                when NFKC_QC =>
-                  Core (J).NQC (NFKC) := Value (Ucd_Input.Field (File));
+                  Norms (J).NQC (NFKC) := Value (Ucd_Input.Field (File));
 
                when Expands_On_NFD =>
                   Core (J).B (Expands_On_NFD) := True;

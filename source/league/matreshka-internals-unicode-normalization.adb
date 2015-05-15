@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
-with Matreshka.Internals.Unicode.Ucd.Core;
 with Matreshka.Internals.Unicode.Ucd.Norms;
 with Matreshka.Internals.Unicode.Ucd.Properties;
 with Matreshka.Internals.Utf16;
@@ -89,9 +88,6 @@ package body Matreshka.Internals.Unicode.Normalization is
    --  character in the data or next starting character. For Hangul Syllables
    --  this means the L, V pair composed to LV jamo, and on the next call,
    --  LV jamo composed to LVT jamo.
-
-   function Get_Core (Code : Code_Point) return Core_Values;
-   pragma Inline (Get_Core);
 
    -------------
    -- Compose --
@@ -292,7 +288,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             Unchecked_Next (Source.Value, S_Index, Code);
             Class := Get_CCC (Code);
 
-            case Get_Core (Code).NQC (Form) is
+            case Get_NQC (Code) (Form) is
                when No | Maybe =>
                   S_Index := S_Previous;
 
@@ -470,7 +466,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
          Unchecked_Next (Source.Value, S_Index, Code);
 
-         case Get_Core (Code).NQC (Form) is
+         case Get_NQC (Code) (Form) is
             when No | Maybe =>
                S_Index := Starter_S_Index;
                Length  := Starter.D_Length;
@@ -602,7 +598,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             if Fast then
                --  Fast mode: try to avoid decomposition and composition.
 
-               if Get_Core (Code).NQC (Form) = Yes then
+               if Get_NQC (Code) (Form) = Yes then
                   Common_Append (Code);
 
                   if Starter_S_Index /= S_Previous
@@ -643,7 +639,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                  and then Code
                            not in Hangul_Syllable_First .. Hangul_Syllable_Last
                  and then Get_CCC (Code) = 0
-                 and then Get_Core (Code).NQC (Form) = Yes
+                 and then Get_NQC (Code) (Form) = Yes
                then
                   --  Just processed character is starter and never compose
                   --  with previous characters, thus we can switch back to fast
@@ -666,23 +662,6 @@ package body Matreshka.Internals.Unicode.Normalization is
 
       String_Handler.Fill_Null_Terminator (Destination);
    end Generic_Decomposition_Composition;
-
-   --------------
-   -- Get_Core --
-   --------------
-
-   function Get_Core (Code : Code_Point) return Core_Values is
-
-      function Element is
-        new Matreshka.Internals.Unicode.Ucd.Generic_Element
-             (Matreshka.Internals.Unicode.Ucd.Core_Values,
-              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage,
-              Matreshka.Internals.Unicode.Ucd.Core_Second_Stage_Access,
-              Matreshka.Internals.Unicode.Ucd.Core_First_Stage);
-
-   begin
-      return Element (Core.Property, Code);
-   end Get_Core;
 
    ---------
    -- NFC --

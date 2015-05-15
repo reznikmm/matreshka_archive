@@ -76,10 +76,22 @@ procedure Gen_Norms is
    Last_Index_Last  : Sequence_Count := 0;
 
    Normalization : array (Code_Point) of Normalization_Mapping
-     := (others => ((others => (0, 0)), (0, 0), 0));
+     := (others => ((others => (0, 0)), (0, 0), 0, (others => Yes)));
    Groups        : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
    Generated     : array (First_Stage_Index) of Boolean := (others => False);
+
+   type Constant_String_Access is access constant String;
+
+   NQC_No_Image    : aliased constant String := "No";
+   NQC_Maybe_Image : aliased constant String := "Maybe";
+   NQC_Yes_Image   : aliased constant String := "Yes";
+
+   Normalization_Quick_Check_Image : constant
+     array (Normalization_Quick_Check) of Constant_String_Access
+       := (No    => NQC_No_Image'Access,
+           Maybe => NQC_Maybe_Image'Access,
+           Yes   => NQC_Yes_Image'Access);
 
    --------------------
    -- Append_Mapping --
@@ -136,7 +148,28 @@ procedure Gen_Norms is
           & Sequence_Count_Image (Item.Composition.Last)
           & "),"
           & Canonical_Combining_Class'Image (Item.CCC)
-          & ")");
+          & ", ("
+          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
+          & ", "
+          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
+          & "))");
+--      Ada.Text_IO.Set_Col (Indent);
+--      Ada.Text_IO.Put
+--       ("("
+--          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
+--          & "), "
+--          & Decomposition_Type_Image (Item.DT).all
+--          & ",");
    end Put;
 
 begin
@@ -146,6 +179,7 @@ begin
 
    for J in Code_Point loop
       Normalization (J).CCC := Norms (J).CCC;
+      Normalization (J).NQC := Norms (J).NQC;
    end loop;
 
    --  Construct decomposition information.

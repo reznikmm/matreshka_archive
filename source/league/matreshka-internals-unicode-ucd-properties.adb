@@ -45,24 +45,31 @@ with Matreshka.Internals.Unicode.UCD.Norms;
 
 package body Matreshka.Internals.Unicode.UCD.Properties is
 
+   function Element is
+     new Matreshka.Internals.Unicode.Ucd.Generic_Element
+          (Matreshka.Internals.Unicode.Ucd.Normalization_Mapping,
+           Matreshka.Internals.Unicode.Ucd.Normalization_Mapping_Second_Stage,
+           Matreshka.Internals.Unicode.Ucd
+             .Normalization_Mapping_Second_Stage_Access,
+           Matreshka.Internals.Unicode.Ucd.Normalization_Mapping_First_Stage);
+   pragma Inline (Element);
+
    -------------
    -- Get_CCC --
    -------------
 
    function Get_CCC (Code : Code_Point) return Canonical_Combining_Class is
-
-      function Element is
-        new Matreshka.Internals.Unicode.Ucd.Generic_Element
-             (Matreshka.Internals.Unicode.Ucd.Normalization_Mapping,
-              Matreshka.Internals.Unicode.Ucd
-                .Normalization_Mapping_Second_Stage,
-              Matreshka.Internals.Unicode.Ucd
-                .Normalization_Mapping_Second_Stage_Access,
-              Matreshka.Internals.Unicode.Ucd.Normalization_Mapping_First_Stage);
-      pragma Inline (Element);
-
    begin
       return Element (Norms.Mapping, Code).CCC;
    end Get_CCC;
+
+   -------------
+   -- Get_NQC --
+   -------------
+
+   function Get_NQC (Code : Code_Point) return Normalization_Quick_Checks is
+   begin
+      return Element (Norms.Mapping, Code).NQC;
+   end Get_NQC;
 
 end Matreshka.Internals.Unicode.UCD.Properties;

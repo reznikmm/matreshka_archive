@@ -484,16 +484,6 @@ procedure Gen_Props is
            Changes_When_Casefolded => BP_Changes_When_Casefolded_Image'Access,
            Changes_When_Casemapped => BP_Changes_When_Casemapped_Image'Access);
 
-   NQC_No_Image    : aliased constant String := "No";
-   NQC_Maybe_Image : aliased constant String := "Maybe";
-   NQC_Yes_Image   : aliased constant String := "Yes";
-
-   Normalization_Quick_Check_Image : constant
-     array (Normalization_Quick_Check) of Constant_String_Access
-       := (No    => NQC_No_Image'Access,
-           Maybe => NQC_Maybe_Image'Access,
-           Yes   => NQC_Yes_Image'Access);
-
    DT_Canonical_Image : aliased constant String := "Canonical";
    DT_Compat_Image    : aliased constant String := "Compat";
    DT_Circle_Image    : aliased constant String := "Circle";
@@ -565,17 +555,19 @@ procedure Gen_Props is
           & ',');
       Ada.Text_IO.Set_Col (Indent);
       Ada.Text_IO.Put
-       ("("
-          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
-          & ", "
-          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
-          & ", "
-          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
-          & ", "
-          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
-          & "), "
-          & Decomposition_Type_Image (Item.DT).all
+       (Decomposition_Type_Image (Item.DT).all
           & ",");
+--       ("("
+--          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
+--          & ", "
+--          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
+--          & "), "
+--          & Decomposition_Type_Image (Item.DT).all
+--          & ",");
       Ada.Text_IO.Set_Col (Indent);
       Ada.Text_IO.Put ('(');
 

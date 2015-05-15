@@ -101,28 +101,6 @@ package Matreshka.Internals.Unicode.Ucd is
      Space_Separator);
    for General_Category'Size use 8;
 
-   type Canonical_Combining_Class is mod 256;
-
-   Not_Reordered        : constant Canonical_Combining_Class := 0;
-   Overlay              : constant Canonical_Combining_Class := 1;
-   Nukta                : constant Canonical_Combining_Class := 7;
-   Kana_Voicing         : constant Canonical_Combining_Class := 8;
-   Virama               : constant Canonical_Combining_Class := 9;
-   Attached_Below_Left  : constant Canonical_Combining_Class := 200;
-   Attached_Below       : constant Canonical_Combining_Class := 202;
-   Attached_Above_Right : constant Canonical_Combining_Class := 216;
-   Below_Left           : constant Canonical_Combining_Class := 218;
-   Below                : constant Canonical_Combining_Class := 220;
-   Below_Right          : constant Canonical_Combining_Class := 222;
-   Left                 : constant Canonical_Combining_Class := 224;
-   Right                : constant Canonical_Combining_Class := 226;
-   Above_Left           : constant Canonical_Combining_Class := 228;
-   Above                : constant Canonical_Combining_Class := 230;
-   Above_Right          : constant Canonical_Combining_Class := 232;
-   Double_Below         : constant Canonical_Combining_Class := 233;
-   Double_Above         : constant Canonical_Combining_Class := 234;
-   Iota_Subscript       : constant Canonical_Combining_Class := 240;
-
    type Boolean_Properties is
     (ASCII_Hex_Digit,
      Bidi_Control,
@@ -327,17 +305,6 @@ package Matreshka.Internals.Unicode.Ucd is
 
    for Decomposition_Type'Size use 8;
 
-   type Normalization_Quick_Check is (No, Maybe, Yes);
-   for Normalization_Quick_Check'Size use 2;
-
-   type Normalization_Form is (NFC, NFD, NFKC, NFKD);
-
-   type Normalization_Quick_Checks is
-     array (Normalization_Form) of Normalization_Quick_Check;
-   for Normalization_Quick_Checks'Size use 8;
-   for Normalization_Quick_Checks'Component_Size
-     use Normalization_Quick_Check'Size;
-
    type Core_Values is record
       GC  : General_Category;            --   8  (5) bits
       EA  : East_Asian_Width;            --   8  (3) bits
@@ -345,7 +312,6 @@ package Matreshka.Internals.Unicode.Ucd is
       WB  : Word_Break;                  --   8  (4) bits
       SB  : Sentence_Break;              --   8  (4) bits
       LB  : Line_Break;                  --   8  (6) bits
-      NQC : Normalization_Quick_Checks;  --   8      bits
       DT  : Decomposition_Type;          --   8  (5) bits
       B   : Boolean_Values;              --  64 (52) bits
    end record;
@@ -357,9 +323,8 @@ package Matreshka.Internals.Unicode.Ucd is
       WB  at 0 range  80 ..  87;
       SB  at 0 range  88 ..  95;
       LB  at 0 range  96 .. 103;
-      NQC at 0 range 104 .. 111;
-      DT  at 0 range 112 .. 119;
-      EA  at 0 range 120 .. 127;
+      DT  at 0 range 104 .. 111;
+      EA  at 0 range 112 .. 119;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
@@ -433,6 +398,39 @@ package Matreshka.Internals.Unicode.Ucd is
    -- Normalization --
    -------------------
 
+   type Canonical_Combining_Class is mod 256;
+
+   Not_Reordered        : constant Canonical_Combining_Class := 0;
+   Overlay              : constant Canonical_Combining_Class := 1;
+   Nukta                : constant Canonical_Combining_Class := 7;
+   Kana_Voicing         : constant Canonical_Combining_Class := 8;
+   Virama               : constant Canonical_Combining_Class := 9;
+   Attached_Below_Left  : constant Canonical_Combining_Class := 200;
+   Attached_Below       : constant Canonical_Combining_Class := 202;
+   Attached_Above_Right : constant Canonical_Combining_Class := 216;
+   Below_Left           : constant Canonical_Combining_Class := 218;
+   Below                : constant Canonical_Combining_Class := 220;
+   Below_Right          : constant Canonical_Combining_Class := 222;
+   Left                 : constant Canonical_Combining_Class := 224;
+   Right                : constant Canonical_Combining_Class := 226;
+   Above_Left           : constant Canonical_Combining_Class := 228;
+   Above                : constant Canonical_Combining_Class := 230;
+   Above_Right          : constant Canonical_Combining_Class := 232;
+   Double_Below         : constant Canonical_Combining_Class := 233;
+   Double_Above         : constant Canonical_Combining_Class := 234;
+   Iota_Subscript       : constant Canonical_Combining_Class := 240;
+
+   type Normalization_Quick_Check is (No, Maybe, Yes);
+   for Normalization_Quick_Check'Size use 2;
+
+   type Normalization_Form is (NFC, NFD, NFKC, NFKD);
+
+   type Normalization_Quick_Checks is
+     array (Normalization_Form) of Normalization_Quick_Check;
+   for Normalization_Quick_Checks'Size use 8;
+   for Normalization_Quick_Checks'Component_Size
+     use Normalization_Quick_Check'Size;
+
    type Normalization_Mapping_Range is record
       First : Sequence_Count;
       Last  : Sequence_Count;
@@ -447,6 +445,7 @@ package Matreshka.Internals.Unicode.Ucd is
       Decomposition : Decomposition_Mapping;
       Composition   : Normalization_Mapping_Range;
       CCC           : Canonical_Combining_Class;   --   8      bits
+      NQC           : Normalization_Quick_Checks;  --   8      bits
    end record;
 
    type Normalization_Mapping_Second_Stage is
