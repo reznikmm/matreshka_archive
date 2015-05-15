@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -144,7 +144,7 @@ package body Uca_Data is
    function Parse_Collation_Element_Sequence (Text : String)
      return Collation_Element_Sequence
    is
-      Result  : Collation_Element_Sequence (1 .. Text'Length / 22);
+      Result  : Collation_Element_Sequence (1 .. Text'Length / 17);
       Last    : Sequence_Count := 0;
       T_First : Positive := Text'First;
       T_Last  : Natural;
@@ -209,15 +209,6 @@ package body Uca_Data is
            Collation_Weight'Value ("16#" & Text (T_First .. T_Last) & "#");
 
          T_First := T_Last + 2;
-         T_Last := T_First;
-
-         while Text (T_Last) in '0' .. '9'
-           or else Text (T_Last) in 'A' .. 'F'
-         loop
-            T_Last := T_Last + 1;
-         end loop;
-
-         T_First := T_Last + 1;
       end loop;
 
       return Result (1 .. Last);

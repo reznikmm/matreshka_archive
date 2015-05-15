@@ -345,7 +345,7 @@ begin
    Put_File_Header
     ("Localization, Internationalization, Globalization for Ada",
      2009,
-     2013);
+     2015);
    Ada.Text_IO.New_Line;
    Ada.Text_IO.Put_Line ("pragma Restrictions (No_Elaboration_Code);");
    Ada.Text_IO.Put_Line
