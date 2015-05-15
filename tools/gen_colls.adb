@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -62,7 +62,8 @@ procedure Gen_Colls is
    Expansion_Last : Sequence_Count := 0;
    Last_Variable  : Collation_Weight := 0;
 
-   Contraction      : Contractor_Array (Sequence_Index);
+   Contraction      : Contractor_Array (Sequence_Index)
+    := (others => (Code => 0, others => 0));
    Contraction_Last : Sequence_Count := 0;
 
    Collation :
