@@ -107,6 +107,8 @@ package Ucd_Data is
           --  see DerivedNormalizationProps.txt
       DT     : Matreshka.Internals.Unicode.Ucd.Decomposition_Type
         := Matreshka.Internals.Unicode.Ucd.None;           --  see UCD.html
+      B      : Matreshka.Internals.Unicode.Ucd.Non_Overridable_Boolean_Values
+        := (others => False);
       Values : Normalization_Values;
    end record;
 

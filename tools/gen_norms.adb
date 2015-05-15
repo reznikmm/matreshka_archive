@@ -76,7 +76,13 @@ procedure Gen_Norms is
    Last_Index_Last  : Sequence_Count := 0;
 
    Normalization : array (Code_Point) of Normalization_Mapping
-     := (others => ((others => (0, 0)), (0, 0), 0, (others => Yes), None));
+     := (others =>
+          ((others => (0, 0)),
+           (0, 0),
+           0,
+           (others => Yes),
+           None,
+           (others => False)));
    Groups        : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
    Generated     : array (First_Stage_Index) of Boolean := (others => False);
@@ -133,6 +139,25 @@ procedure Gen_Norms is
            Maybe => NQC_Maybe_Image'Access,
            Yes   => NQC_Yes_Image'Access);
 
+   BP_Composition_Exclusion_Image :
+     aliased constant String := "Composition_Exclusion";
+   BP_Full_Composition_Exclusion_Image :
+     aliased constant String := "Full_Composition_Exclusion";
+   BP_Expands_On_NFC_Image    : aliased constant String := "Expands_On_NFC";
+   BP_Expands_On_NFD_Image    : aliased constant String := "Expands_On_NFD";
+   BP_Expands_On_NFKC_Image   : aliased constant String := "Expands_On_NFKC";
+   BP_Expands_On_NFKD_Image   : aliased constant String := "Expands_On_NFKD";
+
+   Boolean_Properties_Image : constant
+     array (Not_Overridable_Boolean_Properties) of Constant_String_Access
+       := (Composition_Exclusion   => BP_Composition_Exclusion_Image'Access,
+           Expands_On_NFC          => BP_Expands_On_NFC_Image'Access,
+           Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
+           Expands_On_NFKC         => BP_Expands_On_NFKC_Image'Access,
+           Expands_On_NFKD         => BP_Expands_On_NFKD_Image'Access,
+           Full_Composition_Exclusion =>
+             BP_Full_Composition_Exclusion_Image'Access);
+
    --------------------
    -- Append_Mapping --
    --------------------
@@ -172,6 +197,13 @@ procedure Gen_Norms is
    ---------
 
    procedure Put (Item : Normalization_Mapping) is
+      use type Ada.Text_IO.Count;
+
+      Indent  : Ada.Text_IO.Count := Ada.Text_IO.Col + 1;
+      Counts  : array (Boolean) of Natural := (0, 0);
+      Default : Boolean;
+      N       : Natural := 0;
+
    begin
       Ada.Text_IO.Put
        ("((("
@@ -198,7 +230,52 @@ procedure Gen_Norms is
           & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
           & "), "
           & Decomposition_Type_Image (Item.DT).all
-          & ")");
+          & ",");
+
+      Ada.Text_IO.Set_Col (Indent);
+      Ada.Text_IO.Put ('(');
+
+      for J in Item.B'Range loop
+         Counts (Item.B (J)) := Counts (Item.B (J)) + 1;
+      end loop;
+
+      Default := Counts (False) < Counts (True);
+
+      for J in Item.B'Range loop
+         if Item.B (J) /= Default then
+            N := N + 1;
+
+            if N = 1 then
+               Ada.Text_IO.Put (Boolean_Properties_Image (J).all);
+
+            else
+               Ada.Text_IO.Set_Col (Indent + 3);
+               Ada.Text_IO.Put ("| " & Boolean_Properties_Image (J).all);
+            end if;
+         end if;
+      end loop;
+
+      if N /= 0 then
+         if Ada.Text_IO.Col > 68 then
+            Ada.Text_IO.Set_Col (Indent + 6);
+         end if;
+
+         if not Default then
+            Ada.Text_IO.Put (" => True,");
+
+         else
+            Ada.Text_IO.Put (" => False,");
+         end if;
+
+         Ada.Text_IO.Set_Col (Indent + 1);
+      end if;
+
+      if Default then
+         Ada.Text_IO.Put ("others => True))");
+
+      else
+         Ada.Text_IO.Put ("others => False))");
+      end if;
    end Put;
 
 begin
@@ -210,6 +287,7 @@ begin
       Normalization (J).CCC := Norms (J).CCC;
       Normalization (J).NQC := Norms (J).NQC;
       Normalization (J).DT  := Norms (J).DT;
+      Normalization (J).B   := Norms (J).B;
    end loop;
 
    --  Construct decomposition information.
@@ -240,7 +318,7 @@ begin
    for J in Code_Point loop
       if Norms (J).DT = Canonical
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
-        and then not Core (J).B (Full_Composition_Exclusion)
+        and then not Norms (J).B (Full_Composition_Exclusion)
       then
          declare
             M : Code_Point_Sequence := Norms (J).Values (Canonical_Mapping).all;
@@ -266,7 +344,7 @@ begin
    for J in Code_Point loop
       if Norms (J).DT = Canonical
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
-        and then not Core (J).B (Full_Composition_Exclusion)
+        and then not Norms (J).B (Full_Composition_Exclusion)
       then
          declare
             M : Code_Point_Sequence

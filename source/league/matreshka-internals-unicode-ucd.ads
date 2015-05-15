@@ -102,7 +102,14 @@ package Matreshka.Internals.Unicode.Ucd is
    for General_Category'Size use 8;
 
    type Boolean_Properties is
-    (ASCII_Hex_Digit,
+    (Composition_Exclusion,         --  XXX
+     Expands_On_NFC,                --  Derived
+     Expands_On_NFD,                --  Derived
+     Expands_On_NFKC,               --  Derived
+     Expands_On_NFKD,               --  Derived
+     Full_Composition_Exclusion,    --  Derived
+
+     ASCII_Hex_Digit,
      Bidi_Control,
      Dash,
      Deprecated,
@@ -160,20 +167,14 @@ package Matreshka.Internals.Unicode.Ucd is
      XID_Continue,                  --  Derived
      XID_Start,                     --  Derived
 
-     --  Composition exclusion property.
-
-     Composition_Exclusion,         --  XXX
-
      --  Derived normalization properties.
 
-     Full_Composition_Exclusion,    --  Derived
-     Expands_On_NFC,                --  Derived
-     Expands_On_NFD,                --  Derived
-     Expands_On_NFKC,               --  Derived
-     Expands_On_NFKD,               --  Derived
      Changes_When_NFKC_Casefolded); --  Derived
 
-   type Boolean_Values is array (Boolean_Properties) of Boolean;
+   subtype Overridable_Boolean_Properties is Boolean_Properties
+     range ASCII_Hex_Digit .. Changes_When_NFKC_Casefolded;
+
+   type Boolean_Values is array (Overridable_Boolean_Properties) of Boolean;
    for Boolean_Values'Component_Size use 1;
    for Boolean_Values'Size use 64;  --  52 bits used for now
 
@@ -417,6 +418,14 @@ package Matreshka.Internals.Unicode.Ucd is
      Compat);
    for Decomposition_Type'Size use 8;
 
+   subtype Not_Overridable_Boolean_Properties is Boolean_Properties
+     range Composition_Exclusion .. Full_Composition_Exclusion;
+
+   type Non_Overridable_Boolean_Values is
+     array (Not_Overridable_Boolean_Properties) of Boolean;
+   for Non_Overridable_Boolean_Values'Component_Size use 1;
+   for Non_Overridable_Boolean_Values'Size use 8;  --  6 bits used for now
+
    type Normalization_Quick_Check is (No, Maybe, Yes);
    for Normalization_Quick_Check'Size use 2;
 
@@ -444,6 +453,7 @@ package Matreshka.Internals.Unicode.Ucd is
       CCC           : Canonical_Combining_Class;   --   8      bits
       NQC           : Normalization_Quick_Checks;  --   8      bits
       DT            : Decomposition_Type;          --   8  (5) bits
+      B             : Non_Overridable_Boolean_Values;
    end record;
    for Normalization_Mapping'Size use 128;
 

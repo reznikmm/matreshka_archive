@@ -328,6 +328,7 @@ package body Ucd_Data is
              (others => (CCC    => Not_Reordered,
                          NQC    => (others => Yes),
                          DT     => None,
+                         B      => (others => False),
                          Values => (others => null)));
 
       --  Load UnicodeData.txt, PropList.txt.
@@ -451,7 +452,7 @@ package body Ucd_Data is
          Last  := Ucd_Input.Last_Code_Point (File);
 
          for J in First .. Last loop
-            Core (J).B (Composition_Exclusion) := True;
+            Norms (J).B (Composition_Exclusion) := True;
          end loop;
 
          Ucd_Input.Next_Record (File);
@@ -545,7 +546,7 @@ package body Ucd_Data is
                   end if;
 
                when Full_Composition_Exclusion =>
-                  Core (J).B (Full_Composition_Exclusion) := True;
+                  Norms (J).B (Full_Composition_Exclusion) := True;
 
                when NFD_QC =>
                   Norms (J).NQC (NFD) := Value (Ucd_Input.Field (File));
@@ -560,16 +561,16 @@ package body Ucd_Data is
                   Norms (J).NQC (NFKC) := Value (Ucd_Input.Field (File));
 
                when Expands_On_NFD =>
-                  Core (J).B (Expands_On_NFD) := True;
+                  Norms (J).B (Expands_On_NFD) := True;
 
                when Expands_On_NFC =>
-                  Core (J).B (Expands_On_NFC) := True;
+                  Norms (J).B (Expands_On_NFC) := True;
 
                when Expands_On_NFKD =>
-                  Core (J).B (Expands_On_NFKD) := True;
+                  Norms (J).B (Expands_On_NFKD) := True;
 
                when Expands_On_NFKC =>
-                  Core (J).B (Expands_On_NFKD) := True;
+                  Norms (J).B (Expands_On_NFKD) := True;
 
                when NFKC_CF =>
                   if not NFKC_CF_Ignored then

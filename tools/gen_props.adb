@@ -418,20 +418,13 @@ procedure Gen_Props is
      aliased constant String := "Changes_When_Casemapped";
 
    Boolean_Properties_Image : constant
-     array (Boolean_Properties) of Constant_String_Access
+     array (Overridable_Boolean_Properties) of Constant_String_Access
        := (ASCII_Hex_Digit         => BP_ASCII_Hex_Digit_Image'Access,
            Alphabetic              => BP_Alphabetic_Image'Access,
            Bidi_Control            => BP_Bidi_Control_Image'Access,
 --           Bidi_Mirrored           => BP_Bidi_Mirrored_Image'Access,
            Changes_When_NFKC_Casefolded =>
              BP_Changes_When_NFKC_Casefolded_Image'Access,
-           Composition_Exclusion   => BP_Composition_Exclusion_Image'Access,
-           Expands_On_NFC          => BP_Expands_On_NFC_Image'Access,
-           Expands_On_NFD          => BP_Expands_On_NFD_Image'Access,
-           Expands_On_NFKC         => BP_Expands_On_NFKC_Image'Access,
-           Expands_On_NFKD         => BP_Expands_On_NFKD_Image'Access,
-           Full_Composition_Exclusion =>
-             BP_Full_Composition_Exclusion_Image'Access,
            Dash                    => BP_Dash_Image'Access,
            Deprecated              => BP_Deprecated_Image'Access,
            Default_Ignorable_Code_Point =>
