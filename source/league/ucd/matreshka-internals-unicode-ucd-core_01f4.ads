@@ -54,57 +54,57 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F4 is
      := (16#3F#           =>  --  01F43F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#41#           =>  --  01F441
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#A0#           =>  --  01F4A0
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#A2#           =>  --  01F4A2
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#A4#           =>  --  01F4A4
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#AF#           =>  --  01F4AF
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#B1# .. 16#B2# =>  --  01F4B1 .. 01F4B2
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#F8#           =>  --  01F4F8
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#FD# .. 16#FF# =>  --  01F4FD .. 01F4FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)));
 

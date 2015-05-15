@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0028 is
      := (others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)));

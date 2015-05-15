@@ -54,13 +54,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F7 is
      := (16#00# .. 16#73# =>  --  01F700 .. 01F773
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_01F7;

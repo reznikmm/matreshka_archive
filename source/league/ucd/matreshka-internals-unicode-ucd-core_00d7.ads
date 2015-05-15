@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
      := (16#18#           =>  --  D718
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -67,7 +67,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#34#           =>  --  D734
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -80,7 +80,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#50#           =>  --  D750
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -93,7 +93,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#6C#           =>  --  D76C
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -106,7 +106,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#88#           =>  --  D788
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -119,12 +119,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#A4# .. 16#AF# =>  --  D7A4 .. D7AF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#B0# .. 16#C6# =>  --  D7B0 .. D7C6
           (Other_Letter, Neutral,
            V, A_Letter, O_Letter, JV,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -135,12 +135,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#C7# .. 16#CA# =>  --  D7C7 .. D7CA
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#CB# .. 16#FB# =>  --  D7CB .. D7FB
           (Other_Letter, Neutral,
            T, A_Letter, O_Letter, JT,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -151,12 +151,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
          16#FC# .. 16#FF# =>  --  D7FC .. D7FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Other_Letter, Wide,
            LVT, A_Letter, O_Letter, H3,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

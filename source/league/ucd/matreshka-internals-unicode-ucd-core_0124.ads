@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0124 is
      := (16#00# .. 16#62# =>  --  012400 .. 012462
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,14 +65,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0124 is
          16#70# .. 16#73# =>  --  012470 .. 012473
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0124;

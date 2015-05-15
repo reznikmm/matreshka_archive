@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
      := (16#00# .. 16#27# =>  --  010400 .. 010427
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -71,7 +71,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
          16#28# .. 16#4F# =>  --  010428 .. 01044F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -87,7 +87,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
          16#50# .. 16#9D# =>  --  010450 .. 01049D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -98,7 +98,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
          16#A0# .. 16#A9# =>  --  0104A0 .. 0104A9
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
@@ -106,7 +106,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0104 is
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0104;

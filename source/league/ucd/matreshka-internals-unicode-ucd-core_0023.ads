@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
      := (16#08#           =>  --  2308
           (Open_Punctuation, Neutral,
            Other, Other, Close, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#09#           =>  --  2309
           (Close_Punctuation, Neutral,
            Other, Other, Close, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -72,7 +72,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#0A#           =>  --  230A
           (Open_Punctuation, Neutral,
            Other, Other, Close, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -81,7 +81,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#0B#           =>  --  230B
           (Close_Punctuation, Neutral,
            Other, Other, Close, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -90,21 +90,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#12#           =>  --  2312
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#1A# .. 16#1B# =>  --  231A .. 231B
           (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#20# .. 16#21# =>  --  2320 .. 2321
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -112,7 +112,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#29#           =>  --  2329
           (Open_Punctuation, Wide,
            Other, Other, Close, Open_Punctuation,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Deprecated
               | Pattern_Syntax
               | Grapheme_Base
@@ -122,7 +122,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#2A#           =>  --  232A
           (Close_Punctuation, Wide,
            Other, Other, Close, Close_Punctuation,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Deprecated
               | Pattern_Syntax
               | Grapheme_Base
@@ -132,7 +132,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#7C#           =>  --  237C
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -140,7 +140,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#9B# .. 16#B3# =>  --  239B .. 23B3
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -148,7 +148,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#B4# .. 16#B5# =>  --  23B4 .. 23B5
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -157,7 +157,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#B7#           =>  --  23B7
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -166,7 +166,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#D0#           =>  --  23D0
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -175,7 +175,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#DC# .. 16#E1# =>  --  23DC .. 23E1
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -183,7 +183,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#E2#           =>  --  23E2
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -192,20 +192,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
          16#F0# .. 16#F3# =>  --  23F0 .. 23F3
           (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#F4# .. 16#FF# =>  --  23F4 .. 23FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax => True,
             others => False)),
          others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)));

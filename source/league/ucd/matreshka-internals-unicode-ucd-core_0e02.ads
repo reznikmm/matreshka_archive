@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E02 is
      := (others           =>
           (Unassigned, Neutral,
            Control, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Default_Ignorable_Code_Point
               | Default_Ignorable_Code_Point
               | Changes_When_NFKC_Casefolded => True,

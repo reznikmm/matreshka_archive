@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
      := (16#58# .. 16#5A# =>  --  013258 .. 01325A
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Open_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#5B# .. 16#5D# =>  --  01325B .. 01325D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -76,7 +76,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#82#           =>  --  013282
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -87,7 +87,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#86#           =>  --  013286
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Open_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -98,7 +98,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#87#           =>  --  013287
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -109,7 +109,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#88#           =>  --  013288
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Open_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -120,7 +120,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          16#89#           =>  --  013289
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -131,7 +131,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0132 is
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

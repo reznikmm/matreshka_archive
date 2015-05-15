@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016A is
      := (16#00# .. 16#38# =>  --  016A00 .. 016A38
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_016A is
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_016A;

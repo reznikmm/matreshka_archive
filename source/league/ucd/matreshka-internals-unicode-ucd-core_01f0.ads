@@ -54,37 +54,37 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F0 is
      := (16#2C# .. 16#2F# =>  --  01F02C .. 01F02F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#94# .. 16#9F# =>  --  01F094 .. 01F09F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#AF# .. 16#B0# =>  --  01F0AF .. 01F0B0
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#BF# .. 16#C0# =>  --  01F0BF .. 01F0C0
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#D0#           =>  --  01F0D0
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#E0# .. 16#FF# =>  --  01F0E0 .. 01F0FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)));
 

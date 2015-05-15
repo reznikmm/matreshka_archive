@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
      := (16#5F#           =>  --  115F
           (Other_Letter, Wide,
            L, A_Letter, O_Letter, JL,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Default_Ignorable_Code_Point
               | Alphabetic
               | Default_Ignorable_Code_Point
@@ -68,7 +68,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          16#60#           =>  --  1160
           (Other_Letter, Neutral,
            V, A_Letter, O_Letter, JV,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Default_Ignorable_Code_Point
               | Alphabetic
               | Default_Ignorable_Code_Point
@@ -79,10 +79,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#61# .. 16#75# =>  --  1161 .. 1175
+         16#61# .. 16#A7# =>  --  1161 .. 11A7
           (Other_Letter, Neutral,
            V, A_Letter, O_Letter, JV,
-           (Maybe, Yes, Maybe, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -90,32 +90,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#76# .. 16#A7# =>  --  1176 .. 11A7
-          (Other_Letter, Neutral,
-           V, A_Letter, O_Letter, JV,
-           (Yes, Yes, Yes, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#A8# .. 16#C2# =>  --  11A8 .. 11C2
+         16#A8# .. 16#FF# =>  --  11A8 .. 11FF
           (Other_Letter, Neutral,
            T, A_Letter, O_Letter, JT,
-           (Maybe, Yes, Maybe, Yes), None,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C3# .. 16#FF# =>  --  11C3 .. 11FF
-          (Other_Letter, Neutral,
-           T, A_Letter, O_Letter, JT,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -126,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          others           =>
           (Other_Letter, Wide,
            L, A_Letter, O_Letter, JL,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0015 is
      := (others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

@@ -54,13 +54,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_02FF is
      := (16#FE# .. 16#FF# =>  --  02FFFE .. 02FFFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Noncharacter_Code_Point => True,
             others => False)),
          others           =>
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_02FF;

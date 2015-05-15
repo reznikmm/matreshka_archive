@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
      := (16#01#           =>  --  0E0001
           (Format, Neutral,
            Control, Format, Format, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Deprecated
               | Case_Ignorable
               | Default_Ignorable_Code_Point
@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
          16#20# .. 16#7F# =>  --  0E0020 .. 0E007F
           (Format, Neutral,
            Control, Format, Format, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Deprecated
               | Case_Ignorable
               | Default_Ignorable_Code_Point
@@ -72,7 +72,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0E00 is
          others           =>
           (Unassigned, Neutral,
            Control, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Default_Ignorable_Code_Point
               | Default_Ignorable_Code_Point
               | Changes_When_NFKC_Casefolded => True,

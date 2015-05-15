@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
      := (16#00# .. 16#10# =>  --  FD00 .. FD10
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -67,7 +67,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#2D# .. 16#33# =>  --  FD2D .. FD33
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -80,7 +80,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#34# .. 16#3B# =>  --  FD34 .. FD3B
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Medial,
+           Medial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -93,7 +93,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#3D#           =>  --  FD3D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -106,26 +106,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#3E#           =>  --  FD3E
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#3F#           =>  --  FD3F
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#40# .. 16#4F# =>  --  FD40 .. FD4F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#50#           =>  --  FD50
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -138,7 +138,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#52# .. 16#57# =>  --  FD52 .. FD57
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -151,7 +151,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#59#           =>  --  FD59
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -164,7 +164,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#5C# .. 16#5D# =>  --  FD5C .. FD5D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -177,7 +177,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#60# .. 16#61# =>  --  FD60 .. FD61
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -190,7 +190,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#63#           =>  --  FD63
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -203,7 +203,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#65#           =>  --  FD65
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -216,7 +216,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#68#           =>  --  FD68
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -229,7 +229,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#6B#           =>  --  FD6B
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -242,7 +242,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#6D#           =>  --  FD6D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -255,7 +255,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#70#           =>  --  FD70
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -268,7 +268,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#72# .. 16#73# =>  --  FD72 .. FD73
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -281,7 +281,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#77#           =>  --  FD77
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -294,7 +294,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#7D#           =>  --  FD7D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -307,7 +307,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#83#           =>  --  FD83
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -320,7 +320,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#86#           =>  --  FD86
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -333,7 +333,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#88# .. 16#8A# =>  --  FD88 .. FD8A
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -346,7 +346,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#8C# .. 16#8F# =>  --  FD8C .. FD8F
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -359,12 +359,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#90# .. 16#91# =>  --  FD90 .. FD91
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#92# .. 16#95# =>  --  FD92 .. FD95
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -377,7 +377,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#98#           =>  --  FD98
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -390,7 +390,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#9D#           =>  --  FD9D
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -403,7 +403,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#B4# .. 16#B5# =>  --  FDB4 .. FDB5
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -416,7 +416,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#B8#           =>  --  FDB8
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -429,7 +429,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#BA#           =>  --  FDBA
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -442,7 +442,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#C3# .. 16#C5# =>  --  FDC3 .. FDC5
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -455,18 +455,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#C8# .. 16#CF# =>  --  FDC8 .. FDCF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#D0# .. 16#EF# =>  --  FDD0 .. FDEF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Noncharacter_Code_Point => True,
             others => False)),
          16#F0# .. 16#F9# =>  --  FDF0 .. FDF9
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -479,7 +479,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#FA# .. 16#FB# =>  --  FDFA .. FDFB
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -490,7 +490,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#FC#           =>  --  FDFC
           (Currency_Symbol, Neutral,
            Other, Other, Other, Postfix_Numeric,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -498,18 +498,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
          16#FD#           =>  --  FDFD
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#FE# .. 16#FF# =>  --  FDFE .. FDFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Final,
+           Final,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

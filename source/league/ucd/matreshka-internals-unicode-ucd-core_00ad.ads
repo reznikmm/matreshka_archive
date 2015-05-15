@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
      := (16#18#           =>  --  AD18
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -67,7 +67,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#34#           =>  --  AD34
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -80,7 +80,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#50#           =>  --  AD50
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -93,7 +93,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#6C#           =>  --  AD6C
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -106,7 +106,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#88#           =>  --  AD88
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -119,7 +119,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#A4#           =>  --  ADA4
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -132,7 +132,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#C0#           =>  --  ADC0
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -145,7 +145,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#DC#           =>  --  ADDC
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -158,7 +158,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          16#F8#           =>  --  ADF8
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -171,7 +171,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
          others           =>
           (Other_Letter, Wide,
            LVT, A_Letter, O_Letter, H3,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

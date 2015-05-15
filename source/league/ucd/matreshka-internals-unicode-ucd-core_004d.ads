@@ -54,18 +54,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_004D is
      := (16#B6# .. 16#BF# =>  --  4DB6 .. 4DBF
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#C0# .. 16#FF# =>  --  4DC0 .. 4DFF
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic

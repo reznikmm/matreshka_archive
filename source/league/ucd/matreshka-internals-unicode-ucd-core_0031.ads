@@ -54,12 +54,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
      := (16#00# .. 16#04# =>  --  3100 .. 3104
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#05# .. 16#2D# =>  --  3105 .. 312D
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -70,12 +70,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
          16#2E# .. 16#30# =>  --  312E .. 3130
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#64#           =>  --  3164
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Other_Default_Ignorable_Code_Point
               | Alphabetic
               | Default_Ignorable_Code_Point
@@ -89,32 +89,32 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
          16#8F#           =>  --  318F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#90# .. 16#91# =>  --  3190 .. 3191
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#92# .. 16#95# =>  --  3192 .. 3195
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, No, No), Super,
+           Super,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#96# .. 16#9F# =>  --  3196 .. 319F
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, No, No), Super,
+           Super,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#A0# .. 16#BA# =>  --  31A0 .. 31BA
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -125,23 +125,23 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
          16#BB# .. 16#BF# =>  --  31BB .. 31BF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#C0# .. 16#E3# =>  --  31C0 .. 31E3
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#E4# .. 16#EF# =>  --  31E4 .. 31EF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#F0# .. 16#FF# =>  --  31F0 .. 31FF
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -152,7 +152,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0031 is
          others           =>
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

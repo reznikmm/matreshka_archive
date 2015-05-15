@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
      := (16#01#           =>  --  0501
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -70,7 +70,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#03#           =>  --  0503
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -86,7 +86,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#05#           =>  --  0505
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -102,7 +102,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#07#           =>  --  0507
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -118,7 +118,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#09#           =>  --  0509
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -134,7 +134,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#0B#           =>  --  050B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -150,7 +150,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#0D#           =>  --  050D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -166,7 +166,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#0F#           =>  --  050F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -182,7 +182,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#11#           =>  --  0511
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -198,7 +198,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#13#           =>  --  0513
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -214,7 +214,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#15#           =>  --  0515
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -230,7 +230,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#17#           =>  --  0517
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -246,7 +246,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#19#           =>  --  0519
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -262,7 +262,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#1B#           =>  --  051B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -278,7 +278,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#1D#           =>  --  051D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -294,7 +294,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#1F#           =>  --  051F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -310,7 +310,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#21#           =>  --  0521
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -326,7 +326,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#23#           =>  --  0523
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -342,7 +342,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#25#           =>  --  0525
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -358,7 +358,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#27#           =>  --  0527
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -374,17 +374,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#28# .. 16#30# =>  --  0528 .. 0530
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#57# .. 16#58# =>  --  0557 .. 0558
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#59#           =>  --  0559
           (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Alphabetic
               | Case_Ignorable
@@ -397,44 +397,44 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#5A# .. 16#5B# =>  --  055A .. 055B
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#5C#           =>  --  055C
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (STerm
               | Grapheme_Base => True,
             others => False)),
          16#5D#           =>  --  055D
           (Other_Punctuation, Neutral,
            Other, Other, S_Continue, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#5E#           =>  --  055E
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (STerm
               | Grapheme_Base => True,
             others => False)),
          16#5F#           =>  --  055F
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#60#           =>  --  0560
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#61# .. 16#86# =>  --  0561 .. 0586
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -450,7 +450,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#87#           =>  --  0587
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -469,12 +469,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#88#           =>  --  0588
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#89#           =>  --  0589
           (Other_Punctuation, Neutral,
            Other, Mid_Num, S_Term, Infix_Numeric,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
@@ -482,7 +482,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#8A#           =>  --  058A
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Dash
               | Hyphen
               | Grapheme_Base => True,
@@ -490,23 +490,23 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#8B# .. 16#8E# =>  --  058B .. 058E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#8F#           =>  --  058F
           (Currency_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#90#           =>  --  0590
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#91# .. 16#A1# =>  --  0591 .. 05A1
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -516,7 +516,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#A2#           =>  --  05A2
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Case_Ignorable
               | Grapheme_Extend
               | ID_Continue
@@ -525,7 +525,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#A3# .. 16#AF# =>  --  05A3 .. 05AF
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -535,7 +535,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#B0# .. 16#BD# =>  --  05B0 .. 05BD
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Other_Alphabetic
               | Alphabetic
@@ -547,14 +547,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#BE#           =>  --  05BE
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Dash
               | Grapheme_Base => True,
             others => False)),
          16#BF#           =>  --  05BF
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Other_Alphabetic
               | Alphabetic
@@ -566,13 +566,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#C0#           =>  --  05C0
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#C1# .. 16#C2# =>  --  05C1 .. 05C2
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Other_Alphabetic
               | Alphabetic
@@ -584,14 +584,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#C3#           =>  --  05C3
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#C4#           =>  --  05C4
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Other_Alphabetic
               | Alphabetic
@@ -603,7 +603,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#C5#           =>  --  05C5
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -614,13 +614,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#C6#           =>  --  05C6
           (Other_Punctuation, Neutral,
            Other, Other, Other, Exclamation,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#C7#           =>  --  05C7
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -631,12 +631,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#C8# .. 16#CF# =>  --  05C8 .. 05CF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#D0# .. 16#EA# =>  --  05D0 .. 05EA
           (Other_Letter, Neutral,
            Other, Hebrew_Letter, O_Letter, Hebrew_Letter,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -647,12 +647,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#EB# .. 16#EF# =>  --  05EB .. 05EF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#F0# .. 16#F2# =>  --  05F0 .. 05F2
           (Other_Letter, Neutral,
            Other, Hebrew_Letter, O_Letter, Hebrew_Letter,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -663,25 +663,25 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
          16#F3#           =>  --  05F3
           (Other_Punctuation, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#F4#           =>  --  05F4
           (Other_Punctuation, Neutral,
            Other, Mid_Letter, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Case_Ignorable
               | Grapheme_Base => True,
             others => False)),
          16#F5# .. 16#FF# =>  --  05F5 .. 05FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased

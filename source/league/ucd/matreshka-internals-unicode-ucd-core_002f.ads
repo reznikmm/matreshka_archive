@@ -54,38 +54,38 @@ package Matreshka.Internals.Unicode.Ucd.Core_002F is
      := (16#D6# .. 16#EF# =>  --  2FD6 .. 2FEF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#F0# .. 16#F1# =>  --  2FF0 .. 2FF1
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (IDS_Binary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#F2# .. 16#F3# =>  --  2FF2 .. 2FF3
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (IDS_Trinary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#F4# .. 16#FB# =>  --  2FF4 .. 2FFB
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (IDS_Binary_Operator
               | Grapheme_Base => True,
             others => False)),
          16#FC# .. 16#FF# =>  --  2FFC .. 2FFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Radical
               | Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,

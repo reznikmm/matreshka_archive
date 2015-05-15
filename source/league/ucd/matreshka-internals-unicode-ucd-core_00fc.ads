@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
      := (16#5E# .. 16#63# =>  --  FC5E .. FC63
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
          16#64# .. 16#96# =>  --  FC64 .. FC96
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Final,
+           Final,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -78,7 +78,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
          16#97# .. 16#DE# =>  --  FC97 .. FCDE
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Initial,
+           Initial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -91,7 +91,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
          16#DF# .. 16#F4# =>  --  FCDF .. FCF4
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Medial,
+           Medial,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -104,7 +104,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, No, No), Isolated,
+           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

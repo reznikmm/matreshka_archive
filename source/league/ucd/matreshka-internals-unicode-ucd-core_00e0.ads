@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00E0 is
      := (others           =>
           (Private_Use, Ambiguous,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_00E0;

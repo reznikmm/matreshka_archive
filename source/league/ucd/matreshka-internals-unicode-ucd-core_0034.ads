@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0034 is
      := (others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic

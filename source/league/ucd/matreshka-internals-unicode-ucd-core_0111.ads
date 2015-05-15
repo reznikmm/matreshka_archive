@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
      := (16#00# .. 16#02# =>  --  011100 .. 011102
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -65,7 +65,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#03# .. 16#26# =>  --  011103 .. 011126
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -73,21 +73,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#27#           =>  --  011127
+         16#27# .. 16#2B# =>  --  011127 .. 01112B
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Maybe, Yes, Maybe, Yes), None,
-           (Other_Alphabetic
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Extend
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#28# .. 16#2B# =>  --  011128 .. 01112B
-          (Nonspacing_Mark, Neutral,
-           Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -98,7 +87,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#2C#           =>  --  01112C
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -108,7 +97,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#2D#           =>  --  01112D
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -119,7 +108,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#2E# .. 16#2F# =>  --  01112E .. 01112F
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -132,7 +121,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#30# .. 16#32# =>  --  011130 .. 011132
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -143,7 +132,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#33# .. 16#34# =>  --  011133 .. 011134
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -154,7 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#36# .. 16#3F# =>  --  011136 .. 01113F
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
@@ -162,13 +151,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#40#           =>  --  011140
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#41# .. 16#43# =>  --  011141 .. 011143
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
@@ -176,7 +165,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#80# .. 16#81# =>  --  011180 .. 011181
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -187,7 +176,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#82#           =>  --  011182
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -197,7 +186,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#83# .. 16#B2# =>  --  011183 .. 0111B2
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -208,7 +197,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#B3# .. 16#B5# =>  --  0111B3 .. 0111B5
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -218,7 +207,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#B6# .. 16#BE# =>  --  0111B6 .. 0111BE
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -229,7 +218,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#BF#           =>  --  0111BF
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -239,7 +228,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#C0#           =>  --  0111C0
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Diacritic
               | Grapheme_Base
               | Grapheme_Link
@@ -249,7 +238,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#C1# .. 16#C4# =>  --  0111C1 .. 0111C4
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -260,7 +249,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#C5# .. 16#C6# =>  --  0111C5 .. 0111C6
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
@@ -268,19 +257,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          16#C7#           =>  --  0111C7
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#C8#           =>  --  0111C8
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#D0# .. 16#D9# =>  --  0111D0 .. 0111D9
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
@@ -288,7 +277,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0111;

@@ -54,19 +54,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D3 is
      := (16#00# .. 16#56# =>  --  01D300 .. 01D356
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          16#60# .. 16#71# =>  --  01D360 .. 01D371
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_01D3;

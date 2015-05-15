@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_02B9 is
      := (others           =>
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_02B9;

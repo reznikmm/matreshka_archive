@@ -54,7 +54,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
      := (16#08# .. 16#0F# =>  --  1F08 .. 1F0F
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -73,12 +73,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#16# .. 16#17# =>  --  1F16 .. 1F17
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#18# .. 16#1D# =>  --  1F18 .. 1F1D
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -97,12 +97,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#1E# .. 16#1F# =>  --  1F1E .. 1F1F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#28# .. 16#2F# =>  --  1F28 .. 1F2F
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -121,7 +121,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#38# .. 16#3F# =>  --  1F38 .. 1F3F
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -140,12 +140,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#46# .. 16#47# =>  --  1F46 .. 1F47
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#48# .. 16#4D# =>  --  1F48 .. 1F4D
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -164,17 +164,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#4E# .. 16#4F# =>  --  1F4E .. 1F4F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#58#           =>  --  1F58
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#59#           =>  --  1F59
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -193,12 +193,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#5A#           =>  --  1F5A
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#5B#           =>  --  1F5B
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -217,12 +217,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#5C#           =>  --  1F5C
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#5D#           =>  --  1F5D
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -241,12 +241,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#5E#           =>  --  1F5E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#5F#           =>  --  1F5F
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -265,7 +265,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#68# .. 16#6F# =>  --  1F68 .. 1F6F
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -284,7 +284,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#71#           =>  --  1F71
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -304,7 +304,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#73#           =>  --  1F73
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -324,7 +324,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#75#           =>  --  1F75
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -344,7 +344,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#77#           =>  --  1F77
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -364,7 +364,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#79#           =>  --  1F79
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -384,7 +384,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#7B#           =>  --  1F7B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -404,7 +404,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#7D#           =>  --  1F7D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -424,12 +424,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#7E# .. 16#7F# =>  --  1F7E .. 1F7F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#80# .. 16#87# =>  --  1F80 .. 1F87
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -449,7 +449,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#88# .. 16#8F# =>  --  1F88 .. 1F8F
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -468,7 +468,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#90# .. 16#97# =>  --  1F90 .. 1F97
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -488,7 +488,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#98# .. 16#9F# =>  --  1F98 .. 1F9F
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -507,7 +507,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#A0# .. 16#A7# =>  --  1FA0 .. 1FA7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -527,7 +527,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#A8# .. 16#AF# =>  --  1FA8 .. 1FAF
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -546,7 +546,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#B2# .. 16#B4# =>  --  1FB2 .. 1FB4
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -566,12 +566,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#B5#           =>  --  1FB5
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#B7#           =>  --  1FB7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -591,7 +591,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#B8# .. 16#BA# =>  --  1FB8 .. 1FBA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -610,7 +610,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#BB#           =>  --  1FBB
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -630,7 +630,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#BC#           =>  --  1FBC
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -649,7 +649,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#BD#           =>  --  1FBD
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -659,7 +659,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#BE#           =>  --  1FBE
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -677,7 +677,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#BF# .. 16#C0# =>  --  1FBF .. 1FC0
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -687,7 +687,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#C1#           =>  --  1FC1
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -698,7 +698,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#C2# .. 16#C4# =>  --  1FC2 .. 1FC4
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -718,12 +718,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#C5#           =>  --  1FC5
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#C7#           =>  --  1FC7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -743,7 +743,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#C8#           =>  --  1FC8
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -762,7 +762,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#C9#           =>  --  1FC9
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -782,7 +782,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#CA#           =>  --  1FCA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -801,7 +801,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#CB#           =>  --  1FCB
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -821,7 +821,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#CC#           =>  --  1FCC
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -840,7 +840,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#CD# .. 16#CF# =>  --  1FCD .. 1FCF
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -851,7 +851,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#D3#           =>  --  1FD3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -871,12 +871,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#D4# .. 16#D5# =>  --  1FD4 .. 1FD5
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#D8# .. 16#DA# =>  --  1FD8 .. 1FDA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -895,7 +895,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#DB#           =>  --  1FDB
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -915,12 +915,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#DC#           =>  --  1FDC
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#DD# .. 16#DF# =>  --  1FDD .. 1FDF
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -931,7 +931,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#E3#           =>  --  1FE3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -951,7 +951,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#E8# .. 16#EA# =>  --  1FE8 .. 1FEA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -970,7 +970,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#EB#           =>  --  1FEB
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -990,7 +990,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#EC#           =>  --  1FEC
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1009,7 +1009,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#ED#           =>  --  1FED
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -1020,7 +1020,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#EE#           =>  --  1FEE
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -1032,7 +1032,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#EF#           =>  --  1FEF
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -1042,12 +1042,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#F0# .. 16#F1# =>  --  1FF0 .. 1FF1
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#F2# .. 16#F4# =>  --  1FF2 .. 1FF4
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1067,12 +1067,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#F5#           =>  --  1FF5
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          16#F7#           =>  --  1FF7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1092,7 +1092,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#F8#           =>  --  1FF8
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1111,7 +1111,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#F9#           =>  --  1FF9
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1131,7 +1131,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FA#           =>  --  1FFA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1150,7 +1150,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FB#           =>  --  1FFB
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1170,7 +1170,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FC#           =>  --  1FFC
           (Titlecase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased
@@ -1189,7 +1189,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FD#           =>  --  1FFD
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Break_Before,
-           (No, No, No, No), Canonical,
+           Canonical,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -1200,7 +1200,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FE#           =>  --  1FFE
           (Modifier_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           (Yes, Yes, No, No), Compat,
+           Compat,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
@@ -1210,12 +1210,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001F is
          16#FF#           =>  --  1FFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (Yes, Yes, Yes, Yes), None,
+           None,
            (others => False)),
          others           =>
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           (Yes, No, Yes, No), Canonical,
+           Canonical,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
