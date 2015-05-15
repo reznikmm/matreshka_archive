@@ -283,28 +283,6 @@ package Matreshka.Internals.Unicode.Ucd is
      ZW_Space);
    for Line_Break'Size use 8;
 
-   type Decomposition_Type is
-    (None,
-     Canonical,
-     Font,
-     No_Break,
-     Initial,
-     Medial,
-     Final,
-     Isolated,
-     Circle,
-     Super,
-     Sub,
-     Vertical,
-     Wide,
-     Narrow,
-     Small,
-     Square,
-     Fraction,
-     Compat);
-
-   for Decomposition_Type'Size use 8;
-
    type Core_Values is record
       GC  : General_Category;            --   8  (5) bits
       EA  : East_Asian_Width;            --   8  (3) bits
@@ -312,7 +290,6 @@ package Matreshka.Internals.Unicode.Ucd is
       WB  : Word_Break;                  --   8  (4) bits
       SB  : Sentence_Break;              --   8  (4) bits
       LB  : Line_Break;                  --   8  (6) bits
-      DT  : Decomposition_Type;          --   8  (5) bits
       B   : Boolean_Values;              --  64 (52) bits
    end record;
    for Core_Values'Size use 128;
@@ -323,8 +300,7 @@ package Matreshka.Internals.Unicode.Ucd is
       WB  at 0 range  80 ..  87;
       SB  at 0 range  88 ..  95;
       LB  at 0 range  96 .. 103;
-      DT  at 0 range 104 .. 111;
-      EA  at 0 range 112 .. 119;
+      EA  at 0 range 104 .. 111;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
@@ -420,6 +396,27 @@ package Matreshka.Internals.Unicode.Ucd is
    Double_Above         : constant Canonical_Combining_Class := 234;
    Iota_Subscript       : constant Canonical_Combining_Class := 240;
 
+   type Decomposition_Type is
+    (None,
+     Canonical,
+     Font,
+     No_Break,
+     Initial,
+     Medial,
+     Final,
+     Isolated,
+     Circle,
+     Super,
+     Sub,
+     Vertical,
+     Wide,
+     Narrow,
+     Small,
+     Square,
+     Fraction,
+     Compat);
+   for Decomposition_Type'Size use 8;
+
    type Normalization_Quick_Check is (No, Maybe, Yes);
    for Normalization_Quick_Check'Size use 2;
 
@@ -446,7 +443,9 @@ package Matreshka.Internals.Unicode.Ucd is
       Composition   : Normalization_Mapping_Range;
       CCC           : Canonical_Combining_Class;   --   8      bits
       NQC           : Normalization_Quick_Checks;  --   8      bits
+      DT            : Decomposition_Type;          --   8  (5) bits
    end record;
+   for Normalization_Mapping'Size use 128;
 
    type Normalization_Mapping_Second_Stage is
      array (Second_Stage_Index) of Normalization_Mapping;

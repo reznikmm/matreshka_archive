@@ -76,12 +76,52 @@ procedure Gen_Norms is
    Last_Index_Last  : Sequence_Count := 0;
 
    Normalization : array (Code_Point) of Normalization_Mapping
-     := (others => ((others => (0, 0)), (0, 0), 0, (others => Yes)));
+     := (others => ((others => (0, 0)), (0, 0), 0, (others => Yes), None));
    Groups        : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
    Generated     : array (First_Stage_Index) of Boolean := (others => False);
 
    type Constant_String_Access is access constant String;
+
+   DT_Canonical_Image : aliased constant String := "Canonical";
+   DT_Compat_Image    : aliased constant String := "Compat";
+   DT_Circle_Image    : aliased constant String := "Circle";
+   DT_Final_Image     : aliased constant String := "Final";
+   DT_Font_Image      : aliased constant String := "Font";
+   DT_Fraction_Image  : aliased constant String := "Fraction";
+   DT_Initial_Image   : aliased constant String := "Initial";
+   DT_Isolated_Image  : aliased constant String := "Isolated";
+   DT_Medial_Image    : aliased constant String := "Medial";
+   DT_Narrow_Image    : aliased constant String := "Narrow";
+   DT_No_Break_Image  : aliased constant String := "No_Break";
+   DT_None_Image      : aliased constant String := "None";
+   DT_Small_Image     : aliased constant String := "Small";
+   DT_Square_Image    : aliased constant String := "Square";
+   DT_Sub_Image       : aliased constant String := "Sub";
+   DT_Super_Image     : aliased constant String := "Super";
+   DT_Vertical_Image  : aliased constant String := "Vertical";
+   DT_Wide_Image      : aliased constant String := "Wide";
+
+   Decomposition_Type_Image : constant
+     array (Decomposition_Type) of Constant_String_Access
+       := (Canonical => DT_Canonical_Image'Access,
+           Compat    => DT_Compat_Image'Access,
+           Circle    => DT_Circle_Image'Access,
+           Final     => DT_Final_Image'Access,
+           Font      => DT_Font_Image'Access,
+           Fraction  => DT_Fraction_Image'Access,
+           Initial   => DT_Initial_Image'Access,
+           Isolated  => DT_Isolated_Image'Access,
+           Medial    => DT_Medial_Image'Access,
+           Narrow    => DT_Narrow_Image'Access,
+           No_Break  => DT_No_Break_Image'Access,
+           None      => DT_None_Image'Access,
+           Small     => DT_Small_Image'Access,
+           Square    => DT_Square_Image'Access,
+           Sub       => DT_Sub_Image'Access,
+           Super     => DT_Super_Image'Access,
+           Vertical  => DT_Vertical_Image'Access,
+           Wide      => DT_Wide_Image'Access);
 
    NQC_No_Image    : aliased constant String := "No";
    NQC_Maybe_Image : aliased constant String := "Maybe";
@@ -156,20 +196,9 @@ procedure Gen_Norms is
           & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
           & ", "
           & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
-          & "))");
---      Ada.Text_IO.Set_Col (Indent);
---      Ada.Text_IO.Put
---       ("("
---          & Normalization_Quick_Check_Image (Item.NQC (NFC)).all
---          & ", "
---          & Normalization_Quick_Check_Image (Item.NQC (NFD)).all
---          & ", "
---          & Normalization_Quick_Check_Image (Item.NQC (NFKC)).all
---          & ", "
---          & Normalization_Quick_Check_Image (Item.NQC (NFKD)).all
---          & "), "
---          & Decomposition_Type_Image (Item.DT).all
---          & ",");
+          & "), "
+          & Decomposition_Type_Image (Item.DT).all
+          & ")");
    end Put;
 
 begin
@@ -180,6 +209,7 @@ begin
    for J in Code_Point loop
       Normalization (J).CCC := Norms (J).CCC;
       Normalization (J).NQC := Norms (J).NQC;
+      Normalization (J).DT  := Norms (J).DT;
    end loop;
 
    --  Construct decomposition information.
@@ -188,7 +218,7 @@ begin
       --  Hangul Syllables are decomposed algorithmically, thus they are
       --  excluded from data construction here.
 
-      if Core (J).DT /= None
+      if Norms (J).DT /= None
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
       then
          Append_Mapping
@@ -196,7 +226,7 @@ begin
            Normalization (J).Decomposition (Compatibility).First,
            Normalization (J).Decomposition (Compatibility).Last);
 
-         if Core (J).DT = Canonical then
+         if Norms (J).DT = Canonical then
             Append_Mapping
              (Norms (J).Values (Canonical).all,
               Normalization (J).Decomposition (Canonical).First,
@@ -208,7 +238,7 @@ begin
    --  Construct composition information.
 
    for J in Code_Point loop
-      if Core (J).DT = Canonical
+      if Norms (J).DT = Canonical
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
         and then not Core (J).B (Full_Composition_Exclusion)
       then
@@ -234,7 +264,7 @@ begin
           (1 .. First_Index_Last => (1 .. Last_Index_Last => 16#FFFF#));
 
    for J in Code_Point loop
-      if Core (J).DT = Canonical
+      if Norms (J).DT = Canonical
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
         and then not Core (J).B (Full_Composition_Exclusion)
       then

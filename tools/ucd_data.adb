@@ -226,10 +226,10 @@ package body Ucd_Data is
                      raise Program_Error;
 
                   when Canonical =>
-                     return Core (Code).DT = Canonical;
+                     return Norms (Code).DT = Canonical;
 
                   when Compatibility =>
-                     return Core (Code).DT /= None;
+                     return Norms (Code).DT /= None;
                end case;
             end if;
          end Has_Mapping;
@@ -312,7 +312,6 @@ package body Ucd_Data is
                 WB  => Other,            --  see WordBreakProperty.txt
                 SB  => Other,            --  see SentenceBreakProperty.txt
                 LB  => Unknown,          --  see LineBreak.txt
-                DT  => None,             --  see UCD.html
                 EA  => Neutral,          --  see EastAsianWidth.txt
                 B   => (others => False)));
 
@@ -328,6 +327,7 @@ package body Ucd_Data is
         new Normalization_Values_Array'
              (others => (CCC    => Not_Reordered,
                          NQC    => (others => Yes),
+                         DT     => None,
                          Values => (others => null)));
 
       --  Load UnicodeData.txt, PropList.txt.
@@ -727,7 +727,7 @@ package body Ucd_Data is
             Free (Norms (Code).Values (Canonical));
             Norms (Code).Values (Canonical) := Corrected;
 
-            if Core (Code).DT /= Canonical then
+            if Norms (Code).DT /= Canonical then
                Free (Norms (Code).Values (Compatibility));
                Norms (Code).Values (Compatibility) :=
                  new Code_Point_Sequence'(Corrected.all);
@@ -929,7 +929,7 @@ package body Ucd_Data is
       begin
          Core (Code).GC  := GC;
          Norms (Code).CCC := CCC;
-         Core (Code).DT  := DT;
+         Norms (Code).DT  := DT;
 
          --  Canonical and compatibility normalization.
 

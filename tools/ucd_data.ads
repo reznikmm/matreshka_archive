@@ -105,6 +105,8 @@ package Ucd_Data is
       NQC    : Matreshka.Internals.Unicode.Ucd.Normalization_Quick_Checks
         := (others => Matreshka.Internals.Unicode.Ucd.Yes);
           --  see DerivedNormalizationProps.txt
+      DT     : Matreshka.Internals.Unicode.Ucd.Decomposition_Type
+        := Matreshka.Internals.Unicode.Ucd.None;           --  see UCD.html
       Values : Normalization_Values;
    end record;
 
