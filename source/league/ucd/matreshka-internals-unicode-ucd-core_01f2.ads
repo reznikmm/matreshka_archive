@@ -51,33 +51,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
    pragma Preelaborate;
 
    Group_01F2 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#01# =>  --  01F200 .. 01F201
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#02#           =>  --  01F202
+     := (16#00# .. 16#02# =>  --  01F200 .. 01F202
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#10# .. 16#12# =>  --  01F210 .. 01F212
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#13#           =>  --  01F213
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#14# .. 16#3A# =>  --  01F214 .. 01F23A
+         16#10# .. 16#3A# =>  --  01F210 .. 01F23A
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
@@ -87,7 +67,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F2 is
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#50# .. 16#51# =>  --  01F250 .. 01F251

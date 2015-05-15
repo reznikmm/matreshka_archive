@@ -116,9 +116,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0114 is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#BD#           =>  --  0114BD
           (Spacing_Mark, Neutral,
@@ -137,9 +135,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0114 is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#BF# .. 16#C0# =>  --  0114BF .. 0114C0
           (Nonspacing_Mark, Neutral,

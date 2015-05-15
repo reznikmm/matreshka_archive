@@ -153,7 +153,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

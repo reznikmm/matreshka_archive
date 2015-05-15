@@ -396,9 +396,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#42#           =>  --  3042
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#43#           =>  --  3043
           (Other_Letter, Wide,
            Other, Other, O_Letter, Conditional_Japanese_Starter,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#44#           =>  --  3044
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -416,9 +436,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#46#           =>  --  3046
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#47#           =>  --  3047
           (Other_Letter, Wide,
            Other, Other, O_Letter, Conditional_Japanese_Starter,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#48#           =>  --  3048
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -436,7 +476,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#4C#           =>  --  304C
+         16#4A# .. 16#62# =>  --  304A .. 3062
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Alphabetic
@@ -444,141 +484,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#4E#           =>  --  304E
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#50#           =>  --  3050
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#52#           =>  --  3052
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#54#           =>  --  3054
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#56#           =>  --  3056
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#58#           =>  --  3058
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#5A#           =>  --  305A
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#5C#           =>  --  305C
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#5E#           =>  --  305E
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#60#           =>  --  3060
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#62#           =>  --  3062
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#63#           =>  --  3063
           (Other_Letter, Wide,
@@ -590,7 +496,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#65#           =>  --  3065
+         16#64# .. 16#82# =>  --  3064 .. 3082
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Alphabetic
@@ -598,97 +504,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#67#           =>  --  3067
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#69#           =>  --  3069
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#70# .. 16#71# =>  --  3070 .. 3071
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#73# .. 16#74# =>  --  3073 .. 3074
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#76# .. 16#77# =>  --  3076 .. 3077
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#79# .. 16#7A# =>  --  3079 .. 307A
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#7C# .. 16#7D# =>  --  307C .. 307D
-          (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#83#           =>  --  3083
           (Other_Letter, Wide,
            Other, Other, O_Letter, Conditional_Japanese_Starter,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#84#           =>  --  3084
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -706,9 +536,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#86#           =>  --  3086
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#87#           =>  --  3087
           (Other_Letter, Wide,
            Other, Other, O_Letter, Conditional_Japanese_Starter,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#88# .. 16#8D# =>  --  3088 .. 308D
+          (Other_Letter, Wide,
+           Other, Other, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -726,7 +576,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#94#           =>  --  3094
+         16#8F# .. 16#94# =>  --  308F .. 3094
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
            (Alphabetic
@@ -734,9 +584,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#95# .. 16#96# =>  --  3095 .. 3096
           (Other_Letter, Wide,
@@ -770,10 +618,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#9D#           =>  --  309D
+         16#9D# .. 16#9E# =>  --  309D .. 309E
           (Modifier_Letter, Wide,
            Other, Other, O_Letter, Nonstarter,
            (Extender
@@ -785,20 +632,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#9E#           =>  --  309E
-          (Modifier_Letter, Wide,
-           Other, Other, O_Letter, Nonstarter,
-           (Extender
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#9F#           =>  --  309F
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
@@ -808,7 +641,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#A0#           =>  --  30A0
@@ -827,29 +659,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#A2#           =>  --  30A2
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#A3#           =>  --  30A3
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#A4#           =>  --  30A4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -867,29 +679,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#A6#           =>  --  30A6
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#A7#           =>  --  30A7
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#A8#           =>  --  30A8
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -907,459 +699,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#AA# .. 16#AB# =>  --  30AA .. 30AB
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#AC#           =>  --  30AC
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#AD#           =>  --  30AD
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#AE#           =>  --  30AE
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#AF#           =>  --  30AF
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B0#           =>  --  30B0
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#B1#           =>  --  30B1
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B2#           =>  --  30B2
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#B3#           =>  --  30B3
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B4#           =>  --  30B4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#B5#           =>  --  30B5
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B6#           =>  --  30B6
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#B7#           =>  --  30B7
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#B8#           =>  --  30B8
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#B9#           =>  --  30B9
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#BA#           =>  --  30BA
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#BB#           =>  --  30BB
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#BC#           =>  --  30BC
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#BD#           =>  --  30BD
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#BE#           =>  --  30BE
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#BF#           =>  --  30BF
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C0#           =>  --  30C0
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#C1#           =>  --  30C1
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C2#           =>  --  30C2
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#C3#           =>  --  30C3
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C4#           =>  --  30C4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C5#           =>  --  30C5
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#C6#           =>  --  30C6
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C7#           =>  --  30C7
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#C8#           =>  --  30C8
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#C9#           =>  --  30C9
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#CA# .. 16#CF# =>  --  30CA .. 30CF
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#D0# .. 16#D1# =>  --  30D0 .. 30D1
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#D2#           =>  --  30D2
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#D3# .. 16#D4# =>  --  30D3 .. 30D4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#D5#           =>  --  30D5
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#D6# .. 16#D7# =>  --  30D6 .. 30D7
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#D8#           =>  --  30D8
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#D9# .. 16#DA# =>  --  30D9 .. 30DA
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#DB#           =>  --  30DB
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#DC# .. 16#DD# =>  --  30DC .. 30DD
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#DE# .. 16#E2# =>  --  30DE .. 30E2
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -1377,29 +719,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#E4#           =>  --  30E4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#E5#           =>  --  30E5
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#E6#           =>  --  30E6
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -1417,16 +739,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#E8# .. 16#ED# =>  --  30E8 .. 30ED
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#EE#           =>  --  30EE
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
@@ -1437,28 +749,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#EF# .. 16#F3# =>  --  30EF .. 30F3
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#F4#           =>  --  30F4
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#F5# .. 16#F6# =>  --  30F5 .. 30F6
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Conditional_Japanese_Starter,
@@ -1468,18 +758,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Start
               | XID_Continue
               | XID_Start => True,
-            others => False)),
-         16#F7# .. 16#FA# =>  --  30F7 .. 30FA
-          (Other_Letter, Wide,
-           Other, Katakana, O_Letter, Ideographic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
             others => False)),
          16#FB#           =>  --  30FB
           (Other_Punctuation, Wide,
@@ -1500,7 +778,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#FD#           =>  --  30FD
+         16#FD# .. 16#FE# =>  --  30FD .. 30FE
           (Modifier_Letter, Wide,
            Other, Katakana, O_Letter, Nonstarter,
            (Extender
@@ -1512,20 +790,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#FE#           =>  --  30FE
-          (Modifier_Letter, Wide,
-           Other, Katakana, O_Letter, Nonstarter,
-           (Extender
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#FF#           =>  --  30FF
           (Other_Letter, Wide,
            Other, Katakana, O_Letter, Ideographic,
@@ -1535,12 +799,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_0030 is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
           (Other_Letter, Wide,
-           Other, Other, O_Letter, Ideographic,
+           Other, Katakana, O_Letter, Ideographic,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

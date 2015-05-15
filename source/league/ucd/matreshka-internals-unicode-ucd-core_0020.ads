@@ -51,15 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
    pragma Preelaborate;
 
    Group_0020 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#01# =>  --  2000 .. 2001
-          (Space_Separator, Neutral,
-           Other, Other, Sp, Break_After,
-           (White_Space
-              | Grapheme_Base
-              | Full_Composition_Exclusion
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#02# .. 16#06# =>  --  2002 .. 2006
+     := (16#00# .. 16#06# =>  --  2000 .. 2006
           (Space_Separator, Neutral,
            Other, Other, Sp, Break_After,
            (White_Space
@@ -164,7 +156,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#18#           =>  --  2018
@@ -256,7 +247,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Inseparable,
            (Pattern_Syntax
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#27#           =>  --  2027
@@ -320,7 +310,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Pattern_Syntax
               | Grapheme_Base
               | Math
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#34#           =>  --  2034
@@ -330,7 +319,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | Pattern_Syntax
               | Grapheme_Base
               | Math
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#35#           =>  --  2035
@@ -344,7 +332,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Postfix_Numeric,
            (Pattern_Syntax
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#38#           =>  --  2038
@@ -380,7 +367,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | STerm
               | Terminal_Punctuation
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#3D#           =>  --  203D
@@ -396,7 +382,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#3F#           =>  --  203F
@@ -447,7 +432,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
               | STerm
               | Terminal_Punctuation
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#4A# .. 16#51# =>  --  204A .. 2051
@@ -494,7 +478,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#58# .. 16#5B# =>  --  2058 .. 205B
@@ -740,7 +723,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
           (Currency_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#A9#           =>  --  20A9

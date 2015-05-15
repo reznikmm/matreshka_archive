@@ -59,9 +59,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#34#           =>  --  D734
           (Other_Letter, Wide,
@@ -71,9 +69,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#50#           =>  --  D750
           (Other_Letter, Wide,
@@ -83,9 +79,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#6C#           =>  --  D76C
           (Other_Letter, Wide,
@@ -95,9 +89,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#88#           =>  --  D788
           (Other_Letter, Wide,
@@ -107,9 +99,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#A4# .. 16#AF# =>  --  D7A4 .. D7AF
           (Unassigned, Neutral,
@@ -151,9 +141,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D7 is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_00D7;

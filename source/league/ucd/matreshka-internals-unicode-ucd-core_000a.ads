@@ -103,11 +103,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#34#           =>  --  0A34
@@ -123,11 +118,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#37#           =>  --  0A37
@@ -235,11 +225,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5D#           =>  --  0A5D
@@ -255,11 +240,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5F# .. 16#65# =>  --  0A5F .. 0A65

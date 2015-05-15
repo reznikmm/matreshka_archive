@@ -55,7 +55,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#02#           =>  --  2102
@@ -77,7 +76,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Postfix_Numeric,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#04#           =>  --  2104
@@ -89,14 +87,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#06#           =>  --  2106
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#07#           =>  --  2107
@@ -123,7 +119,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Postfix_Numeric,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#0A#           =>  --  210A
@@ -225,7 +220,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Prefix_Numeric,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#17#           =>  --  2117
@@ -268,14 +262,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#21# .. 16#22# =>  --  2121 .. 2122
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#23#           =>  --  2123
@@ -317,7 +309,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#27#           =>  --  2127
@@ -361,7 +352,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2B#           =>  --  212B
@@ -378,9 +368,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Full_Composition_Exclusion
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2C# .. 16#2D# =>  --  212C .. 212D
@@ -519,7 +506,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#3C# .. 16#3D# =>  --  213C .. 213D
@@ -651,66 +637,57 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#53#           =>  --  2153
           (Other_Number, Ambiguous,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#54#           =>  --  2154
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#55#           =>  --  2155
           (Other_Number, Neutral,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#56# .. 16#5A# =>  --  2156 .. 215A
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5B#           =>  --  215B
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5C# .. 16#5D# =>  --  215C .. 215D
           (Other_Number, Ambiguous,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5E#           =>  --  215E
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5F#           =>  --  215F
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#60#           =>  --  2160
+         16#60# .. 16#6B# =>  --  2160 .. 216B
           (Letter_Number, Ambiguous,
            Other, A_Letter, Upper, Ambiguous,
            (Other_Uppercase
@@ -725,94 +702,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | Uppercase
               | XID_Continue
               | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#61# .. 16#63# =>  --  2161 .. 2163
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Upper, Ambiguous,
-           (Other_Uppercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#64#           =>  --  2164
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Upper, Ambiguous,
-           (Other_Uppercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#65# .. 16#68# =>  --  2165 .. 2168
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Upper, Ambiguous,
-           (Other_Uppercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#69#           =>  --  2169
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Upper, Ambiguous,
-           (Other_Uppercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#6A# .. 16#6B# =>  --  216A .. 216B
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Upper, Ambiguous,
-           (Other_Uppercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Lowercased
-              | Changes_When_Casefolded
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Uppercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#6C# .. 16#6F# =>  --  216C .. 216F
@@ -832,7 +721,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#70#           =>  --  2170
+         16#70# .. 16#79# =>  --  2170 .. 2179
           (Letter_Number, Ambiguous,
            Other, A_Letter, Lower, Ambiguous,
            (Other_Lowercase
@@ -849,95 +738,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#71# .. 16#73# =>  --  2171 .. 2173
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Lower, Ambiguous,
-           (Other_Lowercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#74#           =>  --  2174
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Lower, Ambiguous,
-           (Other_Lowercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#75# .. 16#78# =>  --  2175 .. 2178
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Lower, Ambiguous,
-           (Other_Lowercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#79#           =>  --  2179
-          (Letter_Number, Ambiguous,
-           Other, A_Letter, Lower, Ambiguous,
-           (Other_Lowercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#7A# .. 16#7B# =>  --  217A .. 217B
-          (Letter_Number, Neutral,
-           Other, A_Letter, Lower, Alphabetic,
-           (Other_Lowercase
-              | Alphabetic
-              | Cased
-              | Changes_When_Uppercased
-              | Changes_When_Titlecased
-              | Changes_When_Casemapped
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | Lowercase
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#7C# .. 16#7F# =>  --  217C .. 217F
+         16#7A# .. 16#7F# =>  --  217A .. 217F
           (Letter_Number, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Other_Lowercase
@@ -1009,7 +810,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#8A# .. 16#8F# =>  --  218A .. 218F
@@ -1036,9 +836,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Math
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | Math => True,
             others => False)),
          16#A0#           =>  --  21A0
           (Math_Symbol, Neutral,
@@ -1072,9 +870,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Math
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | Math => True,
             others => False)),
          16#AF#           =>  --  21AF
           (Other_Symbol, Neutral,
@@ -1100,24 +896,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0021 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#CD#           =>  --  21CD
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Other_Math
-              | Pattern_Syntax
-              | Grapheme_Base
-              | Math
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#CE# .. 16#CF# =>  --  21CE .. 21CF
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
-              | Math
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | Math => True,
             others => False)),
          16#D2#           =>  --  21D2
           (Math_Symbol, Ambiguous,

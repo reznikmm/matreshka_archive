@@ -89,7 +89,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#34# .. 16#39# =>  --  0E34 .. 0E39
@@ -345,7 +344,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#B4# .. 16#B9# =>  --  0EB4 .. 0EB9
@@ -436,7 +434,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000E is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DE# .. 16#DF# =>  --  0EDE .. 0EDF

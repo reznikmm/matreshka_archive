@@ -51,19 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0010 is
    pragma Preelaborate;
 
    Group_0010 : aliased constant Core_Second_Stage
-     := (16#26#           =>  --  1026
-          (Other_Letter, Neutral,
-           Other, Other, O_Letter, Complex_Context,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#2B# .. 16#2C# =>  --  102B .. 102C
+     := (16#2B# .. 16#2C# =>  --  102B .. 102C
           (Spacing_Mark, Neutral,
            Other, Extend, Extend, Complex_Context,
            (Other_Alphabetic

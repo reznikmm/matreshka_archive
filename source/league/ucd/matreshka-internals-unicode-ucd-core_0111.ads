@@ -80,29 +80,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#2D#           =>  --  01112D
-          (Nonspacing_Mark, Neutral,
-           Extend, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Extend
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#2E# .. 16#2F# =>  --  01112E .. 01112F
-          (Nonspacing_Mark, Neutral,
-           Extend, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Case_Ignorable
-              | Grapheme_Extend
-              | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#30# .. 16#32# =>  --  011130 .. 011132
+         16#2D# .. 16#32# =>  --  01112D .. 011132
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Other_Alphabetic

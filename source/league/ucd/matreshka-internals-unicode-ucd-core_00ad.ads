@@ -59,9 +59,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#34#           =>  --  AD34
           (Other_Letter, Wide,
@@ -71,9 +69,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#50#           =>  --  AD50
           (Other_Letter, Wide,
@@ -83,9 +79,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#6C#           =>  --  AD6C
           (Other_Letter, Wide,
@@ -95,9 +89,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#88#           =>  --  AD88
           (Other_Letter, Wide,
@@ -107,9 +99,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#A4#           =>  --  ADA4
           (Other_Letter, Wide,
@@ -119,9 +109,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#C0#           =>  --  ADC0
           (Other_Letter, Wide,
@@ -131,9 +119,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#DC#           =>  --  ADDC
           (Other_Letter, Wide,
@@ -143,9 +129,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          16#F8#           =>  --  ADF8
           (Other_Letter, Wide,
@@ -155,9 +139,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)),
          others           =>
           (Other_Letter, Wide,
@@ -167,9 +149,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AD is
               | ID_Continue
               | ID_Start
               | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Start => True,
             others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_00AD;

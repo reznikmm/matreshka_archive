@@ -143,9 +143,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000D is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#4D#           =>  --  0D4D
           (Nonspacing_Mark, Neutral,
@@ -308,7 +306,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000D is
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#D8# .. 16#D9# =>  --  0DD8 .. 0DD9
+         16#D8# .. 16#DE# =>  --  0DD8 .. 0DDE
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -316,37 +314,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000D is
               | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
-            others => False)),
-         16#DA#           =>  --  0DDA
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#DB#           =>  --  0DDB
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#DC# .. 16#DE# =>  --  0DDC .. 0DDE
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
             others => False)),
          16#DF#           =>  --  0DDF
           (Spacing_Mark, Neutral,

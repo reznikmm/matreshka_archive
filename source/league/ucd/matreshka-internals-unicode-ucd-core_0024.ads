@@ -73,17 +73,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
            Other, Other, Other, Unknown,
            (Pattern_Syntax => True,
             others => False)),
-         16#60# .. 16#68# =>  --  2460 .. 2468
-          (Other_Number, Ambiguous,
-           Other, Other, Other, Ambiguous,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
          16#9C# .. 16#B5# =>  --  249C .. 24B5
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#B6# .. 16#CF# =>  --  24B6 .. 24CF
@@ -134,7 +127,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0024 is
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

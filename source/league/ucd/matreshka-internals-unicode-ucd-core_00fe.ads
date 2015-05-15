@@ -115,7 +115,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
           (Other_Punctuation, Wide,
            Other, Other, Other, Inseparable,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#1A# .. 16#1F# =>  --  FE1A .. FE1F
@@ -139,7 +138,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
           (Other_Punctuation, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#31# .. 16#32# =>  --  FE31 .. FE32
@@ -279,7 +277,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
           (Other_Punctuation, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#4D# .. 16#4F# =>  --  FE4D .. FE4F
@@ -462,19 +459,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#71#           =>  --  FE71
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#72#           =>  --  FE72
@@ -484,7 +468,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#73#           =>  --  FE73
@@ -504,7 +487,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#75#           =>  --  FE75
@@ -518,19 +500,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#77#           =>  --  FE77
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#78#           =>  --  FE78
@@ -540,19 +509,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#79#           =>  --  FE79
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7A#           =>  --  FE7A
@@ -562,19 +518,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#7B#           =>  --  FE7B
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7C#           =>  --  FE7C
@@ -584,19 +527,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#7D#           =>  --  FE7D
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7E#           =>  --  FE7E
@@ -606,43 +536,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#7F#           =>  --  FE7F
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#81# .. 16#8C# =>  --  FE81 .. FE8C
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#F5# .. 16#FC# =>  --  FEF5 .. FEFC
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FD# .. 16#FE# =>  --  FEFD .. FEFE

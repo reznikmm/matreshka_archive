@@ -506,7 +506,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FF is
            (Diacritic
               | Case_Ignorable
               | Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#E4#           =>  --  FFE4

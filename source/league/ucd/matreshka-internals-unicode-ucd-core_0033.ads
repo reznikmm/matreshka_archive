@@ -55,14 +55,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0033 is
           (Other_Symbol, Wide,
            Other, Katakana, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

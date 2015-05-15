@@ -59,13 +59,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#44# .. 16#47# =>  --  3244 .. 3247
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#48# .. 16#4F# =>  --  3248 .. 324F
@@ -75,13 +68,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
             others => False)),
          16#51# .. 16#5F# =>  --  3251 .. 325F
           (Other_Number, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#60# .. 16#6D# =>  --  3260 .. 326D
-          (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
@@ -97,17 +83,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#8A# .. 16#B0# =>  --  328A .. 32B0
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
          16#B1# .. 16#BF# =>  --  32B1 .. 32BF
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#D0# .. 16#FE# =>  --  32D0 .. 32FE
@@ -124,7 +103,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

@@ -57,7 +57,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
            (Pattern_Syntax
               | Grapheme_Base
               | Math
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#74# .. 16#76# =>  --  2A74 .. 2A76
@@ -66,7 +65,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
            (Pattern_Syntax
               | Grapheme_Base
               | Math
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DC#           =>  --  2ADC
@@ -75,11 +73,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
            (Pattern_Syntax
               | Grapheme_Base
               | Math
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>

@@ -90,7 +90,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0115 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#B8# .. 16#B9# =>  --  0115B8 .. 0115B9
+         16#B8# .. 16#BB# =>  --  0115B8 .. 0115BB
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -98,17 +98,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0115 is
               | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
-            others => False)),
-         16#BA# .. 16#BB# =>  --  0115BA .. 0115BB
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
             others => False)),
          16#BC# .. 16#BD# =>  --  0115BC .. 0115BD
           (Nonspacing_Mark, Neutral,

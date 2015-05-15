@@ -108,7 +108,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
            (Deprecated
               | Pattern_Syntax
               | Grapheme_Base
-              | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2A#           =>  --  232A
@@ -117,7 +116,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
            (Deprecated
               | Pattern_Syntax
               | Grapheme_Base
-              | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7C#           =>  --  237C

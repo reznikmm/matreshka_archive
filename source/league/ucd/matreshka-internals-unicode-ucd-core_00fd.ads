@@ -87,14 +87,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FC#           =>  --  FDFC
           (Currency_Symbol, Neutral,
            Other, Other, Other, Postfix_Numeric,
            (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FD#           =>  --  FDFD
@@ -115,7 +113,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

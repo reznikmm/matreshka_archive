@@ -188,7 +188,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#47#           =>  --  0B47
+         16#47# .. 16#48# =>  --  0B47 .. 0B48
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -197,17 +197,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#48#           =>  --  0B48
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#4B# .. 16#4C# =>  --  0B4B .. 0B4C
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
@@ -215,9 +204,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#4D#           =>  --  0B4D
           (Nonspacing_Mark, Neutral,
@@ -258,11 +245,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#5F# .. 16#61# =>  --  0B5F .. 0B61
@@ -352,29 +334,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#92# .. 16#93# =>  --  0B92 .. 0B93
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#94#           =>  --  0B94
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#95#           =>  --  0B95
+         16#92# .. 16#95# =>  --  0B92 .. 0B95
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Alphabetic
@@ -498,9 +458,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_000B is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#CD#           =>  --  0BCD
           (Nonspacing_Mark, Neutral,

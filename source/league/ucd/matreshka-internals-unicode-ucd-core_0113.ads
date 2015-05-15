@@ -203,9 +203,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0113 is
               | Alphabetic
               | Grapheme_Base
               | ID_Continue
-              | XID_Continue
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
+              | XID_Continue => True,
             others => False)),
          16#4D#           =>  --  01134D
           (Spacing_Mark, Neutral,

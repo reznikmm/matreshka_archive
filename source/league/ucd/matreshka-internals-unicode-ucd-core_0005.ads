@@ -480,7 +480,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
               | Lowercase
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#88#           =>  --  0588

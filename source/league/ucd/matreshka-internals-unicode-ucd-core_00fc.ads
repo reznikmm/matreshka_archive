@@ -58,7 +58,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
@@ -70,7 +69,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)));
 

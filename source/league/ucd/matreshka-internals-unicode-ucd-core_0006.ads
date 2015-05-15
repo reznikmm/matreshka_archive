@@ -128,18 +128,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0006 is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#22# .. 16#26# =>  --  0622 .. 0626
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
          16#40#           =>  --  0640
           (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
@@ -260,44 +248,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0006 is
               | ID_Start
               | XID_Continue
               | XID_Start
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#C0#           =>  --  06C0
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#C2#           =>  --  06C2
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
-            others => False)),
-         16#D3#           =>  --  06D3
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFD
-              | Expands_On_NFKD => True,
             others => False)),
          16#D4#           =>  --  06D4
           (Other_Punctuation, Neutral,

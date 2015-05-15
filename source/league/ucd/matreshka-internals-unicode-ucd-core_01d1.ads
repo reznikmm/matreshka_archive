@@ -59,11 +59,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#65#           =>  --  01D165
@@ -145,11 +140,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D1 is
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base
-              | Composition_Exclusion
-              | Full_Composition_Exclusion
-              | Expands_On_NFC
-              | Expands_On_NFD
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#DE# .. 16#FF# =>  --  01D1DE .. 01D1FF
