@@ -340,7 +340,6 @@ package Matreshka.Internals.Unicode.Ucd is
 
    type Core_Values is record
       GC  : General_Category;            --   8  (5) bits
-      CCC : Canonical_Combining_Class;   --   8      bits
       EA  : East_Asian_Width;            --   8  (3) bits
       GCB : Grapheme_Cluster_Break;      --   8  (4) bits
       WB  : Word_Break;                  --   8  (4) bits
@@ -350,18 +349,17 @@ package Matreshka.Internals.Unicode.Ucd is
       DT  : Decomposition_Type;          --   8  (5) bits
       B   : Boolean_Values;              --  64 (52) bits
    end record;
-   for Core_Values'Size use 136;
+   for Core_Values'Size use 128;
    for Core_Values use record
       B   at 0 range   0 ..  63;
       GC  at 0 range  64 ..  71;
-      CCC at 0 range  72 ..  79;
-      GCB at 0 range  80 ..  87;
-      WB  at 0 range  88 ..  95;
-      SB  at 0 range  96 .. 103;
-      LB  at 0 range 104 .. 111;
-      NQC at 0 range 112 .. 119;
-      DT  at 0 range 120 .. 127;
-      EA  at 0 range 128 .. 135;
+      GCB at 0 range  72 ..  79;
+      WB  at 0 range  80 ..  87;
+      SB  at 0 range  88 ..  95;
+      LB  at 0 range  96 .. 103;
+      NQC at 0 range 104 .. 111;
+      DT  at 0 range 112 .. 119;
+      EA  at 0 range 120 .. 127;
    end record;
 
    type Core_Second_Stage is array (Second_Stage_Index) of Core_Values;
@@ -448,13 +446,14 @@ package Matreshka.Internals.Unicode.Ucd is
    type Normalization_Mapping is record
       Decomposition : Decomposition_Mapping;
       Composition   : Normalization_Mapping_Range;
+      CCC           : Canonical_Combining_Class;   --   8      bits
    end record;
 
    type Normalization_Mapping_Second_Stage is
      array (Second_Stage_Index) of Normalization_Mapping;
 
    type Normalization_Mapping_Second_Stage_Access is
-     access constant Normalization_Mapping_Second_Stage;
+     not null access constant Normalization_Mapping_Second_Stage;
 
    type Normalization_Mapping_First_Stage is
      array (First_Stage_Index) of Normalization_Mapping_Second_Stage_Access;

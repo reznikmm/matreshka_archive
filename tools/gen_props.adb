@@ -550,8 +550,6 @@ procedure Gen_Props is
       Ada.Text_IO.Put
        ('('
           & General_Category_Image (Item.GC).all
-          & ','
-          & Canonical_Combining_Class'Image (Item.CCC)
           & ", "
           & East_Asian_Width_Image (Item.EA).all
           & ",");

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
+with Matreshka.Internals.Unicode.Ucd.Properties;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Casing is
@@ -52,6 +53,7 @@ package body Matreshka.Internals.Unicode.Casing is
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
+   use Matreshka.Internals.Unicode.Ucd.Properties;
    use Matreshka.Internals.Utf16;
 
    ------------------
@@ -94,10 +96,10 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values := Locale.Get_Core (Code);
+               CCC : constant Canonical_Combining_Class := Get_CCC (Code);
 
             begin
-               if R.CCC = 0 or else R.CCC = 230 then
+               if CCC = 0 or else CCC = 230 then
                   return False;
 
                elsif Code = 16#0307# then
@@ -147,13 +149,13 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Next (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values := Locale.Get_Core (Code);
+               CCC : constant Canonical_Combining_Class := Get_CCC (Code);
 
             begin
-               if R.CCC = 0 then
+               if CCC = 0 then
                   return False;
 
-               elsif R.CCC = 230 then
+               elsif CCC = 230 then
                   return True;
                end if;
             end;
@@ -177,10 +179,10 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values := Locale.Get_Core (Code);
+               CCC : constant Canonical_Combining_Class := Get_CCC (Code);
 
             begin
-               if R.CCC = 0 or else R.CCC = 230 then
+               if CCC = 0 or else CCC = 230 then
                   return False;
 
                elsif Code = Wide_Wide_Character'Pos ('I') then
@@ -207,10 +209,11 @@ package body Matreshka.Internals.Unicode.Casing is
             Unchecked_Previous (Source.Value, Current, Code);
 
             declare
-               R : constant Core_Values := Locale.Get_Core (Code);
+               CCC : constant Canonical_Combining_Class := Get_CCC (Code);
+               R   : constant Core_Values := Locale.Get_Core (Code);
 
             begin
-               if R.CCC = 0 or else R.CCC = 230 then
+               if CCC = 0 or else CCC = 230 then
                   return False;
 
                elsif R.B (Soft_Dotted) then

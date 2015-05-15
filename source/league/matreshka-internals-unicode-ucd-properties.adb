@@ -4,11 +4,11 @@
 --                                                                          --
 --         Localization, Internationalization, Globalization for Ada        --
 --                                                                          --
---                              Tools Component                             --
+--                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,81 +41,28 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Matreshka.Internals.Unicode.Ucd;
+with Matreshka.Internals.Unicode.UCD.Norms;
 
-package Ucd_Data is
+package body Matreshka.Internals.Unicode.UCD.Properties is
 
-   type Core_Values_Array is
-     array (Matreshka.Internals.Unicode.Code_Point)
-       of Matreshka.Internals.Unicode.Ucd.Core_Values;
+   -------------
+   -- Get_CCC --
+   -------------
 
-   type Core_Values_Array_Access is access Core_Values_Array;
+   function Get_CCC (Code : Code_Point) return Canonical_Combining_Class is
 
-   type Code_Point_Sequence_Access is
-     access Matreshka.Internals.Unicode.Ucd.Code_Point_Sequence;
+      function Element is
+        new Matreshka.Internals.Unicode.Ucd.Generic_Element
+             (Matreshka.Internals.Unicode.Ucd.Normalization_Mapping,
+              Matreshka.Internals.Unicode.Ucd
+                .Normalization_Mapping_Second_Stage,
+              Matreshka.Internals.Unicode.Ucd
+                .Normalization_Mapping_Second_Stage_Access,
+              Matreshka.Internals.Unicode.Ucd.Normalization_Mapping_First_Stage);
+      pragma Inline (Element);
 
-   type Context_Code_Point_Sequence is
-     array (Matreshka.Internals.Unicode.Ucd.Casing_Context
-              range Matreshka.Internals.Unicode.Ucd.Final_Sigma
-                      .. Matreshka.Internals.Unicode.Ucd.After_I)
-       of Code_Point_Sequence_Access;
+   begin
+      return Element (Norms.Mapping, Code).CCC;
+   end Get_CCC;
 
-   type Full_Case_Values is record
-      Default  : Code_Point_Sequence_Access;
-      Positive : Context_Code_Point_Sequence;
-      Negative : Context_Code_Point_Sequence;
-   end record;
-
-   type Optional_Code_Point (Present : Boolean := False) is record
-      case Present is
-         when True =>
-            C : Matreshka.Internals.Unicode.Code_Point;
-
-         when False =>
-            null;
-      end case;
-   end record;
-
-   type Case_Values is record
-      SUM : Optional_Code_Point;
-      SLM : Optional_Code_Point;
-      STM : Optional_Code_Point;
-      SCF : Optional_Code_Point;
-      FUM : Full_Case_Values;
-      FLM : Full_Case_Values;
-      FTM : Full_Case_Values;
-      FCF : Code_Point_Sequence_Access;
-   end record;
-
-   type Languages is (Default, az, lt, tr);
-
-   type Case_Values_Array is
-     array (Matreshka.Internals.Unicode.Code_Point) of Case_Values;
-
-   type Case_Values_Array_Access is access Case_Values_Array;
-
-   type Normalization_Kinds is (Canonical_Mapping, Canonical, Compatibility);
-
-   type Normalization_Values is
-     array (Normalization_Kinds) of Code_Point_Sequence_Access;
-
-   type Character_Normalization_Information is record
-      CCC    : Matreshka.Internals.Unicode.Ucd.Canonical_Combining_Class
-        := Matreshka.Internals.Unicode.Ucd.Not_Reordered;  --  see UCD.html
-      Values : Normalization_Values;
-   end record;
-
-   type Normalization_Values_Array is
-     array (Matreshka.Internals.Unicode.Code_Point)
-       of Character_Normalization_Information;
-
-   type Normalization_Values_Array_Access is
-     access all Normalization_Values_Array;
-
-   Core  : Core_Values_Array_Access;
-   Cases : Case_Values_Array_Access;
-   Norms : Normalization_Values_Array_Access;
-
-   procedure Load (Unidata_Directory : String);
-
-end Ucd_Data;
+end Matreshka.Internals.Unicode.UCD.Properties;

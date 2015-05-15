@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -76,7 +76,7 @@ procedure Gen_Norms is
    Last_Index_Last  : Sequence_Count := 0;
 
    Normalization : array (Code_Point) of Normalization_Mapping
-     := (others => ((others => (0, 0)), (0, 0)));
+     := (others => ((others => (0, 0)), (0, 0), 0));
    Groups        : array (First_Stage_Index) of Group_Info
      := (others => (0, 0));
    Generated     : array (First_Stage_Index) of Boolean := (others => False);
@@ -134,11 +134,19 @@ procedure Gen_Norms is
           & Sequence_Count_Image (Item.Composition.First)
           & ", "
           & Sequence_Count_Image (Item.Composition.Last)
-          & "))");
+          & "),"
+          & Canonical_Combining_Class'Image (Item.CCC)
+          & ")");
    end Put;
 
 begin
    Ada.Text_IO.Put_Line (Ada.Text_IO.Standard_Error, "   ... norms");
+
+   --  Copy properties
+
+   for J in Code_Point loop
+      Normalization (J).CCC := Norms (J).CCC;
+   end loop;
 
    --  Construct decomposition information.
 
@@ -150,13 +158,13 @@ begin
         and then J not in Hangul_Syllable_First .. Hangul_Syllable_Last
       then
          Append_Mapping
-          (Norms (J) (Compatibility).all,
+          (Norms (J).Values (Compatibility).all,
            Normalization (J).Decomposition (Compatibility).First,
            Normalization (J).Decomposition (Compatibility).Last);
 
          if Core (J).DT = Canonical then
             Append_Mapping
-             (Norms (J) (Canonical).all,
+             (Norms (J).Values (Canonical).all,
               Normalization (J).Decomposition (Canonical).First,
               Normalization (J).Decomposition (Canonical).Last);
          end if;
@@ -171,7 +179,7 @@ begin
         and then not Core (J).B (Full_Composition_Exclusion)
       then
          declare
-            M : Code_Point_Sequence := Norms (J) (Canonical_Mapping).all;
+            M : Code_Point_Sequence := Norms (J).Values (Canonical_Mapping).all;
 
          begin
             if Normalization (M (1)).Composition.First = 0 then
@@ -197,7 +205,8 @@ begin
         and then not Core (J).B (Full_Composition_Exclusion)
       then
          declare
-            M : Code_Point_Sequence := Norms (J) (Canonical_Mapping).all;
+            M : Code_Point_Sequence
+              := Norms (J).Values (Canonical_Mapping).all;
 
          begin
             Composition_Data
@@ -229,7 +238,7 @@ begin
    Put_File_Header
     ("Localization, Internationalization, Globalization for Ada",
      2009,
-     2013);
+     2015);
    Ada.Text_IO.New_Line;
 --  GNAT GPL 2011: disabling of generation of elaboration code causes incorrect
    --  code generation for normalization

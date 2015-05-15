@@ -207,7 +207,7 @@ package body Ucd_Data is
                         & " for now";
 
             else
-               return Norms (Code) (Kind).all;
+               return Norms (Code).Values (Kind).all;
             end if;
          end Decompose;
 
@@ -247,20 +247,22 @@ package body Ucd_Data is
                      A : Code_Point_Sequence_Access;
 
                   begin
-                     for K in Norms (J) (Kind)'Range loop
-                        if Has_Mapping (Norms (J) (Kind) (K)) then
+                     for K in Norms (J).Values (Kind)'Range loop
+                        if Has_Mapping (Norms (J).Values (Kind) (K)) then
                            if M = null then
                               M :=
                                 new Code_Point_Sequence'
-                                     (Norms (J) (Kind) (1 .. K - 1)
-                                        & Decompose (Norms (J) (Kind) (K)));
+                                     (Norms (J).Values (Kind) (1 .. K - 1)
+                                        & Decompose
+                                           (Norms (J).Values (Kind) (K)));
 
                            else
                               A := M;
                               M :=
                                 new Code_Point_Sequence'
                                      (A.all
-                                        & Decompose (Norms (J) (Kind) (K)));
+                                        & Decompose
+                                           (Norms (J).Values (Kind) (K)));
                               Free (A);
                            end if;
 
@@ -268,14 +270,14 @@ package body Ucd_Data is
                            A := M;
                            M :=
                              new Code_Point_Sequence'
-                                  (A.all & Norms (J) (Kind) (K));
+                                  (A.all & Norms (J).Values (Kind) (K));
                            Free (A);
                         end if;
                      end loop;
 
                      if M /= null then
-                        Free (Norms (J) (Kind));
-                        Norms (J) (Kind) := M;
+                        Free (Norms (J).Values (Kind));
+                        Norms (J).Values (Kind) := M;
                         Expanded := True;
                      end if;
                   end;
@@ -306,7 +308,6 @@ package body Ucd_Data is
         new Core_Values_Array'
              (others =>
                (GC  => Unassigned,       --  see UCD.html
-                CCC => Not_Reordered,    --  see UCD.html
                 GCB => Other,            --  see GraphemeBreakProperty.txt
                 WB  => Other,            --  see WordBreakProperty.txt
                 SB  => Other,            --  see SentenceBreakProperty.txt
@@ -324,7 +325,9 @@ package body Ucd_Data is
                  (Default => null, others => (others => null)),
                 FCF                   => null));
 
-      Norms := new Normalization_Values_Array'(others => (others => null));
+      Norms :=
+        new Normalization_Values_Array'
+             (others => (CCC => Not_Reordered, Values => (others => null)));
 
       --  Load UnicodeData.txt, PropList.txt.
 
@@ -711,8 +714,8 @@ package body Ucd_Data is
            new Code_Point_Sequence'
                 (Parse_Code_Point_Sequence (Ucd_Input.Field (File)));
 
-         if Norms (Code) (Canonical).all /= Original.all then
-            if Norms (Code) (Canonical).all /= Corrected.all then
+         if Norms (Code).Values (Canonical).all /= Original.all then
+            if Norms (Code).Values (Canonical).all /= Corrected.all then
                raise Program_Error with "Wrong original decomposition";
 
             else
@@ -720,12 +723,12 @@ package body Ucd_Data is
             end if;
 
          else
-            Free (Norms (Code) (Canonical));
-            Norms (Code) (Canonical) := Corrected;
+            Free (Norms (Code).Values (Canonical));
+            Norms (Code).Values (Canonical) := Corrected;
 
             if Core (Code).DT /= Canonical then
-               Free (Norms (Code) (Compatibility));
-               Norms (Code) (Compatibility) :=
+               Free (Norms (Code).Values (Compatibility));
+               Norms (Code).Values (Compatibility) :=
                  new Code_Point_Sequence'(Corrected.all);
             end if;
          end if;
@@ -924,18 +927,19 @@ package body Ucd_Data is
         STM  : Optional_Code_Point) is
       begin
          Core (Code).GC  := GC;
-         Core (Code).CCC := CCC;
+         Norms (Code).CCC := CCC;
          Core (Code).DT  := DT;
 
          --  Canonical and compatibility normalization.
 
          if DT /= None then
-            Norms (Code) (Compatibility) := new Code_Point_Sequence'(DM);
+            Norms (Code).Values (Compatibility) :=
+              new Code_Point_Sequence'(DM);
 
             if DT = Canonical then
-               Norms (Code) (Canonical_Mapping)
+               Norms (Code).Values (Canonical_Mapping)
                  := new Code_Point_Sequence'(DM);
-               Norms (Code) (Canonical) := new Code_Point_Sequence'(DM);
+               Norms (Code).Values (Canonical) := new Code_Point_Sequence'(DM);
             end if;
          end if;
 

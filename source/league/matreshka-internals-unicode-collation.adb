@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,7 +44,7 @@
 with Ada.Unchecked_Deallocation;
 
 with Matreshka.Internals.Unicode.Properties;
-with Matreshka.Internals.Unicode.Ucd;
+with Matreshka.Internals.Unicode.Ucd.Properties;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Collation is
@@ -52,6 +52,7 @@ package body Matreshka.Internals.Unicode.Collation is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Unicode.Properties;
    use Matreshka.Internals.Unicode.Ucd;
+   use Matreshka.Internals.Unicode.Ucd.Properties;
    use Matreshka.Internals.Utf16;
 
    type Collation_Element_Array is
@@ -188,7 +189,7 @@ package body Matreshka.Internals.Unicode.Collation is
                   Excludes_First   : Positive;
                   Excludes_Last    : Natural := 0;
                   Last_Class       : Canonical_Combining_Class
-                    := Locale.Get_Core (Code).CCC;
+                    := Get_CCC (Code);
                   Current_Class    : Canonical_Combining_Class;
                   R_Index          : Utf16_String_Index := S_Index;
                   R_Previous       : Utf16_String_Index;
@@ -203,7 +204,7 @@ package body Matreshka.Internals.Unicode.Collation is
                      R_Previous := R_Index;
                      Unchecked_Next (Source.Value, R_Index, R_Code);
 
-                     Current_Class := Locale.Get_Core (R_Code).CCC;
+                     Current_Class := Get_CCC (R_Code);
                      Contracted := False;
 
                      if Contractor_First /= 0

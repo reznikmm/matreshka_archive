@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,7 @@ with Matreshka.Internals.Strings.Configuration;
 with Matreshka.Internals.Strings.Operations;
 with Matreshka.Internals.Unicode.Ucd.Core;
 with Matreshka.Internals.Unicode.Ucd.Norms;
+with Matreshka.Internals.Unicode.Ucd.Properties;
 with Matreshka.Internals.Utf16;
 
 package body Matreshka.Internals.Unicode.Normalization is
@@ -53,6 +54,7 @@ package body Matreshka.Internals.Unicode.Normalization is
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
    use Matreshka.Internals.Unicode.Ucd;
+   use Matreshka.Internals.Unicode.Ucd.Properties;
    use Matreshka.Internals.Utf16;
 
    generic
@@ -217,7 +219,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             (First_Stage_Index (Current_Code / 16#100#))
             (Second_Stage_Index (Current_Code mod 16#100#)).
                Composition.Last;
-         Class := Get_Core (Current_Code).CCC;
+         Class := Get_CCC (Current_Code);
 
          if Current_Mapping /= 0
            and then ((Class = 0 and then Last_Class = 0)
@@ -288,7 +290,7 @@ package body Matreshka.Internals.Unicode.Normalization is
             S_Previous := S_Index;
 
             Unchecked_Next (Source.Value, S_Index, Code);
-            Class := Get_Core (Code).CCC;
+            Class := Get_CCC (Code);
 
             case Get_Core (Code).NQC (Form) is
                when No | Maybe =>
@@ -354,7 +356,7 @@ package body Matreshka.Internals.Unicode.Normalization is
 
             procedure Common_Append (Code : Code_Point) is
             begin
-               Class := Get_Core (Code).CCC;
+               Class := Get_CCC (Code);
                Append (Destination, Code);
 
                if Class /= 0 then
@@ -479,7 +481,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                null;
          end case;
 
-         Class := Get_Core (Code).CCC;
+         Class := Get_CCC (Code);
 
          if Class /= 0 then
             if Last_Class > Class then
@@ -542,7 +544,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                D_Index : Utf16_String_Index := Destination.Unused;
 
             begin
-               Class := Get_Core (Code).CCC;
+               Class := Get_CCC (Code);
                Append (Destination, Code);
 
                if Class /= 0 then
@@ -640,7 +642,7 @@ package body Matreshka.Internals.Unicode.Normalization is
                if Starter_S_Index /= S_Previous
                  and then Code
                            not in Hangul_Syllable_First .. Hangul_Syllable_Last
-                 and then Get_Core (Code).CCC = 0
+                 and then Get_CCC (Code) = 0
                  and then Get_Core (Code).NQC (Form) = Yes
                then
                   --  Just processed character is starter and never compose
@@ -769,12 +771,12 @@ package body Matreshka.Internals.Unicode.Normalization is
          Current := First;
          Previous := Current;
          Unchecked_Next (Destination.Value, Current, Code_A);
-         Previous_Class := Get_Core (Code_A).CCC;
+         Previous_Class := Get_CCC (Code_A);
 
          while Current < Unused loop
             Aux := Current;
             Unchecked_Next (Destination.Value, Current, Code_B);
-            Class := Get_Core (Code_B).CCC;
+            Class := Get_CCC (Code_B);
 
             if Previous_Class > Class then
                Unchecked_Store (Destination.Value, Previous, Code_B);
