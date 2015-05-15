@@ -122,7 +122,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#20# .. 16#26# =>  --  FE20 .. FE26
+         16#20# .. 16#2D# =>  --  FE20 .. FE2D
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Diacritic
@@ -131,7 +131,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FE is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#27# .. 16#2F# =>  --  FE27 .. FE2F
+         16#2E# .. 16#2F# =>  --  FE2E .. FE2F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

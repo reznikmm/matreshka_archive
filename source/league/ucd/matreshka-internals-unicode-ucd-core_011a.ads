@@ -46,68 +46,12 @@ pragma Restrictions (No_Elaboration_Code);
 --  GNAT: enforce generation of preinitialized data section instead of
 --  generation of elaboration code.
 
-package Matreshka.Internals.Unicode.Ucd.Core_010B is
+package Matreshka.Internals.Unicode.Ucd.Core_011A is
 
    pragma Preelaborate;
 
-   Group_010B : aliased constant Core_Second_Stage
-     := (16#36# .. 16#38# =>  --  010B36 .. 010B38
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#39#           =>  --  010B39
-          (Other_Punctuation, Neutral,
-           Other, Other, Other, Break_After,
-           (Grapheme_Base => True,
-            others => False)),
-         16#3A# .. 16#3F# =>  --  010B3A .. 010B3F
-          (Other_Punctuation, Neutral,
-           Other, Other, Other, Break_After,
-           (Terminal_Punctuation
-              | Grapheme_Base => True,
-            others => False)),
-         16#56# .. 16#57# =>  --  010B56 .. 010B57
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#58# .. 16#5F# =>  --  010B58 .. 010B5F
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#73# .. 16#77# =>  --  010B73 .. 010B77
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#78# .. 16#7F# =>  --  010B78 .. 010B7F
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#92# .. 16#98# =>  --  010B92 .. 010B98
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#99# .. 16#9C# =>  --  010B99 .. 010B9C
-          (Other_Punctuation, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Terminal_Punctuation
-              | Grapheme_Base => True,
-            others => False)),
-         16#9D# .. 16#A8# =>  --  010B9D .. 010BA8
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#A9# .. 16#AF# =>  --  010BA9 .. 010BAF
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#B0# .. 16#FF# =>  --  010BB0 .. 010BFF
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         others           =>
+   Group_011A : aliased constant Core_Second_Stage
+     := (16#C0# .. 16#F8# =>  --  011AC0 .. 011AF8
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Alphabetic
@@ -116,6 +60,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
               | ID_Start
               | XID_Continue
               | XID_Start => True,
-            others => False)));
+            others => False)),
+         others           =>
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)));
 
-end Matreshka.Internals.Unicode.Ucd.Core_010B;
+end Matreshka.Internals.Unicode.Ucd.Core_011A;

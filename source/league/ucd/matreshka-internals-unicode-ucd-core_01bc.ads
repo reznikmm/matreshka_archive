@@ -46,64 +46,65 @@ pragma Restrictions (No_Elaboration_Code);
 --  GNAT: enforce generation of preinitialized data section instead of
 --  generation of elaboration code.
 
-package Matreshka.Internals.Unicode.Ucd.Core_010B is
+package Matreshka.Internals.Unicode.Ucd.Core_01BC is
 
    pragma Preelaborate;
 
-   Group_010B : aliased constant Core_Second_Stage
-     := (16#36# .. 16#38# =>  --  010B36 .. 010B38
+   Group_01BC : aliased constant Core_Second_Stage
+     := (16#6B# .. 16#6F# =>  --  01BC6B .. 01BC6F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#39#           =>  --  010B39
-          (Other_Punctuation, Neutral,
-           Other, Other, Other, Break_After,
+         16#7D# .. 16#7F# =>  --  01BC7D .. 01BC7F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#89# .. 16#8F# =>  --  01BC89 .. 01BC8F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#9A# .. 16#9B# =>  --  01BC9A .. 01BC9B
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#9C#           =>  --  01BC9C
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#3A# .. 16#3F# =>  --  010B3A .. 010B3F
+         16#9D#           =>  --  01BC9D
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#9E#           =>  --  01BC9E
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#9F#           =>  --  01BC9F
           (Other_Punctuation, Neutral,
-           Other, Other, Other, Break_After,
-           (Terminal_Punctuation
+           Other, Other, S_Term, Break_After,
+           (STerm
+              | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#56# .. 16#57# =>  --  010B56 .. 010B57
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#58# .. 16#5F# =>  --  010B58 .. 010B5F
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
+         16#A0# .. 16#A3# =>  --  01BCA0 .. 01BCA3
+          (Format, Neutral,
+           Control, Format, Format, Combining_Mark,
+           (Case_Ignorable
+              | Default_Ignorable_Code_Point
+              | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#73# .. 16#77# =>  --  010B73 .. 010B77
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#78# .. 16#7F# =>  --  010B78 .. 010B7F
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#92# .. 16#98# =>  --  010B92 .. 010B98
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#99# .. 16#9C# =>  --  010B99 .. 010B9C
-          (Other_Punctuation, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Terminal_Punctuation
-              | Grapheme_Base => True,
-            others => False)),
-         16#9D# .. 16#A8# =>  --  010B9D .. 010BA8
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#A9# .. 16#AF# =>  --  010BA9 .. 010BAF
-          (Other_Number, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#B0# .. 16#FF# =>  --  010BB0 .. 010BFF
+         16#A4# .. 16#FF# =>  --  01BCA4 .. 01BCFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
@@ -118,4 +119,4 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
               | XID_Start => True,
             others => False)));
 
-end Matreshka.Internals.Unicode.Ucd.Core_010B;
+end Matreshka.Internals.Unicode.Ucd.Core_01BC;

@@ -101,6 +101,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0017 is
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
            (STerm
+              | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#37# .. 16#3F# =>  --  1737 .. 173F

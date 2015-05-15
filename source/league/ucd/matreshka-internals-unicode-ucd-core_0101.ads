@@ -84,16 +84,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#8A#           =>  --  01018A
+         16#8A# .. 16#8B# =>  --  01018A .. 01018B
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#8B# .. 16#8F# =>  --  01018B .. 01018F
+         16#8D# .. 16#8F# =>  --  01018D .. 01018F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#9C# .. 16#CF# =>  --  01019C .. 0101CF
+         16#9C# .. 16#9F# =>  --  01019C .. 01019F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#A1# .. 16#CF# =>  --  0101A1 .. 0101CF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

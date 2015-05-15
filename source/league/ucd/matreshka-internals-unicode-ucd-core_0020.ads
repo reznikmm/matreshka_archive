@@ -758,7 +758,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0020 is
            Other, Other, Other, Postfix_Numeric,
            (Grapheme_Base => True,
             others => False)),
-         16#BB# .. 16#CF# =>  --  20BB .. 20CF
+         16#BB#           =>  --  20BB
+          (Currency_Symbol, Neutral,
+           Other, Other, Other, Postfix_Numeric,
+           (Grapheme_Base => True,
+            others => False)),
+         16#BE# .. 16#CF# =>  --  20BE .. 20CF
           (Unassigned, Neutral,
            Other, Other, Other, Prefix_Numeric,
            (others => False)),

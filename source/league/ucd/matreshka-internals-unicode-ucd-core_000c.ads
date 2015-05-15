@@ -52,9 +52,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_000C is
 
    Group_000C : aliased constant Core_Second_Stage
      := (16#00#           =>  --  0C00
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#01# .. 16#03# =>  --  0C01 .. 0C03
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
@@ -77,10 +83,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000C is
            Other, Other, Other, Unknown,
            (others => False)),
          16#29#           =>  --  0C29
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#34#           =>  --  0C34
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
@@ -214,10 +216,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_000C is
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#80# .. 16#81# =>  --  0C80 .. 0C81
+         16#80#           =>  --  0C80
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
+         16#81#           =>  --  0C81
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#82# .. 16#83# =>  --  0C82 .. 0C83
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,

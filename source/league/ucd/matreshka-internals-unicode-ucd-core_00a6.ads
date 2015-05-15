@@ -1235,7 +1235,85 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A6 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#98# .. 16#9E# =>  --  A698 .. A69E
+         16#98#           =>  --  A698
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#99#           =>  --  A699
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9A#           =>  --  A69A
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#9B#           =>  --  A69B
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9C# .. 16#9D# =>  --  A69C .. A69D
+          (Modifier_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
+              | Cased
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#9E#           =>  --  A69E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

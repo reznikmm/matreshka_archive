@@ -1239,7 +1239,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#5B#           =>  --  025B
+         16#5B# .. 16#5C# =>  --  025B .. 025C
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
@@ -1274,6 +1274,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
            Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
               | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start
@@ -1342,7 +1345,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#6B#           =>  --  026B
+         16#6B# .. 16#6C# =>  --  026B .. 026C
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
@@ -1447,7 +1450,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#88# .. 16#8C# =>  --  0288 .. 028C
+         16#87# .. 16#8C# =>  --  0287 .. 028C
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
            (Alphabetic
@@ -1493,6 +1496,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0002 is
            (Soft_Dotted
               | Alphabetic
               | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9E#           =>  --  029E
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start

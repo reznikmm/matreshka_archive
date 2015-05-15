@@ -58,6 +58,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
+         16#0B# .. 16#0C# =>  --  01F10B .. 01F10C
+          (Other_Number, Neutral,
+           Other, Other, Other, Ambiguous,
+           (Grapheme_Base => True,
+            others => False)),
          16#10# .. 16#2A# =>  --  01F110 .. 01F12A
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
@@ -87,8 +92,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
             others => False)),
          16#30# .. 16#49# =>  --  01F130 .. 01F149
           (Other_Symbol, Ambiguous,
-           Other, Other, Other, Ambiguous,
-           (Grapheme_Base
+           Other, A_Letter, Upper, Ambiguous,
+           (Other_Alphabetic
+              | Other_Uppercase
+              | Alphabetic
+              | Cased
+              | Grapheme_Base
+              | Uppercase
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#4A# .. 16#4F# =>  --  01F14A .. 01F14F
@@ -100,8 +110,13 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
             others => False)),
          16#50# .. 16#69# =>  --  01F150 .. 01F169
           (Other_Symbol, Ambiguous,
-           Other, Other, Other, Ambiguous,
-           (Grapheme_Base => True,
+           Other, A_Letter, Upper, Ambiguous,
+           (Other_Alphabetic
+              | Other_Uppercase
+              | Alphabetic
+              | Cased
+              | Grapheme_Base
+              | Uppercase => True,
             others => False)),
          16#6A# .. 16#6B# =>  --  01F16A .. 01F16B
           (Other_Symbol, Neutral,
@@ -110,7 +125,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#70# .. 16#8F# =>  --  01F170 .. 01F18F
+         16#70# .. 16#89# =>  --  01F170 .. 01F189
+          (Other_Symbol, Ambiguous,
+           Other, A_Letter, Upper, Ambiguous,
+           (Other_Alphabetic
+              | Other_Uppercase
+              | Alphabetic
+              | Cased
+              | Grapheme_Base
+              | Uppercase => True,
+            others => False)),
+         16#8A# .. 16#8F# =>  --  01F18A .. 01F18F
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Grapheme_Base => True,

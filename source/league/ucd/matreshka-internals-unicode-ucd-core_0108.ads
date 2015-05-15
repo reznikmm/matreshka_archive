@@ -51,66 +51,30 @@ package Matreshka.Internals.Unicode.Ucd.Core_0108 is
    pragma Preelaborate;
 
    Group_0108 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#05# =>  --  010800 .. 010805
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#08#           =>  --  010808
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#0A# .. 16#35# =>  --  01080A .. 010835
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#37# .. 16#38# =>  --  010837 .. 010838
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#3C#           =>  --  01083C
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#3F# .. 16#55# =>  --  01083F .. 010855
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
+     := (16#06# .. 16#07# =>  --  010806 .. 010807
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#09#           =>  --  010809
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#36#           =>  --  010836
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#39# .. 16#3B# =>  --  010839 .. 01083B
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#3D# .. 16#3E# =>  --  01083D .. 01083E
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#56#           =>  --  010856
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
          16#57#           =>  --  010857
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
@@ -122,9 +86,38 @@ package Matreshka.Internals.Unicode.Ucd.Core_0108 is
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         others           =>
+         16#77# .. 16#78# =>  --  010877 .. 010878
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#79# .. 16#7F# =>  --  010879 .. 01087F
+          (Other_Number, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#9F# .. 16#A6# =>  --  01089F .. 0108A6
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (others => False)));
+           (others => False)),
+         16#A7# .. 16#AF# =>  --  0108A7 .. 0108AF
+          (Other_Number, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#B0# .. 16#FF# =>  --  0108B0 .. 0108FF
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         others           =>
+          (Other_Letter, Neutral,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0108;

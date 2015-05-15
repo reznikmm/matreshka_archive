@@ -61,16 +61,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#03# .. 16#26# =>  --  011103 .. 011126
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#27# .. 16#2B# =>  --  011127 .. 01112B
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
@@ -132,6 +122,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
+         16#35#           =>  --  011135
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
          16#36# .. 16#3F# =>  --  011136 .. 01113F
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
@@ -151,6 +145,33 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
+         16#44# .. 16#4F# =>  --  011144 .. 01114F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#73#           =>  --  011173
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#74#           =>  --  011174
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#75#           =>  --  011175
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Break_Before,
+           (Grapheme_Base => True,
+            others => False)),
+         16#77# .. 16#7F# =>  --  011177 .. 01117F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
          16#80# .. 16#81# =>  --  011180 .. 011181
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
@@ -169,16 +190,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
-            others => False)),
-         16#83# .. 16#B2# =>  --  011183 .. 0111B2
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
             others => False)),
          16#B3# .. 16#B5# =>  --  0111B3 .. 0111B5
           (Spacing_Mark, Neutral,
@@ -217,16 +228,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#C1# .. 16#C4# =>  --  0111C1 .. 0111C4
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
          16#C5# .. 16#C6# =>  --  0111C5 .. 0111C6
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
@@ -244,6 +245,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
            Other, Other, Other, Break_After,
            (Grapheme_Base => True,
             others => False)),
+         16#C9# .. 16#CC# =>  --  0111C9 .. 0111CC
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#CD#           =>  --  0111CD
+          (Other_Punctuation, Neutral,
+           Other, Other, S_Term, Alphabetic,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#CE# .. 16#CF# =>  --  0111CE .. 0111CF
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
          16#D0# .. 16#D9# =>  --  0111D0 .. 0111D9
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
@@ -251,9 +267,28 @@ package Matreshka.Internals.Unicode.Ucd.Core_0111 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         others           =>
+         16#DB# .. 16#E0# =>  --  0111DB .. 0111E0
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           (others => False)));
+           (others => False)),
+         16#E1# .. 16#F4# =>  --  0111E1 .. 0111F4
+          (Other_Number, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#F5# .. 16#FF# =>  --  0111F5 .. 0111FF
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         others           =>
+          (Other_Letter, Neutral,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_0111;

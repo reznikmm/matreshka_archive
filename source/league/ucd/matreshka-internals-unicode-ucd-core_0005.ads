@@ -351,7 +351,67 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#28# .. 16#30# =>  --  0528 .. 0530
+         16#29#           =>  --  0529
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#2B#           =>  --  052B
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#2D#           =>  --  052D
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#2F#           =>  --  052F
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#30#           =>  --  0530
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
@@ -371,29 +431,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#5A# .. 16#5B# =>  --  055A .. 055B
+         16#5A# .. 16#5C# =>  --  055A .. 055C
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
-            others => False)),
-         16#5C#           =>  --  055C
-          (Other_Punctuation, Neutral,
-           Other, Other, S_Term, Alphabetic,
-           (STerm
-              | Grapheme_Base => True,
             others => False)),
          16#5D#           =>  --  055D
           (Other_Punctuation, Neutral,
            Other, Other, S_Continue, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#5E#           =>  --  055E
-          (Other_Punctuation, Neutral,
-           Other, Other, S_Term, Alphabetic,
-           (STerm
-              | Grapheme_Base => True,
-            others => False)),
-         16#5F#           =>  --  055F
+         16#5E# .. 16#5F# =>  --  055E .. 055F
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
@@ -453,10 +501,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_0005 is
               | Hyphen
               | Grapheme_Base => True,
             others => False)),
-         16#8B# .. 16#8E# =>  --  058B .. 058E
+         16#8B# .. 16#8C# =>  --  058B .. 058C
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
+         16#8D# .. 16#8E# =>  --  058D .. 058E
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
          16#8F#           =>  --  058F
           (Currency_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,

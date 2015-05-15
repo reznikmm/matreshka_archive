@@ -63,7 +63,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F0 is
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#BF# .. 16#C0# =>  --  01F0BF .. 01F0C0
+         16#C0#           =>  --  01F0C0
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
@@ -71,7 +71,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F0 is
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#E0# .. 16#FF# =>  --  01F0E0 .. 01F0FF
+         16#F6# .. 16#FF# =>  --  01F0F6 .. 01F0FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

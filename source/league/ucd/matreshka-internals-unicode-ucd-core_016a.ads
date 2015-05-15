@@ -61,6 +61,56 @@ package Matreshka.Internals.Unicode.Ucd.Core_016A is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#40# .. 16#5E# =>  --  016A40 .. 016A5E
+          (Other_Letter, Neutral,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#60# .. 16#69# =>  --  016A60 .. 016A69
+          (Decimal_Number, Neutral,
+           Other, Numeric, Numeric, Numeric,
+           (Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#6E# .. 16#6F# =>  --  016A6E .. 016A6F
+          (Other_Punctuation, Neutral,
+           Other, Other, S_Term, Break_After,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#D0# .. 16#ED# =>  --  016AD0 .. 016AED
+          (Other_Letter, Neutral,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#F0# .. 16#F4# =>  --  016AF0 .. 016AF4
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F5#           =>  --  016AF5
+          (Other_Punctuation, Neutral,
+           Other, Other, S_Term, Break_After,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,

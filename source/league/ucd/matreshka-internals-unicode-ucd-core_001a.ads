@@ -270,6 +270,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_001A is
            Other, Other, Other, Complex_Context,
            (Grapheme_Base => True,
             others => False)),
+         16#B0# .. 16#BD# =>  --  1AB0 .. 1ABD
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#BE#           =>  --  1ABE
+          (Enclosing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Case_Ignorable
+              | Grapheme_Extend => True,
+            others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,

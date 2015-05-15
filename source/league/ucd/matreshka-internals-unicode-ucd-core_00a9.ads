@@ -280,7 +280,65 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A9 is
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#E0# .. 16#FF# =>  --  A9E0 .. A9FF
+         16#E0# .. 16#E4# =>  --  A9E0 .. A9E4
+          (Other_Letter, Neutral,
+           Other, Other, O_Letter, Complex_Context,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#E5#           =>  --  A9E5
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Complex_Context,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E6#           =>  --  A9E6
+          (Modifier_Letter, Neutral,
+           Other, Other, O_Letter, Complex_Context,
+           (Extender
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#E7# .. 16#EF# =>  --  A9E7 .. A9EF
+          (Other_Letter, Neutral,
+           Other, Other, O_Letter, Complex_Context,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#F0# .. 16#F9# =>  --  A9F0 .. A9F9
+          (Decimal_Number, Neutral,
+           Other, Numeric, Numeric, Numeric,
+           (Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#FA# .. 16#FE# =>  --  A9FA .. A9FE
+          (Other_Letter, Neutral,
+           Other, Other, O_Letter, Complex_Context,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#FF#           =>  --  A9FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

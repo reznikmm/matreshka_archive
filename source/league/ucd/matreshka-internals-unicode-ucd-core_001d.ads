@@ -353,7 +353,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_001D is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#E7# .. 16#FB# =>  --  1DE7 .. 1DFB
+         16#E7# .. 16#F4# =>  --  1DE7 .. 1DF4
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F5#           =>  --  1DF5
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#F6# .. 16#FB# =>  --  1DF6 .. 1DFB
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

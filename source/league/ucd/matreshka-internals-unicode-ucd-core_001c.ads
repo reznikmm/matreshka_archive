@@ -302,6 +302,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_001C is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#F8# .. 16#F9# =>  --  1CF8 .. 1CF9
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,

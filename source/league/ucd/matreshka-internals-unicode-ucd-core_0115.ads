@@ -46,12 +46,12 @@ pragma Restrictions (No_Elaboration_Code);
 --  GNAT: enforce generation of preinitialized data section instead of
 --  generation of elaboration code.
 
-package Matreshka.Internals.Unicode.Ucd.Core_0019 is
+package Matreshka.Internals.Unicode.Ucd.Core_0115 is
 
    pragma Preelaborate;
 
-   Group_0019 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#1E# =>  --  1900 .. 191E
+   Group_0115 : aliased constant Core_Second_Stage
+     := (16#80# .. 16#AE# =>  --  011580 .. 0115AE
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Alphabetic
@@ -61,11 +61,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#1F#           =>  --  191F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#20# .. 16#22# =>  --  1920 .. 1922
+         16#AF#           =>  --  0115AF
+          (Spacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Other_Grapheme_Extend
+              | Alphabetic
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B0# .. 16#B1# =>  --  0115B0 .. 0115B1
+          (Spacing_Mark, Neutral,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#B2# .. 16#B5# =>  --  0115B2 .. 0115B5
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -75,7 +90,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#23# .. 16#26# =>  --  1923 .. 1926
+         16#B8# .. 16#B9# =>  --  0115B8 .. 0115B9
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -84,7 +99,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#27# .. 16#28# =>  --  1927 .. 1928
+         16#BA# .. 16#BB# =>  --  0115BA .. 0115BB
+          (Spacing_Mark, Neutral,
+           Spacing_Mark, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue
+              | Expands_On_NFD
+              | Expands_On_NFKD => True,
+            others => False)),
+         16#BC# .. 16#BD# =>  --  0115BC .. 0115BD
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -94,7 +120,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#29# .. 16#2B# =>  --  1929 .. 192B
+         16#BE#           =>  --  0115BE
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
@@ -103,39 +129,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#2C# .. 16#2F# =>  --  192C .. 192F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#30# .. 16#31# =>  --  1930 .. 1931
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#32#           =>  --  1932
+         16#BF#           =>  --  0115BF
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
+           (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
+              | Grapheme_Link
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#33# .. 16#38# =>  --  1933 .. 1938
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#39# .. 16#3B# =>  --  1939 .. 193B
+         16#C0#           =>  --  0115C0
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
            (Diacritic
@@ -144,141 +148,40 @@ package Matreshka.Internals.Unicode.Ucd.Core_0019 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#3C# .. 16#3F# =>  --  193C .. 193F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#40#           =>  --  1940
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Alphabetic,
+         16#C1#           =>  --  0115C1
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Break_Before,
            (Grapheme_Base => True,
             others => False)),
-         16#41# .. 16#43# =>  --  1941 .. 1943
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#44# .. 16#45# =>  --  1944 .. 1945
+         16#C2# .. 16#C3# =>  --  0115C2 .. 0115C3
           (Other_Punctuation, Neutral,
-           Other, Other, S_Term, Exclamation,
+           Other, Other, S_Term, Break_After,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#46# .. 16#4F# =>  --  1946 .. 194F
-          (Decimal_Number, Neutral,
-           Other, Numeric, Numeric, Numeric,
-           (Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
+         16#C4# .. 16#C5# =>  --  0115C4 .. 0115C5
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Exclamation,
+           (Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
-         16#6E# .. 16#6F# =>  --  196E .. 196F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#75# .. 16#7F# =>  --  1975 .. 197F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#AC# .. 16#AF# =>  --  19AC .. 19AF
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#B0# .. 16#B4# =>  --  19B0 .. 19B4
-          (Spacing_Mark, Neutral,
-           Other, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#B5# .. 16#B7# =>  --  19B5 .. 19B7
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#B8# .. 16#B9# =>  --  19B8 .. 19B9
-          (Spacing_Mark, Neutral,
-           Other, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#BA#           =>  --  19BA
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#BB# .. 16#C0# =>  --  19BB .. 19C0
-          (Spacing_Mark, Neutral,
-           Other, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#C8# .. 16#C9# =>  --  19C8 .. 19C9
-          (Spacing_Mark, Neutral,
-           Other, Extend, Extend, Complex_Context,
-           (Other_Alphabetic
-              | Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#CA# .. 16#CF# =>  --  19CA .. 19CF
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#D0# .. 16#D9# =>  --  19D0 .. 19D9
-          (Decimal_Number, Neutral,
-           Other, Numeric, Numeric, Numeric,
-           (Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#DA#           =>  --  19DA
-          (Other_Number, Neutral,
-           Other, Other, Other, Complex_Context,
-           (Other_ID_Continue
-              | Grapheme_Base
-              | ID_Continue
-              | XID_Continue => True,
-            others => False)),
-         16#DB# .. 16#DD# =>  --  19DB .. 19DD
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#DE# .. 16#DF# =>  --  19DE .. 19DF
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Complex_Context,
-           (Grapheme_Base => True,
-            others => False)),
-         16#E0# .. 16#FF# =>  --  19E0 .. 19FF
-          (Other_Symbol, Neutral,
+         16#C6# .. 16#C8# =>  --  0115C6 .. 0115C8
+          (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           (Grapheme_Base => True,
+           (Extender
+              | Grapheme_Base => True,
+            others => False)),
+         16#C9#           =>  --  0115C9
+          (Other_Punctuation, Neutral,
+           Other, Other, S_Term, Break_After,
+           (STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
             others => False)),
          others           =>
-          (Other_Letter, Neutral,
-           Other, Other, O_Letter, Complex_Context,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)));
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)));
 
-end Matreshka.Internals.Unicode.Ucd.Core_0019;
+end Matreshka.Internals.Unicode.Ucd.Core_0115;

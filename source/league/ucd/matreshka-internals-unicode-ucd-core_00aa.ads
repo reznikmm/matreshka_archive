@@ -214,10 +214,23 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AA is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#7C# .. 16#7F# =>  --  AA7C .. AA7F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
+         16#7C#           =>  --  AA7C
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Complex_Context,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#7D#           =>  --  AA7D
+          (Spacing_Mark, Neutral,
+           Other, Extend, Extend, Complex_Context,
+           (Diacritic
+              | Grapheme_Base
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#B0#           =>  --  AAB0
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Complex_Context,

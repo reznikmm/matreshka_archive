@@ -71,6 +71,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_0102 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#E0#           =>  --  0102E0
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#E1# .. 16#FB# =>  --  0102E1 .. 0102FB
+          (Other_Number, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,

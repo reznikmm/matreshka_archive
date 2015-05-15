@@ -51,12 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
    pragma Preelaborate;
 
    Group_0027 : aliased constant Core_Second_Stage
-     := (16#00#           =>  --  2700
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (Pattern_Syntax => True,
-            others => False)),
-         16#01# .. 16#04# =>  --  2701 .. 2704
+     := (16#00# .. 16#04# =>  --  2700 .. 2704
           (Other_Symbol, Neutral,
            Other, Other, Other, Ideographic,
            (Pattern_Syntax
@@ -80,7 +75,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0027 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#5B# .. 16#5E# =>  --  275B .. 275E
+         16#5B# .. 16#60# =>  --  275B .. 2760
           (Other_Symbol, Neutral,
            Other, Other, Close, Quotation,
            (Pattern_Syntax

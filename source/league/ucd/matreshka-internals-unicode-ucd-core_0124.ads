@@ -51,7 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0124 is
    pragma Preelaborate;
 
    Group_0124 : aliased constant Core_Second_Stage
-     := (16#00# .. 16#62# =>  --  012400 .. 012462
+     := (16#00# .. 16#6E# =>  --  012400 .. 01246E
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Alphabetic
@@ -61,7 +61,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0124 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#70# .. 16#73# =>  --  012470 .. 012473
+         16#70# .. 16#74# =>  --  012470 .. 012474
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
            (Terminal_Punctuation

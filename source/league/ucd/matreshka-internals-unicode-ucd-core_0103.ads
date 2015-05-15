@@ -51,11 +51,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
    pragma Preelaborate;
 
    Group_0103 : aliased constant Core_Second_Stage
-     := (16#1F#           =>  --  01031F
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#20# .. 16#23# =>  --  010320 .. 010323
+     := (16#20# .. 16#23# =>  --  010320 .. 010323
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
@@ -84,7 +80,21 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#4B# .. 16#7F# =>  --  01034B .. 01037F
+         16#4B# .. 16#4F# =>  --  01034B .. 01034F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#76# .. 16#7A# =>  --  010376 .. 01037A
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#7B# .. 16#7F# =>  --  01037B .. 01037F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

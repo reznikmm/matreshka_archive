@@ -393,11 +393,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_001B is
               | XID_Continue => True,
             others => False)),
          16#AC# .. 16#AD# =>  --  1BAC .. 1BAD
-          (Spacing_Mark, Neutral,
-           Spacing_Mark, Extend, Extend, Combining_Mark,
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
            (Other_Alphabetic
               | Alphabetic
-              | Grapheme_Base
+              | Case_Ignorable
+              | Grapheme_Extend
               | ID_Continue
               | XID_Continue => True,
             others => False)),

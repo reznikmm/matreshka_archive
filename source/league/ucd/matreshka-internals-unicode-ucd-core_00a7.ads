@@ -1649,6 +1649,173 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A7 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#94# .. 16#95# =>  --  A794 .. A795
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#96#           =>  --  A796
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#97#           =>  --  A797
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#98#           =>  --  A798
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#99#           =>  --  A799
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9A#           =>  --  A79A
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#9B#           =>  --  A79B
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9C#           =>  --  A79C
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#9D#           =>  --  A79D
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#9E#           =>  --  A79E
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#9F#           =>  --  A79F
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#A0#           =>  --  A7A0
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
@@ -1804,7 +1971,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A7 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#AA#           =>  --  A7AA
+         16#AA# .. 16#AD# =>  --  A7AA .. A7AD
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
            (Alphabetic
@@ -1819,6 +1986,32 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A7 is
               | XID_Continue
               | XID_Start
               | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#B0# .. 16#B1# =>  --  A7B0 .. A7B1
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#F7#           =>  --  A7F7
+          (Other_Letter, Neutral,
+           Other, A_Letter, O_Letter, Alphabetic,
+           (Alphabetic
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | XID_Continue
+              | XID_Start => True,
             others => False)),
          16#F8# .. 16#F9# =>  --  A7F8 .. A7F9
           (Modifier_Letter, Neutral,

@@ -52,14 +52,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FD is
 
    Group_00FD : aliased constant Core_Second_Stage
      := (16#3E#           =>  --  FD3E
-          (Open_Punctuation, Neutral,
-           Other, Other, Close, Open_Punctuation,
+          (Close_Punctuation, Neutral,
+           Other, Other, Close, Close_Punctuation,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#3F#           =>  --  FD3F
-          (Close_Punctuation, Neutral,
-           Other, Other, Close, Close_Punctuation,
+          (Open_Punctuation, Neutral,
+           Other, Other, Close, Open_Punctuation,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),

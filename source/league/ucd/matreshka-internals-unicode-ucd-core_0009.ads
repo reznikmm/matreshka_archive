@@ -257,14 +257,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0009 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#78#           =>  --  0978
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
-         16#80#           =>  --  0980
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)),
          16#81#           =>  --  0981
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,

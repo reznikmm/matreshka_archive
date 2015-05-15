@@ -101,6 +101,53 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AB is
               | XID_Continue
               | XID_Start => True,
             others => False)),
+         16#30# .. 16#5A# =>  --  AB30 .. AB5A
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
+         16#5B#           =>  --  AB5B
+          (Modifier_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Diacritic
+              | Case_Ignorable
+              | Grapheme_Base => True,
+            others => False)),
+         16#5C# .. 16#5F# =>  --  AB5C .. AB5F
+          (Modifier_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Diacritic
+              | Other_Lowercase
+              | Alphabetic
+              | Cased
+              | Case_Ignorable
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#64# .. 16#65# =>  --  AB64 .. AB65
+          (Lowercase_Letter, Neutral,
+           Other, A_Letter, Lower, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Lowercase
+              | XID_Continue
+              | XID_Start => True,
+            others => False)),
          16#C0# .. 16#E2# =>  --  ABC0 .. ABE2
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,

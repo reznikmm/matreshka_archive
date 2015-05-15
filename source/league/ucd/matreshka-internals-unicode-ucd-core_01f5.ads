@@ -56,44 +56,42 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F5 is
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#07# .. 16#16# =>  --  01F507 .. 01F516
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base => True,
-            others => False)),
          16#17# .. 16#24# =>  --  01F517 .. 01F524
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#25# .. 16#31# =>  --  01F525 .. 01F531
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#32# .. 16#3D# =>  --  01F532 .. 01F53D
+         16#32# .. 16#49# =>  --  01F532 .. 01F549
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#40# .. 16#43# =>  --  01F540 .. 01F543
+         16#4B# .. 16#4F# =>  --  01F54B .. 01F54F
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#7A#           =>  --  01F57A
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#A4#           =>  --  01F5A4
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#D4# .. 16#DB# =>  --  01F5D4 .. 01F5DB
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
-         16#50# .. 16#67# =>  --  01F550 .. 01F567
+         16#F4# .. 16#F9# =>  --  01F5F4 .. 01F5F9
           (Other_Symbol, Neutral,
-           Other, Other, Other, Ideographic,
-           (Grapheme_Base => True,
-            others => False)),
-         16#FB# .. 16#FF# =>  --  01F5FB .. 01F5FF
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Ideographic,
+           Other, Other, Other, Alphabetic,
            (Grapheme_Base => True,
             others => False)),
          others           =>
-          (Unassigned, Neutral,
-           Other, Other, Other, Unknown,
-           (others => False)));
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Ideographic,
+           (Grapheme_Base => True,
+            others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_01F5;

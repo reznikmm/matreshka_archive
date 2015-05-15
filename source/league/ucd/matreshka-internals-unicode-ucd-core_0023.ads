@@ -53,7 +53,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
    Group_0023 : aliased constant Core_Second_Stage
      := (16#08#           =>  --  2308
           (Open_Punctuation, Neutral,
-           Other, Other, Close, Alphabetic,
+           Other, Other, Close, Open_Punctuation,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -61,7 +61,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
             others => False)),
          16#09#           =>  --  2309
           (Close_Punctuation, Neutral,
-           Other, Other, Close, Alphabetic,
+           Other, Other, Close, Close_Punctuation,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -69,7 +69,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
             others => False)),
          16#0A#           =>  --  230A
           (Open_Punctuation, Neutral,
-           Other, Other, Close, Alphabetic,
+           Other, Other, Close, Open_Punctuation,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -77,7 +77,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
             others => False)),
          16#0B#           =>  --  230B
           (Close_Punctuation, Neutral,
-           Other, Other, Close, Alphabetic,
+           Other, Other, Close, Close_Punctuation,
            (Other_Math
               | Pattern_Syntax
               | Grapheme_Base
@@ -179,7 +179,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0023 is
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#F4# .. 16#FF# =>  --  23F4 .. 23FF
+         16#FB# .. 16#FF# =>  --  23FB .. 23FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Pattern_Syntax => True,

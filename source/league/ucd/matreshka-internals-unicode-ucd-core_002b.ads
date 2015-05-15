@@ -51,24 +51,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_002B is
    pragma Preelaborate;
 
    Group_002B : aliased constant Core_Second_Stage
-     := (16#00# .. 16#2F# =>  --  2B00 .. 2B2F
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Pattern_Syntax
-              | Grapheme_Base => True,
-            others => False)),
-         16#30# .. 16#44# =>  --  2B30 .. 2B44
+     := (16#30# .. 16#44# =>  --  2B30 .. 2B44
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
-            others => False)),
-         16#45# .. 16#46# =>  --  2B45 .. 2B46
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Pattern_Syntax
-              | Grapheme_Base => True,
             others => False)),
          16#47# .. 16#4C# =>  --  2B47 .. 2B4C
           (Math_Symbol, Neutral,
@@ -77,22 +65,42 @@ package Matreshka.Internals.Unicode.Ucd.Core_002B is
               | Grapheme_Base
               | Math => True,
             others => False)),
-         16#50# .. 16#54# =>  --  2B50 .. 2B54
-          (Other_Symbol, Neutral,
-           Other, Other, Other, Alphabetic,
-           (Pattern_Syntax
-              | Grapheme_Base => True,
-            others => False)),
          16#55# .. 16#59# =>  --  2B55 .. 2B59
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         others           =>
+         16#74# .. 16#75# =>  --  2B74 .. 2B75
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Pattern_Syntax => True,
+            others => False)),
+         16#96# .. 16#97# =>  --  2B96 .. 2B97
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (Pattern_Syntax => True,
+            others => False)),
+         16#BA# .. 16#BC# =>  --  2BBA .. 2BBC
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (Pattern_Syntax => True,
+            others => False)),
+         16#C9#           =>  --  2BC9
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (Pattern_Syntax => True,
+            others => False)),
+         16#D2# .. 16#FF# =>  --  2BD2 .. 2BFF
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (Pattern_Syntax => True,
+            others => False)),
+         others           =>
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
             others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_002B;

@@ -127,10 +127,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_0110 is
               | ID_Continue
               | XID_Continue => True,
             others => False)),
-         16#70# .. 16#7F# =>  --  011070 .. 01107F
+         16#70# .. 16#7E# =>  --  011070 .. 01107E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
+         16#7F#           =>  --  01107F
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Case_Ignorable
+              | Grapheme_Extend
+              | Grapheme_Link
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
          16#80# .. 16#81# =>  --  011080 .. 011081
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,

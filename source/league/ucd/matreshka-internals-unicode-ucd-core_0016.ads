@@ -100,7 +100,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0016 is
               | XID_Continue
               | XID_Start => True,
             others => False)),
-         16#F1# .. 16#FF# =>  --  16F1 .. 16FF
+         16#F9# .. 16#FF# =>  --  16F9 .. 16FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

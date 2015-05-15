@@ -51,15 +51,39 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F6 is
    pragma Preelaborate;
 
    Group_01F6 : aliased constant Core_Second_Stage
-     := (16#41# .. 16#44# =>  --  01F641 .. 01F644
+     := (16#43# .. 16#44# =>  --  01F643 .. 01F644
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#50# .. 16#7F# =>  --  01F650 .. 01F67F
+         16#50# .. 16#75# =>  --  01F650 .. 01F675
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#76# .. 16#78# =>  --  01F676 .. 01F678
+          (Other_Symbol, Neutral,
+           Other, Other, Close, Quotation,
+           (Grapheme_Base => True,
+            others => False)),
+         16#79# .. 16#7B# =>  --  01F679 .. 01F67B
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Nonstarter,
+           (Grapheme_Base => True,
+            others => False)),
+         16#7C# .. 16#7F# =>  --  01F67C .. 01F67F
+          (Other_Symbol, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Grapheme_Base => True,
+            others => False)),
+         16#D0# .. 16#DF# =>  --  01F6D0 .. 01F6DF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
-         16#C6# .. 16#FF# =>  --  01F6C6 .. 01F6FF
+         16#ED# .. 16#EF# =>  --  01F6ED .. 01F6EF
+          (Unassigned, Neutral,
+           Other, Other, Other, Unknown,
+           (others => False)),
+         16#F4# .. 16#FF# =>  --  01F6F4 .. 01F6FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),

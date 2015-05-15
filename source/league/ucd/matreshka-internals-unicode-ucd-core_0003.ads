@@ -306,7 +306,23 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
               | Full_Composition_Exclusion
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
-         16#7F# .. 16#83# =>  --  037F .. 0383
+         16#7F#           =>  --  037F
+          (Uppercase_Letter, Neutral,
+           Other, A_Letter, Upper, Alphabetic,
+           (Alphabetic
+              | Cased
+              | Changes_When_Lowercased
+              | Changes_When_Casefolded
+              | Changes_When_Casemapped
+              | Grapheme_Base
+              | ID_Continue
+              | ID_Start
+              | Uppercase
+              | XID_Continue
+              | XID_Start
+              | Changes_When_NFKC_Casefolded => True,
+            others => False)),
+         16#80# .. 16#83# =>  --  0380 .. 0383
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (others => False)),
@@ -1102,6 +1118,9 @@ package Matreshka.Internals.Unicode.Ucd.Core_0003 is
            (Soft_Dotted
               | Alphabetic
               | Cased
+              | Changes_When_Uppercased
+              | Changes_When_Titlecased
+              | Changes_When_Casemapped
               | Grapheme_Base
               | ID_Continue
               | ID_Start

@@ -294,7 +294,48 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
               | Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
-         16#3C# .. 16#7F# =>  --  2E3C .. 2E7F
+         16#3C#           =>  --  2E3C
+          (Other_Punctuation, Neutral,
+           Other, Other, S_Term, Break_After,
+           (Pattern_Syntax
+              | STerm
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#3D# .. 16#3E# =>  --  2E3D .. 2E3E
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Break_After,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#3F#           =>  --  2E3F
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Alphabetic,
+           (Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#40#           =>  --  2E40
+          (Dash_Punctuation, Neutral,
+           Other, Other, Other, Break_After,
+           (Dash
+              | Pattern_Syntax
+              | Grapheme_Base => True,
+            others => False)),
+         16#41#           =>  --  2E41
+          (Other_Punctuation, Neutral,
+           Other, Other, Other, Break_After,
+           (Pattern_Syntax
+              | Terminal_Punctuation
+              | Grapheme_Base => True,
+            others => False)),
+         16#42#           =>  --  2E42
+          (Open_Punctuation, Neutral,
+           Other, Other, Close, Open_Punctuation,
+           (Pattern_Syntax
+              | Quotation_Mark
+              | Grapheme_Base => True,
+            others => False)),
+         16#43# .. 16#7F# =>  --  2E43 .. 2E7F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
            (Pattern_Syntax => True,

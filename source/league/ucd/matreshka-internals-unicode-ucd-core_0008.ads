@@ -181,17 +181,7 @@ package Matreshka.Internals.Unicode.Ucd.Core_0008 is
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
-         16#A0#           =>  --  08A0
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start => True,
-            others => False)),
-         16#A2# .. 16#AC# =>  --  08A2 .. 08AC
+         16#A0# .. 16#B2# =>  --  08A0 .. 08B2
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
            (Alphabetic
@@ -226,6 +216,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0008 is
            Extend, Extend, Extend, Combining_Mark,
            (Diacritic
               | Other_Alphabetic
+              | Alphabetic
+              | Case_Ignorable
+              | Grapheme_Extend
+              | ID_Continue
+              | XID_Continue => True,
+            others => False)),
+         16#FF#           =>  --  08FF
+          (Nonspacing_Mark, Neutral,
+           Extend, Extend, Extend, Combining_Mark,
+           (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
               | Grapheme_Extend
