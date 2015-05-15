@@ -1,4 +1,7 @@
 include Makefile.config
+
+CLDRDATA = data/cldr/27.0.1
+
 DESTDIR ?=
 DATAROOTDIR ?= $(PREFIX)/share
 INSTALL_PROJECT_DIR    ?= $(DESTDIR)$(GPRDIR)/matreshka
@@ -623,109 +626,101 @@ cldr_data:
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/cldr/common/collation
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/cldr/common/dtd
 	$(INSTALL) -d $(INSTALL_SHARE_DIR)/cldr/common/uca
-	$(INSTALL_data) data/cldr/25/common/uca/allkeys_CLDR.txt $(INSTALL_SHARE_DIR)/cldr/common/uca/allkeys_CLDR.txt
-	$(INSTALL_data) data/cldr/25/common/dtd/ldml.dtd $(INSTALL_SHARE_DIR)/cldr/common/dtd/ldml.dtd
-	$(INSTALL_data) data/cldr/25/common/collation/aa.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/aa.xml
-	$(INSTALL_data) data/cldr/25/common/collation/af.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/af.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ar.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ar.xml
-	$(INSTALL_data) data/cldr/25/common/collation/as.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/as.xml
-	$(INSTALL_data) data/cldr/25/common/collation/az.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/az.xml
-	$(INSTALL_data) data/cldr/25/common/collation/be.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/be.xml
-	$(INSTALL_data) data/cldr/25/common/collation/bg.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bg.xml
-	$(INSTALL_data) data/cldr/25/common/collation/bn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bn.xml
-	$(INSTALL_data) data/cldr/25/common/collation/bs.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bs.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ca.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ca.xml
-	$(INSTALL_data) data/cldr/25/common/collation/chr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/chr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/cs.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/cs.xml
-	$(INSTALL_data) data/cldr/25/common/collation/cy.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/cy.xml
-	$(INSTALL_data) data/cldr/25/common/collation/da.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/da.xml
-	$(INSTALL_data) data/cldr/25/common/collation/de.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/de.xml
-	$(INSTALL_data) data/cldr/25/common/collation/dz.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/dz.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ee.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ee.xml
-	$(INSTALL_data) data/cldr/25/common/collation/el.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/el.xml
-	$(INSTALL_data) data/cldr/25/common/collation/en.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/en.xml
-	$(INSTALL_data) data/cldr/25/common/collation/eo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/eo.xml
-	$(INSTALL_data) data/cldr/25/common/collation/es.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/es.xml
-	$(INSTALL_data) data/cldr/25/common/collation/et.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/et.xml
-	$(INSTALL_data) data/cldr/25/common/collation/fa.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fa.xml
-	$(INSTALL_data) data/cldr/25/common/collation/fil.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fil.xml
-	$(INSTALL_data) data/cldr/25/common/collation/fi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fi.xml
-	$(INSTALL_data) data/cldr/25/common/collation/fo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fo.xml
-	$(INSTALL_data) data/cldr/25/common/collation/fr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ga.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ga.xml
-	$(INSTALL_data) data/cldr/25/common/collation/gl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/gl.xml
-	$(INSTALL_data) data/cldr/25/common/collation/gu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/gu.xml
-	$(INSTALL_data) data/cldr/25/common/collation/haw.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/haw.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ha.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ha.xml
-	$(INSTALL_data) data/cldr/25/common/collation/he.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/he.xml
-	$(INSTALL_data) data/cldr/25/common/collation/hi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hi.xml
-	$(INSTALL_data) data/cldr/25/common/collation/hr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/hu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hu.xml
-	$(INSTALL_data) data/cldr/25/common/collation/hy.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hy.xml
-	$(INSTALL_data) data/cldr/25/common/collation/id.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/id.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ig.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ig.xml
-	$(INSTALL_data) data/cldr/25/common/collation/is.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/is.xml
-	$(INSTALL_data) data/cldr/25/common/collation/it.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/it.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ja.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ja.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ka.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ka.xml
-	$(INSTALL_data) data/cldr/25/common/collation/kk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kk.xml
-	$(INSTALL_data) data/cldr/25/common/collation/kl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kl.xml
-	$(INSTALL_data) data/cldr/25/common/collation/km.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/km.xml
-	$(INSTALL_data) data/cldr/25/common/collation/kn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kn.xml
-	$(INSTALL_data) data/cldr/25/common/collation/kok.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kok.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ko.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ko.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ky.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ky.xml
-	$(INSTALL_data) data/cldr/25/common/collation/lkt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lkt.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ln.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ln.xml
-	$(INSTALL_data) data/cldr/25/common/collation/lt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lt.xml
-	$(INSTALL_data) data/cldr/25/common/collation/lv.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lv.xml
-	$(INSTALL_data) data/cldr/25/common/collation/mk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mk.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ml.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ml.xml
-	$(INSTALL_data) data/cldr/25/common/collation/mr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ms.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ms.xml
-	$(INSTALL_data) data/cldr/25/common/collation/mt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mt.xml
-	$(INSTALL_data) data/cldr/25/common/collation/my.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/my.xml
-	$(INSTALL_data) data/cldr/25/common/collation/nb.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nb.xml
-	$(INSTALL_data) data/cldr/25/common/collation/nl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nl.xml
-	$(INSTALL_data) data/cldr/25/common/collation/nn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nn.xml
-	$(INSTALL_data) data/cldr/25/common/collation/nso.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nso.xml
-	$(INSTALL_data) data/cldr/25/common/collation/om.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/om.xml
-	$(INSTALL_data) data/cldr/25/common/collation/or.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/or.xml
-	$(INSTALL_data) data/cldr/25/common/collation/pa.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pa.xml
-	$(INSTALL_data) data/cldr/25/common/collation/pl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pl.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ps.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ps.xml
-	$(INSTALL_data) data/cldr/25/common/collation/pt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pt.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ro.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ro.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ru.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ru.xml
-	$(INSTALL_data) data/cldr/25/common/collation/se.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/se.xml
-	$(INSTALL_data) data/cldr/25/common/collation/si.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/si.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sk.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sl.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sq.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sq.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ssy.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ssy.xml
-	$(INSTALL_data) data/cldr/25/common/collation/st.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/st.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sv.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sv.xml
-	$(INSTALL_data) data/cldr/25/common/collation/sw.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sw.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ta.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ta.xml
-	$(INSTALL_data) data/cldr/25/common/collation/te.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/te.xml
-	$(INSTALL_data) data/cldr/25/common/collation/th.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/th.xml
-	$(INSTALL_data) data/cldr/25/common/collation/tn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/tn.xml
-	$(INSTALL_data) data/cldr/25/common/collation/to.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/to.xml
-	$(INSTALL_data) data/cldr/25/common/collation/tr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/tr.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ug.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ug.xml
-	$(INSTALL_data) data/cldr/25/common/collation/uk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/uk.xml
-	$(INSTALL_data) data/cldr/25/common/collation/ur.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ur.xml
-	$(INSTALL_data) data/cldr/25/common/collation/vi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/vi.xml
-	$(INSTALL_data) data/cldr/25/common/collation/vo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/vo.xml
-	$(INSTALL_data) data/cldr/25/common/collation/wae.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/wae.xml
-	$(INSTALL_data) data/cldr/25/common/collation/xh.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/xh.xml
-	$(INSTALL_data) data/cldr/25/common/collation/yo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/yo.xml
-	$(INSTALL_data) data/cldr/25/common/collation/zh.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/zh.xml
-	$(INSTALL_data) data/cldr/25/common/collation/zu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/zu.xml
+	$(INSTALL_data) $(CLDRDATA)/common/uca/allkeys_CLDR.txt $(INSTALL_SHARE_DIR)/cldr/common/uca/allkeys_CLDR.txt
+	$(INSTALL_data) $(CLDRDATA)/common/dtd/ldml.dtd $(INSTALL_SHARE_DIR)/cldr/common/dtd/ldml.dtd
+	$(INSTALL_data) $(CLDRDATA)/common/collation/af.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/af.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ar.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ar.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/as.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/as.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/az.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/az.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/be.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/be.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/bg.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bg.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/bn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bn.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/bs.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/bs.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ca.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ca.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/chr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/chr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/cs.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/cs.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/cy.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/cy.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/da.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/da.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/de.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/de.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/dz.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/dz.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ee.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ee.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/el.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/el.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/en.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/en.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/eo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/eo.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/es.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/es.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/et.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/et.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/fa.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fa.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/fil.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fil.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/fi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fi.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/fo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fo.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/fr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/fr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ga.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ga.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/gl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/gl.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/gu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/gu.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/haw.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/haw.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ha.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ha.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/he.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/he.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/hi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hi.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/hr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/hu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hu.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/hy.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/hy.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/id.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/id.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ig.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ig.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/is.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/is.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/it.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/it.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ja.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ja.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ka.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ka.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/kk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kk.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/kl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kl.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/km.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/km.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/kn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kn.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/kok.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/kok.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ko.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ko.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ky.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ky.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/lkt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lkt.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ln.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ln.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/lt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lt.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/lv.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/lv.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/mk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mk.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ml.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ml.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/mr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ms.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ms.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/mt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/mt.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/my.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/my.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/nb.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nb.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/nl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nl.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/nn.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/nn.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/om.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/om.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/or.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/or.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/pa.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pa.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/pl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pl.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ps.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ps.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/pt.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/pt.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ro.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ro.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ru.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ru.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/se.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/se.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/si.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/si.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sk.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sl.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sl.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sq.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sq.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sv.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sv.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/sw.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/sw.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ta.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ta.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/te.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/te.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/th.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/th.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/to.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/to.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/tr.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/tr.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ug.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ug.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/uk.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/uk.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/ur.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/ur.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/vi.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/vi.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/wae.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/wae.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/yo.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/yo.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/zh.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/zh.xml
+	$(INSTALL_data) $(CLDRDATA)/common/collation/zu.xml $(INSTALL_SHARE_DIR)/cldr/common/collation/zu.xml
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/uca/allkeys_CLDR.txt" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/dtd/ldml.dtd" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/aa.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/af.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/ar.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/as.xml" >> .objs/league-lib.files
@@ -788,7 +783,6 @@ cldr_data:
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/nb.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/nl.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/nn.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/nso.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/om.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/or.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/pa.xml" >> .objs/league-lib.files
@@ -803,23 +797,18 @@ cldr_data:
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/sl.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/sq.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/sr.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/ssy.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/st.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/sv.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/sw.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/ta.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/te.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/th.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/tn.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/to.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/tr.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/ug.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/uk.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/ur.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/vi.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/vo.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/wae.xml" >> .objs/league-lib.files
-	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/xh.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/yo.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/zh.xml" >> .objs/league-lib.files
 	echo "%attr(-,root,root) %{_datadir}/matreshka/cldr/common/collation/zu.xml" >> .objs/league-lib.files
