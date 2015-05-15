@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
      := (16#00# .. 16#0A# =>  --  01F100 .. 01F10A
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Compat,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -62,7 +61,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#10# .. 16#2A# =>  --  01F110 .. 01F12A
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Compat,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -70,14 +68,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#2B# .. 16#2C# =>  --  01F12B .. 01F12C
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#2D#           =>  --  01F12D
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Circle,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -85,7 +81,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#2E#           =>  --  01F12E
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Circle,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -93,14 +88,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#30# .. 16#49# =>  --  01F130 .. 01F149
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Square,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#4A# .. 16#4F# =>  --  01F14A .. 01F14F
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Square,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -108,13 +101,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#50# .. 16#69# =>  --  01F150 .. 01F169
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#6A# .. 16#6B# =>  --  01F16A .. 01F16B
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Super,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -122,13 +113,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#70# .. 16#8F# =>  --  01F170 .. 01F18F
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#90#           =>  --  01F190
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Square,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -136,19 +125,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_01F1 is
          16#91# .. 16#9A# =>  --  01F191 .. 01F19A
           (Other_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#E6# .. 16#FF# =>  --  01F1E6 .. 01F1FF
           (Other_Symbol, Neutral,
            Regional_Indicator, Regional_Indicator, Other, Regional_Indicator,
-           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_01F1;

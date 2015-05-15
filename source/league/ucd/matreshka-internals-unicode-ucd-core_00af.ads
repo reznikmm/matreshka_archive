@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
      := (16#10#           =>  --  AF10
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -67,7 +66,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#2C#           =>  --  AF2C
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -80,7 +78,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#48#           =>  --  AF48
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -93,7 +90,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#64#           =>  --  AF64
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -106,7 +102,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#80#           =>  --  AF80
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -119,7 +114,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#9C#           =>  --  AF9C
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -132,7 +126,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#B8#           =>  --  AFB8
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -145,7 +138,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#D4#           =>  --  AFD4
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -158,7 +150,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          16#F0#           =>  --  AFF0
           (Other_Letter, Wide,
            LV, A_Letter, O_Letter, H2,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -171,7 +162,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00AF is
          others           =>
           (Other_Letter, Wide,
            LVT, A_Letter, O_Letter, H3,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

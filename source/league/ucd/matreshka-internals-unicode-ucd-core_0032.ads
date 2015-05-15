@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
      := (16#1F#           =>  --  321F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#20# .. 16#29# =>  --  3220 .. 3229
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
-           Compat,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -67,28 +65,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
          16#44# .. 16#47# =>  --  3244 .. 3247
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#48# .. 16#4F# =>  --  3248 .. 324F
           (Other_Number, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Grapheme_Base => True,
-            others => False)),
-         16#50#           =>  --  3250
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           Square,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#51# .. 16#5F# =>  --  3251 .. 325F
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -96,50 +83,29 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
          16#60# .. 16#6D# =>  --  3260 .. 326D
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
            (Grapheme_Base
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#6E# .. 16#7E# =>  --  326E .. 327E
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           Circle,
-           (Grapheme_Base
-              | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#7F#           =>  --  327F
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#80# .. 16#89# =>  --  3280 .. 3289
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#8A# .. 16#B0# =>  --  328A .. 32B0
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#B1# .. 16#BF# =>  --  32B1 .. 32BF
           (Other_Number, Wide,
            Other, Other, Other, Ideographic,
-           Circle,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#CC# .. 16#CF# =>  --  32CC .. 32CF
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           Square,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -147,19 +113,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_0032 is
          16#D0# .. 16#FE# =>  --  32D0 .. 32FE
           (Other_Symbol, Wide,
            Other, Katakana, Other, Ideographic,
-           Circle,
            (Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          16#FF#           =>  --  32FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Compat,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,

@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
      := (16#79#           =>  --  013379
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Open_Punctuation,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,7 +64,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
          16#7A# .. 16#7B# =>  --  01337A .. 01337B
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Close_Punctuation,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -76,7 +74,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0133 is
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

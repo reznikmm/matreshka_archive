@@ -54,14 +54,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0014 is
      := (16#00#           =>  --  1400
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Dash
               | Grapheme_Base => True,
             others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

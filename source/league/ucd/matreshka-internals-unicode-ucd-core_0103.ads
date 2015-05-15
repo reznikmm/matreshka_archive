@@ -54,23 +54,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
      := (16#1F#           =>  --  01031F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#20# .. 16#23# =>  --  010320 .. 010323
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#24# .. 16#2F# =>  --  010324 .. 01032F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#41#           =>  --  010341
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -81,7 +77,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
          16#4A#           =>  --  01034A
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -92,36 +87,30 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
          16#4B# .. 16#7F# =>  --  01034B .. 01037F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#9E#           =>  --  01039E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#9F#           =>  --  01039F
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#C4# .. 16#C7# =>  --  0103C4 .. 0103C7
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#D0#           =>  --  0103D0
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#D1# .. 16#D5# =>  --  0103D1 .. 0103D5
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -132,12 +121,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0103 is
          16#D6# .. 16#FF# =>  --  0103D6 .. 0103FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

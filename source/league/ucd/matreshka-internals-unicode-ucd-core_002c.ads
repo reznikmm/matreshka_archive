@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
      := (16#2F#           =>  --  2C2F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#30# .. 16#5E# =>  --  2C30 .. 2C5E
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -75,12 +73,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#5F#           =>  --  2C5F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#61#           =>  --  2C61
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -96,7 +92,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#65# .. 16#66# =>  --  2C65 .. 2C66
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -112,7 +107,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#68#           =>  --  2C68
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -128,7 +122,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#6A#           =>  --  2C6A
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -144,7 +137,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#6C#           =>  --  2C6C
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -160,7 +152,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#71#           =>  --  2C71
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Grapheme_Base
@@ -173,7 +164,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#73#           =>  --  2C73
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -189,7 +179,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#74#           =>  --  2C74
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Grapheme_Base
@@ -202,7 +191,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#76#           =>  --  2C76
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -218,7 +206,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#77# .. 16#7B# =>  --  2C77 .. 2C7B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Grapheme_Base
@@ -231,7 +218,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#7C#           =>  --  2C7C
           (Modifier_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Sub,
            (Other_Lowercase
               | Soft_Dotted
               | Alphabetic
@@ -248,7 +234,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#7D#           =>  --  2C7D
           (Modifier_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Super,
            (Other_Lowercase
               | Alphabetic
               | Cased
@@ -264,7 +249,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#81#           =>  --  2C81
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -280,7 +264,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#83#           =>  --  2C83
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -296,7 +279,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#85#           =>  --  2C85
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -312,7 +294,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#87#           =>  --  2C87
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -328,7 +309,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#89#           =>  --  2C89
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -344,7 +324,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#8B#           =>  --  2C8B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -360,7 +339,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#8D#           =>  --  2C8D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -376,7 +354,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#8F#           =>  --  2C8F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -392,7 +369,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#91#           =>  --  2C91
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -408,7 +384,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#93#           =>  --  2C93
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -424,7 +399,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#95#           =>  --  2C95
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -440,7 +414,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#97#           =>  --  2C97
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -456,7 +429,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#99#           =>  --  2C99
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -472,7 +444,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#9B#           =>  --  2C9B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -488,7 +459,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#9D#           =>  --  2C9D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -504,7 +474,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#9F#           =>  --  2C9F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -520,7 +489,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#A1#           =>  --  2CA1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -536,7 +504,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#A3#           =>  --  2CA3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -552,7 +519,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#A5#           =>  --  2CA5
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -568,7 +534,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#A7#           =>  --  2CA7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -584,7 +549,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#A9#           =>  --  2CA9
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -600,7 +564,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#AB#           =>  --  2CAB
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -616,7 +579,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#AD#           =>  --  2CAD
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -632,7 +594,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#AF#           =>  --  2CAF
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -648,7 +609,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#B1#           =>  --  2CB1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -664,7 +624,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#B3#           =>  --  2CB3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -680,7 +639,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#B5#           =>  --  2CB5
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -696,7 +654,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#B7#           =>  --  2CB7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -712,7 +669,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#B9#           =>  --  2CB9
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -728,7 +684,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#BB#           =>  --  2CBB
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -744,7 +699,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#BD#           =>  --  2CBD
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -760,7 +714,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#BF#           =>  --  2CBF
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -776,7 +729,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#C1#           =>  --  2CC1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -792,7 +744,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#C3#           =>  --  2CC3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -808,7 +759,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#C5#           =>  --  2CC5
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -824,7 +774,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#C7#           =>  --  2CC7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -840,7 +789,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#C9#           =>  --  2CC9
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -856,7 +804,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#CB#           =>  --  2CCB
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -872,7 +819,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#CD#           =>  --  2CCD
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -888,7 +834,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#CF#           =>  --  2CCF
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -904,7 +849,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#D1#           =>  --  2CD1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -920,7 +864,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#D3#           =>  --  2CD3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -936,7 +879,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#D5#           =>  --  2CD5
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -952,7 +894,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#D7#           =>  --  2CD7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -968,7 +909,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#D9#           =>  --  2CD9
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -984,7 +924,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#DB#           =>  --  2CDB
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1000,7 +939,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#DD#           =>  --  2CDD
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1016,7 +954,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#DF#           =>  --  2CDF
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1032,7 +969,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#E1#           =>  --  2CE1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1048,7 +984,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#E3#           =>  --  2CE3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1064,7 +999,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#E4#           =>  --  2CE4
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Grapheme_Base
@@ -1077,13 +1011,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#E5# .. 16#EA# =>  --  2CE5 .. 2CEA
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#EC#           =>  --  2CEC
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1099,7 +1031,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#EE#           =>  --  2CEE
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1115,7 +1046,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#EF# .. 16#F1# =>  --  2CEF .. 2CF1
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -1125,7 +1055,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#F3#           =>  --  2CF3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Uppercased
@@ -1141,42 +1070,35 @@ package Matreshka.Internals.Unicode.Ucd.Core_002C is
          16#F4# .. 16#F8# =>  --  2CF4 .. 2CF8
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#F9#           =>  --  2CF9
           (Other_Punctuation, Neutral,
            Other, Other, Other, Exclamation,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#FA# .. 16#FC# =>  --  2CFA .. 2CFC
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#FD#           =>  --  2CFD
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#FE#           =>  --  2CFE
           (Other_Punctuation, Neutral,
            Other, Other, Other, Exclamation,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#FF#           =>  --  2CFF
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           None,
            (Alphabetic
               | Cased
               | Changes_When_Lowercased

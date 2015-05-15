@@ -54,29 +54,24 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
      := (16#00# .. 16#02# =>  --  010100 .. 010102
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#03# .. 16#06# =>  --  010103 .. 010106
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#07# .. 16#33# =>  --  010107 .. 010133
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#34# .. 16#36# =>  --  010134 .. 010136
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#40# .. 16#74# =>  --  010140 .. 010174
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -87,29 +82,24 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
          16#75# .. 16#78# =>  --  010175 .. 010178
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#8A#           =>  --  01018A
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#8B# .. 16#8F# =>  --  01018B .. 01018F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#9C# .. 16#CF# =>  --  01019C .. 0101CF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#FD#           =>  --  0101FD
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Case_Ignorable
               | Grapheme_Extend
               | ID_Continue
@@ -118,12 +108,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0101 is
          16#FE# .. 16#FF# =>  --  0101FE .. 0101FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)));
 

@@ -54,23 +54,19 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
      := (16#8D# .. 16#8F# =>  --  A48D .. A48F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#90# .. 16#C6# =>  --  A490 .. A4C6
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#C7# .. 16#CF# =>  --  A4C7 .. A4CF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#D0# .. 16#F7# =>  --  A4D0 .. A4F7
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -81,7 +77,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
          16#F8# .. 16#FD# =>  --  A4F8 .. A4FD
           (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Case_Ignorable
               | Grapheme_Base
@@ -93,14 +88,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
          16#FE#           =>  --  A4FE
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#FF#           =>  --  A4FF
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Break_After,
-           None,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
@@ -108,7 +101,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A4 is
          others           =>
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

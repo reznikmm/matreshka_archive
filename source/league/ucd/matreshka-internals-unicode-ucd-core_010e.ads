@@ -54,13 +54,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_010E is
      := (16#60# .. 16#7E# =>  --  010E60 .. 010E7E
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_010E;

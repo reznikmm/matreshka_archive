@@ -54,98 +54,84 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
      := (16#00# .. 16#01# =>  --  2E00 .. 2E01
           (Other_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#02#           =>  --  2E02
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#03#           =>  --  2E03
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#04#           =>  --  2E04
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#05#           =>  --  2E05
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#06# .. 16#08# =>  --  2E06 .. 2E08
           (Other_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#09#           =>  --  2E09
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#0A#           =>  --  2E0A
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#0B#           =>  --  2E0B
           (Other_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#0C#           =>  --  2E0C
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#0D#           =>  --  2E0D
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#0E# .. 16#15# =>  --  2E0E .. 2E15
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#16#           =>  --  2E16
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#17#           =>  --  2E17
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Dash
               | Hyphen
               | Pattern_Syntax
@@ -154,21 +140,18 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#18#           =>  --  2E18
           (Other_Punctuation, Neutral,
            Other, Other, Other, Open_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#19#           =>  --  2E19
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#1A#           =>  --  2E1A
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Dash
               | Pattern_Syntax
               | Grapheme_Base => True,
@@ -176,112 +159,96 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#1B#           =>  --  2E1B
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#1C#           =>  --  2E1C
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#1D#           =>  --  2E1D
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#1E# .. 16#1F# =>  --  2E1E .. 2E1F
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#20#           =>  --  2E20
           (Initial_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#21#           =>  --  2E21
           (Final_Punctuation, Neutral,
            Other, Other, Close, Quotation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#22#           =>  --  2E22
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#23#           =>  --  2E23
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#24#           =>  --  2E24
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#25#           =>  --  2E25
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#26#           =>  --  2E26
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#27#           =>  --  2E27
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#28#           =>  --  2E28
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#29#           =>  --  2E29
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#2A# .. 16#2D# =>  --  2E2A .. 2E2D
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#2E#           =>  --  2E2E
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Exclamation,
-           None,
            (Pattern_Syntax
               | STerm
               | Terminal_Punctuation
@@ -290,7 +257,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#2F#           =>  --  2E2F
           (Modifier_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Diacritic
               | Pattern_Syntax
               | Alphabetic
@@ -300,35 +266,30 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#30# .. 16#31# =>  --  2E30 .. 2E31
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#32#           =>  --  2E32
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#33# .. 16#34# =>  --  2E33 .. 2E34
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#35# .. 16#39# =>  --  2E35 .. 2E39
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base => True,
             others => False)),
          16#3A# .. 16#3B# =>  --  2E3A .. 2E3B
           (Dash_Punctuation, Neutral,
            Other, Other, Other, Break_Both,
-           None,
            (Dash
               | Pattern_Syntax
               | Grapheme_Base => True,
@@ -336,18 +297,15 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#3C# .. 16#7F# =>  --  2E3C .. 2E7F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (Pattern_Syntax => True,
             others => False)),
          16#9A#           =>  --  2E9A
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#9F#           =>  --  2E9F
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Compat,
            (Radical
               | Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
@@ -355,7 +313,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#F3#           =>  --  2EF3
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Compat,
            (Radical
               | Grapheme_Base
               | Changes_When_NFKC_Casefolded => True,
@@ -363,12 +320,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_002E is
          16#F4# .. 16#FF# =>  --  2EF4 .. 2EFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (Radical
               | Grapheme_Base => True,
             others => False)));

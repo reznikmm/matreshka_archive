@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00D8 is
      := (others           =>
           (Surrogate, Neutral,
            Control, Other, Other, Surrogate,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_00D8;

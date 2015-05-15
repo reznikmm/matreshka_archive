@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
      := (16#00#           =>  --  2200
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -62,7 +61,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#02# .. 16#03# =>  --  2202 .. 2203
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -70,7 +68,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#04#           =>  --  2204
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -80,7 +77,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#07# .. 16#08# =>  --  2207 .. 2208
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -88,7 +84,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#09#           =>  --  2209
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -98,7 +93,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#0B#           =>  --  220B
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -106,7 +100,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#0C#           =>  --  220C
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -116,7 +109,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#0F#           =>  --  220F
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -124,7 +116,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#11#           =>  --  2211
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -132,7 +123,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#12#           =>  --  2212
           (Math_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,
-           None,
            (Dash
               | Pattern_Syntax
               | Grapheme_Base
@@ -141,7 +131,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#13#           =>  --  2213
           (Math_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -149,7 +138,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#15#           =>  --  2215
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -157,7 +145,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#1A#           =>  --  221A
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -165,7 +152,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#1D# .. 16#20# =>  --  221D .. 2220
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -173,7 +159,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#23#           =>  --  2223
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -181,7 +166,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#24#           =>  --  2224
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -191,7 +175,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#25#           =>  --  2225
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -199,7 +182,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#26#           =>  --  2226
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -209,7 +191,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#27# .. 16#2B# =>  --  2227 .. 222B
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -217,7 +198,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#2C#           =>  --  222C
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Compat,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -227,7 +207,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#2D#           =>  --  222D
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Compat,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -237,7 +216,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#2E#           =>  --  222E
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -245,7 +223,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#2F# .. 16#30# =>  --  222F .. 2230
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Compat,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -255,7 +232,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#34# .. 16#37# =>  --  2234 .. 2237
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -263,7 +239,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#3C# .. 16#3D# =>  --  223C .. 223D
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -271,7 +246,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#41#           =>  --  2241
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -281,7 +255,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#44#           =>  --  2244
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -291,7 +264,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#47#           =>  --  2247
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -301,7 +273,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#48#           =>  --  2248
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -309,7 +280,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#49#           =>  --  2249
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -319,7 +289,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#4C#           =>  --  224C
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -327,7 +296,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#52#           =>  --  2252
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -335,7 +303,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#60#           =>  --  2260
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -345,7 +312,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#61#           =>  --  2261
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -353,7 +319,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#62#           =>  --  2262
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -363,7 +328,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#64# .. 16#67# =>  --  2264 .. 2267
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -371,7 +335,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#6A# .. 16#6B# =>  --  226A .. 226B
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -379,7 +342,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#6D#           =>  --  226D
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -389,7 +351,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#6E# .. 16#6F# =>  --  226E .. 226F
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -399,7 +360,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#70# .. 16#71# =>  --  2270 .. 2271
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -409,7 +369,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#74# .. 16#75# =>  --  2274 .. 2275
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -419,7 +378,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#78# .. 16#79# =>  --  2278 .. 2279
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -429,7 +387,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#80# .. 16#81# =>  --  2280 .. 2281
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -439,7 +396,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#82# .. 16#83# =>  --  2282 .. 2283
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -447,7 +403,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#84# .. 16#85# =>  --  2284 .. 2285
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -457,7 +412,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#86# .. 16#87# =>  --  2286 .. 2287
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -465,7 +419,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#88# .. 16#89# =>  --  2288 .. 2289
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -475,7 +428,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#95#           =>  --  2295
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -483,7 +435,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#99#           =>  --  2299
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -491,7 +442,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#A5#           =>  --  22A5
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -499,7 +449,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#AC# .. 16#AF# =>  --  22AC .. 22AF
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -509,7 +458,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#BF#           =>  --  22BF
           (Math_Symbol, Ambiguous,
            Other, Other, Other, Ambiguous,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,
@@ -517,7 +465,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#E0# .. 16#E3# =>  --  22E0 .. 22E3
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -527,7 +474,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          16#EA# .. 16#ED# =>  --  22EA .. 22ED
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -537,7 +483,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0022 is
          others           =>
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,

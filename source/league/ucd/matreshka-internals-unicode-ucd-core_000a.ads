@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
      := (16#00#           =>  --  0A00
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#01# .. 16#02# =>  --  0A01 .. 0A02
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -70,7 +68,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#03#           =>  --  0A03
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -80,32 +77,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#04#           =>  --  0A04
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#0B# .. 16#0E# =>  --  0A0B .. 0A0E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#11# .. 16#12# =>  --  0A11 .. 0A12
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#29#           =>  --  0A29
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#31#           =>  --  0A31
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#33#           =>  --  0A33
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -122,12 +113,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#34#           =>  --  0A34
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#36#           =>  --  0A36
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -144,17 +133,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#37#           =>  --  0A37
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#3A# .. 16#3B# =>  --  0A3A .. 0A3B
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#3C#           =>  --  0A3C
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -164,12 +150,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#3D#           =>  --  0A3D
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#3E# .. 16#40# =>  --  0A3E .. 0A40
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -179,7 +163,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#41# .. 16#42# =>  --  0A41 .. 0A42
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -190,12 +173,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#43# .. 16#46# =>  --  0A43 .. 0A46
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#47# .. 16#48# =>  --  0A47 .. 0A48
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -206,12 +187,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#49# .. 16#4A# =>  --  0A49 .. 0A4A
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#4B# .. 16#4C# =>  --  0A4B .. 0A4C
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -222,7 +201,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#4D#           =>  --  0A4D
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -233,12 +211,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#4E# .. 16#50# =>  --  0A4E .. 0A50
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#51#           =>  --  0A51
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -249,12 +225,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#52# .. 16#58# =>  --  0A52 .. 0A58
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#59# .. 16#5B# =>  --  0A59 .. 0A5B
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -271,12 +245,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#5D#           =>  --  0A5D
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#5E#           =>  --  0A5E
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Canonical,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -293,12 +265,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#5F# .. 16#65# =>  --  0A5F .. 0A65
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#66# .. 16#6F# =>  --  0A66 .. 0A6F
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           None,
            (Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
@@ -306,7 +276,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#70# .. 16#71# =>  --  0A70 .. 0A71
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -317,7 +286,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#75#           =>  --  0A75
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -328,12 +296,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#76# .. 16#80# =>  --  0A76 .. 0A80
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#81# .. 16#82# =>  --  0A81 .. 0A82
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -344,7 +310,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#83#           =>  --  0A83
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -354,42 +319,34 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#84#           =>  --  0A84
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#8E#           =>  --  0A8E
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#92#           =>  --  0A92
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#A9#           =>  --  0AA9
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#B1#           =>  --  0AB1
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#B4#           =>  --  0AB4
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#BA# .. 16#BB# =>  --  0ABA .. 0ABB
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#BC#           =>  --  0ABC
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -399,7 +356,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#BE# .. 16#C0# =>  --  0ABE .. 0AC0
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -409,7 +365,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#C1# .. 16#C5# =>  --  0AC1 .. 0AC5
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -420,12 +375,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#C6#           =>  --  0AC6
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#C7# .. 16#C8# =>  --  0AC7 .. 0AC8
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -436,7 +389,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#C9#           =>  --  0AC9
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -446,12 +398,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#CA#           =>  --  0ACA
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#CB# .. 16#CC# =>  --  0ACB .. 0ACC
           (Spacing_Mark, Neutral,
            Spacing_Mark, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Grapheme_Base
@@ -461,7 +411,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#CD#           =>  --  0ACD
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Diacritic
               | Case_Ignorable
               | Grapheme_Extend
@@ -472,17 +421,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#CE# .. 16#CF# =>  --  0ACE .. 0ACF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#D1# .. 16#DF# =>  --  0AD1 .. 0ADF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#E2# .. 16#E3# =>  --  0AE2 .. 0AE3
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Other_Alphabetic
               | Alphabetic
               | Case_Ignorable
@@ -493,12 +439,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#E4# .. 16#E5# =>  --  0AE4 .. 0AE5
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#E6# .. 16#EF# =>  --  0AE6 .. 0AEF
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           None,
            (Grapheme_Base
               | ID_Continue
               | XID_Continue => True,
@@ -506,24 +450,20 @@ package Matreshka.Internals.Unicode.Ucd.Core_000A is
          16#F0#           =>  --  0AF0
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#F1#           =>  --  0AF1
           (Currency_Symbol, Neutral,
            Other, Other, Other, Prefix_Numeric,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#F2# .. 16#FF# =>  --  0AF2 .. 0AFF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

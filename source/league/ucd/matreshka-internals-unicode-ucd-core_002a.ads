@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
      := (16#0C#           =>  --  2A0C
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Compat,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -64,7 +63,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
          16#74# .. 16#76# =>  --  2A74 .. 2A76
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Compat,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -74,7 +72,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
          16#DC#           =>  --  2ADC
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Canonical,
            (Pattern_Syntax
               | Grapheme_Base
               | Math
@@ -88,7 +85,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_002A is
          others           =>
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Pattern_Syntax
               | Grapheme_Base
               | Math => True,

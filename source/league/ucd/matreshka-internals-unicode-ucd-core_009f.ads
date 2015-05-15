@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_009F is
      := (16#CD# .. 16#FF# =>  --  9FCD .. 9FFF
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic

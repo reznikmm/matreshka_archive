@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00F9 is
      := (others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           Canonical,
            (Ideographic
               | Alphabetic
               | Grapheme_Base

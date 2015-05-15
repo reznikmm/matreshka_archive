@@ -54,23 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0033 is
      := (16#00# .. 16#57# =>  --  3300 .. 3357
           (Other_Symbol, Wide,
            Other, Katakana, Other, Ideographic,
-           Square,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#58# .. 16#70# =>  --  3358 .. 3370
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           Compat,
-           (Grapheme_Base
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#E0# .. 16#FE# =>  --  33E0 .. 33FE
-          (Other_Symbol, Wide,
-           Other, Other, Other, Ideographic,
-           Compat,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
@@ -78,7 +61,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0033 is
          others           =>
           (Other_Symbol, Wide,
            Other, Other, Other, Ideographic,
-           Square,
            (Grapheme_Base
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,

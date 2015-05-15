@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
      := (16#00# .. 16#03# =>  --  01D500 .. 01D503
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -70,27 +69,22 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#06#           =>  --  01D506
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#0B# .. 16#0C# =>  --  01D50B .. 01D50C
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#15#           =>  --  01D515
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#1D#           =>  --  01D51D
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#1E# .. 16#25# =>  --  01D51E .. 01D525
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -106,7 +100,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#26# .. 16#27# =>  --  01D526 .. 01D527
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Soft_Dotted
               | Alphabetic
@@ -123,7 +116,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#28# .. 16#37# =>  --  01D528 .. 01D537
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -139,32 +131,26 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#3A#           =>  --  01D53A
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#3F#           =>  --  01D53F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#45#           =>  --  01D545
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#47# .. 16#49# =>  --  01D547 .. 01D549
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#51#           =>  --  01D551
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#52# .. 16#59# =>  --  01D552 .. 01D559
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -180,7 +166,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#5A# .. 16#5B# =>  --  01D55A .. 01D55B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Soft_Dotted
               | Alphabetic
@@ -197,7 +182,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#5C# .. 16#6B# =>  --  01D55C .. 01D56B
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -213,7 +197,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#86# .. 16#8D# =>  --  01D586 .. 01D58D
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -229,7 +212,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#8E# .. 16#8F# =>  --  01D58E .. 01D58F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Soft_Dotted
               | Alphabetic
@@ -246,7 +228,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#90# .. 16#9F# =>  --  01D590 .. 01D59F
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -262,7 +243,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#BA# .. 16#C1# =>  --  01D5BA .. 01D5C1
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -278,7 +258,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#C2# .. 16#C3# =>  --  01D5C2 .. 01D5C3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Soft_Dotted
               | Alphabetic
@@ -295,7 +274,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#C4# .. 16#D3# =>  --  01D5C4 .. 01D5D3
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -311,7 +289,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#EE# .. 16#F5# =>  --  01D5EE .. 01D5F5
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -327,7 +304,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#F6# .. 16#F7# =>  --  01D5F6 .. 01D5F7
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Soft_Dotted
               | Alphabetic
@@ -344,7 +320,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          16#F8# .. 16#FF# =>  --  01D5F8 .. 01D5FF
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -360,7 +335,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D5 is
          others           =>
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased

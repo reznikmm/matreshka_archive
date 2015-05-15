@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
      := (16#15#           =>  --  01D715
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -62,7 +61,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#1C# .. 16#34# =>  --  01D71C .. 01D734
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -78,7 +76,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#35#           =>  --  01D735
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -86,7 +83,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#4F#           =>  --  01D74F
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -94,7 +90,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#56# .. 16#6E# =>  --  01D756 .. 01D76E
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -110,7 +105,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#6F#           =>  --  01D76F
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -118,7 +112,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#89#           =>  --  01D789
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -126,7 +119,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#90# .. 16#A8# =>  --  01D790 .. 01D7A8
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -142,7 +134,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#A9#           =>  --  01D7A9
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -150,7 +141,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#C3#           =>  --  01D7C3
           (Math_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           Font,
            (Grapheme_Base
               | Math
               | Changes_When_NFKC_Casefolded => True,
@@ -158,7 +148,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#CA#           =>  --  01D7CA
           (Uppercase_Letter, Neutral,
            Other, A_Letter, Upper, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased
@@ -174,12 +163,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          16#CC# .. 16#CD# =>  --  01D7CC .. 01D7CD
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#CE# .. 16#FF# =>  --  01D7CE .. 01D7FF
           (Decimal_Number, Neutral,
            Other, Numeric, Numeric, Numeric,
-           Font,
            (Other_Math
               | Grapheme_Base
               | ID_Continue
@@ -190,7 +177,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D7 is
          others           =>
           (Lowercase_Letter, Neutral,
            Other, A_Letter, Lower, Alphabetic,
-           Font,
            (Other_Math
               | Alphabetic
               | Cased

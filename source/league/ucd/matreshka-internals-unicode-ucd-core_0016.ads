@@ -54,14 +54,12 @@ package Matreshka.Internals.Unicode.Ucd.Core_0016 is
      := (16#6D#           =>  --  166D
           (Other_Punctuation, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#6E#           =>  --  166E
           (Other_Punctuation, Neutral,
            Other, Other, S_Term, Alphabetic,
-           None,
            (STerm
               | Terminal_Punctuation
               | Grapheme_Base => True,
@@ -69,38 +67,32 @@ package Matreshka.Internals.Unicode.Ucd.Core_0016 is
          16#80#           =>  --  1680
           (Space_Separator, Neutral,
            Other, Other, Sp, Break_After,
-           None,
            (White_Space
               | Grapheme_Base => True,
             others => False)),
          16#9B#           =>  --  169B
           (Open_Punctuation, Neutral,
            Other, Other, Close, Open_Punctuation,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#9C#           =>  --  169C
           (Close_Punctuation, Neutral,
            Other, Other, Close, Close_Punctuation,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#9D# .. 16#9F# =>  --  169D .. 169F
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          16#EB# .. 16#ED# =>  --  16EB .. 16ED
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#EE# .. 16#F0# =>  --  16EE .. 16F0
           (Letter_Number, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -111,12 +103,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_0016 is
          16#F1# .. 16#FF# =>  --  16F1 .. 16FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_02FA is
      := (16#00# .. 16#1D# =>  --  02FA00 .. 02FA1D
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           Canonical,
            (Ideographic
               | Alphabetic
               | Grapheme_Base
@@ -68,7 +67,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_02FA is
          others           =>
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_02FA;

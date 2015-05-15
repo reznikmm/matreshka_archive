@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_02A6 is
      := (16#D7# .. 16#FF# =>  --  02A6D7 .. 02A6FF
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic

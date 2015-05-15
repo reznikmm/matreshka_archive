@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A0 is
      := (16#15#           =>  --  A015
           (Modifier_Letter, Wide,
            Other, A_Letter, O_Letter, Nonstarter,
-           None,
            (Extender
               | Alphabetic
               | Case_Ignorable
@@ -67,7 +66,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00A0 is
          others           =>
           (Other_Letter, Wide,
            Other, A_Letter, O_Letter, Ideographic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

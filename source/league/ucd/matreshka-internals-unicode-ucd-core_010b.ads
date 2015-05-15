@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
      := (16#00# .. 16#35# =>  --  010B00 .. 010B35
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -65,20 +64,17 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
          16#39#           =>  --  010B39
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#3A# .. 16#3F# =>  --  010B3A .. 010B3F
           (Other_Punctuation, Neutral,
            Other, Other, Other, Break_After,
-           None,
            (Terminal_Punctuation
               | Grapheme_Base => True,
             others => False)),
          16#40# .. 16#55# =>  --  010B40 .. 010B55
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -89,13 +85,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
          16#58# .. 16#5F# =>  --  010B58 .. 010B5F
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#60# .. 16#72# =>  --  010B60 .. 010B72
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -106,13 +100,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_010B is
          16#78# .. 16#7F# =>  --  010B78 .. 010B7F
           (Other_Number, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_010B;

@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
      := (16#5F#           =>  --  115F
           (Other_Letter, Wide,
            L, A_Letter, O_Letter, JL,
-           None,
            (Other_Default_Ignorable_Code_Point
               | Alphabetic
               | Default_Ignorable_Code_Point
@@ -68,7 +67,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          16#60#           =>  --  1160
           (Other_Letter, Neutral,
            V, A_Letter, O_Letter, JV,
-           None,
            (Other_Default_Ignorable_Code_Point
               | Alphabetic
               | Default_Ignorable_Code_Point
@@ -82,7 +80,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          16#61# .. 16#A7# =>  --  1161 .. 11A7
           (Other_Letter, Neutral,
            V, A_Letter, O_Letter, JV,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -93,7 +90,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          16#A8# .. 16#FF# =>  --  11A8 .. 11FF
           (Other_Letter, Neutral,
            T, A_Letter, O_Letter, JT,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
@@ -104,7 +100,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_0011 is
          others           =>
           (Other_Letter, Wide,
            L, A_Letter, O_Letter, JL,
-           None,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

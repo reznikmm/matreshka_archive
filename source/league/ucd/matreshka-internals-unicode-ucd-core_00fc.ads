@@ -54,57 +54,16 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FC is
      := (16#5E# .. 16#63# =>  --  FC5E .. FC63
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue
               | ID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#64# .. 16#96# =>  --  FC64 .. FC96
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           Final,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#97# .. 16#DE# =>  --  FC97 .. FCDE
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           Initial,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
-              | Expands_On_NFKD
-              | Changes_When_NFKC_Casefolded => True,
-            others => False)),
-         16#DF# .. 16#F4# =>  --  FCDF .. FCF4
-          (Other_Letter, Neutral,
-           Other, A_Letter, O_Letter, Alphabetic,
-           Medial,
-           (Alphabetic
-              | Grapheme_Base
-              | ID_Continue
-              | ID_Start
-              | XID_Continue
-              | XID_Start
               | Expands_On_NFKD
               | Changes_When_NFKC_Casefolded => True,
             others => False)),
          others           =>
           (Other_Letter, Neutral,
            Other, A_Letter, O_Letter, Alphabetic,
-           Isolated,
            (Alphabetic
               | Grapheme_Base
               | ID_Continue

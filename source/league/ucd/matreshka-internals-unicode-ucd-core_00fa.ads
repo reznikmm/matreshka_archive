@@ -54,7 +54,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
      := (16#0E# .. 16#0F# =>  --  FA0E .. FA0F
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -67,7 +66,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#11#           =>  --  FA11
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -80,7 +78,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#13# .. 16#14# =>  --  FA13 .. FA14
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -93,7 +90,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#1F#           =>  --  FA1F
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -106,7 +102,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#21#           =>  --  FA21
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -119,7 +114,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#23# .. 16#24# =>  --  FA23 .. FA24
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -132,7 +126,6 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#27# .. 16#29# =>  --  FA27 .. FA29
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           None,
            (Ideographic
               | Unified_Ideograph
               | Alphabetic
@@ -145,17 +138,14 @@ package Matreshka.Internals.Unicode.Ucd.Core_00FA is
          16#6E# .. 16#6F# =>  --  FA6E .. FA6F
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (others => False)),
          16#DA# .. 16#FF# =>  --  FADA .. FAFF
           (Unassigned, Wide,
            Other, Other, Other, Ideographic,
-           None,
            (others => False)),
          others           =>
           (Other_Letter, Wide,
            Other, Other, O_Letter, Ideographic,
-           Canonical,
            (Ideographic
               | Alphabetic
               | Grapheme_Base

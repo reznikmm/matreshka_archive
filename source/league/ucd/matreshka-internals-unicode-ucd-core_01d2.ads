@@ -54,13 +54,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D2 is
      := (16#00# .. 16#41# =>  --  01D200 .. 01D241
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          16#42# .. 16#44# =>  --  01D242 .. 01D244
           (Nonspacing_Mark, Neutral,
            Extend, Extend, Extend, Combining_Mark,
-           None,
            (Case_Ignorable
               | Grapheme_Extend
               | ID_Continue
@@ -69,13 +67,11 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D2 is
          16#45#           =>  --  01D245
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)),
          others           =>
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)));
 
 end Matreshka.Internals.Unicode.Ucd.Core_01D2;

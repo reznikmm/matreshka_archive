@@ -54,12 +54,10 @@ package Matreshka.Internals.Unicode.Ucd.Core_01D0 is
      := (16#F6# .. 16#FF# =>  --  01D0F6 .. 01D0FF
           (Unassigned, Neutral,
            Other, Other, Other, Unknown,
-           None,
            (others => False)),
          others           =>
           (Other_Symbol, Neutral,
            Other, Other, Other, Alphabetic,
-           None,
            (Grapheme_Base => True,
             others => False)));
 
