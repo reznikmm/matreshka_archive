@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Interfaces.C.Strings;
-with System.Address_Image;
 with System.Address_To_Access_Conversions;
 
 with Servlet.Container_Initializers;

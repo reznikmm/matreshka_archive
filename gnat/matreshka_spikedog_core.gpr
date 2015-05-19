@@ -86,4 +86,22 @@ library project Matreshka_Spikedog_Core is
 
    package Compiler renames Matreshka_Common.Compiler;
 
+   ------------
+   -- Naming --
+   ------------
+
+   package Naming is
+
+      case Matreshka_Config.Operating_System is
+         when "POSIX" | "MacOS" =>
+            for Implementation ("Matreshka.Servlet_Containers.Loader")
+              use "matreshka-servlet_containers-loader__posix.adb";
+
+         when "Windows" =>
+            for Implementation ("Matreshka.Servlet_Containers.Loader")
+              use "matreshka-servlet_containers-loader__windows.adb";
+      end case;
+
+   end Naming;
+
 end Matreshka_Spikedog_Core;
