@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,45 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides binding to subset of Windows API.
+--  Binding to KERNEL32.DLL.
 ------------------------------------------------------------------------------
-with Interfaces.C.Strings;
-with Interfaces.C.Pointers;
-with System;
+with League.Strings;
 
-with Matreshka.Internals.Strings.C;
-with Matreshka.Internals.Utf16;
-
-package Matreshka.Internals.Windows is
+package Matreshka.Internals.Windows.Kernel is
 
    pragma Preelaborate;
 
-   subtype DWORD is interfaces.C.unsigned_long;
-   subtype LONG is Interfaces.C.long;
+   function GetProcAddress
+    (hModule : Windows.HMODULE; lpName : LPCSTR) return System.Address
+       with Import        => True,
+            Convention    => StdCall,
+            External_Name => "GetProcAddress";
 
-   subtype LPCSTR is Interfaces.C.Strings.chars_ptr;
+   function LoadLibrary
+    (File_Name : League.Strings.Universal_String) return HMODULE;
 
-   subtype LPWSTR is Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
-
-   subtype LPWCH is LPWSTR;
-
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
-
-   function wcslen (str : LPWSTR) return Interfaces.C.size_t;
-   pragma Import (C, wcslen);
-
-   type HMODULE is new System.Address;
-
-   -----------------------------------------------------------
-   --  Used in command line/environment conversion package  --
-   -----------------------------------------------------------
-
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-
-end Matreshka.Internals.Windows;
+end Matreshka.Internals.Windows.Kernel;

@@ -2,13 +2,13 @@
 --                                                                          --
 --                            Matreshka Project                             --
 --                                                                          --
---         Localization, Internationalization, Globalization for Ada        --
+--                               Web Framework                              --
 --                                                                          --
 --                        Runtime Library Component                         --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,45 +41,57 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides binding to subset of Windows API.
-------------------------------------------------------------------------------
 with Interfaces.C.Strings;
-with Interfaces.C.Pointers;
 with System;
 
-with Matreshka.Internals.Strings.C;
-with Matreshka.Internals.Utf16;
+with Servlet.Container_Initializers;
+with Matreshka.Internals.Windows.Kernel;
 
-package Matreshka.Internals.Windows is
+separate (Matreshka.Servlet_Containers)
+package body Loader is
 
-   pragma Preelaborate;
+   use type Matreshka.Internals.Windows.HMODULE;
+   use type System.Address;
 
-   subtype DWORD is interfaces.C.unsigned_long;
-   subtype LONG is Interfaces.C.long;
+   ----------
+   -- Load --
+   ----------
 
-   subtype LPCSTR is Interfaces.C.Strings.chars_ptr;
+   procedure Load (Context : in out Servlet.Contexts.Servlet_Context'Class) is
+      Initializer_Name : Interfaces.C.Strings.chars_ptr
+        := Interfaces.C.Strings.New_String ("spikedog_container_initializer");
+      File_Name        : constant League.Strings.Universal_String
+        := League.Strings.To_Universal_String
+            ("install/WEB-INF/lib/x86_64-linux/libhdaServer.so");
+      M : constant Matreshka.Internals.Windows.HMODULE
+        := Matreshka.Internals.Windows.Kernel.LoadLibrary (File_Name);
+      S : System.Address;
 
-   subtype LPWSTR is Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
+   begin
+      if M = Matreshka.Internals.Windows.HMODULE (System.Null_Address) then
+         Interfaces.C.Strings.Free (Initializer_Name);
 
-   subtype LPWCH is LPWSTR;
+         raise Program_Error;
+      end if;
 
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
+      S :=
+        Matreshka.Internals.Windows.Kernel.GetProcAddress
+         (M, Initializer_Name);
+      Interfaces.C.Strings.Free (Initializer_Name);
 
-   function wcslen (str : LPWSTR) return Interfaces.C.size_t;
-   pragma Import (C, wcslen);
+      if S = System.Null_Address then
+         raise Program_Error;
+      end if;
 
-   type HMODULE is new System.Address;
+      declare
+         Initializer :
+           Servlet.Container_Initializers.Servlet_Container_Initializer_Access
+             with Import     => True,
+                  Convention => Ada,
+                  Address    => S;
+      begin
+         Initializer.On_Startup (Context);
+      end;
+   end Load;
 
-   -----------------------------------------------------------
-   --  Used in command line/environment conversion package  --
-   -----------------------------------------------------------
-
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-
-end Matreshka.Internals.Windows;
+end Loader;

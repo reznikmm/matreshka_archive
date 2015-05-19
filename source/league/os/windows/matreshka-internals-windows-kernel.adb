@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,45 +41,25 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This package provides binding to subset of Windows API.
-------------------------------------------------------------------------------
-with Interfaces.C.Strings;
-with Interfaces.C.Pointers;
-with System;
+with League.Strings.Internals;
 
-with Matreshka.Internals.Strings.C;
-with Matreshka.Internals.Utf16;
+package body Matreshka.Internals.Windows.Kernel is
 
-package Matreshka.Internals.Windows is
+   function LoadLibrary (lpFileName : LPCWSTR) return HMODULE
+     with Import        => True,
+          Convention    => StdCall,
+          External_Name => "LoadLibraryW";
 
-   pragma Preelaborate;
+   -----------------
+   -- LoadLibrary --
+   -----------------
 
-   subtype DWORD is interfaces.C.unsigned_long;
-   subtype LONG is Interfaces.C.long;
+   function LoadLibrary
+    (File_Name : League.Strings.Universal_String) return HMODULE is
+   begin
+      return
+        LoadLibrary
+         (League.Strings.Internals.Internal (File_Name).Value (0)'Access);
+   end LoadLibrary;
 
-   subtype LPCSTR is Interfaces.C.Strings.chars_ptr;
-
-   subtype LPWSTR is Matreshka.Internals.Strings.C.Utf16_Code_Unit_Access;
-
-   subtype LPWCH is LPWSTR;
-
-   type LPCWSTR is access constant Matreshka.Internals.Utf16.Utf16_Code_Unit;
-   pragma Convention (C, LPCWSTR);
-
-   function wcslen (str : LPWSTR) return Interfaces.C.size_t;
-   pragma Import (C, wcslen);
-
-   type HMODULE is new System.Address;
-
-   -----------------------------------------------------------
-   --  Used in command line/environment conversion package  --
-   -----------------------------------------------------------
-
-   package WCHAR_Pointers is
-     new Interfaces.C.Pointers
-          (Matreshka.Internals.Utf16.Utf16_String_Index,
-           Matreshka.Internals.Utf16.Utf16_Code_Unit,
-           Matreshka.Internals.Utf16.Unaligned_Utf16_String,
-           0);
-
-end Matreshka.Internals.Windows;
+end Matreshka.Internals.Windows.Kernel;
