@@ -71,7 +71,7 @@ abstract project Matreshka_Config is
    Library_ALI_Dir := "@LIBDIR@/matreshka";
 
    case Operating_System is
-      when "POSIX" =>
+      when "POSIX" | "MacOS" =>
          null;
 
       when "Windows" =>
