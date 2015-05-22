@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-VERSION=0.7.0
+VERSION=0.7.1
 
-svn export svn://forge.ada-ru.org/matreshka/trunk/matreshka matreshka-$VERSION
+svn export svn://forge.ada-ru.org/matreshka/branches/matreshka-0.7.x matreshka-$VERSION
 # full distribution
 (cd matreshka-$VERSION
  rm -rf design maintainer-tools templates source/opm)
