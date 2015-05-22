@@ -35,7 +35,7 @@ INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api \
                   spikedog-core soap wsse wsdl2ada sql uaflex
 
 ifdef HAS_ASIS
-INSTALL_TARGETS += a2js
+INSTALL_TARGETS += a2js a2js-webapi
 endif
 
 ifdef ENABLE_AMF
@@ -263,6 +263,19 @@ a2js:
 	$(INSTALL_data) source/web/tools/a2js/rtl/standard.js $(INSTALL_SHARE_DIR)/a2js/rtl/standard.js
 	$(INSTALL_data) source/web/tools/a2js/rtl/system.js $(INSTALL_SHARE_DIR)/a2js/rtl/system.js
 	$(INSTALL_data) source/web/tools/a2js/rtl/system-storage_elements.js $(INSTALL_SHARE_DIR)/a2js/rtl/system-storage_elements.js
+
+a2js-webapi:
+	$(GPRBUILD) -p -P gnat/matreshka_webapi.gpr
+	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/webapi
+	gnat ls -d -s -P gnat/matreshka_webapi.gpr | sort | uniq | grep -v '^$$' > webapi-src.aux
+	diff -u league-src.lst webapi-src.aux | tail -n +4 | grep '^+' | tr -s ' ' | cut -f 2- -d ' ' > webapi-src.lst
+	gnat ls -o -P gnat/matreshka_webapi.gpr | sort | uniq | grep -v '^$$' | sed -e 's/.o$$/.ali/' > webapi-ali.lst
+	cat webapi-src.lst | tr '\\' '/' | xargs -I sources $(INSTALL_source) sources $(INSTALL_INCLUDE_DIR)/webapi
+	cat webapi-ali.lst | tr '\\' '/' | xargs -I alis $(INSTALL_ali) alis $(INSTALL_ALI_DIR)
+	$(INSTALL_project) gnat/install/webapi.gpr $(INSTALL_PROJECT_DIR)/webapi.gpr
+	cat webapi-src.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(-,root,root) %{_includedir}/matreshka/webapi/{}" > .objs/webapi-devel.files
+	cat webapi-ali.lst | xargs -I{} basename {} | xargs -I{} echo "%attr(0444, root, root) %{_libdir}/matreshka/{}" >> .objs/webapi-devel.files
+	echo "%attr(-,root,root) %{_gprdir}/matreshka/webapi.gpr" >> .objs/webapi-devel.files
 
 uaflex:
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
