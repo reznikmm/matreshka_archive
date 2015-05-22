@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -139,7 +139,9 @@ package body Matreshka.Internals.Strings.Handlers is
            Abstract_String_Handler'Class
             (Self).Index (Item, From_Index, From_Position, To_Position, C);
 
-      elsif To_Position - From_Position < Item.Unused then
+      elsif To_Position - From_Position < Pattern.Unused then
+         --  Slice to lookup in is less than pattern. No much possible.
+
          return 0;
 
       else
