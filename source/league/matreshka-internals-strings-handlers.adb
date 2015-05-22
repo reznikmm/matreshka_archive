@@ -120,8 +120,6 @@ package body Matreshka.Internals.Strings.Handlers is
      Pattern       : Matreshka.Internals.Strings.Shared_String_Access)
        return Natural
    is
-      pragma Unreferenced (Self);
-
       Position : Utf16_String_Index;
       Index    : Positive;
       Last     : Utf16_String_Index;
