@@ -92,7 +92,7 @@ package body Configure.Tests.Operating_System is
          Self.Operating_System := MacOS;
          Substitutions.Insert (Operating_System_Name, +"MacOS");
          Is_Windows := True;
-         Self.Report_Status ("Windows");
+         Self.Report_Status ("MacOS");
 
       else
          Self.Operating_System := POSIX;
