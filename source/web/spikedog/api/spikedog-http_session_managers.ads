@@ -60,7 +60,7 @@ package Spikedog.HTTP_Session_Managers is
    --  by session manager, but not necessary points to any active session).
 
    not overriding function Get_Session
-    (Self       : HTTP_Session_Manager;
+    (Self       : in out HTTP_Session_Manager;
      Identifier : League.Strings.Universal_String)
        return access Servlet.HTTP_Sessions.HTTP_Session'Class is abstract;
    --  Returns session this specified identifier, or null when session with
@@ -68,7 +68,7 @@ package Spikedog.HTTP_Session_Managers is
    --  time attribute is updated to current time.
 
    not overriding function New_Session
-    (Self : HTTP_Session_Manager)
+    (Self : in out HTTP_Session_Manager)
        return access Servlet.HTTP_Sessions.HTTP_Session'Class is abstract;
 
 end Spikedog.HTTP_Session_Managers;
