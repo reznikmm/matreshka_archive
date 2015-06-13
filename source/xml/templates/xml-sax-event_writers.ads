@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 private with League.Strings;
 private with XML.SAX.Attributes;
+private with XML.SAX.Locators;
 with XML.SAX.Writers;
 with XML.Templates.Streams;
 
@@ -58,7 +59,8 @@ package XML.SAX.Event_Writers is
 private
 
    type Event_Writer is limited new XML.SAX.Writers.SAX_Writer with record
-      Stream : XML.Templates.Streams.XML_Stream_Element_Vectors.Vector;
+      Locator : XML.SAX.Locators.SAX_Locator;
+      Stream  : XML.Templates.Streams.XML_Stream_Element_Vectors.Vector;
    end record;
 
    overriding procedure Characters
@@ -78,6 +80,10 @@ private
    overriding procedure End_DTD
     (Self    : in out Event_Writer;
      Success : in out Boolean);
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Event_Writer;
+     Locator : XML.SAX.Locators.SAX_Locator);
 
    overriding procedure End_Element
     (Self           : in out Event_Writer;

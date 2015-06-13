@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,9 +51,18 @@ package body XML.SAX.Event_Writers is
    overriding procedure Characters
     (Self    : in out Event_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((XML.Templates.Streams.Text, Text));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.Text,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column),
+         Text     => Text));
    end Characters;
 
    -------------
@@ -63,9 +72,18 @@ package body XML.SAX.Event_Writers is
    overriding procedure Comment
     (Self    : in out Event_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((XML.Templates.Streams.Comment, Text));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.Comment,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column),
+         Text     => Text));
    end Comment;
 
    ---------------
@@ -74,9 +92,17 @@ package body XML.SAX.Event_Writers is
 
    overriding procedure End_CDATA
     (Self    : in out Event_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((Kind => XML.Templates.Streams.End_CDATA));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.End_CDATA,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column)));
    end End_CDATA;
 
    -------------
@@ -85,9 +111,17 @@ package body XML.SAX.Event_Writers is
 
    overriding procedure End_DTD
     (Self    : in out Event_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((Kind => XML.Templates.Streams.End_DTD));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.End_DTD,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column)));
    end End_DTD;
 
    -----------------
@@ -99,13 +133,20 @@ package body XML.SAX.Event_Writers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Stream.Append
-       ((XML.Templates.Streams.End_Element,
-         Namespace_URI,
-         Local_Name,
-         Qualified_Name));
+       ((Kind           => XML.Templates.Streams.End_Element,
+         Location       => (Public_Id => Self.Locator.Public_Id,
+                            System_Id => Self.Locator.System_Id,
+                            Line      => Self.Locator.Line,
+                            Column    => Self.Locator.Column),
+         Namespace_URI  => Namespace_URI,
+         Local_Name     => Local_Name,
+         Qualified_Name => Qualified_Name));
    end End_Element;
 
    ------------------------
@@ -115,9 +156,18 @@ package body XML.SAX.Event_Writers is
    overriding procedure End_Prefix_Mapping
     (Self    : in out Event_Writer;
      Prefix  : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((XML.Templates.Streams.End_Prefix_Mapping, Prefix));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.End_Prefix_Mapping,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column),
+         Prefix   => Prefix));
    end End_Prefix_Mapping;
 
    ------------------
@@ -125,7 +175,10 @@ package body XML.SAX.Event_Writers is
    ------------------
 
    overriding function Error_String
-    (Self : Event_Writer) return League.Strings.Universal_String is
+    (Self : Event_Writer) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return League.Strings.Empty_Universal_String;
    end Error_String;
@@ -148,9 +201,18 @@ package body XML.SAX.Event_Writers is
    overriding procedure Ignorable_Whitespace
     (Self    : in out Event_Writer;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((XML.Templates.Streams.Text, Text));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.Text,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column),
+         Text     => Text));
    end Ignorable_Whitespace;
 
    ----------------------------
@@ -161,10 +223,19 @@ package body XML.SAX.Event_Writers is
     (Self    : in out Event_Writer;
      Target  : League.Strings.Universal_String;
      Data    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Stream.Append
-       ((XML.Templates.Streams.Processing_Instruction, Target, Data));
+       ((Kind     => XML.Templates.Streams.Processing_Instruction,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column),
+         Target   => Target,
+         Data     => Data));
    end Processing_Instruction;
 
    -----------------
@@ -173,10 +244,29 @@ package body XML.SAX.Event_Writers is
 
    overriding procedure Start_CDATA
     (Self    : in out Event_Writer;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
-      Self.Stream.Append ((Kind => XML.Templates.Streams.Start_CDATA));
+      Self.Stream.Append
+       ((Kind     => XML.Templates.Streams.Start_CDATA,
+         Location => (Public_Id => Self.Locator.Public_Id,
+                      System_Id => Self.Locator.System_Id,
+                      Line      => Self.Locator.Line,
+                      Column    => Self.Locator.Column)));
    end Start_CDATA;
+
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Event_Writer;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
 
    ---------------
    -- Start_DTD --
@@ -187,10 +277,20 @@ package body XML.SAX.Event_Writers is
      Name      : League.Strings.Universal_String;
      Public_Id : League.Strings.Universal_String;
      System_Id : League.Strings.Universal_String;
-     Success   : in out Boolean) is
+     Success   : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Stream.Append
-       ((XML.Templates.Streams.Start_DTD, Name, Public_Id, System_Id));
+       ((Kind      => XML.Templates.Streams.Start_DTD,
+         Location  => (Public_Id => Self.Locator.Public_Id,
+                       System_Id => Self.Locator.System_Id,
+                       Line      => Self.Locator.Line,
+                       Column    => Self.Locator.Column),
+         Name      => Name,
+         Public_Id => Public_Id,
+         System_Id => System_Id));
    end Start_DTD;
 
    -------------------
@@ -203,14 +303,21 @@ package body XML.SAX.Event_Writers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Stream.Append
-       ((XML.Templates.Streams.Start_Element,
-         Namespace_URI,
-         Local_Name,
-         Qualified_Name,
-         Attributes));
+       ((Kind           => XML.Templates.Streams.Start_Element,
+         Location       => (Public_Id => Self.Locator.Public_Id,
+                            System_Id => Self.Locator.System_Id,
+                            Line      => Self.Locator.Line,
+                            Column    => Self.Locator.Column),
+         Namespace_URI  => Namespace_URI,
+         Local_Name     => Local_Name,
+         Qualified_Name => Qualified_Name,
+         Attributes     => Attributes));
    end Start_Element;
 
    --------------------------
@@ -221,10 +328,19 @@ package body XML.SAX.Event_Writers is
     (Self          : in out Event_Writer;
      Prefix        : League.Strings.Universal_String;
      Namespace_URI : League.Strings.Universal_String;
-     Success       : in out Boolean) is
+     Success       : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.Stream.Append
-       ((XML.Templates.Streams.Start_Prefix_Mapping, Prefix, Namespace_URI));
+       ((Kind                 => XML.Templates.Streams.Start_Prefix_Mapping,
+         Location             => (Public_Id => Self.Locator.Public_Id,
+                                  System_Id => Self.Locator.System_Id,
+                                  Line      => Self.Locator.Line,
+                                  Column    => Self.Locator.Column),
+         Prefix               => Prefix,
+         Mapped_Namespace_URI => Namespace_URI));
    end Start_Prefix_Mapping;
 
 end XML.SAX.Event_Writers;

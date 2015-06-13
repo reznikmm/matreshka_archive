@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -98,7 +98,13 @@ package body XML.Templates.Processors is
 
    begin
       if Self.Accumulate /= 0 then
-         Self.Stream.Append ((XML.Templates.Streams.Text, Text));
+         Self.Stream.Append
+          ((Kind     => XML.Templates.Streams.Text,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column),
+            Text     => Text));
 
       elsif Self.Skip /= 0 then
          null;
@@ -118,7 +124,13 @@ package body XML.Templates.Processors is
      Success : in out Boolean) is
    begin
       if Self.Accumulate /= 0 then
-         Self.Stream.Append ((XML.Templates.Streams.Comment, Text));
+         Self.Stream.Append
+          ((Kind     => XML.Templates.Streams.Comment,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column),
+            Text     => Text));
 
       elsif Self.Skip /= 0 then
          null;
@@ -147,7 +159,12 @@ package body XML.Templates.Processors is
      Success : in out Boolean) is
    begin
       if Self.Accumulate /= 0 then
-         Self.Stream.Append ((Kind => XML.Templates.Streams.End_CDATA));
+         Self.Stream.Append
+          ((Kind     => XML.Templates.Streams.End_CDATA,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column)));
 
       elsif Self.Skip /= 0 then
          null;
@@ -191,7 +208,12 @@ package body XML.Templates.Processors is
      Success : in out Boolean) is
    begin
       if Self.Accumulate /= 0 then
-         Self.Stream.Append ((Kind => XML.Templates.Streams.End_DTD));
+         Self.Stream.Append
+          ((Kind     => XML.Templates.Streams.End_DTD,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column)));
 
       elsif Self.Skip /= 0 then
          null;
@@ -221,10 +243,14 @@ package body XML.Templates.Processors is
 
          if Self.Accumulate /= 0 then
             Self.Stream.Append
-             ((XML.Templates.Streams.End_Element,
-               Namespace_URI,
-               Local_Name,
-               Qualified_Name));
+             ((Kind           => XML.Templates.Streams.End_Element,
+               Location       => (Public_Id => Self.Locator.Public_Id,
+                                  System_Id => Self.Locator.System_Id,
+                                  Line      => Self.Locator.Line,
+                                  Column    => Self.Locator.Column),
+               Namespace_URI  => Namespace_URI,
+               Local_Name     => Local_Name,
+               Qualified_Name => Qualified_Name));
 
          elsif Namespace_URI = Template_URI then
             if Local_Name = For_Name then
@@ -313,7 +339,12 @@ package body XML.Templates.Processors is
    begin
       if Self.Accumulate /= 0 then
          Self.Stream.Append
-          ((XML.Templates.Streams.End_Prefix_Mapping, Prefix));
+          ((Kind     => XML.Templates.Streams.End_Prefix_Mapping,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column),
+            Prefix   => Prefix));
 
       elsif Self.Skip /= 0 then
          null;
@@ -434,7 +465,13 @@ package body XML.Templates.Processors is
    begin
       if Self.Accumulate /= 0 then
          Self.Stream.Append
-          ((XML.Templates.Streams.Processing_Instruction, Target, Data));
+          ((Kind     => XML.Templates.Streams.Processing_Instruction,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column),
+            Target   => Target,
+            Data     => Data));
 
       elsif Self.Skip /= 0 then
          null;
@@ -465,6 +502,17 @@ package body XML.Templates.Processors is
       Self.Content_Handler := Handler;
    end Set_Content_Handler;
 
+   --------------------------
+   -- Set_Document_Locator --
+   --------------------------
+
+   overriding procedure Set_Document_Locator
+    (Self    : in out Template_Processor;
+     Locator : XML.SAX.Locators.SAX_Locator) is
+   begin
+      Self.Locator := Locator;
+   end Set_Document_Locator;
+
    -------------------------
    -- Set_Lexical_Handler --
    -------------------------
@@ -485,7 +533,12 @@ package body XML.Templates.Processors is
      Success : in out Boolean) is
    begin
       if Self.Accumulate /= 0 then
-         Self.Stream.Append ((Kind => XML.Templates.Streams.Start_CDATA));
+         Self.Stream.Append
+          ((Kind     => XML.Templates.Streams.Start_CDATA,
+            Location => (Public_Id => Self.Locator.Public_Id,
+                         System_Id => Self.Locator.System_Id,
+                         Line      => Self.Locator.Line,
+                         Column    => Self.Locator.Column)));
 
       elsif Self.Skip /= 0 then
          null;
@@ -533,7 +586,14 @@ package body XML.Templates.Processors is
    begin
       if Self.Accumulate /= 0 then
          Self.Stream.Append
-          ((XML.Templates.Streams.Start_DTD, Name, Public_Id, System_Id));
+          ((Kind      => XML.Templates.Streams.Start_DTD,
+            Location  => (Public_Id => Self.Locator.Public_Id,
+                          System_Id => Self.Locator.System_Id,
+                          Line      => Self.Locator.Line,
+                          Column    => Self.Locator.Column),
+            Name      => Name,
+            Public_Id => Public_Id,
+            System_Id => System_Id));
 
       elsif Self.Skip /= 0 then
          null;
@@ -567,11 +627,15 @@ package body XML.Templates.Processors is
       if Self.Accumulate /= 0 then
          Self.Accumulate := Self.Accumulate + 1;
          Self.Stream.Append
-          ((XML.Templates.Streams.Start_Element,
-            Namespace_URI,
-            Local_Name,
-            Qualified_Name,
-            Attributes));
+          ((Kind           => XML.Templates.Streams.Start_Element,
+            Location       => (Public_Id => Self.Locator.Public_Id,
+                               System_Id => Self.Locator.System_Id,
+                               Line      => Self.Locator.Line,
+                               Column    => Self.Locator.Column),
+            Namespace_URI  => Namespace_URI,
+            Local_Name     => Local_Name,
+            Qualified_Name => Qualified_Name,
+            Attributes     => Attributes));
 
       elsif Self.Skip /= 0 then
          Self.Skip := Self.Skip + 1;
@@ -690,9 +754,13 @@ package body XML.Templates.Processors is
    begin
       if Self.Accumulate /= 0 then
          Self.Stream.Append
-          ((XML.Templates.Streams.Start_Prefix_Mapping,
-            Prefix,
-            Namespace_URI));
+          ((Kind                 => XML.Templates.Streams.Start_Prefix_Mapping,
+            Location             => (Public_Id => Self.Locator.Public_Id,
+                                     System_Id => Self.Locator.System_Id,
+                                     Line      => Self.Locator.Line,
+                                     Column    => Self.Locator.Column),
+            Prefix               => Prefix,
+            Mapped_Namespace_URI => Namespace_URI));
 
       elsif Self.Skip /= 0 then
          null;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,46 +64,61 @@ package XML.Templates.Streams is
      Start_DTD,
      End_DTD);
 
+   type Event_Location is record
+      Public_Id : League.Strings.Universal_String;
+      System_Id : League.Strings.Universal_String;
+      Line      : Natural;
+      Column    : Natural;
+   end record;
+
    type XML_Stream_Element (Kind : XML_Stream_Element_Kinds := Empty) is record
       case Kind is
-         when Text | Comment =>
-            Text : League.Strings.Universal_String;
-
-         when Start_Element | End_Element =>
-            Namespace_URI  : League.Strings.Universal_String;
-            Local_Name     : League.Strings.Universal_String;
-            Qualified_Name : League.Strings.Universal_String;
-
-            case Kind is
-               when Start_Element =>
-                  Attributes : XML.SAX.Attributes.SAX_Attributes;
-
-               when others =>
-                  null;
-            end case;
-
-         when Start_Prefix_Mapping | End_Prefix_Mapping =>
-            Prefix : League.Strings.Universal_String;
-
-            case Kind is
-               when Start_Prefix_Mapping =>
-                  Mapped_Namespace_URI : League.Strings.Universal_String;
-
-               when others =>
-                  null;
-            end case;
-
-         when Processing_Instruction =>
-            Target : League.Strings.Universal_String;
-            Data   : League.Strings.Universal_String;
-
-         when Start_DTD =>
-            Name      : League.Strings.Universal_String;
-            Public_Id : League.Strings.Universal_String;
-            System_Id : League.Strings.Universal_String;
-
-         when End_DTD | Start_CDATA | End_CDATA | Empty =>
+         when Empty =>
             null;
+
+         when others =>
+            Location : Event_Location;
+
+            case Kind is
+               when Text | Comment =>
+                  Text : League.Strings.Universal_String;
+
+               when Start_Element | End_Element =>
+                  Namespace_URI  : League.Strings.Universal_String;
+                  Local_Name     : League.Strings.Universal_String;
+                  Qualified_Name : League.Strings.Universal_String;
+
+                  case Kind is
+                     when Start_Element =>
+                        Attributes : XML.SAX.Attributes.SAX_Attributes;
+
+                     when others =>
+                        null;
+                  end case;
+
+               when Start_Prefix_Mapping | End_Prefix_Mapping =>
+                  Prefix : League.Strings.Universal_String;
+
+                  case Kind is
+                     when Start_Prefix_Mapping =>
+                        Mapped_Namespace_URI : League.Strings.Universal_String;
+
+                     when others =>
+                        null;
+                  end case;
+
+               when Processing_Instruction =>
+                  Target : League.Strings.Universal_String;
+                  Data   : League.Strings.Universal_String;
+
+               when Start_DTD =>
+                  Name      : League.Strings.Universal_String;
+                  Public_Id : League.Strings.Universal_String;
+                  System_Id : League.Strings.Universal_String;
+
+               when End_DTD | Start_CDATA | End_CDATA | Empty =>
+                  null;
+            end case;
       end case;
    end record;
 
