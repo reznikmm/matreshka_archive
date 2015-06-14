@@ -65,7 +65,6 @@ package XML.Templates.Streams is
      End_DTD);
 
    type Event_Location is record
-      Public_Id : League.Strings.Universal_String;
       System_Id : League.Strings.Universal_String;
       Line      : Natural;
       Column    : Natural;

@@ -58,8 +58,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.Text,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column),
          Text     => Text));
@@ -79,8 +78,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.Comment,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column),
          Text     => Text));
@@ -99,8 +97,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.End_CDATA,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column)));
    end End_CDATA;
@@ -118,8 +115,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.End_DTD,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column)));
    end End_DTD;
@@ -140,8 +136,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind           => XML.Templates.Streams.End_Element,
-         Location       => (Public_Id => Self.Locator.Public_Id,
-                            System_Id => Self.Locator.System_Id,
+         Location       => (System_Id => Self.Locator.System_Id,
                             Line      => Self.Locator.Line,
                             Column    => Self.Locator.Column),
          Namespace_URI  => Namespace_URI,
@@ -163,8 +158,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.End_Prefix_Mapping,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column),
          Prefix   => Prefix));
@@ -208,8 +202,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.Text,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column),
          Text     => Text));
@@ -230,8 +223,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.Processing_Instruction,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column),
          Target   => Target,
@@ -251,8 +243,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind     => XML.Templates.Streams.Start_CDATA,
-         Location => (Public_Id => Self.Locator.Public_Id,
-                      System_Id => Self.Locator.System_Id,
+         Location => (System_Id => Self.Locator.System_Id,
                       Line      => Self.Locator.Line,
                       Column    => Self.Locator.Column)));
    end Start_CDATA;
@@ -284,8 +275,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind      => XML.Templates.Streams.Start_DTD,
-         Location  => (Public_Id => Self.Locator.Public_Id,
-                       System_Id => Self.Locator.System_Id,
+         Location  => (System_Id => Self.Locator.System_Id,
                        Line      => Self.Locator.Line,
                        Column    => Self.Locator.Column),
          Name      => Name,
@@ -310,8 +300,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind           => XML.Templates.Streams.Start_Element,
-         Location       => (Public_Id => Self.Locator.Public_Id,
-                            System_Id => Self.Locator.System_Id,
+         Location       => (System_Id => Self.Locator.System_Id,
                             Line      => Self.Locator.Line,
                             Column    => Self.Locator.Column),
          Namespace_URI  => Namespace_URI,
@@ -335,8 +324,7 @@ package body XML.SAX.Event_Writers is
    begin
       Self.Stream.Append
        ((Kind                 => XML.Templates.Streams.Start_Prefix_Mapping,
-         Location             => (Public_Id => Self.Locator.Public_Id,
-                                  System_Id => Self.Locator.System_Id,
+         Location             => (System_Id => Self.Locator.System_Id,
                                   Line      => Self.Locator.Line,
                                   Column    => Self.Locator.Column),
          Prefix               => Prefix,
