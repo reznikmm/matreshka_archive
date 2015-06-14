@@ -46,8 +46,6 @@ with Ada.Containers.Hashed_Maps;
 with League.String_Vectors;
 with League.Strings.Hash;
 
-with Servlet.Requests;
-with Servlet.Responses;
 with Matreshka.Servlet_HTTP_Requests;
 with Matreshka.Servlet_Registrations;
 
