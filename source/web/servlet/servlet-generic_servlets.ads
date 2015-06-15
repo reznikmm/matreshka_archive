@@ -59,6 +59,7 @@
 with League.Strings;
 
 with Servlet.Configs;
+with Servlet.Contexts;
 with Servlet.Servlets;
 
 package Servlet.Generic_Servlets is
@@ -86,6 +87,12 @@ package Servlet.Generic_Servlets is
     (Self : Generic_Servlet) return League.Strings.Universal_String;
    --  Returns the name of this servlet instance. See
    --  ServletConfig.getServletName().
+
+   overriding function Get_Servlet_Context
+    (Self : Generic_Servlet)
+      return not null access Servlet.Contexts.Servlet_Context'Class;
+   --  Returns a reference to the ServletContext in which the caller is
+   --  executing.
 
 private
 

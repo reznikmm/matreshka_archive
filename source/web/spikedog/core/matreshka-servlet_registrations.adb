@@ -70,6 +70,17 @@ package body Matreshka.Servlet_Registrations is
       end return;
    end Add_Mapping;
 
+   -------------------------
+   -- Get_Servlet_Context --
+   -------------------------
+
+   overriding function Get_Servlet_Context
+    (Self : Servlet_Registration)
+      return not null access Servlet.Contexts.Servlet_Context'Class is
+   begin
+      return Self.Context;
+   end Get_Servlet_Context;
+
    ----------------------
    -- Get_Servlet_Name --
    ----------------------

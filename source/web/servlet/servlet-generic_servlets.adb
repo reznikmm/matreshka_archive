@@ -56,6 +56,17 @@ package body Servlet.Generic_Servlets is
       return Self.Config;
    end Get_Servlet_Config;
 
+   -------------------------
+   -- Get_Servlet_Context --
+   -------------------------
+
+   overriding function Get_Servlet_Context
+    (Self : Generic_Servlet)
+      return not null access Servlet.Contexts.Servlet_Context'Class is
+   begin
+      return Self.Config.Get_Servlet_Context;
+   end Get_Servlet_Context;
+
    ----------------------
    -- Get_Servlet_Name --
    ----------------------

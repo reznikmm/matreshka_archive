@@ -46,6 +46,7 @@ with League.Strings;
 
 limited with Matreshka.Servlet_Containers;
 with Servlet.Configs;
+with Servlet.Contexts;
 with Servlet.Servlet_Registrations;
 with Servlet.Servlets;
 
@@ -76,5 +77,11 @@ package Matreshka.Servlet_Registrations is
    --  server administration, assigned in the web application deployment
    --  descriptor, or for an unregistered (and thus unnamed) servlet instance
    --  it will be the servlet's class name.
+
+   overriding function Get_Servlet_Context
+    (Self : Servlet_Registration)
+      return not null access Servlet.Contexts.Servlet_Context'Class;
+   --  Returns a reference to the ServletContext in which the caller is
+   --  executing.
 
 end Matreshka.Servlet_Registrations;

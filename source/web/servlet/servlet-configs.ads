@@ -46,6 +46,8 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with Servlet.Contexts;
+
 package Servlet.Configs is
 
    pragma Preelaborate;
@@ -58,5 +60,12 @@ package Servlet.Configs is
    --  server administration, assigned in the web application deployment
    --  descriptor, or for an unregistered (and thus unnamed) servlet instance
    --  it will be the servlet's class name.
+
+   not overriding function Get_Servlet_Context
+    (Self : Servlet_Config)
+      return not null access Servlet.Contexts.Servlet_Context'Class
+        is abstract;
+   --  Returns a reference to the ServletContext in which the caller is
+   --  executing.
 
 end Servlet.Configs;
