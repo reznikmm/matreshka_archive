@@ -41,6 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Exceptions;
+with Ada.Text_IO;
+
 with League.String_Vectors;
 with Servlet.Generic_Servlets;
 
@@ -149,7 +152,22 @@ package body Matreshka.Servlet_Containers is
 
       --  Initialize servlet.
 
-      Registration.Servlet.Initialize (Registration);
+      begin
+         Registration.Servlet.Initialize (Registration);
+
+      exception
+         when X : others =>
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              "Exception during servlet '"
+                & Name.To_UTF_8_String
+                & "' initialization:");
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              Ada.Exceptions.Exception_Information (X));
+
+            raise;
+      end;
 
       return Registration;
    end Add_Servlet;
@@ -194,7 +212,10 @@ package body Matreshka.Servlet_Containers is
    overriding function Get_MIME_Type
     (Self : Servlet_Container;
      Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       if Path.Ends_With (".css") then
          return League.Strings.To_Universal_String ("text/css");
@@ -226,7 +247,10 @@ package body Matreshka.Servlet_Containers is
    overriding function Get_Real_Path
     (Self : Servlet_Container;
      Path : League.Strings.Universal_String)
-       return League.Strings.Universal_String is
+       return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return "install" & Path;
    end Get_Real_Path;
