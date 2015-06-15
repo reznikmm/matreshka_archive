@@ -504,6 +504,7 @@ package body XML.Templates.Processors is
      Locator : XML.SAX.Locators.SAX_Locator) is
    begin
       Self.Locator := Locator;
+      Self.Content_Handler.Set_Document_Locator (Locator);
    end Set_Document_Locator;
 
    -------------------------
