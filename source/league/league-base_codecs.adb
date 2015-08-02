@@ -212,7 +212,7 @@ package body League.Base_Codecs is
          return Aux;
 
       else
-         raise Constraint_Error with "Mailformed base64url data";
+         raise Constraint_Error with "Mailformed base64 data";
       end if;
    end From_Base_64;
 
