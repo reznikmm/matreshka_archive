@@ -1,0 +1,14 @@
+with "../../../gnat/matreshka_league.gpr";
+
+project Test is
+
+   Work_Dir := external ("WORK_DIR");
+
+   for Object_Dir use Work_Dir & "/.objs";
+   for Source_Dirs use (Work_Dir);
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnatW8", "-gnatct");
+   end Compiler;
+
+end Test;

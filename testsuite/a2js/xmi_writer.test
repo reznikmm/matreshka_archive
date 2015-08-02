@@ -1,0 +1,256 @@
+--  EXPECTED OUTPUT:
+--  <xmi x1='0' x2='0'/>
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  amf3.ads
+--  amf3-metadata.ads
+--  amf3-objects.ads
+--  amf3-slots.ads
+--  amf3-slots-long_floats.ads
+--  demo.ads
+--  demo-walls.ads
+--  xmi.ads
+--  xmi-writers.ads
+--  demo-driver.adb
+--  END OF BIND LIST
+--
+--  MAIN: demo-driver
+
+package Demo is
+end Demo;
+
+with Ada.Text_IO; use Ada.Text_IO;
+with System.Storage_Elements;
+
+with AMF3.Objects;  use AMF3.Objects;
+with AMF3.Metadata; use AMF3.Metadata;
+with AMF3.Slots;
+with XMI.Writers;
+
+with Demo.Walls;
+
+procedure Demo.Driver is
+   W : Demo.Walls.Wall;
+
+begin
+   XMI.Writers.Dump_XMI (W);
+end Demo.Driver;
+
+with AMF3.Objects;
+with AMF3.Slots.Long_Floats;
+with AMF3.Metadata;
+
+private with League.Strings;
+
+package Demo.Walls is
+
+   Wall_Descriptor : aliased constant AMF3.Metadata.Descriptor;
+
+   type Wall (Metadata : access constant AMF3.Metadata.Descriptor
+                  := Wall_Descriptor'Access) is
+     new AMF3.Objects.Abstract_Object (Metadata) with record
+      X1 : AMF3.Slots.Long_Floats.Long_Float_Slot;
+      Y1 : AMF3.Slots.Long_Floats.Long_Float_Slot;
+   end record;
+
+private
+
+   Dummy_Wall : constant Wall (null)
+     with Import     => True,
+          Convention => Ada;
+
+   Wall_Descriptor : aliased constant AMF3.Metadata.Descriptor (1 .. 3)
+     := (1 => (AMF3.Metadata.Slot,
+               League.Strings.To_Universal_String ("x1"),
+               Dummy_Wall.X1'Position),
+         2 => (AMF3.Metadata.Slot,
+               League.Strings.To_Universal_String ("x2"),
+               Dummy_Wall.Y1'Position),
+         3 => (AMF3.Metadata.Superclass,
+               AMF3.Objects.Object_Descriptor'Access));
+
+end Demo.Walls;
+
+package XMI is
+   pragma Pure;
+end XMI;
+
+with AMF3.Objects;
+
+package XMI.Writers is
+   procedure Dump_XMI (Object : AMF3.Objects.Abstract_Object'Class);
+end XMI.Writers;
+
+with Ada.Text_IO; use Ada.Text_IO;
+with System.Storage_Elements; use System.Storage_Elements;
+
+with League.Holders;
+
+with AMF3.Metadata;
+
+package body XMI.Writers is
+
+   procedure Dump_XMI (Object : AMF3.Objects.Abstract_Object'Class) is
+      H : League.Holders.Holder := League.Holders.Empty_Holder;
+
+   begin
+      Put ("<xmi");
+
+      for Item of Object.Metadata.all loop
+         case Item.Kind is
+            when AMF3.Metadata.Slot =>
+               H := AMF3.Objects.To_Slot (Object'Address + Item.Position).Get;
+
+               Put (" " & Item.Name.To_UTF_8_String & "='");
+
+               if League.Holders.Is_Abstract_Float (H) then
+                  Put
+                   (League.Holders.Universal_Float'Image
+                     (League.Holders.Element (H)));
+               end if;
+
+               Put ("'");
+
+            when AMF3.Metadata.Superclass =>
+               null;
+         end case;
+      end loop;
+
+      Put_Line ("/>");
+   end Dump_XMI;
+
+end XMI.Writers;
+
+package AMF3 is
+   pragma Pure;
+end AMF3;
+
+with League.Holders;
+
+package AMF3.Slots is
+
+   pragma Preelaborate;
+
+   type Abstract_Slot is abstract tagged limited private;
+
+   type Slot_Access is access all Abstract_Slot'Class with Storage_Size => 0;
+
+   not overriding function Get
+    (Self : Abstract_Slot) return League.Holders.Holder is abstract;
+
+private
+
+   type Abstract_Slot is abstract tagged limited record
+      Initial_Value : Boolean := False;
+      Current_Value : Boolean := False;
+   end record;
+
+end AMF3.Slots;
+
+package AMF3.Slots.Long_Floats is
+
+   pragma Preelaborate;
+
+   Default_Value : aliased constant Long_Float := 0.0;
+
+   type Long_Float_Slot
+         (Default : not null access constant Long_Float
+            := Default_Value'Access) is
+     new Abstract_Slot with private;
+
+private
+
+   type Long_Float_Value is array (Boolean) of Long_Float;
+
+   type Long_Float_Slot
+         (Default : not null access constant Long_Float
+            := Default_Value'Access) is
+     new Abstract_Slot with record
+      Value : Long_Float_Value := (others => Default.all);
+   end record;
+
+   overriding function Get
+    (Self : Long_Float_Slot) return League.Holders.Holder;
+
+end AMF3.Slots.Long_Floats;
+
+with League.Holders.Long_Floats;
+
+package body AMF3.Slots.Long_Floats is
+
+   overriding function Get
+    (Self : Long_Float_Slot) return League.Holders.Holder is
+   begin
+      return
+        League.Holders.Long_Floats.To_Holder (Self.Value (Self.Current_Value));
+   end Get;
+
+end AMF3.Slots.Long_Floats;
+
+with System.Storage_Elements;
+private with System;
+
+with League.Strings;
+
+with AMF3.Slots;
+with AMF3.Metadata;
+
+package AMF3.Objects is
+
+   function To_Slot (Address : System.Address) return AMF3.Slots.Slot_Access;
+
+   Object_Descriptor : aliased constant AMF3.Metadata.Descriptor;
+
+   type Abstract_Object
+         (Metadata : access constant AMF3.Metadata.Descriptor
+            := Object_Descriptor'Access) is tagged limited null record;
+
+private
+
+   Object_Descriptor : aliased constant AMF3.Metadata.Descriptor (1 .. 0)
+     := (1 .. 0 => (AMF3.Metadata.Superclass, null));
+
+end AMF3.Objects;
+
+with System.Address_To_Access_Conversions;
+
+package body AMF3.Objects is
+
+   package Conversions is
+     new System.Address_To_Access_Conversions
+          (AMF3.Slots.Abstract_Slot'Class);
+
+   function To_Slot (Address : System.Address) return AMF3.Slots.Slot_Access is
+   begin
+      return AMF3.Slots.Slot_Access (Conversions.To_Pointer (Address));
+   end To_Slot;
+
+end AMF3.Objects;
+
+with System.Storage_Elements;
+
+with League.Strings;
+
+package AMF3.Metadata is
+
+   pragma Preelaborate;
+
+   type Descriptor;
+
+   type Item_Kinds is (Slot, Superclass);
+
+   type Item (Kind : Item_Kinds := Superclass) is record
+      case Kind is
+         when Slot =>
+            Name     : League.Strings.Universal_String;
+            Position : System.Storage_Elements.Storage_Offset;
+
+         when Superclass =>
+            Metadata : access constant Descriptor;
+      end case;
+   end record;
+
+   type Descriptor is array (Positive range <>) of Item;
+
+end AMF3.Metadata;

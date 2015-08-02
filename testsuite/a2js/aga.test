@@ -1,0 +1,567 @@
+--  EXPECTED OUTPUT:
+--  DONE
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  reals.ads
+--  walls.ads
+--  main.adb
+--  END OF BIND LIST
+--
+--  MAIN: main
+
+package AGA is
+
+   pragma Pure;
+
+end AGA;
+
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+
+generic
+   type Real is digits <>;
+
+   with package Real_Elementary_Functions is
+          new Ada.Numerics.Generic_Elementary_Functions (Real);
+   with package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+
+package AGA.Generic_Geometry_2D is
+
+   pragma Pure;
+
+   type Point_2D is private;
+
+   subtype Dimension_Index_2D is Positive range 1 .. 2;
+
+   type Vector_2D is private;
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D;
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real;
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D;
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real;
+   function "*" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "/" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "abs" (Vector : Vector_2D) return Real;
+
+   function Length (Vector : Vector_2D) return Real;
+   function Normalize (Vector : Vector_2D) return Vector_2D;
+   procedure Normalize (Vector : in out Vector_2D);
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+
+   type Segment_2D is private;
+
+private
+
+   type Point_2D is new Algebra_2.Vector_2;
+   type Vector_2D is new Algebra_2.Vector_2;
+
+   function "abs" (Vector : Vector_2D) return Real renames Length;
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real
+     renames Dot_Product;
+
+   type Segment_2D is record
+      P1 : Point_2D;
+      P2 : Point_2D;
+   end record;
+
+end AGA.Generic_Geometry_2D;
+
+package body AGA.Generic_Geometry_2D is
+
+   use Algebra_2;
+   use Real_Elementary_Functions;
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) + Vector_2 (Right));
+   end "+";
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   function "*" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) * Right);
+   end "*";
+
+   function "/" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) / Right);
+   end "/";
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Arccos (Vector_1 * Vector_2 / (abs Vector_1 * abs Vector_2));
+   end Angle;
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real is
+   begin
+      return Self (Dimension);
+   end Coordinate;
+
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (1) + Left (2) * Right (2);
+   end Dot_Product;
+
+   function Length (Vector : Vector_2D) return Real is
+   begin
+      return Sqrt (Vector (1) * Vector (1) + Vector (2) * Vector (2));
+   end Length;
+
+   function Normalize (Vector : Vector_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Vector) / Length (Vector));
+   end Normalize;
+
+   procedure Normalize (Vector : in out Vector_2D) is
+      D : constant Real := Length (Vector);
+
+   begin
+      Divide (Vector, D);
+   end Normalize;
+
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (2) - Left (2) * Right (1);
+   end Skew_Product;
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D is
+   begin
+      return (1 => C1, 2 => C2);
+   end To_Point_2D;
+
+end AGA.Generic_Geometry_2D;
+
+generic
+   type Real is digits <>;
+
+package AGA.Generic_Algebra_2 is
+
+   pragma Pure;
+
+   type Vector_2 is array (Positive range 1 .. 2) of Real;
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "*" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+   function "*" (Left : Real; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "/" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real);
+
+end AGA.Generic_Algebra_2;
+
+package body AGA.Generic_Algebra_2 is
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) + Right (1),
+              2 => Left (2) + Right (2));
+   end "+";
+
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) - Right (1),
+              2 => Left (2) - Right (2));
+   end "-";
+
+   function "*" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) * Right,
+              2 => Left (2) * Right);
+   end "*";
+
+   function "*" (Left : Real; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left * Right (1),
+              2 => Left * Right (2));
+   end "*";
+
+   function "/" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) / Right,
+              2 => Left (2) / Right);
+   end "/";
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real) is
+   begin
+      Vector (1) := Vector (1) / Denominator;
+      Vector (2) := Vector (2) / Denominator;
+   end Divide;
+
+end AGA.Generic_Algebra_2;
+with Reals;
+
+package Walls is
+
+   type Wall_Vertex (<>) is limited private;
+
+   type Wall_Vertex_Access is access all Wall_Vertex;
+
+   type Wall_Vertex_Container is limited private;
+
+   function Get_Wall_Vertex
+    (Self  : aliased in out Wall_Vertex_Container;
+     Point : Reals.Geometry_2D.Point_2D) return not null Wall_Vertex_Access;
+
+   type Wall is private;
+
+   type Wall_Access is access all Wall;
+
+   function Create_Wall
+    (Vertex_1 : not null Wall_Vertex_Access;
+     Vertex_2 : not null Wall_Vertex_Access) return not null Wall_Access;
+
+private
+
+   type Wall_Vertex
+    (Container : not null access Wall_Vertex_Container) is
+   record
+      Point   : Reals.Geometry_2D.Point_2D;
+
+      Less    : Wall_Vertex_Access;
+      Greater : Wall_Vertex_Access;
+      --  Ordered list by 2-nd dimension coordinate.
+
+      Head    : Wall_Access;
+      Tail    : Wall_Access;
+      --  Ordered list of wall around vertex.
+   end record;
+
+   type Wall_Vertex_Row;
+   type Wall_Vertex_Row_Access is access all Wall_Vertex_Row;
+
+   type Wall_Vertex_Row is record
+      Coordinate : Reals.Real;
+
+      Less       : Wall_Vertex_Row_Access;
+      Greater    : Wall_Vertex_Row_Access;
+      --  Ordered list by 1-st dimension coordinate.
+
+      Lessest    : Wall_Vertex_Access;
+      Greatest   : Wall_Vertex_Access;
+      --  Ordered list by 2-nd dimension coordinate.
+   end record;
+
+   --  Wall_Vertex_Container organizes all wall's vertexes into 'tree' with two
+   --  ordered doubly linked lists, one by dimension.
+
+   type Wall_Vertex_Container is record
+      Lessest  : Wall_Vertex_Row_Access;
+      Greatest : Wall_Vertex_Row_Access;
+      --  Ordered list by 1-st dimension coordinate.
+   end record;
+
+   type Wall is record
+      Vertex_1            : Wall_Vertex_Access;
+      Vertex_2            : Wall_Vertex_Access;
+      --  Vertexies of the wall
+
+      Left_1  : Wall_Access;
+      Right_1 : Wall_Access;
+      Left_2  : Wall_Access;
+      Right_2 : Wall_Access;
+   end record;
+
+end Walls;
+
+package body Walls is
+
+   use Reals;
+   use Reals.Geometry_2D;
+
+   function Create_Wall
+    (Vertex_1 : not null Wall_Vertex_Access;
+     Vertex_2 : not null Wall_Vertex_Access) return not null Wall_Access
+   is
+      Wall         : constant Wall_Access
+        := new Walls.Wall'
+                (Vertex_1 => Vertex_1, Vertex_2 => Vertex_2, others => <>);
+      Current_Wall : Wall_Access;
+      Nearest_Left : Wall_Access;
+      Angle        : Real;
+
+   begin
+      --  Link first end of the wall into list of wall around vertex.
+
+      if Wall.Vertex_1.Head = null then
+         Wall.Left_1 := Wall;
+         Wall.Right_1 := Wall;
+         Wall.Vertex_1.Head := Wall;
+         Wall.Vertex_1.Tail := Wall;
+
+      else
+         --  Looking for nearest counter-clock wall.
+
+         Current_Wall := Wall.Vertex_1.Head;
+         Nearest_Left := null;
+
+         loop
+            if Nearest_Left = null then
+               Nearest_Left := Current_Wall;
+
+            else
+               null;  --  raise Program_Error;
+            end if;
+
+            exit when Current_Wall = Wall.Vertex_1.Tail;
+
+            Current_Wall := Current_Wall.Left_1;
+         end loop;
+
+         --  Insert new wall in appropriate position.
+
+         Wall.Left_1 := Nearest_Left;
+         Wall.Right_1 := Nearest_Left.Right_1;
+         Wall.Left_1.Right_1 := Wall;
+         Wall.Right_1.Left_1 := Wall;
+
+         if Wall.Vertex_1.Head = Nearest_Left then
+            Wall.Vertex_1.Head := Wall;
+
+         elsif Wall.Vertex_1.Tail = Nearest_Left then
+            Wall.Vertex_1.Tail := Wall;
+         end if;
+      end if;
+
+      if Wall.Vertex_2.Head = null then
+         Wall.Left_2 := Wall;
+         Wall.Right_2 := Wall;
+         Wall.Vertex_2.Head := Wall;
+         Wall.Vertex_2.Tail := Wall;
+
+      else
+         null;  --  raise Program_Error;
+      end if;
+
+      return Wall;
+   end Create_Wall;
+
+   ---------------------
+   -- Get_Wall_Vertex --
+   ---------------------
+
+   function Get_Wall_Vertex
+    (Self  : aliased in out Wall_Vertex_Container;
+     Point : Reals.Geometry_2D.Point_2D) return not null Wall_Vertex_Access
+   is
+      Current_Row    : Wall_Vertex_Row_Access := Self.Lessest;
+      Current_Vertex : Wall_Vertex_Access;
+      Row            : Wall_Vertex_Row_Access;
+      Vertex         : Wall_Vertex_Access;
+
+   begin
+      --  Lookup for existing row at given point
+
+      while Current_Row /= null loop
+         if Current_Row.Coordinate > Coordinate (Point, 1) then
+            exit;
+
+         elsif Current_Row.Coordinate = Coordinate (Point, 1) then
+            Row := Current_Row;
+
+            exit;
+         end if;
+
+         Current_Row := Current_Row.Greater;
+      end loop;
+
+      --  Create new row when there is no row at given point.
+
+      if Row = null then
+         Row :=
+           new Wall_Vertex_Row'
+                (Coordinate => Coordinate (Point, 1),
+                 others     => <>);
+
+         if Current_Row = null then
+            if Self.Lessest = null then
+               --  There are no rows in container. Insert first one.
+
+               Self.Lessest := Row;
+               Self.Greatest := Row;
+
+            else
+               --  New row has greatest coordinate other existing rows. Append
+               --  new row to the end of list.
+
+               Row.Less := Self.Greatest;
+               Self.Greatest.Greater := Row;
+               Self.Greatest := Row;
+            end if;
+
+         else
+            --  New row is less than current one, insert new row before current
+            --  one.
+
+            Row.Less := Current_Row.Less;
+            Row.Greater := Current_Row;
+            Current_Row.Less := Row;
+
+            if Row.Less /= null then
+               Row.Less.Greater := Row;
+            end if;
+
+            if Self.Lessest = Current_Row then
+               Self.Lessest := Row;
+            end if;
+         end if;
+      end if;
+
+      --  Lookup for vertex at given point.
+
+      Current_Vertex := Row.Lessest;
+
+      while Current_Vertex /= null loop
+         if Coordinate (Current_Vertex.Point, 2) > Coordinate (Point, 2) then
+            exit;
+
+         elsif Coordinate (Current_Vertex.Point, 2) = Coordinate (Point, 2) then
+            Vertex := Current_Vertex;
+
+            exit;
+         end if;
+
+         Current_Vertex := Current_Vertex.Greater;
+      end loop;
+
+      if Vertex = null then
+         Vertex :=
+           new Wall_Vertex'
+                (Container => Self'Unchecked_Access,
+                 Point     => Point,
+                 others    => <>);
+
+         if Current_Vertex = null then
+            if Row.Lessest = null then
+               --  There are no vertex in row. Insert first one.
+
+               Row.Lessest := Vertex;
+               Row.Greatest := Vertex;
+
+            else
+               --  New vertex has greatest coordinate other existing vertixes.
+               --  Append new vertex to the end of list.
+
+               Vertex.Less := Row.Greatest;
+               Row.Greatest.Greater := Vertex;
+               Row.Greatest := Vertex;
+            end if;
+
+         else
+            --  New vertex is less than current one, insert new vertex before
+            --  current one.
+
+            Vertex.Less := Current_Vertex.Less;
+            Vertex.Greater := Current_Vertex;
+            Current_Vertex.Less := Vertex;
+
+            if Vertex.Less /= null then
+               Vertex.Less.Greater := Vertex;
+            end if;
+
+            if Row.Lessest = Current_Vertex then
+               Row.Lessest := Vertex;
+            end if;
+         end if;
+      end if;
+
+      return Vertex;
+   end Get_Wall_Vertex;
+
+end Walls;
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+with AGA.Generic_Geometry_2D;
+
+package Reals is
+
+   pragma Pure;
+
+   type Real is new Long_Float;
+
+   package Elementary_Functions is
+     new Ada.Numerics.Generic_Elementary_Functions (Real);
+
+   package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+   package Geometry_2D is new AGA.Generic_Geometry_2D
+     (Real, Elementary_Functions, Algebra_2);
+
+end Reals;
+with Ada.Text_IO;            use Ada.Text_IO;
+
+with Reals;                  use Reals;
+
+with Walls;
+
+procedure Main is
+
+   use Reals.Geometry_2D;
+
+   use Walls;
+
+   Container : aliased Wall_Vertex_Container;
+
+   V00        : Wall_Vertex_Access;
+   VM10       : Wall_Vertex_Access;
+   V10        : Wall_Vertex_Access;
+   V01        : Wall_Vertex_Access;
+   V0M1       : Wall_Vertex_Access;
+
+begin
+
+   V00 := Get_Wall_Vertex (Container, To_Point_2D (0.0, 0.0));
+   VM10 := Get_Wall_Vertex (Container, To_Point_2D (-1.0, 0.0));
+   V10 := Get_Wall_Vertex (Container, To_Point_2D (1.0, 0.0));
+   V01 := Get_Wall_Vertex (Container, To_Point_2D (0.0, 1.0));
+   V0M1 := Get_Wall_Vertex (Container, To_Point_2D (0.0, -1.0));
+
+   if Get_Wall_Vertex (Container, To_Point_2D (0.0, 0.0)) /= V00 then
+      Ada.Text_IO.Put_Line ("FAILED");
+   end if;
+
+   if Get_Wall_Vertex (Container, To_Point_2D (-1.0, 0.0)) /= VM10 then
+      Ada.Text_IO.Put_Line ("FAILED");
+   end if;
+
+   if Get_Wall_Vertex (Container, To_Point_2D (1.0, 0.0)) /= V10 then
+      Ada.Text_IO.Put_Line ("FAILED");
+   end if;
+
+   if Get_Wall_Vertex (Container, To_Point_2D (0.0, 1.0)) /= V01 then
+      Ada.Text_IO.Put_Line ("FAILED");
+   end if;
+
+   if Get_Wall_Vertex (Container, To_Point_2D (0.0, -1.0)) /= V0M1 then
+      Ada.Text_IO.Put_Line ("FAILED");
+   end if;
+
+   Ada.Text_IO.Put_Line ("DONE");
+end Main;

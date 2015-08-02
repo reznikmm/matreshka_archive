@@ -1,0 +1,108 @@
+--  EXPECTED OUTPUT:
+--  Hello A2JS
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  amf3.ads
+--  amf3-slots.ads
+--  amf3-slots-integers.ads
+--  consoles.ads
+--  amf_test.adb
+--  END OF BIND LIST
+--
+--  MAIN: amf_test
+
+package AMF3 is
+   pragma Pure;
+end AMF3;
+
+with League.Holders;
+
+package AMF3.Slots is
+
+   pragma Preelaborate;
+
+   type Abstract_Slot is abstract tagged limited private;
+
+   type Slot_Access is access all Abstract_Slot'Class with Storage_Size => 0;
+
+   not overriding function Get
+    (Self : Abstract_Slot) return League.Holders.Holder is abstract;
+
+private
+
+   type Abstract_Slot is abstract tagged limited record
+      Initial_Value : Boolean := False;
+      Current_Value : Boolean := False;
+   end record;
+
+end AMF3.Slots;
+
+package AMF3.Slots.Integers is
+
+   pragma Preelaborate;
+
+   type Integer_Slot is new Abstract_Slot with private;
+
+private
+
+   type Integer_Value is array (Boolean) of Integer;
+
+   type Integer_Slot is new Abstract_Slot with record
+      Value : Integer_Value := (False => 0, True => 1);
+   end record;
+
+   overriding function Get
+    (Self : Integer_Slot) return League.Holders.Holder;
+
+end AMF3.Slots.Integers;
+
+with League.Holders.Integers;
+
+package body AMF3.Slots.Integers is
+
+   ---------
+   -- Get --
+   ---------
+
+   overriding function Get
+     (Self : Integer_Slot)
+      return League.Holders.Holder
+   is
+   begin
+      return
+        League.Holders.Integers.To_Holder (Self.Value (Self.Current_Value));
+   end Get;
+
+end AMF3.Slots.Integers;
+
+with Consoles;
+with AMF3.Slots.Integers;
+with League.Holders.Integers;
+procedure AMF_Test is
+   use Consoles;
+   Slot : AMF3.Slots.Integers.Integer_Slot;
+   X : Integer := League.Holders.Integers.Element (Slot.Get);
+begin
+   for J in 0 .. X loop
+      Console.Log ("Hello A2JS");
+   end loop;
+end;
+
+package Consoles is
+   type Console_Type is tagged limited null record;
+
+   type Console_Access is access all Console_Type'Class
+     with Storage_Size => 0;
+
+   not overriding procedure Log
+     (Self : not null access Console_Type;
+      Text : String)
+     with Import     => True,
+          Convention => JavaScript_Function,
+          Link_Name  => "log";
+
+   Console : constant Consoles.Console_Access
+     with Import     => True,
+       Convention => JavaScript;
+end Consoles;

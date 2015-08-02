@@ -1,0 +1,1393 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  reals.ads
+--  walls.ads
+--  test_28.adb
+--  END OF BIND LIST
+--
+--  MAIN: test_28
+
+package AGA is
+
+   pragma Pure;
+
+end AGA;
+
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+
+generic
+   type Real is digits <>;
+
+   with package Real_Elementary_Functions is
+          new Ada.Numerics.Generic_Elementary_Functions (Real);
+   with package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+
+package AGA.Generic_Geometry_2D is
+
+   pragma Pure;
+
+   type Point_2D is private;
+
+   subtype Dimension_Index_2D is Positive range 1 .. 2;
+
+   type Vector_2D is private;
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D;
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real;
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D;
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+
+   function To_Vector_2D
+    (Start_Point : Point_2D; End_Point : Point_2D) return Vector_2D;
+
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real;
+   function "*" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "/" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "abs" (Vector : Vector_2D) return Real;
+
+   function Length (Vector : Vector_2D) return Real;
+   function Normalize (Vector : Vector_2D) return Vector_2D;
+   procedure Normalize (Vector : in out Vector_2D);
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+   function Cos (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+   --  Returns cosine of angle between specified vectors.
+   function Sin (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+   --  Returns sine of angle between specified vectors.
+
+   type Segment_2D is private;
+
+   function To_Segment_2D
+    (Point_1 : Point_2D; Point_2 : Point_2D) return Segment_2D;
+   function Unit_Normal_Vector (Segment : Segment_2D) return Vector_2D;
+   function Direction_Vector (Segment : Segment_2D) return Vector_2D;
+
+   function "+" (Left : Segment_2D; Right : Vector_2D) return Segment_2D;
+   function "-" (Left : Segment_2D; Right : Vector_2D) return Segment_2D;
+
+   function Point_1 (Segment : Segment_2D) return Point_2D;
+   function Point_2 (Segment : Segment_2D) return Point_2D;
+
+   procedure Set_Point_1 (Segment : in out Segment_2D; Point : Point_2D);
+   procedure Set_Point_2 (Segment : in out Segment_2D; Point : Point_2D);
+
+   function Intersect
+    (Segment_1 : Segment_2D; Segment_2 : Segment_2D) return Point_2D;
+
+private
+
+   type Point_2D is new Algebra_2.Vector_2;
+   type Vector_2D is new Algebra_2.Vector_2;
+
+   type Segment_2D is record
+      Point_1 : Point_2D;
+      Point_2 : Point_2D;
+   end record;
+
+end AGA.Generic_Geometry_2D;
+
+package body AGA.Generic_Geometry_2D is
+
+   use Algebra_2;
+   use Real_Elementary_Functions;
+
+   ---------
+   -- "*" --
+   ---------
+
+   overriding function "*" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) * Right);
+   end "*";
+
+   ---------
+   -- "+" --
+   ---------
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) + Vector_2 (Right));
+   end "+";
+
+   ---------
+   -- "+" --
+   ---------
+
+   function "+" (Left : Segment_2D; Right : Vector_2D) return Segment_2D is
+   begin
+      return (Left.Point_1 + Right, Left.Point_2 + Right);
+   end "+";
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Segment_2D; Right : Vector_2D) return Segment_2D is
+   begin
+      return (Left.Point_1 - Right, Left.Point_2 - Right);
+   end "-";
+
+   ---------
+   -- "/" --
+   ---------
+
+   overriding function "/" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) / Right);
+   end "/";
+
+   -----------
+   -- Angle --
+   -----------
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Arccos (Vector_1 * Vector_2 / (abs Vector_1 * abs Vector_2));
+   end Angle;
+
+   ----------------
+   -- Coordinate --
+   ----------------
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real is
+   begin
+      return Self (Dimension);
+   end Coordinate;
+
+   ---------
+   -- Cos --
+   ---------
+
+   function Cos (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Vector_1 * Vector_2 / (abs Vector_1 * abs Vector_2);
+   end Cos;
+
+   ----------------------
+   -- Direction_Vector --
+   ----------------------
+
+   function Direction_Vector (Segment : Segment_2D) return Vector_2D is
+   begin
+      return Segment.Point_2 - Segment.Point_1;
+   end Direction_Vector;
+
+   -----------------
+   -- Dot_Product --
+   -----------------
+
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (1) + Left (2) * Right (2);
+   end Dot_Product;
+
+   ---------------
+   -- Intersect --
+   ---------------
+
+   function Intersect
+    (Segment_1 : Segment_2D; Segment_2 : Segment_2D) return Point_2D
+   is
+      V1 : constant Vector_2D := Direction_Vector (Segment_1);
+      V2 : constant Vector_2D := Direction_Vector (Segment_2);
+      D  : constant Real := Skew_Product (V1, V2);
+      T  : Real;
+
+   begin
+      T :=
+       (V2 (1) * (Segment_1.Point_1 (2) - Segment_2.Point_1 (2))
+          - V2 (2) * (Segment_1.Point_1 (1) - Segment_2.Point_1 (1))) / D;
+
+      return
+       (1 => Segment_1.Point_1 (1) + T * V1 (1),
+        2 => Segment_1.Point_1 (2) + T * V1 (2));
+   end Intersect;
+
+   ------------
+   -- Length --
+   ------------
+
+   function Length (Vector : Vector_2D) return Real is
+   begin
+      return Sqrt (Vector (1) * Vector (1) + Vector (2) * Vector (2));
+   end Length;
+
+   ---------------
+   -- Normalize --
+   ---------------
+
+   function Normalize (Vector : Vector_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Vector) / Length (Vector));
+   end Normalize;
+
+   ---------------
+   -- Normalize --
+   ---------------
+
+   procedure Normalize (Vector : in out Vector_2D) is
+      D : constant Real := Length (Vector);
+
+   begin
+      Divide (Vector, D);
+   end Normalize;
+
+   -------------
+   -- Point_1 --
+   -------------
+
+   function Point_1 (Segment : Segment_2D) return Point_2D is
+   begin
+      return Segment.Point_1;
+   end Point_1;
+
+   -------------
+   -- Point_2 --
+   -------------
+
+   function Point_2 (Segment : Segment_2D) return Point_2D is
+   begin
+      return Segment.Point_2;
+   end Point_2;
+
+   -----------------
+   -- Set_Point_1 --
+   -----------------
+
+   procedure Set_Point_1 (Segment : in out Segment_2D; Point : Point_2D) is
+   begin
+      Segment.Point_1 := Point;
+   end Set_Point_1;
+
+   -----------------
+   -- Set_Point_2 --
+   -----------------
+
+   procedure Set_Point_2 (Segment : in out Segment_2D; Point : Point_2D) is
+   begin
+      Segment.Point_2 := Point;
+   end Set_Point_2;
+
+   ---------
+   -- Sin --
+   ---------
+
+   function Sin (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Skew_Product (Vector_1, Vector_2) / (abs Vector_1 * abs Vector_2);
+   end Sin;
+
+   ------------------
+   -- Skew_Product --
+   ------------------
+
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (2) - Left (2) * Right (1);
+   end Skew_Product;
+
+   -----------------
+   -- To_Point_2D --
+   -----------------
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D is
+   begin
+      return (1 => C1, 2 => C2);
+   end To_Point_2D;
+
+   -------------------
+   -- To_Segment_2D --
+   -------------------
+
+   function To_Segment_2D
+    (Point_1 : Point_2D; Point_2 : Point_2D) return Segment_2D is
+   begin
+      return (Point_1, Point_2);
+   end To_Segment_2D;
+
+   ------------------
+   -- To_Vector_2D --
+   ------------------
+
+   function To_Vector_2D
+    (Start_Point : Point_2D; End_Point : Point_2D) return Vector_2D is
+   begin
+      return End_Point - Start_Point;
+   end To_Vector_2D;
+
+   ------------------------
+   -- Unit_Normal_Vector --
+   ------------------------
+
+   function Unit_Normal_Vector (Segment : Segment_2D) return Vector_2D is
+      Aux : constant Vector_2D := Segment.Point_2 - Segment.Point_1;
+      Aux_2 : constant Vector_2D := (1 => Aux (2), 2 => -Aux (1));
+   begin
+      return Normalize (Aux_2);
+   end Unit_Normal_Vector;
+
+   function "abs" (Vector : Vector_2D) return Real renames Length;
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real
+     renames Dot_Product;
+
+end AGA.Generic_Geometry_2D;
+
+generic
+   type Real is digits <>;
+
+package AGA.Generic_Algebra_2 is
+
+   pragma Pure;
+
+   type Vector_2 is array (Positive range 1 .. 2) of Real;
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "*" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+   function "*" (Left : Real; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "/" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real);
+
+end AGA.Generic_Algebra_2;
+
+package body AGA.Generic_Algebra_2 is
+
+   ---------
+   -- "*" --
+   ---------
+
+   function "*" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) * Right,
+              2 => Left (2) * Right);
+   end "*";
+
+   ---------
+   -- "*" --
+   ---------
+
+   function "*" (Left : Real; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left * Right (1),
+              2 => Left * Right (2));
+   end "*";
+
+   ---------
+   -- "+" --
+   ---------
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) + Right (1),
+              2 => Left (2) + Right (2));
+   end "+";
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) - Right (1),
+              2 => Left (2) - Right (2));
+   end "-";
+
+   ---------
+   -- "/" --
+   ---------
+
+   function "/" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) / Right,
+              2 => Left (2) / Right);
+   end "/";
+
+   ------------
+   -- Divide --
+   ------------
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real) is
+   begin
+      Vector (1) := Vector (1) / Denominator;
+      Vector (2) := Vector (2) / Denominator;
+   end Divide;
+
+end AGA.Generic_Algebra_2;
+
+generic
+   type Real is digits <>;
+
+   Absolute_Error : Real;
+
+package AGA.Generic_Fuzzy_Compare is
+
+   pragma Pure;
+
+   function Equal (Left : Real; Right : Real) return Boolean;
+
+end AGA.Generic_Fuzzy_Compare;
+
+package body AGA.Generic_Fuzzy_Compare is
+
+   -----------
+   -- Equal --
+   -----------
+
+   function Equal (Left : Real; Right : Real) return Boolean is
+   begin
+      return abs (Left - Right) < Absolute_Error;
+   end Equal;
+
+end AGA.Generic_Fuzzy_Compare;
+
+with Reals;
+
+package Walls is
+
+   type Wall_Vertex (<>) is limited private;
+
+   type Wall_Vertex_Access is access all Wall_Vertex;
+
+   type Wall_Vertex_Container is limited private;
+
+   function Get_Wall_Vertex
+    (Self  : aliased in out Wall_Vertex_Container;
+     Point : Reals.Geometry_2D.Point_2D) return not null Wall_Vertex_Access;
+   --  Returns Wall_Vertex at given point. Creates new wall vertex object when
+   --  necessary.
+
+   type Wall is private;
+
+   type Wall_Access is access all Wall;
+
+   function Create_Wall
+    (Vertex_1  : not null Wall_Vertex_Access;
+     Vertex_2  : not null Wall_Vertex_Access;
+     Thickness : Reals.Real) return not null Wall_Access;
+
+   function Point_1
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Point_2D;
+   function Point_2
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Point_2D;
+
+   function Get_Upper_Segment
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Segment_2D;
+   function Get_Lower_Segment
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Segment_2D;
+
+private
+
+   type Wall_Vertex
+    (Container : not null access Wall_Vertex_Container) is
+   record
+      Point   : Reals.Geometry_2D.Point_2D;
+
+      Less    : Wall_Vertex_Access;
+      Greater : Wall_Vertex_Access;
+      --  Ordered list by 2-nd dimension coordinate.
+
+      Head    : Wall_Access;
+      Tail    : Wall_Access;
+      --  Ordered list of wall around vertex.
+   end record;
+
+   ---------------------
+   -- Wall_Vertex_Row --
+   ---------------------
+
+   type Wall_Vertex_Row;
+   type Wall_Vertex_Row_Access is access all Wall_Vertex_Row;
+
+   type Wall_Vertex_Row is record
+      Coordinate : Reals.Real;
+
+      Less       : Wall_Vertex_Row_Access;
+      Greater    : Wall_Vertex_Row_Access;
+      --  Ordered list by 1-st dimension coordinate.
+
+      Lessest    : Wall_Vertex_Access;
+      Greatest   : Wall_Vertex_Access;
+      --  Ordered list by 2-nd dimension coordinate.
+   end record;
+
+   ---------------------------
+   -- Wall_Vertex_Container --
+   ---------------------------
+
+   --  Wall_Vertex_Container organizes all wall's vertexes into 'tree' with two
+   --  ordered doubly linked lists, one by dimension.
+
+   type Wall_Vertex_Container is record
+      Lessest  : Wall_Vertex_Row_Access;
+      Greatest : Wall_Vertex_Row_Access;
+      --  Ordered list by 1-st dimension coordinate.
+   end record;
+
+   ----------
+   -- Wall --
+   ----------
+
+   type Wall is record
+      Vertex_1      : Wall_Vertex_Access;
+      Vertex_2      : Wall_Vertex_Access;
+      --  Vertexies of the wall
+      Thickness     : Reals.Real;
+
+      Left_1        : Wall_Access;
+      Right_1       : Wall_Access;
+      Left_2        : Wall_Access;
+      Right_2       : Wall_Access;
+
+      Upper_Segment : Reals.Geometry_2D.Segment_2D;
+      Lower_Segment : Reals.Geometry_2D.Segment_2D;
+   end record;
+
+end Walls;
+
+package body Walls is
+
+   use Reals;
+   use Reals.Geometry_2D;
+   use Reals.Compare;
+
+   type Half_Plane is (Lower, Zero, Upper);
+
+   function To_Half_Plane (Value : Real) return Half_Plane;
+   --  Convert value of argument to half-plane.
+
+   function Opposite_Vertex
+    (Wall   : not null Wall_Access;
+     Vertex : not null Wall_Vertex_Access) return Wall_Vertex_Access;
+   --  Returns opposite vertex of the given wall.
+
+   function Closest_Counterclock_Wise_Wall
+    (Vertex : not null Wall_Vertex_Access;
+     Wall   : not null Wall_Access) return Wall_Access;
+   --  Returns closest counterclock-wise wall for specified wall around
+   --  specified vertex.
+
+   ------------------------------------
+   -- Closest_Counterclock_Wise_Wall --
+   ------------------------------------
+
+   function Closest_Counterclock_Wise_Wall
+    (Vertex : not null Wall_Vertex_Access;
+     Wall   : not null Wall_Access) return Wall_Access
+   is
+      Vector       : constant Vector_2D
+        := To_Vector_2D (Vertex.Point, Opposite_Vertex (Wall, Vertex).Point);
+      Current_Wall : Wall_Access :=
+       (if Wall.Vertex_1 = Vertex
+          then Wall.Vertex_1.Head else Wall.Vertex_2.Head);
+      Aux_Vector   : Vector_2D;
+      Current_Half : Half_Plane;
+      Current_Cos  : Real;
+      Last_Wall    : Wall_Access;
+      Last_Half    : Half_Plane;
+      Last_Cos     : Real;
+
+   begin
+      if Current_Wall = null then
+         --  There are no walls around given vertex.
+
+         return null;
+      end if;
+
+      Aux_Vector :=
+        To_Vector_2D
+         (Vertex.Point, Opposite_Vertex (Current_Wall, Vertex).Point);
+      Current_Half := To_Half_Plane (Skew_Product (Vector, Aux_Vector));
+      Current_Cos   := Cos (Vector, Aux_Vector);
+
+      loop
+         Last_Wall := Current_Wall;
+         Last_Half := Current_Half;
+         Last_Cos  := Current_Cos;
+
+         exit when Current_Wall = Vertex.Tail;
+
+         Current_Wall :=
+          (if Current_Wall.Vertex_1 = Vertex
+             then Current_Wall.Left_1 else Current_Wall.Left_2);
+         Aux_Vector   :=
+           To_Vector_2D
+            (Vertex.Point, Opposite_Vertex (Current_Wall, Vertex).Point);
+         Current_Half := To_Half_Plane (Skew_Product (Vector, Aux_Vector));
+         Current_Cos  := Cos (Vector, Aux_Vector);
+
+         --  It is possible to break loop without analyzing of all walls then
+         --  current wall is further than last wall due to ordered nature of
+         --  list of walls around vertex.
+
+         exit when
+          (Last_Half = Lower
+             and Current_Half = Lower
+             and Current_Cos > Last_Cos)
+           or (Last_Half /= Lower
+                 and Current_Half /= Lower
+                 and Current_Cos <= Last_Cos)
+           --  Both walls are on same half-plane and current wall is further
+           --  than last wall.
+
+           or (Last_Half /= Lower and Current_Half = Lower);
+           --  Current wall is on lower half-plane while last wall is on lower
+           --  half-plane (or zero line).
+      end loop;
+
+      return Last_Wall;
+   end Closest_Counterclock_Wise_Wall;
+
+   -----------------
+   -- Create_Wall --
+   -----------------
+
+   function Create_Wall
+    (Vertex_1  : not null Wall_Vertex_Access;
+     Vertex_2  : not null Wall_Vertex_Access;
+     Thickness : Real) return not null Wall_Access
+   is
+      Wall          : constant Wall_Access
+        := new Walls.Wall'
+                (Vertex_1  => Vertex_1,
+                 Vertex_2  => Vertex_2,
+                 Thickness => Thickness,
+                 others    => <>);
+      Closest       : Wall_Access;
+      Segment       : Segment_2D;
+      Normal        : Vector_2D;
+      Left          : Wall_Access;
+      Right         : Wall_Access;
+      Left_Segment  : Segment_2D;
+      Right_Segment : Segment_2D;
+      Upper_Segment : Segment_2D;
+      Lower_Segment : Segment_2D;
+      Point         : Point_2D;
+
+   begin
+      --  Link first end of the wall into list of walls around vertex.
+
+      if Wall.Vertex_1.Head = null then
+         Wall.Left_1 := Wall;
+         Wall.Right_1 := Wall;
+         Wall.Vertex_1.Head := Wall;
+         Wall.Vertex_1.Tail := Wall;
+
+      else
+         Closest := Closest_Counterclock_Wise_Wall (Vertex_1, Wall);
+
+         --  Insert new wall in appropriate position.
+
+         Wall.Left_1 := Closest;
+         Wall.Right_1 :=
+          (if Closest.Vertex_1 = Wall.Vertex_1
+             then Closest.Right_1 else Closest.Right_2);
+
+         if Wall.Left_1.Vertex_1 = Wall.Vertex_1 then
+            Wall.Left_1.Right_1 := Wall;
+
+         else
+            Wall.Left_1.Right_2 := Wall;
+         end if;
+
+         if Wall.Right_1.Vertex_1 = Wall.Vertex_1 then
+            Wall.Right_1.Left_1 := Wall;
+
+         else
+            Wall.Right_1.Left_2 := Wall;
+         end if;
+
+         if Wall.Vertex_1.Head = Closest then
+            Wall.Vertex_1.Head := Wall;
+
+         elsif Wall.Vertex_1.Tail = Closest then
+            Wall.Vertex_1.Tail := Wall;
+         end if;
+      end if;
+
+      --  Link second end of the wall into list of walls around vertex.
+
+      if Wall.Vertex_2.Head = null then
+         Wall.Left_2 := Wall;
+         Wall.Right_2 := Wall;
+         Wall.Vertex_2.Head := Wall;
+         Wall.Vertex_2.Tail := Wall;
+
+      else
+         Closest := Closest_Counterclock_Wise_Wall (Vertex_2, Wall);
+
+         --  Insert new wall in appropriate position.
+
+         Wall.Left_2 := Closest;
+         Wall.Right_2 :=
+          (if Closest.Vertex_2 = Wall.Vertex_2
+             then Closest.Right_2 else Closest.Right_1);
+
+         if Wall.Left_2.Vertex_2 = Wall.Vertex_2 then
+            Wall.Left_2.Right_2 := Wall;
+
+         else
+            Wall.Left_2.Right_1 := Wall;
+         end if;
+
+         if Wall.Right_2.Vertex_2 = Wall.Vertex_2 then
+            Wall.Right_2.Left_2 := Wall;
+
+         else
+            Wall.Right_2.Left_1 := Wall;
+         end if;
+
+         if Wall.Vertex_2.Head = Closest then
+            Wall.Vertex_2.Head := Wall;
+
+         elsif Wall.Vertex_2.Tail = Closest then
+            Wall.Vertex_2.Tail := Wall;
+         end if;
+      end if;
+
+      --  Compute initial wall's segments.
+
+      Segment := To_Segment_2D (Wall.Vertex_1.Point, Wall.Vertex_2.Point);
+      Normal  := Unit_Normal_Vector (Segment);
+      Wall.Upper_Segment := Segment - Normal * Wall.Thickness / 2.0;
+      Wall.Lower_Segment := Segment + Normal * Wall.Thickness / 2.0;
+
+      --  Recompute segments of adjucent walls around vertexes.
+
+      if Wall.Left_1 /= Wall then
+         Left := Wall.Left_1;
+         Right := Wall.Right_1;
+
+         if Left.Vertex_1 = Wall.Vertex_1 then
+            Left_Segment := Get_Lower_Segment (Left);
+
+         else
+            Left_Segment := Get_Upper_Segment (Left);
+         end if;
+
+         Upper_Segment := Get_Upper_Segment (Wall);
+         Lower_Segment := Get_Lower_Segment (Wall);
+
+         if Right.Vertex_1 = Wall.Vertex_1 then
+            Right_Segment := Get_Upper_Segment (Right);
+
+         else
+            Right_Segment := Get_Lower_Segment (Right);
+         end if;
+
+         if not Equal
+                 (Skew_Product
+                   (Direction_Vector (Left_Segment),
+                    Direction_Vector (Upper_Segment)),
+                  0.0)
+         then
+            Point := Intersect (Left_Segment, Upper_Segment);
+
+         else
+            Point := Point_1 (Wall.Upper_Segment);
+         end if;
+
+         if Left.Vertex_1 = Wall.Vertex_1 then
+            Set_Point_1 (Left.Lower_Segment, Point);
+
+         else
+            Set_Point_2 (Left.Upper_Segment, Point);
+         end if;
+
+         Set_Point_1 (Wall.Upper_Segment, Point);
+
+         if not Equal
+                 (Skew_Product
+                   (Direction_Vector (Lower_Segment),
+                    Direction_Vector (Right_Segment)),
+                  0.0)
+         then
+            Point := Intersect (Lower_Segment, Right_Segment);
+
+         else
+            Point := Point_1 (Wall.Lower_Segment);
+         end if;
+
+         if Right.Vertex_1 = Wall.Vertex_1 then
+            Set_Point_1 (Right.Upper_Segment, Point);
+
+         else
+            Set_Point_2 (Right.Lower_Segment, Point);
+         end if;
+
+         Set_Point_1 (Wall.Lower_Segment, Point);
+      end if;
+
+      if Wall.Left_2 /= Wall then
+         Left := Wall.Left_2;
+         Right := Wall.Right_2;
+
+         if Left.Vertex_1 = Wall.Vertex_2 then
+            Left_Segment := Get_Lower_Segment (Left);
+
+         else
+            Left_Segment := Get_Upper_Segment (Left);
+         end if;
+
+         Upper_Segment := Get_Lower_Segment (Wall);
+         Lower_Segment := Get_Upper_Segment (Wall);
+
+         if Left.Vertex_1 = Wall.Vertex_2 then
+            Right_Segment := Get_Upper_Segment (Right);
+
+         else
+            Right_Segment := Get_Lower_Segment (Right);
+         end if;
+
+         if not Equal
+                 (Skew_Product
+                   (Direction_Vector (Left_Segment),
+                    Direction_Vector (Upper_Segment)),
+                  0.0)
+         then
+            Point := Intersect (Left_Segment, Upper_Segment);
+
+         else
+            Point := Point_2 (Wall.Upper_Segment);
+         end if;
+
+         if Left.Vertex_1 = Wall.Vertex_2 then
+            Set_Point_1 (Left.Lower_Segment, Point);
+
+         else
+            Set_Point_2 (Left.Upper_Segment, Point);
+         end if;
+
+         Set_Point_2 (Wall.Lower_Segment, Point);
+
+         if not Equal
+                 (Skew_Product
+                   (Direction_Vector (Lower_Segment),
+                    Direction_Vector (Right_Segment)),
+                  0.0)
+         then
+            Point := Intersect (Lower_Segment, Right_Segment);
+
+         else
+            Point := Point_2 (Wall.Lower_Segment);
+         end if;
+
+         if Right.Vertex_1 = Wall.Vertex_2 then
+            Set_Point_1 (Right.Upper_Segment, Point);
+
+         else
+            Set_Point_2 (Right.Lower_Segment, Point);
+         end if;
+
+         Set_Point_2 (Wall.Upper_Segment, Point);
+      end if;
+
+      return Wall;
+   end Create_Wall;
+
+   -----------------------
+   -- Get_Lower_Segment --
+   -----------------------
+
+   function Get_Lower_Segment
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Segment_2D is
+   begin
+      return Wall.Lower_Segment;
+   end Get_Lower_Segment;
+
+   -----------------------
+   -- Get_Upper_Segment --
+   -----------------------
+
+   function Get_Upper_Segment
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Segment_2D is
+   begin
+      return Wall.Upper_Segment;
+   end Get_Upper_Segment;
+
+   ---------------------
+   -- Get_Wall_Vertex --
+   ---------------------
+
+   function Get_Wall_Vertex
+    (Self  : aliased in out Wall_Vertex_Container;
+     Point : Reals.Geometry_2D.Point_2D) return not null Wall_Vertex_Access
+   is
+      Current_Row    : Wall_Vertex_Row_Access := Self.Lessest;
+      Current_Vertex : Wall_Vertex_Access;
+      Row            : Wall_Vertex_Row_Access;
+      Vertex         : Wall_Vertex_Access;
+
+   begin
+      --  Lookup for existing row at given point
+
+      while Current_Row /= null loop
+         if Current_Row.Coordinate > Coordinate (Point, 1) then
+            exit;
+
+         elsif Current_Row.Coordinate = Coordinate (Point, 1) then
+            Row := Current_Row;
+
+            exit;
+         end if;
+
+         Current_Row := Current_Row.Greater;
+      end loop;
+
+      --  Create new row when there is no row at given point.
+
+      if Row = null then
+         Row :=
+           new Wall_Vertex_Row'
+                (Coordinate => Coordinate (Point, 1),
+                 others     => <>);
+
+         if Current_Row = null then
+            if Self.Lessest = null then
+               --  There are no rows in container. Insert first one.
+
+               Self.Lessest := Row;
+               Self.Greatest := Row;
+
+            else
+               --  New row has greatest coordinate other existing rows. Append
+               --  new row to the end of list.
+
+               Row.Less := Self.Greatest;
+               Self.Greatest.Greater := Row;
+               Self.Greatest := Row;
+            end if;
+
+         else
+            --  New row is less than current one, insert new row before current
+            --  one.
+
+            Row.Less := Current_Row.Less;
+            Row.Greater := Current_Row;
+            Current_Row.Less := Row;
+
+            if Row.Less /= null then
+               Row.Less.Greater := Row;
+            end if;
+
+            if Self.Lessest = Current_Row then
+               Self.Lessest := Row;
+            end if;
+         end if;
+      end if;
+
+      --  Lookup for vertex at given point.
+
+      Current_Vertex := Row.Lessest;
+
+      while Current_Vertex /= null loop
+         if Coordinate (Current_Vertex.Point, 2) > Coordinate (Point, 2) then
+            exit;
+
+         elsif Coordinate (Current_Vertex.Point, 2)
+                 = Coordinate (Point, 2)
+         then
+            Vertex := Current_Vertex;
+
+            exit;
+         end if;
+
+         Current_Vertex := Current_Vertex.Greater;
+      end loop;
+
+      if Vertex = null then
+         Vertex :=
+           new Wall_Vertex'
+                (Container => Self'Unchecked_Access,
+                 Point     => Point,
+                 others    => <>);
+
+         if Current_Vertex = null then
+            if Row.Lessest = null then
+               --  There are no vertex in row. Insert first one.
+
+               Row.Lessest := Vertex;
+               Row.Greatest := Vertex;
+
+            else
+               --  New vertex has greatest coordinate other existing vertixes.
+               --  Append new vertex to the end of list.
+
+               Vertex.Less := Row.Greatest;
+               Row.Greatest.Greater := Vertex;
+               Row.Greatest := Vertex;
+            end if;
+
+         else
+            --  New vertex is less than current one, insert new vertex before
+            --  current one.
+
+            Vertex.Less := Current_Vertex.Less;
+            Vertex.Greater := Current_Vertex;
+            Current_Vertex.Less := Vertex;
+
+            if Vertex.Less /= null then
+               Vertex.Less.Greater := Vertex;
+            end if;
+
+            if Row.Lessest = Current_Vertex then
+               Row.Lessest := Vertex;
+            end if;
+         end if;
+      end if;
+
+      return Vertex;
+   end Get_Wall_Vertex;
+
+   ---------------------
+   -- Opposite_Vertex --
+   ---------------------
+
+   function Opposite_Vertex
+    (Wall   : not null Wall_Access;
+     Vertex : not null Wall_Vertex_Access) return Wall_Vertex_Access is
+   begin
+      if Wall.Vertex_1 = Vertex then
+         return Wall.Vertex_2;
+
+      else
+         return Wall.Vertex_1;
+      end if;
+   end Opposite_Vertex;
+
+   -------------
+   -- Point_1 --
+   -------------
+
+   function Point_1
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Point_2D is
+   begin
+      return Wall.Vertex_1.Point;
+   end Point_1;
+
+   -------------
+   -- Point_2 --
+   -------------
+
+   function Point_2
+    (Wall : not null Wall_Access) return Reals.Geometry_2D.Point_2D is
+   begin
+      return Wall.Vertex_2.Point;
+   end Point_2;
+
+   -------------------
+   -- To_Half_Plane --
+   -------------------
+
+   function To_Half_Plane (Value : Real) return Half_Plane is
+   begin
+      if Value < 0.0 then
+         return Lower;
+
+      elsif Value = 0.0 then
+         return Zero;
+
+      else
+         return Upper;
+      end if;
+   end To_Half_Plane;
+
+end Walls;
+
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+with AGA.Generic_Geometry_2D;
+with AGA.Generic_Fuzzy_Compare;
+
+package Reals is
+
+   pragma Pure;
+
+   type Real is new Long_Float;
+
+   package Elementary_Functions is
+     new Ada.Numerics.Generic_Elementary_Functions (Real);
+
+   package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+   package Geometry_2D is
+     new AGA.Generic_Geometry_2D (Real, Elementary_Functions, Algebra_2);
+   package Compare is new AGA.Generic_Fuzzy_Compare (Real, 0.00001);
+
+end Reals;
+
+with Reals;
+with Walls;
+
+procedure Test_28 is
+
+   use Reals;
+   use Reals.Compare;
+   use Reals.Geometry_2D;
+   use Walls;
+
+   type Border is record
+      U11 : Real;
+      U12 : Real;
+      U21 : Real;
+      U22 : Real;
+      L11 : Real;
+      L12 : Real;
+      L21 : Real;
+      L22 : Real;
+   end record;
+
+   type Border_Array is array (Positive range <>) of Border;
+
+   type Wall_Array is array (1 .. 12) of Wall_Access;
+
+   procedure Check (Walls : Wall_Array; Borders : Border_Array);
+
+   -----------
+   -- Check --
+   -----------
+
+   procedure Check (Walls : Wall_Array; Borders : Border_Array) is
+   begin
+      for J in Borders'Range loop
+         if not Equal
+                 (Coordinate (Point_1 (Get_Upper_Segment (Walls (J))), 1),
+                  Borders (J).U11)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_1 (Get_Upper_Segment (Walls (J))), 2),
+                     Borders (J).U12)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_2 (Get_Upper_Segment (Walls (J))), 1),
+                     Borders (J).U21)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_2 (Get_Upper_Segment (Walls (J))), 2),
+                     Borders (J).U22)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_1 (Get_Lower_Segment (Walls (J))), 1),
+                     Borders (J).L11)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_1 (Get_Lower_Segment (Walls (J))), 2),
+                     Borders (J).L12)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_2 (Get_Lower_Segment (Walls (J))), 1),
+                     Borders (J).L21)
+         then
+            raise Program_Error;
+
+         elsif not Equal
+                    (Coordinate (Point_2 (Get_Lower_Segment (Walls (J))), 2),
+                     Borders (J).L22)
+         then
+            raise Program_Error;
+         end if;
+      end loop;
+   end Check;
+
+   Container : aliased Wall_Vertex_Container;
+
+   V11 : Wall_Vertex_Access;
+   V12 : Wall_Vertex_Access;
+   V13 : Wall_Vertex_Access;
+   V21 : Wall_Vertex_Access;
+   V22 : Wall_Vertex_Access;
+   V23 : Wall_Vertex_Access;
+   V31 : Wall_Vertex_Access;
+   V32 : Wall_Vertex_Access;
+   V33 : Wall_Vertex_Access;
+
+   W : Wall_Array := (1 .. 12 => null);
+
+   X10_0  : constant Real := -10.0;
+   X10_05 : constant Real := -10.05;
+   X9_95  : constant Real := -9.95;
+   X0_05  : constant Real := -0.05;
+begin
+   V11 := Get_Wall_Vertex (Container, To_Point_2D (-10.0, 10.0));
+   V12 := Get_Wall_Vertex (Container, To_Point_2D (0.0, 10.0));
+   V13 := Get_Wall_Vertex (Container, To_Point_2D (10.0, 10.0));
+   V21 := Get_Wall_Vertex (Container, To_Point_2D (-10.0, 0.0));
+   V22 := Get_Wall_Vertex (Container, To_Point_2D (0.0, 0.0));
+   V23 := Get_Wall_Vertex (Container, To_Point_2D (10.0, 0.0));
+   V31 := Get_Wall_Vertex (Container, To_Point_2D (-10.0, -10.0));
+   V32 := Get_Wall_Vertex (Container, To_Point_2D (0.0, -10.0));
+   V33 := Get_Wall_Vertex (Container, To_Point_2D (10.0, -10.0));
+
+   W (1) := Create_Wall (V11, V12, 0.1);
+   Check
+    (W,
+     (1 => (X10_0, 10.05, 0.0, 10.05, X10_0, 9.95, 0.0, 9.95)));
+
+   W (2) := Create_Wall (V12, V13, 0.1);
+   Check
+    (W,
+     (1 => (X10_0, 10.05, 0.0, 10.05, X10_0, 9.95, 0.0, 9.95),
+      2 => (0.0, 10.05, 10.0, 10.05, 0.0, 9.95, 10.0, 9.95)));
+
+   W (3) := Create_Wall (V11, V21, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, 0.0, 9.95),
+      2 => (0.0, 10.05, 10.0, 10.05, 0.0, 9.95, 10.0, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.0, X10_05, 10.05, X10_05, 0.0)));
+
+   W (4) := Create_Wall (V12, V22, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.0, 10.05, 0.05, 9.95, 10.0, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.0, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.0, X0_05, 9.95, X0_05, 0.0)));
+
+   W (5) := Create_Wall (V13, V23, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.0, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.0, X0_05, 9.95, X0_05, 0.0),
+      5 => (10.05, 10.05, 10.05, 0.0, 9.95, 9.95, 9.95, 0.0)));
+
+   W (6) := Create_Wall (V21, V22, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, X0_05),
+      4 => (0.05, 9.95, 0.05, X0_05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, 0.0, 9.95, 9.95, 9.95, 0.0),
+      6 => (X9_95, 0.05, X0_05, 0.05, X10_05, X0_05, 0.05, X0_05)));
+
+   W (7) := Create_Wall (V22, V23, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, X0_05),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, X0_05, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X10_05, X0_05, 0.0, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.0, X0_05, 10.05, X0_05)));
+
+   W (8) := Create_Wall (V21, V31, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, X0_05, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X9_95, X0_05, 0.0, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.0, X0_05, 10.05, X0_05),
+      8 => (X9_95, X0_05, X9_95, X10_0, X10_05, 0.0, X10_05, X10_0)));
+
+   W (9) := Create_Wall (V22, V32, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, X0_05, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X9_95, X0_05, X0_05, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.05, X0_05, 10.05, X0_05),
+      8 => (X9_95, X0_05, X9_95, X10_0, X10_05, 0.0, X10_05, X10_0),
+      9 => (0.05, X0_05, 0.05, X10_0, X0_05, X0_05, X0_05, X10_0)));
+
+   W (10) := Create_Wall (V23, V33, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, 0.00, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X9_95, X0_05, X0_05, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05),
+      8 => (X9_95, X0_05, X9_95, X10_0, X10_05, 0.0, X10_05, X10_0),
+      9 => (0.05, X0_05, 0.05, X10_0, X0_05, X0_05, X0_05, X10_0),
+      10 => (10.05, 0.0, 10.05, X10_0, 9.95, X0_05, 9.95, X10_0)));
+
+   W (11) := Create_Wall (V31, V32, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, 0.00, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X9_95, X0_05, X0_05, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05),
+      8 => (X9_95, X0_05, X9_95, X9_95, X10_05, 0.0, X10_05, X10_05),
+      9 => (0.05, X0_05, 0.05, X10_05, X0_05, X0_05, X0_05, X9_95),
+      10 => (10.05, 0.0, 10.05, X10_0, 9.95, X0_05, 9.95, X10_0),
+      11 => (X9_95, X9_95, X0_05, X9_95, X10_05, X10_05, 0.05, X10_05)));
+
+   W (12) := Create_Wall (V32, V33, 0.1);
+   Check
+    (W,
+     (1 => (X10_05, 10.05, 0.0, 10.05, X9_95, 9.95, X0_05, 9.95),
+      2 => (0.0, 10.05, 10.05, 10.05, 0.05, 9.95, 9.95, 9.95),
+      3 => (X9_95, 9.95, X9_95, 0.05, X10_05, 10.05, X10_05, 0.0),
+      4 => (0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05, 0.05),
+      5 => (10.05, 10.05, 10.05, 0.00, 9.95, 9.95, 9.95, 0.05),
+      6 => (X9_95, 0.05, X0_05, 0.05, X9_95, X0_05, X0_05, X0_05),
+      7 => (0.05, 0.05, 9.95, 0.05, 0.05, X0_05, 9.95, X0_05),
+      8 => (X9_95, X0_05, X9_95, X9_95, X10_05, 0.0, X10_05, X10_05),
+      9 => (0.05, X0_05, 0.05, X9_95, X0_05, X0_05, X0_05, X9_95),
+      10 => (10.05, 0.0, 10.05, X10_05, 9.95, X0_05, 9.95, X9_95),
+      11 => (X9_95, X9_95, X0_05, X9_95, X10_05, X10_05, 0.0, X10_05),
+      12 => (0.05, X9_95, 9.95, X9_95, 0.0, X10_05, 10.05, X10_05)));
+end Test_28;

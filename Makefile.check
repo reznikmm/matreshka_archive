@@ -37,6 +37,10 @@ ifdef ENABLE_AMF
     ALL_TARGETS += amf
 endif
 
+ifdef HAS_ASIS
+    ALL_TARGETS += a2js
+endif
+
 all: $(ALL_TARGETS)
 
 league:
@@ -159,6 +163,9 @@ uaflex: UAFLEX=.objs/uaflex/uaflex \
 uaflex:
 	cd .objs; ../$(UAFLEX) ../testsuite/uaflex/uaflex.TN167.just_read
 	cd .objs; ../$(UAFLEX) ../testsuite/uaflex/uaflex.TN171.just_read
+
+a2js:
+	${MAKE} -C testsuite/a2js
 
 # Disable parallel build, it is handled by gnatmake/gprbuild
 .NOTPARALLEL:
