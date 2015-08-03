@@ -245,6 +245,8 @@ package body Properties.Expressions.Identifiers is
       procedure Add_Parent_Name
         (Result : in out League.Strings.Universal_String);
 
+      function Is_Imported (Item : Asis.Declaration) return Boolean;
+
       ----------------
       -- Add_Prefix --
       ----------------
@@ -268,6 +270,17 @@ package body Properties.Expressions.Identifiers is
          Result.Prepend (Parent_Name);
          Result.Prepend ("_ec.");
       end Add_Parent_Name;
+
+      -----------------
+      -- Is_Imported --
+      -----------------
+
+      function Is_Imported (Item : Asis.Declaration) return Boolean is
+         Import : constant Wide_String :=
+           Properties.Tools.Get_Aspect (Item, "Import");
+      begin
+         return Import = "True";
+      end Is_Imported;
 
       Top_Item   : Boolean := True;
       Is_Package : Boolean := False;
@@ -298,14 +311,8 @@ package body Properties.Expressions.Identifiers is
             when Asis.A_Deferred_Constant_Declaration |
                  Asis.A_Constant_Declaration |
                  Asis.A_Variable_Declaration =>
-               declare
-                  Import : constant Wide_String :=
-                    Properties.Tools.Get_Aspect (Item, "Import");
-               begin
-                  if Import = "True" then
-                     exit;
-                  end if;
-               end;
+
+               exit when Is_Imported (Item);
 
             when Asis.A_Procedure_Declaration |
                  Asis.A_Function_Declaration |
@@ -320,6 +327,9 @@ package body Properties.Expressions.Identifiers is
                  (Item, Engines.Is_Dispatching)
                then
                   --  Dispatching operation has no prefix
+                  exit;
+               elsif Is_Imported (Item) then
+                  --  Imported operation has no prefix
                   exit;
                end if;
 

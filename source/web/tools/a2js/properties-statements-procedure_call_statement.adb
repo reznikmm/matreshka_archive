@@ -64,81 +64,71 @@ package body Properties.Statements.Procedure_Call_Statement is
    is
       use type Engines.Call_Convention_Kind;
 
-      Text  : League.Strings.Universal_String;
-      Conv  : constant Engines.Call_Convention_Kind :=
+      Text   : League.Strings.Universal_String;
+      Prefix : constant Asis.Expression := Asis.Statements.Called_Name (Element);
+      Conv   : constant Engines.Call_Convention_Kind :=
         Engine.Call_Convention.Get_Property
-          (Asis.Statements.Called_Name (Element),
+          (Prefix,
            Engines.Call_Convention);
+      Is_Dispatching : Boolean;
    begin
-      case Conv is
-         when Engines.Intrinsic =>
-            return Intrinsic (Engine, Element, Name);
+      Is_Dispatching := Engine.Boolean.Get_Property
+        (Prefix, Engines.Is_Dispatching);
 
-         when Engines.Unspecified =>
-            declare
-               Arg    : League.Strings.Universal_String;
-               List   : constant Asis.Association_List :=
-                 Asis.Statements.Call_Statement_Parameters
-                   (Element, Normalized => False);
-            begin
-               Text := Engine.Text.Get_Property
-                 (Asis.Statements.Called_Name (Element), Name);
+      if Conv = Engines.Intrinsic then
+         Text := Intrinsic (Engine, Element, Name);
+      elsif Is_Dispatching then
+         declare
+            Arg    : League.Strings.Universal_String;
+            List   : constant Asis.Association_List :=
+              Asis.Statements.Call_Statement_Parameters
+                (Element, Normalized => False);
+         begin
+            Text := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (1)), Name);
+            Text.Append (".");
+            Text.Append (Engine.Text.Get_Property (Prefix, Name));
 
-               Text.Append ("(");
+            Text.Append ("(");
 
-               for J in List'Range loop
-                  Arg := Engine.Text.Get_Property
-                    (Asis.Expressions.Actual_Parameter (List (J)), Name);
+            for J in 2 .. List'Last loop
+               Arg := Engine.Text.Get_Property
+                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
 
-                  Text.Append (Arg);
+               Text.Append (Arg);
 
-                  if J /= List'Last then
-                     Text.Append (", ");
-                  end if;
-               end loop;
+               if J /= List'Last then
+                  Text.Append (", ");
+               end if;
+            end loop;
 
-               Text.Append (")");
-            end;
+            Text.Append (")");
+         end;
+      else
+         declare
+            Arg    : League.Strings.Universal_String;
+            List   : constant Asis.Association_List :=
+              Asis.Statements.Call_Statement_Parameters
+                (Element, Normalized => False);
+         begin
+            Text := Engine.Text.Get_Property (Prefix, Name);
 
-         when Engines.JavaScript_Function =>
-            declare
-               Arg    : League.Strings.Universal_String;
-               Prefix : League.Strings.Universal_String;
-               List   : constant Asis.Association_List :=
-                 Asis.Statements.Call_Statement_Parameters
-                   (Element, Normalized => False);
-            begin
-               Prefix := Engine.Text.Get_Property
-                 (Asis.Statements.Called_Name (Element), Name);
+            Text.Append ("(");
 
-               Text := Engine.Text.Get_Property
-                 (Asis.Expressions.Actual_Parameter (List (1)), Name);
-               Text.Append (".");
-               Text.Append (Prefix);
+            for J in 1 .. List'Last loop
+               Arg := Engine.Text.Get_Property
+                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
 
-               Text.Append ("(");
+               Text.Append (Arg);
 
-               for J in 2 .. List'Last loop
-                  Arg := Engine.Text.Get_Property
-                    (Asis.Expressions.Actual_Parameter (List (J)), Name);
+               if J /= List'Last then
+                  Text.Append (", ");
+               end if;
+            end loop;
 
-                  Text.Append (Arg);
-
-                  if J /= List'Last then
-                     Text.Append (", ");
-                  end if;
-               end loop;
-
-               Text.Append (")");
-            end;
-
-         when Engines.JavaScript_Property_Getter |
-              Engines.JavaScript_Property_Setter |
-              Engines.JavaScript_Getter =>
-
-            raise Program_Error with "not implemented";
-
-      end case;
+            Text.Append (")");
+         end;
+      end if;
 
       Text.Append (";");
       return Text;

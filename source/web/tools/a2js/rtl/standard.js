@@ -49,5 +49,20 @@ define('standard', [], function(){
         sqrt : Math.sqrt,
     };
     
+    standard._addEventListener = function (element, name, handler, cap){
+        if (typeof handler._func === "undefined"){
+            handler._func = function (event) {
+                handler.handle_event(event);
+            }
+        }
+        element.addEventListener (name, handler._func, cap);
+    };
+
+    standard._removeEventListener = function (element, name, handler, cap){
+        if (typeof handler._func !== "undefined"){
+            element.removeEventListener (name, handler._func, cap);
+        }
+    };
+  
     return standard;
 });

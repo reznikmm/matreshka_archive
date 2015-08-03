@@ -389,10 +389,10 @@ package WebAPI.DOM.Nodes is
          with Import        => True,
               Convention    => JavaScript_Function,
               External_Name => "insertBefore";
-   procedure Insert_Before
-    (Self  : not null access Node'Class;
+   not overriding procedure Insert_Before
+    (Self  : not null access Node;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
-     Child : access WebAPI.DOM.Nodes.Node'Class)
+     Child : access WebAPI.DOM.Nodes.Node'Class) is abstract
        with Import        => True,
             Convention    => JavaScript_Function,
             External_Name => "insertBefore";
@@ -405,9 +405,9 @@ package WebAPI.DOM.Nodes is
        with Import     => True,
             Convention => JavaScript_Function,
             Link_Name  => "appendChild";
-   procedure Append_Child
-    (Self : not null access Node'Class;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class)
+   not overriding procedure Append_Child
+    (Self : not null access Node;
+     Node : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
        with Import     => True,
             Convention => JavaScript_Function,
             Link_Name  => "appendChild";
@@ -422,10 +422,10 @@ package WebAPI.DOM.Nodes is
          with Import        => True,
               Convention    => JavaScript_Function,
               External_Name => "replaceChild";
-   procedure Replace_Child
-    (Self  : not null access Node'Class;
+   not overriding procedure Replace_Child
+    (Self  : not null access Node;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
-     Child : not null access WebAPI.DOM.Nodes.Node'Class)
+     Child : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
        with Import        => True,
             Convention    => JavaScript_Function,
             External_Name => "replaceChild";
@@ -438,9 +438,9 @@ package WebAPI.DOM.Nodes is
        with Import     => True,
             Convention => JavaScript_Function,
             Link_Name  => "removeChild";
-   procedure Remove_Child
-    (Self : not null access Node'Class;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class)
+   not overriding procedure Remove_Child
+    (Self : not null access Node;
+     Node : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
        with Import     => True,
             Convention => JavaScript_Function,
             Link_Name  => "removeChild";

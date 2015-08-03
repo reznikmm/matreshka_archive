@@ -472,6 +472,22 @@ package body Properties.Tools is
          end if;
       end Body_Context_Clause_Elements;
 
+      ---------------
+      -- Is_WebAPI --
+      ---------------
+
+      function Is_WebAPI (Name : Asis.Name) return Boolean is
+      begin
+         case Asis.Elements.Expression_Kind (Name) is
+            when Asis.An_Identifier =>
+               return Asis.Expressions.Name_Image (Name) = "WebAPI";
+            when Asis.A_Selected_Component =>
+               return Is_WebAPI (Asis.Expressions.Prefix (Name));
+            when others =>
+               raise Program_Error;
+         end case;
+      end Is_WebAPI;
+
       ----------------------
       -- Check_And_Append --
       ----------------------
@@ -485,6 +501,10 @@ package body Properties.Tools is
             when Asis.An_Identifier =>
                Id := Name;
             when Asis.A_Selected_Component =>
+               if Is_WebAPI (Name) then
+                  return;
+               end if;
+
                Id := Asis.Expressions.Selector (Name);
             when others =>
                raise Program_Error;

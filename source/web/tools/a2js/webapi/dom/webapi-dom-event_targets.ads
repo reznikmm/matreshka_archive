@@ -43,11 +43,53 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface EventTarget.
 ------------------------------------------------------------------------------
+with League.Strings;
+with WebAPI.DOM.Event_Listeners;
 
 package WebAPI.DOM.Event_Targets is
 
    pragma Preelaborate;
 
    type Event_Target is limited interface;
+   type Event_Target_Access is access all Event_Target'Class
+     with Storage_Size => 0;
+
+   procedure Add_Event_Listener
+    (Self        : not null access Event_Target'Class;
+     Event_Type  : League.Strings.Universal_String;
+     Listener    : not null access
+       WebAPI.DOM.Event_Listeners.Event_Listener'Class;
+     Use_Capture : Boolean)
+        with Import     => True,
+             Convention => JavaScript_Function,
+             Link_Name  => "_addEventListener";
+
+   --  This method allows the registration of event listeners on the event
+   --  target. If an EventListener is added to an EventTarget while it is
+   --  processing an event, it will not be triggered by the current actions but
+   --  may be triggered during a later stage of event flow, such as the
+   --  bubbling phase.
+   --  If multiple identical EventListeners are registered on the same
+   --  EventTarget with the same parameters the duplicate instances are
+   --  discarded. They do not cause the EventListener to be called twice and
+   --  since they are discarded they do not need to be removed with the
+   --  removeEventListener method.
+
+   procedure Remove_Event_Listener
+    (Self        : not null access Event_Target'Class;
+     Event_Type  : League.Strings.Universal_String;
+     Listener    : not null access
+       WebAPI.DOM.Event_Listeners.Event_Listener'Class;
+     Use_Capture : Boolean)
+        with Import     => True,
+             Convention => JavaScript_Function,
+             Link_Name  => "_removeEventListener";
+
+   --  This method allows the removal of event listeners from the event target.
+   --  If an EventListener is removed from an EventTarget while it is
+   --  processing an event, it will not be triggered by the current actions.
+   --  EventListeners can never be invoked after being removed.
+   --  Calling removeEventListener with arguments which do not identify any
+   --  currently registered EventListener on the EventTarget has no effect.
 
 end WebAPI.DOM.Event_Targets;
