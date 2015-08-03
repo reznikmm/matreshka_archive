@@ -3,7 +3,7 @@
 set -e
 
 TEST=$1
-WORK_DIR=${TEMPDIR:-/tmp}/$$.test
+WORK_DIR=${TEMPDIR:-/tmp}/$1.test
 PATH=$PATH:`pwd`/../../.objs/a2js
 export LD_LIBRARY_PATH=`pwd`/../../.libs:$LD_LIBRARY_PATH
 
@@ -15,7 +15,9 @@ compile()
 
 mkdir $WORK_DIR
 gnatchop $TEST $WORK_DIR
-gprbuild -p -P test.gpr -XWORK_DIR=$WORK_DIR --db ../../source/web/tools/a2js/gprconfig
+gprbuild -p -P test.gpr -XWORK_DIR=$WORK_DIR \
+ -aP ../../gnat \
+ --db ../../source/web/tools/a2js/gprconfig
 cp library/*.js $WORK_DIR
 cp ../../source/web/tools/a2js/rtl/*.js $WORK_DIR
 sed --quiet -e '/EXPECTED OUTPUT:/,/END OF EXPECTED OUTPUT/p' $TEST \

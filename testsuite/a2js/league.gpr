@@ -1,0 +1,334 @@
+------------------------------------------------------------------------------
+--                                                                          --
+--                            Matreshka Project                             --
+--                                                                          --
+--         Localization, Internationalization, Globalization for Ada        --
+--                                                                          --
+--                        Runtime Library Component                         --
+--                                                                          --
+------------------------------------------------------------------------------
+--                                                                          --
+-- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- All rights reserved.                                                     --
+--                                                                          --
+-- Redistribution and use in source and binary forms, with or without       --
+-- modification, are permitted provided that the following conditions       --
+-- are met:                                                                 --
+--                                                                          --
+--  * Redistributions of source code must retain the above copyright        --
+--    notice, this list of conditions and the following disclaimer.         --
+--                                                                          --
+--  * Redistributions in binary form must reproduce the above copyright     --
+--    notice, this list of conditions and the following disclaimer in the   --
+--    documentation and/or other materials provided with the distribution.  --
+--                                                                          --
+--  * Neither the name of the Vadim Godunko, IE nor the names of its        --
+--    contributors may be used to endorse or promote products derived from  --
+--    this software without specific prior written permission.              --
+--                                                                          --
+-- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS      --
+-- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT        --
+-- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR    --
+-- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT     --
+-- HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,   --
+-- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED --
+-- TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR   --
+-- PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF   --
+-- LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING     --
+-- NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS       --
+-- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.             --
+--                                                                          --
+------------------------------------------------------------------------------
+--  $Revision$ $Date$
+------------------------------------------------------------------------------
+with "matreshka_config";
+with "matreshka_common";
+
+library project League is
+
+   Library_Name := "league" & Matreshka_Config.RTL_Version_Suffix;
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" | "Windows" =>
+         null;
+
+      when "MacOS" =>
+        Library_Name := Library_Name & "." & Matreshka_Config.Version;
+   end case;
+
+   for Object_Dir use "../../.objs/league";
+   for Library_Kind use "dynamic";
+   for Library_Name use Library_Name;
+   for Library_Dir use "../../.libs";
+   for Library_ALI_Dir use "../../.libs/matreshka";
+   for Externally_Built use "True";
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" =>
+         for Library_Version use
+           "lib" & Library_Name & ".so." & Matreshka_Config.Version;
+
+      when "MacOS" | "Windows" =>
+         null;
+   end case;
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" | "MacOS" =>
+         null;
+
+      when "Windows" =>
+         for Library_Options use ("-lshlwapi");
+   end case;
+
+   Common_Source_Dirs :=
+    ("../../source/league",
+     "../../source/league/codecs",
+     "../../source/league/codecs/tables",
+     "../../source/league/iana",
+     "../../source/league/regexp",
+     "../../source/league/ucd",
+     "../../source/xml/sax",
+     "../../source/xml/sax/xml");
+
+   Operating_System_Dirs := ();
+
+   case Matreshka_Config.Operating_System is
+      when "POSIX" | "MacOS" =>
+         null;
+
+      when "Windows" =>
+         Operating_System_Dirs :=
+          ("../../source/league/os/windows");
+   end case;
+
+   case Matreshka_Config.Architecture is
+      when "portable_32_be" =>
+         for Source_Dirs use Common_Source_Dirs;
+
+      when "portable_32_le" =>
+         for Source_Dirs use Common_Source_Dirs;
+
+      when "portable_64_be" =>
+         for Source_Dirs use Common_Source_Dirs;
+
+      when "portable_64_le" =>
+         for Source_Dirs use Common_Source_Dirs;
+
+      when "x86" =>
+         for Source_Dirs
+           use Common_Source_Dirs
+                 & Operating_System_Dirs
+                 & ("../../source/league/arch/x86_generic",
+                    "../../source/league/arch/x86");
+
+      when "x86_64" =>
+         for Source_Dirs
+           use Common_Source_Dirs
+                 & Operating_System_Dirs
+                 & ("../../source/league/arch/x86_generic",
+                    "../../source/league/arch/x86_64");
+   end case;
+
+   -------------
+   -- Builder --
+   -------------
+
+   package Builder renames Matreshka_Common.Builder;
+
+   --------------
+   -- Compiler --
+   --------------
+
+   package Compiler is
+
+      for Default_Switches ("Ada") use
+        Matreshka_Common.Common_Ada_Switches
+          & Matreshka_Common.Platform_Ada_Switches
+          & Matreshka_Common.Optimization_Ada_Switches
+          & Matreshka_Common.Debug_Ada_Switches;
+
+      case Matreshka_Config.Architecture is
+         when "x86" =>
+            for Switches ("matreshka-simd-intel-sse.adb") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-simd-intel-sse2.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse2")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86-sse2.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse2")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86-sse2_popcnt.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse2", "-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-generic_x86_sse2.adb") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-msse2")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.adb") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+
+         when "x86_64" =>
+            for Switches ("matreshka-internals-strings-handlers-x86_utilities.adb") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+            for Switches ("matreshka-internals-strings-handlers-x86_64_popcnt.ads") use
+              Matreshka_Common.Common_Ada_Switches
+                & Matreshka_Common.Platform_Ada_Switches
+                & ("-mpopcnt")
+                & Matreshka_Common.Optimization_Ada_Switches
+                & Matreshka_Common.Debug_Ada_Switches;
+
+         when others =>
+            null;
+      end case;
+   end Compiler;
+
+   ------------
+   -- Naming --
+   ------------
+
+   package Naming is
+
+      --  Matreshka.Internals.Atomics.Counters
+
+--      for Implementation ("Matreshka.Atomics.Counters")
+--        use "matreshka-atomics-counters__portable.adb";
+--      for Implementation ("Matreshka.Atomics.Counters")
+--        use "matreshka-atomics-counters__i386.adb";
+      for Implementation ("Matreshka.Atomics.Counters")
+        use "matreshka-atomics-counters__gcc.adb";
+
+      --  Matreshka.Internals.Atomics.Generic_Test_And_Set
+
+      case Matreshka_Config.Architecture is
+         when "portable_32_be" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable.ads";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__be.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
+
+         when "portable_32_le" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable.ads";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__le.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
+
+         when "portable_64_be" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable.ads";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__be.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
+
+         when "portable_64_le" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__portable.ads";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__le.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
+
+         when "x86" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__32.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__32.adb";
+
+         when "x86_64" =>
+            for Implementation ("Matreshka.Atomics.Generic_Test_And_Set")
+              use "matreshka-atomics-generic_test_and_set__gcc__64.adb";
+            for Specification ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_64.ads";
+            for Implementation ("Matreshka.Internals.Strings.Configuration")
+              use "matreshka-internals-strings-configuration__x86_64.adb";
+            for Specification ("Matreshka.Internals.Strings.Constants")
+              use "matreshka-internals-strings-constants__x86.ads";
+            for Implementation ("Matreshka.Internals.Strings.Handlers.Portable")
+              use "matreshka-internals-strings-handlers-portable__64.adb";
+      end case;
+
+      case Matreshka_Config.Operating_System is
+         when "POSIX" | "MacOS" =>
+            for Implementation ("League.Application.Initialize_Arguments_Environment")
+              use "league-application-initialize_arguments_environment__posix.adb";
+            for Implementation ("League.Environment_Variables.To_Key")
+              use "league-environment_variables-to_key__posix.adb";
+            for Implementation ("League.Text_Codecs.Codec_For_Application_Locale")
+              use "league-text_codecs-codec_for_application_locale__posix.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__posix.adb";
+            for Specification ("Matreshka.Internals.Settings.Configuration")
+              use "matreshka-internals-settings-configuration__posix.ads";
+            for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
+              use "matreshka-internals-settings-ini_managers-paths__posix.adb";
+            for Implementation ("XML.SAX.Input_Sources.Streams.Files.Naming_Utilities")
+              use "xml-sax-input_sources-streams-files-naming_utilities__posix.adb";
+
+         when "Windows" =>
+            for Implementation ("League.Application.Initialize_Arguments_Environment")
+              use "league-application-initialize_arguments_environment__windows.adb";
+            for Implementation ("League.Environment_Variables.To_Key")
+              use "league-environment_variables-to_key__windows.adb";
+            for Implementation ("League.Text_Codecs.Codec_For_Application_Locale")
+              use "league-text_codecs-codec_for_application_locale__windows.adb";
+            for Implementation ("Matreshka.Internals.Calendars.Clocks")
+              use "matreshka-internals-calendars-clocks__windows.adb";
+            for Specification ("Matreshka.Internals.Settings.Configuration")
+              use "matreshka-internals-settings-configuration__windows.ads";
+            for Implementation ("Matreshka.Internals.Settings.Ini_Managers.Paths")
+              use "matreshka-internals-settings-ini_managers-paths__windows.adb";
+            for Implementation ("XML.SAX.Input_Sources.Streams.Files.Naming_Utilities")
+              use "xml-sax-input_sources-streams-files-naming_utilities__windows.adb";
+      end case;
+
+      --  Matreshka.Internals.Host_Types
+
+--      for Implementation ("Matreshka.Internals.Host_Types")
+--        use "matreshka-internals-host_types__32.ads";
+--      for Specification ("Matreshka.Internals.Host_Types")
+--        use "matreshka-internals-host_types__64.ads";
+
+   end Naming;
+
+end League;
