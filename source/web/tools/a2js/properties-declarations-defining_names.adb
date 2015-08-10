@@ -60,37 +60,51 @@ package body Properties.Declarations.Defining_Names is
 
    Reserved : String_Maps.Set;
 
-   Map : constant array (Asis.Operator_Kinds)
+   Map : constant array (Asis.Operator_Kinds
+                           range Asis.An_And_Operator .. Asis.A_Not_Operator)
      of League.Strings.Universal_String :=
-       (
---          Asis.Not_An_Operator,                   -- An unexpected element
---          Asis.An_And_Operator,                   -- and
---          Asis.An_Or_Operator,                    -- or
---          Asis.An_Xor_Operator,                   -- xor
---          Asis.An_Equal_Operator,                 -- =
---          Asis.A_Not_Equal_Operator,              -- /=
---          Asis.A_Less_Than_Operator,              -- <
---          Asis.A_Less_Than_Or_Equal_Operator,     -- <=
---          Asis.A_Greater_Than_Operator,           -- >
---          Asis.A_Greater_Than_Or_Equal_Operator,  -- >=
+       (Asis.An_And_Operator =>
+          League.Strings.To_Universal_String ("_and"),
+        Asis.An_Or_Operator =>
+          League.Strings.To_Universal_String ("_or"),
+        Asis.An_Xor_Operator =>
+          League.Strings.To_Universal_String ("_xor"),
+        Asis.An_Equal_Operator =>
+          League.Strings.To_Universal_String ("_eq"),
+        Asis.A_Not_Equal_Operator =>
+          League.Strings.To_Universal_String ("_ne"),
+        Asis.A_Less_Than_Operator =>
+          League.Strings.To_Universal_String ("_lt"),
+        Asis.A_Less_Than_Or_Equal_Operator =>
+          League.Strings.To_Universal_String ("_le"),
+        Asis.A_Greater_Than_Operator =>
+          League.Strings.To_Universal_String ("_gt"),
+        Asis.A_Greater_Than_Or_Equal_Operator =>
+          League.Strings.To_Universal_String ("_ge"),
         Asis.A_Plus_Operator =>
           League.Strings.To_Universal_String ("_plus"),
         Asis.A_Minus_Operator =>
           League.Strings.To_Universal_String ("_minus"),
---          Asis.A_Concatenate_Operator,            -- &
---          Asis.A_Unary_Plus_Operator,             -- +
---          Asis.A_Unary_Minus_Operator,            -- -
+        Asis.A_Concatenate_Operator =>
+          League.Strings.To_Universal_String ("_join"),
+        Asis.A_Unary_Plus_Operator =>
+          League.Strings.To_Universal_String ("_nop"),
+        Asis.A_Unary_Minus_Operator =>
+          League.Strings.To_Universal_String ("_neg"),
         Asis.A_Multiply_Operator =>
           League.Strings.To_Universal_String ("_mul"),
         Asis.A_Divide_Operator =>
           League.Strings.To_Universal_String ("_div"),
---          Asis.A_Mod_Operator,                    -- mod
---          Asis.A_Rem_Operator,                    -- rem
---          Asis.An_Exponentiate_Operator,          -- **
+        Asis.A_Mod_Operator =>
+          League.Strings.To_Universal_String ("_mod"),
+        Asis.A_Rem_Operator =>
+          League.Strings.To_Universal_String ("_rem"),
+        Asis.An_Exponentiate_Operator =>
+          League.Strings.To_Universal_String ("_power"),
         Asis.An_Abs_Operator =>
           League.Strings.To_Universal_String ("_abs"),
---          Asis.A_Not_Operator);                   -- not
-        others => League.Strings.Empty_Universal_String);
+        Asis.A_Not_Operator =>
+          League.Strings.To_Universal_String ("_not"));
 
    ----------
    -- Code --
