@@ -58,6 +58,7 @@ with Properties.Declarations.Package_Instantiation;
 with Properties.Declarations.Private_Type;
 with Properties.Declarations.Procedure_Body_Declarations;
 with Properties.Declarations.Procedure_Declaration;
+with Properties.Declarations.Subprogram_Instantiation;
 with Properties.Definitions.Access_To_Object;
 with Properties.Definitions.Component_Definition;
 with Properties.Definitions.Constrained_Array_Type;
@@ -76,11 +77,13 @@ with Properties.Expressions.Array_Component_Association;
 with Properties.Expressions.Attribute_Reference;
 with Properties.Expressions.Enumeration_Literal;
 with Properties.Expressions.Explicit_Dereference;
+with Properties.Expressions.Extension_Aggregate;
 with Properties.Expressions.Function_Calls;
 with Properties.Expressions.Identifiers;
 with Properties.Expressions.If_Expression;
 with Properties.Expressions.Indexed_Component;
 with Properties.Expressions.Integer_Literal;
+with Properties.Expressions.Membership_Test;
 with Properties.Expressions.Named_Array_Aggregate;
 with Properties.Expressions.Null_Literal;
 with Properties.Expressions.Parameter_Association;
@@ -91,6 +94,7 @@ with Properties.Expressions.Selected_Components;
 with Properties.Expressions.String_Literal;
 with Properties.Expressions.Type_Conversion;
 with Properties.Statements.Assignment_Statement;
+with Properties.Statements.Block_Statement;
 with Properties.Statements.Case_Statement;
 with Properties.Statements.Exit_Statement;
 with Properties.Statements.For_Loop_Statement;
@@ -165,10 +169,22 @@ is
        Kind   => F.A_Generic_Package_Declaration,
        Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
       (Name   => N.Code,
+       Kind   => F.A_Generic_Package_Renaming_Declaration,
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Generic_Function_Renaming_Declaration,
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Generic_Function_Declaration,
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+      (Name   => N.Code,
        Kind   => F.A_Package_Renaming_Declaration,  --  FIXME
        Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Private_Extension_Declaration,
+       Action => P.Statements.Null_Statement.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.A_Tagged_Incomplete_Type_Declaration,
        Action => P.Statements.Null_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Private_Type_Declaration,
@@ -215,8 +231,14 @@ is
        Kind   => F.A_Package_Instantiation,
        Action => P.Declarations.Package_Instantiation.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Procedure_Instantiation,
+       Action => P.Declarations.Subprogram_Instantiation.Code'Access),
+      (Name   => N.Code,
        Kind   => F.An_Enumeration_Type_Definition,
        Action => P.Definitions.Enumeration_Type.Code'Access),
+      (Name    => N.Code,
+       Kind    => F.A_Signed_Integer_Type_Definition,
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Subtype_Indication,
        Action => P.Definitions.Subtype_Indication.Code'Access),
@@ -234,6 +256,9 @@ is
        Action => P.Definitions.Tagged_Record_Type.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Tagged_Record_Type_Definition,
+       Action => P.Definitions.Tagged_Record_Type.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.A_Limited_Interface,
        Action => P.Definitions.Tagged_Record_Type.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Record_Type_Definition,
@@ -278,8 +303,14 @@ is
        Kind   => F.A_Named_Array_Aggregate,
        Action => P.Expressions.Named_Array_Aggregate.Code'Access),
       (Name   => N.Code,
+       Kind   => F.An_In_Membership_Test,
+       Action => P.Expressions.Membership_Test.Code'Access),
+      (Name   => N.Code,
        Kind   => F.A_Record_Aggregate,
        Action => P.Expressions.Record_Aggregate.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.An_Extension_Aggregate,
+       Action => P.Expressions.Extension_Aggregate.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Array_Component_Association,
        Action => P.Expressions.Array_Component_Association.Code'Access),
@@ -310,6 +341,9 @@ is
       (Name   => N.Code,
        Kind   => F.An_Assignment_Statement,
        Action => P.Statements.Assignment_Statement.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.A_Block_Statement,
+       Action => P.Statements.Block_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Case_Statement,
        Action => P.Statements.Case_Statement.Code'Access),
@@ -402,6 +436,9 @@ is
        Kind   => F.A_Constant_Declaration,
        Action => P.Declarations.Constant_Declarations.Initialize'Access),
       (Name   => N.Initialize,
+       Kind   => F.A_Discriminant_Specification,
+       Action => P.Declarations.Constant_Declarations.Initialize'Access),
+      (Name   => N.Initialize,
        Kind   => F.A_Component_Declaration,
        Action => P.Declarations.Constant_Declarations.Initialize'Access),
       (Name   => N.Initialize,
@@ -432,9 +469,12 @@ is
        Action => P.Definitions.Component_Definition.Initialize'Access),
       (Name   => N.Initialize,
        Kind   => F.A_Derived_Record_Extension_Definition,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore123
       (Name   => N.Initialize,
        Kind   => F.An_Access_To_Variable,
+       Action => P.Definitions.Access_To_Object.Initialize'Access),
+      (Name   => N.Initialize,
+       Kind   => F.An_Anonymous_Access_To_Variable,
        Action => P.Definitions.Access_To_Object.Initialize'Access),
       (Name   => N.Initialize,
        Kind   => F.An_Anonymous_Access_To_Constant,
@@ -591,10 +631,17 @@ is
        Name   => N.Is_Dispatching,
        Action => P.Declarations.Function_Renaming_Declaration
        .Is_Dispatching'Access),
+      (Name   => N.Is_Dispatching,
+       Kind   => F.A_Procedure_Instantiation,
+       Action =>
+         P.Declarations.Subprogram_Instantiation.Is_Dispatching'Access),
       (Kind   => F.A_Constant_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.A_Component_Declaration,
+       Name   => N.Is_Simple_Ref,  --  The same as constant
+       Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
+      (Kind   => F.A_Discriminant_Specification,
        Name   => N.Is_Simple_Ref,  --  The same as constant
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.A_Variable_Declaration,
@@ -642,6 +689,12 @@ is
       (Kind    => F.A_Derived_Record_Extension_Definition,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
+      (Kind    => F.A_Tagged_Record_Type_Definition,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
+      (Kind    => F.A_Limited_Interface,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Constrained_Array_Definition,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
@@ -686,6 +739,11 @@ begin
      (Name   => N.Call_Convention,
       Kind   => F.A_Selected_Component,
       Action => P.Expressions.Selected_Components.Call_Convention'Access);
+   Self.Call_Convention.Register_Calculator
+     (Name   => N.Call_Convention,
+      Kind   => F.A_Procedure_Instantiation,
+      Action =>
+        P.Declarations.Subprogram_Instantiation.Call_Convention'Access);
 
    for X in F.An_And_Operator .. F.A_Not_Operator loop
       Self.Call_Convention.Register_Calculator

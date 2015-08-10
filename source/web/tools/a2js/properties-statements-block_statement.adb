@@ -41,13 +41,9 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis.Declarations;
-with Asis.Elements;
-with Asis.Expressions;
+with Asis.Statements;
 
-package body Properties.Declarations.Package_Instantiation is
-
-   function Is_Predefined (Name : Asis.Expression) return Boolean;
+package body Properties.Statements.Block_Statement is
 
    ----------
    -- Code --
@@ -56,67 +52,43 @@ package body Properties.Declarations.Package_Instantiation is
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Generic_Name : constant Asis.Expression :=
-        Asis.Declarations.Generic_Unit_Name (Element);
-      Spec : constant Asis.Declaration :=
-        Asis.Declarations.Corresponding_Declaration (Element);
+      Text : League.Strings.Universal_String;
    begin
-      case Asis.Elements.Expression_Kind (Generic_Name) is
-         when Asis.A_Selected_Component =>
-            if Is_Predefined (Generic_Name) then
-               declare
-                  Text     : League.Strings.Universal_String;
-                  Named    : League.Strings.Universal_String;
-                  Selector : constant Asis.Identifier :=
-                    Asis.Expressions.Selector (Generic_Name);
-                  Image : constant Asis.Program_Text :=
-                    Asis.Expressions.Name_Image (Selector);
-                  Inside_Package : constant Boolean :=
-                    Engine.Boolean.Get_Property
-                      (Element, Engines.Inside_Package);
-               begin
-                  if Inside_Package then
-                     Text.Append ("_ec.");
-                  else
-                     Text.Append ("var ");
-                  end if;
+      Text.Append ("{");
 
-                  Named := Engine.Text.Get_Property
-                    (Asis.Declarations.Names (Element) (1), Name);
+      declare
+         List : constant Asis.Element_List :=
+           Asis.Statements.Block_Declarative_Items (Element);
+      begin
+         for J in List'Range loop
+            declare
+               Var_Code : constant League.Strings.Universal_String :=
+                 Engine.Text.Get_Property (List (J), Name);
+            begin
+               Text.Append (Var_Code);
+            end;
+         end loop;
+      end;
 
-                  Text.Append (Named);
-                  Text.Append ("= _ec._");
+      declare
+         List : constant Asis.Element_List :=
+           Asis.Statements.Block_Statements (Element);
+      begin
+         for J in List'Range loop
+            declare
+               Stmt_Code : constant League.Strings.Universal_String :=
+                 Engine.Text.Get_Property (List (J), Name);
+            begin
+               Text.Append (Stmt_Code);
+            end;
+         end loop;
+      end;
 
-                  Named := League.Strings.From_UTF_16_Wide_String (Image);
-                  Named := Named.To_Lowercase;
-                  Text.Append (Named);
-                  Text.Append (";");
-                  return Text;
-               end;
-            end if;
-         when others =>
-            null;
-      end case;
+      Text.Append ("};");
 
-      return Engine.Text.Get_Property (Spec, Name);
+      return Text;
    end Code;
 
-   -------------------
-   -- Is_Predefined --
-   -------------------
-
-   function Is_Predefined (Name : Asis.Expression) return Boolean is
-      Selector : constant Asis.Identifier :=
-        Asis.Expressions.Selector (Name);
-      Image : constant Asis.Program_Text :=
-        Asis.Expressions.Name_Image (Selector);
-   begin
-      return Image = "Generic_Elementary_Functions" or else
-        Image = "Address_To_Access_Conversions" or else
-        Image = "Unchecked_Deallocation";
-   end Is_Predefined;
-
-end Properties.Declarations.Package_Instantiation;
+end Properties.Statements.Block_Statement;

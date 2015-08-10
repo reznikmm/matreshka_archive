@@ -351,6 +351,9 @@ package body Properties.Expressions.Identifiers is
                   end if;
                end;
 
+            when Asis.A_Procedure_Instantiation =>
+               null;  --  Skip instantiation element
+
             when Asis.Not_A_Declaration =>
                null;
 

@@ -110,13 +110,17 @@ procedure Asis2JS is
 
                   exit;
 
-               when Asis.A_Package =>
+               when Asis.A_Package
+                  | Asis.A_Generic_Package_Renaming
+                  | Asis.A_Generic_Function_Renaming =>
+
                   Success := True;
                   Compile_Unit (Units (J), Output_File);
 
                   exit;
 
-               when Asis.A_Procedure_Body =>
+               when Asis.A_Procedure_Body
+                  | Asis.A_Function_Body =>
                   --  Specification for subprogram body is optional, process it
                   --  when available or process body directly.
 

@@ -63,11 +63,30 @@ package body Properties.Tools is
         Asis.Declarations.Parameter_Profile (Declaration);
       View : constant Asis.Element :=
         Asis.Declarations.Object_Declaration_View (List (List'First));
---      Mark : constant Asis.Subtype_Mark :=
+      Mark : Asis.Subtype_Mark;
 --        Asis.Definitions.Subtype_Mark (View);
-      Decl : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Name_Declaration (View);
+      Decl : Asis.Declaration;
    begin
+      case Asis.Elements.Access_Definition_Kind (View) is
+         when Asis.An_Anonymous_Access_To_Variable |
+              Asis.An_Anonymous_Access_To_Constant =>
+
+            Mark :=
+              Asis.Definitions.Anonymous_Access_To_Object_Subtype_Mark (View);
+
+         when others =>
+            Mark := View;
+      end case;
+
+      case Asis.Elements.Expression_Kind (Mark) is
+         when Asis.A_Selected_Component =>
+            Mark := Asis.Expressions.Selector (Mark);
+         when others =>
+            null;
+      end case;
+
+      Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
+
       return Decl;
    end Corresponding_Type;
 
@@ -183,6 +202,10 @@ package body Properties.Tools is
 
                   return Corresponding_Type_Components
                     (Asis.Definitions.Record_Definition (Definition));
+
+               when Asis.An_Interface_Type_Definition =>
+
+                  return Asis.Nil_Element_List;
 
                when others =>
 

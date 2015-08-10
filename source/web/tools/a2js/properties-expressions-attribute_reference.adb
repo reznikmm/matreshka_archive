@@ -86,6 +86,10 @@ package body Properties.Expressions.Attribute_Reference is
             Asis.An_Unchecked_Access_Attribute =>
             return Engine.Text.Get_Property (Prefix, Name);
 
+         when Asis.A_Class_Attribute =>
+            --  FIX ME, but I have no idea how
+            return Engine.Text.Get_Property (Prefix, Name);
+
          when Asis.A_Position_Attribute =>
             declare
                Text     : League.Strings.Universal_String;
