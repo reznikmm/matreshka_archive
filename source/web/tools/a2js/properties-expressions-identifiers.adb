@@ -119,7 +119,7 @@ package body Properties.Expressions.Identifiers is
    is
       use type League.Strings.Universal_String;
 
-      Decl : constant Asis.Declaration :=
+      Decl : Asis.Declaration :=
         Asis.Expressions.Corresponding_Name_Declaration (Element);
       Image : constant Wide_String :=
         Asis.Expressions.Name_Image (Element);
@@ -130,10 +130,14 @@ package body Properties.Expressions.Identifiers is
          return Text.To_Lowercase;
       elsif Is_Current_Instance_Of_Type (Element, Decl) then
          return League.Strings.To_Universal_String ("this");
-      else
-         return Name_Prefix (Engine, Element, Decl) &
-           Engine.Text.Get_Property (Asis.Declarations.Names (Decl) (1), Name);
       end if;
+
+      while Asis.Elements.Is_Part_Of_Inherited (Decl) loop
+         Decl := Asis.Declarations.Corresponding_Subprogram_Derivation (Decl);
+      end loop;
+
+      return Name_Prefix (Engine, Element, Decl) &
+        Engine.Text.Get_Property (Asis.Declarations.Names (Decl) (1), Name);
    end Code;
 
    ----------------
