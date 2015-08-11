@@ -179,7 +179,10 @@ package body Properties.Declarations.Function_Declarations is
       Spec : constant Asis.Declaration :=
         Asis.Declarations.Corresponding_Declaration (Element);
    begin
-      return Asis.Declarations.Is_Dispatching_Operation (Spec);
+      --  Controlling result functions are not considered dispatching
+      --  for now.
+      return Asis.Declarations.Is_Dispatching_Operation (Spec)
+        and not Tools.Has_Controlling_Result (Spec);
    end Is_Dispatching;
 
 end Properties.Declarations.Function_Declarations;

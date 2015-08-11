@@ -350,6 +350,53 @@ package body Properties.Tools is
       return "";
    end Get_Aspect;
 
+   ----------------------------
+   -- Has_Controlling_Result --
+   ----------------------------
+
+   function Has_Controlling_Result (Func : Asis.Declaration) return Boolean is
+      Result_Type : Asis.Element;
+      Type_Decl   : Asis.Declaration;
+      Type_Def    : Asis.Type_Definition;
+   begin
+      if Asis.Elements.Declaration_Kind (Func) not in
+        Asis.A_Function_Declaration
+      then
+         return False;
+      end if;
+
+      Result_Type := Asis.Declarations.Result_Profile (Func);
+
+      if Asis.Elements.Expression_Kind (Result_Type) not in
+        Asis.An_Identifier
+      then
+         --  TODO: Check others cases
+         return False;
+      end if;
+
+      Type_Decl :=
+        Asis.Expressions.Corresponding_Name_Declaration (Result_Type);
+
+      if Asis.Elements.Declaration_Kind (Type_Decl) not in
+        Asis.An_Ordinary_Type_Declaration |
+        Asis.A_Private_Type_Declaration
+      then
+         return False;
+      end if;
+
+      Type_Def := Asis.Declarations.Type_Declaration_View (Type_Decl);
+
+      if Asis.Elements.Definition_Kind (Type_Def) not in
+        Asis.A_Tagged_Private_Type_Definition
+      then
+         return False;
+      end if;
+
+      return Asis.Elements.Is_Equal
+        (Asis.Elements.Enclosing_Element (Func),
+         Asis.Elements.Enclosing_Element (Type_Decl));
+   end Has_Controlling_Result;
+
    -------------------
    -- Is_Equal_Type --
    -------------------

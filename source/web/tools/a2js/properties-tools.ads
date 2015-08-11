@@ -80,4 +80,7 @@ package Properties.Tools is
 
    function Enclosing_Declaration (X : Asis.Element) return Asis.Declaration;
 
+   function Has_Controlling_Result (Func : Asis.Declaration) return Boolean;
+   --  Check if function Func is like 'function F return T' where T is tagged
+
 end Properties.Tools;
