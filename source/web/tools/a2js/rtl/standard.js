@@ -13,6 +13,9 @@ define('standard', [], function(){
         throw error;
     };
 
+    //  This function used as null methods of tagged types.
+    standard._null = function (){};
+
     //  Constructor for tags
     standard._tag = function (tag_name, parent_name){
         var result = Object.create (all_types[parent_name]);
@@ -21,6 +24,12 @@ define('standard', [], function(){
         return result;
     };
     all_types [''] = {};  //  prototype from root tags
+
+    //  Used in extension aggregate
+    standard._extend = function (base, props){
+        for (var attrname in props) { base[attrname] = props[attrname]; }
+        return base;
+    };
 
     //  T'Pos(x) for discrete type T
     standard._pos = function (x){
@@ -48,7 +57,7 @@ define('standard', [], function(){
         arccos : Math.acos,
         sqrt : Math.sqrt,
     };
-    
+
     standard._addEventListener = function (element, name, handler, cap){
         if (typeof handler._func === "undefined"){
             handler._func = function (event) {
@@ -63,6 +72,6 @@ define('standard', [], function(){
             element.removeEventListener (name, handler._func, cap);
         }
     };
-  
+
     return standard;
 });

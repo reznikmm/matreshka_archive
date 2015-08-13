@@ -46,6 +46,7 @@ with Asis.Definitions;
 with Asis.Elements;
 
 with Properties.Tools;
+with Properties.Expressions.Identifiers;
 
 package body Properties.Definitions.Tagged_Record_Type is
 
@@ -230,10 +231,28 @@ package body Properties.Definitions.Tagged_Record_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      pragma Unreferenced (Engine, Element, Name);
+      pragma Unreferenced (Name);
+
+      Decl   : constant Asis.Declaration :=
+        Asis.Elements.Enclosing_Element (Element);
+      Result : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
    begin
-      raise Program_Error with "Unimplemented";
-      return League.Strings.Empty_Universal_String;
+      Result.Append (" new ");
+
+      Text :=
+        Properties.Expressions.Identifiers.Name_Prefix (Engine, Element, Decl);
+
+      Result.Append (Text);
+
+      Text := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Decl) (1),
+         Engines.Code);
+
+      Result.Append (Text);
+      Result.Append ("()");
+
+      return Result;
    end Initialize;
 
 end Properties.Definitions.Tagged_Record_Type;

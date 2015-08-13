@@ -49,6 +49,7 @@ package Engines is
       Condition,
       Lower, Upper,    --  Code for range return X'First X'Last
       Intrinsic_Name,
+      Associations, --  names of record assotiation a,b,c
       Initialize,
       --  Code to initialize an object of given type
       Bounds  --  "First,Last" bounds for nested named array aggregate

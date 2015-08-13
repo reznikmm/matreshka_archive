@@ -52,11 +52,6 @@ with Properties.Tools;
 
 package body Properties.Expressions.Identifiers is
 
-   function Name_Prefix
-     (Engine : access Engines.Contexts.Context;
-      Name   : Asis.Identifier;
-      Decl   : Asis.Declaration) return League.Strings.Universal_String;
-
    function Is_Current_Instance_Of_Type
      (Id   : Asis.Identifier;
       Decl : Asis.Declaration) return Boolean;
@@ -306,6 +301,7 @@ package body Properties.Expressions.Identifiers is
                null;
 
             when Asis.A_Discriminant_Specification |
+                 Asis.A_Component_Declaration |
                  Asis.A_Loop_Parameter_Specification |
                  Asis.An_Element_Iterator_Specification |
                  Asis.A_Parameter_Specification =>

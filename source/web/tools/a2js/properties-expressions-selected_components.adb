@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Declarations;
 with Asis.Expressions;
 with Asis.Elements;
 
@@ -72,7 +73,7 @@ package body Properties.Expressions.Selected_Components is
       Prefix   : constant Asis.Expression := Asis.Expressions.Prefix (Element);
       Selector : constant Asis.Expression :=
         Asis.Expressions.Selector (Element);
-      Def_Name : constant Asis.Declaration :=
+      Def_Name : constant Asis.Defining_Name :=
         Asis.Expressions.Corresponding_Name_Definition (Selector);
       Decl     : Asis.Declaration;
       Kind     : Asis.Declaration_Kinds;
@@ -83,8 +84,7 @@ package body Properties.Expressions.Selected_Components is
 
          case Kind is
             when Asis.A_Component_Declaration |
-                 Asis.A_Discriminant_Specification |
-               Asis.A_Subtype_Declaration =>
+                 Asis.A_Discriminant_Specification =>
                declare
                   Left  : League.Strings.Universal_String;
                   Right : League.Strings.Universal_String;
@@ -97,6 +97,12 @@ package body Properties.Expressions.Selected_Components is
 
                   return Left;
                end;
+
+            when Asis.A_Subtype_Declaration =>
+
+               return Engine.Text.Get_Property
+                 (Asis.Declarations.Type_Declaration_View (Decl), Name);
+
             when Asis.A_Function_Declaration |
                  Asis.A_Procedure_Declaration |
                  Asis.A_Private_Extension_Declaration |

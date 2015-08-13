@@ -41,7 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.String_Vectors;
+
+with Asis.Declarations;
 with Asis.Expressions;
+
+with Properties.Tools;
 
 package body Properties.Expressions.Record_Aggregate is
 
@@ -55,17 +60,119 @@ package body Properties.Expressions.Record_Aggregate is
       Name    : Engines.Text_Property)
       return League.Strings.Universal_String
    is
-      List : constant Asis.Association_List :=
-        Asis.Expressions.Record_Component_Associations (Element, True);
+      use type League.Strings.Universal_String;
+      use type Asis.Declaration_List;
+
+      procedure Append
+        (Names  : League.Strings.Universal_String;
+         Code   : League.Strings.Universal_String);
+
+      procedure Mark_Done (Name : League.Strings.Universal_String);
+
+      function Get_Name
+        (Index : Positive) return League.Strings.Universal_String;
+
+      Tipe   : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type_Definition (Element);
+      Parts  : constant Asis.Declaration_List :=
+        Tools.Corresponding_Type_Discriminants (Tipe) &
+        Tools.Corresponding_Type_Components (Tipe);
+      Done   : array (Parts'Range) of Boolean := (others => False);
+      Last   : Natural := 0;
       Result : League.Strings.Universal_String;
+
+      ------------
+      -- Append --
+      ------------
+
+      procedure Append
+        (Names  : League.Strings.Universal_String;
+         Code   : League.Strings.Universal_String)
+      is
+         Text : League.Strings.Universal_String;
+         List : constant League.String_Vectors.Universal_String_Vector :=
+           Names.Split (',');
+      begin
+         if List.Length = 0 then  --  positional association
+            Last := Last + 1;
+            Done (Last) := True;
+            Text := Get_Name (Last);
+            Result.Append (Text);
+            Result.Append (":");
+            Result.Append (Code);
+         else
+            for J in 1 .. List.Length loop
+               Mark_Done (List.Element (J));
+               Result.Append (List.Element (J));
+               Result.Append (":");
+               Result.Append (Code);
+            end loop;
+         end if;
+      end Append;
+
+      --------------
+      -- Get_Name --
+      --------------
+
+      function Get_Name
+        (Index : Positive) return League.Strings.Universal_String
+      is
+         Names : constant Asis.Defining_Name_List :=
+           Asis.Declarations.Names (Parts (Index));
+      begin
+         pragma Assert (Names'Length = 1);
+
+         return Engine.Text.Get_Property (Names (Names'First), Code.Name);
+      end Get_Name;
+
+      ---------------
+      -- Mark_Done --
+      ---------------
+
+      procedure Mark_Done (Name : League.Strings.Universal_String) is
+         Text : League.Strings.Universal_String;
+      begin
+         for J in Parts'Range loop
+            if not Done (J) then
+               Text := Get_Name (J);
+
+               if Text = Name then
+                  Done (J) := True;
+
+                  return;
+               end if;
+            end if;
+         end loop;
+      end Mark_Done;
+
+      List : constant Asis.Association_List :=
+        Asis.Expressions.Record_Component_Associations (Element);
+      Names  : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
    begin
       Result.Append ("{");
 
       for J in List'Range loop
-         Result.Append (Engine.Text.Get_Property (List (J), Name));
+         Names := Engine.Text.Get_Property (List (J), Engines.Associations);
 
-         if J /= List'Last then
+         if Names /= League.Strings.To_Universal_String ("others") then
+            if J /= List'First then
+               Result.Append (",");
+            end if;
+
+            Text := Engine.Text.Get_Property (List (J), Name);
+            Append (Names, Text);
+         end if;
+      end loop;
+
+      for J in Parts'Range loop
+         if not Done (J) then
+            Text := Get_Name (J);
             Result.Append (",");
+            Result.Append (Text);
+            Result.Append (":");
+            Text := Engine.Text.Get_Property (Parts (J), Engines.Initialize);
+            Result.Append (Text);
          end if;
       end loop;
 

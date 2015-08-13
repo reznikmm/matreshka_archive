@@ -80,4 +80,9 @@ package Properties.Expressions.Identifiers is
       Element : Asis.Declaration;
       Name    : Engines.Boolean_Property) return Boolean;
 
+   function Name_Prefix
+     (Engine : access Engines.Contexts.Context;
+      Name   : Asis.Identifier;
+      Decl   : Asis.Declaration) return League.Strings.Universal_String;
+
 end Properties.Expressions.Identifiers;

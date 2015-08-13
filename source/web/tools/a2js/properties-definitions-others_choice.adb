@@ -41,23 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis;
 
-with Engines.Contexts;
-
-with League.Strings;
-
-package Properties.Expressions.Record_Component_Association is
-
-   function Associations
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Association;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String;
+package body Properties.Definitions.Others_Choice is
 
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Association;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Engine, Element, Name);
+   begin
+      return League.Strings.To_Universal_String ("others");
+   end Code;
 
-end Properties.Expressions.Record_Component_Association;
+end Properties.Definitions.Others_Choice;

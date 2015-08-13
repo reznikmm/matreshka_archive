@@ -66,6 +66,7 @@ with Properties.Definitions.Derived_Type;
 with Properties.Definitions.Discriminant_Constraint;
 with Properties.Definitions.Enumeration_Type;
 with Properties.Definitions.Index_Constraint;
+with Properties.Definitions.Others_Choice;
 with Properties.Definitions.Range_Attribute;
 with Properties.Definitions.Record_Type;
 with Properties.Definitions.Simple_Expression_Range;
@@ -146,8 +147,13 @@ is
    package P renames Properties;
 
    Action_List : constant Action_Array :=
+     --  Associations
+     ((Name   => N.Associations,
+       Kind   => F.A_Record_Component_Association,
+       Action =>
+         P.Expressions.Record_Component_Association.Associations'Access),
      --  Code
-     ((Name   => N.Code,
+     (Name   => N.Code,
        Kind   => F.A_Use_Package_Clause,
        Action => P.Statements.Null_Statement.Code'Access),
       (Name   => N.Code,
@@ -266,6 +272,9 @@ is
       (Name   => N.Code,
        Kind   => F.A_Discriminant_Constraint,
        Action => P.Definitions.Discriminant_Constraint.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.An_Others_Choice,
+       Action => P.Definitions.Others_Choice.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Access_To_Variable,
        Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
@@ -454,6 +463,12 @@ is
        Kind   => F.A_Private_Extension_Declaration,
        Action => P.Declarations.Private_Type.Initialize'Access),
       (Name   => N.Initialize,
+       Kind   => F.A_Derived_Record_Extension_Definition,
+       Action => P.Definitions.Tagged_Record_Type.Initialize'Access),
+      (Name   => N.Initialize,
+       Kind   => F.A_Tagged_Record_Type_Definition,
+       Action => P.Definitions.Tagged_Record_Type.Initialize'Access),
+      (Name   => N.Initialize,
        Kind   => F.A_Private_Type_Declaration,
        Action => P.Declarations.Private_Type.Initialize'Access),
       (Name   => N.Initialize,
@@ -467,9 +482,6 @@ is
       (Name   => N.Initialize,
        Kind   => F.A_Component_Definition,
        Action => P.Definitions.Component_Definition.Initialize'Access),
-      (Name   => N.Initialize,
-       Kind   => F.A_Derived_Record_Extension_Definition,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore123
       (Name   => N.Initialize,
        Kind   => F.An_Access_To_Variable,
        Action => P.Definitions.Access_To_Object.Initialize'Access),
