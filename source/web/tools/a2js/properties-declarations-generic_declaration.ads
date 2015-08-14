@@ -41,57 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis.Expressions;
+with Asis;
 
-with League.String_Vectors;
+with Engines.Contexts;
 
-package body Properties.Expressions.Extension_Aggregate is
+with League.Strings;
 
-   ----------
-   -- Code --
-   ----------
+package Properties.Declarations.Generic_Declaration is
 
    function Code
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String
-   is
-      Tag  : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type (Element);
-      List : constant Asis.Association_List :=
-        Asis.Expressions.Record_Component_Associations (Element, True);
-      Result : League.Strings.Universal_String;
-      Names  : League.Strings.Universal_String;
-      Text   : League.Strings.Universal_String;
-   begin
-      Result.Append ("_ec._extend (");
-      Text := Engine.Text.Get_Property (Tag, Engines.Initialize);
-      Result.Append (Text);
-      Result.Append (", {");
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-      for J in List'Range loop
-         Names := Engine.Text.Get_Property (List (J), Engines.Associations);
-         Text := Engine.Text.Get_Property (List (J), Name);
-
-         declare
-            V : constant League.String_Vectors.Universal_String_Vector
-              := Names.Split (',');
-         begin
-            for K in 1 .. V.Length loop
-               if J /= List'First or K /= 1 then
-                  Result.Append (",");
-               end if;
-
-               Result.Append (V.Element (K));
-               Result.Append (":");
-               Result.Append (Text);
-            end loop;
-         end;
-      end loop;
-
-      Result.Append ("})");
-      return Result;
-   end Code;
-
-end Properties.Expressions.Extension_Aggregate;
+end Properties.Declarations.Generic_Declaration;

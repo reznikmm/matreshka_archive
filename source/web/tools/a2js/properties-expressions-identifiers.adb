@@ -315,6 +315,7 @@ package body Properties.Expressions.Identifiers is
                exit when Is_Imported (Item);
 
             when Asis.A_Procedure_Declaration |
+                 Asis.A_Null_Procedure_Declaration |
                  Asis.A_Function_Declaration |
                  Asis.A_Procedure_Body_Declaration |
                  Asis.A_Function_Body_Declaration =>

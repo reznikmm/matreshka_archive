@@ -65,6 +65,7 @@ package body Properties.Definitions.Tagged_Record_Type is
         Asis.Elements.Enclosing_Element (Element);
       Parent : Asis.Subtype_Indication := Asis.Nil_Element;
       Result : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
       Name_Image : League.Strings.Universal_String;
    begin
       if Asis.Elements.Type_Kind (Element) =
@@ -197,8 +198,17 @@ package body Properties.Definitions.Tagged_Record_Type is
       Result.Append ("_ec.");
       Result.Append (Name_Image);
       Result.Append (".prototype = _ec._tag('");
-      Result.Append (Name_Image);
-      Result.Append ("', '');");
+      Text := Engine.Text.Get_Property (Element, Engines.Tag_Name);
+      Result.Append (Text);
+      Text := League.Strings.Empty_Universal_String;
+
+      if not Asis.Elements.Is_Nil (Parent) then
+         Text := Engine.Text.Get_Property (Parent, Engines.Tag_Name);
+      end if;
+
+      Result.Append ("', '");
+      Result.Append (Text);
+      Result.Append ("');");
 
       declare
          List : constant Asis.Declaration_List :=
@@ -254,5 +264,41 @@ package body Properties.Definitions.Tagged_Record_Type is
 
       return Result;
    end Initialize;
+
+   --------------
+   -- Tag_Name --
+   --------------
+
+   function Tag_Name
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
+
+      Decl   : Asis.Declaration := Asis.Elements.Enclosing_Element (Element);
+      Text   : League.Strings.Universal_String;
+      Result : League.Strings.Universal_String;
+   begin
+      Result := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Decl) (1), Engines.Code);
+
+      while not Asis.Elements.Is_Nil (Decl)
+        and then Asis.Elements.Is_Part_Of_Instance (Decl)
+      loop
+         Decl := Tools.Enclosing_Declaration (Decl);
+
+         if Asis.Elements.Declaration_Kind (Decl) in
+           Asis.A_Generic_Instantiation
+         then
+            Text := Engine.Text.Get_Property
+              (Asis.Declarations.Names (Decl) (1), Engines.Code);
+            Text.Append (".");
+            Result.Prepend (Text);
+         end if;
+      end loop;
+
+      return Result;
+   end Tag_Name;
 
 end Properties.Definitions.Tagged_Record_Type;

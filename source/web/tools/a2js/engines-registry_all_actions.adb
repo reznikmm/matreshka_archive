@@ -51,6 +51,7 @@ with Properties.Declarations.Defining_Names;
 with Properties.Declarations.Element_Iterator_Specification;
 with Properties.Declarations.Function_Declarations;
 with Properties.Declarations.Function_Renaming_Declaration;
+with Properties.Declarations.Generic_Declaration;
 with Properties.Declarations.Loop_Parameter_Specification;
 with Properties.Declarations.Ordinary_Type;
 with Properties.Declarations.Package_Declaration;
@@ -164,7 +165,7 @@ is
        Action => P.Statements.Null_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Function_Declaration,
-       Action => P.Declarations.Function_Declarations.Code'Access),
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.An_Ordinary_Type_Declaration,
        Action => P.Declarations.Ordinary_Type.Code'Access),
@@ -173,10 +174,10 @@ is
        Action => P.Declarations.Package_Declaration.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Generic_Package_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Declarations.Generic_Declaration.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Generic_Package_Renaming_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Declarations.Generic_Declaration.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Generic_Function_Renaming_Declaration,
        Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
@@ -206,7 +207,10 @@ is
        Action => P.Declarations.Procedure_Body_Declarations.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Procedure_Declaration,
-       Action => P.Declarations.Function_Declarations.Code'Access),
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Null_Procedure_Declaration,
+       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Loop_Parameter_Specification,
        Action =>
@@ -585,7 +589,36 @@ is
       (Name   => N.Intrinsic_Name,
        Kind   => F.A_Selected_Component,
        Action => P.Expressions.Selected_Components
-                   .Intrinsic_Name'Access)
+                   .Intrinsic_Name'Access),
+
+      --  Tag_Name
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Code'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Selected_Component,
+       Action => P.Expressions.Selected_Components.Code'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Initialize'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.An_Ordinary_Type_Declaration,
+       Action => P.Declarations.Ordinary_Type.Code'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Private_Extension_Declaration,
+       Action => P.Declarations.Private_Type.Initialize'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Private_Type_Declaration,
+       Action => P.Declarations.Private_Type.Initialize'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Derived_Record_Extension_Definition,
+       Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Tagged_Record_Type_Definition,
+       Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access),
+      (Name   => N.Tag_Name,
+       Kind   => F.A_Limited_Interface,
+       Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access)
      );
 
    Range_List : constant Range_Array :=
@@ -623,6 +656,9 @@ is
        Name    => N.Is_Dispatching,
        Action  => P.Declarations.Function_Declarations.Is_Dispatching'Access),
       (Kind    => F.A_Procedure_Declaration,
+       Name    => N.Is_Dispatching,
+       Action  => P.Declarations.Function_Declarations.Is_Dispatching'Access),
+      (Kind    => F.A_Null_Procedure_Declaration,
        Name    => N.Is_Dispatching,
        Action  => P.Declarations.Function_Declarations.Is_Dispatching'Access),
       (Kind    => F.A_Function_Body_Declaration,
@@ -746,6 +782,10 @@ begin
    Self.Call_Convention.Register_Calculator
      (Name   => N.Call_Convention,
       Kind   => F.A_Procedure_Declaration,
+      Action => P.Declarations.Procedure_Declaration.Call_Convention'Access);
+   Self.Call_Convention.Register_Calculator
+     (Name   => N.Call_Convention,
+      Kind   => F.A_Null_Procedure_Declaration,
       Action => P.Declarations.Procedure_Declaration.Call_Convention'Access);
    Self.Call_Convention.Register_Calculator
      (Name   => N.Call_Convention,

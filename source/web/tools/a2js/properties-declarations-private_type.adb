@@ -55,12 +55,10 @@ package body Properties.Declarations.Private_Type is
       Name    : Engines.Text_Property)
       return League.Strings.Universal_String
    is
-      pragma Unreferenced (Name);
-
       Full : constant Asis.Declaration :=
         Asis.Declarations.Corresponding_Type_Completion (Element);
    begin
-      return Engine.Text.Get_Property (Full, Engines.Initialize);
+      return Engine.Text.Get_Property (Full, Name);
    end Initialize;
 
    --------------------

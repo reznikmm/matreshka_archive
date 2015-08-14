@@ -41,11 +41,12 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis.Expressions;
+with Asis.Declarations;
+with Asis.Elements;
 
-with League.String_Vectors;
+with Properties.Tools;
 
-package body Properties.Expressions.Extension_Aggregate is
+package body Properties.Declarations.Generic_Declaration is
 
    ----------
    -- Code --
@@ -53,45 +54,54 @@ package body Properties.Expressions.Extension_Aggregate is
 
    function Code
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Tag  : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type (Element);
-      List : constant Asis.Association_List :=
-        Asis.Expressions.Record_Component_Associations (Element, True);
-      Result : League.Strings.Universal_String;
-      Names  : League.Strings.Universal_String;
-      Text   : League.Strings.Universal_String;
+      Is_Library_Level : constant Boolean := Asis.Elements.Is_Nil
+        (Asis.Elements.Enclosing_Element (Element));
+
+      Inside_Package : constant Boolean := Engine.Boolean.Get_Property
+        (Element, Engines.Inside_Package);
+
+      Named : League.Strings.Universal_String;
+      Text  : League.Strings.Universal_String;
    begin
-      Result.Append ("_ec._extend (");
-      Text := Engine.Text.Get_Property (Tag, Engines.Initialize);
-      Result.Append (Text);
-      Result.Append (", {");
+      Named := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Element) (1), Name);
 
-      for J in List'Range loop
-         Names := Engine.Text.Get_Property (List (J), Engines.Associations);
-         Text := Engine.Text.Get_Property (List (J), Name);
+      if Is_Library_Level then
+         Text.Append
+           (Properties.Tools.Library_Level_Header
+              (Asis.Elements.Enclosing_Compilation_Unit (Element)));
+         Text.Append ("return ");
+      end if;
 
-         declare
-            V : constant League.String_Vectors.Universal_String_Vector
-              := Names.Split (',');
-         begin
-            for K in 1 .. V.Length loop
-               if J /= List'First or K /= 1 then
-                  Result.Append (",");
-               end if;
+      if not Inside_Package then
+         Text.Append ("var ");
+         Text.Append (Named);
+         Text.Append ("=");
+      end if;
 
-               Result.Append (V.Element (K));
-               Result.Append (":");
-               Result.Append (Text);
-            end loop;
-         end;
-      end loop;
+      Text.Append ("(function (_ec){");
+      Text.Append ("_ec._nested = function (){};");
+      Text.Append ("_ec._nested.prototype = _ec;");
 
-      Result.Append ("})");
-      return Result;
+      Text.Append ("return _ec;");
+      Text.Append ("})(");
+
+      if Inside_Package then
+         Text.Append ("_ec.");
+         Text.Append (Named);
+         Text.Append ("=");
+      end if;
+
+      Text.Append ("new _ec._nested());");
+
+      if Is_Library_Level then
+         Text.Append ("});");
+      end if;
+
+      return Text;
    end Code;
 
-end Properties.Expressions.Extension_Aggregate;
+end Properties.Declarations.Generic_Declaration;

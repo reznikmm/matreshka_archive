@@ -59,4 +59,9 @@ package Properties.Definitions.Tagged_Record_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
+   function Tag_Name
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
 end Properties.Definitions.Tagged_Record_Type;

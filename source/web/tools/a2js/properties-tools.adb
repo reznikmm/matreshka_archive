@@ -581,32 +581,10 @@ package body Properties.Tools is
       ----------------------
 
       procedure Check_And_Append (Name : Asis.Name) is
-         Id    : Asis.Identifier;
-         Decl  : Asis.Declaration;
-         Kind  : Asis.Declaration_Kinds;
       begin
-         case Asis.Elements.Expression_Kind (Name) is
-            when Asis.An_Identifier =>
-               Id := Name;
-            when Asis.A_Selected_Component =>
-               if Is_WebAPI (Name) then
-                  return;
-               end if;
-
-               Id := Asis.Expressions.Selector (Name);
-            when others =>
-               raise Program_Error;
-         end case;
-
-         Decl := Asis.Expressions.Corresponding_Name_Declaration (Id);
-         Kind := Asis.Elements.Declaration_Kind (Decl);
-
-         case Kind is
-            when Asis.A_Generic_Declaration =>
-               return;
-            when others =>
-               null;
-         end case;
+         if Is_WebAPI (Name) then
+            return;
+         end if;
 
          Text.Append ("', '");
 
@@ -666,9 +644,11 @@ package body Properties.Tools is
                   Names : constant Asis.Name_List :=
                     Asis.Clauses.Clause_Names (Clause);
                begin
-                  for Name of Names loop
-                     Check_And_Append (Name);
-                  end loop;
+                  if not Asis.Elements.Has_Limited (Clause) then
+                     for Name of Names loop
+                        Check_And_Append (Name);
+                     end loop;
+                  end if;
                end;
             when others =>
                null;
