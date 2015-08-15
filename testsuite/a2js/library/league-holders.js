@@ -12,8 +12,11 @@ define('league-holders', ['league'], function(_parent) {
         error.message = "Call to unimplemented league.holders.to_holder";
         throw error;
     };
-    _ec.element = function(value) {
-        return value.data;
+    _ec.is_abstract_float = function() {
+        return this.is_abstract_float();
+    };
+    _ec.element = function() {
+        return this.data;
     };
     return _ec;
 });

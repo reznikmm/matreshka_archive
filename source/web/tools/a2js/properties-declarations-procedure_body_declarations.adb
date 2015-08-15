@@ -95,6 +95,9 @@ package body Properties.Declarations.Procedure_Body_Declarations is
          begin
             if Inside_Package then
                Text.Append ("_ec.");
+               Text.Append (Subprogram_Name);
+               Text.Append ("=");
+               Text.Append ("_ec.");
             end if;
 
             Text.Append (Image);

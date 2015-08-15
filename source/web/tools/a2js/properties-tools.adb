@@ -576,13 +576,50 @@ package body Properties.Tools is
          end case;
       end Is_WebAPI;
 
+      -----------------------
+      -- Is_Generic_System --
+      -----------------------
+
+      function Is_Generic_System (Name : Asis.Name) return Boolean is
+         Decl : Asis.Declaration;
+         Item : Asis.Expression := Name;
+      begin
+         if Asis.Elements.Expression_Kind (Name) not in
+           Asis.A_Selected_Component
+         then
+            return False;
+         end if;
+
+         Decl := Asis.Expressions.Corresponding_Name_Declaration
+           (Asis.Expressions.Selector (Name));
+
+         if Asis.Elements.Declaration_Kind (Decl) not in
+           Asis.A_Generic_Declaration
+         then
+            return False;
+         end if;
+
+         while Asis.Elements.Expression_Kind (Item)
+                   in Asis.A_Selected_Component
+         loop
+            Item := Asis.Expressions.Prefix (Item);
+         end loop;
+
+         declare
+            Image : constant Asis.Program_Text :=
+              Asis.Expressions.Name_Image (Item);
+         begin
+            return Image = "System" or Image = "Ada";
+         end;
+      end Is_Generic_System;
+
       ----------------------
       -- Check_And_Append --
       ----------------------
 
       procedure Check_And_Append (Name : Asis.Name) is
       begin
-         if Is_WebAPI (Name) then
+         if Is_WebAPI (Name) or else Is_Generic_System (Name) then
             return;
          end if;
 

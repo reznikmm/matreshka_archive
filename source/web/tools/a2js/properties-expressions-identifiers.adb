@@ -131,8 +131,21 @@ package body Properties.Expressions.Identifiers is
          Decl := Asis.Declarations.Corresponding_Subprogram_Derivation (Decl);
       end loop;
 
-      return Name_Prefix (Engine, Element, Decl) &
-        Engine.Text.Get_Property (Asis.Declarations.Names (Decl) (1), Name);
+      if Asis.Elements.Declaration_Kind (Decl) in
+           Asis.A_Procedure_Declaration |
+           Asis.A_Null_Procedure_Declaration |
+           Asis.A_Function_Declaration |
+           Asis.A_Procedure_Body_Declaration |
+           Asis.A_Function_Body_Declaration
+        and then Engine.Boolean.Get_Property (Decl, Engines.Is_Dispatching)
+      then
+         --  Dispatching operation has no prefix
+         return Engine.Text.Get_Property
+           (Asis.Declarations.Names (Decl) (1), Name);
+      else
+         return Name_Prefix (Engine, Element, Decl) &
+           Engine.Text.Get_Property (Asis.Declarations.Names (Decl) (1), Name);
+      end if;
    end Code;
 
    ----------------
@@ -323,11 +336,6 @@ package body Properties.Expressions.Identifiers is
                if not Top_Item then
                   --  Some declaration inside subprogram
                   Is_Package := False;
-                  exit;
-               elsif Engine.Boolean.Get_Property
-                 (Item, Engines.Is_Dispatching)
-               then
-                  --  Dispatching operation has no prefix
                   exit;
                elsif Is_Imported (Item) then
                   --  Imported operation has no prefix

@@ -43,9 +43,13 @@
 ------------------------------------------------------------------------------
 with Ada.Wide_Wide_Text_IO;
 
+with Asis.Declarations;
 with Asis.Expressions;
+with Asis.Statements;
 
 with League.String_Vectors;
+
+with Properties.Expressions.Identifiers;
 
 package body Properties.Expressions.Function_Calls is
 
@@ -96,7 +100,31 @@ package body Properties.Expressions.Function_Calls is
       Is_Dispatching := Engine.Boolean.Get_Property
         (Prefix, Engines.Is_Dispatching);
 
-      if Is_Dispatching then
+      if not Is_Dispatching then
+         declare
+            Arg    : League.Strings.Universal_String;
+            List   : constant Asis.Association_List :=
+              Asis.Expressions.Function_Call_Parameters
+                (Element, Normalized => False);
+         begin
+            Text := Engine.Text.Get_Property (Prefix, Name);
+
+            Text.Append ("(");
+
+            for J in 1 .. List'Last loop
+               Arg := Engine.Text.Get_Property
+                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
+
+               Text.Append (Arg);
+
+               if J /= List'Last then
+                  Text.Append (", ");
+               end if;
+            end loop;
+
+            Text.Append (")");
+         end;
+      elsif Asis.Statements.Is_Dispatching_Call (Element) then
          declare
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
@@ -127,24 +155,34 @@ package body Properties.Expressions.Function_Calls is
          end;
       else
          declare
+            Func   : constant Asis.Declaration :=
+              Asis.Expressions.Corresponding_Called_Function (Element);
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
               Asis.Expressions.Function_Call_Parameters
                 (Element, Normalized => False);
          begin
-            Text := Engine.Text.Get_Property (Prefix, Name);
+            Text := Properties.Expressions.Identifiers.Name_Prefix
+              (Engine => Engine,
+               Name   => Element,
+               Decl   => Func);
 
-            Text.Append ("(");
+            Text.Append
+              (Engine.Text.Get_Property
+                 (Asis.Declarations.Names (Func) (1), Name));
 
-            for J in 1 .. List'Last loop
+            Text.Append (".call(");
+
+            Text.Append
+              (Engine.Text.Get_Property
+                 (Asis.Expressions.Actual_Parameter (List (1)), Name));
+
+            for J in 2 .. List'Last loop
                Arg := Engine.Text.Get_Property
                  (Asis.Expressions.Actual_Parameter (List (J)), Name);
 
+               Text.Append (", ");
                Text.Append (Arg);
-
-               if J /= List'Last then
-                  Text.Append (", ");
-               end if;
             end loop;
 
             Text.Append (")");

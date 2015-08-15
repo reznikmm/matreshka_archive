@@ -3,6 +3,9 @@
 --  END OF EXPECTED OUTPUT
 --
 --  BIND LIST:
+--  aga.ads
+--  aga-generic_algebra_2.ads
+--  aga-generic_geometry_2d.ads
 --  reals.ads
 --  walls.ads
 --  main.adb
