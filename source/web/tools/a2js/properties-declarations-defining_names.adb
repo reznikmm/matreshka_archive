@@ -160,8 +160,6 @@ package body Properties.Declarations.Defining_Names is
          if Is_Subprogram (Kind)
            and then not Asis.Elements.Is_Nil
              (Asis.Elements.Enclosing_Element (Decl))
-           and then not Engine.Boolean.Get_Property
-             (Decl, Engines.Is_Dispatching)
          then
             declare
                Count : constant Natural := Prev_Subprogram_Count;
@@ -298,6 +296,25 @@ package body Properties.Declarations.Defining_Names is
 
       return Text;
    end Code;
+
+   -----------------
+   -- Method_Name --
+   -----------------
+
+   function Method_Name
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Engine, Name);
+      Image : constant Wide_String :=
+        Asis.Declarations.Defining_Name_Image (Element);
+      Text : constant League.Strings.Universal_String :=
+        League.Strings.From_UTF_16_Wide_String (Image)
+        .To_Lowercase;
+   begin
+      return Text;
+   end Method_Name;
 
 begin
    Reserved.Insert (League.Strings.To_Universal_String ("default"));

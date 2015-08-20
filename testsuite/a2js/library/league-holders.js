@@ -15,8 +15,11 @@ define('league-holders', ['league'], function(_parent) {
     _ec.is_abstract_float = function() {
         return this.is_abstract_float();
     };
-    _ec.element = function() {
-        return this.data;
-    };
+    _ec.element =
+        _ec.element$1 =
+        _ec.element$2 =
+            function() {
+                return this.data;
+            };
     return _ec;
 });

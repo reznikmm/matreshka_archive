@@ -73,5 +73,8 @@ define('standard', [], function(){
         }
     };
 
+    standard._unchecked_deallocation = function (x) {
+    };
+
     return standard;
 });

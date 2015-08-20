@@ -134,8 +134,11 @@ package body Properties.Expressions.Function_Calls is
          begin
             Text := Engine.Text.Get_Property
               (Asis.Expressions.Actual_Parameter (List (1)), Name);
+
             Text.Append (".");
-            Text.Append (Engine.Text.Get_Property (Prefix, Name));
+
+            Text.Append
+              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
 
             if Conv /= Engines.JavaScript_Property_Getter then
                Text.Append ("(");

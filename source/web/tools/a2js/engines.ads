@@ -51,6 +51,7 @@ package Engines is
       Intrinsic_Name,
       Associations, --  names of record assotiation a,b,c
       Tag_Name,  --  external tag name image
+      Method_Name,  --  name of subrogram in virtual table
       Initialize,
       --  Code to initialize an object of given type
       Bounds  --  "First,Last" bounds for nested named array aggregate

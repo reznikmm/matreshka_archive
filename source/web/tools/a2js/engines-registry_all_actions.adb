@@ -591,6 +591,14 @@ is
        Action => P.Expressions.Selected_Components
                    .Intrinsic_Name'Access),
 
+      --  Method_Name
+      (Name   => N.Method_Name,
+       Kind   => F.A_Defining_Identifier,
+       Action => P.Declarations.Defining_Names.Method_Name'Access),
+      (Name   => N.Method_Name,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Code'Access),
+
       --  Tag_Name
       (Name   => N.Tag_Name,
        Kind   => F.A_Subtype_Indication,
