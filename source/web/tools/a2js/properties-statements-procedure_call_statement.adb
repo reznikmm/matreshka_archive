@@ -44,6 +44,7 @@
 with Ada.Wide_Wide_Text_IO;
 
 with Asis.Declarations;
+with Asis.Elements;
 with Asis.Expressions;
 with Asis.Statements;
 
@@ -68,7 +69,8 @@ package body Properties.Statements.Procedure_Call_Statement is
       use type Engines.Call_Convention_Kind;
 
       Text   : League.Strings.Universal_String;
-      Prefix : constant Asis.Expression := Asis.Statements.Called_Name (Element);
+      Prefix : constant Asis.Expression :=
+        Asis.Statements.Called_Name (Element);
       Conv   : constant Engines.Call_Convention_Kind :=
         Engine.Call_Convention.Get_Property
           (Prefix,
@@ -133,13 +135,18 @@ package body Properties.Statements.Procedure_Call_Statement is
          end;
       else
          declare
-            Proc   : constant Asis.Declaration :=
+            Proc   : Asis.Declaration :=
               Asis.Statements.Corresponding_Called_Entity (Element);
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
               Asis.Statements.Call_Statement_Parameters
                 (Element, Normalized => False);
          begin
+            while Asis.Elements.Is_Part_Of_Inherited (Proc) loop
+               Proc :=
+                 Asis.Declarations.Corresponding_Subprogram_Derivation (Proc);
+            end loop;
+
             Text := Properties.Expressions.Identifiers.Name_Prefix
               (Engine => Engine,
                Name   => Element,
