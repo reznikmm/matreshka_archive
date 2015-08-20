@@ -1,0 +1,2001 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  aga.ads
+--  aga-generic_algebra_2.ads
+--  aga-generic_fuzzy_compare.ads
+--  aga-generic_geometry_2d.ads
+--  amf.ads
+--  amf-core.ads
+--  amf-core-elements.ads
+--  amf-core-elements-implementations.ads
+--  amf-core-elements-implementations-generic_references.ads
+--  amf-core-generic_element_collections.ads
+--  amf-core-generic_element_references.ads
+--  amf-core-generic_multiple_element_slots.ads
+--  amf-core-generic_single_element_slots.ads
+--  amf-core-internals.ads
+--  amf-core-internals-collections.ads
+--  amf-core-links.ads
+--  amf-core-links-generic_collections.ads
+--  amf-core-links-generic_multiple_slots.ads
+--  amf-core-links-generic_single_slots.ads
+--  amf-core-listeners.ads
+--  hdss.ads
+--  hdss-model.ads
+--  hdss-model-elements.ads
+--  hdss-model-implementation.ads
+--  hdss-model-implementation-hdss_levels.ads
+--  hdss-model-implementation-hdss_models.ads
+--  hdss-model-implementation-strings.ads
+--  hdss-model-levels.ads
+--  hdss-model-levels-collections.ads
+--  hdss-model-levels-references.ads
+--  hdss-model-levels-slots.ads
+--  hdss-model-line_segment_2ds.ads
+--  hdss-model-line_segment_2ds-references.ads
+--  hdss-model-models.ads
+--  hdss-model-models-references.ads
+--  hdss-model-models-slots.ads
+--  hdss-model-walls.ads
+--  hdss-model-walls-collections.ads
+--  hdss-model-walls-references.ads
+--  hdss-model-walls-slots.ads
+--  hdss-model-implementation-hdss_elements.ads
+--  reals.ads
+--  test_001.adb
+--  END OF BIND LIST
+--
+--  MAIN: test_001
+
+package AGA is
+
+   pragma Pure;
+
+end AGA;
+
+package body AGA.Generic_Algebra_2 is
+
+   function "*" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) * Right,
+              2 => Left (2) * Right);
+   end "*";
+
+   function "*" (Left : Real; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left * Right (1),
+              2 => Left * Right (2));
+   end "*";
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) + Right (1),
+              2 => Left (2) + Right (2));
+   end "+";
+
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2 is
+   begin
+      return (1 => Left (1) - Right (1),
+              2 => Left (2) - Right (2));
+   end "-";
+
+   function "/" (Left : Vector_2; Right : Real) return Vector_2 is
+   begin
+      return (1 => Left (1) / Right,
+              2 => Left (2) / Right);
+   end "/";
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real) is
+   begin
+      Vector (1) := Vector (1) / Denominator;
+      Vector (2) := Vector (2) / Denominator;
+   end Divide;
+
+end AGA.Generic_Algebra_2;
+
+generic
+   type Real is digits <>;
+
+package AGA.Generic_Algebra_2 is
+
+   pragma Pure;
+
+   type Vector_2 is array (Positive range 1 .. 2) of Real;
+
+   function "+" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "-" (Left : Vector_2; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "*" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+   function "*" (Left : Real; Right : Vector_2) return Vector_2
+     with Inline => True;
+   function "/" (Left : Vector_2; Right : Real) return Vector_2
+     with Inline => True;
+
+   procedure Divide (Vector : in out Vector_2; Denominator : Real);
+
+end AGA.Generic_Algebra_2;
+
+package body AGA.Generic_Fuzzy_Compare is
+
+   function Equal (Left : Real; Right : Real) return Boolean is
+   begin
+      return abs (Left - Right) < Absolute_Error;
+   end Equal;
+
+end AGA.Generic_Fuzzy_Compare;
+
+generic
+   type Real is digits <>;
+
+   Absolute_Error : Real;
+
+package AGA.Generic_Fuzzy_Compare is
+
+   pragma Pure;
+
+   function Equal (Left : Real; Right : Real) return Boolean;
+
+end AGA.Generic_Fuzzy_Compare;
+
+package body AGA.Generic_Geometry_2D is
+
+   use Algebra_2;
+   use Real_Elementary_Functions;
+
+   overriding function "*" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) * Right);
+   end "*";
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) + Vector_2 (Right));
+   end "+";
+
+   function "+" (Left : Segment_2D; Right : Vector_2D) return Segment_2D is
+   begin
+      return (Left.Point_1 + Right, Left.Point_2 + Right);
+   end "+";
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D is
+   begin
+      return Point_2D (Vector_2 (Left) - Vector_2 (Right));
+   end "-";
+
+   function "-" (Left : Segment_2D; Right : Vector_2D) return Segment_2D is
+   begin
+      return (Left.Point_1 - Right, Left.Point_2 - Right);
+   end "-";
+
+   overriding function "/" (Left : Vector_2D; Right : Real) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Left) / Right);
+   end "/";
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Arccos (Vector_1 * Vector_2 / (abs Vector_1 * abs Vector_2));
+   end Angle;
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real is
+   begin
+      return Self (Dimension);
+   end Coordinate;
+
+   function Cos (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Vector_1 * Vector_2 / (abs Vector_1 * abs Vector_2);
+   end Cos;
+
+   function Direction_Vector (Segment : Segment_2D) return Vector_2D is
+   begin
+      return Segment.Point_2 - Segment.Point_1;
+   end Direction_Vector;
+
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (1) + Left (2) * Right (2);
+   end Dot_Product;
+
+   function Intersect
+    (Segment_1 : Segment_2D; Segment_2 : Segment_2D) return Point_2D
+   is
+      V1 : constant Vector_2D := Direction_Vector (Segment_1);
+      V2 : constant Vector_2D := Direction_Vector (Segment_2);
+      D  : constant Real := Skew_Product (V1, V2);
+      T  : Real;
+
+   begin
+      T :=
+       (V2 (1) * (Segment_1.Point_1 (2) - Segment_2.Point_1 (2))
+          - V2 (2) * (Segment_1.Point_1 (1) - Segment_2.Point_1 (1))) / D;
+
+      return
+       (1 => Segment_1.Point_1 (1) + T * V1 (1),
+        2 => Segment_1.Point_1 (2) + T * V1 (2));
+   end Intersect;
+
+   function Length (Vector : Vector_2D) return Real is
+   begin
+      return Sqrt (Vector (1) * Vector (1) + Vector (2) * Vector (2));
+   end Length;
+
+   function Normalize (Vector : Vector_2D) return Vector_2D is
+   begin
+      return Vector_2D (Vector_2 (Vector) / Length (Vector));
+   end Normalize;
+
+   procedure Normalize (Vector : in out Vector_2D) is
+      D : constant Real := Length (Vector);
+
+   begin
+      Divide (Vector, D);
+   end Normalize;
+
+   function Point_1 (Segment : Segment_2D) return Point_2D is
+   begin
+      return Segment.Point_1;
+   end Point_1;
+
+   function Point_2 (Segment : Segment_2D) return Point_2D is
+   begin
+      return Segment.Point_2;
+   end Point_2;
+
+   procedure Set_Point_1 (Segment : in out Segment_2D; Point : Point_2D) is
+   begin
+      Segment.Point_1 := Point;
+   end Set_Point_1;
+
+   procedure Set_Point_2 (Segment : in out Segment_2D; Point : Point_2D) is
+   begin
+      Segment.Point_2 := Point;
+   end Set_Point_2;
+
+   function Sin (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real is
+   begin
+      return Skew_Product (Vector_1, Vector_2) / (abs Vector_1 * abs Vector_2);
+   end Sin;
+
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real is
+   begin
+      return Left (1) * Right (2) - Left (2) * Right (1);
+   end Skew_Product;
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D is
+   begin
+      return (1 => C1, 2 => C2);
+   end To_Point_2D;
+
+   function To_Segment_2D
+    (Point_1 : Point_2D; Point_2 : Point_2D) return Segment_2D is
+   begin
+      return (Point_1, Point_2);
+   end To_Segment_2D;
+
+   function To_Vector_2D (V1 : Real; V2 : Real) return Vector_2D is
+   begin
+      return (1 => V1, 2 => V2);
+   end To_Vector_2D;
+
+   function To_Vector_2D
+    (Start_Point : Point_2D; End_Point : Point_2D) return Vector_2D is
+   begin
+      return End_Point - Start_Point;
+   end To_Vector_2D;
+
+   function Unit_Normal_Vector (Segment : Segment_2D) return Vector_2D is
+      Aux : constant Vector_2D := Segment.Point_2 - Segment.Point_1;
+
+   begin
+      return Normalize ((1 => Aux (2), 2 => -Aux (1)));
+   end Unit_Normal_Vector;
+
+   function "abs" (Vector : Vector_2D) return Real renames Length;
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real
+     renames Dot_Product;
+
+end AGA.Generic_Geometry_2D;
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+
+generic
+   type Real is digits <>;
+
+   with package Real_Elementary_Functions is
+          new Ada.Numerics.Generic_Elementary_Functions (Real);
+   with package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+
+package AGA.Generic_Geometry_2D is
+
+   pragma Pure;
+
+   type Point_2D is private;
+
+   subtype Dimension_Index_2D is Positive range 1 .. 2;
+
+   type Vector_2D is private;
+
+   function To_Point_2D (C1 : Real; C2 : Real) return Point_2D;
+
+   function Coordinate
+    (Self : Point_2D; Dimension : Dimension_Index_2D) return Real;
+
+   function "-" (Left : Point_2D; Right : Point_2D) return Vector_2D;
+
+   function "+" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+   function "-" (Left : Point_2D; Right : Vector_2D) return Point_2D;
+
+   function To_Vector_2D
+    (Start_Point : Point_2D; End_Point : Point_2D) return Vector_2D;
+   function To_Vector_2D (V1 : Real; V2 : Real) return Vector_2D;
+
+   function "*" (Left : Vector_2D; Right : Vector_2D) return Real;
+   function "*" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "/" (Left : Vector_2D; Right : Real) return Vector_2D;
+   function "abs" (Vector : Vector_2D) return Real;
+
+   function Length (Vector : Vector_2D) return Real;
+   function Normalize (Vector : Vector_2D) return Vector_2D;
+   procedure Normalize (Vector : in out Vector_2D);
+   function Dot_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+   function Skew_Product (Left : Vector_2D; Right : Vector_2D) return Real;
+
+   function Angle (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+   function Cos (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+   function Sin (Vector_1 : Vector_2D; Vector_2 : Vector_2D) return Real;
+
+   type Segment_2D is private;
+
+   function To_Segment_2D
+    (Point_1 : Point_2D; Point_2 : Point_2D) return Segment_2D;
+   function Unit_Normal_Vector (Segment : Segment_2D) return Vector_2D;
+   function Direction_Vector (Segment : Segment_2D) return Vector_2D;
+
+   function "+" (Left : Segment_2D; Right : Vector_2D) return Segment_2D;
+   function "-" (Left : Segment_2D; Right : Vector_2D) return Segment_2D;
+
+   function Point_1 (Segment : Segment_2D) return Point_2D;
+   function Point_2 (Segment : Segment_2D) return Point_2D;
+
+   procedure Set_Point_1 (Segment : in out Segment_2D; Point : Point_2D);
+   procedure Set_Point_2 (Segment : in out Segment_2D; Point : Point_2D);
+
+   function Intersect
+    (Segment_1 : Segment_2D; Segment_2 : Segment_2D) return Point_2D;
+
+private
+
+   type Point_2D is new Algebra_2.Vector_2;
+   type Vector_2D is new Algebra_2.Vector_2;
+
+   type Segment_2D is record
+      Point_1 : Point_2D;
+      Point_2 : Point_2D;
+   end record;
+
+end AGA.Generic_Geometry_2D;
+
+package AMF is
+
+   pragma Pure;
+
+end AMF;
+
+package AMF.Core is
+
+   pragma Pure;
+
+end AMF.Core;
+with AMF.Core.Listeners;
+
+package AMF.Core.Elements is
+
+   pragma Preelaborate;
+
+   type Element_Interface is limited interface;
+
+   not overriding procedure Register_Listener
+    (Self     : in out Element_Interface;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access)
+       is abstract;
+
+   not overriding procedure Unregister_Listener
+    (Self     : in out Element_Interface;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access)
+       is abstract;
+
+end AMF.Core.Elements;
+with Ada.Unchecked_Deallocation;
+
+package body AMF.Core.Elements.Implementations is
+
+   not overriding procedure Finalize (Self : in out Element_Implementation) is
+   begin
+      Self.Non_Navigable_Slot.Finalize;
+
+      while Self.Reference_Head /= null loop
+
+         Self.Reference_Head.Clear;
+      end loop;
+   end Finalize;
+
+   overriding procedure Register_Listener
+    (Self     : in out Element_Implementation;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access)
+   is
+      New_Record : constant Listener_Record_Access := new Listener_Record;
+
+   begin
+      New_Record.Listener := Listener;
+
+      if Self.Listener_Head = null then
+         Self.Listener_Head   := New_Record;
+         Self.Listener_Tail   := New_Record;
+         New_Record.Previous  := null;
+
+      else
+         New_Record.Previous := Self.Listener_Tail;
+         Self.Listener_Tail  := New_Record;
+      end if;
+
+      New_Record.Next := null;
+   end Register_Listener;
+
+   procedure Register_Reference
+    (Self      : in out Element_Implementation'Class;
+     Reference : not null Reference_Access) is
+   begin
+
+      if Self.Reference_Head = null then
+         Self.Reference_Head := Reference;
+         Self.Reference_Tail := Reference;
+         Reference.Previous  := null;
+
+      else
+         Reference.Previous  := Self.Reference_Tail;
+         Self.Reference_Tail := Reference;
+      end if;
+
+      Reference.Next := null;
+   end Register_Reference;
+
+   not overriding function Resolve_Slot
+    (Self : in out Element_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access is
+   begin
+      return Self.Non_Navigable_Slot'Unchecked_Access;
+   end Resolve_Slot;
+
+   overriding procedure Unregister_Listener
+    (Self     : in out Element_Implementation;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access)
+   is
+      use type AMF.Core.Listeners.Attribute_Listener_Access;
+
+      procedure Free is
+        new Ada.Unchecked_Deallocation
+             (Listener_Record, Listener_Record_Access);
+
+      Old_Record : Listener_Record_Access := Self.Listener_Head;
+
+   begin
+      while Old_Record /= null loop
+         exit when Old_Record.Listener = Listener;
+
+         Old_Record := Old_Record.Next;
+      end loop;
+
+      if Old_Record /= null then
+
+         if Self.Listener_Head = Old_Record then
+            Self.Listener_Head := Old_Record.Next;
+         end if;
+
+         if Self.Listener_Tail = Old_Record then
+            Self.Listener_Tail := Old_Record.Previous;
+         end if;
+
+         if Old_Record.Previous /= null then
+            Old_Record.Previous.Next := Old_Record.Next;
+         end if;
+
+         if Old_Record.Next /= null then
+            Old_Record.Next.Previous := Old_Record.Previous;
+         end if;
+
+         Old_Record.Next     := null;
+         Old_Record.Previous := null;
+
+         Free (Old_Record);
+      end if;
+   end Unregister_Listener;
+
+   procedure Unregister_Reference
+    (Self      : in out Element_Implementation'Class;
+     Reference : not null Reference_Access) is
+   begin
+
+      if Self.Reference_Head = Reference then
+         Self.Reference_Head := Reference.Next;
+      end if;
+
+      if Self.Reference_Tail = Reference then
+         Self.Reference_Tail := Reference.Previous;
+      end if;
+
+      if Reference.Previous /= null then
+         Reference.Previous.Next := Reference.Next;
+      end if;
+
+      if Reference.Next /= null then
+         Reference.Next.Previous := Reference.Previous;
+      end if;
+
+      Reference.Next     := null;
+      Reference.Previous := null;
+   end Unregister_Reference;
+
+end AMF.Core.Elements.Implementations;
+private with Ada.Finalization;
+
+with League.Strings;
+
+with AMF.Core.Elements;
+with AMF.Core.Links;
+
+package AMF.Core.Elements.Implementations is
+
+   pragma Preelaborate;
+
+   type Element_Implementation is
+     abstract limited new AMF.Core.Elements.Element_Interface with private;
+
+   type Element_Access is access all Element_Implementation'Class;
+
+   not overriding procedure Finalize (Self : in out Element_Implementation);
+
+   not overriding function Resolve_Slot
+    (Self : in out Element_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access;
+
+   overriding procedure Register_Listener
+    (Self     : in out Element_Implementation;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access);
+
+   overriding procedure Unregister_Listener
+    (Self     : in out Element_Implementation;
+     Listener : not null AMF.Core.Listeners.Attribute_Listener_Access);
+
+private
+
+   type Abstract_Reference is tagged;
+   type Reference_Access is access all Abstract_Reference'Class
+     with Storage_Size => 0;
+
+   type Listener_Record;
+   type Listener_Record_Access is access all Listener_Record;
+
+   type Listener_Record is limited record
+      Listener : AMF.Core.Listeners.Attribute_Listener_Access;
+      Previous : Listener_Record_Access;
+      Next     : Listener_Record_Access;
+   end record;
+
+   type Element_Implementation is
+     abstract limited new AMF.Core.Elements.Element_Interface with record
+      Non_Navigable_Slot : aliased
+        AMF.Core.Links.Non_Navigable_Element_Slot
+         (Element_Implementation'Unchecked_Access);
+
+      Reference_Head     : Reference_Access;
+      Reference_Tail     : Reference_Access;
+
+      Listener_Head      : Listener_Record_Access;
+      Listener_Tail      : Listener_Record_Access;
+   end record;
+
+   procedure Register_Reference
+    (Self      : in out Element_Implementation'Class;
+     Reference : not null Reference_Access);
+
+   procedure Unregister_Reference
+    (Self      : in out Element_Implementation'Class;
+     Reference : not null Reference_Access);
+
+   type Abstract_Reference is
+     abstract new Ada.Finalization.Controlled with record
+      Previous : Reference_Access;
+      Next     : Reference_Access;
+   end record;
+
+   not overriding function Create
+    (Element : Element_Access) return Abstract_Reference is abstract;
+
+   not overriding procedure Clear
+    (Self : in out Abstract_Reference) is abstract;
+
+end AMF.Core.Elements.Implementations;
+
+package body AMF.Core.Elements.Implementations.Generic_References is
+
+   function "+"
+    (Self : Element_Reference'Class) return access Element_Interface'Class is
+   begin
+      return Self.Element;
+   end "+";
+
+   function "="
+    (Left  : Element_Reference;
+     Right : Element_Reference) return Boolean is
+   begin
+      return Left.Element = Right.Element;
+   end "=";
+
+   overriding procedure Adjust (Self : in out Element_Reference) is
+   begin
+      if Self.Element /= null then
+         Element_Implementation'Class
+          (Self.Element.all).Register_Reference (Self'Unchecked_Access);
+      end if;
+   end Adjust;
+
+   procedure Clear (Self : in out Element_Reference) is
+   begin
+      if Self.Element /= null then
+         Element_Implementation'Class
+          (Self.Element.all).Unregister_Reference (Self'Unchecked_Access);
+         Self.Element := null;
+      end if;
+   end Clear;
+
+   overriding function Create
+    (Element : AMF.Core.Elements.Implementations.Element_Access)
+       return Element_Reference
+   is
+      Result : aliased Element_Reference
+        := (Abstract_Reference with Element => Element_Access (Element));
+
+   begin
+      if Result.Element /= null then
+         Element_Implementation'Class
+          (Result.Element.all).Register_Reference (Result'Unchecked_Access);
+      end if;
+
+      return Result;
+   end Create;
+
+   function Element
+    (Self : Element_Reference'Class)
+       return AMF.Core.Elements.Implementations.Element_Access is
+   begin
+      return AMF.Core.Elements.Implementations.Element_Access (Self.Element);
+   end Element;
+
+   overriding procedure Finalize (Self : in out Element_Reference) is
+   begin
+      if Self.Element /= null then
+         Element_Implementation'Class
+          (Self.Element.all).Unregister_Reference (Self'Unchecked_Access);
+         Self.Element := null;
+      end if;
+   end Finalize;
+
+   function Is_Null (Self : Element_Reference) return Boolean is
+   begin
+      return Self.Element = null;
+   end Is_Null;
+
+end AMF.Core.Elements.Implementations.Generic_References;
+
+generic
+   type Element_Interface is limited interface;
+
+package AMF.Core.Elements.Implementations.Generic_References is
+
+   pragma Preelaborate;
+
+   type Element_Reference is tagged private;
+
+   function Is_Null (Self : Element_Reference) return Boolean;
+
+   procedure Clear (Self : in out Element_Reference);
+
+   function "="
+    (Left : Element_Reference; Right : Element_Reference) return Boolean;
+
+   function Create
+    (Element : AMF.Core.Elements.Implementations.Element_Access)
+       return Element_Reference;
+
+   function Element
+    (Self : Element_Reference'Class)
+       return AMF.Core.Elements.Implementations.Element_Access;
+
+   function "+"
+    (Self : Element_Reference'Class) return access Element_Interface'Class;
+
+private
+
+   type Element_Access is access all Element_Interface'Class;
+
+   type Element_Reference is new Abstract_Reference with record
+      Element : Element_Access;
+   end record;
+
+   overriding procedure Adjust (Self : in out Element_Reference);
+
+   overriding procedure Finalize (Self : in out Element_Reference);
+
+   type Variable_Reference_Type
+         (Element : not null access Element_Interface'Class) is
+      limited null record;
+
+end AMF.Core.Elements.Implementations.Generic_References;
+with AMF.Core.Links.Generic_Collections;
+
+generic package AMF.Core.Generic_Element_Collections
+  renames AMF.Core.Links.Generic_Collections;
+with AMF.Core.Elements.Implementations.Generic_References;
+
+generic package AMF.Core.Generic_Element_References
+  renames AMF.Core.Elements.Implementations.Generic_References;
+with AMF.Core.Links.Generic_Multiple_Slots;
+
+generic package AMF.Core.Generic_Multiple_Element_Slots
+  renames AMF.Core.Links.Generic_Multiple_Slots;
+with AMF.Core.Links.Generic_Single_Slots;
+
+generic package AMF.Core.Generic_Single_Element_Slots
+  renames AMF.Core.Links.Generic_Single_Slots;
+
+package AMF.Core.Internals is
+
+   pragma Pure;
+
+end AMF.Core.Internals;
+with AMF.Core.Elements.Implementations;
+
+package AMF.Core.Internals.Collections is
+
+   pragma Preelaborate;
+
+   type Collection_Interface is limited interface;
+
+   type Collection_Access is access all Collection_Interface'Class;
+
+   not overriding procedure Append
+    (Self    : in out Collection_Interface;
+     Element : not null AMF.Core.Elements.Implementations.Element_Access)
+       is abstract;
+
+end AMF.Core.Internals.Collections;
+with Ada.Unchecked_Deallocation;
+
+package body AMF.Core.Links is
+
+   type Multiple_Multiple_Link_Access is
+     access all Multiple_Multiple_Link'Class;
+
+   type Multiple_Single_Link_Access is
+     access all Multiple_Single_Link'Class;
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation (Abstract_Link'Class, Link_Access);
+
+   procedure Connect
+    (Self     : in out Abstract_Single_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class)
+   is
+      Single_End : constant Single_Element_Link_End_Access
+        := Single_Element_Link_End_Access (Link_End);
+
+   begin
+      Self.Link_End   := Single_End;
+      Single_End.Slot := Self'Unchecked_Access;
+   end Connect;
+
+   overriding procedure Connect
+    (Self     : in out Non_Navigable_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class)
+   is
+      Multiple_End : constant Multiple_Element_Link_End_Access
+        := Multiple_Element_Link_End_Access (Link_End);
+
+   begin
+      if Self.Head = null then
+         Self.Head             := Multiple_End;
+         Self.Tail             := Multiple_End;
+         Multiple_End.Previous := null;
+         Multiple_End.Next     := null;
+
+      else
+         Multiple_End.Previous := Self.Tail;
+         Multiple_End.Next     := null;
+         Self.Tail.Next        := Multiple_End;
+         Self.Tail             := Multiple_End;
+      end if;
+
+      Multiple_End.Slot := Self'Unchecked_Access;
+   end Connect;
+
+   overriding procedure Disconnect
+    (Self     : in out Abstract_Single_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class)
+   is
+      Single_End : constant Single_Element_Link_End_Access
+        := Single_Element_Link_End_Access (Link_End);
+
+   begin
+      Self.Link_End   := null;
+      Single_End.Slot := null;
+   end Disconnect;
+
+   overriding procedure Disconnect
+    (Self     : in out Non_Navigable_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class)
+   is
+      Multiple_End : constant Multiple_Element_Link_End_Access
+        := Multiple_Element_Link_End_Access (Link_End);
+
+   begin
+      if Self.Head = Multiple_End then
+         Self.Head := Self.Head.Next;
+      end if;
+
+      if Self.Tail = Multiple_End then
+         Self.Tail := Self.Tail.Previous;
+      end if;
+
+      if Multiple_End.Previous /= null then
+         Multiple_End.Previous.Next := Multiple_End.Next;
+      end if;
+
+      if Multiple_End.Next /= null then
+         Multiple_End.Next.Previous := Multiple_End.Previous;
+      end if;
+
+      Multiple_End.Slot     := null;
+      Multiple_End.Previous := null;
+      Multiple_End.Next     := null;
+   end Disconnect;
+
+   not overriding procedure Create_Link
+    (Self     : in out Abstract_Element_Slot;
+     Opposite : not null Slot_Access) is
+   begin
+      raise Program_Error
+        with "Abstract_Element_Slot.Create_Link must be overrided";
+   end Create_Link;
+
+   overriding procedure Create_Link
+    (Self     : in out Non_Navigable_Element_Slot;
+     Opposite : not null Slot_Access) is
+   begin
+      if Opposite.all in Abstract_Multiple_Element_Slot'Class then
+         declare
+            Aux : constant Multiple_Multiple_Link_Access
+              := new Multiple_Multiple_Link;
+
+         begin
+            Self.Connect (Aux.First'Unchecked_Access);
+            Opposite.Connect (Aux.Second'Unchecked_Access);
+         end;
+
+      else
+         declare
+            Aux : constant Multiple_Single_Link_Access
+              := new Multiple_Single_Link;
+
+         begin
+            Self.Connect (Aux.First'Unchecked_Access);
+            Opposite.Connect (Aux.Second'Unchecked_Access);
+         end;
+      end if;
+   end Create_Link;
+
+   overriding procedure Create_Link
+    (Self     : in out Abstract_Single_Element_Slot;
+     Opposite : not null Slot_Access) is
+   begin
+      if Opposite.all in Abstract_Multiple_Element_Slot'Class then
+         raise Program_Error;
+
+      else
+         raise Program_Error;
+      end if;
+   end Create_Link;
+
+   overriding procedure Finalize (Self : in out Non_Navigable_Element_Slot) is
+      Aux : Link_Access;
+
+   begin
+
+      while Self.Head /= null loop
+         Aux := Link_Access (Self.Head.Owner);
+         Aux.Finalize;
+         Free (Aux);
+      end loop;
+   end Finalize;
+
+   overriding procedure Finalize
+    (Self : in out Abstract_Single_Element_Slot)
+   is
+      Aux : Link_Access;
+
+   begin
+      if Self.Link_End /= null then
+         Aux := Link_Access (Self.Link_End.Owner);
+         Aux.Finalize;
+         Free (Aux);
+      end if;
+   end Finalize;
+
+   overriding procedure Finalize (Self : in out Single_Single_Link) is
+   begin
+      Self.First.Slot.Disconnect (Self.First'Unchecked_Access);
+      Self.Second.Slot.Disconnect (Self.Second'Unchecked_Access);
+   end Finalize;
+
+   overriding procedure Finalize (Self : in out Single_Multiple_Link) is
+   begin
+      Self.First.Slot.Disconnect (Self.First'Unchecked_Access);
+      Self.Second.Slot.Disconnect (Self.Second'Unchecked_Access);
+   end Finalize;
+
+   overriding procedure Finalize (Self : in out Multiple_Single_Link) is
+   begin
+      Self.First.Slot.Disconnect (Self.First'Unchecked_Access);
+      Self.Second.Slot.Disconnect (Self.Second'Unchecked_Access);
+   end Finalize;
+
+   overriding procedure Finalize (Self : in out Multiple_Multiple_Link) is
+   begin
+      Self.First.Slot.Disconnect (Self.First'Unchecked_Access);
+      Self.Second.Slot.Disconnect (Self.Second'Unchecked_Access);
+   end Finalize;
+
+   function Opposite_Link_End
+    (Self : in out Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is
+   begin
+      return Self.Owner.Opposite_Link_End (Self'Unchecked_Access);
+   end Opposite_Link_End;
+
+   overriding function Opposite_Link_End
+    (Self     : in out Single_Single_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is
+   begin
+      if Self.First'Unchecked_Access = Link_End then
+         return Self.Second'Unchecked_Access;
+
+      elsif Self.Second'Unchecked_Access = Link_End then
+         return Self.First'Unchecked_Access;
+
+      else
+         raise Program_Error with "Link end doesn't belong to link";
+      end if;
+   end Opposite_Link_End;
+
+   overriding function Opposite_Link_End
+    (Self     : in out Single_Multiple_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is
+   begin
+      if Self.First'Unchecked_Access = Link_End then
+         return Self.Second'Unchecked_Access;
+
+      elsif Self.Second'Unchecked_Access = Link_End then
+         return Self.First'Unchecked_Access;
+
+      else
+         raise Program_Error with "Link end doesn't belong to link";
+      end if;
+   end Opposite_Link_End;
+
+   overriding function Opposite_Link_End
+    (Self     : in out Multiple_Single_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is
+   begin
+      if Self.First'Unchecked_Access = Link_End then
+         return Self.Second'Unchecked_Access;
+
+      elsif Self.Second'Unchecked_Access = Link_End then
+         return Self.First'Unchecked_Access;
+
+      else
+         raise Program_Error with "Link end doesn't belong to link";
+      end if;
+   end Opposite_Link_End;
+
+   overriding function Opposite_Link_End
+    (Self     : in out Multiple_Multiple_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is
+   begin
+      if Self.First'Unchecked_Access = Link_End then
+         return Self.Second'Unchecked_Access;
+
+      elsif Self.Second'Unchecked_Access = Link_End then
+         return Self.First'Unchecked_Access;
+
+      else
+         raise Program_Error with "Link end doesn't belong to link";
+      end if;
+   end Opposite_Link_End;
+
+end AMF.Core.Links;
+with League.Strings;
+
+limited with AMF.Core.Elements.Implementations;
+
+package AMF.Core.Links is
+
+   pragma Preelaborate;
+
+   type Abstract_Link_End is tagged;
+
+   type Abstract_Element_Slot
+    (Owner : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class) is
+         abstract tagged limited private;
+   type Slot_Access is access all Abstract_Element_Slot'Class;
+
+   not overriding procedure Finalize
+    (Self : in out Abstract_Element_Slot) is abstract;
+
+   type Abstract_Link is tagged;
+
+   type Link_Access is access all Abstract_Link'Class;
+
+   not overriding procedure Finalize (Self : in out Abstract_Link) is abstract;
+
+   type Abstract_Link_End
+    (Owner : not null access Abstract_Link'Class) is abstract tagged limited
+   record
+      Slot : Slot_Access;
+   end record;
+
+   function Opposite_Link_End
+    (Self : in out Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class;
+
+   type Multiple_Element_Link_End is tagged;
+   type Multiple_Element_Link_End_Access is
+     access all Multiple_Element_Link_End'Class;
+
+   type Multiple_Element_Link_End is new Abstract_Link_End with record
+      Previous : Multiple_Element_Link_End_Access;
+      Next     : Multiple_Element_Link_End_Access;
+   end record;
+
+   type Single_Element_Link_End is new Abstract_Link_End with null record;
+   type Single_Element_Link_End_Access is access all Single_Element_Link_End'Class;
+
+   type Abstract_Link is abstract tagged limited null record;
+
+   not overriding function Opposite_Link_End
+    (Self     : in out Abstract_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class is abstract;
+
+   type Single_Single_Link is new Abstract_Link with record
+      First  : aliased Single_Element_Link_End (Single_Single_Link'Unchecked_Access);
+      Second : aliased Single_Element_Link_End (Single_Single_Link'Unchecked_Access);
+   end record;
+
+   overriding procedure Finalize (Self : in out Single_Single_Link);
+
+   overriding function Opposite_Link_End
+    (Self     : in out Single_Single_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class;
+
+   type Single_Multiple_Link is new Abstract_Link with record
+      First  : aliased Single_Element_Link_End (Single_Multiple_Link'Unchecked_Access);
+      Second : aliased Multiple_Element_Link_End (Single_Multiple_Link'Unchecked_Access);
+   end record;
+
+   overriding procedure Finalize (Self : in out Single_Multiple_Link);
+
+   overriding function Opposite_Link_End
+    (Self     : in out Single_Multiple_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class;
+
+   type Multiple_Single_Link is new Abstract_Link with record
+      First  : aliased Multiple_Element_Link_End (Multiple_Single_Link'Unchecked_Access);
+      Second : aliased Single_Element_Link_End (Multiple_Single_Link'Unchecked_Access);
+   end record;
+
+   overriding procedure Finalize (Self : in out Multiple_Single_Link);
+
+   overriding function Opposite_Link_End
+    (Self     : in out Multiple_Single_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class;
+
+   type Multiple_Multiple_Link is new Abstract_Link with record
+      First  : aliased Multiple_Element_Link_End (Multiple_Multiple_Link'Unchecked_Access);
+      Second : aliased Multiple_Element_Link_End (Multiple_Multiple_Link'Unchecked_Access);
+   end record;
+
+   overriding procedure Finalize (Self : in out Multiple_Multiple_Link);
+
+   overriding function Opposite_Link_End
+    (Self     : in out Multiple_Multiple_Link;
+     Link_End : not null access Abstract_Link_End'Class)
+       return access Abstract_Link_End'Class;
+
+   type Non_Navigable_Element_Slot is new Abstract_Element_Slot with private;
+
+   overriding procedure Finalize (Self : in out Non_Navigable_Element_Slot);
+
+   type Link_End_Index is range 1 .. 2;
+
+private
+
+   type Abstract_Element_Slot
+    (Owner : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class) is
+         abstract tagged limited null record;
+
+   not overriding procedure Create_Link
+    (Self     : in out Abstract_Element_Slot;
+     Opposite : not null Slot_Access);
+
+   not overriding procedure Connect
+    (Self     : in out Abstract_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class) is null;  --  is abstract;
+
+   not overriding procedure Disconnect
+    (Self     : in out Abstract_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class) is null;  --  abstract;
+
+   type Abstract_Single_Element_Slot is
+     abstract new Abstract_Element_Slot with
+   record
+      Link_End : Single_Element_Link_End_Access;
+   end record;
+
+   overriding procedure Create_Link
+    (Self     : in out Abstract_Single_Element_Slot;
+     Opposite : not null Slot_Access);
+
+   overriding procedure Connect
+    (Self     : in out Abstract_Single_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class);
+
+   overriding procedure Disconnect
+    (Self     : in out Abstract_Single_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class);
+
+   overriding procedure Finalize (Self : in out Abstract_Single_Element_Slot);
+
+   type Abstract_Multiple_Element_Slot is
+     abstract new Abstract_Element_Slot with null record;
+
+   type Multiple_Element_Slot_Access is
+     access all Abstract_Multiple_Element_Slot'Class;
+
+   type Non_Navigable_Element_Slot is
+     new Abstract_Multiple_Element_Slot with
+   record
+      Head : Multiple_Element_Link_End_Access;
+      Tail : Multiple_Element_Link_End_Access;
+   end record;
+
+   overriding procedure Create_Link
+    (Self     : in out Non_Navigable_Element_Slot;
+     Opposite : not null Slot_Access);
+
+   overriding procedure Connect
+    (Self     : in out Non_Navigable_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class);
+
+   overriding procedure Disconnect
+    (Self     : in out Non_Navigable_Element_Slot;
+     Link_End : not null access Abstract_Link_End'Class);
+
+end AMF.Core.Links;
+
+package body AMF.Core.Links.Generic_Collections is
+
+   not overriding function Create
+    (Data : not null AMF.Core.Internals.Collections.Collection_Access)
+       return Collection is
+   begin
+      return (Ada.Finalization.Controlled with Data => Data);
+   end Create;
+
+   procedure Insert (Self : Ordered_Set'Class; Element : Element_Reference) is
+   begin
+      Self.Data.Append (Element.Element);
+   end Insert;
+
+end AMF.Core.Links.Generic_Collections;
+
+private with Ada.Finalization;
+
+with AMF.Core.Generic_Element_References;
+with AMF.Core.Internals.Collections;
+
+generic
+   type Element_Interface is limited interface;
+
+   with package Element_References is
+     new AMF.Core.Generic_Element_References (Element_Interface);
+
+   type Element_Reference is
+     new Element_References.Element_Reference with private;
+
+package AMF.Core.Links.Generic_Collections is
+
+   pragma Preelaborate;
+
+   type Collection is tagged private;
+
+   not overriding function Create
+    (Data : not null AMF.Core.Internals.Collections.Collection_Access)
+       return Collection;
+
+   subtype Set is Collection;
+   subtype Ordered_Set is Collection;
+   subtype Sequence is Collection;
+   subtype Bag is Collection;
+
+   procedure Insert (Self : Ordered_Set'Class; Element : Element_Reference);
+
+private
+
+   type Collection is new Ada.Finalization.Controlled with record
+      Data : AMF.Core.Internals.Collections.Collection_Access;
+   end record;
+
+end AMF.Core.Links.Generic_Collections;
+
+package body AMF.Core.Links.Generic_Multiple_Slots is
+
+   overriding procedure Append
+    (Self    : in out Multiple_Element_Slot;
+     Element : not null AMF.Core.Elements.Implementations.Element_Access)
+   is
+      Opposite_Slot : constant not null Slot_Access
+        := Element.Resolve_Slot (Self.Opposite.all);
+
+   begin
+      case Self.Index is
+         when 1 =>
+            Self.Create_Link (Opposite_Slot);
+
+         when 2 =>
+            Opposite_Slot.Create_Link (Self'Unchecked_Access);
+      end case;
+   end Append;
+
+   function Get
+    (Self : in out Multiple_Element_Slot'Class) return Element_Collection is
+   begin
+      return Create (Self'Unchecked_Access);
+   end Get;
+
+end AMF.Core.Links.Generic_Multiple_Slots;
+with AMF.Core.Elements.Implementations;
+with AMF.Core.Generic_Element_Collections;
+with AMF.Core.Generic_Element_References;
+with AMF.Core.Internals.Collections;
+
+generic
+   type Element_Interface is limited interface;
+
+   with package Element_References is
+     new AMF.Core.Generic_Element_References (Element_Interface);
+
+   type Element_Reference is
+     new Element_References.Element_Reference with private;
+
+   with package Element_Collections is
+     new AMF.Core.Generic_Element_Collections
+          (Element_Interface,
+           Element_References,
+           Element_Reference);
+
+   type Element_Collection is new Element_Collections.Collection with private;
+
+package AMF.Core.Links.Generic_Multiple_Slots is
+
+   pragma Preelaborate;
+
+   type Multiple_Element_Slot
+    (Owner    : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class;
+     Index    : Link_End_Index;
+     Opposite : not null access constant League.Strings.Universal_String) is
+       new Abstract_Element_Slot
+         and AMF.Core.Internals.Collections.Collection_Interface with private;
+
+   function Get
+    (Self : in out Multiple_Element_Slot'Class) return Element_Collection;
+
+private
+
+   type Multiple_Element_Slot
+    (Owner    : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class;
+     Index    : Link_End_Index;
+     Opposite : not null access constant League.Strings.Universal_String) is
+       new Non_Navigable_Element_Slot (Owner)
+         and AMF.Core.Internals.Collections.Collection_Interface
+           with null record;
+
+   overriding procedure Append
+    (Self    : in out Multiple_Element_Slot;
+     Element : not null AMF.Core.Elements.Implementations.Element_Access);
+
+end AMF.Core.Links.Generic_Multiple_Slots;
+with AMF.Core.Elements.Implementations;
+
+package body AMF.Core.Links.Generic_Single_Slots is
+
+   function Get (Self : Single_Element_Slot'Class) return Element_Reference is
+   begin
+      if Self.Link_End = null then
+         return Create (null);
+
+      else
+         return
+           Create
+            (AMF.Core.Elements.Implementations.Element_Access
+              (Self.Link_End.Opposite_Link_End.Slot.Owner));
+      end if;
+   end Get;
+
+   procedure Set
+    (Self : in out Single_Element_Slot'Class;
+     To   : Element_Reference) is
+   begin
+      if Self.Link_End /= null then
+
+         raise Program_Error;
+
+      end if;
+
+      if not To.Is_Null then
+         declare
+            Opposite_Slot : constant not null Slot_Access
+              := AMF.Core.Elements.Implementations.Element_Access'
+                  (To.Element).Resolve_Slot (Self.Opposite.all);
+
+         begin
+            case Self.Index is
+               when 1 =>
+                  Self.Create_Link (Opposite_Slot);
+
+               when 2 =>
+                  Opposite_Slot.Create_Link (Self'Unchecked_Access);
+            end case;
+         end;
+      end if;
+   end Set;
+
+end AMF.Core.Links.Generic_Single_Slots;
+with AMF.Core.Elements.Implementations.Generic_References;
+
+generic
+   type Element_Interface is limited interface;
+
+   with package Element_References is
+     new AMF.Core.Elements.Implementations.Generic_References
+          (Element_Interface);
+
+   type Element_Reference is
+     new Element_References.Element_Reference with private;
+
+package AMF.Core.Links.Generic_Single_Slots is
+
+   pragma Preelaborate;
+
+   type Single_Element_Slot
+    (Owner    : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class;
+     Index    : Link_End_Index;
+     Opposite : not null access constant League.Strings.Universal_String) is
+         new Abstract_Element_Slot with private;
+
+   function Get (Self : Single_Element_Slot'Class) return Element_Reference;
+
+   procedure Set
+    (Self : in out Single_Element_Slot'Class;
+     To   : Element_Reference);
+
+private
+
+   type Single_Element_Slot
+    (Owner    : not null access
+       AMF.Core.Elements.Implementations.Element_Implementation'Class;
+     Index    : Link_End_Index;
+     Opposite : not null access constant League.Strings.Universal_String) is
+         new Abstract_Single_Element_Slot (Owner) with null record;
+
+end AMF.Core.Links.Generic_Single_Slots;
+with League.Holders;
+with League.Strings;
+
+limited with AMF.Core.Elements;
+
+package AMF.Core.Listeners is
+
+   pragma Preelaborate;
+
+   type Attribute_Listener is limited interface;
+
+   type Attribute_Listener_Access is access all Attribute_Listener'Class;
+
+   not overriding procedure Value_Setted
+    (Self      : in out Attribute_Listener;
+     Element   : not null access AMF.Core.Elements.Element_Interface'Class;
+     Property  : League.Strings.Universal_String;
+     Old_Value : League.Holders.Holder;
+     New_Value : League.Holders.Holder) is null;
+
+   not overriding procedure Value_Added
+    (Self     : in out Attribute_Listener;
+     Element  : not null access AMF.Core.Elements.Element_Interface'Class;
+     Property : League.Strings.Universal_String;
+     Value    : League.Holders.Holder) is null;
+
+   not overriding procedure Value_Removed
+    (Self     : in out Attribute_Listener;
+     Element  : not null access AMF.Core.Elements.Element_Interface'Class;
+     Property : League.Strings.Universal_String;
+     Value    : League.Holders.Holder) is null;
+
+end AMF.Core.Listeners;
+
+package HDSS is
+
+   pragma Pure;
+
+end HDSS;
+
+package HDSS.Model is
+
+   pragma Pure;
+
+end HDSS.Model;
+
+package HDSS.Model.Elements is
+
+   pragma Preelaborate;
+
+   type Element is limited interface;
+
+end HDSS.Model.Elements;
+
+package HDSS.Model.Implementation is
+
+   pragma Pure;
+
+end HDSS.Model.Implementation;
+
+package body HDSS.Model.Implementation.HDSS_Levels is
+
+   overriding procedure Finalize (Self : in out HDSS_Level_Implementation) is
+   begin
+
+      Self.Model.Finalize;
+
+      HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+       (Self).Finalize;
+   end Finalize;
+
+   overriding function Get_Model
+    (Self : in out HDSS_Level_Implementation)
+       return HDSS.Model.Models.References.HDSS_Model_Reference is
+   begin
+      return Self.Model.Get;
+   end Get_Model;
+
+   overriding function Get_Wall
+    (Self : in out HDSS_Level_Implementation)
+      return HDSS.Model.Walls.Collections.Set_Of_HDSS_Wall is
+   begin
+      return Self.Wall.Get;
+   end Get_Wall;
+
+   overriding function Resolve_Slot
+    (Self : in out HDSS_Level_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      if Name = Level_Model_Property_Name then
+         return Self.Model'Unchecked_Access;
+
+      else
+         return
+           HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+            (Self).Resolve_Slot (Name);
+      end if;
+   end Resolve_Slot;
+
+end HDSS.Model.Implementation.HDSS_Levels;
+with League.Strings;
+
+with AMF.Core.Links;
+
+with HDSS.Model.Implementation.HDSS_Elements;
+with HDSS.Model.Implementation.Strings;
+with HDSS.Model.Levels;
+with HDSS.Model.Models.References;
+with HDSS.Model.Models.Slots;
+with HDSS.Model.Walls.Collections;
+with HDSS.Model.Walls.Slots;
+
+package HDSS.Model.Implementation.HDSS_Levels is
+
+   use HDSS.Model.Implementation.Strings;
+
+   type HDSS_Level_Implementation is
+     new HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+       and HDSS.Model.Levels.HDSS_Level with
+   record
+      Model : aliased HDSS.Model.Models.Slots.HDSS_Model_Single_Slot
+                       (HDSS_Level_Implementation'Unchecked_Access,
+                        2,
+                        Model_Level_Property_Name'Access);
+      Wall  : aliased HDSS.Model.Walls.Slots.Set_Slot_Of_HDSS_Wall
+                       (HDSS_Level_Implementation'Unchecked_Access,
+                        1,
+                        Wall_Level_Property_Name'Access);
+   end record;
+
+   overriding function Resolve_Slot
+    (Self : in out HDSS_Level_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access;
+
+   overriding procedure Finalize (Self : in out HDSS_Level_Implementation);
+
+   overriding function Get_Model
+    (Self : in out HDSS_Level_Implementation)
+       return HDSS.Model.Models.References.HDSS_Model_Reference;
+
+   overriding function Get_Wall
+    (Self : in out HDSS_Level_Implementation)
+       return HDSS.Model.Walls.Collections.Set_Of_HDSS_Wall;
+
+end HDSS.Model.Implementation.HDSS_Levels;
+
+package body HDSS.Model.Implementation.HDSS_Models is
+
+   overriding procedure Finalize (Self : in out HDSS_Model_Implementation) is
+   begin
+
+      Self.Level.Finalize;
+
+      HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+       (Self).Finalize;
+   end Finalize;
+
+   overriding function Get_Level
+    (Self : in out HDSS_Model_Implementation)
+      return HDSS.Model.Levels.Collections.Ordered_Set_Of_HDSS_Level is
+   begin
+      return Self.Level.Get;
+   end Get_Level;
+
+   overriding function Resolve_Slot
+    (Self : in out HDSS_Model_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access
+   is
+      use type League.Strings.Universal_String;
+
+   begin
+      if Name = Model_Level_Property_Name then
+         return Self.Level'Unchecked_Access;
+
+      else
+         return
+           HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+            (Self).Resolve_Slot (Name);
+      end if;
+   end Resolve_Slot;
+
+end HDSS.Model.Implementation.HDSS_Models;
+with League.Strings;
+
+with AMF.Core.Links;
+
+with HDSS.Model.Implementation.HDSS_Elements;
+with HDSS.Model.Implementation.Strings;
+with HDSS.Model.Levels.Collections;
+with HDSS.Model.Levels.Slots;
+with HDSS.Model.Models;
+
+package HDSS.Model.Implementation.HDSS_Models is
+
+   use HDSS.Model.Implementation.Strings;
+
+   type HDSS_Model_Implementation is
+     new HDSS.Model.Implementation.HDSS_Elements.HDSS_Element_Implementation
+       and HDSS.Model.Models.HDSS_Model with record
+      Level : aliased HDSS.Model.Levels.Slots.Ordered_Set_Slot_Of_HDSS_Level
+                       (HDSS_Model_Implementation'Unchecked_Access,
+                        1,
+                        Level_Model_Property_Name'Access);
+   end record;
+
+   overriding function Get_Level
+    (Self : in out HDSS_Model_Implementation)
+      return HDSS.Model.Levels.Collections.Ordered_Set_Of_HDSS_Level;
+
+   overriding function Resolve_Slot
+    (Self : in out HDSS_Model_Implementation;
+     Name : League.Strings.Universal_String)
+       return not null AMF.Core.Links.Slot_Access;
+
+   overriding procedure Finalize (Self : in out HDSS_Model_Implementation);
+
+end HDSS.Model.Implementation.HDSS_Models;
+with League.Strings;
+
+package HDSS.Model.Implementation.Strings is
+
+   Anonymous                 : aliased constant League.Strings.Universal_String
+     := League.Strings.Empty_Universal_String;
+   Level_Model_Property_Name : aliased constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Level::model");
+   Level_Wall_Property_Name  : aliased constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Level::wall");
+   Model_Level_Property_Name : aliased constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Model::level");
+   Wall_Level_Property_Name  : aliased constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("Wall::level");
+
+end HDSS.Model.Implementation.Strings;
+with HDSS.Model.Elements;
+
+limited with HDSS.Model.Models.References;
+with HDSS.Model.Walls.Collections;
+
+package HDSS.Model.Levels is
+
+   pragma Preelaborate;
+
+   type HDSS_Level is limited interface and HDSS.Model.Elements.Element;
+
+   not overriding function Get_Model
+    (Self : in out HDSS_Level)
+       return HDSS.Model.Models.References.HDSS_Model_Reference is abstract;
+
+   not overriding function Get_Wall
+    (Self : in out HDSS_Level)
+       return HDSS.Model.Walls.Collections.Set_Of_HDSS_Wall
+         is abstract;
+
+end HDSS.Model.Levels;
+with AMF.Core.Generic_Element_Collections;
+
+with HDSS.Model.Levels.References;
+
+package HDSS.Model.Levels.Collections is
+
+   pragma Preelaborate;
+
+   package HDSS_Level_Collections is
+     new AMF.Core.Generic_Element_Collections
+          (HDSS.Model.Levels.HDSS_Level,
+           HDSS.Model.Levels.References.HDSS_Level_References,
+           HDSS.Model.Levels.References.HDSS_Level_Reference);
+
+   type Ordered_Set_Of_HDSS_Level is
+     new HDSS_Level_Collections.Ordered_Set with null record;
+
+end HDSS.Model.Levels.Collections;
+with AMF.Core.Generic_Element_References;
+
+package HDSS.Model.Levels.References is
+
+   pragma Preelaborate;
+
+   package HDSS_Level_References is
+     new AMF.Core.Generic_Element_References (HDSS.Model.Levels.HDSS_Level);
+
+   type HDSS_Level_Reference is
+     new HDSS_Level_References.Element_Reference with null record;
+
+end HDSS.Model.Levels.References;
+with AMF.Core.Generic_Single_Element_Slots;
+with AMF.Core.Generic_Multiple_Element_Slots;
+
+with HDSS.Model.Levels.Collections;
+with HDSS.Model.Levels.References;
+
+package HDSS.Model.Levels.Slots is
+
+   pragma Preelaborate;
+
+   package HDSS_Level_Multiple_Slots is
+     new AMF.Core.Generic_Multiple_Element_Slots
+          (HDSS.Model.Levels.HDSS_Level,
+           HDSS.Model.Levels.References.HDSS_Level_References,
+           HDSS.Model.Levels.References.HDSS_Level_Reference,
+           HDSS.Model.Levels.Collections.HDSS_Level_Collections,
+           HDSS.Model.Levels.Collections.Ordered_Set_Of_HDSS_Level);
+
+   type Ordered_Set_Slot_Of_HDSS_Level is
+     new HDSS_Level_Multiple_Slots.Multiple_Element_Slot with null record;
+
+   package HDSS_Level_Single_Slots is
+     new AMF.Core.Generic_Single_Element_Slots
+          (HDSS.Model.Levels.HDSS_Level,
+           HDSS.Model.Levels.References.HDSS_Level_References,
+           HDSS.Model.Levels.References.HDSS_Level_Reference);
+
+   type HDSS_Level_Single_Slot is
+     new HDSS_Level_Single_Slots.Single_Element_Slot with null record;
+
+end HDSS.Model.Levels.Slots;
+with HDSS.Model.Elements;
+with Reals;
+
+package HDSS.Model.Line_Segment_2Ds is
+
+   pragma Preelaborate;
+
+   type HDSS_Line_Segment_2D is
+     limited interface and HDSS.Model.Elements.Element;
+
+   not overriding function Get_Point_1
+    (Self : HDSS_Line_Segment_2D)
+       return Reals.Geometry_2D.Point_2D is abstract;
+
+   not overriding procedure Set_Point_1
+    (Self : in out HDSS_Line_Segment_2D;
+     To   : Reals.Geometry_2D.Point_2D) is abstract;
+
+   not overriding function Get_Point_2
+    (Self : HDSS_Line_Segment_2D)
+       return Reals.Geometry_2D.Point_2D is abstract;
+
+   not overriding procedure Set_Point_2
+    (Self : in out HDSS_Line_Segment_2D;
+     To   : Reals.Geometry_2D.Point_2D) is abstract;
+
+end HDSS.Model.Line_Segment_2Ds;
+with AMF.Core.Generic_Element_References;
+
+package HDSS.Model.Line_Segment_2Ds.References is
+
+   pragma Preelaborate;
+
+   package HDSS_Line_Segment_2D_References is
+     new AMF.Core.Generic_Element_References
+          (HDSS.Model.Line_Segment_2Ds.HDSS_Line_Segment_2D);
+
+   type HDSS_Line_Segment_2D_Reference is
+     new HDSS_Line_Segment_2D_References.Element_Reference with null record;
+
+end HDSS.Model.Line_Segment_2Ds.References;
+with HDSS.Model.Elements;
+with HDSS.Model.Levels.Collections;
+
+package HDSS.Model.Models is
+
+   pragma Preelaborate;
+
+   type HDSS_Model is limited interface and HDSS.Model.Elements.Element;
+
+   not overriding function Get_Level
+    (Self : in out HDSS_Model)
+       return HDSS.Model.Levels.Collections.Ordered_Set_Of_HDSS_Level
+         is abstract;
+
+end HDSS.Model.Models;
+with AMF.Core.Generic_Element_References;
+
+package HDSS.Model.Models.References is
+
+   pragma Preelaborate;
+
+   package HDSS_Model_References is
+     new AMF.Core.Generic_Element_References (HDSS.Model.Models.HDSS_Model);
+
+   type HDSS_Model_Reference is
+     new HDSS_Model_References.Element_Reference with null record;
+
+end HDSS.Model.Models.References;
+with AMF.Core.Generic_Single_Element_Slots;
+
+with HDSS.Model.Models.References;
+
+package HDSS.Model.Models.Slots is
+
+   pragma Preelaborate;
+
+   package HDSS_Model_Single_Slots is
+     new AMF.Core.Generic_Single_Element_Slots
+          (HDSS.Model.Models.HDSS_Model,
+           HDSS.Model.Models.References.HDSS_Model_References,
+           HDSS.Model.Models.References.HDSS_Model_Reference);
+
+   type HDSS_Model_Single_Slot is
+     new HDSS_Model_Single_Slots.Single_Element_Slot with null record;
+
+end HDSS.Model.Models.Slots;
+with HDSS.Model.Elements;
+with HDSS.Model.Line_Segment_2Ds.References;
+
+package HDSS.Model.Walls is
+
+   pragma Preelaborate;
+
+   type HDSS_Wall is limited interface and HDSS.Model.Elements.Element;
+
+   not overriding function Get_Base
+    (Self : HDSS_Wall)
+       return HDSS.Model.Line_Segment_2Ds.References.HDSS_Line_Segment_2D_Reference
+         is abstract;
+
+   not overriding procedure Set_Base
+    (Self : in out HDSS_Wall;
+     To   : HDSS.Model.Line_Segment_2Ds.References.HDSS_Line_Segment_2D_Reference)
+         is abstract;
+
+end HDSS.Model.Walls;
+with AMF.Core.Generic_Element_Collections;
+
+with HDSS.Model.Walls.References;
+
+package HDSS.Model.Walls.Collections is
+
+   pragma Preelaborate;
+
+   package HDSS_Wall_Collections is
+     new AMF.Core.Generic_Element_Collections
+          (HDSS.Model.Walls.HDSS_Wall,
+           HDSS.Model.Walls.References.HDSS_Wall_References,
+           HDSS.Model.Walls.References.HDSS_Wall_Reference);
+
+   type Set_Of_HDSS_Wall is new HDSS_Wall_Collections.Set with null record;
+
+end HDSS.Model.Walls.Collections;
+with AMF.Core.Generic_Element_References;
+
+package HDSS.Model.Walls.References is
+
+   pragma Preelaborate;
+
+   package HDSS_Wall_References is
+     new AMF.Core.Generic_Element_References (HDSS.Model.Walls.HDSS_Wall);
+
+   type HDSS_Wall_Reference is
+     new HDSS_Wall_References.Element_Reference with null record;
+
+end HDSS.Model.Walls.References;
+with AMF.Core.Generic_Multiple_Element_Slots;
+
+with HDSS.Model.Walls.Collections;
+with HDSS.Model.Walls.References;
+
+package HDSS.Model.Walls.Slots is
+
+   pragma Preelaborate;
+
+   package HDSS_Wall_Multiple_Slots is
+     new AMF.Core.Generic_Multiple_Element_Slots
+          (HDSS.Model.Walls.HDSS_Wall,
+           HDSS.Model.Walls.References.HDSS_Wall_References,
+           HDSS.Model.Walls.References.HDSS_Wall_Reference,
+           HDSS.Model.Walls.Collections.HDSS_Wall_Collections,
+           HDSS.Model.Walls.Collections.Set_Of_HDSS_Wall);
+
+   type Set_Slot_Of_HDSS_Wall is
+     new HDSS_Wall_Multiple_Slots.Multiple_Element_Slot with null record;
+
+end HDSS.Model.Walls.Slots;
+with Ada.Numerics.Generic_Elementary_Functions;
+
+with AGA.Generic_Algebra_2;
+with AGA.Generic_Geometry_2D;
+with AGA.Generic_Fuzzy_Compare;
+
+package Reals is
+
+   pragma Pure;
+
+   type Real is new Long_Float;
+
+   package Elementary_Functions is
+     new Ada.Numerics.Generic_Elementary_Functions (Real);
+
+   package Algebra_2 is new AGA.Generic_Algebra_2 (Real);
+   package Geometry_2D is
+     new AGA.Generic_Geometry_2D (Real, Elementary_Functions, Algebra_2);
+   package Compare is new AGA.Generic_Fuzzy_Compare (Real, 0.00001);
+
+end Reals;
+with AMF.Core.Elements.Implementations;
+
+package HDSS.Model.Implementation.HDSS_Elements is
+
+   pragma Preelaborate;
+
+   type HDSS_Element_Implementation is
+     abstract new AMF.Core.Elements.Implementations.Element_Implementation
+       with null record;
+
+end HDSS.Model.Implementation.HDSS_Elements;
+
+with Ada.Unchecked_Deallocation;
+
+with AMF.Core.Elements.Implementations;
+
+with HDSS.Model.Implementation.HDSS_Levels;
+with HDSS.Model.Implementation.HDSS_Models;
+with HDSS.Model.Levels.Collections;
+with HDSS.Model.Levels.References;
+with HDSS.Model.Models.References;
+
+procedure Test_001 is
+
+   use type HDSS.Model.Models.References.HDSS_Model_Reference;
+
+   procedure Free is
+     new Ada.Unchecked_Deallocation
+          (AMF.Core.Elements.Implementations.Element_Implementation'Class,
+           AMF.Core.Elements.Implementations.Element_Access);
+
+   MO : AMF.Core.Elements.Implementations.Element_Access
+     := new HDSS.Model.Implementation.HDSS_Models.HDSS_Model_Implementation;
+   M  : HDSS.Model.Models.References.HDSS_Model_Reference
+     := HDSS.Model.Models.References.Create (MO);
+   LO : AMF.Core.Elements.Implementations.Element_Access
+     := new HDSS.Model.Implementation.HDSS_Levels.HDSS_Level_Implementation;
+   L  : HDSS.Model.Levels.References.HDSS_Level_Reference
+     := HDSS.Model.Levels.References.Create (LO);
+
+begin
+   M."+".Get_Level.Insert (L);
+
+   --  Check that Level::model attribute is setted up.
+
+   if L."+".Get_Model /= M then
+      raise Program_Error;
+   end if;
+
+   --  Deallocate objects and check that references and collections are
+   --  invalidated.
+
+   MO.Finalize;
+   Free (MO);
+   LO.Finalize;
+   Free (LO);
+
+   if not M.Is_Null then
+      raise Program_Error;
+   end if;
+
+   if not L.Is_Null then
+      raise Program_Error;
+   end if;
+end Test_001;
