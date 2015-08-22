@@ -83,8 +83,8 @@ package body Properties.Expressions.Attribute_Reference is
       case Kind is
          when Asis.An_Access_Attribute |
               Asis.An_Address_Attribute |
-            Asis.An_Unchecked_Access_Attribute =>
-            return Engine.Text.Get_Property (Prefix, Name);
+              Asis.An_Unchecked_Access_Attribute =>
+            return Engine.Text.Get_Property (Prefix, Engines.Address);
 
          when Asis.A_Class_Attribute =>
             --  FIX ME, but I have no idea how

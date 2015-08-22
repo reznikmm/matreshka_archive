@@ -89,9 +89,10 @@ package body Properties.Expressions.Selected_Components is
                   Left  : League.Strings.Universal_String;
                   Right : League.Strings.Universal_String;
                begin
-                  Left := Engine.Text.Get_Property (Prefix, Name);
-
-                  Right := Engine.Text.Get_Property (Def_Name, Name);
+                  Left := Engine.Text.Get_Property (Prefix, Engines.Code);
+-- This causes inop element (A_Component_Decl) in Corresp_Subprogram_Declar
+                  Right := Engine.Text.Get_Property (Selector, Name);
+--                  Right := Engine.Text.Get_Property (Def_Name, Name);
                   Left.Append (".");
                   Left.Append (Right);
 
@@ -119,6 +120,10 @@ package body Properties.Expressions.Selected_Components is
 
       return Engine.Text.Get_Property (Selector, Name);
    end Code;
+
+   --------------------
+   -- Intrinsic_Name --
+   --------------------
 
    function Intrinsic_Name
      (Engine  : access Engines.Contexts.Context;

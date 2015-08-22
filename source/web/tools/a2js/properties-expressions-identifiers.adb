@@ -56,6 +56,42 @@ package body Properties.Expressions.Identifiers is
      (Id   : Asis.Identifier;
       Decl : Asis.Declaration) return Boolean;
 
+   -------------
+   -- Address --
+   -------------
+
+   function Address
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
+
+      Text : League.Strings.Universal_String;
+      Decl : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Name_Declaration (Element);
+      Is_Simple_Ref : Boolean;
+   begin
+      if Asis.Elements.Is_Nil (Decl) then
+         return Engine.Text.Get_Property (Element, Engines.Code);
+      end if;
+
+      Is_Simple_Ref :=
+        Engine.Boolean.Get_Property (Decl, Engines.Is_Simple_Ref);
+
+      if Is_Simple_Ref then
+         Text := Name_Prefix (Engine, Element, Decl);
+
+         Text.Append
+           (Engine.Text.Get_Property
+              (Asis.Declarations.Names (Decl) (1), Engines.Code));
+
+         return Text;
+      else
+         return Engine.Text.Get_Property (Element, Engines.Code);
+      end if;
+   end Address;
+
    ------------
    -- Bounds --
    ------------
@@ -118,18 +154,27 @@ package body Properties.Expressions.Identifiers is
         Asis.Expressions.Corresponding_Name_Declaration (Element);
       Image : constant Wide_String :=
         Asis.Expressions.Name_Image (Element);
-      Text : constant League.Strings.Universal_String :=
-        League.Strings.From_UTF_16_Wide_String (Image);
+      Text : League.Strings.Universal_String;
+
+      Is_Simple_Ref : Boolean;
    begin
       if Asis.Elements.Is_Nil (Decl) then
+         Text := League.Strings.From_UTF_16_Wide_String (Image);
+
          return Text.To_Lowercase;
       elsif Is_Current_Instance_Of_Type (Element, Decl) then
          return League.Strings.To_Universal_String ("this");
       end if;
 
-      while Asis.Elements.Is_Part_Of_Inherited (Decl) loop
+      while Asis.Elements.Is_Part_Of_Inherited (Decl)
+        and then Asis.Elements.Declaration_Kind (Decl) in
+            Asis.A_Function_Declaration | Asis.A_Procedure_Declaration
+      loop
          Decl := Asis.Declarations.Corresponding_Subprogram_Derivation (Decl);
       end loop;
+
+      Is_Simple_Ref :=
+        Engine.Boolean.Get_Property (Decl, Engines.Is_Simple_Ref);
 
       if Asis.Elements.Declaration_Kind (Decl) in
            Asis.A_Procedure_Declaration |
@@ -143,8 +188,17 @@ package body Properties.Expressions.Identifiers is
          return Engine.Text.Get_Property
            (Asis.Declarations.Names (Decl) (1), Name);
       else
-         return Name_Prefix (Engine, Element, Decl) &
-           Engine.Text.Get_Property (Asis.Declarations.Names (Decl) (1), Name);
+         Text := Name_Prefix (Engine, Element, Decl);
+
+         Text.Append
+           (Engine.Text.Get_Property
+              (Asis.Declarations.Names (Decl) (1), Name));
+
+         if Is_Simple_Ref then
+            Text.Append (".all");
+         end if;
+
+         return Text;
       end if;
    end Code;
 

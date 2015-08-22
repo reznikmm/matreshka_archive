@@ -45,6 +45,7 @@ with Asis.Extensions.Flat_Kinds;
 
 with League.Strings;
 
+with Properties.Constants;
 with Properties.Declarations.Constant_Declarations;
 with Properties.Declarations.Defining_Expanded_Name;
 with Properties.Declarations.Defining_Names;
@@ -148,8 +149,16 @@ is
    package P renames Properties;
 
    Action_List : constant Action_Array :=
+     --  Address
+     ((Name   => N.Address,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Address'Access),
+      (Name   => N.Address,
+       Kind   => F.A_Selected_Component,
+       Action => P.Expressions.Selected_Components.Code'Access),
+
      --  Associations
-     ((Name   => N.Associations,
+     (Name   => N.Associations,
        Kind   => F.A_Record_Component_Association,
        Action =>
          P.Expressions.Record_Component_Association.Associations'Access),
@@ -694,6 +703,9 @@ is
       (Kind   => F.A_Constant_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
+      (Kind   => F.A_Deferred_Constant_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.A_Component_Declaration,
        Name   => N.Is_Simple_Ref,  --  The same as constant
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
@@ -703,6 +715,37 @@ is
       (Kind   => F.A_Variable_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
+      (Kind   => F.A_Parameter_Specification,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
+      (Kind   => F.An_Ordinary_Type_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Private_Type_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Private_Extension_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Procedure_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Function_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Null_Procedure_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Procedure_Instantiation,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.An_Element_Iterator_Specification,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+      (Kind   => F.A_Loop_Parameter_Specification,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Constants.False'Access),
+
       (Kind   => F.A_Subtype_Indication,
        Name   => N.Is_Simple_Type,
        Action => P.Definitions.Subtype_Indication.Is_Simple_Type'Access),
@@ -756,7 +799,10 @@ is
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
       (Kind    => F.An_Unconstrained_Array_Definition,
        Name    => N.Is_Simple_Type,
-       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access));
+       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
+      (Kind    => F.A_Class_Attribute,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Constants.False'Access));
 
 begin
    for X of Action_List loop

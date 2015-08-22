@@ -151,8 +151,11 @@ package body Properties.Declarations.Constant_Declarations is
       Tipe : constant Asis.Definition :=
         Asis.Declarations.Object_Declaration_View (Element);
    begin
-      return Asis.Elements.Has_Aliased (Element) and then
-        Engine.Boolean.Get_Property (Tipe, Engines.Is_Simple_Type);
+      return (Asis.Elements.Has_Aliased (Element)
+              or else Asis.Elements.Mode_Kind (Element) in
+                Asis.An_In_Out_Mode | Asis.An_Out_Mode)
+        and then
+          Engine.Boolean.Get_Property (Tipe, Engines.Is_Simple_Type);
    end Is_Simple_Ref;
 
 end Properties.Declarations.Constant_Declarations;
