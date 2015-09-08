@@ -45,7 +45,7 @@ with Asis.Extensions.Flat_Kinds;
 
 with League.Strings;
 
-with Properties.Constants;
+with Properties.Common;
 with Properties.Declarations.Constant_Declarations;
 with Properties.Declarations.Defining_Expanded_Name;
 with Properties.Declarations.Defining_Names;
@@ -78,6 +78,7 @@ with Properties.Expressions.Allocation;
 with Properties.Expressions.Allocation_From_Subtype;
 with Properties.Expressions.Array_Component_Association;
 with Properties.Expressions.Attribute_Reference;
+with Properties.Expressions.Case_Expression;
 with Properties.Expressions.Enumeration_Literal;
 with Properties.Expressions.Explicit_Dereference;
 with Properties.Expressions.Extension_Aggregate;
@@ -91,19 +92,21 @@ with Properties.Expressions.Named_Array_Aggregate;
 with Properties.Expressions.Null_Literal;
 with Properties.Expressions.Parameter_Association;
 with Properties.Expressions.Parenthesized;
+with Properties.Expressions.Pos_Array_Aggregate;
 with Properties.Expressions.Record_Aggregate;
 with Properties.Expressions.Record_Component_Association;
 with Properties.Expressions.Selected_Components;
+with Properties.Expressions.Short_Circuit;
 with Properties.Expressions.String_Literal;
 with Properties.Expressions.Type_Conversion;
 with Properties.Statements.Assignment_Statement;
 with Properties.Statements.Block_Statement;
 with Properties.Statements.Case_Statement;
 with Properties.Statements.Exit_Statement;
+with Properties.Statements.Extended_Return;
 with Properties.Statements.For_Loop_Statement;
 with Properties.Statements.If_Statement;
 with Properties.Statements.Loop_Statement;
-with Properties.Statements.Null_Statement;
 with Properties.Statements.Procedure_Call_Statement;
 with Properties.Statements.Raise_Statement;
 with Properties.Statements.Return_Statement;
@@ -165,16 +168,19 @@ is
      --  Code
      (Name   => N.Code,
        Kind   => F.A_Use_Package_Clause,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Constant_Declaration,
        Action => P.Declarations.Constant_Declarations.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Return_Constant_Specification,
+       Action => P.Declarations.Constant_Declarations.Code'Access),
+      (Name   => N.Code,
        Kind   => F.A_Deferred_Constant_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Function_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.An_Ordinary_Type_Declaration,
        Action => P.Declarations.Ordinary_Type.Code'Access),
@@ -189,25 +195,28 @@ is
        Action => P.Declarations.Generic_Declaration.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Generic_Function_Renaming_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Generic_Function_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Generic_Procedure_Declaration,
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Package_Renaming_Declaration,  --  FIXME
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Private_Extension_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Tagged_Incomplete_Type_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Private_Type_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.An_Incomplete_Type_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Procedure_Body_Declaration,
        Action => P.Declarations.Procedure_Body_Declarations.Code'Access),
@@ -216,10 +225,10 @@ is
        Action => P.Declarations.Procedure_Body_Declarations.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Procedure_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Null_Procedure_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Loop_Parameter_Specification,
        Action =>
@@ -230,7 +239,7 @@ is
          P.Declarations.Element_Iterator_Specification.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Subtype_Declaration,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Variable_Declaration,
        Action => P.Declarations.Constant_Declarations.Code'Access),
@@ -253,11 +262,14 @@ is
        Kind   => F.A_Procedure_Instantiation,
        Action => P.Declarations.Subprogram_Instantiation.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Function_Instantiation,
+       Action => P.Declarations.Subprogram_Instantiation.Code'Access),
+      (Name   => N.Code,
        Kind   => F.An_Enumeration_Type_Definition,
        Action => P.Definitions.Enumeration_Type.Code'Access),
       (Name    => N.Code,
        Kind    => F.A_Signed_Integer_Type_Definition,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Subtype_Indication,
        Action => P.Definitions.Subtype_Indication.Code'Access),
@@ -266,7 +278,7 @@ is
        Action => P.Definitions.Constrained_Array_Type.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Unconstrained_Array_Definition,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Derived_Type_Definition,
        Action => P.Definitions.Derived_Type.Code'Access),
@@ -290,10 +302,10 @@ is
        Action => P.Definitions.Others_Choice.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Access_To_Variable,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Pool_Specific_Access_To_Variable,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.An_Allocation_From_Qualified_Expression,
        Action => P.Expressions.Allocation.Code'Access),
@@ -325,8 +337,14 @@ is
        Kind   => F.A_Named_Array_Aggregate,
        Action => P.Expressions.Named_Array_Aggregate.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Positional_Array_Aggregate,
+       Action => P.Expressions.Pos_Array_Aggregate.Code'Access),
+      (Name   => N.Code,
        Kind   => F.An_In_Membership_Test,
        Action => P.Expressions.Membership_Test.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.An_Or_Else_Short_Circuit,
+       Action => P.Expressions.Short_Circuit.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Record_Aggregate,
        Action => P.Expressions.Record_Aggregate.Code'Access),
@@ -361,6 +379,9 @@ is
        Kind   => F.An_If_Expression,
        Action => P.Expressions.If_Expression.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Case_Expression,
+       Action => P.Expressions.Case_Expression.Code'Access),
+      (Name   => N.Code,
        Kind   => F.An_Assignment_Statement,
        Action => P.Statements.Assignment_Statement.Code'Access),
       (Name   => N.Code,
@@ -380,16 +401,19 @@ is
        Action => P.Statements.If_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Null_Statement,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Use_Type_Clause,
-       Action => P.Statements.Null_Statement.Code'Access),  --  Ignore
+       Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Procedure_Call_Statement,
        Action => P.Statements.Procedure_Call_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Return_Statement,
        Action => P.Statements.Return_Statement.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.An_Extended_Return_Statement,
+       Action => P.Statements.Extended_Return.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Exit_Statement,
        Action => P.Statements.Exit_Statement.Code'Access),
@@ -401,7 +425,7 @@ is
        Action => P.Statements.Raise_Statement.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_With_Clause,
-       Action => P.Statements.Null_Statement.Code'Access),
+       Action => P.Common.Empty'Access),
 
       (Name   => N.Condition,
        Kind   => F.An_Element_Iterator_Specification,
@@ -444,6 +468,9 @@ is
        Kind   => F.A_Constrained_Array_Definition,
        Action => P.Definitions.Constrained_Array_Type.Bounds'Access),
       (Name   => N.Bounds,
+       Kind   => F.An_Unconstrained_Array_Definition,
+       Action => P.Common.Empty'Access),
+      (Name   => N.Bounds,
        Kind   => F.A_Return_Statement,
        Action => P.Statements.Return_Statement.Bounds'Access),
       (Name   => N.Bounds,
@@ -456,6 +483,9 @@ is
       --  Initialize
       (Name   => N.Initialize,
        Kind   => F.A_Constant_Declaration,
+       Action => P.Declarations.Constant_Declarations.Initialize'Access),
+      (Name   => N.Initialize,
+       Kind   => F.A_Return_Constant_Specification,
        Action => P.Declarations.Constant_Declarations.Initialize'Access),
       (Name   => N.Initialize,
        Kind   => F.A_Discriminant_Specification,
@@ -527,6 +557,9 @@ is
        Action  => P.Definitions.Enumeration_Type.Initialize'Access),
       (Name    => N.Initialize,
        Kind    => F.A_Signed_Integer_Type_Definition,
+       Action  => P.Definitions.Enumeration_Type.Initialize'Access),
+      (Name    => N.Initialize,
+       Kind    => F.A_Modular_Type_Definition,
        Action  => P.Definitions.Enumeration_Type.Initialize'Access),
       (Name    => N.Initialize,
        Kind    => F.A_Floating_Point_Definition,
@@ -700,7 +733,17 @@ is
        Kind   => F.A_Procedure_Instantiation,
        Action =>
          P.Declarations.Subprogram_Instantiation.Is_Dispatching'Access),
+      (Name   => N.Is_Dispatching,
+       Kind   => F.A_Function_Instantiation,
+       Action =>
+         P.Declarations.Subprogram_Instantiation.Is_Dispatching'Access),
+      (Name   => N.Is_Dispatching,
+       Kind   => F.A_Generic_Procedure_Declaration,
+       Action => P.Common.False'Access),
       (Kind   => F.A_Constant_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
+      (Kind   => F.A_Return_Constant_Specification,
        Name   => N.Is_Simple_Ref,
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.A_Deferred_Constant_Declaration,
@@ -720,31 +763,37 @@ is
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.An_Ordinary_Type_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Private_Type_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Private_Extension_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Procedure_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Function_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Null_Procedure_Declaration,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Procedure_Instantiation,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
+      (Kind   => F.A_Function_Instantiation,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Common.False'Access),
       (Kind   => F.An_Element_Iterator_Specification,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
       (Kind   => F.A_Loop_Parameter_Specification,
        Name   => N.Is_Simple_Ref,
-       Action => P.Constants.False'Access),
+       Action => P.Common.False'Access),
+      (Kind   => F.An_Integer_Number_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Common.False'Access),
 
       (Kind   => F.A_Subtype_Indication,
        Name   => N.Is_Simple_Type,
@@ -768,6 +817,9 @@ is
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Signed_Integer_Type_Definition,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
+      (Kind    => F.A_Modular_Type_Definition,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Floating_Point_Definition,
@@ -802,7 +854,7 @@ is
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Class_Attribute,
        Name    => N.Is_Simple_Type,
-       Action  => P.Constants.False'Access));
+       Action  => P.Common.False'Access));
 
 begin
    for X of Action_List loop
@@ -848,6 +900,11 @@ begin
    Self.Call_Convention.Register_Calculator
      (Name   => N.Call_Convention,
       Kind   => F.A_Procedure_Instantiation,
+      Action =>
+        P.Declarations.Subprogram_Instantiation.Call_Convention'Access);
+   Self.Call_Convention.Register_Calculator
+     (Name   => N.Call_Convention,
+      Kind   => F.A_Function_Instantiation,
       Action =>
         P.Declarations.Subprogram_Instantiation.Call_Convention'Access);
 

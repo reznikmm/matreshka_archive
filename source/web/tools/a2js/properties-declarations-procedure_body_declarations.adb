@@ -61,6 +61,9 @@ package body Properties.Declarations.Procedure_Body_Declarations is
       Spec : constant Asis.Declaration :=
         Asis.Declarations.Corresponding_Declaration (Element);
 
+      Is_Generic : constant Boolean :=
+        Asis.Elements.Declaration_Kind (Spec) in Asis.A_Generic_Declaration;
+
       Is_Library_Level : constant Boolean := Asis.Elements.Is_Nil
         (Asis.Elements.Enclosing_Element (Element));
 
@@ -77,7 +80,9 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
       Text : League.Strings.Universal_String;
    begin
-      if Is_Library_Level then
+      if Is_Generic then
+         return Text;
+      elsif Is_Library_Level then
          Text.Append
            (Properties.Tools.Library_Level_Header
               (Asis.Elements.Enclosing_Compilation_Unit (Element)));

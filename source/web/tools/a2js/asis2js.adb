@@ -111,6 +111,7 @@ procedure Asis2JS is
                   exit;
 
                when Asis.A_Package
+                  | Asis.A_Generic_Package
                   | Asis.A_Generic_Package_Renaming
                   | Asis.A_Generic_Function_Renaming =>
 

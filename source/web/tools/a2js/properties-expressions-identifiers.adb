@@ -377,7 +377,9 @@ package body Properties.Expressions.Identifiers is
 
             when Asis.A_Deferred_Constant_Declaration |
                  Asis.A_Constant_Declaration |
-                 Asis.A_Variable_Declaration =>
+                 Asis.A_Variable_Declaration |
+                 Asis.An_Integer_Number_Declaration |
+                 Asis.A_Return_Constant_Specification =>
 
                exit when Is_Imported (Item);
 
@@ -414,7 +416,8 @@ package body Properties.Expressions.Identifiers is
                   end if;
                end;
 
-            when Asis.A_Procedure_Instantiation =>
+            when Asis.A_Procedure_Instantiation |
+                 Asis.A_Function_Instantiation =>
                null;  --  Skip instantiation element
 
             when Asis.Not_A_Declaration =>

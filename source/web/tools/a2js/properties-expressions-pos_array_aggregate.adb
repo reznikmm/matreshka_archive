@@ -41,30 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis.Elements;
 with Asis.Expressions;
 
-package body Properties.Expressions.Attribute_Reference is
+package body Properties.Expressions.Pos_Array_Aggregate is
 
-   function Call_Convention
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind
-   is
-      pragma Unreferenced (Engine, Name);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
-   begin
-      case Kind is
-         when Asis.An_Image_Attribute =>
-            return Engines.Intrinsic;
-         when others =>
-            raise Program_Error with
-              "Unimplemented Call_Convention attribute: " &
-              Asis.Attribute_Kinds'Image (Kind);
-      end case;
-   end Call_Convention;
+   function Get_Bounds
+     (List    : Asis.Association_List)
+      return League.Strings.Universal_String;
 
    ----------
    -- Code --
@@ -73,68 +56,62 @@ package body Properties.Expressions.Attribute_Reference is
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
    is
-      Prefix : constant Asis.Expression :=
-        Asis.Expressions.Prefix (Element);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
+      Down   : League.Strings.Universal_String;
+      Result : League.Strings.Universal_String;
+      List   : constant Asis.Association_List :=
+        Asis.Expressions.Array_Component_Associations (Element);
+      Length : constant Wide_Wide_String :=
+        Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
    begin
-      case Kind is
-         when Asis.An_Access_Attribute |
-              Asis.An_Address_Attribute |
-              Asis.An_Unchecked_Access_Attribute =>
-            return Engine.Text.Get_Property (Prefix, Engines.Address);
+      Result.Append ("function(_from,_to){");
+      Result.Append ("var _result=[");
 
-         when Asis.A_Class_Attribute =>
-            --  FIX ME, but I have no idea how
-            return Engine.Text.Get_Property (Prefix, Name);
+      for J in List'Range loop
+         Down := Engine.Text.Get_Property
+           (Asis.Expressions.Component_Expression (List (J)),
+            Name);
 
-         when Asis.A_Length_Attribute =>
-            declare
-               Text     : League.Strings.Universal_String;
-            begin
-               Text := Engine.Text.Get_Property (Prefix, Name);
-               Text.Append ("._length");
+         Result.Append (Down);
 
-               return Text;
-            end;
+         if J /= List'Last then
+            Result.Append (", ");
+         end if;
+      end loop;
+      Result.Append ("];");
+      Result.Append ("_result._first=_from;");
+      Result.Append ("_result._last=_to;");
+      Result.Append ("_result._length=");
+      Result.Append (Length (2 .. Length'Last));
+      Result.Append (";");
 
-         when Asis.A_Position_Attribute =>
-            declare
-               Text     : League.Strings.Universal_String;
-               Selector : constant Asis.Identifier :=
-                 Asis.Expressions.Selector (Prefix);
-               Def : constant Asis.Defining_Name :=
-                 Asis.Expressions.Corresponding_Name_Definition (Selector);
-            begin
-               Text := Engine.Text.Get_Property (Def, Name);
-               Text.Prepend ("'");
-               Text.Append ("'");
+      Result.Append ("return _result;}(");
 
-               return Text;
-            end;
-         when others =>
-            raise Program_Error with "Unimplemented attribute: " &
-              Asis.Attribute_Kinds'Image (Kind);
-      end case;
+      Result.Append (Get_Bounds (List));
+
+      Result.Append (")");
+
+      return Result;
    end Code;
 
-   --------------------
-   -- Intrinsic_Name --
-   --------------------
+   ----------------
+   -- Get_Bounds --
+   ----------------
 
-   function Intrinsic_Name
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   function Get_Bounds
+     (List    : Asis.Association_List)
+      return League.Strings.Universal_String
    is
-      pragma Unreferenced (Engine, Name);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
+      Result : League.Strings.Universal_String;
+      Length : constant Wide_Wide_String :=
+        Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
    begin
-      return League.Strings.To_Universal_String
-        (Asis.Attribute_Kinds'Wide_Wide_Image (Kind));
-   end Intrinsic_Name;
+      Result.Append ("1, ");
+      Result.Append (Length (2 .. Length'Last));
 
-end Properties.Expressions.Attribute_Reference;
+      return Result;
+   end Get_Bounds;
+
+end Properties.Expressions.Pos_Array_Aggregate;

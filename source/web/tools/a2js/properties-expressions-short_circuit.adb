@@ -41,8 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Elements;
+with Asis.Expressions;
 
-package body Properties.Statements.Null_Statement is
+package body Properties.Expressions.Short_Circuit is
 
    ----------
    -- Code --
@@ -53,9 +55,29 @@ package body Properties.Statements.Null_Statement is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      pragma Unreferenced (Engine, Element, Name);
+      Text  : League.Strings.Universal_String;
+      Down  : League.Strings.Universal_String;
    begin
-      return League.Strings.Empty_Universal_String;
+      Down := Engine.Text.Get_Property
+        (Asis.Expressions.Short_Circuit_Operation_Left_Expression (Element),
+         Name);
+      Text.Append (Down);
+
+      case Asis.Elements.Expression_Kind (Element) is
+         when Asis.An_Or_Else_Short_Circuit =>
+            Text.Append (" || ");
+         when Asis.An_And_Then_Short_Circuit =>
+            Text.Append (" && ");
+         when others =>
+            raise Program_Error;
+      end case;
+
+      Down := Engine.Text.Get_Property
+        (Asis.Expressions.Short_Circuit_Operation_Right_Expression (Element),
+         Name);
+      Text.Append (Down);
+
+      return Text;
    end Code;
 
-end Properties.Statements.Null_Statement;
+end Properties.Expressions.Short_Circuit;

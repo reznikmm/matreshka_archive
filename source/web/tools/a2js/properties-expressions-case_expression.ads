@@ -47,11 +47,11 @@ with Engines.Contexts;
 
 with League.Strings;
 
-package Properties.Statements.Null_Statement is
+package Properties.Expressions.Case_Expression is
 
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-end Properties.Statements.Null_Statement;
+end Properties.Expressions.Case_Expression;

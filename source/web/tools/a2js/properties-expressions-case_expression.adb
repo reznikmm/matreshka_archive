@@ -43,28 +43,9 @@
 ------------------------------------------------------------------------------
 with Asis.Elements;
 with Asis.Expressions;
+with Asis.Statements;
 
-package body Properties.Expressions.Attribute_Reference is
-
-   function Call_Convention
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind
-   is
-      pragma Unreferenced (Engine, Name);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
-   begin
-      case Kind is
-         when Asis.An_Image_Attribute =>
-            return Engines.Intrinsic;
-         when others =>
-            raise Program_Error with
-              "Unimplemented Call_Convention attribute: " &
-              Asis.Attribute_Kinds'Image (Kind);
-      end case;
-   end Call_Convention;
+package body Properties.Expressions.Case_Expression is
 
    ----------
    -- Code --
@@ -73,68 +54,67 @@ package body Properties.Expressions.Attribute_Reference is
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
    is
-      Prefix : constant Asis.Expression :=
-        Asis.Expressions.Prefix (Element);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
+      use type Asis.Path_Kinds;
+      use type Asis.Definition_Kinds;
+      use type Asis.Element_Kinds;
+
+      List  : constant Asis.Path_List :=
+        Asis.Expressions.Expression_Paths (Element);
+      Text  : League.Strings.Universal_String;
+      Down  : League.Strings.Universal_String;
    begin
-      case Kind is
-         when Asis.An_Access_Attribute |
-              Asis.An_Address_Attribute |
-              Asis.An_Unchecked_Access_Attribute =>
-            return Engine.Text.Get_Property (Prefix, Engines.Address);
+      Text.Append ("(function (_case){");
+      Text.Append ("switch (_case){");
 
-         when Asis.A_Class_Attribute =>
-            --  FIX ME, but I have no idea how
-            return Engine.Text.Get_Property (Prefix, Name);
+      for J in List'Range loop
+         pragma Assert
+           (Asis.Elements.Path_Kind (List (J)) = Asis.A_Case_Expression_Path);
 
-         when Asis.A_Length_Attribute =>
-            declare
-               Text     : League.Strings.Universal_String;
-            begin
-               Text := Engine.Text.Get_Property (Prefix, Name);
-               Text.Append ("._length");
+         declare
+            Nested : constant Asis.Expression :=
+              Asis.Expressions.Dependent_Expression (List (J));
+            Alt : constant Asis.Element_List :=
+              Asis.Statements.Case_Path_Alternative_Choices (List (J));
+         begin
+            for K in Alt'Range loop
+               if Asis.Elements.Element_Kind (Alt (K)) =
+                 Asis.An_Expression
+               then
+                  Down := Engine.Text.Get_Property (Alt (K), Name);
 
-               return Text;
-            end;
+                  Text.Append ("case ");
+                  Text.Append (Down);
+                  Text.Append (" : ");
+               elsif Asis.Elements.Definition_Kind (Alt (K)) =
+                 Asis.An_Others_Choice
+               then
+                  Text.Append ("default: ");
+               else
+                  raise Constraint_Error;
+               end if;
 
-         when Asis.A_Position_Attribute =>
-            declare
-               Text     : League.Strings.Universal_String;
-               Selector : constant Asis.Identifier :=
-                 Asis.Expressions.Selector (Prefix);
-               Def : constant Asis.Defining_Name :=
-                 Asis.Expressions.Corresponding_Name_Definition (Selector);
-            begin
-               Text := Engine.Text.Get_Property (Def, Name);
-               Text.Prepend ("'");
-               Text.Append ("'");
+               Text.Append ("return ");
 
-               return Text;
-            end;
-         when others =>
-            raise Program_Error with "Unimplemented attribute: " &
-              Asis.Attribute_Kinds'Image (Kind);
-      end case;
+               Down := Engine.Text.Get_Property (Nested, Name);
+
+               Text.Append (Down);
+
+               Text.Append (";");
+            end loop;
+         end;
+      end loop;
+
+      Text.Append ("}})(");
+
+      Down := Engine.Text.Get_Property
+        (Asis.Statements.Case_Expression (Element), Name);
+
+      Text.Append (Down);
+      Text.Append (")");
+      return Text;
    end Code;
 
-   --------------------
-   -- Intrinsic_Name --
-   --------------------
-
-   function Intrinsic_Name
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Engine, Name);
-      Kind   : constant Asis.Attribute_Kinds :=
-        Asis.Elements.Attribute_Kind (Element);
-   begin
-      return League.Strings.To_Universal_String
-        (Asis.Attribute_Kinds'Wide_Wide_Image (Kind));
-   end Intrinsic_Name;
-
-end Properties.Expressions.Attribute_Reference;
+end Properties.Expressions.Case_Expression;
