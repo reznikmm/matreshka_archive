@@ -307,12 +307,20 @@ package body Properties.Declarations.Defining_Names is
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
       pragma Unreferenced (Engine, Name);
+      Decl : constant Asis.Declaration :=
+        Properties.Tools.Enclosing_Declaration (Element);
+      Link_Name : constant Wide_String :=
+        Properties.Tools.Get_Aspect (Decl, "Link_Name");
       Image : constant Wide_String :=
         Asis.Declarations.Defining_Name_Image (Element);
-      Text : constant League.Strings.Universal_String :=
+      Text : League.Strings.Universal_String :=
         League.Strings.From_UTF_16_Wide_String (Image)
         .To_Lowercase;
    begin
+      if Link_Name /= "" then
+         Text := League.Strings.From_UTF_16_Wide_String (Link_Name);
+      end if;
+
       return Text;
    end Method_Name;
 
