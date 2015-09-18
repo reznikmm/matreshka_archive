@@ -74,67 +74,67 @@ package WebAPI.DOM.Documents is
    not overriding function Get_URL
     (Self : not null access constant Document)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "URL";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "URL";
    --  Returns document's URL.
 
    not overriding function Get_Document_URI
     (Self : not null access constant Document)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "documentURI";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "documentURI";
    --  Returns document's URL.
 
    not overriding function Get_Compat_Mode
     (Self : not null access constant Document)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "compatMode";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "compatMode";
    --  Returns the string "CSS1Compat" if document is in no-quirks mode or
    --  limited-quirks mode, and "BackCompat", if document is in quirks mode.
 
    not overriding function Get_Character_Set
     (Self : not null access constant Document)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "characterSet";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "characterSet";
    --  Returns document's encoding.
 
    not overriding function Get_Content_Type
     (Self : not null access constant Document)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "contentType";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "contentType";
    --  Returns document's content type.
 
    not overriding function Get_Doctype
     (Self : not null access constant Document)
        return WebAPI.DOM.Document_Types.Document_Type_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "doctype";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "doctype";
    --  Returns the doctype or null if there is none.
 
    not overriding function Get_Document_Element
     (Self : not null access constant Document)
        return WebAPI.DOM.Elements.Element_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "documentElement";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "documentElement";
    --  Returns the document element.
 
    not overriding function Get_Elements_By_Tag_Name
     (Self       : not null access constant Document;
      Local_Name : League.Strings.Universal_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
-         with Import        => True,
-              Convention    => JavaScript_Function,
-              External_Name => "getElementsByTagName";
+         with Import     => True,
+              Convention => JavaScript_Function,
+              Link_Name  => "getElementsByTagName";
    --  If localName is "*" returns a HTMLCollection of all descendant elements.
    --
    --  Otherwise, returns a HTMLCollection of all descendant elements whose
@@ -146,9 +146,9 @@ package WebAPI.DOM.Documents is
      Namespace_URI : League.Strings.Universal_String;
      Local_Name    : League.Strings.Universal_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
-         with Import        => True,
-              Convention    => JavaScript_Function,
-              External_Name => "getElementsByTagNameNS";
+         with Import     => True,
+              Convention => JavaScript_Function,
+              Link_Name  => "getElementsByTagNameNS";
    --  If namespace and localName are "*" returns a HTMLCollection of all
    --  descendant elements.
    --
@@ -165,9 +165,9 @@ package WebAPI.DOM.Documents is
     (Self        : not null access constant Document;
      Class_Names : League.Strings.Universal_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
-         with Import        => True,
-              Convention    => JavaScript_Function,
-              External_Name => "getElementsByClassName";
+         with Import     => True,
+              Convention => JavaScript_Function,
+              Link_Name  => "getElementsByClassName";
    --  Returns a HTMLCollection of the elements in the object on which the
    --  method was invoked (a document or an element) that have all the classes
    --  given by classes.
