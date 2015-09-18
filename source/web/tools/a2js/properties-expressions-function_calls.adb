@@ -101,7 +101,9 @@ package body Properties.Expressions.Function_Calls is
       Is_Dispatching := Engine.Boolean.Get_Property
         (Prefix, Engines.Is_Dispatching);
 
-      if not Is_Dispatching then
+      if not Is_Dispatching
+        and Conv /= Engines.JavaScript_Property_Getter
+      then
          declare
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
@@ -125,7 +127,9 @@ package body Properties.Expressions.Function_Calls is
 
             Text.Append (")");
          end;
-      elsif Asis.Statements.Is_Dispatching_Call (Element) then
+      elsif Asis.Statements.Is_Dispatching_Call (Element)
+        or Conv = Engines.JavaScript_Property_Getter
+      then
          declare
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
