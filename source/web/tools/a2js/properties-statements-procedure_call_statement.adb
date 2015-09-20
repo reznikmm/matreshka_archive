@@ -116,7 +116,8 @@ package body Properties.Statements.Procedure_Call_Statement is
             Text := Engine.Text.Get_Property
               (Asis.Expressions.Actual_Parameter (List (1)), Name);
             Text.Append (".");
-            Text.Append (Engine.Text.Get_Property (Prefix, Name));
+            Text.Append
+              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
 
             Text.Append ("(");
 

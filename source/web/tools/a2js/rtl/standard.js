@@ -20,8 +20,18 @@ define('standard', [], function(){
     standard._tag = function (tag_name, parent_name){
         var result = Object.create (all_types[parent_name]);
         result._external_tag = tag_name;
+        result._parent_tag = parent_name;
         all_types [tag_name] = result;
         return result;
+    };
+    standard._in = function (a, b){
+        var a_tag = a._external_tag;
+        var b_tag = b.prototype._external_tag;
+        while (b_tag != '') {
+            if (a_tag == b_tag) return true;
+            b_tag = all_types[b_tag]._parent_tag;
+        }
+        return false;
     };
     all_types [''] = {};  //  prototype from root tags
 

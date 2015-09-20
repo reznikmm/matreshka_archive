@@ -97,6 +97,10 @@ package body Properties.Declarations.Procedure_Body_Declarations is
               Asis.Declarations.Names (Tipe) (1);
             Image : constant League.Strings.Universal_String :=
               Engine.Text.Get_Property (Type_Name, Name);
+            Method_Name : constant League.Strings.Universal_String :=
+              Engine.Text.Get_Property
+                (Element => Asis.Declarations.Names (Element) (1),
+                 Name    => Engines.Method_Name);
          begin
             if Inside_Package then
                Text.Append ("_ec.");
@@ -107,7 +111,7 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
             Text.Append (Image);
             Text.Append (".prototype.");
-            Text.Append (Subprogram_Name);
+            Text.Append (Method_Name);
             Text.Append (" = ");
          end;
       elsif Inside_Package then

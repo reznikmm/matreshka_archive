@@ -106,6 +106,9 @@ package body Properties.Declarations.Defining_Names is
         Asis.A_Not_Operator =>
           League.Strings.To_Universal_String ("_not"));
 
+   function Get_Name
+     (Name : Asis.Defining_Name) return League.Strings.Universal_String;
+
    ----------
    -- Code --
    ----------
@@ -120,33 +123,11 @@ package body Properties.Declarations.Defining_Names is
       function Get_Suffix return League.Strings.Universal_String;
       function Prev_Subprogram_Count return Natural;
       function Is_Subprogram (Kind : Asis.Declaration_Kinds) return Boolean;
-      function Get_Name
-        (Name : Asis.Defining_Name) return League.Strings.Universal_String;
 
       Decl : constant Asis.Declaration :=
         Properties.Tools.Enclosing_Declaration (Element);
       Kind  : constant Asis.Declaration_Kinds :=
         Asis.Elements.Declaration_Kind (Decl);
-
-      function Get_Name
-        (Name : Asis.Defining_Name) return League.Strings.Universal_String
-      is
-      begin
-         case Asis.Elements.Defining_Name_Kind (Name) is
-            when Asis.A_Defining_Operator_Symbol =>
-               return Map (Asis.Elements.Operator_Kind (Name));
-            when others =>
-               declare
-                  Image : constant Wide_String :=
-                    Asis.Declarations.Defining_Name_Image (Name);
-                  Text : constant League.Strings.Universal_String :=
-                    League.Strings.From_UTF_16_Wide_String (Image)
-                      .To_Lowercase;
-               begin
-                  return Text;
-               end;
-         end case;
-      end Get_Name;
 
       Text : League.Strings.Universal_String := Get_Name (Element);
 
@@ -297,13 +278,36 @@ package body Properties.Declarations.Defining_Names is
       return Text;
    end Code;
 
+   --------------
+   -- Get_Name --
+   --------------
+
+   function Get_Name
+     (Name : Asis.Defining_Name) return League.Strings.Universal_String is
+   begin
+      case Asis.Elements.Defining_Name_Kind (Name) is
+         when Asis.A_Defining_Operator_Symbol =>
+            return Map (Asis.Elements.Operator_Kind (Name));
+         when others =>
+            declare
+               Image : constant Wide_String :=
+                 Asis.Declarations.Defining_Name_Image (Name);
+               Text : constant League.Strings.Universal_String :=
+                 League.Strings.From_UTF_16_Wide_String (Image)
+                 .To_Lowercase;
+            begin
+               return Text;
+            end;
+      end case;
+   end Get_Name;
+
    -----------------
    -- Method_Name --
    -----------------
 
    function Method_Name
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
+      Element : Asis.Defining_Name;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
       pragma Unreferenced (Engine, Name);
@@ -311,11 +315,7 @@ package body Properties.Declarations.Defining_Names is
         Properties.Tools.Enclosing_Declaration (Element);
       Link_Name : constant Wide_String :=
         Properties.Tools.Get_Aspect (Decl, "Link_Name");
-      Image : constant Wide_String :=
-        Asis.Declarations.Defining_Name_Image (Element);
-      Text : League.Strings.Universal_String :=
-        League.Strings.From_UTF_16_Wide_String (Image)
-        .To_Lowercase;
+      Text : League.Strings.Universal_String := Get_Name (Element);
    begin
       if Link_Name /= "" then
          Text := League.Strings.From_UTF_16_Wide_String (Link_Name);

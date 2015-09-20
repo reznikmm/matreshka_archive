@@ -176,9 +176,13 @@ package body Properties.Declarations.Function_Declarations is
       Name    : Engines.Boolean_Property) return Boolean
    is
       pragma Unreferenced (Engine, Name);
-      Spec : constant Asis.Declaration :=
+      Spec : Asis.Declaration :=
         Asis.Declarations.Corresponding_Declaration (Element);
    begin
+      if Asis.Elements.Is_Nil (Spec) then
+         Spec := Element;
+      end if;
+
       --  Controlling result functions are not considered dispatching
       --  for now.
       return Asis.Declarations.Is_Dispatching_Operation (Spec)

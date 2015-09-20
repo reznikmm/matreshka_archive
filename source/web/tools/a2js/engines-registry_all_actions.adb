@@ -686,7 +686,10 @@ is
        P.Expressions.Attribute_Reference.Intrinsic_Name'Access),
       (N.Intrinsic_Name,
        F.An_And_Operator, F.A_Not_Operator,
-       P.Expressions.Identifiers.Intrinsic_Name'Access));
+       P.Expressions.Identifiers.Intrinsic_Name'Access),
+      (N.Method_Name,
+       F.A_Defining_And_Operator, F.A_Defining_Not_Operator,
+       Action => P.Declarations.Defining_Names.Method_Name'Access));
 
    Boolean_Actions : constant array (Positive range <>) of Boolean_Action_Item
      :=
@@ -839,10 +842,10 @@ is
        Action  => P.Definitions.Derived_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Derived_Record_Extension_Definition,
        Name    => N.Is_Simple_Type,
-       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
+       Action  => P.Definitions.Tagged_Record_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Tagged_Record_Type_Definition,
        Name    => N.Is_Simple_Type,
-       Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
+       Action  => P.Definitions.Tagged_Record_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Limited_Interface,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),

@@ -163,22 +163,40 @@ package body Properties.Expressions.Function_Calls is
          end;
       else
          declare
+            use type Asis.Operator_Kinds;
+
             Func   : Asis.Declaration :=
               Asis.Expressions.Corresponding_Called_Function (Element);
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
               Asis.Expressions.Function_Call_Parameters
                 (Element, Normalized => False);
+            Origin : constant Asis.Operator_Kinds :=
+              Asis.Elements.Operator_Kind
+                (Asis.Declarations.Names (Func)(1));
+            Final : Asis.Operator_Kinds;
          begin
             while Asis.Elements.Is_Part_Of_Inherited (Func) loop
                Func :=
                  Asis.Declarations.Corresponding_Subprogram_Derivation (Func);
             end loop;
 
-            Text := Properties.Expressions.Identifiers.Name_Prefix
+             Final := Asis.Elements.Operator_Kind
+              (Asis.Declarations.Names (Func)(1));
+
+            --  It seems there is a bug in ASIS4GNAT, it turns "/=" into "="
+            if Final = Asis.An_Equal_Operator
+              and Origin = Asis.A_Not_Equal_Operator
+            then
+               Text.Append ("!");
+            end if;
+
+            Arg := Properties.Expressions.Identifiers.Name_Prefix
               (Engine => Engine,
                Name   => Element,
                Decl   => Func);
+
+            Text.Append (Arg);
 
             Text.Append
               (Engine.Text.Get_Property

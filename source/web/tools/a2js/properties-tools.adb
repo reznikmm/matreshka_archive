@@ -247,29 +247,96 @@ package body Properties.Tools is
    function Corresponding_Type_Discriminants
      (Definition : Asis.Definition) return Asis.Declaration_List
    is
+
+      function Discriminants
+        (Decl : Asis.Declaration) return Asis.Declaration_List;
+
+      function Parent_Discriminants
+        (Parent : Asis.Subtype_Indication) return Asis.Declaration_List;
+
+      -------------------
+      -- Discriminants --
+      -------------------
+
+      function Discriminants
+        (Decl : Asis.Declaration) return Asis.Declaration_List
+      is
+         Kind : constant Asis.Declaration_Kinds :=
+           Asis.Elements.Declaration_Kind (Decl);
+      begin
+         case Kind is
+            when Asis.A_Full_Type_Declaration |
+                Asis.A_Private_Extension_Declaration =>
+               declare
+                  Part : constant Asis.Element :=
+                    Asis.Declarations.Discriminant_Part (Decl);
+                  View : constant Asis.Element :=
+                    Asis.Declarations.Type_Declaration_View (Decl);
+                  View_Kind : constant Asis.Type_Kinds :=
+                    Asis.Elements.Type_Kind (View);
+                  Parent : Asis.Subtype_Indication;
+                  Constr : Asis.Constraint;
+               begin
+                  case Asis.Elements.Definition_Kind (Part) is
+                     when Asis.A_Known_Discriminant_Part =>
+                        return Asis.Definitions.Discriminants (Part);
+                     when others =>
+                        null;
+                  end case;
+
+                  case View_Kind is
+                     when Asis.A_Derived_Type_Definition |
+                          Asis.A_Derived_Record_Extension_Definition =>
+
+                        Parent :=
+                          Asis.Definitions.Parent_Subtype_Indication (View);
+
+                        Constr := Asis.Definitions.Subtype_Constraint (Parent);
+
+                        if Asis.Elements.Is_Nil (Constr) then
+                           return Parent_Discriminants (Parent);
+                        else
+                           return Asis.Nil_Element_List;
+                        end if;
+
+                     when others =>
+                        null;
+                  end case;
+               end;
+            when others =>
+               null;
+         end case;
+
+         return Asis.Nil_Element_List;
+      end Discriminants;
+
+      --------------------------
+      -- Parent_Discriminants --
+      --------------------------
+
+      function Parent_Discriminants
+        (Parent : Asis.Subtype_Indication) return Asis.Declaration_List
+      is
+         Mark : Asis.Subtype_Mark :=
+           Asis.Definitions.Subtype_Mark (Parent);
+         Decl : Asis.Declaration;
+      begin
+         case Asis.Elements.Expression_Kind (Mark) is
+            when Asis.A_Selected_Component =>
+               Mark := Asis.Expressions.Selector (Mark);
+            when others =>
+               null;
+         end case;
+
+         Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
+
+         return Discriminants (Decl);
+      end Parent_Discriminants;
+
       Decl : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Definition);
-      Kind : constant Asis.Declaration_Kinds :=
-        Asis.Elements.Declaration_Kind (Decl);
    begin
-      case Kind is
-         when Asis.A_Full_Type_Declaration =>
-            declare
-               Part : constant Asis.Element :=
-                 Asis.Declarations.Discriminant_Part (Decl);
-            begin
-               case Asis.Elements.Definition_Kind (Part) is
-                  when Asis.A_Known_Discriminant_Part =>
-                     return Asis.Definitions.Discriminants (Part);
-                  when others =>
-                     null;
-               end case;
-            end;
-         when others =>
-            null;
-      end case;
-
-      return Asis.Nil_Element_List;
+      return Discriminants (Decl);
    end Corresponding_Type_Discriminants;
 
    ------------------------------------

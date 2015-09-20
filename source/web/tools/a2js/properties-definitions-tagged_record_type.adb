@@ -50,6 +50,10 @@ with Properties.Expressions.Identifiers;
 
 package body Properties.Definitions.Tagged_Record_Type is
 
+   function Is_Universal_String
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration) return Boolean;
+
    ----------
    -- Code --
    ----------
@@ -223,7 +227,8 @@ package body Properties.Definitions.Tagged_Record_Type is
                Result.Append (".prototype.");
                Result.Append
                  (Engine.Text.Get_Property
-                         (Asis.Declarations.Names (List (J)) (1), Name));
+                    (Asis.Declarations.Names (List (J)) (1),
+                     Engines.Method_Name));
                Result.Append (" = _ec._abstract;");
             end if;
          end loop;
@@ -248,6 +253,12 @@ package body Properties.Definitions.Tagged_Record_Type is
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
+      if Is_Universal_String (Engine, Element) then
+         Result.Append ("""""");
+
+         return Result;
+      end if;
+
       Result.Append (" new ");
 
       Text :=
@@ -264,6 +275,34 @@ package body Properties.Definitions.Tagged_Record_Type is
 
       return Result;
    end Initialize;
+
+   --------------------
+   -- Is_Simple_Type --
+   --------------------
+
+   function Is_Simple_Type
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean
+   is
+      pragma Unreferenced (Name);
+   begin
+      return Is_Universal_String (Engine, Element);
+   end Is_Simple_Type;
+
+   -------------------------
+   -- Is_Universal_String --
+   -------------------------
+
+   function Is_Universal_String
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration) return Boolean
+   is
+      Tag : constant League.Strings.Universal_String :=
+        Engine.Text.Get_Property (Element, Engines.Tag_Name);
+   begin
+      return Tag.To_Wide_Wide_String = "universal_string";
+   end Is_Universal_String;
 
    --------------
    -- Tag_Name --
