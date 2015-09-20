@@ -46,6 +46,47 @@ with Asis.Expressions;
 
 package body Properties.Definitions.Range_Attribute is
 
+   generic
+      Prop : Wide_Wide_String;
+   function Bound
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition)
+      return League.Strings.Universal_String;
+
+   -----------
+   -- Bound --
+   -----------
+
+   function Bound
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition)
+      return League.Strings.Universal_String
+   is
+      Attr : constant Asis.Expression :=
+        Asis.Definitions.Range_Attribute (Element);
+      Args : constant Asis.Expression_List :=
+        Asis.Expressions.Attribute_Designator_Expressions (Attr);
+      Text : League.Strings.Universal_String;
+      Down : League.Strings.Universal_String;
+   begin
+      Text := Engine.Text.Get_Property
+        (Asis.Expressions.Prefix (Attr), Engines.Code);
+      Text.Append ("._");
+      Text.Append (Prop);
+      Text.Append ("[");
+
+      if Args'Length > 0 then
+         Down := Engine.Text.Get_Property (Args (Args'First), Engines.Code);
+         Text.Append (Down);
+      else
+         Text.Append ("0");
+      end if;
+
+      Text.Append ("]");
+
+      return Text;
+   end Bound;
+
    -----------
    -- Lower --
    -----------
@@ -57,14 +98,9 @@ package body Properties.Definitions.Range_Attribute is
       return League.Strings.Universal_String
    is
       pragma Unreferenced (Name);
-      Attr : constant Asis.Expression :=
-        Asis.Definitions.Range_Attribute (Element);
-      Text : League.Strings.Universal_String;
+      function Inst is new Bound ("first");
    begin
-      Text := Engine.Text.Get_Property
-        (Asis.Expressions.Prefix (Attr), Engines.Code);
-      Text.Append ("._first");
-      return Text;
+      return Inst (Engine, Element);
    end Lower;
 
    -----------
@@ -78,14 +114,9 @@ package body Properties.Definitions.Range_Attribute is
       return League.Strings.Universal_String
    is
       pragma Unreferenced (Name);
-      Attr : constant Asis.Expression :=
-        Asis.Definitions.Range_Attribute (Element);
-      Text : League.Strings.Universal_String;
+      function Inst is new Bound ("last");
    begin
-      Text := Engine.Text.Get_Property
-        (Asis.Expressions.Prefix (Attr), Engines.Code);
-      Text.Append ("._last");
-      return Text;
+      return Inst (Engine, Element);
    end Upper;
 
 end Properties.Definitions.Range_Attribute;

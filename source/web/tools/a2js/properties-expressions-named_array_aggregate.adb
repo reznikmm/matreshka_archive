@@ -67,14 +67,21 @@ package body Properties.Expressions.Named_Array_Aggregate is
         Asis.Expressions.Array_Component_Associations (Element);
    begin
       Result.Append ("function(_from,_to){");
-      Result.Append ("var _first=_ec._pos(_from);");
-      Result.Append ("var _len=Math.max(_ec._pos(_to) - _first + 1, 0);");
-      Result.Append ("var _result=Array(_len);");
+      Result.Append ("var _first=_from.map (_ec._pos);");
+      Result.Append ("var _len=_to.map (function (_to, i)" &
+                       "{ return _ec._pos(_to) - _first[i] + 1; });");
+      Result.Append ("var _length=_len.reduce (function (a, b)" &
+                       "{ return a * b; }, 1);");
+      Result.Append ("var _data=Array(_length);");
+      Result.Append ("var _result=Object.create(_ec._ada_array);");
+
       Result.Append ("var _j=0;");
       Result.Append ("_result._first=_from;");
       Result.Append ("_result._last=_to;");
       Result.Append ("_result._length=_len;");
-      Result.Append ("for (var _x=_from;_j<_len;_j++, _x=_ec._succ(_x)){");
+      Result.Append ("_result.A=_data;");
+      Result.Append
+        ("for (var _x=_from[0];_j<_len[0];_j++, _x=_ec._succ(_x)){");
       Result.Append ("switch(_x){");
 
       for J in List'Range loop
@@ -100,13 +107,14 @@ package body Properties.Expressions.Named_Array_Aggregate is
       List    : Asis.Association_List)
       return League.Strings.Universal_String
    is
-      use type Asis.Element_Kinds;
+      use type Asis.Definition_Kinds;
       Result  : League.Strings.Universal_String;
       Choices : constant Asis.Expression_List :=
         Asis.Expressions.Array_Component_Choices (List (List'Last));
    begin
       if Choices'Length = 1 and then
-        Asis.Elements.Element_Kind (Choices (1)) = Asis.A_Definition
+        Asis.Elements.Definition_Kind (Choices (1)) in
+          Asis.An_Others_Choice | Asis.A_Discrete_Range
       then
          Result.Append
            (Engine.Text.Get_Property
@@ -117,18 +125,21 @@ package body Properties.Expressions.Named_Array_Aggregate is
             Choices : constant Asis.Expression_List :=
               Asis.Expressions.Array_Component_Choices (List (List'First));
          begin
+            Result.Append ("[");
             Result.Append
               (Engine.Text.Get_Property
                  (Choices (1),
                   Engines.Code));
          end;
 
-         Result.Append (",");
+         Result.Append ("], [");
 
          Result.Append
            (Engine.Text.Get_Property
               (Choices (Choices'Last),
                Engines.Code));
+
+         Result.Append ("]");
       end if;
 
       return Result;

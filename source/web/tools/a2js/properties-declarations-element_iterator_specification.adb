@@ -134,7 +134,7 @@ package body Properties.Declarations.Element_Iterator_Specification is
       Text.Append ("=");
       Down := Engine.Text.Get_Property (Iter, Engines.Code);
       Text.Append (Down);
-      Text.Append (",");
+      Text.Append (".A,");
       Text.Append (Length);
       Text.Append ("=");
       Text.Append (Arr);

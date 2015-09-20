@@ -60,9 +60,27 @@ package body Properties.Definitions.Index_Constraint is
         Asis.Definitions.Discrete_Ranges (Element);
       Result : League.Strings.Universal_String;
    begin
-      Result.Append (Engine.Text.Get_Property (List (1), Engines.Lower));
-      Result.Append (",");
-      Result.Append (Engine.Text.Get_Property (List (1), Engines.Upper));
+      Result.Append ("[");
+
+      for J in List'Range loop
+         Result.Append (Engine.Text.Get_Property (List (J), Engines.Lower));
+
+         if J /= List'Last then
+            Result.Append (",");
+         end if;
+      end loop;
+
+      Result.Append ("], [");
+
+      for J in List'Range loop
+         Result.Append (Engine.Text.Get_Property (List (J), Engines.Upper));
+         if J /= List'Last then
+            Result.Append (",");
+         end if;
+      end loop;
+
+      Result.Append ("]");
+
       return Result;
    end Bounds;
 

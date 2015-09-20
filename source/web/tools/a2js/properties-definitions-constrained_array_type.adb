@@ -45,6 +45,8 @@ with Asis.Definitions;
 with Asis.Declarations;
 with Asis.Elements;
 
+with Properties.Expressions.Identifiers;
+
 package body Properties.Definitions.Constrained_Array_Type is
 
    ------------
@@ -61,9 +63,27 @@ package body Properties.Definitions.Constrained_Array_Type is
         Asis.Definitions.Discrete_Subtype_Definitions (Element);
       Result : League.Strings.Universal_String;
    begin
-      Result.Append (Engine.Text.Get_Property (List (1), Engines.Lower));
-      Result.Append (",");
-      Result.Append (Engine.Text.Get_Property (List (1), Engines.Upper));
+      Result.Append ("[");
+
+      for J in List'Range loop
+         Result.Append (Engine.Text.Get_Property (List (J), Engines.Lower));
+
+         if J /= List'Last then
+            Result.Append (",");
+         end if;
+      end loop;
+
+      Result.Append ("], [");
+
+      for J in List'Range loop
+         Result.Append (Engine.Text.Get_Property (List (J), Engines.Upper));
+
+         if J /= List'Last then
+            Result.Append (",");
+         end if;
+      end loop;
+
+      Result.Append ("]");
 
       return Result;
    end Bounds;
@@ -80,15 +100,43 @@ package body Properties.Definitions.Constrained_Array_Type is
       Decl : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
       Result : League.Strings.Universal_String;
-      Name_Image : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
    begin
-      Name_Image := Engine.Text.Get_Property
+      Text := Engine.Text.Get_Property
         (Asis.Declarations.Names (Decl) (1), Name);
 
-      Result.Append ("_ec.");
-      Result.Append (Name_Image);
+      Result.Append ("(_ec.");
+      Result.Append (Text);
       Result.Append (" = function (){");
-      Result.Append ("};");
+
+      Result.Append ("function _init (_from,_to){");
+      Result.Append ("var _first=_from.map (_ec._pos);");
+      Result.Append ("var _len=_to.map (function (_to, i)" &
+                       "{ return _ec._pos(_to) - _first[i] + 1; });");
+      Result.Append ("var _length=_len.reduce (function (a, b)" &
+                       "{ return a * b; }, 1);");
+      Result.Append ("var _data=Array(_length);");
+      Result.Append ("for (var _j=0;_j<_length;_j++)");
+      Result.Append ("_data[_j] = ");
+
+      Text := Engine.Text.Get_Property
+        (Asis.Definitions.Array_Component_Definition (Element),
+         Engines.Initialize);
+
+      Result.Append (Text);
+      Result.Append (";");
+
+      Result.Append ("this.A=_data;");
+      Result.Append ("this._first=_from;");
+      Result.Append ("this._last=_to;");
+      Result.Append ("this._length=_len;};");
+      Result.Append ("_init.call (this, ");
+
+      Text := Engine.Text.Get_Property (Element, Engines.Bounds);
+      Result.Append (Text);
+      Result.Append (");");
+
+      Result.Append ("}).prototype = _ec._ada_array;");
 
       return Result;
    end Code;
@@ -102,9 +150,28 @@ package body Properties.Definitions.Constrained_Array_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      pragma Unreferenced (Engine, Element, Name);
+      pragma Unreferenced (Name);
+
+      Decl   : constant Asis.Declaration :=
+        Asis.Elements.Enclosing_Element (Element);
+      Result : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
    begin
-      return League.Strings.To_Universal_String ("[]");
+      Result.Append (" new ");
+
+      Text :=
+        Properties.Expressions.Identifiers.Name_Prefix (Engine, Element, Decl);
+
+      Result.Append (Text);
+
+      Text := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Decl) (1),
+         Engines.Code);
+
+      Result.Append (Text);
+      Result.Append ("()");
+
+      return Result;
    end Initialize;
 
    --------------------

@@ -60,13 +60,13 @@ package body Properties.Expressions.Indexed_Component is
       Down := Engine.Text.Get_Property
         (Asis.Expressions.Prefix (Element), Name);
       Text.Append (Down);
-      Text.Append (" [_ec._pos(");
+      Text.Append (".A[");
+      Text.Append (Down);
+      Text.Append ("._index(");
       Text.Append (Engine.Text.Get_Property
         (Asis.Expressions.Index_Expressions (Element) (1),
          Name));
-      Text.Append (")-_ec._pos(");
-      Text.Append (Down);
-      Text.Append ("._first)]");
+      Text.Append (")]");
 
       return Text;
    end Code;

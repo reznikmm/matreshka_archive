@@ -76,5 +76,17 @@ define('standard', [], function(){
     standard._unchecked_deallocation = function (x) {
     };
 
+    standard._ada_array = {  //  Prototype for any Ada array
+        "_index" : function () {
+            var index = 0, size = 1;
+            for (var i = 0; i < arguments.length; i++){
+                index +=
+                    (standard._pos (arguments[i]) - this._first[i]) * size;
+                size *= this._length[i];
+            }
+            return index;
+        }
+    };
+
     return standard;
 });

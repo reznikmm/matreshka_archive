@@ -81,7 +81,7 @@ package body Properties.Expressions.Array_Component_Association is
          end case;
       end loop;
 
-      Result.Append ("_result[_j]=");
+      Result.Append ("_data[_j]=");
       Result.Append (Down);
       Result.Append (";break;");
 
