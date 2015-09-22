@@ -57,7 +57,8 @@ package body Properties.Expressions.Attribute_Reference is
         Asis.Elements.Attribute_Kind (Element);
    begin
       case Kind is
-         when Asis.An_Image_Attribute =>
+         when Asis.An_Image_Attribute |
+            Asis.A_Wide_Wide_Value_Attribute =>
             return Engines.Intrinsic;
          when others =>
             raise Program_Error with

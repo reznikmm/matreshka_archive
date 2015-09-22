@@ -256,6 +256,7 @@ package body Properties.Expressions.Function_Calls is
 
       if Func.To_Wide_Wide_String = "League.Strings.To_Universal_String"
         or else Func.To_Wide_Wide_String = "League.Strings.To_UTF_8_String"
+        or else Func.To_Wide_Wide_String = "League.Strings.To_Wide_Wide_String"
         or else Func.Starts_With ("System.Address_To_Access_Conversions.")
       then
          return Args (1);
@@ -304,6 +305,16 @@ package body Properties.Expressions.Function_Calls is
             Text : League.Strings.Universal_String;
          begin
             Text.Append ("_ec._image(");
+            Text.Append (Args (1));
+            Text.Append (")");
+
+            return Text;
+         end;
+      elsif Func.To_Wide_Wide_String = "A_WIDE_WIDE_VALUE_ATTRIBUTE" then
+         declare
+            Text : League.Strings.Universal_String;
+         begin
+            Text.Append ("parseFloat(");
             Text.Append (Args (1));
             Text.Append (")");
 

@@ -9,4 +9,5 @@ all:
 	./run.sh aga3.test
 	./run.sh aga4.test
 	./run.sh version2.test
+	./run.sh value.test
 	@echo A2JS Tests succeed!
