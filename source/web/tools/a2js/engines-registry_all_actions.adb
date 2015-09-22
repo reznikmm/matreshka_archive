@@ -640,6 +640,9 @@ is
       (Name   => N.Method_Name,
        Kind   => F.An_Identifier,
        Action => P.Expressions.Identifiers.Code'Access),
+      (Name   => N.Method_Name,
+       Kind   => F.A_Selected_Component,
+       Action => P.Expressions.Selected_Components.Method_Name'Access),
 
       --  Tag_Name
       (Name   => N.Tag_Name,

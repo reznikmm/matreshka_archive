@@ -61,7 +61,7 @@ package WebAPI.DOM.Event_Targets is
        WebAPI.DOM.Event_Listeners.Event_Listener'Class;
      Use_Capture : Boolean)
         with Import     => True,
-             Convention => JavaScript_Function,
+             Convention => JavaScript_Method,
              Link_Name  => "_ec._addEventListener";
 
    --  This method allows the registration of event listeners on the event
@@ -82,7 +82,7 @@ package WebAPI.DOM.Event_Targets is
        WebAPI.DOM.Event_Listeners.Event_Listener'Class;
      Use_Capture : Boolean)
         with Import     => True,
-             Convention => JavaScript_Function,
+             Convention => JavaScript_Method,
              Link_Name  => "_ec._removeEventListener";
 
    --  This method allows the removal of event listeners from the event target.

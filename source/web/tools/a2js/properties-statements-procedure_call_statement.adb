@@ -76,13 +76,16 @@ package body Properties.Statements.Procedure_Call_Statement is
           (Prefix,
            Engines.Call_Convention);
       Is_Dispatching : Boolean;
+      Is_Prefixed    : constant Boolean :=
+        Conv in Engines.JavaScript_Property_Setter |
+                Engines.JavaScript_Method;
    begin
       Is_Dispatching := Engine.Boolean.Get_Property
         (Prefix, Engines.Is_Dispatching);
 
       if Conv = Engines.Intrinsic then
          Text := Intrinsic (Engine, Element, Name);
-      elsif not Is_Dispatching then
+      elsif not Is_Dispatching and not Is_Prefixed then
          declare
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
@@ -106,7 +109,9 @@ package body Properties.Statements.Procedure_Call_Statement is
 
             Text.Append (")");
          end;
-      elsif Asis.Statements.Is_Dispatching_Call (Element) then
+      elsif Asis.Statements.Is_Dispatching_Call (Element) or
+        Conv = Engines.JavaScript_Method
+      then
          declare
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
@@ -133,6 +138,25 @@ package body Properties.Statements.Procedure_Call_Statement is
             end loop;
 
             Text.Append (")");
+         end;
+      elsif Conv = Engines.JavaScript_Property_Setter then
+         declare
+            Arg    : League.Strings.Universal_String;
+            List   : constant Asis.Association_List :=
+              Asis.Statements.Call_Statement_Parameters
+                (Element, Normalized => False);
+         begin
+            Text := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (1)), Name);
+            Text.Append (".");
+            Text.Append
+              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
+            Text.Append (" = ");
+
+            Arg := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (2)), Name);
+
+            Text.Append (Arg);
          end;
       else
          declare

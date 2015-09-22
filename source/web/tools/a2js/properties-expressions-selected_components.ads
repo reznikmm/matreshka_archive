@@ -70,6 +70,11 @@ package Properties.Expressions.Selected_Components is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
+   function Method_Name
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
    function Is_Dispatching
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;

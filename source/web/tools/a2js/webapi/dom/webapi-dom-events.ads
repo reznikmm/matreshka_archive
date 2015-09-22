@@ -101,7 +101,7 @@ package WebAPI.DOM.Events is
    not overriding procedure Stop_Propagation
     (Self : not null access Event) is abstract
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "stopPropagation";
    --  The stopPropagation method is used prevent further propagation of an
    --  event during event flow. If this method is called by any EventListener
@@ -113,7 +113,7 @@ package WebAPI.DOM.Events is
    not overriding procedure Prevent_Default
     (Self : not null access Event) is abstract
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "preventDefault";
    --  If an event is cancelable, the preventDefault method is used to signify
    --  that the event is to be canceled, meaning any default action normally

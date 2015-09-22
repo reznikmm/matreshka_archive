@@ -92,7 +92,7 @@ package WebAPI.HTML.Canvas_Elements is
        return WebAPI.HTML.Rendering_Contexts.Rendering_Context_Access
          is abstract
            with Import         => True,
-                Convention     => JavaScript_Function,
+                Convention     => JavaScript_Method,
                 External_Name  => "getContext";
    --  Returns an object that exposes an API for drawing on the canvas. The
    --  first argument specifies the desired API, either "2d" or "webgl".
@@ -112,7 +112,7 @@ package WebAPI.HTML.Canvas_Elements is
     (Self       : not null access HTML_Canvas_Element;
      Context_Id : League.Strings.Universal_String) return Boolean is abstract
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "probablySupportsContext";
    --  Returns false if calling getContext() with the same arguments would
    --  definitely return null, and true otherwise.

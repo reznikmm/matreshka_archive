@@ -180,7 +180,7 @@ package WebAPI.DOM.Documents is
      Local_Name : League.Strings.Universal_String)
        return not null WebAPI.DOM.Elements.Element_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "createElement";
    --  Returns an element in the HTML namespace with localName as local name.
    --  (In an HTML document localName is lowercased.)
@@ -194,7 +194,7 @@ package WebAPI.DOM.Documents is
      Qialified_Name : League.Strings.Universal_String)
        return not null WebAPI.DOM.Elements.Element_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "createElementNS";
    --  Returns an element with namespace namespace. Its namespace prefix will
    --  be everything before ":" (U+003E) in qualifiedName or null. Its local
@@ -220,7 +220,7 @@ package WebAPI.DOM.Documents is
        return not null WebAPI.DOM.Document_Fragments.Document_Fragment_Access
          is abstract
            with Import     => True,
-                Convention => JavaScript_Function,
+                Convention => JavaScript_Method,
                 Link_Name  => "createDocumentFragment";
    --  Returns a DocumentFragment node.
 
@@ -229,7 +229,7 @@ package WebAPI.DOM.Documents is
      Data : League.Strings.Universal_String)
        return not null WebAPI.DOM.Texts.Text_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "createTextNode";
    --  Returns a Text node whose data is data.
 
@@ -238,7 +238,7 @@ package WebAPI.DOM.Documents is
      Data : League.Strings.Universal_String)
        return WebAPI.DOM.Comments.Comment_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "createComment";
    --  Returns a Comment node whose data is data.
 
@@ -249,7 +249,7 @@ package WebAPI.DOM.Documents is
        return WebAPI.DOM.Processing_Instructions.Processing_Instruction_Access
          is abstract
            with Import     => True,
-                Convention => JavaScript_Function,
+                Convention => JavaScript_Method,
                 Link_Name  => "createProcessingInstruction";
    --  Returns a ProcessingInstruction node whose target is target and data is
    --  data.
@@ -266,7 +266,7 @@ package WebAPI.DOM.Documents is
      Deep : Boolean := False)
        return WebAPI.DOM.Nodes.Node_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "importNode";
    --  Returns a copy of node. If deep is true, the copy also includes the
    --  node's descendants.
@@ -278,13 +278,13 @@ package WebAPI.DOM.Documents is
      Node : not null access WebAPI.DOM.Nodes.Node'Class)
        return WebAPI.DOM.Nodes.Node_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "adoptNode";
    procedure Adopt_Node
     (Self : not null access Document'Class;
      Node : not null access WebAPI.DOM.Nodes.Node'Class)
        with Import     => True,
-            Convention => JavaScript_Function,
+            Convention => JavaScript_Method,
             Link_Name  => "adoptNode";
    --  Moves node from another document and returns it.
    --

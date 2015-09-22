@@ -103,7 +103,7 @@ package WebAPI.DOM.Parent_Nodes is
      Selectors : League.Strings.Universal_String)
        return WebAPI.DOM.Elements.Element_Access is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "querySelector";
    --  Returns the first element that is a descendant of node that matches
    --  selectors. 
@@ -117,7 +117,7 @@ package WebAPI.DOM.Parent_Nodes is
      Selectors : League.Strings.Universal_String)
        return WebAPI.DOM.Node_Lists.Node_List is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "querySelectorAll";
    --  Returns all element descendants of node that match selectors.
    --

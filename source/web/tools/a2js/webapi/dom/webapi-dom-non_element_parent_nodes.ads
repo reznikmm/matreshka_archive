@@ -58,7 +58,7 @@ package WebAPI.DOM.Non_Element_Parent_Nodes is
      Element_Id : League.Strings.Universal_String)
        return WebAPI.DOM.Elements.Element_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Function,
+              Convention => JavaScript_Method,
               Link_Name  => "getElementById";
    --  Returns the first element within node's descendants whose ID is
    --  elementId.

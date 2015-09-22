@@ -97,6 +97,8 @@ package body Properties.Declarations.Function_Declarations is
             return Engines.JavaScript_Getter;
          elsif Result = "JavaScript_Function" then
             return Engines.JavaScript_Function;
+         elsif Result = "JavaScript_Method" then
+           return Engines.JavaScript_Method;
          else
             Ada.Wide_Text_IO.Put ("Unknown call conv: ");
             Ada.Wide_Text_IO.Put_Line (Result);

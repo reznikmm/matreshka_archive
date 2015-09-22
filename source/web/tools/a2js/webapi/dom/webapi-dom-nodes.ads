@@ -135,7 +135,7 @@ package WebAPI.DOM.Nodes is
    not overriding function Has_Child_Nodes
     (Self : not null access constant Node) return Boolean is abstract
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "hasChildNodes";
    --  Returns whether node has children.
 
@@ -276,7 +276,7 @@ package WebAPI.DOM.Nodes is
 
    not overriding procedure Normalize (Self : not null access Node) is abstract
      with Import        => True,
-          Convention    => JavaScript_Function,
+          Convention    => JavaScript_Method,
           External_Name => "normalize";
    --  Removes empty Text nodes and concatenates the data of remaining
    --  contiguous Text nodes into the first of their nodes.
@@ -286,7 +286,7 @@ package WebAPI.DOM.Nodes is
      Deep : Boolean := False)
        return not null WebAPI.DOM.Nodes.Node_Access is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "cloneNode";
    --  Returns a copy of node. If deep is true, the copy also includes the
    --  node's descendants.
@@ -295,7 +295,7 @@ package WebAPI.DOM.Nodes is
     (Self  : not null access constant Node;
      Other : access Node'Class) return Boolean is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "isEqualNode";
    --  Returns whether node and other have the same properties.
 
@@ -312,7 +312,7 @@ package WebAPI.DOM.Nodes is
     (Self  : not null access constant Node;
      Other : access Node'Class) return Boolean is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "contains";
    --  Returns true if other is an inclusive descendant of node, and false
    --  otherwise.
@@ -322,7 +322,7 @@ package WebAPI.DOM.Nodes is
      Namespace_URI : League.Strings.Universal_String)
        return League.Strings.Universal_String is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "lookupPrefix";
    --  The lookupPrefix(namespace) method must run these steps:
    --
@@ -355,7 +355,7 @@ package WebAPI.DOM.Nodes is
      Prefix : League.Strings.Universal_String)
        return League.Strings.Universal_String is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "lookupNamespaceURI";
    --  The lookupNamespaceURI(prefix) method must run these steps:
    --
@@ -369,7 +369,7 @@ package WebAPI.DOM.Nodes is
      Namespace_URI : League.Strings.Universal_String)
        return Boolean is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "isDefaultNamespace";
    --  The isDefaultNamespace(namespace) method must run these steps:
    --
@@ -387,14 +387,14 @@ package WebAPI.DOM.Nodes is
      Child : access WebAPI.DOM.Nodes.Node'Class)
        return WebAPI.DOM.Nodes.Node_Access is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "insertBefore";
-   not overriding procedure Insert_Before
-    (Self  : not null access Node;
+   procedure Insert_Before
+    (Self  : not null access Node'Class;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
-     Child : access WebAPI.DOM.Nodes.Node'Class) is abstract
+     Child : access WebAPI.DOM.Nodes.Node'Class)
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "insertBefore";
    --  The insertBefore(node, child) method must return the result of
    --  pre-inserting node into the context object before child.
@@ -403,13 +403,13 @@ package WebAPI.DOM.Nodes is
     (Self : not null access Node;
      Node : not null access WebAPI.DOM.Nodes.Node'Class) return Node_Access is abstract
        with Import     => True,
-            Convention => JavaScript_Function,
+            Convention => JavaScript_Method,
             Link_Name  => "appendChild";
-   not overriding procedure Append_Child
-    (Self : not null access Node;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
+   procedure Append_Child
+    (Self : not null access Node'Class;
+     Node : not null access WebAPI.DOM.Nodes.Node'Class)
        with Import     => True,
-            Convention => JavaScript_Function,
+            Convention => JavaScript_Method,
             Link_Name  => "appendChild";
    --  The appendChild(node) method must return the result of appending node to
    --  the context object.
@@ -420,14 +420,14 @@ package WebAPI.DOM.Nodes is
      Child : not null access WebAPI.DOM.Nodes.Node'Class)
        return WebAPI.DOM.Nodes.Node_Access is abstract
          with Import        => True,
-              Convention    => JavaScript_Function,
+              Convention    => JavaScript_Method,
               External_Name => "replaceChild";
-   not overriding procedure Replace_Child
-    (Self  : not null access Node;
+   procedure Replace_Child
+    (Self  : not null access Node'Class;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
-     Child : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
+     Child : not null access WebAPI.DOM.Nodes.Node'Class)
        with Import        => True,
-            Convention    => JavaScript_Function,
+            Convention    => JavaScript_Method,
             External_Name => "replaceChild";
    --  The replaceChild(node, child) method must return the result of replacing
    --  child with node within the context object.
@@ -436,13 +436,13 @@ package WebAPI.DOM.Nodes is
     (Self : not null access Node;
      Node : not null access WebAPI.DOM.Nodes.Node'Class) return Node_Access is abstract
        with Import     => True,
-            Convention => JavaScript_Function,
+            Convention => JavaScript_Method,
             Link_Name  => "removeChild";
-   not overriding procedure Remove_Child
-    (Self : not null access Node;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class) is abstract
+   procedure Remove_Child
+    (Self : not null access Node'Class;
+     Node : not null access WebAPI.DOM.Nodes.Node'Class)
        with Import     => True,
-            Convention => JavaScript_Function,
+            Convention => JavaScript_Method,
             Link_Name  => "removeChild";
    --  The removeChild(child) method must return the result of pre-removing
    --  child from the context object.

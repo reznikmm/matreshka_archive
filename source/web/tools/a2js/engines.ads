@@ -70,10 +70,11 @@ package Engines is
 
    type Call_Convention_Kind is
      (Intrinsic,
-      JavaScript_Property_Getter,
-      JavaScript_Property_Setter,
-      JavaScript_Function,
-      JavaScript_Getter,
+      JavaScript_Property_Getter,  --  obj.prop
+      JavaScript_Property_Setter,  --  obj.prop = val
+      JavaScript_Function,         --  funct (args)
+      JavaScript_Method,           --  obj.funct (args)
+      JavaScript_Getter,           --  collection.getter (index - 1)
       Unspecified);
 
 end Engines;
