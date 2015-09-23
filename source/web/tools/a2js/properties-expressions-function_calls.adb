@@ -358,6 +358,9 @@ begin
    Fn_From.Append (League.Strings.To_Universal_String ("AN_IMAGE_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("_ec._image"));
    Fn_From.Append (League.Strings.To_Universal_String
+                   ("A_WIDE_WIDE_IMAGE_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._image"));
+   Fn_From.Append (League.Strings.To_Universal_String
                    ("A_WIDE_WIDE_VALUE_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("parseFloat"));
    Fn_From.Append (League.Strings.To_Universal_String ("A_MAX_ATTRIBUTE"));
