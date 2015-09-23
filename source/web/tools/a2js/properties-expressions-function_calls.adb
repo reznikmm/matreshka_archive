@@ -59,8 +59,11 @@ package body Properties.Expressions.Function_Calls is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-   From : League.String_Vectors.Universal_String_Vector;
-   To   : League.String_Vectors.Universal_String_Vector;
+   Op_From : League.String_Vectors.Universal_String_Vector;
+   Op_To   : League.String_Vectors.Universal_String_Vector;
+
+   Fn_From : League.String_Vectors.Universal_String_Vector;
+   Fn_To   : League.String_Vectors.Universal_String_Vector;
 
    ---------------------
    -- Call_Convention --
@@ -242,6 +245,7 @@ package body Properties.Expressions.Function_Calls is
            Engines.Intrinsic_Name);
 
       Index  : Natural;
+      Fn_Ind : Natural;
       List   : constant Asis.Association_List :=
         Asis.Expressions.Function_Call_Parameters
           (Element, Normalized => False);
@@ -252,7 +256,8 @@ package body Properties.Expressions.Function_Calls is
            (Asis.Expressions.Actual_Parameter (List (J)), Name);
       end loop;
 
-      Index := From.Index (Func);
+      Index := Op_From.Index (Func);
+      Fn_Ind := Fn_From.Index (Func);
 
       if Func.To_Wide_Wide_String = "League.Strings.To_Universal_String"
         or else Func.To_Wide_Wide_String = "League.Strings.To_UTF_8_String"
@@ -265,7 +270,7 @@ package body Properties.Expressions.Function_Calls is
             Text : League.Strings.Universal_String;
          begin
             Text.Append (Args (1));
-            Text.Append (To.Element (Index));
+            Text.Append (Op_To.Element (Index));
             Text.Append (Args (2));
 
             return Text;
@@ -274,17 +279,26 @@ package body Properties.Expressions.Function_Calls is
          declare
             Text : League.Strings.Universal_String;
          begin
-            Text.Append (To.Element (Index));
+            Text.Append (Op_To.Element (Index));
             Text.Append (Args (1));
 
             return Text;
          end;
-      elsif Func.To_Wide_Wide_String = """abs""" then
+      elsif Fn_Ind > 0 then
          declare
             Text : League.Strings.Universal_String;
          begin
-            Text.Append ("Math.abs(");
-            Text.Append (Args (1));
+            Text.Append (Fn_To.Element (Fn_Ind));
+            Text.Append ("(");
+
+            for J in Args'Range loop
+               Text.Append (Args (J));
+
+               if J /= Args'Last then
+                  Text.Append (", ");
+               end if;
+            end loop;
+
             Text.Append (")");
 
             return Text;
@@ -300,26 +314,6 @@ package body Properties.Expressions.Function_Calls is
 
             return Text;
          end;
-      elsif Func.To_Wide_Wide_String = "AN_IMAGE_ATTRIBUTE" then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append ("_ec._image(");
-            Text.Append (Args (1));
-            Text.Append (")");
-
-            return Text;
-         end;
-      elsif Func.To_Wide_Wide_String = "A_WIDE_WIDE_VALUE_ATTRIBUTE" then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append ("parseFloat(");
-            Text.Append (Args (1));
-            Text.Append (")");
-
-            return Text;
-         end;
       else
          Ada.Wide_Wide_Text_IO.Put ("Unimplemented Intrinsic: ");
          Ada.Wide_Wide_Text_IO.Put (Func.To_Wide_Wide_String);
@@ -328,34 +322,47 @@ package body Properties.Expressions.Function_Calls is
    end Intrinsic;
 
 begin
-   From.Append (League.Strings.To_Universal_String ("""="""));
-   To.Append (League.Strings.To_Universal_String ("==="));
-   From.Append (League.Strings.To_Universal_String ("""/="""));
-   To.Append (League.Strings.To_Universal_String ("!=="));
-   From.Append (League.Strings.To_Universal_String ("""&"""));
-   To.Append (League.Strings.To_Universal_String ("+"));
-   From.Append (League.Strings.To_Universal_String ("""+"""));
-   To.Append (League.Strings.To_Universal_String ("+"));
-   From.Append (League.Strings.To_Universal_String ("""-"""));
-   To.Append (League.Strings.To_Universal_String ("-"));
-   From.Append (League.Strings.To_Universal_String ("""*"""));
-   To.Append (League.Strings.To_Universal_String ("*"));
-   From.Append (League.Strings.To_Universal_String ("""/"""));
-   To.Append (League.Strings.To_Universal_String ("/"));
-   From.Append (League.Strings.To_Universal_String (""">"""));
-   To.Append (League.Strings.To_Universal_String (">"));
-   From.Append (League.Strings.To_Universal_String ("""<"""));
-   To.Append (League.Strings.To_Universal_String ("<"));
-   From.Append (League.Strings.To_Universal_String ("""<="""));
-   To.Append (League.Strings.To_Universal_String ("<="));
-   From.Append (League.Strings.To_Universal_String ("""and"""));
-   To.Append (League.Strings.To_Universal_String ("&"));
-   From.Append (League.Strings.To_Universal_String ("""or"""));
-   To.Append (League.Strings.To_Universal_String ("|"));
-   From.Append (League.Strings.To_Universal_String ("""not"""));
-   To.Append (League.Strings.To_Universal_String ("!"));
-   From.Append (League.Strings.To_Universal_String ("""mod"""));
-   To.Append (League.Strings.To_Universal_String ("%"));
-   From.Append (League.Strings.To_Universal_String ("League.Strings.""="""));
-   To.Append (League.Strings.To_Universal_String ("=="));
+   Op_From.Append (League.Strings.To_Universal_String ("""="""));
+   Op_To.Append (League.Strings.To_Universal_String ("==="));
+   Op_From.Append (League.Strings.To_Universal_String ("""/="""));
+   Op_To.Append (League.Strings.To_Universal_String ("!=="));
+   Op_From.Append (League.Strings.To_Universal_String ("""&"""));
+   Op_To.Append (League.Strings.To_Universal_String ("+"));
+   Op_From.Append (League.Strings.To_Universal_String ("""+"""));
+   Op_To.Append (League.Strings.To_Universal_String ("+"));
+   Op_From.Append (League.Strings.To_Universal_String ("""-"""));
+   Op_To.Append (League.Strings.To_Universal_String ("-"));
+   Op_From.Append (League.Strings.To_Universal_String ("""*"""));
+   Op_To.Append (League.Strings.To_Universal_String ("*"));
+   Op_From.Append (League.Strings.To_Universal_String ("""/"""));
+   Op_To.Append (League.Strings.To_Universal_String ("/"));
+   Op_From.Append (League.Strings.To_Universal_String (""">"""));
+   Op_To.Append (League.Strings.To_Universal_String (">"));
+   Op_From.Append (League.Strings.To_Universal_String ("""<"""));
+   Op_To.Append (League.Strings.To_Universal_String ("<"));
+   Op_From.Append (League.Strings.To_Universal_String ("""<="""));
+   Op_To.Append (League.Strings.To_Universal_String ("<="));
+   Op_From.Append (League.Strings.To_Universal_String ("""and"""));
+   Op_To.Append (League.Strings.To_Universal_String ("&"));
+   Op_From.Append (League.Strings.To_Universal_String ("""or"""));
+   Op_To.Append (League.Strings.To_Universal_String ("|"));
+   Op_From.Append (League.Strings.To_Universal_String ("""not"""));
+   Op_To.Append (League.Strings.To_Universal_String ("!"));
+   Op_From.Append (League.Strings.To_Universal_String ("""mod"""));
+   Op_To.Append (League.Strings.To_Universal_String ("%"));
+   Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""="""));
+   Op_To.Append (League.Strings.To_Universal_String ("=="));
+
+   Fn_From.Append (League.Strings.To_Universal_String ("""abs"""));
+   Fn_To.Append (League.Strings.To_Universal_String ("Math.abs"));
+   Fn_From.Append (League.Strings.To_Universal_String ("AN_IMAGE_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._image"));
+   Fn_From.Append (League.Strings.To_Universal_String
+                   ("A_WIDE_WIDE_VALUE_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("parseFloat"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_MAX_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("Math.max"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_MIN_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("Math.min"));
+
 end Properties.Expressions.Function_Calls;
