@@ -93,6 +93,8 @@ package body Properties.Declarations.Function_Declarations is
             null;
          elsif Result = "JavaScript_Property_Getter" then
             return Engines.JavaScript_Property_Getter;
+         elsif Result = "JavaScript_Property_Setter" then
+            return Engines.JavaScript_Property_Setter;
          elsif Result = "JavaScript_Getter" then
             return Engines.JavaScript_Getter;
          elsif Result = "JavaScript_Function" then

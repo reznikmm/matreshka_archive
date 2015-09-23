@@ -109,6 +109,25 @@ package body Properties.Statements.Procedure_Call_Statement is
 
             Text.Append (")");
          end;
+      elsif Conv = Engines.JavaScript_Property_Setter then
+         declare
+            Arg    : League.Strings.Universal_String;
+            List   : constant Asis.Association_List :=
+              Asis.Statements.Call_Statement_Parameters
+                (Element, Normalized => False);
+         begin
+            Text := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (1)), Name);
+            Text.Append (".");
+            Text.Append
+              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
+            Text.Append (" = ");
+
+            Arg := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (2)), Name);
+
+            Text.Append (Arg);
+         end;
       elsif Asis.Statements.Is_Dispatching_Call (Element) or
         Conv = Engines.JavaScript_Method
       then
@@ -138,25 +157,6 @@ package body Properties.Statements.Procedure_Call_Statement is
             end loop;
 
             Text.Append (")");
-         end;
-      elsif Conv = Engines.JavaScript_Property_Setter then
-         declare
-            Arg    : League.Strings.Universal_String;
-            List   : constant Asis.Association_List :=
-              Asis.Statements.Call_Statement_Parameters
-                (Element, Normalized => False);
-         begin
-            Text := Engine.Text.Get_Property
-              (Asis.Expressions.Actual_Parameter (List (1)), Name);
-            Text.Append (".");
-            Text.Append
-              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
-            Text.Append (" = ");
-
-            Arg := Engine.Text.Get_Property
-              (Asis.Expressions.Actual_Parameter (List (2)), Name);
-
-            Text.Append (Arg);
          end;
       else
          declare
