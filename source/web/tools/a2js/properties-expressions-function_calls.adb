@@ -354,6 +354,8 @@ begin
    To.Append (League.Strings.To_Universal_String ("|"));
    From.Append (League.Strings.To_Universal_String ("""not"""));
    To.Append (League.Strings.To_Universal_String ("!"));
+   From.Append (League.Strings.To_Universal_String ("""mod"""));
+   To.Append (League.Strings.To_Universal_String ("%"));
    From.Append (League.Strings.To_Universal_String ("League.Strings.""="""));
    To.Append (League.Strings.To_Universal_String ("=="));
 end Properties.Expressions.Function_Calls;
