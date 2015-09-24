@@ -88,13 +88,23 @@ define('standard', [], function(){
 
     standard._ada_array = {  //  Prototype for any Ada array
         "_index" : function () {
-            var index = 0, size = 1;
+            var index = this._offset, size = 1;
             for (var i = 0; i < arguments.length; i++){
                 index +=
                     (standard._pos (arguments[i]) - this._first[i]) * size;
                 size *= this._length[i];
             }
             return index;
+        },
+        "_slice" : function (_from, _to) {
+            var result = Object.create(standard._ada_array);
+            result._first = [_from];
+            result._last = [_to];
+            result._length = [_to - _from + 1];
+            result._offset = this._offset + standard._pos (_from)
+              - standard._pos (this._first[0]);
+            result.A = this.A;
+            return result;
         }
     };
 

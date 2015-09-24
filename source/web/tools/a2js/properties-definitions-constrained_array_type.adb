@@ -129,7 +129,8 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result.Append ("this.A=_data;");
       Result.Append ("this._first=_from;");
       Result.Append ("this._last=_to;");
-      Result.Append ("this._length=_len;};");
+      Result.Append ("this._length=_len;");
+      Result.Append ("this._offset=0;};");
       Result.Append ("_init.call (this, ");
 
       Text := Engine.Text.Get_Property (Element, Engines.Bounds);

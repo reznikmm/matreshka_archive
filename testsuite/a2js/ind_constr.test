@@ -29,8 +29,8 @@ with Devices;
 
 procedure Ind_Constr is
    use Consoles;
+   Old : Devices.Device_Array := Devices.Devices.all (2 .. 2);
 begin
-
    for J in Devices.Devices.all'Range loop
       if J < Devices.Devices.all'Last then
          Console.Log (Devices.Devices.all (J).Id);

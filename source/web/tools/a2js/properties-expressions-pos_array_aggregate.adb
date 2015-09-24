@@ -86,6 +86,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Result.Append ("_result._length=");
       Result.Append (Length (2 .. Length'Last));
       Result.Append (";");
+      Result.Append ("_result._offset=0;");
 
       Result.Append ("return _result;}(");
 

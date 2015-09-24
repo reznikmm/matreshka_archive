@@ -98,6 +98,7 @@ with Properties.Expressions.Record_Aggregate;
 with Properties.Expressions.Record_Component_Association;
 with Properties.Expressions.Selected_Components;
 with Properties.Expressions.Short_Circuit;
+with Properties.Expressions.Slice;
 with Properties.Expressions.String_Literal;
 with Properties.Expressions.Type_Conversion;
 with Properties.Statements.Assignment_Statement;
@@ -331,6 +332,9 @@ is
       (Name   => N.Code,
        Kind   => F.An_Indexed_Component,
        Action => P.Expressions.Indexed_Component.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.A_Slice,
+       Action => P.Expressions.Slice.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Integer_Literal,
        Action => P.Expressions.Integer_Literal.Code'Access),
