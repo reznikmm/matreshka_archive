@@ -10,4 +10,5 @@ all:
 	./run.sh aga4.test
 	./run.sh version2.test
 	./run.sh value.test
+	./run.sh float_64.test
 	@echo A2JS Tests succeed!
