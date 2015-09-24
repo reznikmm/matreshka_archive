@@ -11,4 +11,5 @@ all:
 	./run.sh version2.test
 	./run.sh value.test
 	./run.sh float_64.test
+	./run.sh ind_constr.test
 	@echo A2JS Tests succeed!

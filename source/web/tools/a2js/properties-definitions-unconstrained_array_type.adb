@@ -41,21 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Asis;
-with Engines.Contexts;
-with League.Strings;
+with Asis.Definitions;
+with Asis.Declarations;
+with Asis.Elements;
 
-package Properties.Definitions.Index_Constraint is
+package body Properties.Definitions.Unconstrained_Array_Type is
 
-   function Bounds
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Definition;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+   ----------
+   -- Code --
+   ----------
 
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Definition;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String renames Bounds;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Decl : constant Asis.Declaration :=
+        Asis.Elements.Enclosing_Element (Element);
+      Result : League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
+   begin
+      Text := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Decl) (1), Name);
 
-end Properties.Definitions.Index_Constraint;
+      Result.Append ("(_ec.");
+      Result.Append (Text);
+      Result.Append (" = function (_from,_to){");
+      Result.Append ("var _first=_from.map (_ec._pos);");
+      Result.Append ("var _len=_to.map (function (_to, i)" &
+                       "{ return _ec._pos(_to) - _first[i] + 1; });");
+      Result.Append ("var _length=_len.reduce (function (a, b)" &
+                       "{ return a * b; }, 1);");
+      Result.Append ("var _data=Array(_length);");
+      Result.Append ("for (var _j=0;_j<_length;_j++)");
+      Result.Append ("_data[_j] = ");
+
+      Text := Engine.Text.Get_Property
+        (Asis.Definitions.Array_Component_Definition (Element),
+         Engines.Initialize);
+
+      Result.Append (Text);
+      Result.Append (";");
+
+      Result.Append ("this.A=_data;");
+      Result.Append ("this._first=_from;");
+      Result.Append ("this._last=_to;");
+      Result.Append ("this._length=_len;}).prototype = _ec._ada_array;");
+
+      return Result;
+   end Code;
+
+end Properties.Definitions.Unconstrained_Array_Type;

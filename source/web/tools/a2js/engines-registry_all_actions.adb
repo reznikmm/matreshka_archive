@@ -74,6 +74,7 @@ with Properties.Definitions.Record_Type;
 with Properties.Definitions.Simple_Expression_Range;
 with Properties.Definitions.Subtype_Indication;
 with Properties.Definitions.Tagged_Record_Type;
+with Properties.Definitions.Unconstrained_Array_Type;
 with Properties.Expressions.Allocation;
 with Properties.Expressions.Allocation_From_Subtype;
 with Properties.Expressions.Array_Component_Association;
@@ -278,7 +279,7 @@ is
        Action => P.Definitions.Constrained_Array_Type.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Unconstrained_Array_Definition,
-       Action => P.Common.Empty'Access),  --  Ignore
+       Action => P.Definitions.Unconstrained_Array_Type.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Derived_Type_Definition,
        Action => P.Definitions.Derived_Type.Code'Access),
@@ -297,6 +298,9 @@ is
       (Name   => N.Code,
        Kind   => F.A_Discriminant_Constraint,
        Action => P.Definitions.Discriminant_Constraint.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.An_Index_Constraint,
+       Action => P.Definitions.Index_Constraint.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Others_Choice,
        Action => P.Definitions.Others_Choice.Code'Access),
