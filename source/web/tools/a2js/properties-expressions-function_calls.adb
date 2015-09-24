@@ -250,6 +250,7 @@ package body Properties.Expressions.Function_Calls is
         Asis.Expressions.Function_Call_Parameters
           (Element, Normalized => False);
       Args   : array (List'Range) of League.Strings.Universal_String;
+      Text   : League.Strings.Universal_String;
    begin
       for J in List'Range loop
          Args (J) := Engine.Text.Get_Property
@@ -266,54 +267,43 @@ package body Properties.Expressions.Function_Calls is
       then
          return Args (1);
       elsif Args'Length = 2 and Index > 0 then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append (Args (1));
-            Text.Append (Op_To.Element (Index));
-            Text.Append (Args (2));
+         Text.Append (Args (1));
+         Text.Append (Op_To.Element (Index));
+         Text.Append (Args (2));
 
-            return Text;
-         end;
+         return Text;
       elsif Index > 0 then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append (Op_To.Element (Index));
-            Text.Append (Args (1));
+         Text.Append (Op_To.Element (Index));
+         Text.Append (Args (1));
 
-            return Text;
-         end;
+         return Text;
       elsif Fn_Ind > 0 then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append (Fn_To.Element (Fn_Ind));
-            Text.Append ("(");
+         Text.Append (Fn_To.Element (Fn_Ind));
+         Text.Append ("(");
 
-            for J in Args'Range loop
-               Text.Append (Args (J));
+         for J in Args'Range loop
+            Text.Append (Args (J));
 
-               if J /= Args'Last then
-                  Text.Append (", ");
-               end if;
-            end loop;
+            if J /= Args'Last then
+               Text.Append (", ");
+            end if;
+         end loop;
 
-            Text.Append (")");
+         Text.Append (")");
 
-            return Text;
-         end;
+         return Text;
+      elsif Func.To_Wide_Wide_String = "League.Strings.Is_Empty" then
+         Text.Append (Args (1));
+         Text.Append (".length == 0");
+
+         return Text;
       elsif Func.To_Wide_Wide_String = "System.Storage_Elements.""+""" then
-         declare
-            Text : League.Strings.Universal_String;
-         begin
-            Text.Append (Args (1));
-            Text.Append ("[");
-            Text.Append (Args (2));
-            Text.Append ("]");
+         Text.Append (Args (1));
+         Text.Append ("[");
+         Text.Append (Args (2));
+         Text.Append ("]");
 
-            return Text;
-         end;
+         return Text;
       else
          Ada.Wide_Wide_Text_IO.Put ("Unimplemented Intrinsic: ");
          Ada.Wide_Wide_Text_IO.Put (Func.To_Wide_Wide_String);

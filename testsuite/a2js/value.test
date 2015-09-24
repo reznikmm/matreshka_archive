@@ -15,7 +15,16 @@ procedure Value is
    use Consoles;
    X : League.Strings.Universal_String;
 begin
+   if not X.Is_Empty then
+      raise Constraint_Error;
+   end if;
+
    X := League.Strings.To_Universal_String ("12345.67");
+
+   if X.Is_Empty then
+      raise Constraint_Error;
+   end if;
+
    Console.Log (Float'Wide_Wide_Value (X.To_Wide_Wide_String));
 end;
 
