@@ -41,7 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
+
 with WebAPI.DOM.Child_Nodes;
+with WebAPI.DOM.HTML_Collections;
 with WebAPI.DOM.Nodes;
 with WebAPI.DOM.Non_Document_Type_Child_Nodes;
 with WebAPI.DOM.Parent_Nodes;
@@ -58,5 +61,157 @@ package WebAPI.DOM.Elements is
 
    type Element_Access is access all Element'Class
      with Storage_Size => 0;
+
+--   XXX Not implemented
+--
+--   interface Element : Node {
+--     [SameObject] readonly attribute DOMTokenList classList;
+--     [SameObject] readonly attribute Attr[] attributes;
+--   };
+
+   not overriding function Get_Namespace_URI
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "namespaceURI";
+
+   not overriding function Get_Prefix
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "prefix";
+
+   not overriding function Get_Local_Name
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "localName";
+
+   not overriding function Get_Tag_Name
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "tagName";
+
+   not overriding function Get_Id
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "id";
+
+   not overriding procedure Set_Id
+    (Self : not null access Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "id";
+
+   not overriding function Get_Class_Name
+    (Self : not null access constant Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "className";
+
+   not overriding procedure Set_Class_Name
+    (Self : not null access Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "className";
+
+   not overriding function Get_Attribute
+    (Self : not null access constant Element;
+     Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "getAttribute";
+
+   not overriding function Get_Attribute_NS
+    (Self       : not null access constant Element;
+     Namespace  : League.Strings.Universal_String;
+     Local_Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "getAttributeNS";
+
+   not overriding procedure Set_Attribute
+    (Self  : not null access Element;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "setAttribute";
+
+   not overriding procedure Set_Attribute_NS
+    (Self       : not null access Element;
+     Namespace  : League.Strings.Universal_String;
+     Local_Name : League.Strings.Universal_String;
+     Value      : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "setAttributeNS";
+
+   not overriding procedure Remove_Attribute
+    (Self  : not null access Element;
+     Name  : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "removeAttribute";
+
+   not overriding procedure Remove_Attribute_NS
+    (Self       : not null access Element;
+     Namespace  : League.Strings.Universal_String;
+     Local_Name : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "removeAttributeNS";
+
+   not overriding function Has_Attribute
+    (Self : not null access constant Element;
+     Name : League.Strings.Universal_String) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "hasAttribute";
+
+   not overriding function Has_Attribute_NS
+    (Self       : not null access constant Element;
+     Namespace  : League.Strings.Universal_String;
+     Local_Name : League.Strings.Universal_String) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "hasAttributeNS";
+
+   not overriding function Get_Elements_By_Tag_Name
+    (Self       : not null access constant Element;
+     Local_Name : League.Strings.Universal_String)
+       return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getElementsByTagName";
+
+   not overriding function Get_Elements_By_Tag_Name_NS
+    (Self       : not null access constant Element;
+     Namespace  : League.Strings.Universal_String;
+     Local_Name : League.Strings.Universal_String)
+       return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getElementsByTagNameNS";
+
+   not overriding function Get_Elements_By_Class_Name
+    (Self       : not null access constant Element;
+     Class_Name : League.Strings.Universal_String)
+       return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getElementsByClassName";
 
 end WebAPI.DOM.Elements;
