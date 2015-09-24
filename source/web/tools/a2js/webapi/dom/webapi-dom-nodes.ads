@@ -78,9 +78,9 @@ package WebAPI.DOM.Nodes is
    not overriding function Get_Node_Name
     (Self : not null access constant Node)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "nodeName";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "nodeName";
    --  Returns a string appropriate for the type of node, as follows:
    --
    --    Element
@@ -101,17 +101,17 @@ package WebAPI.DOM.Nodes is
    not overriding function Get_Base_URI
     (Self : not null access constant Node)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "baseURI";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "baseURI";
    --  Returns the base URL.
 
    not overriding function Get_Owner_Document
     (Self : not null access constant Node)
        return WebAPI.DOM.Documents.Document_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "ownerDocument";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "ownerDocument";
    --  Returns the node document.
    --
    --  Returns null for documents. 
@@ -119,72 +119,72 @@ package WebAPI.DOM.Nodes is
    not overriding function Get_Parent_Node
     (Self : not null access constant Node)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "parentNode";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "parentNode";
    --  Returns the parent.
 
    not overriding function Get_Parent_Element
     (Self : not null access constant Node)
        return WebAPI.DOM.Elements.Element_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "parentElement";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "parentElement";
    --  Returns the parent element.
 
    not overriding function Has_Child_Nodes
     (Self : not null access constant Node) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Method,
-            External_Name => "hasChildNodes";
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "hasChildNodes";
    --  Returns whether node has children.
 
    not overriding function Get_Child_Nodes
     (Self : not null access constant Node)
        return WebAPI.DOM.Node_Lists.Node_List is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "childNodes";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "childNodes";
    --  Returns the children.
 
    not overriding function Get_First_Child
     (Self : not null access constant Node)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "firstChild";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "firstChild";
    --  Returns the first child.
 
    not overriding function Get_Last_Child
     (Self : not null access constant Node)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "lastChild";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "lastChild";
    --  Returns the last child.
 
    not overriding function Get_Previous_Sibling
     (Self : not null access constant Node)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "previousSibling";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "previousSibling";
    --  Returns the previous sibling.
 
    not overriding function Get_Next_Sibling
     (Self : not null access constant Node)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "nextSibling";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "nextSibling";
    --  Returns the next sibling.
 
    not overriding function Get_Node_Value
     (Self : not null access constant Node)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "nodeValue";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "nodeValue";
    --  The nodeValue attribute must return the following, depending on the
    --  context object:
    --
@@ -201,9 +201,9 @@ package WebAPI.DOM.Nodes is
    not overriding procedure Set_Node_Value
     (Self : not null access Node;
      To   : League.Strings.Universal_String) is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Setter,
-              External_Name => "nodeValue";
+         with Import     => True,
+              Convention => JavaScript_Property_Setter,
+              Link_Name  => "nodeValue";
    --  The nodeValue attribute must, on setting, if the new value is null, act
    --  as if it was the empty string instead, and then do as described below,
    --  depending on the context object:
@@ -222,9 +222,9 @@ package WebAPI.DOM.Nodes is
    not overriding function Get_Text_Content
     (Self : not null access constant Node)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "textContent";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "textContent";
    --  The textContent attribute must return the following, depending on the context object:
    --
    --    DocumentFragment
@@ -246,9 +246,9 @@ package WebAPI.DOM.Nodes is
    not overriding procedure Set_Text_Content
     (Self : not null access Node;
      To   : League.Strings.Universal_String) is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Setter,
-              External_Name => "textContent";
+         with Import     => True,
+              Convention => JavaScript_Property_Setter,
+              Link_Name  => "textContent";
    --  The textContent attribute must, on setting, if the new value is null,
    --  act as if it was the empty string instead, and then do as described
    --  below, depending on the context object:
@@ -275,9 +275,9 @@ package WebAPI.DOM.Nodes is
    --      Do nothing.
 
    not overriding procedure Normalize (Self : not null access Node) is abstract
-     with Import        => True,
-          Convention    => JavaScript_Method,
-          External_Name => "normalize";
+     with Import     => True,
+          Convention => JavaScript_Method,
+          Link_Name  => "normalize";
    --  Removes empty Text nodes and concatenates the data of remaining
    --  contiguous Text nodes into the first of their nodes.
 
@@ -285,18 +285,18 @@ package WebAPI.DOM.Nodes is
     (Self : not null access Node;
      Deep : Boolean := False)
        return not null WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "cloneNode";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "cloneNode";
    --  Returns a copy of node. If deep is true, the copy also includes the
    --  node's descendants.
 
    not overriding function Is_Equal_Node
     (Self  : not null access constant Node;
      Other : access Node'Class) return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "isEqualNode";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "isEqualNode";
    --  Returns whether node and other have the same properties.
 
    --  XXX Not bindied yet:
@@ -311,9 +311,9 @@ package WebAPI.DOM.Nodes is
    not overriding function Contains
     (Self  : not null access constant Node;
      Other : access Node'Class) return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "contains";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "contains";
    --  Returns true if other is an inclusive descendant of node, and false
    --  otherwise.
 
@@ -321,9 +321,9 @@ package WebAPI.DOM.Nodes is
     (Self          : not null access constant Node;
      Namespace_URI : League.Strings.Universal_String)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "lookupPrefix";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "lookupPrefix";
    --  The lookupPrefix(namespace) method must run these steps:
    --
    --   1. If namespace is null or the empty string, return null.
@@ -354,9 +354,9 @@ package WebAPI.DOM.Nodes is
     (Self   : not null access constant Node;
      Prefix : League.Strings.Universal_String)
        return League.Strings.Universal_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "lookupNamespaceURI";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "lookupNamespaceURI";
    --  The lookupNamespaceURI(prefix) method must run these steps:
    --
    --   1. If prefix is the empty string, set it to null.
@@ -368,9 +368,9 @@ package WebAPI.DOM.Nodes is
     (Self          : not null access constant Node;
      Namespace_URI : League.Strings.Universal_String)
        return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "isDefaultNamespace";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "isDefaultNamespace";
    --  The isDefaultNamespace(namespace) method must run these steps:
    --
    --   1. If namespace is the empty string, set it to null.
@@ -386,16 +386,16 @@ package WebAPI.DOM.Nodes is
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
      Child : access WebAPI.DOM.Nodes.Node'Class)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "insertBefore";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "insertBefore";
    procedure Insert_Before
     (Self  : not null access Node'Class;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
      Child : access WebAPI.DOM.Nodes.Node'Class)
-       with Import        => True,
-            Convention    => JavaScript_Method,
-            External_Name => "insertBefore";
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "insertBefore";
    --  The insertBefore(node, child) method must return the result of
    --  pre-inserting node into the context object before child.
 
@@ -419,16 +419,16 @@ package WebAPI.DOM.Nodes is
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
      Child : not null access WebAPI.DOM.Nodes.Node'Class)
        return WebAPI.DOM.Nodes.Node_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Method,
-              External_Name => "replaceChild";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "replaceChild";
    procedure Replace_Child
     (Self  : not null access Node'Class;
      Node  : not null access WebAPI.DOM.Nodes.Node'Class;
      Child : not null access WebAPI.DOM.Nodes.Node'Class)
-       with Import        => True,
-            Convention    => JavaScript_Method,
-            External_Name => "replaceChild";
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "replaceChild";
    --  The replaceChild(node, child) method must return the result of replacing
    --  child with node within the context object.
 
