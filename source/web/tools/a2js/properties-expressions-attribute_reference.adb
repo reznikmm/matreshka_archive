@@ -79,8 +79,31 @@ package body Properties.Expressions.Attribute_Reference is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
+      function Array_Property (Kind : Asis.Attribute_Kinds) return
+        League.Strings.Universal_String;
+
+      --------------------
+      -- Array_Property --
+      --------------------
+
+      function Array_Property (Kind : Asis.Attribute_Kinds) return
+        League.Strings.Universal_String is
+      begin
+         case Kind is
+            when Asis.A_Length_Attribute =>
+               return League.Strings.To_Universal_String ("_length");
+            when Asis.A_First_Attribute =>
+               return League.Strings.To_Universal_String ("_first");
+            when Asis.A_Last_Attribute =>
+               return League.Strings.To_Universal_String ("_last");
+            when others =>
+               raise Program_Error;
+         end case;
+      end Array_Property;
+
       Prefix : constant Asis.Expression :=
         Asis.Expressions.Prefix (Element);
+      Text   : League.Strings.Universal_String;
       Kind   : constant Asis.Attribute_Kinds :=
         Asis.Elements.Attribute_Kind (Element);
    begin
@@ -94,19 +117,33 @@ package body Properties.Expressions.Attribute_Reference is
             --  FIX ME, but I have no idea how
             return Engine.Text.Get_Property (Prefix, Name);
 
-         when Asis.A_Length_Attribute =>
+         when Asis.A_Length_Attribute |
+              Asis.A_First_Attribute |
+              Asis.A_Last_Attribute =>
+
             declare
-               Text     : League.Strings.Universal_String;
+               Args : constant Asis.Expression_List :=
+                 Asis.Expressions.Attribute_Designator_Expressions (Element);
             begin
                Text := Engine.Text.Get_Property (Prefix, Name);
-               Text.Append ("._length");
+               Text.Append (".");
+               Text.Append (Array_Property (Kind));
+               Text.Append ("[");
+
+               if Args'Length = 0 then
+                  Text.Append ("0");
+               else
+                  Text.Append
+                    (Engine.Text.Get_Property (Args (Args'First), Name));
+               end if;
+
+               Text.Append ("]");
 
                return Text;
             end;
 
          when Asis.A_Position_Attribute =>
             declare
-               Text     : League.Strings.Universal_String;
                Selector : constant Asis.Identifier :=
                  Asis.Expressions.Selector (Prefix);
                Def : constant Asis.Defining_Name :=

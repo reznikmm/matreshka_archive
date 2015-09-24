@@ -19,7 +19,7 @@ package Devices is
 
    type Device_Array_Access is access all Device_Array;
 
-   Devices : Device_Array_Access := new Device_Array (1 .. 1);
+   Devices : Device_Array_Access := new Device_Array (1 .. 2);
 
 end;
 
@@ -32,7 +32,9 @@ procedure Ind_Constr is
 begin
 
    for J in Devices.Devices.all'Range loop
-      Console.Log (Devices.Devices.all (J).Id);
+      if J < Devices.Devices.all'Last then
+         Console.Log (Devices.Devices.all (J).Id);
+      end if;
    end loop;
 
 end;
