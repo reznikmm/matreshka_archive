@@ -55,9 +55,11 @@ package WebAPI.HTML.Input_Elements is
    type HTML_Input_Element_Access is access all HTML_Input_Element'Class
       with Storage_Size => 0;
 
-   --  interface HTMLInputElement : HTMLElement {
-   --    readonly attribute HTMLFormElement? form;
-   --    readonly attribute FileList? files;
+--   XXX Not implemented
+--
+--   interface HTMLInputElement : HTMLElement {
+--     readonly attribute HTMLFormElement? form;
+--     readonly attribute FileList? files;
 
    not overriding function Get_Accept
     (Self : not null access constant HTML_Input_Element)
@@ -171,16 +173,76 @@ package WebAPI.HTML.Input_Elements is
             Convention => JavaScript_Property_Setter,
             Link_Name  => "disabled";
 
-   --  interface HTMLInputElement : HTMLElement {
-   --    readonly attribute HTMLFormElement? form;
-   --    readonly attribute FileList? files;
+   not overriding function Get_Form_Action
+    (Self : not null access constant HTML_Input_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "formAction";
 
-   --  interface HTMLInputElement : HTMLElement {
-   --             attribute DOMString formAction;
-   --             attribute DOMString formEnctype;
-   --             attribute DOMString formMethod;
-   --             attribute boolean formNoValidate;
-   --             attribute DOMString formTarget;
+   not overriding procedure Set_Form_Action
+    (Self : not null access constant HTML_Input_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "formAction";
+
+   not overriding function Get_Form_Enctype
+    (Self : not null access constant HTML_Input_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "formEnctype";
+
+   not overriding procedure Set_Form_Enctype
+    (Self : not null access constant HTML_Input_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "formEnctype";
+
+   not overriding function Get_Form_Method
+    (Self : not null access constant HTML_Input_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "formMethod";
+
+   not overriding procedure Set_Form_Method
+    (Self : not null access constant HTML_Input_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "formMethod";
+
+   not overriding function Get_Form_No_Validate
+    (Self : not null access constant HTML_Input_Element)
+       return Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "formNoValidate";
+
+   not overriding procedure Set_Form_No_Validate
+    (Self : not null access constant HTML_Input_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "formNoValidate";
+
+   not overriding function Get_Form_Target
+    (Self : not null access constant HTML_Input_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "formTarget";
+
+   not overriding procedure Set_Form_Target
+    (Self : not null access constant HTML_Input_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "formTarget";
+
    --             attribute unsigned long height;
    --             attribute boolean indeterminate;
    --    readonly attribute HTMLElement? list;
@@ -192,8 +254,35 @@ package WebAPI.HTML.Input_Elements is
    --             attribute DOMString name;
    --             attribute DOMString pattern;
    --             attribute DOMString placeholder;
-   --             attribute boolean readOnly;
-   --             attribute boolean required;
+
+   not overriding function Get_Read_Only
+    (Self : not null access constant HTML_Input_Element)
+       return Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "readOnly";
+
+   not overriding procedure Set_Read_Only
+    (Self : not null access constant HTML_Input_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "readOnly";
+
+   not overriding function Get_Required
+    (Self : not null access constant HTML_Input_Element)
+       return Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "required";
+
+   not overriding procedure Set_Required
+    (Self : not null access constant HTML_Input_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "required";
+
    --             attribute unsigned long size;
    --             attribute DOMString src;
    --             attribute DOMString step;
