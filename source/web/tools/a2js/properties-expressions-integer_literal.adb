@@ -41,7 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Wide_Wide_Text_IO;
+with Interfaces;
 with Asis.Expressions;
+with League.String_Vectors;
 
 package body Properties.Expressions.Integer_Literal is
 
@@ -55,10 +58,48 @@ package body Properties.Expressions.Integer_Literal is
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
       pragma Unreferenced (Engine, Name);
-      Image : constant Wide_String := Asis.Expressions.Value_Image (Element);
-      Result : constant League.Strings.Universal_String :=
+      Image  : constant Wide_String := Asis.Expressions.Value_Image (Element);
+      Result : League.Strings.Universal_String :=
         League.Strings.From_UTF_16_Wide_String (Image);
    begin
+      if Result.Index ('.') > 0 then
+         declare
+            Value : constant Interfaces.IEEE_Float_64 :=
+              Interfaces.IEEE_Float_64'Wide_Value (Image);
+            Text : constant Wide_Wide_String :=
+              Interfaces.IEEE_Float_64'Wide_Wide_Image (Value);
+         begin
+            Result :=
+              League.Strings.To_Universal_String (Text (2 .. Text'Last));
+         end;
+      elsif Result.Starts_With ("16#") then
+         declare
+            package IO is
+              new Ada.Wide_Wide_Text_IO.Modular_IO (Interfaces.Unsigned_32);
+            Value : constant Interfaces.Unsigned_32 :=
+              Interfaces.Unsigned_32'Wide_Value (Image);
+            Text : Wide_Wide_String (1 .. 19);
+            List : League.String_Vectors.Universal_String_Vector;
+         begin
+            IO.Put (Text, Value, 16);
+            Result := League.Strings.To_Universal_String (Text);
+            List := Result.Split ('#');
+            Result.Clear;
+            Result.Append ("0x");
+            Result.Append (List.Element (2));
+         end;
+      else
+         declare
+            Value : constant Interfaces.Unsigned_32 :=
+              Interfaces.Unsigned_32'Wide_Value (Image);
+            Text : constant Wide_Wide_String :=
+              Interfaces.Unsigned_32'Wide_Wide_Image (Value);
+         begin
+            Result :=
+              League.Strings.To_Universal_String (Text (2 .. Text'Last));
+         end;
+      end if;
+
       return Result;
    end Code;
 
