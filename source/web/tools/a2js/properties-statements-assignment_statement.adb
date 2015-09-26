@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Expressions;
 with Asis.Statements;
 
 package body Properties.Statements.Assignment_Statement is
@@ -60,11 +61,23 @@ package body Properties.Statements.Assignment_Statement is
         Asis.Statements.Assignment_Expression (Element);
       Text  : League.Strings.Universal_String;
       Down  : League.Strings.Universal_String;
+
+      Left_Type  : constant Asis.Element :=
+        Asis.Expressions.Corresponding_Expression_Type (Left);
+      Is_Simple_Type : constant Boolean :=
+        Engine.Boolean.Get_Property (Left_Type, Engines.Is_Simple_Type);
    begin
       Text := Engine.Text.Get_Property (Left, Name);
-      Text.Append (" = ");
       Down := Engine.Text.Get_Property (Right, Name);
-      Text.Append (Down);
+      if Is_Simple_Type then
+         Text.Append (" = ");
+         Text.Append (Down);
+      else
+         Text.Append ("._assign(");
+         Text.Append (Down);
+         Text.Append (")");
+      end if;
+
       Text.Append (";");
 
       return Text;

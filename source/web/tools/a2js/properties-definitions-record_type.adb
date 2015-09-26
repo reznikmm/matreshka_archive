@@ -164,6 +164,36 @@ package body Properties.Definitions.Record_Type is
 
       Result.Append ("};");
 
+      if not Asis.Elements.Has_Limited (Decl) then
+         declare
+            List : constant Asis.Declaration_List :=
+              Properties.Tools.Corresponding_Type_Components (Element);
+         begin
+            Result.Append ("_ec.");
+            Result.Append (Name_Image);
+            Result.Append (".prototype._assign = function(src){");
+
+            for J in List'Range loop
+               declare
+                  Id    : League.Strings.Universal_String;
+                  Names : constant Asis.Defining_Name_List :=
+                    Asis.Declarations.Names (List (J));
+               begin
+                  for N in Names'Range loop
+                     Id := Engine.Text.Get_Property (Names (N), Name);
+                     Result.Append ("this.");
+                     Result.Append (Id);
+                     Result.Append (" = src.");
+                     Result.Append (Id);
+                     Result.Append (";");
+                  end loop;
+               end;
+            end loop;
+
+            Result.Append ("};");
+         end;
+      end if;
+
       return Result;
    end Code;
 

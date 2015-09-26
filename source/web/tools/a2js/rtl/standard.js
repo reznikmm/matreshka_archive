@@ -105,6 +105,9 @@ define('standard', [], function(){
               - standard._pos (this._first[0]);
             result.A = this.A;
             return result;
+        },
+        "_assign" : function (src) {
+            this.A = src.A.slice();
         }
     };
 
