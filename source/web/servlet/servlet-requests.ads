@@ -58,6 +58,13 @@ package Servlet.Requests is
 
    type Servlet_Request_Access is access all Servlet_Request'Class;
 
+   not overriding function Get_Parameter_Names
+    (Self : Servlet_Request)
+       return League.String_Vectors.Universal_String_Vector is abstract;
+   --  Returns an vector of String containing the names of the parameters
+   --  contained in this request. If the request has no parameters, the method
+   --  returns an empty vector.
+
    not overriding function Get_Parameter_Values
     (Self : Servlet_Request;
      Name : League.Strings.Universal_String)

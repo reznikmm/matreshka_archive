@@ -60,6 +60,10 @@ package Servlet.Request_Wrappers is
     (Request : not null access Servlet.Requests.Servlet_Request'Class) is
        limited new Servlet.Requests.Servlet_Request with null record;
 
+   overriding function Get_Parameter_Names
+    (Self : Servlet_Request_Wrapper)
+       return League.String_Vectors.Universal_String_Vector;
+
    overriding function Get_Parameter_Values
     (Self : Servlet_Request_Wrapper;
      Name : League.Strings.Universal_String)

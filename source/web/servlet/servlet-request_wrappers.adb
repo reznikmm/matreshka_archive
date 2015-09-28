@@ -44,6 +44,17 @@
 
 package body Servlet.Request_Wrappers is
 
+   -------------------------
+   -- Get_Parameter_Names --
+   -------------------------
+
+   overriding function Get_Parameter_Names
+    (Self : Servlet_Request_Wrapper)
+       return League.String_Vectors.Universal_String_Vector is
+   begin
+      return Self.Request.Get_Parameter_Names;
+   end Get_Parameter_Names;
+
    --------------------------
    -- Get_Parameter_Values --
    --------------------------
