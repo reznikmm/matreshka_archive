@@ -58,6 +58,28 @@ package Servlet.Requests is
 
    type Servlet_Request_Access is access all Servlet_Request'Class;
 
+   function Get_Parameter
+    (Self : Servlet_Request'Class;
+     Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Returns the value of a request parameter as a String, or empty string if
+   --  the parameter does not exist. Request parameters are extra information
+   --  sent with the request. For HTTP servlets, parameters are contained in
+   --  the query string or posted form data.
+   --
+   --  You should only use this method when you are sure the parameter has only
+   --  one value. If the parameter might have more than one value, use
+   --  Get_Parameter_Values.
+   --
+   --  If you use this method with a multivalued parameter, the value returned
+   --  is equal to the first value in the array returned by
+   --  Get_Parameter_Values.
+   --
+   --  If the parameter data was sent in the request body, such as occurs with
+   --  an HTTP POST request, then reading the body directly via
+   --  Get_Input_Stream or Get_Reader can interfere with the execution of this
+   --  method. 
+
    not overriding function Get_Parameter_Names
     (Self : Servlet_Request)
        return League.String_Vectors.Universal_String_Vector is abstract;
