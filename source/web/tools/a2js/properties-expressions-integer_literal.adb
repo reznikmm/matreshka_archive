@@ -64,10 +64,10 @@ package body Properties.Expressions.Integer_Literal is
    begin
       if Result.Index ('.') > 0 then
          declare
-            Value : constant Interfaces.IEEE_Float_64 :=
-              Interfaces.IEEE_Float_64'Wide_Value (Image);
+            Value : constant Long_Long_Float :=
+              Long_Long_Float'Wide_Value (Image);
             Text : constant Wide_Wide_String :=
-              Interfaces.IEEE_Float_64'Wide_Wide_Image (Value);
+              Long_Long_Float'Wide_Wide_Image (Value);
          begin
             Result :=
               League.Strings.To_Universal_String (Text (2 .. Text'Last));
