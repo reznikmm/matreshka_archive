@@ -52,6 +52,9 @@ with League.String_Vectors;
 
 package body Properties.Tools is
 
+   function Name_Image
+     (Name : Asis.Name) return League.Strings.Universal_String;
+
    ------------------------
    -- Corresponding_Type --
    ------------------------
@@ -627,20 +630,22 @@ package body Properties.Tools is
          end if;
       end Body_Context_Clause_Elements;
 
+      ---------------------
+      -- Is_Ada_Numerics --
+      ---------------------
+
+      function Is_Ada_Numerics (Name : Asis.Name) return Boolean is
+      begin
+         return Name_Image (Name).Starts_With ("Ada.Numerics");
+      end Is_Ada_Numerics;
+
       ---------------
       -- Is_WebAPI --
       ---------------
 
       function Is_WebAPI (Name : Asis.Name) return Boolean is
       begin
-         case Asis.Elements.Expression_Kind (Name) is
-            when Asis.An_Identifier =>
-               return Asis.Expressions.Name_Image (Name) = "WebAPI";
-            when Asis.A_Selected_Component =>
-               return Is_WebAPI (Asis.Expressions.Prefix (Name));
-            when others =>
-               raise Program_Error;
-         end case;
+         return Name_Image (Name).Starts_With ("WebAPI");
       end Is_WebAPI;
 
       -----------------------
@@ -686,7 +691,10 @@ package body Properties.Tools is
 
       procedure Check_And_Append (Name : Asis.Name) is
       begin
-         if Is_WebAPI (Name) or else Is_Generic_System (Name) then
+         if Is_WebAPI (Name)
+           or else Is_Generic_System (Name)
+           or else Is_Ada_Numerics (Name)
+         then
             return;
          end if;
 
@@ -763,5 +771,48 @@ package body Properties.Tools is
 
       return Text;
    end Library_Level_Header;
+
+   ----------------
+   -- Name_Image --
+   ----------------
+
+   function Name_Image
+     (Name : Asis.Name) return League.Strings.Universal_String
+   is
+      procedure Prepend (Text : Asis.Program_Text);
+
+      Item   : Asis.Name := Name;
+      Result : League.Strings.Universal_String;
+
+      -------------
+      -- Prepend --
+      -------------
+
+      procedure Prepend (Text : Asis.Program_Text) is
+      begin
+         Result.Prepend
+           (League.Strings.From_UTF_16_Wide_String (Text));
+      end Prepend;
+
+   begin
+      loop
+         case Asis.Elements.Expression_Kind (Item) is
+            when Asis.An_Identifier =>
+               Prepend (Asis.Expressions.Name_Image (Item));
+
+               return Result;
+
+            when Asis.A_Selected_Component =>
+               Prepend
+                 (Asis.Expressions.Name_Image
+                    (Asis.Expressions.Selector (Item)));
+               Prepend (".");
+               Item := Asis.Expressions.Prefix (Item);
+
+            when others =>
+               raise Program_Error;
+         end case;
+      end loop;
+   end Name_Image;
 
 end Properties.Tools;

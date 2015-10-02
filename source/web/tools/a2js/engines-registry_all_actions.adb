@@ -808,6 +808,9 @@ is
       (Kind   => F.An_Integer_Number_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
+      (Kind   => F.A_Real_Number_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Common.False'Access),
 
       (Kind   => F.A_Subtype_Indication,
        Name   => N.Is_Simple_Type,

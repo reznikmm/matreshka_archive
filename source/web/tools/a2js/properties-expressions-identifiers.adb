@@ -187,6 +187,14 @@ package body Properties.Expressions.Identifiers is
          --  Dispatching operation has no prefix
          return Engine.Text.Get_Property
            (Asis.Declarations.Names (Decl) (1), Name);
+      elsif Asis.Elements.Declaration_Kind (Decl) in
+              Asis.An_Integer_Number_Declaration |
+              Asis.A_Real_Number_Declaration
+      then
+         Text := Engine.Text.Get_Property
+           (Asis.Declarations.Initialization_Expression (Decl), Name);
+
+         return Text;
       else
          Text := Name_Prefix (Engine, Element, Decl);
 

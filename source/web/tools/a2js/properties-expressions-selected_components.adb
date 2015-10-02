@@ -112,7 +112,10 @@ package body Properties.Expressions.Selected_Components is
                  Asis.An_Ordinary_Type_Declaration |
                  Asis.A_Private_Type_Declaration |
                  Asis.A_Deferred_Constant_Declaration |
-                 Asis.A_Variable_Declaration =>
+                 Asis.A_Variable_Declaration |
+                 Asis.An_Integer_Number_Declaration |
+                 Asis.A_Real_Number_Declaration =>
+
                null;
             when others =>
                raise Program_Error with

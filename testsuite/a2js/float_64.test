@@ -1,5 +1,6 @@
 --  EXPECTED OUTPUT:
 --  4503599627370494
+--  3.141592653589793
 --  END OF EXPECTED OUTPUT
 --
 --  BIND LIST:
@@ -12,6 +13,7 @@
 with Consoles;
 with League.Strings;
 with Interfaces;
+with Ada.Numerics;
 
 procedure Float_Test is
    use Consoles;
@@ -22,6 +24,8 @@ procedure Float_Test is
 begin
    A := B;
    Console.Log (Float'Wide_Wide_Image (A + B));
+   A := Ada.Numerics.Pi;
+   Console.Log (Float'Wide_Wide_Image (A));
 end;
 
 package Consoles is
