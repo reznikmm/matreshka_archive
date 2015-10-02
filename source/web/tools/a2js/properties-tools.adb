@@ -648,42 +648,28 @@ package body Properties.Tools is
          return Name_Image (Name).Starts_With ("WebAPI");
       end Is_WebAPI;
 
-      -----------------------
-      -- Is_Generic_System --
-      -----------------------
+      ----------------
+      -- Is_Generic --
+      ----------------
 
-      function Is_Generic_System (Name : Asis.Name) return Boolean is
+      function Is_Generic (Name : Asis.Name) return Boolean is
          Decl : Asis.Declaration;
-         Item : Asis.Expression := Name;
       begin
-         if Asis.Elements.Expression_Kind (Name) not in
-           Asis.A_Selected_Component
-         then
-            return False;
-         end if;
+         case Asis.Elements.Expression_Kind (Name) is
+            when Asis.A_Selected_Component =>
+               Decl := Asis.Expressions.Corresponding_Name_Declaration
+                 (Asis.Expressions.Selector (Name));
 
-         Decl := Asis.Expressions.Corresponding_Name_Declaration
-           (Asis.Expressions.Selector (Name));
+            when Asis.An_Identifier =>
+               Decl := Asis.Expressions.Corresponding_Name_Declaration (Name);
 
-         if Asis.Elements.Declaration_Kind (Decl) not in
-           Asis.A_Generic_Declaration
-         then
-            return False;
-         end if;
+            when others =>
+               return False;
+         end case;
 
-         while Asis.Elements.Expression_Kind (Item)
-                   in Asis.A_Selected_Component
-         loop
-            Item := Asis.Expressions.Prefix (Item);
-         end loop;
-
-         declare
-            Image : constant Asis.Program_Text :=
-              Asis.Expressions.Name_Image (Item);
-         begin
-            return Image = "System" or Image = "Ada";
-         end;
-      end Is_Generic_System;
+         return Asis.Elements.Declaration_Kind (Decl) in
+           Asis.A_Generic_Declaration;
+      end Is_Generic;
 
       ----------------------
       -- Check_And_Append --
@@ -691,8 +677,8 @@ package body Properties.Tools is
 
       procedure Check_And_Append (Name : Asis.Name) is
       begin
-         if Is_WebAPI (Name)
-           or else Is_Generic_System (Name)
+         if Is_Generic (Name)
+           or else Is_WebAPI (Name)
            or else Is_Ada_Numerics (Name)
          then
             return;
