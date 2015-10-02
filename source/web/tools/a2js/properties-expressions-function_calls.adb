@@ -332,6 +332,8 @@ begin
    Op_To.Append (League.Strings.To_Universal_String ("<"));
    Op_From.Append (League.Strings.To_Universal_String ("""<="""));
    Op_To.Append (League.Strings.To_Universal_String ("<="));
+   Op_From.Append (League.Strings.To_Universal_String (""">="""));
+   Op_To.Append (League.Strings.To_Universal_String (">="));
    Op_From.Append (League.Strings.To_Universal_String ("""and"""));
    Op_To.Append (League.Strings.To_Universal_String ("&"));
    Op_From.Append (League.Strings.To_Universal_String ("""or"""));
