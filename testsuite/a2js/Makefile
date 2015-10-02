@@ -12,4 +12,5 @@ all:
 	./run.sh value.test
 	./run.sh float_64.test
 	./run.sh ind_constr.test
+	./run.sh ifexp.test
 	@echo A2JS Tests succeed!

@@ -1,0 +1,42 @@
+--  EXPECTED OUTPUT:
+--  0
+--  -1
+--  1
+--  0
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  consoles.ads
+--  ifexp.adb
+--  END OF BIND LIST
+--
+--  MAIN: ifexp
+
+with Consoles;
+procedure Ifexp is
+   use Consoles;
+begin
+   for J in 1 .. 2 loop
+     for K in 1 .. 2 loop
+        Console.Log ((if J > K then 1 elsif K > J then -1 else 0));
+     end loop;
+   end loop;
+end;
+
+package Consoles is
+   type Console_Type is tagged limited null record;
+
+   type Console_Access is access all Console_Type'Class
+     with Storage_Size => 0;
+
+   not overriding procedure Log
+     (Self : not null access Console_Type;
+      Text : Integer)
+     with Import     => True,
+          Convention => JavaScript_Function,
+          Link_Name  => "log";
+
+   Console : constant Consoles.Console_Access
+     with Import     => True,
+       Convention => JavaScript;
+end Consoles;

@@ -72,6 +72,14 @@ package body Properties.Expressions.If_Expression is
 
                Text.Append (Down);
                Text.Append ("?");
+            when Asis.An_Elsif_Expression_Path =>
+               Text.Append (":");
+
+               Down := Engine.Text.Get_Property
+                 (Asis.Statements.Condition_Expression (List (J)), Name);
+
+               Text.Append (Down);
+               Text.Append ("?");
             when Asis.An_Else_Expression_Path =>
                Text.Append (":");
             when others =>
