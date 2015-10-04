@@ -92,11 +92,20 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
     (Self           : ISO_8601_Printer;
      Output         : in out League.Strings.Universal_String;
      Date           : Julian_Day_Number;
-     Is_Stand_Alone : Boolean) is
-   begin
-      --  XXX Not yet implemented.
+     Is_Stand_Alone : Boolean)
+   is
+      pragma Unreferenced (Self, Is_Stand_Alone);
 
-      null;
+      Index : constant Gregorian.Month_Number
+        := Calendars.Gregorian.Month (Date);
+      Names : constant array (Gregorian.Month_Number) of
+        Wide_Wide_String (1 .. 3)
+          := ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+   begin
+      --  XXX Is_Stand_Alone Not yet implemented.
+
+      Output.Append (Names (Index));
    end Append_Abbreviated_Month;
 
    --------------------------------
@@ -364,11 +373,19 @@ package body Matreshka.Internals.Calendars.Formatting.ISO_8601 is
      Output         : in out League.Strings.Universal_String;
      Date           : Julian_Day_Number;
      Padding        : Positive;
-     Is_Stand_Alone : Boolean) is
-   begin
-      --  XXX Not yet implemented.
+     Is_Stand_Alone : Boolean)
+   is
+      pragma Unreferenced (Self, Padding, Is_Stand_Alone);
 
-      null;
+      Index : constant Gregorian.Day_Of_Week_Number
+        := Calendars.Gregorian.Day_Of_Week (Date);
+      Names : constant array (Gregorian.Day_Of_Week_Number) of
+        Wide_Wide_String (1 .. 3)
+          := ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
+   begin
+      --  XXX Is_Stand_Alone Not yet implemented.
+
+      Output.Append (Names (Index));
    end Append_Short_Day_Of_Week;
 
    --------------------------
