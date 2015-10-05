@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,7 +41,11 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Calendars;
+with League.Holders;
 with League.IRIs;
+with League.Strings;
+with League.String_Vectors;
 with Servlet.HTTP_Cookies;
 with Servlet.Responses;
 
@@ -195,6 +199,52 @@ package Servlet.HTTP_Responses is
    --  Adds the specified cookie to the response. This method can be called
    --  multiple times to set more than one cookie.
 
+   not overriding procedure Add_Date_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Calendars.Date_Time) is abstract;
+   --  Adds a response header with the given name and date-value. This method
+   --  allows response headers to have multiple values.
+
+   not overriding procedure Add_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is abstract;
+   --  Adds a response header with the given name and value. This method allows
+   --  response headers to have multiple values.
+
+   not overriding procedure Add_Integer_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Holders.Universal_Integer) is abstract;
+   --  Adds a response header with the given name and integer value. This
+   --  method allows response headers to have multiple values.
+
+   not overriding function Contains_Header
+    (Self : in out HTTP_Servlet_Response;
+     Name : League.Strings.Universal_String) return Boolean is abstract;
+   --  Returns a boolean indicating whether the named response header has
+   --  already been set.
+
+   function Get_Header
+    (Self : in out HTTP_Servlet_Response'Class;
+     Name : League.Strings.Universal_String)
+       return League.Strings.Universal_String;
+   --  Return the value for the specified header, or empty string if this
+   --  header has not been set. If more than one value was added for this name,
+   --  only the first is returned; use Get_Headers to retrieve all of them.
+
+   not overriding function Get_Header_Names
+    (Self : in out HTTP_Servlet_Response)
+       return League.String_Vectors.Universal_String_Vector is abstract;
+   --  Return all the header names set for this response.
+
+   not overriding function Get_Headers
+    (Self : in out HTTP_Servlet_Response;
+     Name : League.Strings.Universal_String)
+       return League.String_Vectors.Universal_String_Vector is abstract;
+   --  Return all the header values associated with the specified header name.
+
    not overriding function Get_Status
     (Self : HTTP_Servlet_Response) return Status_Code is abstract;
    --  Gets the current status code of this response.
@@ -218,6 +268,33 @@ package Servlet.HTTP_Responses is
    --  If the response has already been committed, this method throws an
    --  IllegalStateException. After using this method, the response should be
    --  considered to be committed and should not be written to.
+
+   not overriding procedure Set_Date_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Calendars.Date_Time) is abstract;
+   --  Sets a response header with the given name and date-value. If the header
+   --  had already been set, the new value overwrites the previous one. The
+   --  Contains_Header method can be used to test for the presence of a header
+   --  before setting its value.
+
+   not overriding procedure Set_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Strings.Universal_String) is abstract;
+   --  Sets a response header with the given name and value. If the header had
+   --  already been set, the new value overwrites the previous one. The
+   --  Contains_Header method can be used to test for the presence of a header
+   --  before setting its value.
+
+   not overriding procedure Set_Integer_Header
+    (Self  : in out HTTP_Servlet_Response;
+     Name  : League.Strings.Universal_String;
+     Value : League.Holders.Universal_Integer) is abstract;
+   --  Sets a response header with the given name and integer value. If the
+   --  header had already been set, the new value overwrites the previous one.
+   --  The Contains_Header method can be used to test for the presence of a
+   --  header before setting its value.
 
    not overriding procedure Set_Status
     (Self : in out HTTP_Servlet_Response;
