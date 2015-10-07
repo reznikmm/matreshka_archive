@@ -246,7 +246,21 @@ package WebAPI.HTML.Input_Elements is
    --             attribute unsigned long height;
    --             attribute boolean indeterminate;
    --    readonly attribute HTMLElement? list;
-   --             attribute DOMString max;
+
+   not overriding function Get_Max
+    (Self : not null access constant HTML_Input_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "max";
+
+   not overriding procedure Set_Max
+    (Self : not null access constant HTML_Input_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "max";
+
    --             attribute long maxLength;
    --             attribute DOMString min;
    --             attribute long minLength;
