@@ -41,41 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis;
 
-package Engines is
+with Engines.Contexts;
 
-   type Text_Property is
-     (Code,
-      Condition,
-      Lower, Upper,    --  Code for range return X'First X'Last
-      Intrinsic_Name,
-      Associations, --  names of record assotiation a,b,c
-      Tag_Name,  --  external tag name image
-      Method_Name,  --  name of subrogram in virtual table
-      Address,  --  Access or address of an object
-      Initialize,
-      --  Code to initialize an object of given type
-      Assign,  --  Code to copy component, discriminant or variant
-      Bounds  --  "First,Last" bounds for nested named array aggregate
-     );
+with League.Strings;
 
-   type Boolean_Property is
-     (Export,
-      Is_Simple_Type,   --  Is non-object type (Number, Boolean, etc)
-      Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
-      Inside_Package,   --  Enclosing Element is a package
-      Is_Dispatching);  --  Declaration/call is a dispatching subprogram
+package Properties.Definitions.Variant_Part is
 
-   type Call_Convention_Property is
-     (Call_Convention);
+   function Assign
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Association;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-   type Call_Convention_Kind is
-     (Intrinsic,
-      JavaScript_Property_Getter,  --  obj.prop
-      JavaScript_Property_Setter,  --  obj.prop = val
-      JavaScript_Function,         --  funct (args)
-      JavaScript_Method,           --  obj.funct (args)
-      JavaScript_Getter,           --  collection.getter (index - 1)
-      Unspecified);
-
-end Engines;
+end Properties.Definitions.Variant_Part;

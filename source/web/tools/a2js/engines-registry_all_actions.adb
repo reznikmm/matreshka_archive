@@ -46,6 +46,7 @@ with Asis.Extensions.Flat_Kinds;
 with League.Strings;
 
 with Properties.Common;
+with Properties.Declarations.Component_Declaration;
 with Properties.Declarations.Constant_Declarations;
 with Properties.Declarations.Defining_Expanded_Name;
 with Properties.Declarations.Defining_Names;
@@ -75,6 +76,8 @@ with Properties.Definitions.Simple_Expression_Range;
 with Properties.Definitions.Subtype_Indication;
 with Properties.Definitions.Tagged_Record_Type;
 with Properties.Definitions.Unconstrained_Array_Type;
+with Properties.Definitions.Variant_Part;
+with Properties.Definitions.Variant;
 with Properties.Expressions.Allocation;
 with Properties.Expressions.Allocation_From_Subtype;
 with Properties.Expressions.Array_Component_Association;
@@ -443,6 +446,23 @@ is
        Kind   => F.A_Loop_Parameter_Specification,
        Action =>
          P.Declarations.Loop_Parameter_Specification.Condition'Access),
+
+      --  Assign
+      (Name   => N.Assign,
+       Kind   => F.A_Component_Declaration,
+       Action => P.Declarations.Component_Declaration.Assign'Access),
+      (Name   => N.Assign,
+       Kind   => F.A_Discriminant_Specification,
+       Action => P.Declarations.Component_Declaration.Assign'Access),
+      (Name   => N.Assign,
+       Kind   => F.A_Variant_Part,
+       Action => P.Definitions.Variant_Part.Assign'Access),
+      (Name   => N.Assign,
+       Kind   => F.A_Variant,
+       Action => P.Definitions.Variant.Assign'Access),
+      (Name   => N.Assign,
+       Kind   => F.A_Null_Component,
+       Action => P.Common.Empty'Access),
 
       --  Bounds
       (Name   => N.Bounds,

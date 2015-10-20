@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with Asis.Elements;
 with Asis.Declarations;
+with Asis.Definitions;
 
 with Properties.Tools;
 
@@ -61,7 +62,7 @@ package body Properties.Definitions.Record_Type is
 
       Decl : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
-      Result : League.Strings.Universal_String;
+      Result     : League.Strings.Universal_String;
       Name_Image : League.Strings.Universal_String;
    begin
       Name_Image := Engine.Text.Get_Property
@@ -166,29 +167,38 @@ package body Properties.Definitions.Record_Type is
 
       if not Asis.Elements.Has_Limited (Decl) then
          declare
+            Down : League.Strings.Universal_String;
             List : constant Asis.Declaration_List :=
-              Properties.Tools.Corresponding_Type_Components (Element);
+              Properties.Tools.Corresponding_Type_Discriminants (Element);
          begin
             Result.Append ("_ec.");
             Result.Append (Name_Image);
             Result.Append (".prototype._assign = function(src){");
 
-            for J in List'Range loop
-               declare
-                  Id    : League.Strings.Universal_String;
-                  Names : constant Asis.Defining_Name_List :=
-                    Asis.Declarations.Names (List (J));
-               begin
-                  for N in Names'Range loop
-                     Id := Engine.Text.Get_Property (Names (N), Name);
-                     Result.Append ("this.");
-                     Result.Append (Id);
-                     Result.Append (" = src.");
-                     Result.Append (Id);
-                     Result.Append (";");
-                  end loop;
-               end;
-            end loop;
+            Down := Engine.Text.Get_Property
+              (List  => List,
+               Name  => Engines.Assign,
+               Empty => League.Strings.Empty_Universal_String,
+               Sum   => Properties.Tools.Join'Access);
+
+            Result.Append (Down);
+
+         end;
+
+         declare
+            Down : League.Strings.Universal_String;
+            Def  : constant Asis.Definition :=
+              Asis.Definitions.Record_Definition (Element);
+            List : constant Asis.Declaration_List :=
+              Asis.Definitions.Record_Components (Def);
+         begin
+            Down := Engine.Text.Get_Property
+              (List  => List,
+               Name  => Engines.Assign,
+               Empty => League.Strings.Empty_Universal_String,
+               Sum   => Properties.Tools.Join'Access);
+
+            Result.Append (Down);
 
             Result.Append ("};");
          end;

@@ -42,40 +42,54 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Engines is
+with Asis.Definitions;
 
-   type Text_Property is
-     (Code,
-      Condition,
-      Lower, Upper,    --  Code for range return X'First X'Last
-      Intrinsic_Name,
-      Associations, --  names of record assotiation a,b,c
-      Tag_Name,  --  external tag name image
-      Method_Name,  --  name of subrogram in virtual table
-      Address,  --  Access or address of an object
-      Initialize,
-      --  Code to initialize an object of given type
-      Assign,  --  Code to copy component, discriminant or variant
-      Bounds  --  "First,Last" bounds for nested named array aggregate
-     );
+with Properties.Tools;
 
-   type Boolean_Property is
-     (Export,
-      Is_Simple_Type,   --  Is non-object type (Number, Boolean, etc)
-      Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
-      Inside_Package,   --  Enclosing Element is a package
-      Is_Dispatching);  --  Declaration/call is a dispatching subprogram
+package body Properties.Definitions.Variant is
 
-   type Call_Convention_Property is
-     (Call_Convention);
+   function Assign
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Association;
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
+   is
+      Down : League.Strings.Universal_String;
+      Text : League.Strings.Universal_String;
+   begin
+      Text.Append ("case ");
 
-   type Call_Convention_Kind is
-     (Intrinsic,
-      JavaScript_Property_Getter,  --  obj.prop
-      JavaScript_Property_Setter,  --  obj.prop = val
-      JavaScript_Function,         --  funct (args)
-      JavaScript_Method,           --  obj.funct (args)
-      JavaScript_Getter,           --  collection.getter (index - 1)
-      Unspecified);
+      declare
+         List : constant Asis.Element_List :=
+           Asis.Definitions.Variant_Choices (Element);
+      begin
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Engines.Code,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
 
-end Engines;
+         Text.Append (Down);
+      end;
+
+      Text.Append (":");
+
+      declare
+         List : constant Asis.Declaration_List :=
+           Asis.Definitions.Record_Components (Element);
+      begin
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
+      end;
+
+      Text.Append ("break;");
+
+      return Text;
+   end Assign;
+
+end Properties.Definitions.Variant;

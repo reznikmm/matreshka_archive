@@ -41,41 +41,37 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Declarations;
 
-package Engines is
+package body Properties.Declarations.Component_Declaration is
 
-   type Text_Property is
-     (Code,
-      Condition,
-      Lower, Upper,    --  Code for range return X'First X'Last
-      Intrinsic_Name,
-      Associations, --  names of record assotiation a,b,c
-      Tag_Name,  --  external tag name image
-      Method_Name,  --  name of subrogram in virtual table
-      Address,  --  Access or address of an object
-      Initialize,
-      --  Code to initialize an object of given type
-      Assign,  --  Code to copy component, discriminant or variant
-      Bounds  --  "First,Last" bounds for nested named array aggregate
-     );
+   ------------
+   -- Assign --
+   ------------
 
-   type Boolean_Property is
-     (Export,
-      Is_Simple_Type,   --  Is non-object type (Number, Boolean, etc)
-      Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
-      Inside_Package,   --  Enclosing Element is a package
-      Is_Dispatching);  --  Declaration/call is a dispatching subprogram
+   function Assign
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
 
-   type Call_Convention_Property is
-     (Call_Convention);
+      List : constant Asis.Defining_Name_List :=
+        Asis.Declarations.Names (Element);
 
-   type Call_Convention_Kind is
-     (Intrinsic,
-      JavaScript_Property_Getter,  --  obj.prop
-      JavaScript_Property_Setter,  --  obj.prop = val
-      JavaScript_Function,         --  funct (args)
-      JavaScript_Method,           --  obj.funct (args)
-      JavaScript_Getter,           --  collection.getter (index - 1)
-      Unspecified);
+      Down  : League.Strings.Universal_String;
+      Text  : League.Strings.Universal_String;
+   begin
+      for N in List'Range loop
+         Down := Engine.Text.Get_Property (List (N), Engines.Code);
+         Text.Append ("this.");
+         Text.Append (Down);
+         Text.Append (" = src.");
+         Text.Append (Down);
+         Text.Append (";");
+      end loop;
 
-end Engines;
+      return Text;
+   end Assign;
+
+end Properties.Declarations.Component_Declaration;
