@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Asis.Statements;
 
+with Properties.Tools;
+
 package body Properties.Statements.Block_Statement is
 
    ----------
@@ -54,6 +56,7 @@ package body Properties.Statements.Block_Statement is
       Element : Asis.Declaration;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
+      Down : League.Strings.Universal_String;
       Text : League.Strings.Universal_String;
    begin
       Text.Append ("{");
@@ -62,28 +65,26 @@ package body Properties.Statements.Block_Statement is
          List : constant Asis.Element_List :=
            Asis.Statements.Block_Declarative_Items (Element);
       begin
-         for J in List'Range loop
-            declare
-               Var_Code : constant League.Strings.Universal_String :=
-                 Engine.Text.Get_Property (List (J), Name);
-            begin
-               Text.Append (Var_Code);
-            end;
-         end loop;
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
       end;
 
       declare
          List : constant Asis.Element_List :=
            Asis.Statements.Block_Statements (Element);
       begin
-         for J in List'Range loop
-            declare
-               Stmt_Code : constant League.Strings.Universal_String :=
-                 Engine.Text.Get_Property (List (J), Name);
-            begin
-               Text.Append (Stmt_Code);
-            end;
-         end loop;
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
       end;
 
       Text.Append ("};");

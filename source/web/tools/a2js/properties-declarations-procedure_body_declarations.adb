@@ -148,31 +148,31 @@ package body Properties.Declarations.Procedure_Body_Declarations is
       Text.Append ("){");
 
       declare
+         Down : League.Strings.Universal_String;
          List : constant Asis.Element_List :=
            Asis.Declarations.Body_Declarative_Items (Element);
       begin
-         for J in List'Range loop
-            declare
-               Var_Code : constant League.Strings.Universal_String :=
-                 Engine.Text.Get_Property (List (J), Name);
-            begin
-               Text.Append (Var_Code);
-            end;
-         end loop;
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
       end;
 
       declare
+         Down : League.Strings.Universal_String;
          List : constant Asis.Element_List :=
            Asis.Declarations.Body_Statements (Element);
       begin
-         for J in List'Range loop
-            declare
-               Stmt_Code : constant League.Strings.Universal_String :=
-                 Engine.Text.Get_Property (List (J), Name);
-            begin
-               Text.Append (Stmt_Code);
-            end;
-         end loop;
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
       end;
 
       Text.Append ("};");

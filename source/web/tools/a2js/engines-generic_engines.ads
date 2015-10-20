@@ -59,6 +59,15 @@ package Engines.Generic_Engines is
       Element : Asis.Element;
       Name    : Propert_Name) return Property_Type;
 
+   function Get_Property
+     (Self    : access Engine;
+      List    : Asis.Element_List;
+      Name    : Propert_Name;
+      Empty   : Property_Type;
+      Sum     : access
+        function (Left, Right : Property_Type) return Property_Type)
+      return Property_Type;
+
    procedure Register_Calculator
      (Self   : in out Engine;
       Kind   : Asis.Extensions.Flat_Kinds.Flat_Element_Kinds;

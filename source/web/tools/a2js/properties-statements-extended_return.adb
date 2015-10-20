@@ -44,6 +44,8 @@
 with Asis.Declarations;
 with Asis.Statements;
 
+with Properties.Tools;
+
 package body Properties.Statements.Extended_Return is
 
    ----------
@@ -69,14 +71,13 @@ package body Properties.Statements.Extended_Return is
          List : constant Asis.Element_List :=
            Asis.Statements.Extended_Return_Statements (Element);
       begin
-         for J in List'Range loop
-            declare
-               Stmt_Code : constant League.Strings.Universal_String :=
-                 Engine.Text.Get_Property (List (J), Name);
-            begin
-               Text.Append (Stmt_Code);
-            end;
-         end loop;
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
+
+         Text.Append (Down);
       end;
 
       Text.Append ("return ");

@@ -579,6 +579,19 @@ package body Properties.Tools is
       return False;
    end Is_Primitive_Subprogram;
 
+   ----------
+   -- Join --
+   ----------
+
+   function Join
+     (Left, Right : League.Strings.Universal_String)
+      return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_String;
+   begin
+      return Left & Right;
+   end Join;
+
    --------------------------
    -- Library_Level_Header --
    --------------------------

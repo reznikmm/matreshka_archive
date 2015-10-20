@@ -98,6 +98,33 @@ package body Engines.Generic_Engines is
       return Value;
    end Get_Property;
 
+   ------------------
+   -- Get_Property --
+   ------------------
+
+   function Get_Property
+     (Self    : access Engine;
+      List    : Asis.Element_List;
+      Name    : Propert_Name;
+      Empty   : Property_Type;
+      Sum     : access
+        function (Left, Right : Property_Type) return Property_Type)
+      return Property_Type
+   is
+      Result : Property_Type := Empty;
+   begin
+      for J in List'Range loop
+         declare
+            Next : constant Property_Type :=
+              Self.Get_Property (List (J), Name);
+         begin
+            Result := Sum (Result, Next);
+         end;
+      end loop;
+
+      return Result;
+   end Get_Property;
+
    ----------
    -- Hash --
    ----------

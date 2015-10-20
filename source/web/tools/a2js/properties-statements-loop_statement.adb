@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Asis.Statements;
 
+with Properties.Tools;
+
 package body Properties.Statements.Loop_Statement is
 
    ----------
@@ -62,11 +64,13 @@ package body Properties.Statements.Loop_Statement is
    begin
       Text.Append ("while (true){");
 
-      for N in List'Range loop
-         Down := Engine.Text.Get_Property (List (N), Name);
+      Down := Engine.Text.Get_Property
+        (List  => List,
+         Name  => Name,
+         Empty => League.Strings.Empty_Universal_String,
+         Sum   => Properties.Tools.Join'Access);
 
-         Text.Append (Down);
-      end loop;
+      Text.Append (Down);
 
       Text.Append ("};");
 

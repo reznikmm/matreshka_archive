@@ -83,4 +83,9 @@ package Properties.Tools is
    function Has_Controlling_Result (Func : Asis.Declaration) return Boolean;
    --  Check if function Func is like 'function F return T' where T is tagged
 
+   function Join
+     (Left, Right : League.Strings.Universal_String)
+      return League.Strings.Universal_String;
+   --  Return Left & Right
+
 end Properties.Tools;

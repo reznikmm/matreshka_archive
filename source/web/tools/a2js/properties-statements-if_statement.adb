@@ -44,6 +44,8 @@
 with Asis.Elements;
 with Asis.Statements;
 
+with Properties.Tools;
+
 package body Properties.Statements.If_Statement is
 
    ----------
@@ -88,11 +90,13 @@ package body Properties.Statements.If_Statement is
             Nested : constant Asis.Statement_List :=
               Asis.Statements.Sequence_Of_Statements (List (J));
          begin
-            for N in Nested'Range loop
-               Down := Engine.Text.Get_Property (Nested (N), Name);
+            Down := Engine.Text.Get_Property
+              (List  => Nested,
+               Name  => Name,
+               Empty => League.Strings.Empty_Universal_String,
+               Sum   => Properties.Tools.Join'Access);
 
-               Text.Append (Down);
-            end loop;
+            Text.Append (Down);
          end;
       end loop;
 

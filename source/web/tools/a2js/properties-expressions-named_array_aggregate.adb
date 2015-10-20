@@ -44,6 +44,8 @@
 with Asis.Elements;
 with Asis.Expressions;
 
+with Properties.Tools;
+
 package body Properties.Expressions.Named_Array_Aggregate is
 
    function Get_Bounds
@@ -62,8 +64,9 @@ package body Properties.Expressions.Named_Array_Aggregate is
       Name    : Engines.Text_Property)
       return League.Strings.Universal_String
    is
+      Down   : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
-      List : constant Asis.Association_List :=
+      List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
    begin
       Result.Append ("function(_from,_to){");
@@ -85,9 +88,13 @@ package body Properties.Expressions.Named_Array_Aggregate is
         ("for (var _x=_from[0];_j<_len[0];_j++, _x=_ec._succ(_x)){");
       Result.Append ("switch(_x){");
 
-      for J in List'Range loop
-         Result.Append (Engine.Text.Get_Property (List (J), Name));
-      end loop;
+      Down := Engine.Text.Get_Property
+        (List  => List,
+         Name  => Name,
+         Empty => League.Strings.Empty_Universal_String,
+         Sum   => Properties.Tools.Join'Access);
+
+      Result.Append (Down);
 
       Result.Append ("}}return _result;}(");
 

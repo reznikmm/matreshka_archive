@@ -115,10 +115,13 @@ package body Properties.Declarations.Package_Declaration is
       Text.Append ("_ec._nested = function (){};");
       Text.Append ("_ec._nested.prototype = _ec;");
 
-      for J in List'Range loop
-         Down := Engine.Text.Get_Property (List (J), Name);
-         Text.Append (Down);
-      end loop;
+      Down := Engine.Text.Get_Property
+        (List  => List,
+         Name  => Name,
+         Empty => League.Strings.Empty_Universal_String,
+         Sum   => Properties.Tools.Join'Access);
+
+      Text.Append (Down);
 
       Text.Append ("return _ec;");
       Text.Append ("})(");
