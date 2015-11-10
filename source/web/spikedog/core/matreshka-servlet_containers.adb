@@ -220,6 +220,9 @@ package body Matreshka.Servlet_Containers is
       if Path.Ends_With (".css") then
          return League.Strings.To_Universal_String ("text/css");
 
+      elsif Path.Ends_With (".frag") then
+         return League.Strings.To_Universal_String ("x-shader/x-fragment");
+
       elsif Path.Ends_With (".js") then
          return League.Strings.To_Universal_String ("text/javascript");
 
@@ -229,11 +232,16 @@ package body Matreshka.Servlet_Containers is
       elsif Path.Ends_With (".txt") then
          return League.Strings.To_Universal_String ("text/plain");
 
-      elsif Path.Ends_With (".frag") then
-         return League.Strings.To_Universal_String ("x-shader/x-fragment");
-
       elsif Path.Ends_With (".vert") then
          return League.Strings.To_Universal_String ("x-shader/x-vertex");
+
+      elsif Path.Ends_With (".xml") then
+         --  "text/xml" requires to specify character encoding in Content-Type
+         --  header, otherwise US-ASCII is used. "application/xml" doesn't
+         --  require to provide character encoding in Content-Type header, in
+         --  this case XML processor uses encoding from document.
+
+         return League.Strings.To_Universal_String ("application/xml");
 
       else
          return League.Strings.Empty_Universal_String;
