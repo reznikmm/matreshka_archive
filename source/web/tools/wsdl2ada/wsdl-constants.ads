@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,8 +48,11 @@ with League.Strings;
 
 package WSDL.Constants is
 
-   WSDL_Namespace_URI  : constant League.Strings.Universal_String
+   WSDL_Namespace_URI    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("http://www.w3.org/ns/wsdl");
+   WSDL_1x_Namespace_URI : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("http://schemas.xmlsoap.org/wsdl/");
 
    --  Element names.
 

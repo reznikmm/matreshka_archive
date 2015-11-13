@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -829,6 +829,17 @@ package body WSDL.Parsers is
          else
             raise Program_Error;
          end if;
+
+      elsif Namespace_URI = WSDL_1x_Namespace_URI then
+         --  WSDL 1.x is not supported.
+
+         WSDL.Diagnoses.Report
+          (Self.Locator.System_Id,
+           WSDL.Diagnoses.Line_Number (Self.Locator.Line),
+           WSDL.Diagnoses.Column_Number (Self.Locator.Column),
+           League.Strings.To_Universal_String ("WSDL 1.x is not supported"));
+
+         raise WSDL_Error;
 
       else
          if Self.Current_State.Kind = WSDL_Description then
