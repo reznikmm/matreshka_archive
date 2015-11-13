@@ -84,7 +84,7 @@ package WSDL.Constants is
    Types_Element         : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("types");
 
-   --  Attribute names,
+   --  Attribute names.
 
    Address_Attribute          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("address");
