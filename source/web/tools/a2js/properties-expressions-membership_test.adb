@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Elements;
 with Asis.Expressions;
 
 package body Properties.Expressions.Membership_Test is
@@ -60,6 +61,12 @@ package body Properties.Expressions.Membership_Test is
         Asis.Expressions.Membership_Test_Choices (Element);
    begin
       pragma Assert (List'Length = 1);
+
+      if Asis.Elements.Expression_Kind (Element) in
+        Asis.A_Not_In_Membership_Test
+      then
+         Text.Append ("!");
+      end if;
 
       Text.Append ("_ec._in(");
       Down := Engine.Text.Get_Property

@@ -45,6 +45,21 @@ with Asis.Expressions;
 
 package body Properties.Expressions.Explicit_Dereference is
 
+   function Address
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
+      Prefix : constant Asis.Expression :=
+        Asis.Expressions.Prefix (Element);
+      Result : constant League.Strings.Universal_String :=
+        Engine.Text.Get_Property (Prefix, Engines.Code);
+   begin
+      return Result;
+   end Address;
+
    ----------
    -- Code --
    ----------

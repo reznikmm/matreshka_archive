@@ -164,6 +164,12 @@ is
       (Name   => N.Address,
        Kind   => F.A_Selected_Component,
        Action => P.Expressions.Selected_Components.Code'Access),
+      (Name   => N.Address,
+       Kind   => F.A_Type_Conversion,
+       Action => P.Expressions.Type_Conversion.Code'Access),
+      (Name   => N.Address,
+       Kind   => F.An_Explicit_Dereference,
+       Action => P.Expressions.Explicit_Dereference.Address'Access),
 
      --  Associations
      (Name   => N.Associations,
@@ -352,6 +358,9 @@ is
        Action => P.Expressions.Pos_Array_Aggregate.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_In_Membership_Test,
+       Action => P.Expressions.Membership_Test.Code'Access),
+      (Name   => N.Code,
+       Kind   => F.A_Not_In_Membership_Test,
        Action => P.Expressions.Membership_Test.Code'Access),
       (Name   => N.Code,
        Kind   => F.An_Or_Else_Short_Circuit,
