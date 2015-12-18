@@ -325,6 +325,40 @@ package body Properties.Declarations.Defining_Names is
    end Method_Name;
 
 begin
+   Reserved.Insert (League.Strings.To_Universal_String ("break"));
+   Reserved.Insert (League.Strings.To_Universal_String ("case"));
+   Reserved.Insert (League.Strings.To_Universal_String ("class"));
+   Reserved.Insert (League.Strings.To_Universal_String ("catch"));
+   Reserved.Insert (League.Strings.To_Universal_String ("const"));
+   Reserved.Insert (League.Strings.To_Universal_String ("continue"));
+   Reserved.Insert (League.Strings.To_Universal_String ("debugger"));
    Reserved.Insert (League.Strings.To_Universal_String ("default"));
+   Reserved.Insert (League.Strings.To_Universal_String ("delete"));
+   Reserved.Insert (League.Strings.To_Universal_String ("do"));
+   Reserved.Insert (League.Strings.To_Universal_String ("else"));
+   Reserved.Insert (League.Strings.To_Universal_String ("export"));
+   Reserved.Insert (League.Strings.To_Universal_String ("extends"));
+   Reserved.Insert (League.Strings.To_Universal_String ("finally"));
+   Reserved.Insert (League.Strings.To_Universal_String ("for"));
+   Reserved.Insert (League.Strings.To_Universal_String ("function"));
+   Reserved.Insert (League.Strings.To_Universal_String ("if"));
+   Reserved.Insert (League.Strings.To_Universal_String ("import"));
+   Reserved.Insert (League.Strings.To_Universal_String ("in"));
+   Reserved.Insert (League.Strings.To_Universal_String ("instanceof"));
+   Reserved.Insert (League.Strings.To_Universal_String ("let"));
+   Reserved.Insert (League.Strings.To_Universal_String ("new"));
+   Reserved.Insert (League.Strings.To_Universal_String ("return"));
+   Reserved.Insert (League.Strings.To_Universal_String ("super"));
+   Reserved.Insert (League.Strings.To_Universal_String ("switch"));
+   Reserved.Insert (League.Strings.To_Universal_String ("this"));
+   Reserved.Insert (League.Strings.To_Universal_String ("throw"));
+   Reserved.Insert (League.Strings.To_Universal_String ("try"));
+   Reserved.Insert (League.Strings.To_Universal_String ("typeof"));
+   Reserved.Insert (League.Strings.To_Universal_String ("var"));
+   Reserved.Insert (League.Strings.To_Universal_String ("void"));
+   Reserved.Insert (League.Strings.To_Universal_String ("while"));
+   Reserved.Insert (League.Strings.To_Universal_String ("with"));
+   Reserved.Insert (League.Strings.To_Universal_String ("yield"));
+
    Reserved.Insert (League.Strings.To_Universal_String ("self"));
 end Properties.Declarations.Defining_Names;
