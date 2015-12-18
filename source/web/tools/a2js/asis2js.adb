@@ -120,25 +120,28 @@ procedure Asis2JS is
 
                   exit;
 
-               when Asis.A_Procedure_Body
-                  | Asis.A_Function_Body =>
+               when Asis.A_Procedure
+                  | Asis.A_Function =>
                   --  Specification for subprogram body is optional, process it
                   --  when available or process body directly.
 
-                  Success := True;
-
-                  if Asis.Compilation_Units.Is_Nil
-                      (Asis.Compilation_Units.Corresponding_Declaration
+                  if not Asis.Compilation_Units.Is_Nil
+                      (Asis.Compilation_Units.Corresponding_Body
                         (Units (J)))
                   then
-                     Compile_Unit (Units (J), Output_File);
+                     Success := True;
 
-                  else
                      Compile_Unit
-                      (Asis.Compilation_Units.Corresponding_Declaration
-                        (Units (J)),
+                      (Asis.Compilation_Units.Corresponding_Body (Units (J)),
                        Output_File);
                   end if;
+
+               when Asis.A_Procedure_Body
+                  | Asis.A_Function_Body =>
+
+                  Success := True;
+
+                  Compile_Unit (Units (J), Output_File);
 
                when others =>
                   Ada.Wide_Text_IO.Put
