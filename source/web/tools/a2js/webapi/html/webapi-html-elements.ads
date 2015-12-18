@@ -41,6 +41,8 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Strings;
+
 with WebAPI.DOM.Elements;
 
 package WebAPI.HTML.Elements is
@@ -49,8 +51,165 @@ package WebAPI.HTML.Elements is
 
    type HTML_Element is limited interface
      and WebAPI.DOM.Elements.Element;
+--     and GlobalEventHandlers;
 
    type HTML_Element_Access is access all HTML_Element'Class
      with Storage_Size => 0;
 
+   not overriding function Get_Title
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "title";
+
+   not overriding procedure Set_Title
+    (Self : not null access HTML_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "title";
+
+   not overriding function Get_Lang
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "lang";
+
+   not overriding procedure Set_Lang
+    (Self : not null access HTML_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "lang";
+
+   not overriding function Get_Translate
+    (Self : not null access constant HTML_Element) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "translate";
+
+   not overriding procedure Set_Translate
+    (Self : not null access HTML_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "translate";
+
+   not overriding function Get_Dir
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "dir";
+
+   not overriding procedure Set_Dir
+    (Self : not null access HTML_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "dir";
+
+--    readonly attribute DOMStringMap dataset;
+
+   not overriding function Get_Hidden
+    (Self : not null access constant HTML_Element) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "hidden";
+
+   not overriding procedure Set_Hidden
+    (Self : not null access HTML_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "hidden";
+
+   not overriding procedure Click
+    (Self : not null access HTML_Element) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "click";
+
+   not overriding function Get_Tab_Index
+    (Self : not null access constant HTML_Element) return Integer is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "tabIndex";
+
+   not overriding procedure Set_Tab_Index
+    (Self : not null access HTML_Element;
+     To   : Integer) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "tabIndex";
+
+   not overriding procedure Focus
+    (Self : not null access HTML_Element) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "focus";
+
+   not overriding procedure Blur
+    (Self : not null access HTML_Element) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "blur";
+
+   not overriding function Get_Access_Key
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "accessKey";
+
+   not overriding procedure Set_Access_Key
+    (Self : not null access HTML_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "accessKey";
+
+   not overriding function Get_Access_Key_Label
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "accessKeyLabel";
+
+   not overriding function Get_Content_Editable
+    (Self : not null access constant HTML_Element)
+       return League.Strings.Universal_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "contentEditable";
+
+   not overriding procedure Set_Content_Editable
+    (Self : not null access HTML_Element;
+     To   : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "contentEditable";
+
+   not overriding function Get_Is_Content_Editable
+    (Self : not null access constant HTML_Element) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "isContentEditable";
+
+   not overriding function Get_Spellcheck
+    (Self : not null access constant HTML_Element) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "spellcheck";
+
+   not overriding procedure Set_Spellcheck
+    (Self : not null access HTML_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "spellcheck";
+
+--  interface HTMLUnknownElement : HTMLElement { };
 end WebAPI.HTML.Elements;
