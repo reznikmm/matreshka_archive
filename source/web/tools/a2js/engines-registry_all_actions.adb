@@ -242,7 +242,7 @@ is
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Null_Procedure_Declaration,
-       Action => P.Common.Empty'Access),  --  Ignore
+       Action => P.Declarations.Procedure_Body_Declarations.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Loop_Parameter_Specification,
        Action =>

@@ -147,33 +147,37 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
       Text.Append ("){");
 
-      declare
-         Down : League.Strings.Universal_String;
-         List : constant Asis.Element_List :=
-           Asis.Declarations.Body_Declarative_Items (Element);
-      begin
-         Down := Engine.Text.Get_Property
-           (List  => List,
-            Name  => Name,
-            Empty => League.Strings.Empty_Universal_String,
-            Sum   => Properties.Tools.Join'Access);
+      if Asis.Elements.Declaration_Kind (Element) not in
+        Asis.A_Null_Procedure_Declaration
+      then
+         declare
+            Down : League.Strings.Universal_String;
+            List : constant Asis.Element_List :=
+              Asis.Declarations.Body_Declarative_Items (Element);
+         begin
+            Down := Engine.Text.Get_Property
+              (List  => List,
+               Name  => Name,
+               Empty => League.Strings.Empty_Universal_String,
+               Sum   => Properties.Tools.Join'Access);
 
-         Text.Append (Down);
-      end;
+            Text.Append (Down);
+         end;
 
-      declare
-         Down : League.Strings.Universal_String;
-         List : constant Asis.Element_List :=
-           Asis.Declarations.Body_Statements (Element);
-      begin
-         Down := Engine.Text.Get_Property
-           (List  => List,
-            Name  => Name,
-            Empty => League.Strings.Empty_Universal_String,
-            Sum   => Properties.Tools.Join'Access);
+         declare
+            Down : League.Strings.Universal_String;
+            List : constant Asis.Element_List :=
+              Asis.Declarations.Body_Statements (Element);
+         begin
+            Down := Engine.Text.Get_Property
+              (List  => List,
+               Name  => Name,
+               Empty => League.Strings.Empty_Universal_String,
+               Sum   => Properties.Tools.Join'Access);
 
-         Text.Append (Down);
-      end;
+            Text.Append (Down);
+         end;
+      end if;
 
       Text.Append ("};");
 
