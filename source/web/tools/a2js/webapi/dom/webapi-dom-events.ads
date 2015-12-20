@@ -157,4 +157,13 @@ package WebAPI.DOM.Events is
    --  Returns true if event was dispatched by the user agent, and false
    --  otherwise.
 
+   not overriding function Get_Time_Stamp
+    (Self : not null access constant Event)
+       return WebAPI.DOM_Time_Stamp is abstract
+         with Import        => True,
+              Convention    => JavaScript_Property_Getter,
+              External_Name => "timeStamp";
+   --  Returns the creation time of event as the number of milliseconds that
+   --  passed since 00:00:00 UTC on 1 January 1970.
+
 end WebAPI.DOM.Events;
