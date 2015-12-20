@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface EventTarget.
 ------------------------------------------------------------------------------
-with League.Strings;
 with WebAPI.DOM.Event_Listeners;
 
 package WebAPI.DOM.Event_Targets is
@@ -56,7 +55,7 @@ package WebAPI.DOM.Event_Targets is
 
    procedure Add_Event_Listener
     (Self        : not null access Event_Target'Class;
-     Event_Type  : League.Strings.Universal_String;
+     Event_Type  : WebAPI.DOM_String;
      Listener    : not null access
        WebAPI.DOM.Event_Listeners.Event_Listener'Class;
      Use_Capture : Boolean)
@@ -77,7 +76,7 @@ package WebAPI.DOM.Event_Targets is
 
    procedure Remove_Event_Listener
     (Self        : not null access Event_Target'Class;
-     Event_Type  : League.Strings.Universal_String;
+     Event_Type  : WebAPI.DOM_String;
      Listener    : not null access
        WebAPI.DOM.Event_Listeners.Event_Listener'Class;
      Use_Capture : Boolean)

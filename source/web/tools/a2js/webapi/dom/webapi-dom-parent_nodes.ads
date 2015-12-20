@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface ParentNode.
 ------------------------------------------------------------------------------
-with League.Strings;
-
 limited with WebAPI.DOM.Elements;
 with WebAPI.DOM.HTML_Collections;
 with WebAPI.DOM.Node_Lists;
@@ -100,7 +98,7 @@ package WebAPI.DOM.Parent_Nodes is
 
    not overriding function Query_Selector
     (Self      : not null access constant Parent_Node;
-     Selectors : League.Strings.Universal_String)
+     Selectors : WebAPI.DOM_String)
        return WebAPI.DOM.Elements.Element_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Method,
@@ -114,7 +112,7 @@ package WebAPI.DOM.Parent_Nodes is
 
    not overriding function Query_Selector_All
     (Self      : not null access constant Parent_Node;
-     Selectors : League.Strings.Universal_String)
+     Selectors : WebAPI.DOM_String)
        return WebAPI.DOM.Node_Lists.Node_List is abstract
          with Import        => True,
               Convention    => JavaScript_Method,

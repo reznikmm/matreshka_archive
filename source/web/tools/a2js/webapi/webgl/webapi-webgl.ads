@@ -45,6 +45,6 @@
 
 package WebAPI.WebGL is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 end WebAPI.WebGL;

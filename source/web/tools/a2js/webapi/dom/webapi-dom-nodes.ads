@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface Node.
 ------------------------------------------------------------------------------
-with League.Strings;
-
 limited with WebAPI.DOM.Documents;
 limited with WebAPI.DOM.Elements;
 with WebAPI.DOM.Event_Targets;
@@ -76,11 +74,10 @@ package WebAPI.DOM.Nodes is
    --    readonly attribute unsigned short nodeType;
 
    not overriding function Get_Node_Name
-    (Self : not null access constant Node)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "nodeName";
+    (Self : not null access constant Node) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "nodeName";
    --  Returns a string appropriate for the type of node, as follows:
    --
    --    Element
@@ -99,11 +96,10 @@ package WebAPI.DOM.Nodes is
    --      "#document-fragment". 
 
    not overriding function Get_Base_URI
-    (Self : not null access constant Node)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "baseURI";
+    (Self : not null access constant Node) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "baseURI";
    --  Returns the base URL.
 
    not overriding function Get_Owner_Document
@@ -180,11 +176,10 @@ package WebAPI.DOM.Nodes is
    --  Returns the next sibling.
 
    not overriding function Get_Node_Value
-    (Self : not null access constant Node)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "nodeValue";
+    (Self : not null access constant Node) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "nodeValue";
    --  The nodeValue attribute must return the following, depending on the
    --  context object:
    --
@@ -200,10 +195,10 @@ package WebAPI.DOM.Nodes is
 
    not overriding procedure Set_Node_Value
     (Self : not null access Node;
-     To   : League.Strings.Universal_String) is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Setter,
-              Link_Name  => "nodeValue";
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "nodeValue";
    --  The nodeValue attribute must, on setting, if the new value is null, act
    --  as if it was the empty string instead, and then do as described below,
    --  depending on the context object:
@@ -220,12 +215,12 @@ package WebAPI.DOM.Nodes is
    --      Do nothing.
 
    not overriding function Get_Text_Content
-    (Self : not null access constant Node)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "textContent";
-   --  The textContent attribute must return the following, depending on the context object:
+    (Self : not null access constant Node) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "textContent";
+   --  The textContent attribute must return the following, depending on the
+   --  context object:
    --
    --    DocumentFragment
    --    Element
@@ -245,10 +240,10 @@ package WebAPI.DOM.Nodes is
 
    not overriding procedure Set_Text_Content
     (Self : not null access Node;
-     To   : League.Strings.Universal_String) is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Setter,
-              Link_Name  => "textContent";
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "textContent";
    --  The textContent attribute must, on setting, if the new value is null,
    --  act as if it was the empty string instead, and then do as described
    --  below, depending on the context object:
@@ -319,11 +314,10 @@ package WebAPI.DOM.Nodes is
 
    not overriding function Lookup_Prefix
     (Self          : not null access constant Node;
-     Namespace_URI : League.Strings.Universal_String)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Method,
-              Link_Name  => "lookupPrefix";
+     Namespace_URI : WebAPI.DOM_String) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "lookupPrefix";
    --  The lookupPrefix(namespace) method must run these steps:
    --
    --   1. If namespace is null or the empty string, return null.
@@ -352,11 +346,10 @@ package WebAPI.DOM.Nodes is
 
    not overriding function Lookup_Namespace_URI
     (Self   : not null access constant Node;
-     Prefix : League.Strings.Universal_String)
-       return League.Strings.Universal_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Method,
-              Link_Name  => "lookupNamespaceURI";
+     Prefix : WebAPI.DOM_String) return WebAPI.DOM_String is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "lookupNamespaceURI";
    --  The lookupNamespaceURI(prefix) method must run these steps:
    --
    --   1. If prefix is the empty string, set it to null.
@@ -366,11 +359,10 @@ package WebAPI.DOM.Nodes is
 
    not overriding function Is_Default_Namespace
     (Self          : not null access constant Node;
-     Namespace_URI : League.Strings.Universal_String)
-       return Boolean is abstract
-         with Import     => True,
-              Convention => JavaScript_Method,
-              Link_Name  => "isDefaultNamespace";
+     Namespace_URI : WebAPI.DOM_String) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "isDefaultNamespace";
    --  The isDefaultNamespace(namespace) method must run these steps:
    --
    --   1. If namespace is the empty string, set it to null.
@@ -401,10 +393,11 @@ package WebAPI.DOM.Nodes is
 
    not overriding function Append_Child
     (Self : not null access Node;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class) return Node_Access is abstract
-       with Import     => True,
-            Convention => JavaScript_Method,
-            Link_Name  => "appendChild";
+     Node : not null access WebAPI.DOM.Nodes.Node'Class)
+       return Node_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "appendChild";
    procedure Append_Child
     (Self : not null access Node'Class;
      Node : not null access WebAPI.DOM.Nodes.Node'Class)
@@ -434,10 +427,11 @@ package WebAPI.DOM.Nodes is
 
    not overriding function Remove_Child
     (Self : not null access Node;
-     Node : not null access WebAPI.DOM.Nodes.Node'Class) return Node_Access is abstract
-       with Import     => True,
-            Convention => JavaScript_Method,
-            Link_Name  => "removeChild";
+     Node : not null access WebAPI.DOM.Nodes.Node'Class)
+       return Node_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "removeChild";
    procedure Remove_Child
     (Self : not null access Node'Class;
      Node : not null access WebAPI.DOM.Nodes.Node'Class)

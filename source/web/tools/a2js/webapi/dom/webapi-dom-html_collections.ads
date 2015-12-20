@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface HTMLCollection.
 ------------------------------------------------------------------------------
-with League.Strings;
-
 limited with WebAPI.DOM.Elements;
 
 package WebAPI.DOM.HTML_Collections is
@@ -78,11 +76,10 @@ package WebAPI.DOM.HTML_Collections is
 
    function Named_Item
     (Self : HTML_Collection'Class;
-     Name : League.Strings.Universal_String)
-       return WebAPI.DOM.Elements.Element_Access
-         with Import        => True,
-              Convention    => JavaScript_Getter,
-              External_Name => "namedItem";
+     Name : WebAPI.DOM_String) return WebAPI.DOM.Elements.Element_Access
+       with Import        => True,
+            Convention    => JavaScript_Getter,
+            External_Name => "namedItem";
    --  Returns the first element with ID or name name from the collection.
    --
    --  The namedItem(key) method must run these steps:
@@ -100,8 +97,8 @@ package WebAPI.DOM.HTML_Collections is
 
    function Item
     (Self : HTML_Collection'Class;
-     Name : League.Strings.Universal_String)
-       return WebAPI.DOM.Elements.Element_Access renames Named_Item;
+     Name : WebAPI.DOM_String) return WebAPI.DOM.Elements.Element_Access
+       renames Named_Item;
    --  To allow Ada compiler to resolve constant indexing.
 
 private

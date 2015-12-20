@@ -43,9 +43,13 @@
 ------------------------------------------------------------------------------
 --  This is root package to represent different Web API accessible to Ada
 --  application.
+------------------------------------------------------------------------------
+with League.Strings;
 
 package WebAPI is
 
-   pragma Pure;
+   pragma Preelaborate;
+
+   subtype DOM_String is League.Strings.Universal_String;
 
 end WebAPI;

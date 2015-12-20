@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding to interface Document.
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with WebAPI.DOM.Comments;
 with WebAPI.DOM.Document_Fragments;
 with WebAPI.DOM.Document_Types;
@@ -73,7 +71,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_URL
     (Self : not null access constant Document)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "URL";
@@ -81,7 +79,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Document_URI
     (Self : not null access constant Document)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "documentURI";
@@ -89,7 +87,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Compat_Mode
     (Self : not null access constant Document)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "compatMode";
@@ -98,7 +96,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Character_Set
     (Self : not null access constant Document)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "characterSet";
@@ -106,7 +104,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Content_Type
     (Self : not null access constant Document)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "contentType";
@@ -130,7 +128,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Elements_By_Tag_Name
     (Self       : not null access constant Document;
-     Local_Name : League.Strings.Universal_String)
+     Local_Name : WebAPI.DOM_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
          with Import     => True,
               Convention => JavaScript_Function,
@@ -143,8 +141,8 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Elements_By_Tag_Name_NS
     (Self          : not null access constant Document;
-     Namespace_URI : League.Strings.Universal_String;
-     Local_Name    : League.Strings.Universal_String)
+     Namespace_URI : WebAPI.DOM_String;
+     Local_Name    : WebAPI.DOM_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
          with Import     => True,
               Convention => JavaScript_Function,
@@ -163,7 +161,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Get_Elements_By_Class_Name
     (Self        : not null access constant Document;
-     Class_Names : League.Strings.Universal_String)
+     Class_Names : WebAPI.DOM_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
          with Import     => True,
               Convention => JavaScript_Function,
@@ -177,7 +175,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Create_Element
     (Self       : not null access Document;
-     Local_Name : League.Strings.Universal_String)
+     Local_Name : WebAPI.DOM_String)
        return not null WebAPI.DOM.Elements.Element_Access is abstract
          with Import     => True,
               Convention => JavaScript_Method,
@@ -190,8 +188,8 @@ package WebAPI.DOM.Documents is
 
    not overriding function Create_Element_NS
     (Self           : not null access Document;
-     Namespace_URI  : League.Strings.Universal_String;
-     Qialified_Name : League.Strings.Universal_String)
+     Namespace_URI  : WebAPI.DOM_String;
+     Qialified_Name : WebAPI.DOM_String)
        return not null WebAPI.DOM.Elements.Element_Access is abstract
          with Import     => True,
               Convention => JavaScript_Method,
@@ -226,7 +224,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Create_Text_Node
     (Self : not null access Document;
-     Data : League.Strings.Universal_String)
+     Data : WebAPI.DOM_String)
        return not null WebAPI.DOM.Texts.Text_Access is abstract
          with Import     => True,
               Convention => JavaScript_Method,
@@ -235,7 +233,7 @@ package WebAPI.DOM.Documents is
 
    not overriding function Create_Comment
     (Self : not null access Document;
-     Data : League.Strings.Universal_String)
+     Data : WebAPI.DOM_String)
        return WebAPI.DOM.Comments.Comment_Access is abstract
          with Import     => True,
               Convention => JavaScript_Method,
@@ -244,8 +242,8 @@ package WebAPI.DOM.Documents is
 
    not overriding function Create_Processing_Instruction
     (Self   : not null access Document;
-     Target : League.Strings.Universal_String;
-     Data   : League.Strings.Universal_String)
+     Target : WebAPI.DOM_String;
+     Data   : WebAPI.DOM_String)
        return WebAPI.DOM.Processing_Instructions.Processing_Instruction_Access
          is abstract
            with Import     => True,

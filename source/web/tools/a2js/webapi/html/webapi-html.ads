@@ -45,6 +45,6 @@
 
 package WebAPI.HTML is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 end WebAPI.HTML;

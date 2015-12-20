@@ -44,7 +44,6 @@
 --  This package provides binding to interface Event as defined by DOM Level 4
 --  specification.
 ------------------------------------------------------------------------------
-with League.Strings;
 limited with WebAPI.DOM.Event_Targets;
 
 package WebAPI.DOM.Events is
@@ -61,7 +60,7 @@ package WebAPI.DOM.Events is
 
    not overriding function Get_Event_Type
     (Self : not null access constant Event)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
               External_Name => "type";

@@ -46,6 +46,6 @@
 
 package WebAPI.DOM is
 
-   pragma Pure;
+   pragma Preelaborate;
 
 end WebAPI.DOM;
