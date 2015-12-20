@@ -50,12 +50,6 @@ package WebAPI.DOM.Events is
 
    pragma Preelaborate;
 
-   type Event_Phases is
-    (None,
-     Capturing_Phase,
-     At_Target,
-     Bubbling_Phase);
-
    type Event is limited interface;
 
    not overriding function Get_Event_Type

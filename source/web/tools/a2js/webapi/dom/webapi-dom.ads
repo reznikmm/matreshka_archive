@@ -48,4 +48,10 @@ package WebAPI.DOM is
 
    pragma Preelaborate;
 
+   type Event_Phases is
+    (None,
+     Capturing_Phase,
+     At_Target,
+     Bubbling_Phase);
+
 end WebAPI.DOM;
