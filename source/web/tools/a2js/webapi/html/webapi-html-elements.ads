@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with WebAPI.DOM.Elements;
 
 package WebAPI.HTML.Elements is
@@ -58,28 +56,28 @@ package WebAPI.HTML.Elements is
 
    not overriding function Get_Title
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "title";
 
    not overriding procedure Set_Title
     (Self : not null access HTML_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "title";
 
    not overriding function Get_Lang
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "lang";
 
    not overriding procedure Set_Lang
     (Self : not null access HTML_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "lang";
@@ -99,14 +97,14 @@ package WebAPI.HTML.Elements is
 
    not overriding function Get_Dir
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "dir";
 
    not overriding procedure Set_Dir
     (Self : not null access HTML_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "dir";
@@ -159,35 +157,35 @@ package WebAPI.HTML.Elements is
 
    not overriding function Get_Access_Key
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "accessKey";
 
    not overriding procedure Set_Access_Key
     (Self : not null access HTML_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "accessKey";
 
    not overriding function Get_Access_Key_Label
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "accessKeyLabel";
 
    not overriding function Get_Content_Editable
     (Self : not null access constant HTML_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "contentEditable";
 
    not overriding procedure Set_Content_Editable
     (Self : not null access HTML_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "contentEditable";

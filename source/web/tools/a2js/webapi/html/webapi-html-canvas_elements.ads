@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 --  This package provides binding for interface HTMLCanvasElement.
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with WebAPI.HTML.Elements;
 with WebAPI.HTML.Rendering_Contexts;
 
@@ -88,7 +86,7 @@ package WebAPI.HTML.Canvas_Elements is
 
    not overriding function Get_Context
     (Self       : not null access HTML_Canvas_Element;
-     Context_Id : League.Strings.Universal_String)
+     Context_Id : WebAPI.DOM_String)
        return WebAPI.HTML.Rendering_Contexts.Rendering_Context_Access
          is abstract
            with Import         => True,
@@ -110,7 +108,7 @@ package WebAPI.HTML.Canvas_Elements is
 
    not overriding function Probably_Supports_Context
     (Self       : not null access HTML_Canvas_Element;
-     Context_Id : League.Strings.Universal_String) return Boolean is abstract
+     Context_Id : WebAPI.DOM_String) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Method,
             External_Name => "probablySupportsContext";

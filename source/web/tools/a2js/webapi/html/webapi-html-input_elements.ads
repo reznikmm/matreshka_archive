@@ -41,8 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Strings;
-
 with WebAPI.HTML.Elements;
 
 package WebAPI.HTML.Input_Elements is
@@ -63,42 +61,42 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Accept
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "accept";
 
    not overriding procedure Set_Accept
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "accept";
 
    not overriding function Get_Alt
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "alt";
 
    not overriding procedure Set_Alt
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "alt";
 
    not overriding function Get_Autocomplete
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "autocomplete";
 
    not overriding procedure Set_Autocomplete
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "autocomplete";
@@ -147,14 +145,14 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Dir_Name
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "dirName";
 
    not overriding procedure Set_Dir_Name
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "dirName";
@@ -175,42 +173,42 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Form_Action
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "formAction";
 
    not overriding procedure Set_Form_Action
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "formAction";
 
    not overriding function Get_Form_Enctype
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "formEnctype";
 
    not overriding procedure Set_Form_Enctype
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "formEnctype";
 
    not overriding function Get_Form_Method
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "formMethod";
 
    not overriding procedure Set_Form_Method
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "formMethod";
@@ -231,14 +229,14 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Form_Target
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "formTarget";
 
    not overriding procedure Set_Form_Target
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "formTarget";
@@ -249,14 +247,14 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Max
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "max";
 
    not overriding procedure Set_Max
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "max";
@@ -328,14 +326,14 @@ package WebAPI.HTML.Input_Elements is
 
    not overriding function Get_Value
     (Self : not null access constant HTML_Input_Element)
-       return League.Strings.Universal_String is abstract
+       return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "value";
 
    not overriding procedure Set_Value
     (Self : not null access constant HTML_Input_Element;
-     To   : League.Strings.Universal_String) is abstract
+     To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "value";
