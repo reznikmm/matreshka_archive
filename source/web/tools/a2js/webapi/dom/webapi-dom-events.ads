@@ -81,7 +81,7 @@ package WebAPI.DOM.Events is
 
    not overriding function Get_Event_Phase
     (Self : not null access constant Event)
-       return Event_Phases is abstract
+       return WebAPI.DOM.Event_Phases is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
               External_Name => "eventPhase";
@@ -110,20 +110,18 @@ package WebAPI.DOM.Events is
    --  a tree, also prevents event from reaching any other objects. 
 
    not overriding function Bubbles
-    (Self : not null access constant Event)
-       return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "bubbles";
+    (Self : not null access constant Event) return Boolean is abstract
+       with Import        => True,
+            Convention    => JavaScript_Property_Getter,
+            External_Name => "bubbles";
    --  Used to indicate whether or not an event is a bubbling event. If the
    --  event can bubble the value is true, else the value is false.
 
    not overriding function Cancelable
-    (Self : not null access constant Event)
-       return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "cancelable";
+    (Self : not null access constant Event) return Boolean is abstract
+       with Import        => True,
+            Convention    => JavaScript_Property_Getter,
+            External_Name => "cancelable";
    --  Used to indicate whether or not an event can have its default action
    --  prevented. If the default action can be prevented the value is true,
    --  else the value is false.
@@ -144,20 +142,18 @@ package WebAPI.DOM.Events is
    --  used during any stage of event flow.
 
    not overriding function Get_Default_Prevented
-    (Self : not null access constant Event)
-       return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "defaultPrevented";
+    (Self : not null access constant Event) return Boolean is abstract
+       with Import        => True,
+            Convention    => JavaScript_Property_Getter,
+            External_Name => "defaultPrevented";
    --  Returns true if preventDefault() was invoked while the cancelable
    --  attribute value is true, and false otherwise.
 
    not overriding function Get_Is_Trusted
-    (Self : not null access constant Event)
-       return Boolean is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              External_Name => "isTrusted";
+    (Self : not null access constant Event) return Boolean is abstract
+       with Import        => True,
+            Convention    => JavaScript_Property_Getter,
+            External_Name => "isTrusted";
    --  Returns true if event was dispatched by the user agent, and false
    --  otherwise.
 
