@@ -365,7 +365,10 @@ package body Properties.Tools is
          begin
             for J in List'Range loop
                if Asis.Elements.Declaration_Kind (List (J)) in
-                    Asis.A_Procedure_Declaration | Asis.A_Function_Declaration
+                     Asis.A_Procedure_Declaration
+                   | Asis.A_Null_Procedure_Declaration
+                   | Asis.A_Function_Declaration
+                   | Asis.An_Expression_Function_Declaration
                  and then Is_Primitive_Subprogram (Definition, List (J))
                then
                   Last := Last + 1;

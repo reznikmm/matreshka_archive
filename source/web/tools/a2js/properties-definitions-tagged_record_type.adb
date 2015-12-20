@@ -54,6 +54,7 @@ package body Properties.Definitions.Tagged_Record_Type is
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration) return Boolean;
 
+   function Is_Null_Procedure (Decl : Asis.Declaration) return Boolean;
    ----------
    -- Code --
    ----------
@@ -220,7 +221,8 @@ package body Properties.Definitions.Tagged_Record_Type is
       begin
          for J in List'Range loop
             if Asis.Declarations.Is_Dispatching_Operation (List (J))
-              and then Asis.Elements.Has_Abstract (List (J))
+              and then (Asis.Elements.Has_Abstract (List (J))
+                        or else Is_Null_Procedure (List (J)))
             then
                Result.Append ("_ec.");
                Result.Append (Name_Image);
@@ -229,7 +231,12 @@ package body Properties.Definitions.Tagged_Record_Type is
                  (Engine.Text.Get_Property
                     (Asis.Declarations.Names (List (J)) (1),
                      Engines.Method_Name));
-               Result.Append (" = _ec._abstract;");
+
+               if Is_Null_Procedure (List (J)) then
+                  Result.Append (" = {};");
+               else
+                  Result.Append (" = _ec._abstract;");
+               end if;
             end if;
          end loop;
       end;
@@ -275,6 +282,16 @@ package body Properties.Definitions.Tagged_Record_Type is
 
       return Result;
    end Initialize;
+
+   -----------------------
+   -- Is_Null_Procedure --
+   -----------------------
+
+   function Is_Null_Procedure (Decl : Asis.Declaration) return Boolean is
+   begin
+      return Asis.Elements.Declaration_Kind (Decl) in
+        Asis.A_Null_Procedure_Declaration;
+   end Is_Null_Procedure;
 
    --------------------
    -- Is_Simple_Type --
