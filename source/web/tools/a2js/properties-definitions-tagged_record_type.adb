@@ -233,7 +233,7 @@ package body Properties.Definitions.Tagged_Record_Type is
                      Engines.Method_Name));
 
                if Is_Null_Procedure (List (J)) then
-                  Result.Append (" = {};");
+                  Result.Append (" = function (){};");
                else
                   Result.Append (" = _ec._abstract;");
                end if;
