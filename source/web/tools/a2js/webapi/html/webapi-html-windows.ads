@@ -45,6 +45,8 @@ with WebAPI.HTML.Documents;
 
 package WebAPI.HTML.Windows is
 
+   pragma Preelaborate;
+
    type Window is limited interface;
 
    type Window_Access is access all Window'Class
