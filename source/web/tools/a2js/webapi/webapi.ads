@@ -44,6 +44,8 @@
 --  This is root package to represent different Web API accessible to Ada
 --  application.
 ------------------------------------------------------------------------------
+with Interfaces;
+
 with League.Calendars;
 with League.Strings;
 
@@ -54,5 +56,9 @@ package WebAPI is
    subtype DOM_String is League.Strings.Universal_String;
 
    subtype DOM_Time_Stamp is League.Calendars.Date_Time;
+
+   subtype DOM_Unsigned_Short is Interfaces.Unsigned_16;
+
+   subtype DOM_Double is Interfaces.IEEE_Float_64;
 
 end WebAPI;
