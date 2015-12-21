@@ -131,7 +131,7 @@ package WebAPI.UI_Events.Keyboard is
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-   External_Name => "isComposing";
+            External_Name => "isComposing";
    --  True if the key event occurs as part of a composition session, i.e.,
    --  after a compositionstart event and before the corresponding
    --  compositionend event.
@@ -140,11 +140,52 @@ package WebAPI.UI_Events.Keyboard is
     (Self    : not null access constant Keyboard_Event;
      Key_Arg : WebAPI.DOM_String) return Boolean is abstract
        with Import        => True,
-            Convention    => JavaScript_Property_Getter,
+            Convention    => JavaScript_Property_Method,
             External_Name => "getModifierState";
    --  Queries the state of a modifier using a key value.
    --
    --  Returns true if it is a modifier key and the modifier is activated,
    --  false otherwise.
+
+   ----------------
+   -- Legacy API --
+   ----------------
+
+   not overriding function Get_Char_Code
+    (Self : not null access constant Keyboard_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import        => True,
+              Convention    => JavaScript_Property_Getter,
+              External_Name => "charCode";
+   --  charCode holds a character value, for keypress events which generate
+   --  character input. The value is the Unicode reference number (code point)
+   --  of that character (e.g. event.charCode = event.key.charCodeAt(0) for
+   --  printable characters). For keydown or keyup events, the value of
+   --  charCode is 0.
+
+   not overriding function Get_Key_Code
+    (Self : not null access constant Keyboard_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import        => True,
+              Convention    => JavaScript_Property_Getter,
+              External_Name => "keyCode";
+   --  keyCode holds a system- and implementation-dependent numerical code
+   --  signifying the unmodified identifier associated with the key pressed.
+   --  Unlike the KeyboardEvent.key attribute, the set of possible values are
+   --  not normatively defined in this specification. Typically, these value of
+   --  the keyCode SHOULD represent the decimal codepoint in ASCII
+   --  [RFC20][US-ASCII] or Windows 1252 [WIN1252], but MAY be drawn from a
+   --  different appropriate character set. Implementations that are unable to
+   --  identify a key use the key value '0'.
+
+   not overriding function Get_Which
+    (Self : not null access constant Keyboard_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import        => True,
+              Convention    => JavaScript_Property_Getter,
+              External_Name => "which";
+   --  which holds a system- and implementation-dependent numerical code
+   --  signifying the unmodified identifier associated with the key pressed. In
+   --  most cases, the value is identical to keyCode.
 
 end WebAPI.UI_Events.Keyboard;

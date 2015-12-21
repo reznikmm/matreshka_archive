@@ -59,6 +59,11 @@ package WebAPI is
 
    subtype DOM_Unsigned_Short is Interfaces.Unsigned_16;
 
+   subtype DOM_Long is Integer;
+
    subtype DOM_Double is Interfaces.IEEE_Float_64;
+
+   function To_DOM_String (Item : Wide_Wide_String) return DOM_String
+     renames League.Strings.To_Universal_String;
 
 end WebAPI;
