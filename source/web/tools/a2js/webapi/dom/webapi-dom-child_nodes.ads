@@ -54,7 +54,7 @@ package WebAPI.DOM.Child_Nodes is
     (Self : not null access Child_Node) is abstract
        with Import        => True,
             Convention    => JavaScript_Method,
-            External_Name => "remove";
+            Link_Name     => "remove";
    --  Removes node.
    --
    --  The remove() method must run these steps:

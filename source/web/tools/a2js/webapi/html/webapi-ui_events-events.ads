@@ -56,7 +56,7 @@ package WebAPI.UI_Events.Events is
        return WebAPI.HTML.Windows.Window_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "view";
+              Link_Name     => "view";
    --  The view attribute identifies the Window from which the event was
    --  generated.
 
@@ -64,7 +64,7 @@ package WebAPI.UI_Events.Events is
     (Self : not null access constant UI_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "detail";
+            Link_Name     => "detail";
    --  Specifies some detail information about the Event, depending on the type
    --  of event.
 

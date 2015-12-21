@@ -56,7 +56,7 @@ package WebAPI.UI_Events.Focus is
        return WebAPI.DOM.Event_Targets.Event_Target_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "relatedTarget";
+              Link_Name     => "relatedTarget";
    --  Used to identify a secondary EventTarget related to a Focus event,
    --  depending on the type of event.
 

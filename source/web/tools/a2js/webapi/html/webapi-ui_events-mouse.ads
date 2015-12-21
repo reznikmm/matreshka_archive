@@ -55,7 +55,7 @@ package WebAPI.UI_Events.Mouse is
     (Self : not null access constant Mouse_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "screenX";
+            Link_Name     => "screenX";
    --  The horizontal coordinate at which the event occurred relative to the
    --  origin of the screen coordinate system.
 
@@ -63,7 +63,7 @@ package WebAPI.UI_Events.Mouse is
     (Self : not null access constant Mouse_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "screenY";
+            Link_Name     => "screenY";
    --  The vertical coordinate at which the event occurred relative to the
    --  origin of the screen coordinate system.
 
@@ -71,7 +71,7 @@ package WebAPI.UI_Events.Mouse is
     (Self : not null access constant Mouse_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "clientX";
+            Link_Name     => "clientX";
    --  The horizontal coordinate at which the event occurred relative to the
    --  viewport associated with the event.
 
@@ -79,7 +79,7 @@ package WebAPI.UI_Events.Mouse is
     (Self : not null access constant Mouse_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "clientY";
+            Link_Name     => "clientY";
    --  The vertical coordinate at which the event occurred relative to the
    --  viewport associated with the event.
 
@@ -87,35 +87,35 @@ package WebAPI.UI_Events.Mouse is
     (Self : not null access constant Mouse_Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "ctrlKey";
+            Link_Name     => "ctrlKey";
    --  True if the 'Control' (control) key modifier was active.
 
    not overriding function Get_Shift_Key
     (Self : not null access constant Mouse_Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "shiftKey";
+            Link_Name     => "shiftKey";
    --  True if the shift ('Shift') key modifier was active.
 
    not overriding function Get_Alt_Key
     (Self : not null access constant Mouse_Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "altKey";
+            Link_Name     => "altKey";
    --  True if the 'Alt' (alternative) (or 'Option') key modifier was active.
 
    not overriding function Get_Meta_Key
     (Self : not null access constant Mouse_Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "metaKey";
+            Link_Name     => "metaKey";
    --  True if the meta ('Meta') key modifier was active.
 
    not overriding function Get_Button
     (Self : not null access constant Mouse_Event) return Integer is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "button";
+            Link_Name     => "button";
    --  During mouse events caused by the depression or release of a mouse
    --  button, button MUST be used to indicate which pointer device button
    --  changed state.
@@ -125,7 +125,7 @@ package WebAPI.UI_Events.Mouse is
        return WebAPI.DOM.Event_Targets.Event_Target_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "relatedTarget";
+              Link_Name     => "relatedTarget";
    --  Used to identify a secondary EventTarget related to a UI event,
    --  depending on the type of event.
 
@@ -134,7 +134,7 @@ package WebAPI.UI_Events.Mouse is
        return WebAPI.DOM_Unsigned_Short is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "buttons";
+              Link_Name     => "buttons";
    --  During any mouse events, buttons MUST be used to indicate which
    --  combination of mouse buttons are currently being pressed, expressed as a
    --  bitmask.
@@ -144,7 +144,7 @@ package WebAPI.UI_Events.Mouse is
      Key_Arg : WebAPI.DOM_String) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "getModifierState";
+            Link_Name     => "getModifierState";
    --  Queries the state of a modifier using a key value.
    --
    --  Returns true if it is a modifier key and the modifier is activated,

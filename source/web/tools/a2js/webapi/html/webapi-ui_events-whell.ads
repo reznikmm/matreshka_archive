@@ -57,7 +57,7 @@ package WebAPI.UI_Events.Wheel is
        return WebAPI.DOM_Double is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "deltaX";
+              Link_Name     => "deltaX";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the x-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -69,7 +69,7 @@ package WebAPI.UI_Events.Wheel is
        return WebAPI.DOM_Double is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "deltaY";
+              Link_Name     => "deltaY";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the y-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -81,7 +81,7 @@ package WebAPI.UI_Events.Wheel is
        return WebAPI.DOM_Double is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "deltaZ";
+              Link_Name     => "deltaZ";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the z-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -93,7 +93,7 @@ package WebAPI.UI_Events.Wheel is
        return Delta_Modes is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "deltaMode";
+              Link_Name     => "deltaMode";
    --  The deltaMode attribute contains an indication of the units of
    --  measurement for the delta values.
 

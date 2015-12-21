@@ -57,7 +57,7 @@ package WebAPI.DOM.Events is
        return WebAPI.DOM_String is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "type";
+              Link_Name     => "type";
    --  The name of the event (case-insensitive). The name must be an XML name.
 
    not overriding function Get_Target
@@ -65,7 +65,7 @@ package WebAPI.DOM.Events is
        return WebAPI.DOM.Event_Targets.Event_Target_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "target";
+              Link_Name     => "target";
    --  Used to indicate the EventTarget to which the event was originally
    --  dispatched.
 
@@ -74,7 +74,7 @@ package WebAPI.DOM.Events is
        return WebAPI.DOM.Event_Targets.Event_Target_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "currentTarget";
+              Link_Name     => "currentTarget";
    --  Used to indicate the EventTarget whose EventListeners are currently
    --  being processed. This is particularly useful during capturing and
    --  bubbling.
@@ -84,7 +84,7 @@ package WebAPI.DOM.Events is
        return WebAPI.DOM.Event_Phases is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "eventPhase";
+              Link_Name     => "eventPhase";
    --  Returns the event's phase, which is one of NONE, CAPTURING_PHASE,
    --  AT_TARGET, and BUBBLING_PHASE.
 
@@ -92,7 +92,7 @@ package WebAPI.DOM.Events is
     (Self : not null access Event) is abstract
        with Import        => True,
             Convention    => JavaScript_Method,
-            External_Name => "stopPropagation";
+            Link_Name     => "stopPropagation";
    --  The stopPropagation method is used prevent further propagation of an
    --  event during event flow. If this method is called by any EventListener
    --  the event will cease propagating through the tree. The event will
@@ -104,7 +104,7 @@ package WebAPI.DOM.Events is
     (Self : not null access Event) is abstract
        with Import        => True,
             Convention    => JavaScript_Method,
-            External_Name => "stopImmediatePropagation()";
+            Link_Name     => "stopImmediatePropagation()";
    --  Invoking this method prevents event from reaching any registered event
    --  listeners after the current one finishes running and, when dispatched in
    --  a tree, also prevents event from reaching any other objects. 
@@ -113,7 +113,7 @@ package WebAPI.DOM.Events is
     (Self : not null access constant Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "bubbles";
+            Link_Name     => "bubbles";
    --  Used to indicate whether or not an event is a bubbling event. If the
    --  event can bubble the value is true, else the value is false.
 
@@ -121,7 +121,7 @@ package WebAPI.DOM.Events is
     (Self : not null access constant Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "cancelable";
+            Link_Name     => "cancelable";
    --  Used to indicate whether or not an event can have its default action
    --  prevented. If the default action can be prevented the value is true,
    --  else the value is false.
@@ -130,7 +130,7 @@ package WebAPI.DOM.Events is
     (Self : not null access Event) is abstract
        with Import        => True,
             Convention    => JavaScript_Method,
-            External_Name => "preventDefault";
+            Link_Name     => "preventDefault";
    --  If an event is cancelable, the preventDefault method is used to signify
    --  that the event is to be canceled, meaning any default action normally
    --  taken by the implementation as a result of the event will not occur.
@@ -145,7 +145,7 @@ package WebAPI.DOM.Events is
     (Self : not null access constant Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "defaultPrevented";
+            Link_Name     => "defaultPrevented";
    --  Returns true if preventDefault() was invoked while the cancelable
    --  attribute value is true, and false otherwise.
 
@@ -153,7 +153,7 @@ package WebAPI.DOM.Events is
     (Self : not null access constant Event) return Boolean is abstract
        with Import        => True,
             Convention    => JavaScript_Property_Getter,
-            External_Name => "isTrusted";
+            Link_Name     => "isTrusted";
    --  Returns true if event was dispatched by the user agent, and false
    --  otherwise.
 
@@ -162,7 +162,7 @@ package WebAPI.DOM.Events is
        return WebAPI.DOM_Time_Stamp is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "timeStamp";
+              Link_Name     => "timeStamp";
    --  Returns the creation time of event as the number of milliseconds that
    --  passed since 00:00:00 UTC on 1 January 1970.
 

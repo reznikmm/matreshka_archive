@@ -56,7 +56,7 @@ package WebAPI.DOM.Non_Document_Type_Child_Nodes is
        return WebAPI.DOM.Elements.Element_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "previousElementSibling";
+              Link_Name     => "previousElementSibling";
    --  Returns the first preceding sibling that is an element, and null
    --  otherwise.
    --
@@ -68,7 +68,7 @@ package WebAPI.DOM.Non_Document_Type_Child_Nodes is
        return WebAPI.DOM.Elements.Element_Access is abstract
          with Import        => True,
               Convention    => JavaScript_Property_Getter,
-              External_Name => "nextElementSibling";
+              Link_Name     => "nextElementSibling";
    --  Returns the first following sibling that is an element, and null
    --  otherwise.
    --
