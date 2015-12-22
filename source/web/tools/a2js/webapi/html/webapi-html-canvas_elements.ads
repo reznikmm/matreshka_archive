@@ -59,39 +59,39 @@ package WebAPI.HTML.Canvas_Elements is
    not overriding function Get_Width
     (Self : not null access constant HTML_Canvas_Element)
        return Natural is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "width";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "width";
 
    not overriding procedure Set_Width
     (Self : not null access HTML_Canvas_Element;
      To   : Natural) is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Setter,
-            Link_Name     => "width";
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "width";
 
    not overriding function Get_Height
     (Self : not null access constant HTML_Canvas_Element)
        return Natural is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "height";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "height";
 
    not overriding procedure Set_Height
     (Self : not null access HTML_Canvas_Element;
      To   : Natural) is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Setter,
-            Link_Name     => "height";
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "height";
 
    not overriding function Get_Context
     (Self       : not null access HTML_Canvas_Element;
      Context_Id : WebAPI.DOM_String)
        return WebAPI.HTML.Rendering_Contexts.Rendering_Context_Access
          is abstract
-           with Import         => True,
-                Convention     => JavaScript_Method,
-                Link_Name      => "getContext";
+           with Import     => True,
+                Convention => JavaScript_Method,
+                Link_Name  => "getContext";
    --  Returns an object that exposes an API for drawing on the canvas. The
    --  first argument specifies the desired API, either "2d" or "webgl".
    --  Subsequent arguments are handled by that API.
@@ -109,9 +109,9 @@ package WebAPI.HTML.Canvas_Elements is
    not overriding function Probably_Supports_Context
     (Self       : not null access HTML_Canvas_Element;
      Context_Id : WebAPI.DOM_String) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Method,
-            Link_Name     => "probablySupportsContext";
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "probablySupportsContext";
    --  Returns false if calling getContext() with the same arguments would
    --  definitely return null, and true otherwise.
    --

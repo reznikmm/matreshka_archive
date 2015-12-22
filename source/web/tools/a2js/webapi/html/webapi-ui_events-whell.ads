@@ -55,9 +55,9 @@ package WebAPI.UI_Events.Wheel is
    not overriding function Get_Delta_X
     (Self : not null access constant Wheel_Event)
        return WebAPI.DOM_Double is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "deltaX";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "deltaX";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the x-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -67,9 +67,9 @@ package WebAPI.UI_Events.Wheel is
    not overriding function Get_Delta_Y
     (Self : not null access constant Wheel_Event)
        return WebAPI.DOM_Double is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "deltaY";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "deltaY";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the y-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -79,9 +79,9 @@ package WebAPI.UI_Events.Wheel is
    not overriding function Get_Delta_Z
     (Self : not null access constant Wheel_Event)
        return WebAPI.DOM_Double is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "deltaZ";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "deltaZ";
    --  In user agents where the default action of the wheel event is to scroll,
    --  the value MUST be the measurement along the z-axis (in pixels, lines, or
    --  pages) to be scrolled in the case where the event is not cancelled.
@@ -91,9 +91,9 @@ package WebAPI.UI_Events.Wheel is
    not overriding function Get_Delta_Mode
     (Self : not null access constant Wheel_Event)
        return Delta_Modes is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "deltaMode";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "deltaMode";
    --  The deltaMode attribute contains an indication of the units of
    --  measurement for the delta values.
 

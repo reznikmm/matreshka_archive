@@ -55,9 +55,9 @@ package WebAPI.DOM.Node_Lists is
    function Item
     (Self  : Node_List'Class;
      Index : Positive) return WebAPI.DOM.Nodes.Node_Access
-       with Import        => True,
-            Convention    => JavaScript_Getter,
-            Link_Name     => "item";
+       with Import     => True,
+            Convention => JavaScript_Getter,
+            Link_Name  => "item";
    --  Returns the node with index index from the collection. The nodes are
    --  sorted in tree order.
    --
@@ -66,9 +66,9 @@ package WebAPI.DOM.Node_Lists is
    --  return null.
 
    function Length (Self : Node_List'Class) return Natural
-     with Import        => True,
-          Convention    => JavaScript_Property_Getter,
-          Link_Name     => "length";
+     with Import     => True,
+          Convention => JavaScript_Property_Getter,
+          Link_Name  => "length";
    --  Returns the number of nodes in the collection.
    --
    --  The length attribute must return the number of nodes represented by the

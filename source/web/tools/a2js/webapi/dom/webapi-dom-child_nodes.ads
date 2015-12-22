@@ -52,9 +52,9 @@ package WebAPI.DOM.Child_Nodes is
 
    not overriding procedure Remove
     (Self : not null access Child_Node) is abstract
-       with Import        => True,
-            Convention    => JavaScript_Method,
-            Link_Name     => "remove";
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "remove";
    --  Removes node.
    --
    --  The remove() method must run these steps:

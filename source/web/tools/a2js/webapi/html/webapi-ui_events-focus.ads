@@ -54,9 +54,9 @@ package WebAPI.UI_Events.Focus is
    not overriding function Get_Related_Target
     (Self : not null access constant Focus_Event)
        return WebAPI.DOM.Event_Targets.Event_Target_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "relatedTarget";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "relatedTarget";
    --  Used to identify a secondary EventTarget related to a Focus event,
    --  depending on the type of event.
 

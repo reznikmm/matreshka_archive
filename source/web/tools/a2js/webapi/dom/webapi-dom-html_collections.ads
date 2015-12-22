@@ -53,9 +53,9 @@ package WebAPI.DOM.HTML_Collections is
      with Constant_Indexing => Item;
 
    function Length (Self : HTML_Collection'Class) return Natural
-     with Import        => True,
-          Convention    => JavaScript_Property_Getter,
-          Link_Name     => "length";
+     with Import     => True,
+          Convention => JavaScript_Property_Getter,
+          Link_Name  => "length";
    --  Returns the number of elements in the collection.
    --
    --  The length attribute must return the number of nodes represented by the
@@ -64,9 +64,9 @@ package WebAPI.DOM.HTML_Collections is
    function Item
     (Self  : HTML_Collection'Class;
      Index : Positive) return WebAPI.DOM.Elements.Element_Access
-       with Import        => True,
-            Convention    => JavaScript_Getter,
-            Link_Name     => "item";
+       with Import     => True,
+            Convention => JavaScript_Getter,
+            Link_Name  => "item";
    --  Returns the element with index index from the collection. The elements
    --  are sorted in tree order.
    --
@@ -77,9 +77,9 @@ package WebAPI.DOM.HTML_Collections is
    function Named_Item
     (Self : HTML_Collection'Class;
      Name : WebAPI.DOM_String) return WebAPI.DOM.Elements.Element_Access
-       with Import        => True,
-            Convention    => JavaScript_Getter,
-            Link_Name     => "namedItem";
+       with Import     => True,
+            Convention => JavaScript_Getter,
+            Link_Name  => "namedItem";
    --  Returns the first element with ID or name name from the collection.
    --
    --  The namedItem(key) method must run these steps:

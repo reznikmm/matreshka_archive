@@ -55,9 +55,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Key
     (Self : not null access constant Keyboard_Event)
        return WebAPI.DOM_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "key";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "key";
    --  Key holds the key value of the key pressed. If the value is has a
    --  printed representation, it MUST be a non-empty Unicode character string,
    --  conforming to the algorithm for determining the key value defined in
@@ -70,9 +70,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Code
     (Self : not null access constant Keyboard_Event)
        return WebAPI.DOM_String is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "code";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "code";
    --  Code holds a string that identifies the physical key being pressed. The
    --  value is not affected by the current keyboard layout or modifier state,
    --  so a particular key will always return the same value.
@@ -80,45 +80,45 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Location
     (Self : not null access constant Keyboard_Event)
        return Key_Locations is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "location";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "location";
    --  The location attribute contains an indication of the logical location of
    --  the key on the device.
 
    not overriding function Get_Ctrl_Key
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "ctrlKey";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "ctrlKey";
    --  True if the 'Control' (control) key modifier was active.
 
    not overriding function Get_Shift_Key
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "shiftKey";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "shiftKey";
    --  True if the shift ('Shift') key modifier was active.
 
    not overriding function Get_Alt_Key
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "altKey";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "altKey";
    --  True if the 'Alt' (alternative) (or 'Option') key modifier was active.
 
    not overriding function Get_Meta_Key
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "metaKey";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "metaKey";
    --  True if the meta ('Meta') key modifier was active.
 
    not overriding function Get_Repeat
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "repeat";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "repeat";
    --  True if the key has been pressed in a sustained manner. Holding down a
    --  key MUST result in the repeating the events keydown, beforeedit, edit in
    --  this order, at a rate determined by the system configuration. For mobile
@@ -129,9 +129,9 @@ package WebAPI.UI_Events.Keyboard is
 
    not overriding function Get_Is_Composing
     (Self : not null access constant Keyboard_Event) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "isComposing";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "isComposing";
    --  True if the key event occurs as part of a composition session, i.e.,
    --  after a compositionstart event and before the corresponding
    --  compositionend event.
@@ -139,9 +139,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Modifier_State
     (Self    : not null access constant Keyboard_Event;
      Key_Arg : WebAPI.DOM_String) return Boolean is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Method,
-            Link_Name     => "getModifierState";
+       with Import     => True,
+            Convention => JavaScript_Property_Method,
+            Link_Name  => "getModifierState";
    --  Queries the state of a modifier using a key value.
    --
    --  Returns true if it is a modifier key and the modifier is activated,
@@ -154,9 +154,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Char_Code
     (Self : not null access constant Keyboard_Event)
        return WebAPI.DOM_Long is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "charCode";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "charCode";
    --  charCode holds a character value, for keypress events which generate
    --  character input. The value is the Unicode reference number (code point)
    --  of that character (e.g. event.charCode = event.key.charCodeAt(0) for
@@ -166,9 +166,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Key_Code
     (Self : not null access constant Keyboard_Event)
        return WebAPI.DOM_Long is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "keyCode";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "keyCode";
    --  keyCode holds a system- and implementation-dependent numerical code
    --  signifying the unmodified identifier associated with the key pressed.
    --  Unlike the KeyboardEvent.key attribute, the set of possible values are
@@ -181,9 +181,9 @@ package WebAPI.UI_Events.Keyboard is
    not overriding function Get_Which
     (Self : not null access constant Keyboard_Event)
        return WebAPI.DOM_Long is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "which";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "which";
    --  which holds a system- and implementation-dependent numerical code
    --  signifying the unmodified identifier associated with the key pressed. In
    --  most cases, the value is identical to keyCode.

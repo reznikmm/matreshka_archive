@@ -54,17 +54,17 @@ package WebAPI.UI_Events.Events is
    not overriding function Get_View
     (Self : not null access constant UI_Event)
        return WebAPI.HTML.Windows.Window_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "view";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "view";
    --  The view attribute identifies the Window from which the event was
    --  generated.
 
    not overriding function Get_Detail
     (Self : not null access constant UI_Event) return Integer is abstract
-       with Import        => True,
-            Convention    => JavaScript_Property_Getter,
-            Link_Name     => "detail";
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "detail";
    --  Specifies some detail information about the Event, depending on the type
    --  of event.
 

@@ -54,9 +54,9 @@ package WebAPI.DOM.Non_Document_Type_Child_Nodes is
    not overriding function Get_Previous_Element_Sibling
     (Self : not null access constant Non_Document_Type_Child_Node)
        return WebAPI.DOM.Elements.Element_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "previousElementSibling";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "previousElementSibling";
    --  Returns the first preceding sibling that is an element, and null
    --  otherwise.
    --
@@ -66,9 +66,9 @@ package WebAPI.DOM.Non_Document_Type_Child_Nodes is
    not overriding function Get_Next_Element_Sibling
     (Self : not null access constant Non_Document_Type_Child_Node)
        return WebAPI.DOM.Elements.Element_Access is abstract
-         with Import        => True,
-              Convention    => JavaScript_Property_Getter,
-              Link_Name     => "nextElementSibling";
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "nextElementSibling";
    --  Returns the first following sibling that is an element, and null
    --  otherwise.
    --
