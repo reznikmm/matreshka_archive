@@ -1251,7 +1251,8 @@ package body Tables is
       S_1'Access, S_1'Access, S_1'Access, S_1'Access,
       S_1'Access, S_1'Access, S_1'Access, S_1'Access);
 
-   Switch_Table : constant array (Valid_State, Character_Class) of State :=
+   Switch_Table : constant array (State range 0 .. 83,
+                                  Character_Class range 0 .. 19) of State :=
      (0 =>
         (1 | 19 => 1, 2 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
          15 | 16 | 17 | 18 => 2, 3 => 3, others => 84),
@@ -1480,8 +1481,7 @@ package body Tables is
         (1 | 2 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 17 =>
           74, 3 => 40, 18 => 71, 16 => 83, 19 => 80, others => 84));
 
-   Rule_Table : constant array (State) of
-     UAFLEX.Lexer_Types.Rule_Index :=
+   Rule_Table : constant array (State range 0 .. 83) of Rule_Index :=
      (1 => 7, 2 => 8, 3 => 9, 8 => 4, 9 => 6, 10 => 2,
       11 => 3, 13 => 5, 15 => 1, 21 => 18, 22 => 19, 24 => 17,
       26 => 10, 27 => 11, 28 => 12, 31 => 14, 32 => 14, 33 => 14,
@@ -1493,7 +1493,7 @@ package body Tables is
       73 => 14, 74 => 14, 76 => 14, 77 => 14, 79 => 14, 81 => 14,
       82 => 14, 83 => 14, others => 0);
 
-   function Rule (S : State) return UAFLEX.Lexer_Types.Rule_Index is
+   function Rule (S : State) return Rule_Index is
    begin
       return Rule_Table (S);
    end Rule;

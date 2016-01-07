@@ -94,6 +94,7 @@ package body UAFLEX.Generator.Tables is
       Scanner : League.Strings.Universal_String;
       Classes : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
    is
+      pragma Unreferenced (Types);
       procedure P (Text : Wide_Wide_String);
       procedure N (Text : Wide_Wide_String);
       procedure Print_Char_Classes;
@@ -271,8 +272,9 @@ package body UAFLEX.Generator.Tables is
             Count := Count + 1;
          end Each_Rule;
       begin
-         P ("   Rule_Table : constant array (State) of");
-         P ("     " & Types.To_Wide_Wide_String & ".Rule_Index :=");
+         P ("   Rule_Table : constant array (State range 0 .. " &
+              Image (Positive (DFA.Graph.Node_Count - 1)) &
+              ") of Rule_Index :=");
          DFA.Final.Iterate (Each_Rule'Access);
          P (", others => 0);");
          P ("");
@@ -281,7 +283,12 @@ package body UAFLEX.Generator.Tables is
       procedure Print_Switch is
       begin
          P ("   Switch_Table : constant array " &
-              "(Valid_State, Character_Class) of State :=");
+              "(State range 0 .. " &
+              Image (Positive (DFA.Graph.Node_Count - 1)) & ",");
+
+         P ("                                  Character_Class range 0 .. " &
+              Image (Positive (Classes.Length)) &
+              ") of State :=");
 
          for J in 1 .. DFA.Graph.Node_Count loop
             declare
@@ -371,8 +378,7 @@ package body UAFLEX.Generator.Tables is
       Print_Char_Classes;
       Print_Switch;
       Print_Rules;
-      P ("   function Rule (S : State) return " & Types.To_Wide_Wide_String &
-           ".Rule_Index is");
+      P ("   function Rule (S : State) return Rule_Index is");
       P ("   begin");
       P ("      return Rule_Table (S);");
       P ("   end Rule;");
