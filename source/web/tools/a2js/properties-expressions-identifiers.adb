@@ -371,6 +371,7 @@ package body Properties.Expressions.Identifiers is
                null;
 
             when Asis.An_Ordinary_Type_Declaration |
+                 Asis.A_Subtype_Declaration |  --  ???
                  Asis.A_Private_Type_Declaration |
                  Asis.A_Private_Extension_Declaration =>
                null;
@@ -387,6 +388,7 @@ package body Properties.Expressions.Identifiers is
                  Asis.A_Constant_Declaration |
                  Asis.A_Variable_Declaration |
                  Asis.An_Integer_Number_Declaration |
+                 Asis.A_Return_Variable_Specification |
                  Asis.A_Return_Constant_Specification =>
 
                exit when Is_Imported (Item);

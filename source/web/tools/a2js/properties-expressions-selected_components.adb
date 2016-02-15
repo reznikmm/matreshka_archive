@@ -106,6 +106,7 @@ package body Properties.Expressions.Selected_Components is
 
             when Asis.A_Function_Declaration |
                  Asis.A_Procedure_Declaration |
+                 Asis.A_Function_Instantiation |
                  Asis.A_Procedure_Instantiation |
                  Asis.A_Private_Extension_Declaration |
                  Asis.An_Enumeration_Literal_Specification |

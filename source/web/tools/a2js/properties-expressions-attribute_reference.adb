@@ -155,6 +155,22 @@ package body Properties.Expressions.Attribute_Reference is
 
                return Text;
             end;
+
+         when Asis.An_Implementation_Defined_Attribute =>
+            declare
+               Id : constant Asis.Identifier :=
+                 Asis.Expressions.Attribute_Designator_Identifier(Element);
+               Attr : constant Asis.Program_Text :=
+                 Asis.Expressions.Name_Image (Id);
+            begin
+               if Attr = "Unrestricted_Access" then
+                  return Engine.Text.Get_Property (Prefix, Engines.Address);
+               else
+                  raise Program_Error with
+                    "Unimplemented implementation defined attribute";
+               end if;
+            end;
+
          when others =>
             raise Program_Error with "Unimplemented attribute: " &
               Asis.Attribute_Kinds'Image (Kind);
