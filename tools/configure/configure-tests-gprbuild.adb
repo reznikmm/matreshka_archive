@@ -52,8 +52,8 @@ package body Configure.Tests.Gprbuild is
 
    Gprbuild_Name         : constant Unbounded_String := +"GPRBUILD";
    Has_Gprbuild2014_Name : constant Unbounded_String := +"HAS_GPRBUILD2014";
-   Gprls_Name            : constant Unbounded_String := +"GPRLS";
-   Has_Gprls_Name        : constant Unbounded_String := +"HAS_GPRLS";
+   Gprinstall_Name       : constant Unbounded_String := +"GPRINSTALL";
+   Has_Gprinstall_Name   : constant Unbounded_String := +"HAS_GPRINSTALL";
    --  This variable is introduced to support migration to GPL 2016. It can be
    --  removed when support of GPL 2015 will be lost.
 
@@ -67,10 +67,10 @@ package body Configure.Tests.Gprbuild is
    is
       use type GNAT.Strings.String_Access;
 
-      Gprbuild_Path : constant GNAT.Strings.String_Access
+      Gprbuild_Path   : constant GNAT.Strings.String_Access
         := GNAT.OS_Lib.Locate_Exec_On_Path ("gprbuild");
-      Gprls_Path    : constant GNAT.Strings.String_Access
-        := GNAT.OS_Lib.Locate_Exec_On_Path ("gprls");
+      Gprinstall_Path : constant GNAT.Strings.String_Access
+        := GNAT.OS_Lib.Locate_Exec_On_Path ("gprinstall");
 
    begin
       --  Check whether 'gprbuild' executable is available.
@@ -125,23 +125,23 @@ package body Configure.Tests.Gprbuild is
          end if;
       end;
 
-      --  Check whether 'gprls' executable is available.
+      --  Check whether 'gprinstall' executable is available.
 
-      Self.Report_Check ("looking for GPRls");
+      Self.Report_Check ("looking for GPRinstall");
 
-      if Gprls_Path = null then
-         --  Fallback to GNAT LS
+      if Gprinstall_Path = null then
+         --  Fallback to old install infrastructure.
 
-         Substitutions.Insert (Has_Gprls_Name, Null_Unbounded_String);
-         Substitutions.Insert (Gprls_Name, Null_Unbounded_String);
+         Substitutions.Insert (Has_Gprinstall_Name, Null_Unbounded_String);
+         Substitutions.Insert (Gprinstall_Name, Null_Unbounded_String);
          Self.Report_Status ("not found");
 
 
       else
-         Substitutions.Insert (Has_Gprls_Name, +"true");
+         Substitutions.Insert (Has_Gprinstall_Name, +"true");
          Substitutions.Insert
-          (Gprls_Name, Convert_Windows_Path (+Gprls_Path.all));
-         Self.Report_Status (Gprls_Path.all);
+          (Gprinstall_Name, Convert_Windows_Path (+Gprinstall_Path.all));
+         Self.Report_Status (Gprinstall_Path.all);
       end if;
 
    end Execute;
