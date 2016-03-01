@@ -20,11 +20,11 @@ gprbuild -p -P test.gpr -XWORK_DIR=$WORK_DIR \
  --db ../../source/web/tools/a2js/gprconfig
 cp library/*.js $WORK_DIR
 cp ../../source/web/tools/a2js/rtl/*.js $WORK_DIR
-sed --quiet -e '/EXPECTED OUTPUT:/,/END OF EXPECTED OUTPUT/p' $TEST \
+sed -n -e '/EXPECTED OUTPUT:/,/END OF EXPECTED OUTPUT/p' $TEST \
     | sed -e '1d' -e '$d' -e 's/^--  //' \
           > $WORK_DIR/expected
 
-sed --quiet -e '/BIND LIST:/,/END OF BIND LIST/p' $TEST \
+sed -n -e '/BIND LIST:/,/END OF BIND LIST/p' $TEST \
     | sed -e '1d' -e '$d' -e 's/^--  //' \
           > $WORK_DIR/bind
 
