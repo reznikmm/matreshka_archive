@@ -223,6 +223,9 @@ is
        Kind   => F.A_Package_Renaming_Declaration,  --  FIXME
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
+       Kind   => F.An_Object_Renaming_Declaration,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
        Kind   => F.A_Private_Extension_Declaration,
        Action => P.Common.Empty'Access),
       (Name   => N.Code,
@@ -324,8 +327,14 @@ is
        Kind   => F.An_Access_To_Variable,
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
+       Kind   => F.An_Access_To_Constant,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
        Kind   => F.A_Pool_Specific_Access_To_Variable,
        Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Box_Expression,
+       Action => P.Common.Empty'Access),  --  return "" for <>
       (Name   => N.Code,
        Kind   => F.An_Allocation_From_Qualified_Expression,
        Action => P.Expressions.Allocation.Code'Access),
@@ -575,6 +584,9 @@ is
        Kind   => F.An_Access_To_Variable,
        Action => P.Definitions.Access_To_Object.Initialize'Access),
       (Name   => N.Initialize,
+       Kind   => F.An_Access_To_Constant,
+       Action => P.Definitions.Access_To_Object.Initialize'Access),
+      (Name   => N.Initialize,
        Kind   => F.An_Anonymous_Access_To_Variable,
        Action => P.Definitions.Access_To_Object.Initialize'Access),
       (Name   => N.Initialize,
@@ -798,6 +810,9 @@ is
       (Name   => N.Is_Dispatching,
        Kind   => F.A_Generic_Function_Declaration,
        Action => P.Common.False'Access),
+      (Kind   => F.An_Object_Renaming_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
       (Kind   => F.A_Constant_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Declarations.Constant_Declarations.Is_Simple_Ref'Access),
@@ -838,6 +853,9 @@ is
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
       (Kind   => F.A_Function_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Common.False'Access),
+      (Kind   => F.A_Function_Renaming_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
       (Kind   => F.A_Null_Procedure_Declaration,
@@ -893,6 +911,9 @@ is
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
       (Kind    => F.An_Access_To_Variable,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
+      (Kind    => F.An_Access_To_Constant,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Record_Type_Definition,

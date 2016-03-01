@@ -161,7 +161,11 @@ package body Properties.Expressions.Record_Aggregate is
             end if;
 
             Text := Engine.Text.Get_Property (List (J), Name);
-            Append (Names, Text);
+
+            if not Text.Is_Empty then
+               --  Box <> expression returns empty Code. We ignore such assoc.
+               Append (Names, Text);
+            end if;
          end if;
       end loop;
 

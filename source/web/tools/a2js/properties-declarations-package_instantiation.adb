@@ -45,6 +45,8 @@ with Asis.Declarations;
 with Asis.Elements;
 with Asis.Expressions;
 
+with Properties.Tools;
+
 package body Properties.Declarations.Package_Instantiation is
 
    function Is_Predefined (Name : Asis.Expression) return Boolean;
@@ -61,6 +63,7 @@ package body Properties.Declarations.Package_Instantiation is
    is
       Generic_Name : constant Asis.Expression :=
         Asis.Declarations.Generic_Unit_Name (Element);
+
       Spec : constant Asis.Declaration :=
         Asis.Declarations.Corresponding_Declaration (Element);
    begin
@@ -74,10 +77,20 @@ package body Properties.Declarations.Package_Instantiation is
                     Asis.Expressions.Selector (Generic_Name);
                   Image : constant Asis.Program_Text :=
                     Asis.Expressions.Name_Image (Selector);
+                  Is_Library_Level : constant Boolean := Asis.Elements.Is_Nil
+                    (Asis.Elements.Enclosing_Element (Element));
                   Inside_Package : constant Boolean :=
                     Engine.Boolean.Get_Property
                       (Element, Engines.Inside_Package);
                begin
+                  if Is_Library_Level then
+                     Text.Append
+                       (Properties.Tools.Library_Level_Header
+                          (Asis.Elements.Enclosing_Compilation_Unit
+                               (Element)));
+                     Text.Append ("return ");
+                  end if;
+
                   if Inside_Package then
                      Text.Append ("_ec.");
                   else
@@ -93,7 +106,7 @@ package body Properties.Declarations.Package_Instantiation is
                   Named := League.Strings.From_UTF_16_Wide_String (Image);
                   Named := Named.To_Lowercase;
                   Text.Append (Named);
-                  Text.Append (";");
+                  Text.Append ("(_ec);");
                   return Text;
                end;
             end if;
@@ -116,7 +129,8 @@ package body Properties.Declarations.Package_Instantiation is
    begin
       return Image = "Generic_Elementary_Functions" or else
         Image = "Address_To_Access_Conversions" or else
-        Image = "Unchecked_Deallocation";
+        Image = "Unchecked_Deallocation" or else
+        Image = "Generic_Holders";  --  Matreshka Generic_Holders
    end Is_Predefined;
 
 end Properties.Declarations.Package_Instantiation;

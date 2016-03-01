@@ -263,7 +263,6 @@ package body Properties.Expressions.Function_Calls is
       if Func.To_Wide_Wide_String = "League.Strings.To_Universal_String"
         or else Func.To_Wide_Wide_String = "League.Strings.To_UTF_8_String"
         or else Func.To_Wide_Wide_String = "League.Strings.To_Wide_Wide_String"
-        or else Func.Starts_With ("System.Address_To_Access_Conversions.")
       then
          return Args (1);
       elsif Args'Length = 2 and Index > 0 then

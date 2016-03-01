@@ -120,7 +120,7 @@ package body Properties.Expressions.Identifiers is
    is
       use type Asis.Expression_Kinds;
 
-      Def : Asis.Defining_Name :=
+      Def : constant Asis.Defining_Name :=
         Asis.Expressions.Corresponding_Name_Definition (Element);
    begin
       if Asis.Elements.Is_Nil (Def) then
@@ -131,8 +131,6 @@ package body Properties.Expressions.Identifiers is
          end if;
 
          return Engines.Unspecified;
-      elsif Asis.Elements.Is_Part_Of_Instance (Def) then
-         Def := Asis.Declarations.Corresponding_Generic_Element (Def);
       end if;
 
       return Engine.Call_Convention.Get_Property
@@ -164,6 +162,13 @@ package body Properties.Expressions.Identifiers is
          return Text.To_Lowercase;
       elsif Is_Current_Instance_Of_Type (Element, Decl) then
          return League.Strings.To_Universal_String ("this");
+      end if;
+
+      if Asis.Elements.Declaration_Kind (Decl) in
+        Asis.An_Object_Renaming_Declaration
+      then
+         return Engine.Text.Get_Property
+           (Asis.Declarations.Renamed_Entity (Decl), Name);
       end if;
 
       while Asis.Elements.Is_Part_Of_Inherited (Decl)
@@ -394,8 +399,10 @@ package body Properties.Expressions.Identifiers is
                exit when Is_Imported (Item);
 
             when Asis.A_Procedure_Declaration |
+                 Asis.A_Procedure_Renaming_Declaration |
                  Asis.A_Null_Procedure_Declaration |
                  Asis.A_Function_Declaration |
+                 Asis.A_Function_Renaming_Declaration |
                  Asis.A_Procedure_Body_Declaration |
                  Asis.A_Function_Body_Declaration =>
 

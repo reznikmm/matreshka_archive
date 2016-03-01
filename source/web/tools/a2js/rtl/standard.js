@@ -17,11 +17,12 @@ define('standard', [], function(){
     standard._null = function (){};
 
     //  Constructor for tags
-    standard._tag = function (tag_name, parent_name){
+    standard._tag = function (tag_name, parent_name, register){
         var result = Object.create (all_types[parent_name]);
+        register = typeof register !== 'undefined' ?  register : true;
         result._external_tag = tag_name;
         result._parent_tag = parent_name;
-        all_types [tag_name] = result;
+        if (register) all_types [tag_name] = result;
         return result;
     };
     standard._in = function (a, b){
@@ -59,15 +60,47 @@ define('standard', [], function(){
         }
     };
 
+    //  T'Image attribute
     standard._image = function (x){
         return x.toString();
     };
 
-    standard._generic_elementary_functions = {
+    //  Ada.Numerics.Generic_Complex_Elementary_Functions
+    standard._generic_elementary_functions = function(){ return {
         arccos : Math.acos,
-        sqrt : Math.sqrt,
+        sqrt : Math.sqrt
+    }};
+
+    //  System.Address_To_Access_Conversions
+    standard._address_to_access_conversions = function(){
+        function id(x){ return x };
+        return {
+            to_pointer : id,
+            to_address : id
+        }
+    };
+    
+    //  League.Holders.Generic_Holders
+    standard._generic_holders = function(_parent) {
+        function generic_holder (val) { this.data = val; };
+        generic_holder.prototype = _ec._tag ('generic_holder', 'holder', false);
+
+        function element (value) { return value.data };
+        function replace_element (obj, value) { obj.data = value };
+        function to_holder (value) {
+            return new _ec.generic_holder (value);
+        };
+
+        return {
+            element: element,
+            replace_element: replace_element,
+            to_holder: to_holder
+        };
     };
 
+    //  Ada.Unchecked_Deallocation
+    standard._unchecked_deallocation = function(){ return standard._null; };
+    
     standard._addEventListener = function (element, name, handler, cap){
         if (typeof handler._func === "undefined"){
             handler._func = function (event) {
@@ -81,9 +114,6 @@ define('standard', [], function(){
         if (typeof handler._func !== "undefined"){
             element.removeEventListener (name, handler._func, cap);
         }
-    };
-
-    standard._unchecked_deallocation = function (x) {
     };
 
     standard._ada_array = {  //  Prototype for any Ada array
