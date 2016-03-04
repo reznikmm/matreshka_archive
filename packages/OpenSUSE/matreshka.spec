@@ -319,6 +319,42 @@ Requires: libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
 Meta Object Facility extension for UML module of Ada Modeling Framework
 component of Matreshka framework for Ada developers.
 
+%package -n libspikedog-api%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary:    Web-application server to execute Ada applications (api library)
+%description -n libspikedog-api%{PACKAGE_SUFFIX}
+%{summary}
+
+%package -n libspikedog-api%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary:    Devel package for libspikedog-api
+%description -n libspikedog-api%{PACKAGE_SUFFIX}-devel
+%{summary}
+
+%package -n libspikedog-core%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary:    Web-application server to execute Ada applications (core library)
+%description -n libspikedog-core%{PACKAGE_SUFFIX}
+%{summary}
+
+%package -n libspikedog-core%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary:    Devel package for libspikedog-core
+%description -n libspikedog-core%{PACKAGE_SUFFIX}-devel
+%{summary}
+
+%package -n libmatreshka-servlet%{PACKAGE_SUFFIX}
+Group: Development/Libraries/Other
+Summary:    Server-independent implementation of Servlet API
+%description -n libmatreshka-servlet%{PACKAGE_SUFFIX}
+%{summary}
+
+%package -n libmatreshka-servlet%{PACKAGE_SUFFIX}-devel
+Group: Development/Libraries/Other
+Summary:    Devel package for libmatreshka-servlet
+%description -n libmatreshka-servlet%{PACKAGE_SUFFIX}-devel
+%{summary}
+
 %post -n libleague%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 %postun -n libleague%{PACKAGE_SUFFIX}
@@ -401,6 +437,21 @@ component of Matreshka framework for Ada developers.
 %postun -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}
 /sbin/ldconfig
 
+%post -n libspikedog-api%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libspikedog-api%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libspikedog-core%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libspikedog-core%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
+%post -n libmatreshka-servlet%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+%postun -n libmatreshka-servlet%{PACKAGE_SUFFIX}
+/sbin/ldconfig
+
 %files -n libleague%{PACKAGE_SUFFIX} -f .objs/league-lib.files
 %defattr(-,root,root)
 ##  %%doc ChangeLog README COPYING
@@ -444,6 +495,11 @@ component of Matreshka framework for Ada developers.
 %dir %{_bindir}
 %attr(755, -, -) %{_bindir}/wsdl2ada
 
+%files -n matreshka-uaflex%{PACKAGE_SUFFIX}
+%defattr(-,root,root)
+%dir %{_bindir}
+%attr(755, -, -) %{_bindir}/uaflex
+
 %files -n libmatreshka-sql%{PACKAGE_SUFFIX} -f .objs/sql-lib.files
 %defattr(-,root,root)
 %files -n libmatreshka-sql%{PACKAGE_SUFFIX}-devel -f .objs/sql-devel.files
@@ -474,7 +530,7 @@ component of Matreshka framework for Ada developers.
 #%files -n libmatreshka-sql-oracle%{PACKAGE_SUFFIX}-devel -f .objs/sql_oci-devel.files
 #%defattr(-,root,root)
 #%dir %{_includedir}/matreshka/sql/oci
-## Oracle start
+## Oracle end
 
 %files -n libmatreshka-amf%{PACKAGE_SUFFIX} -f .objs/amf-lib.files
 %defattr(-,root,root)
@@ -517,5 +573,23 @@ component of Matreshka framework for Ada developers.
 %files -n libmatreshka-amf-mofext%{PACKAGE_SUFFIX}-devel -f .objs/amf_mofext-devel.files
 %defattr(-,root,root)
 %dir %{_includedir}/matreshka/amf/mofext
+
+%files -n libspikedog-api%{PACKAGE_SUFFIX} -f .objs/spikedog-api-lib.files
+%defattr(-,root,root)
+%files -n libspikedog-api%{PACKAGE_SUFFIX}-devel -f .objs/spikedog-api-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/spikedog/api
+
+%files -n libspikedog-core%{PACKAGE_SUFFIX} -f .objs/spikedog-core-lib.files
+%defattr(-,root,root)
+%files -n libspikedog-core%{PACKAGE_SUFFIX}-devel -f .objs/spikedog-core-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/spikedog/core
+
+%files -n libmatreshka-servlet%{PACKAGE_SUFFIX} -f .objs/servlet-lib.files
+%defattr(-,root,root)
+%files -n libmatreshka-servlet%{PACKAGE_SUFFIX}-devel -f .objs/servlet-devel.files
+%defattr(-,root,root)
+%dir %{_includedir}/matreshka/servlet
 
 %changelog
