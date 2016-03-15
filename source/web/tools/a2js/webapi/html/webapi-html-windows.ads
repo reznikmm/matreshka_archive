@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,13 +41,16 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with WebAPI.DOM.Event_Targets;
+
 with WebAPI.HTML.Documents;
 
 package WebAPI.HTML.Windows is
 
    pragma Preelaborate;
 
-   type Window is limited interface;
+   type Window is limited interface
+     and WebAPI.DOM.Event_Targets.Event_Target;
 
    type Window_Access is access all Window'Class
      with Storage_Size => 0;
