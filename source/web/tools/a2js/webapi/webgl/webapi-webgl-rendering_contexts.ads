@@ -46,6 +46,9 @@ with Interfaces;
 with WebAPI.HTML.Canvas_Elements;
 with WebAPI.HTML.Rendering_Contexts;
 
+with WebAPI.WebGL.Programs;
+with WebAPI.WebGL.Shaders;
+
 package WebAPI.WebGL.Rendering_Contexts is
 
    type WebGL_Rendering_Context is limited interface
@@ -55,6 +58,8 @@ package WebAPI.WebGL.Rendering_Contexts is
      access all WebGL_Rendering_Context'Class
        with Storage_Size => 0;
 
+   type GLboolean is new Interfaces.Unsigned_8;
+   type GLenum is new Interfaces.Unsigned_32;
    type GLbitfield is new Interfaces.Unsigned_32;
    type GLint is new Interfaces.Integer_32;
    subtype GLsizei is GLint range 0 .. GLint'Last;
@@ -271,10 +276,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum UNSIGNED_SHORT_4_4_4_4         = 0x8033;
 --    const GLenum UNSIGNED_SHORT_5_5_5_1         = 0x8034;
 --    const GLenum UNSIGNED_SHORT_5_6_5           = 0x8363;
---
---    /* Shaders */
---    const GLenum FRAGMENT_SHADER                  = 0x8B30;
---    const GLenum VERTEX_SHADER                    = 0x8B31;
+
+   -------------
+   -- Shaders --
+   -------------
+
+--   FRAGMENT_SHADER : constant GLenum := 16#8B30#;
+--   VERTEX_SHADER   : constant GLenum := 16#8B31#;
+   FRAGMENT_SHADER : constant := 16#8B30#;
+   VERTEX_SHADER   : constant := 16#8B31#;
 --    const GLenum MAX_VERTEX_ATTRIBS               = 0x8869;
 --    const GLenum MAX_VERTEX_UNIFORM_VECTORS       = 0x8DFB;
 --    const GLenum MAX_VARYING_VECTORS              = 0x8DFC;
@@ -282,8 +292,10 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum MAX_VERTEX_TEXTURE_IMAGE_UNITS   = 0x8B4C;
 --    const GLenum MAX_TEXTURE_IMAGE_UNITS          = 0x8872;
 --    const GLenum MAX_FRAGMENT_UNIFORM_VECTORS     = 0x8DFD;
---    const GLenum SHADER_TYPE                      = 0x8B4F;
---    const GLenum DELETE_STATUS                    = 0x8B80;
+--   SHADER_TYPE     : constant GLenum := 16#8B4F#;
+--   DELETE_STATUS   : constant GLenum := 16#8B80#;
+   SHADER_TYPE     : constant := 16#8B4F#;
+   DELETE_STATUS   : constant := 16#8B80#;
 --    const GLenum LINK_STATUS                      = 0x8B82;
 --    const GLenum VALIDATE_STATUS                  = 0x8B83;
 --    const GLenum ATTACHED_SHADERS                 = 0x8B85;
@@ -291,7 +303,7 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum ACTIVE_ATTRIBUTES                = 0x8B89;
 --    const GLenum SHADING_LANGUAGE_VERSION         = 0x8B8C;
 --    const GLenum CURRENT_PROGRAM                  = 0x8B8D;
---
+
 --    /* StencilFunction */
 --    const GLenum NEVER                          = 0x0200;
 --    const GLenum LESS                           = 0x0201;
@@ -418,10 +430,14 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    /* Read Format */
 --    const GLenum IMPLEMENTATION_COLOR_READ_TYPE   = 0x8B9A;
 --    const GLenum IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
---
---    /* Shader Source */
---    const GLenum COMPILE_STATUS                 = 0x8B81;
---
+
+   -------------------
+   -- Shader Source --
+   -------------------
+
+--   COMPILE_STATUS : constant GLenum := 16#8B81#;
+   COMPILE_STATUS : constant := 16#8B81#;
+
 --    /* Shader Precision-Specified Types */
 --    const GLenum LOW_FLOAT                      = 0x8DF0;
 --    const GLenum MEDIUM_FLOAT                   = 0x8DF1;
@@ -502,7 +518,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    object? getExtension(DOMString name);
 --
 --    void activeTexture(GLenum texture);
---    void attachShader(WebGLProgram? program, WebGLShader? shader);
+
+   not overriding procedure Attach_Shader
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class;
+     Shader  : access WebAPI.WebGL.Shaders.WebGL_Shader'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "attachShader";
+
 --    void bindAttribLocation(WebGLProgram? program, GLuint index, DOMString name);
 --    void bindBuffer(GLenum target, WebGLBuffer? buffer);
 --    void bindFramebuffer(GLenum target, WebGLFramebuffer? framebuffer);
@@ -522,28 +546,34 @@ package WebAPI.WebGL.Rendering_Contexts is
 --
 --    [WebGLHandlesContextLoss] GLenum checkFramebufferStatus(GLenum target);
 
-    not overriding procedure Clear
-     (Self : not null access WebGL_Rendering_Context;
-      Mask : GLbitfield) is abstract
-        with Import     => True,
-             Convention => JavaScript_Method,
-             Link_Name  => "clear";
+   not overriding procedure Clear
+    (Self : not null access WebGL_Rendering_Context;
+     Mask : GLbitfield) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "clear";
 
-    not overriding procedure Clear_Color
-     (Self  : not null access WebGL_Rendering_Context;
-      Red   : GLclampf;
-      Green : GLclampf;
-      Blue  : GLclampf;
-      Alpha : GLclampf) is abstract
-        with Import     => True,
-             Convention => JavaScript_Method,
-             Link_Name  => "clearColor";
+   not overriding procedure Clear_Color
+    (Self  : not null access WebGL_Rendering_Context;
+     Red   : GLclampf;
+     Green : GLclampf;
+     Blue  : GLclampf;
+     Alpha : GLclampf) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "clearColor";
 
 --    void clearDepth(GLclampf depth);
 --    void clearStencil(GLint s);
 --    void colorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
---    void compileShader(WebGLShader? shader);
---
+
+   not overriding procedure Compile_Shader
+    (Self   : not null access WebGL_Rendering_Context;
+     Shader : access WebAPI.WebGL.Shaders.WebGL_Shader'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "compileShader";
+
 --    void compressedTexImage2D(GLenum target, GLint level, GLenum internalformat,
 --                              GLsizei width, GLsizei height, GLint border,
 --                              ArrayBufferView data);
@@ -560,18 +590,47 @@ package WebAPI.WebGL.Rendering_Contexts is
 --
 --    WebGLBuffer? createBuffer();
 --    WebGLFramebuffer? createFramebuffer();
---    WebGLProgram? createProgram();
+
+   not overriding function Create_Program
+    (Self : not null access WebGL_Rendering_Context)
+       return WebAPI.WebGL.Programs.WebGL_Program_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createProgram";
+
 --    WebGLRenderbuffer? createRenderbuffer();
---    WebGLShader? createShader(GLenum type);
+
+   not overriding function Create_Shader
+    (Self     : not null access WebGL_Rendering_Context;
+     The_Type : GLenum)
+       return WebAPI.WebGL.Shaders.WebGL_Shader_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createShader";
+
 --    WebGLTexture? createTexture();
 --
 --    void cullFace(GLenum mode);
 --
 --    void deleteBuffer(WebGLBuffer? buffer);
 --    void deleteFramebuffer(WebGLFramebuffer? framebuffer);
---    void deleteProgram(WebGLProgram? program);
+
+   not overriding procedure Delete_Program
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "deleteProgram";
+
 --    void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
---    void deleteShader(WebGLShader? shader);
+
+   not overriding procedure Delete_Shader
+    (Self   : not null access WebGL_Rendering_Context;
+     Shader : access WebAPI.WebGL.Shaders.WebGL_Shader'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "deleteShader";
+
 --    void deleteTexture(WebGLTexture? texture);
 --
 --    void depthFunc(GLenum func);
@@ -612,7 +671,24 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    any getProgramParameter(WebGLProgram? program, GLenum pname);
 --    DOMString? getProgramInfoLog(WebGLProgram? program);
 --    any getRenderbufferParameter(GLenum target, GLenum pname);
---    any getShaderParameter(WebGLShader? shader, GLenum pname);
+
+   not overriding function Get_Shader_Parameter
+    (Self   : not null access WebGL_Rendering_Context;
+     Shader : access WebAPI.WebGL.Shaders.WebGL_Shader'Class;
+     Pname  : GLenum) return GLenum is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getShaderParameter";
+--            Pre'Class  => Pname = SHADER_TYPE;
+   not overriding function Get_Shader_Parameter
+    (Self   : not null access WebGL_Rendering_Context;
+     Shader : access WebAPI.WebGL.Shaders.WebGL_Shader'Class;
+     Pname  : GLenum) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getShaderParameter";
+--            Pre'Class  => Pname in DELETE_STATUS | COMPILE_STATUS;
+
 --    WebGLShaderPrecisionFormat? getShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype);
 --    DOMString? getShaderInfoLog(WebGLShader? shader);
 --
@@ -637,7 +713,14 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    [WebGLHandlesContextLoss] GLboolean isShader(WebGLShader? shader);
 --    [WebGLHandlesContextLoss] GLboolean isTexture(WebGLTexture? texture);
 --    void lineWidth(GLfloat width);
---    void linkProgram(WebGLProgram? program);
+
+   not overriding procedure Link_Program
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "linkProgram";
+
 --    void pixelStorei(GLenum pname, GLint param);
 --    void polygonOffset(GLfloat factor, GLfloat units);
 --
@@ -648,9 +731,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --                             GLsizei width, GLsizei height);
 --    void sampleCoverage(GLclampf value, GLboolean invert);
 --    void scissor(GLint x, GLint y, GLsizei width, GLsizei height);
---
---    void shaderSource(WebGLShader? shader, DOMString source);
---
+
+   not overriding procedure Shader_Source
+    (Self   : not null access WebGL_Rendering_Context;
+     Shader : access WebAPI.WebGL.Shaders.WebGL_Shader'Class;
+     Source : League.Strings.Universal_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "shaderSource";
+
 --    void stencilFunc(GLenum func, GLint ref, GLuint mask);
 --    void stencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask);
 --    void stencilMask(GLuint mask);
