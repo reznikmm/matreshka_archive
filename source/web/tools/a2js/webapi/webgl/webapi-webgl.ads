@@ -42,9 +42,41 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 --  This is root package to expose WebGL API to Ada applications.
+------------------------------------------------------------------------------
+with Interfaces;
 
 package WebAPI.WebGL is
 
    pragma Preelaborate;
+
+   type GLboolean is new Interfaces.Unsigned_8;
+
+   type GLenum is new Interfaces.Unsigned_32;
+
+   type GLbitfield is new Interfaces.Unsigned_32;
+
+   type GLint is new Interfaces.Integer_32;
+   subtype GLsizei is GLint range 0 .. GLint'Last;
+
+   type GLuint is new Interfaces.Unsigned_32;
+
+   type GLfloat is new Interfaces.IEEE_Float_32;
+   subtype GLclampf is GLfloat range 0.0 .. 1.0;
+
+   type GLintptr is new Interfaces.Integer_64;
+
+   type GLfloat_Vector_2 is array (Positive range 1 .. 2) of GLfloat;
+   type GLfloat_Vector_3 is array (Positive range 1 .. 3) of GLfloat;
+   type GLfloat_Vector_4 is array (Positive range 1 .. 4) of GLfloat;
+
+   type GLfloat_Matrix_2x2 is
+     array (Positive range 1 .. 2, Positive range 1 .. 2) of GLfloat
+       with Convention => Fortran;
+   type GLfloat_Matrix_3x3 is
+     array (Positive range 1 .. 3, Positive range 1 .. 3) of GLfloat
+       with Convention => Fortran;
+   type GLfloat_Matrix_4x4 is
+     array (Positive range 1 .. 4, Positive range 1 .. 4) of GLfloat
+       with Convention => Fortran;
 
 end WebAPI.WebGL;

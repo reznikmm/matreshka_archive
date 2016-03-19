@@ -41,15 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces;
-
 with WebAPI.HTML.Canvas_Elements;
 with WebAPI.HTML.Rendering_Contexts;
 
+with WebAPI.WebGL.Buffers;
 with WebAPI.WebGL.Programs;
 with WebAPI.WebGL.Shaders;
+with WebAPI.WebGL.Uniform_Locations;
 
 package WebAPI.WebGL.Rendering_Contexts is
+
+   pragma Preelaborate;
 
    type WebGL_Rendering_Context is limited interface
      and WebAPI.HTML.Rendering_Contexts.Rendering_Context;
@@ -57,14 +59,6 @@ package WebAPI.WebGL.Rendering_Contexts is
    type WebGL_Rendering_Context_Access is
      access all WebGL_Rendering_Context'Class
        with Storage_Size => 0;
-
-   type GLboolean is new Interfaces.Unsigned_8;
-   type GLenum is new Interfaces.Unsigned_32;
-   type GLbitfield is new Interfaces.Unsigned_32;
-   type GLint is new Interfaces.Integer_32;
-   subtype GLsizei is GLint range 0 .. GLint'Last;
-   type GLfloat is new Interfaces.IEEE_Float_32;
-   subtype GLclampf is GLfloat range 0.0 .. 1.0;
 
    ---------------------
    -- ClearBufferMask --
@@ -74,15 +68,18 @@ package WebAPI.WebGL.Rendering_Contexts is
    STENCIL_BUFFER_BIT : constant := 16#00000400#;
    COLOR_BUFFER_BIT   : constant := 16#00004000#;
 
---    /* BeginMode */
---    const GLenum POINTS                         = 0x0000;
---    const GLenum LINES                          = 0x0001;
---    const GLenum LINE_LOOP                      = 0x0002;
---    const GLenum LINE_STRIP                     = 0x0003;
---    const GLenum TRIANGLES                      = 0x0004;
---    const GLenum TRIANGLE_STRIP                 = 0x0005;
---    const GLenum TRIANGLE_FAN                   = 0x0006;
---
+   ---------------
+   -- BeginMode --
+   ---------------
+
+   POINTS         : constant := 16#0000#;
+   LINES          : constant := 16#0001#;
+   LINE_LOOP      : constant := 16#0002#;
+   LINE_STRIP     : constant := 16#0003#;
+   TRIANGLES      : constant := 16#0004#;
+   TRIANGLE_STRIP : constant := 16#0005#;
+   TRIANGLE_FAN   : constant := 16#0006#;
+
 --    /* AlphaFunction (not supported in ES20) */
 --    /*      NEVER */
 --    /*      LESS */
@@ -134,17 +131,20 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum CONSTANT_ALPHA                 = 0x8003;
 --    const GLenum ONE_MINUS_CONSTANT_ALPHA       = 0x8004;
 --    const GLenum BLEND_COLOR                    = 0x8005;
---
---    /* Buffer Objects */
---    const GLenum ARRAY_BUFFER                   = 0x8892;
---    const GLenum ELEMENT_ARRAY_BUFFER           = 0x8893;
+
+   --------------------
+   -- Buffer Objects --
+   --------------------
+
+   ARRAY_BUFFER         : constant := 16#8892#;
+   ELEMENT_ARRAY_BUFFER : constant := 16#8893#;
 --    const GLenum ARRAY_BUFFER_BINDING           = 0x8894;
 --    const GLenum ELEMENT_ARRAY_BUFFER_BINDING   = 0x8895;
---
---    const GLenum STREAM_DRAW                    = 0x88E0;
---    const GLenum STATIC_DRAW                    = 0x88E4;
---    const GLenum DYNAMIC_DRAW                   = 0x88E8;
---
+
+   STREAM_DRAW          : constant := 16#88E0#;
+   STATIC_DRAW          : constant := 16#88E4#;
+   DYNAMIC_DRAW         : constant := 16#88E8#;
+
 --    const GLenum BUFFER_SIZE                    = 0x8764;
 --    const GLenum BUFFER_USAGE                   = 0x8765;
 --
@@ -253,16 +253,19 @@ package WebAPI.WebGL.Rendering_Contexts is
 --
 --    /* HintTarget */
 --    const GLenum GENERATE_MIPMAP_HINT            = 0x8192;
---
---    /* DataType */
---    const GLenum BYTE                           = 0x1400;
---    const GLenum UNSIGNED_BYTE                  = 0x1401;
---    const GLenum SHORT                          = 0x1402;
---    const GLenum UNSIGNED_SHORT                 = 0x1403;
+
+   --------------
+   -- DataType --
+   --------------
+
 --    const GLenum INT                            = 0x1404;
 --    const GLenum UNSIGNED_INT                   = 0x1405;
---    const GLenum FLOAT                          = 0x1406;
---
+   BYTE           : constant := 16#1400#;
+   UNSIGNED_BYTE  : constant := 16#1401#;
+   SHORT          : constant := 16#1402#;
+   UNSIGNED_SHORT : constant := 16#1403#;
+   FLOAT          : constant := 16#1406#;
+
 --    /* PixelFormat */
 --    const GLenum DEPTH_COMPONENT                = 0x1902;
 --    const GLenum ALPHA                          = 0x1906;
@@ -281,10 +284,8 @@ package WebAPI.WebGL.Rendering_Contexts is
    -- Shaders --
    -------------
 
---   FRAGMENT_SHADER : constant GLenum := 16#8B30#;
---   VERTEX_SHADER   : constant GLenum := 16#8B31#;
-   FRAGMENT_SHADER : constant := 16#8B30#;
-   VERTEX_SHADER   : constant := 16#8B31#;
+   FRAGMENT_SHADER   : constant := 16#8B30#;
+   VERTEX_SHADER     : constant := 16#8B31#;
 --    const GLenum MAX_VERTEX_ATTRIBS               = 0x8869;
 --    const GLenum MAX_VERTEX_UNIFORM_VECTORS       = 0x8DFB;
 --    const GLenum MAX_VARYING_VECTORS              = 0x8DFC;
@@ -292,15 +293,13 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum MAX_VERTEX_TEXTURE_IMAGE_UNITS   = 0x8B4C;
 --    const GLenum MAX_TEXTURE_IMAGE_UNITS          = 0x8872;
 --    const GLenum MAX_FRAGMENT_UNIFORM_VECTORS     = 0x8DFD;
---   SHADER_TYPE     : constant GLenum := 16#8B4F#;
---   DELETE_STATUS   : constant GLenum := 16#8B80#;
-   SHADER_TYPE     : constant := 16#8B4F#;
-   DELETE_STATUS   : constant := 16#8B80#;
---    const GLenum LINK_STATUS                      = 0x8B82;
---    const GLenum VALIDATE_STATUS                  = 0x8B83;
---    const GLenum ATTACHED_SHADERS                 = 0x8B85;
---    const GLenum ACTIVE_UNIFORMS                  = 0x8B86;
---    const GLenum ACTIVE_ATTRIBUTES                = 0x8B89;
+   SHADER_TYPE       : constant := 16#8B4F#;
+   DELETE_STATUS     : constant := 16#8B80#;
+   LINK_STATUS       : constant := 16#8B82#;
+   VALIDATE_STATUS   : constant := 16#8B83#;
+   ATTACHED_SHADERS  : constant := 16#8B85#;
+   ACTIVE_UNIFORMS   : constant := 16#8B86#;
+   ACTIVE_ATTRIBUTES : constant := 16#8B89#;
 --    const GLenum SHADING_LANGUAGE_VERSION         = 0x8B8C;
 --    const GLenum CURRENT_PROGRAM                  = 0x8B8D;
 
@@ -498,8 +497,7 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum CONTEXT_LOST_WEBGL             = 0x9242;
 --    const GLenum UNPACK_COLORSPACE_CONVERSION_WEBGL = 0x9243;
 --    const GLenum BROWSER_DEFAULT_WEBGL          = 0x9244;
---
---    readonly attribute HTMLCanvasElement canvas;
+
    not overriding function Get_Canvas
      (Self : not null access WebGL_Rendering_Context)
         return WebAPI.HTML.Canvas_Elements.HTML_Canvas_Element_Access
@@ -528,7 +526,16 @@ package WebAPI.WebGL.Rendering_Contexts is
             Link_Name  => "attachShader";
 
 --    void bindAttribLocation(WebGLProgram? program, GLuint index, DOMString name);
---    void bindBuffer(GLenum target, WebGLBuffer? buffer);
+
+   not overriding procedure Bind_Buffer
+    (Self   : not null access WebGL_Rendering_Context;
+     Target : GLenum;
+     Buffer : access WebAPI.WebGL.Buffers.WebGL_Buffer'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "bindBuffer";
+--            Pre'Class  => Target in ARRAY_BUFFER | ELEMENT_ARRAY_BUFFER;
+
 --    void bindFramebuffer(GLenum target, WebGLFramebuffer? framebuffer);
 --    void bindRenderbuffer(GLenum target, WebGLRenderbuffer? renderbuffer);
 --    void bindTexture(GLenum target, WebGLTexture? texture);
@@ -587,8 +594,14 @@ package WebAPI.WebGL.Rendering_Contexts is
 --                        GLint border);
 --    void copyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
 --                           GLint x, GLint y, GLsizei width, GLsizei height);
---
---    WebGLBuffer? createBuffer();
+
+   not overriding function Create_Buffer
+    (Self : not null access WebGL_Rendering_Context)
+       return WebAPI.WebGL.Buffers.WebGL_Buffer_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createBuffer";
+
 --    WebGLFramebuffer? createFramebuffer();
 
    not overriding function Create_Program
@@ -638,14 +651,46 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    void depthRange(GLclampf zNear, GLclampf zFar);
 --    void detachShader(WebGLProgram? program, WebGLShader? shader);
 --    void disable(GLenum cap);
---    void disableVertexAttribArray(GLuint index);
---    void drawArrays(GLenum mode, GLint first, GLsizei count);
+
+   not overriding procedure Disable_Vertex_Attrib_Array
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "disableVertexAttribArray";
+
+   not overriding procedure Draw_Arrays
+    (Self  : not null access WebGL_Rendering_Context;
+     Mode  : GLenum;
+     First : GLint;
+     Count : GLsizei) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "drawArrays";
+
 --    void drawElements(GLenum mode, GLsizei count, GLenum type, GLintptr offset);
 --
 --    void enable(GLenum cap);
---    void enableVertexAttribArray(GLuint index);
---    void finish();
---    void flush();
+
+   not overriding procedure Enable_Vertex_Attrib_Array
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "enableVertexAttribArray";
+
+   not overriding procedure Finish
+    (Self : not null access WebGL_Rendering_Context) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "finish";
+
+   not overriding procedure Flush
+    (Self : not null access WebGL_Rendering_Context) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "flush";
+
 --    void framebufferRenderbuffer(GLenum target, GLenum attachment,
 --                                 GLenum renderbuffertarget,
 --                                 WebGLRenderbuffer? renderbuffer);
@@ -658,9 +703,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    WebGLActiveInfo? getActiveAttrib(WebGLProgram? program, GLuint index);
 --    WebGLActiveInfo? getActiveUniform(WebGLProgram? program, GLuint index);
 --    sequence<WebGLShader>? getAttachedShaders(WebGLProgram? program);
---
---    [WebGLHandlesContextLoss] GLint getAttribLocation(WebGLProgram? program, DOMString name);
---
+
+   not overriding function Get_Attrib_Location
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class;
+     Name    : League.Strings.Universal_String) return GLint is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getAttribLocation";
+
 --    any getBufferParameter(GLenum target, GLenum pname);
 --    any getParameter(GLenum pname);
 --
@@ -668,7 +719,26 @@ package WebAPI.WebGL.Rendering_Contexts is
 --
 --    any getFramebufferAttachmentParameter(GLenum target, GLenum attachment,
 --                                          GLenum pname);
---    any getProgramParameter(WebGLProgram? program, GLenum pname);
+
+   not overriding function Get_Program_Parameter
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class;
+     Pname   : GLenum) return GLint is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getProgramParameter";
+--            Pre'Class  => Pname in ATTACHED_SHADERS | ACTIVE_ATTRIBUTES
+--                                    | ACTIVE_UNIFORMS;
+   not overriding function Get_Program_Parameter
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class;
+     Pname   : GLenum) return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "getProgramParameter";
+--            Pre'Class  => Pname in DELETE_STATUS | LINK_STATUS
+--                                    | VALIDATE_STATUS;
+
 --    DOMString? getProgramInfoLog(WebGLProgram? program);
 --    any getRenderbufferParameter(GLenum target, GLenum pname);
 
@@ -697,9 +767,17 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    any getTexParameter(GLenum target, GLenum pname);
 --
 --    any getUniform(WebGLProgram? program, WebGLUniformLocation? location);
---
---    WebGLUniformLocation? getUniformLocation(WebGLProgram? program, DOMString name);
---
+
+   not overriding function Get_Uniform_Location
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class;
+     Name    : League.Strings.Universal_String)
+       return WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access
+         is abstract
+           with Import     => True,
+                Convention => JavaScript_Method,
+                Link_Name  => "getUniformLocation";
+
 --    any getVertexAttrib(GLuint index, GLenum pname);
 --
 --    [WebGLHandlesContextLoss] GLintptr getVertexAttribOffset(GLuint index, GLenum pname);
@@ -766,68 +844,233 @@ package WebAPI.WebGL.Rendering_Contexts is
 --                       GLenum format, GLenum type, ArrayBufferView? pixels);
 --    void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
 --                       GLenum format, GLenum type, TexImageSource? source); // May throw DOMException
---
---    void uniform1f(WebGLUniformLocation? location, GLfloat x);
+
+   not overriding procedure Uniform_1f
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     X        : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform1f";
+
 --    void uniform1fv(WebGLUniformLocation? location, Float32Array v);
 --    void uniform1fv(WebGLUniformLocation? location, sequence<GLfloat> v);
---    void uniform1i(WebGLUniformLocation? location, GLint x);
+
+   not overriding procedure Uniform_1i
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     X        : GLint) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform1i";
+
 --    void uniform1iv(WebGLUniformLocation? location, Int32Array v);
 --    void uniform1iv(WebGLUniformLocation? location, sequence<long> v);
---    void uniform2f(WebGLUniformLocation? location, GLfloat x, GLfloat y);
---    void uniform2fv(WebGLUniformLocation? location, Float32Array v);
+
+   not overriding procedure Uniform_2f
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     X        : GLfloat;
+     Y        : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform2f";
+
+   not overriding procedure Uniform_2fv
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Value    : GLfloat_Vector_2) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform2fv";
+
 --    void uniform2fv(WebGLUniformLocation? location, sequence<GLfloat> v);
 --    void uniform2i(WebGLUniformLocation? location, GLint x, GLint y);
 --    void uniform2iv(WebGLUniformLocation? location, Int32Array v);
 --    void uniform2iv(WebGLUniformLocation? location, sequence<long> v);
---    void uniform3f(WebGLUniformLocation? location, GLfloat x, GLfloat y, GLfloat z);
---    void uniform3fv(WebGLUniformLocation? location, Float32Array v);
+
+   not overriding procedure Uniform_3f
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     X        : GLfloat;
+     Y        : GLfloat;
+     Z        : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform3f";
+
+   not overriding procedure Uniform_3fv
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Value    : GLfloat_Vector_3) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform3fv";
+
 --    void uniform3fv(WebGLUniformLocation? location, sequence<GLfloat> v);
 --    void uniform3i(WebGLUniformLocation? location, GLint x, GLint y, GLint z);
 --    void uniform3iv(WebGLUniformLocation? location, Int32Array v);
 --    void uniform3iv(WebGLUniformLocation? location, sequence<long> v);
---    void uniform4f(WebGLUniformLocation? location, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
---    void uniform4fv(WebGLUniformLocation? location, Float32Array v);
+
+   not overriding procedure Uniform_4f
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     X        : GLfloat;
+     Y        : GLfloat;
+     Z        : GLfloat;
+     W        : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform4f";
+
+   not overriding procedure Uniform_4fv
+    (Self     : not null access WebGL_Rendering_Context;
+     Location : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Value    : GLfloat_Vector_4) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniform4fv";
+
 --    void uniform4fv(WebGLUniformLocation? location, sequence<GLfloat> v);
 --    void uniform4i(WebGLUniformLocation? location, GLint x, GLint y, GLint z, GLint w);
 --    void uniform4iv(WebGLUniformLocation? location, Int32Array v);
 --    void uniform4iv(WebGLUniformLocation? location, sequence<long> v);
---
+
+   not overriding procedure Uniform_Matrix_2fv
+    (Self      : not null access WebGL_Rendering_Context;
+     Location  : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Transpose : Boolean;
+     Value     : GLfloat_Matrix_2x2) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniformMatrix2fv";
+
 --    void uniformMatrix2fv(WebGLUniformLocation? location, GLboolean transpose,
---                          Float32Array value);
---    void uniformMatrix2fv(WebGLUniformLocation? location, GLboolean transpose,
 --                          sequence<GLfloat> value);
+
+   not overriding procedure Uniform_Matrix_3fv
+    (Self      : not null access WebGL_Rendering_Context;
+     Location  : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Transpose : Boolean;
+     Value     : GLfloat_Matrix_3x3) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniformMatrix3fv";
+
 --    void uniformMatrix3fv(WebGLUniformLocation? location, GLboolean transpose,
---                          Float32Array value);
---    void uniformMatrix3fv(WebGLUniformLocation? location, GLboolean transpose,
 --                          sequence<GLfloat> value);
---    void uniformMatrix4fv(WebGLUniformLocation? location, GLboolean transpose,
---                          Float32Array value);
+
+   not overriding procedure Uniform_Matrix_4fv
+    (Self      : not null access WebGL_Rendering_Context;
+     Location  : WebAPI.WebGL.Uniform_Locations.WebGL_Uniform_Location_Access;
+     Transpose : Boolean;
+     Value     : GLfloat_Matrix_4x4) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "uniformMatrix4fv";
+
 --    void uniformMatrix4fv(WebGLUniformLocation? location, GLboolean transpose,
 --                          sequence<GLfloat> value);
---
---    void useProgram(WebGLProgram? program);
---    void validateProgram(WebGLProgram? program);
---
---    void vertexAttrib1f(GLuint indx, GLfloat x);
+
+   not overriding procedure Use_Program
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "useProgram";
+
+   not overriding procedure Validate_Program
+    (Self    : not null access WebGL_Rendering_Context;
+     Program : access WebAPI.WebGL.Programs.WebGL_Program'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "validateProgram";
+
+   not overriding procedure Vertex_Attrib_1f
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     X     : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib1f";
+
 --    typedef (Float32Array or sequence<GLfloat>) VertexAttribFVSource;
 --    void vertexAttrib1fv(GLuint indx, VertexAttribFVSource values);
---    void vertexAttrib2f(GLuint indx, GLfloat x, GLfloat y);
---    void vertexAttrib2fv(GLuint indx, VertexAttribFVSource values);
---    void vertexAttrib3f(GLuint indx, GLfloat x, GLfloat y, GLfloat z);
---    void vertexAttrib3fv(GLuint indx, VertexAttribFVSource values);
---    void vertexAttrib4f(GLuint indx, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
---    void vertexAttrib4fv(GLuint indx, VertexAttribFVSource values);
---    void vertexAttribPointer(GLuint indx, GLint size, GLenum type,
---                             GLboolean normalized, GLsizei stride, GLintptr offset);
 
-    not overriding procedure Viewport
-     (Self   : not null access WebGL_Rendering_Context;
-      X      : GLint;
-      Y      : GLint;
-      Width  : GLsizei;
-      Height : GLsizei) is abstract
-        with Import     => True,
-             Convention => JavaScript_Method,
-             Link_Name  => "viewport";
+   not overriding procedure Vertex_Attrib_2f
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     X     : GLfloat;
+     Y     : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib2f";
+
+   not overriding procedure Vertex_Attrib_2fv
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     Value : GLfloat_Matrix_2x2) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib2fv";
+
+   not overriding procedure Vertex_Attrib_3f
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     X     : GLfloat;
+     Y     : GLfloat;
+     Z     : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib3f";
+
+   not overriding procedure Vertex_Attrib_3fv
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     Value : GLfloat_Matrix_3x3) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib3fv";
+
+   not overriding procedure Vertex_Attrib_4f
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     X     : GLfloat;
+     Y     : GLfloat;
+     Z     : GLfloat;
+     W     : GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib4f";
+
+   not overriding procedure Vertex_Attrib_4fv
+    (Self  : not null access WebGL_Rendering_Context;
+     Index : GLuint;
+     Value : GLfloat_Matrix_4x4) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttrib4fv";
+
+   not overriding procedure Vertex_Attrib_Pointer
+    (Self       : not null access WebGL_Rendering_Context;
+     Index      : GLuint;
+     Size       : GLint;
+     Data_Type  : GLenum;
+     Normalized : Boolean;
+     Stride     : GLsizei;
+     Offset     : GLintptr) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "vertexAttribPointer";
+
+   not overriding procedure Viewport
+    (Self   : not null access WebGL_Rendering_Context;
+     X      : GLint;
+     Y      : GLint;
+     Width  : GLsizei;
+     Height : GLsizei) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "viewport";
 
 end WebAPI.WebGL.Rendering_Contexts;

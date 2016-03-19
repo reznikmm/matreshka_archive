@@ -42,13 +42,13 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package WebAPI.WebGL.Shaders is
+package WebAPI.WebGL.Buffers is
 
    pragma Preelaborate;
 
-   type WebGL_Shader is limited interface;
+   type WebGL_Buffer is limited interface;
 
-   type WebGL_Shader_Access is access all WebGL_Shader'Class
+   type WebGL_Buffer_Access is access all WebGL_Buffer'Class
      with Storage_Size => 0;
 
-end WebAPI.WebGL.Shaders;
+end WebAPI.WebGL.Buffers;

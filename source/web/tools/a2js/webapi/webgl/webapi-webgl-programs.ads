@@ -44,6 +44,8 @@
 
 package WebAPI.WebGL.Programs is
 
+   pragma Preelaborate;
+
    type WebGL_Program is limited interface;
 
    type WebGL_Program_Access is access all WebGL_Program'Class

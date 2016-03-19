@@ -42,13 +42,14 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package WebAPI.WebGL.Shaders is
+package WebAPI.WebGL.Uniform_Locations is
 
    pragma Preelaborate;
 
-   type WebGL_Shader is limited interface;
+   type WebGL_Uniform_Location is limited interface;
 
-   type WebGL_Shader_Access is access all WebGL_Shader'Class
-     with Storage_Size => 0;
+   type WebGL_Uniform_Location_Access is
+     access all WebGL_Uniform_Location'Class
+       with Storage_Size => 0;
 
-end WebAPI.WebGL.Shaders;
+end WebAPI.WebGL.Uniform_Locations;
