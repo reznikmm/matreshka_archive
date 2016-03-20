@@ -197,7 +197,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
                   Image : constant Asis.Program_Text :=
                     Asis.Elements.Pragma_Name_Image (Element);
                begin
-                  if Image = "JavaSctipt_Typed_Array" then
+                  if Image = "JavaScript_Typed_Array" then
                      declare
                         Args : constant Asis.Association_List :=
                           Asis.Elements.Pragma_Argument_Associations (Element);
@@ -206,7 +206,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
                         pragma Assert
                           (Args'Length = 1,
                            "Expected one argument in pragma"
-                           &" JavaSctipt_Typed_Array");
+                           &" JavaScript_Typed_Array");
 
                         Arg := Asis.Expressions.Actual_Parameter (Args (1));
 
