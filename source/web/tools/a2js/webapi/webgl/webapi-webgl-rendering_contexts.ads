@@ -41,12 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with System;
+
 with WebAPI.HTML.Canvas_Elements;
 with WebAPI.HTML.Rendering_Contexts;
 
 with WebAPI.WebGL.Buffers;
+with WebAPI.WebGL.Framebuffers;
 with WebAPI.WebGL.Programs;
+with WebAPI.WebGL.Renderbuffers;
 with WebAPI.WebGL.Shaders;
+with WebAPI.WebGL.Textures;
 with WebAPI.WebGL.Uniform_Locations;
 
 package WebAPI.WebGL.Rendering_Contexts is
@@ -266,19 +271,25 @@ package WebAPI.WebGL.Rendering_Contexts is
    UNSIGNED_SHORT : constant := 16#1403#;
    FLOAT          : constant := 16#1406#;
 
---    /* PixelFormat */
+   -----------------
+   -- PixelFormat --
+   -----------------
+
+   ALPHA           : constant := 16#1906#;
+   RGB             : constant := 16#1907#;
+   RGBA            : constant := 16#1908#;
+   LUMINANCE       : constant := 16#1909#;
+   LUMINANCE_ALPHA : constant := 16#190A#;
 --    const GLenum DEPTH_COMPONENT                = 0x1902;
---    const GLenum ALPHA                          = 0x1906;
---    const GLenum RGB                            = 0x1907;
---    const GLenum RGBA                           = 0x1908;
---    const GLenum LUMINANCE                      = 0x1909;
---    const GLenum LUMINANCE_ALPHA                = 0x190A;
---
---    /* PixelType */
+
+   ---------------
+   -- PixelType --
+   ---------------
+
 --    /*      UNSIGNED_BYTE */
---    const GLenum UNSIGNED_SHORT_4_4_4_4         = 0x8033;
---    const GLenum UNSIGNED_SHORT_5_5_5_1         = 0x8034;
---    const GLenum UNSIGNED_SHORT_5_6_5           = 0x8363;
+   UNSIGNED_SHORT_4_4_4_4 : constant := 16#8033#;
+   UNSIGNED_SHORT_5_5_5_1 : constant := 16#8034#;
+   UNSIGNED_SHORT_5_6_5   : constant := 16#8363#;
 
    -------------
    -- Shaders --
@@ -327,39 +338,51 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum VENDOR                         = 0x1F00;
 --    const GLenum RENDERER                       = 0x1F01;
 --    const GLenum VERSION                        = 0x1F02;
---
---    /* TextureMagFilter */
---    const GLenum NEAREST                        = 0x2600;
---    const GLenum LINEAR                         = 0x2601;
---
---    /* TextureMinFilter */
---    /*      NEAREST */
---    /*      LINEAR */
---    const GLenum NEAREST_MIPMAP_NEAREST         = 0x2700;
---    const GLenum LINEAR_MIPMAP_NEAREST          = 0x2701;
---    const GLenum NEAREST_MIPMAP_LINEAR          = 0x2702;
---    const GLenum LINEAR_MIPMAP_LINEAR           = 0x2703;
---
---    /* TextureParameterName */
---    const GLenum TEXTURE_MAG_FILTER             = 0x2800;
---    const GLenum TEXTURE_MIN_FILTER             = 0x2801;
---    const GLenum TEXTURE_WRAP_S                 = 0x2802;
---    const GLenum TEXTURE_WRAP_T                 = 0x2803;
---
---    /* TextureTarget */
---    const GLenum TEXTURE_2D                     = 0x0DE1;
+
+   ----------------------
+   -- TextureMagFilter --
+   ----------------------
+
+   NEAREST : constant := 16#2600#;
+   LINEAR  : constant := 16#2601#;
+
+   ----------------------
+   -- TextureMinFilter --
+   ----------------------
+
+   --  NEAREST
+   --  LINEAR
+   NEAREST_MIPMAP_NEAREST : constant := 16#2700#;
+   LINEAR_MIPMAP_NEAREST  : constant := 16#2701#;
+   NEAREST_MIPMAP_LINEAR  : constant := 16#2702#;
+   LINEAR_MIPMAP_LINEAR   : constant := 16#2703#;
+
+   --------------------------
+   -- TextureParameterName --
+   --------------------------
+
+   TEXTURE_MAG_FILTER : constant := 16#2800#;
+   TEXTURE_MIN_FILTER : constant := 16#2801#;
+   TEXTURE_WRAP_S     : constant := 16#2802#;
+   TEXTURE_WRAP_T     : constant := 16#2803#;
+
+   -------------------
+   -- TextureTarget --
+   -------------------
+
+   TEXTURE_2D                  : constant := 16#0DE1#;
 --    const GLenum TEXTURE                        = 0x1702;
---
---    const GLenum TEXTURE_CUBE_MAP               = 0x8513;
+
+   TEXTURE_CUBE_MAP            : constant := 16#8513#;
 --    const GLenum TEXTURE_BINDING_CUBE_MAP       = 0x8514;
---    const GLenum TEXTURE_CUBE_MAP_POSITIVE_X    = 0x8515;
---    const GLenum TEXTURE_CUBE_MAP_NEGATIVE_X    = 0x8516;
---    const GLenum TEXTURE_CUBE_MAP_POSITIVE_Y    = 0x8517;
---    const GLenum TEXTURE_CUBE_MAP_NEGATIVE_Y    = 0x8518;
---    const GLenum TEXTURE_CUBE_MAP_POSITIVE_Z    = 0x8519;
---    const GLenum TEXTURE_CUBE_MAP_NEGATIVE_Z    = 0x851A;
+   TEXTURE_CUBE_MAP_POSITIVE_X : constant := 16#8515#;
+   TEXTURE_CUBE_MAP_NEGATIVE_X : constant := 16#8516#;
+   TEXTURE_CUBE_MAP_POSITIVE_Y : constant := 16#8517#;
+   TEXTURE_CUBE_MAP_NEGATIVE_Y : constant := 16#8518#;
+   TEXTURE_CUBE_MAP_POSITIVE_Z : constant := 16#8519#;
+   TEXTURE_CUBE_MAP_NEGATIVE_Z : constant := 16#851A#;
 --    const GLenum MAX_CUBE_MAP_TEXTURE_SIZE      = 0x851C;
---
+
 --    /* TextureUnit */
 --    const GLenum TEXTURE0                       = 0x84C0;
 --    const GLenum TEXTURE1                       = 0x84C1;
@@ -394,12 +417,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum TEXTURE30                      = 0x84DE;
 --    const GLenum TEXTURE31                      = 0x84DF;
 --    const GLenum ACTIVE_TEXTURE                 = 0x84E0;
---
---    /* TextureWrapMode */
---    const GLenum REPEAT                         = 0x2901;
---    const GLenum CLAMP_TO_EDGE                  = 0x812F;
---    const GLenum MIRRORED_REPEAT                = 0x8370;
---
+
+   ---------------------
+   -- TextureWrapMode --
+   ---------------------
+
+   REPEAT          : constant := 16#2901#;
+   CLAMP_TO_EDGE   : constant := 16#812F#;
+   MIRRORED_REPEAT : constant := 16#8370#;
+
 --    /* Uniform Types */
 --    const GLenum FLOAT_VEC2                     = 0x8B50;
 --    const GLenum FLOAT_VEC3                     = 0x8B51;
@@ -434,7 +460,6 @@ package WebAPI.WebGL.Rendering_Contexts is
    -- Shader Source --
    -------------------
 
---   COMPILE_STATUS : constant GLenum := 16#8B81#;
    COMPILE_STATUS : constant := 16#8B81#;
 
 --    /* Shader Precision-Specified Types */
@@ -444,19 +469,22 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum LOW_INT                        = 0x8DF3;
 --    const GLenum MEDIUM_INT                     = 0x8DF4;
 --    const GLenum HIGH_INT                       = 0x8DF5;
---
---    /* Framebuffer Object. */
---    const GLenum FRAMEBUFFER                    = 0x8D40;
---    const GLenum RENDERBUFFER                   = 0x8D41;
---
---    const GLenum RGBA4                          = 0x8056;
---    const GLenum RGB5_A1                        = 0x8057;
---    const GLenum RGB565                         = 0x8D62;
---    const GLenum DEPTH_COMPONENT16              = 0x81A5;
+
+   ------------------------
+   -- Framebuffer Object --
+   ------------------------
+
+   FRAMEBUFFER  : constant := 16#8D40#;
+   RENDERBUFFER : constant := 16#8D41#;
+
+   RGBA4             : constant := 16#8056#;
+   RGB5_A1           : constant := 16#8057#;
+   RGB565            : constant := 16#8D62#;
+   DEPTH_COMPONENT16 : constant := 16#81A5#;
+   STENCIL_INDEX8    : constant := 16#8D48#;
 --    const GLenum STENCIL_INDEX                  = 0x1901;
---    const GLenum STENCIL_INDEX8                 = 0x8D48;
 --    const GLenum DEPTH_STENCIL                  = 0x84F9;
---
+
 --    const GLenum RENDERBUFFER_WIDTH             = 0x8D42;
 --    const GLenum RENDERBUFFER_HEIGHT            = 0x8D43;
 --    const GLenum RENDERBUFFER_INTERNAL_FORMAT   = 0x8D44;
@@ -471,12 +499,12 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum FRAMEBUFFER_ATTACHMENT_OBJECT_NAME           = 0x8CD1;
 --    const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL         = 0x8CD2;
 --    const GLenum FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE = 0x8CD3;
---
---    const GLenum COLOR_ATTACHMENT0              = 0x8CE0;
---    const GLenum DEPTH_ATTACHMENT               = 0x8D00;
---    const GLenum STENCIL_ATTACHMENT             = 0x8D20;
+
+   COLOR_ATTACHMENT0  : constant := 16#8CE0#;
+   DEPTH_ATTACHMENT   : constant := 16#8D00#;
+   STENCIL_ATTACHMENT : constant := 16#8D20#;
 --    const GLenum DEPTH_STENCIL_ATTACHMENT       = 0x821A;
---
+
 --    const GLenum NONE                           = 0;
 --
 --    const GLenum FRAMEBUFFER_COMPLETE                      = 0x8CD5;
@@ -536,9 +564,36 @@ package WebAPI.WebGL.Rendering_Contexts is
             Link_Name  => "bindBuffer";
 --            Pre'Class  => Target in ARRAY_BUFFER | ELEMENT_ARRAY_BUFFER;
 
---    void bindFramebuffer(GLenum target, WebGLFramebuffer? framebuffer);
---    void bindRenderbuffer(GLenum target, WebGLRenderbuffer? renderbuffer);
---    void bindTexture(GLenum target, WebGLTexture? texture);
+   not overriding procedure Bind_Framebuffer
+    (Self        : not null access WebGL_Rendering_Context;
+     Target      : GLenum;
+     Framebuffer : access WebAPI.WebGL.Framebuffers.WebGL_Framebuffer'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "bindFramebuffer";
+--              Pre'Class  => Target in FRAMEBUFFER;
+
+   not overriding procedure Bind_Renderbuffer
+    (Self         : not null access WebGL_Rendering_Context;
+     Target       : GLenum;
+     Renderbuffer : access WebAPI.WebGL.Renderbuffers.WebGL_Renderbuffer'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "bindRenderbuffer";
+--              Pre'Class  => Target in RENDERBUFFER;
+
+   not overriding procedure Bind_Texture
+    (Self    : not null access WebGL_Rendering_Context;
+     Target  : GLenum;
+     Texture : access WebAPI.WebGL.Textures.WebGL_Texture'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "bindTexture";
+--              Pre'Class  => Target in TEXTURE_2D | TEXTURE_CUBE_MAP;
+
 --    void blendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
 --    void blendEquation(GLenum mode);
 --    void blendEquationSeparate(GLenum modeRGB, GLenum modeAlpha);
@@ -602,7 +657,12 @@ package WebAPI.WebGL.Rendering_Contexts is
               Convention => JavaScript_Method,
               Link_Name  => "createBuffer";
 
---    WebGLFramebuffer? createFramebuffer();
+   not overriding function Create_Framebuffer
+    (Self : not null access WebGL_Rendering_Context)
+       return WebAPI.WebGL.Framebuffers.WebGL_Framebuffer_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createFramebuffer";
 
    not overriding function Create_Program
     (Self : not null access WebGL_Rendering_Context)
@@ -611,7 +671,12 @@ package WebAPI.WebGL.Rendering_Contexts is
               Convention => JavaScript_Method,
               Link_Name  => "createProgram";
 
---    WebGLRenderbuffer? createRenderbuffer();
+   not overriding function Create_Renderbuffer
+    (Self : not null access WebGL_Rendering_Context)
+       return WebAPI.WebGL.Renderbuffers.WebGL_Renderbuffer_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createRenderbuffer";
 
    not overriding function Create_Shader
     (Self     : not null access WebGL_Rendering_Context;
@@ -621,12 +686,29 @@ package WebAPI.WebGL.Rendering_Contexts is
               Convention => JavaScript_Method,
               Link_Name  => "createShader";
 
---    WebGLTexture? createTexture();
---
+   not overriding function Create_Texture
+    (Self : not null access WebGL_Rendering_Context)
+       return WebAPI.WebGL.Textures.WebGL_Texture_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "createTexture";
+
 --    void cullFace(GLenum mode);
---
---    void deleteBuffer(WebGLBuffer? buffer);
---    void deleteFramebuffer(WebGLFramebuffer? framebuffer);
+
+   not overriding procedure Delete_Buffer
+    (Self   : not null access WebGL_Rendering_Context;
+     Buffer : access WebAPI.WebGL.Buffers.WebGL_Buffer'Class) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "deleteBuffer";
+
+   not overriding procedure Delete_Framebuffer
+    (Self        : not null access WebGL_Rendering_Context;
+     Framebuffer : access WebAPI.WebGL.Framebuffers.WebGL_Framebuffer'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "deleteFramebuffer";
 
    not overriding procedure Delete_Program
     (Self    : not null access WebGL_Rendering_Context;
@@ -635,7 +717,13 @@ package WebAPI.WebGL.Rendering_Contexts is
             Convention => JavaScript_Method,
             Link_Name  => "deleteProgram";
 
---    void deleteRenderbuffer(WebGLRenderbuffer? renderbuffer);
+   not overriding procedure Delete_Renderbuffer
+    (Self         : not null access WebGL_Rendering_Context;
+     Renderbuffer : access WebAPI.WebGL.Renderbuffers.WebGL_Renderbuffer'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "deleteRenderbuffer";
 
    not overriding procedure Delete_Shader
     (Self   : not null access WebGL_Rendering_Context;
@@ -644,8 +732,14 @@ package WebAPI.WebGL.Rendering_Contexts is
             Convention => JavaScript_Method,
             Link_Name  => "deleteShader";
 
---    void deleteTexture(WebGLTexture? texture);
---
+   not overriding procedure Delete_Texture
+    (Self    : not null access WebGL_Rendering_Context;
+     Texture : access WebAPI.WebGL.Textures.WebGL_Texture'Class)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "deleteTexture";
+
 --    void depthFunc(GLenum func);
 --    void depthMask(GLboolean flag);
 --    void depthRange(GLclampf zNear, GLclampf zFar);
@@ -691,11 +785,28 @@ package WebAPI.WebGL.Rendering_Contexts is
             Convention => JavaScript_Method,
             Link_Name  => "flush";
 
---    void framebufferRenderbuffer(GLenum target, GLenum attachment,
---                                 GLenum renderbuffertarget,
---                                 WebGLRenderbuffer? renderbuffer);
---    void framebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget,
---                              WebGLTexture? texture, GLint level);
+   not overriding procedure Framebuffer_Renderbuffer
+    (Self                : not null access WebGL_Rendering_Context;
+     Target              : WebAPI.WebGL.GLenum;
+     Attachment          : WebAPI.WebGL.GLenum;
+     Renderbuffer_Target : WebAPI.WebGL.GLenum;
+     Renderbuffer        :
+       WebAPI.WebGL.Renderbuffers.WebGL_Renderbuffer_Access) is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "framebufferRenderbuffer";
+
+   not overriding procedure Framebuffer_Texture_2D
+    (Self           : not null access WebGL_Rendering_Context;
+     Target         : WebAPI.WebGL.GLenum;
+     Attachment     : WebAPI.WebGL.GLenum;
+     Texture_Target : WebAPI.WebGL.GLenum;
+     Texture        : WebAPI.WebGL.Textures.WebGL_Texture_Access;
+     Level          : WebAPI.WebGL.GLint) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "framebufferTexture2D";
+
 --    void frontFace(GLenum mode);
 --
 --    void generateMipmap(GLenum target);
@@ -801,12 +912,30 @@ package WebAPI.WebGL.Rendering_Contexts is
 
 --    void pixelStorei(GLenum pname, GLint param);
 --    void polygonOffset(GLfloat factor, GLfloat units);
---
---    void readPixels(GLint x, GLint y, GLsizei width, GLsizei height,
---                    GLenum format, GLenum type, ArrayBufferView? pixels);
---
---    void renderbufferStorage(GLenum target, GLenum internalformat,
---                             GLsizei width, GLsizei height);
+
+   not overriding procedure Read_Pixels
+    (Self      : not null access WebGL_Rendering_Context;
+     X         : WebAPI.WebGL.Glint;
+     Y         : WebAPI.WebGL.Glint;
+     Width     : WebAPI.WebGL.Glsizei;
+     Height    : WebAPI.WebGL.Glsizei;
+     Format    : WebAPI.WebGL.GLenum;
+     Data_Type : WebAPI.WebGL.GLenum;
+     Pixels    : System.Address) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "readPixels";
+
+   not overriding procedure Renderbuffer_Storage
+    (Self   : not null access WebGL_Rendering_Context;
+     Target : WebAPI.WebGL.GLenum;
+     Format : WebAPI.WebGL.GLenum;
+     Width  : WebAPI.WebGL.Glsizei;
+     Height : WebAPI.WebGL.Glsizei) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "renderbufferStorage";
+
 --    void sampleCoverage(GLclampf value, GLboolean invert);
 --    void scissor(GLint x, GLint y, GLsizei width, GLsizei height);
 
@@ -830,15 +959,43 @@ package WebAPI.WebGL.Rendering_Contexts is
 --             HTMLImageElement or
 --             HTMLCanvasElement or
 --             HTMLVideoElement) TexImageSource;
---    void texImage2D(GLenum target, GLint level, GLint internalformat,
---                    GLsizei width, GLsizei height, GLint border, GLenum format,
---                    GLenum type, ArrayBufferView? pixels);
+
+   not overriding procedure Tex_Image_2D
+    (Self            : not null access WebGL_Rendering_Context;
+     Target          : WebAPI.WebGL.GLenum;
+     Level           : WebAPI.WebGL.GLint;
+     Internal_Format : WebAPI.WebGL.GLint;
+     Width           : WebAPI.WebGL.GLsizei;
+     Height          : WebAPI.WebGL.GLsizei;
+     Border          : WebAPI.WebGL.GLint;
+     Format          : WebAPI.WebGL.GLenum;
+     Data_Type       : WebAPI.WebGL.GLenum;
+     Pixels          : System.Address) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "texImage2D";
+
 --    void texImage2D(GLenum target, GLint level, GLint internalformat,
 --                    GLenum format, GLenum type, TexImageSource? source); // May throw DOMException
---
---    void texParameterf(GLenum target, GLenum pname, GLfloat param);
---    void texParameteri(GLenum target, GLenum pname, GLint param);
---
+
+   not overriding procedure Tex_Parameterf
+    (Self   : not null access WebGL_Rendering_Context;
+     Target : WebAPI.WebGL.GLenum;
+     Pname  : WebAPI.WebGL.GLenum;
+     Value  : WebAPI.WebGL.GLfloat) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "texParameterf";
+
+   not overriding procedure Tex_Parameteri
+    (Self   : not null access WebGL_Rendering_Context;
+     Target : WebAPI.WebGL.GLenum;
+     Pname  : WebAPI.WebGL.GLenum;
+     Value  : WebAPI.WebGL.GLint) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "texParameteri";
+
 --    void texSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset,
 --                       GLsizei width, GLsizei height,
 --                       GLenum format, GLenum type, ArrayBufferView? pixels);
