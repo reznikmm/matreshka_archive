@@ -138,6 +138,29 @@ define('standard', [], function(){
         },
         "_assign" : function (src) {
             this.A = src.A.slice();
+        },
+        "_ArrayBuffer" : function (size) {
+            this.A = new ArrayBuffer(size);
+            this.u1 = new Uint8Array(this.A);
+            this.f4 = new Float32Array(this.A);
+            this._index = 0;
+            this._align = 4;
+        },
+        "_TA_allign" : function (size) {
+            if (this._align < size)
+                this._index =
+                    size * Math.floor((this._index + size - 1) / size);
+
+            this._align = size;
+        },
+        "_push_f4" : function (value) {
+            this._TA_allign (4);
+            this.f4[this._index / 4] = value;
+            this._index += 4;
+        },
+        "_push_u1" : function (value) {
+            this._align = 1;
+            this.f4[this._index++] = value;
         }
     };
 

@@ -184,4 +184,35 @@ package body Properties.Expressions.Record_Aggregate is
       return Result;
    end Code;
 
+   ----------------------------
+   -- Typed_Array_Initialize --
+   ----------------------------
+
+   function Typed_Array_Initialize
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Result : League.Strings.Universal_String;
+      Down   : League.Strings.Universal_String;
+      Item   : Asis.Expression;
+      List   : constant Asis.Association_List :=
+        Asis.Expressions.Record_Component_Associations (Element);
+   begin
+      Result.Append ("_result._TA_allign(4);");
+
+      for J in List'Range loop
+         pragma Assert (Asis.Expressions.Record_Component_Choices
+                        (List (J))'Length = 0,
+                        "Named associations in Typed_Array aggregate"
+                        & " are not supported");
+
+         Item := Asis.Expressions.Component_Expression (List (J));
+         Down := Engine.Text.Get_Property (Item, Name);
+         Result.Append (Down);
+      end loop;
+
+      return Result;
+   end Typed_Array_Initialize;
+
 end Properties.Expressions.Record_Aggregate;

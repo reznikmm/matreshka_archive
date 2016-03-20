@@ -68,7 +68,9 @@ with Properties.Definitions.Constrained_Array_Type;
 with Properties.Definitions.Derived_Type;
 with Properties.Definitions.Discriminant_Constraint;
 with Properties.Definitions.Enumeration_Type;
+with Properties.Definitions.Float_Point;
 with Properties.Definitions.Index_Constraint;
+with Properties.Definitions.Modular;
 with Properties.Definitions.Others_Choice;
 with Properties.Definitions.Range_Attribute;
 with Properties.Definitions.Record_Type;
@@ -732,7 +734,41 @@ is
        Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access),
       (Name   => N.Tag_Name,
        Kind   => F.A_Limited_Interface,
-       Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access)
+       Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access),
+
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.An_Ordinary_Type_Declaration,
+       Action => P.Declarations.Ordinary_Type.Code'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Derived_Type_Definition,
+       Action => P.Definitions.Derived_Type.Bounds'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Code'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Floating_Point_Definition,
+       Action => P.Definitions.Float_Point.Typed_Array_Item_Type'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Modular_Type_Definition,
+       Action => P.Definitions.Modular.Typed_Array_Item_Type'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Constrained_Array_Definition,
+       Action => P.Common.Empty'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Bounds'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Selected_Component,
+       Action => P.Expressions.Selected_Components
+                    .Typed_Array_Item_Type'Access),
+
+      (Name   => N.Typed_Array_Initialize,
+       Kind   => F.A_Positional_Array_Aggregate,
+       Action => P.Expressions.Pos_Array_Aggregate
+                     .Typed_Array_Initialize'Access),
+      (Name   => N.Typed_Array_Initialize,
+       Kind   => F.A_Record_Aggregate,
+       Action => P.Expressions.Record_Aggregate.Typed_Array_Initialize'Access)
      );
 
    Range_List : constant Range_Array :=

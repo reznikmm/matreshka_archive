@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,42 +42,23 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
-package Engines is
+package body Properties.Definitions.Float_Point is
 
-   type Text_Property is
-     (Code,
-      Condition,
-      Lower, Upper,    --  Code for range return X'First X'Last
-      Intrinsic_Name,
-      Associations, --  names of record assotiation a,b,c
-      Tag_Name,  --  external tag name image
-      Method_Name,  --  name of subrogram in virtual table
-      Address,  --  Access or address of an object
-      Initialize,
-      --  Code to initialize an object of given type
-      Typed_Array_Initialize,  --  Iniitalize component of Typed_Array aggr
-      Typed_Array_Item_Type,  --  Elementary type of Typed_Array item
-      Assign,  --  Code to copy component, discriminant or variant
-      Bounds  --  "First,Last" bounds for nested named array aggregate
-     );
+   ---------------------------
+   -- Typed_Array_Item_Type --
+   ---------------------------
 
-   type Boolean_Property is
-     (Export,
-      Is_Simple_Type,   --  Is non-object type (Number, Boolean, etc)
-      Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
-      Inside_Package,   --  Enclosing Element is a package
-      Is_Dispatching);  --  Declaration/call is a dispatching subprogram
+   function Typed_Array_Item_Type
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property)
+      return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Engine, Element, Name);
+      Result : League.Strings.Universal_String;
+   begin
+      Result.Append ("f4");
+      return Result;
+   end Typed_Array_Item_Type;
 
-   type Convention_Property is
-     (Call_Convention);
-
-   type Convention_Kind is
-     (Intrinsic,
-      JavaScript_Property_Getter,  --  obj.prop
-      JavaScript_Property_Setter,  --  obj.prop = val
-      JavaScript_Function,         --  funct (args)
-      JavaScript_Method,           --  obj.funct (args)
-      JavaScript_Getter,           --  collection.getter (index - 1)
-      Unspecified);
-
-end Engines;
+end Properties.Definitions.Float_Point;

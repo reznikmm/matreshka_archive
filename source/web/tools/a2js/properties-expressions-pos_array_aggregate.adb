@@ -41,13 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Declarations;
+with Asis.Definitions;
+with Asis.Elements;
 with Asis.Expressions;
+with Asis.Iterator;
 
 package body Properties.Expressions.Pos_Array_Aggregate is
 
    function Get_Bounds
      (List    : Asis.Association_List)
       return League.Strings.Universal_String;
+
+   function Is_Typed_Array
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression) return Boolean;
 
    ----------
    -- Code --
@@ -65,30 +73,49 @@ package body Properties.Expressions.Pos_Array_Aggregate is
         Asis.Expressions.Array_Component_Associations (Element);
       Length : constant Wide_Wide_String :=
         Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
+
+      Typed_Array : constant Boolean := Is_Typed_Array (Engine, Element);
    begin
       Result.Append ("function(_from,_to){");
       Result.Append ("var _result=Object.create(_ec._ada_array);");
-      Result.Append ("var _data=[");
 
-      for J in List'Range loop
-         Down := Engine.Text.Get_Property
-           (Asis.Expressions.Component_Expression (List (J)),
-            Name);
+      if Typed_Array then
+         Result.Append ("_result._ArrayBuffer(3*16);");
 
-         Result.Append (Down);
+         for J in List'Range loop
+            Down := Engine.Text.Get_Property
+              (Asis.Expressions.Component_Expression (List (J)),
+               Engines.Typed_Array_Initialize);
 
-         if J /= List'Last then
-            Result.Append (", ");
-         end if;
-      end loop;
-      Result.Append ("];");
+            Result.Append (Down);
+         end loop;
+
+      else
+         Result.Append ("var _data=[");
+
+         for J in List'Range loop
+            Down := Engine.Text.Get_Property
+              (Asis.Expressions.Component_Expression (List (J)),
+               Name);
+
+            Result.Append (Down);
+
+            if J /= List'Last then
+               Result.Append (", ");
+            end if;
+         end loop;
+
+         Result.Append ("];");
+         Result.Append ("_result.A=_data;");
+
+      end if;
+
       Result.Append ("_result._first=_from;");
       Result.Append ("_result._last=_to;");
       Result.Append ("_result._length=[");
       Result.Append (Length (2 .. Length'Last));
       Result.Append ("];");
       Result.Append ("_result._offset=0;");
-      Result.Append ("_result.A=_data;");
 
       Result.Append ("return _result;}(");
 
@@ -117,5 +144,151 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
       return Result;
    end Get_Bounds;
+
+   --------------------
+   -- Is_Typed_Array --
+   --------------------
+
+   function Is_Typed_Array
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression) return Boolean
+   is
+      pragma Unreferenced (Engine);
+      Tipe : constant Asis.Expression :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Env  : Asis.Element;
+   begin
+      if Asis.Elements.Is_Nil (Tipe) then
+         return False;
+      else
+         Env := Asis.Elements.Enclosing_Element (Tipe);
+      end if;
+
+      declare
+         Name : constant Asis.Program_Text :=
+           Asis.Declarations.Defining_Name_Image
+             (Asis.Declarations.Names (Tipe) (1));
+
+         procedure Pre_Operation
+           (Element :        Asis.Element;
+            Control : in out Asis.Traverse_Control;
+            State   : in out Boolean);
+
+         procedure Post_Operation
+           (Element :        Asis.Element;
+            Control : in out Asis.Traverse_Control;
+            State   : in out Boolean) is null;
+
+         -------------------
+         -- Pre_Operation --
+         -------------------
+
+         procedure Pre_Operation
+           (Element :        Asis.Element;
+            Control : in out Asis.Traverse_Control;
+            State   : in out Boolean)
+         is
+            use type Asis.Pragma_Kinds;
+         begin
+            if Asis.Elements.Pragma_Kind (Element)
+                 = Asis.An_Unknown_Pragma
+            then
+               declare
+                  Image : constant Asis.Program_Text :=
+                    Asis.Elements.Pragma_Name_Image (Element);
+               begin
+                  if Image = "JavaSctipt_Typed_Array" then
+                     declare
+                        Args : constant Asis.Association_List :=
+                          Asis.Elements.Pragma_Argument_Associations (Element);
+                        Arg : Asis.Expression;
+                     begin
+                        pragma Assert
+                          (Args'Length = 1,
+                           "Expected one argument in pragma"
+                           &" JavaSctipt_Typed_Array");
+
+                        Arg := Asis.Expressions.Actual_Parameter (Args (1));
+
+                        if Name = Asis.Expressions.Name_Image (Arg) then
+                           State := True;
+                           Control := Asis.Terminate_Immediately;
+                        end if;
+                     end;
+                  end if;
+               end;
+            elsif not Asis.Elements.Is_Identical (Element, Env) then
+               Control := Asis.Abandon_Children;
+            end if;
+         end Pre_Operation;
+
+         procedure Search_Typed_Array_Pragma is
+           new Asis.Iterator.Traverse_Element
+             (State_Information => Boolean,
+              Pre_Operation     => Pre_Operation,
+              Post_Operation    => Post_Operation);
+
+         Control : Asis.Traverse_Control := Asis.Continue;
+         Found   : Boolean := False;
+      begin
+         Search_Typed_Array_Pragma (Env, Control, Found);
+
+         return Found;
+      end;
+   end Is_Typed_Array;
+
+   ----------------------------
+   -- Typed_Array_Initialize --
+   ----------------------------
+
+   function Typed_Array_Initialize
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Result  : League.Strings.Universal_String;
+      Down    : League.Strings.Universal_String;
+      Item    : Asis.Expression;
+      Tipe    : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Def     : constant Asis.Type_Definition :=
+        Asis.Declarations.Type_Declaration_View (Tipe);
+      Comp    : constant Asis.Definition :=
+        Asis.Definitions.Array_Component_Definition (Def);
+      View    : constant Asis.Definition :=
+        Asis.Definitions.Component_Definition_View (Comp);
+      JS_Type : League.Strings.Universal_String;
+      List    : constant Asis.Association_List :=
+        Asis.Expressions.Array_Component_Associations (Element);
+   begin
+      pragma Assert (not Asis.Elements.Is_Nil (Tipe));
+
+      JS_Type := Engine.Text.Get_Property
+        (View, Engines.Typed_Array_Item_Type);
+
+      for J in List'Range loop
+         pragma Assert (Asis.Expressions.Array_Component_Choices
+                        (List (J))'Length = 0,
+                        "Named associations in Typed_Array aggregate"
+                        & " are not supported");
+
+         Item := Asis.Expressions.Component_Expression (List (J));
+
+         if JS_Type.Is_Empty then
+            Down := Engine.Text.Get_Property (Item, Name);
+            Result.Append (Down);
+         else
+            Down := Engine.Text.Get_Property (Item, Engines.Code);
+            Result.Append ("_result._push_");
+            Result.Append (JS_Type);
+            Result.Append ("(");
+            Result.Append (Down);
+            Result.Append (");");
+         end if;
+
+      end loop;
+
+      return Result;
+   end Typed_Array_Initialize;
 
 end Properties.Expressions.Pos_Array_Aggregate;

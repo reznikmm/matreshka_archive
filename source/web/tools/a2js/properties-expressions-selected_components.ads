@@ -86,4 +86,9 @@ package Properties.Expressions.Selected_Components is
       Name    : Engines.Text_Property) return League.Strings.Universal_String
       renames Intrinsic_Name;
 
+   function Typed_Array_Item_Type
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
 end Properties.Expressions.Selected_Components;
