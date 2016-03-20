@@ -604,6 +604,15 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    typedef (ArrayBuffer or ArrayBufferView) BufferDataSource;
 --    void bufferData(GLenum target, GLsizeiptr size, GLenum usage);
 --    void bufferData(GLenum target, BufferDataSource? data, GLenum usage);
+   not overriding procedure Buffer_Data
+    (Self   : not null access WebGL_Rendering_Context;
+     Target : WebAPI.WebGL.GLenum;
+     Data   : System.Address;
+     Usage  : WebAPI.WebGL.GLenum) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "bufferData";
+
 --    void bufferSubData(GLenum target, GLintptr offset, BufferDataSource? data);
 --
 --    [WebGLHandlesContextLoss] GLenum checkFramebufferStatus(GLenum target);
