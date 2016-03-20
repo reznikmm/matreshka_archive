@@ -52,8 +52,8 @@ package body Properties.Declarations.Function_Renaming_Declaration is
    function Call_Convention
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind
+      Name    : Engines.Convention_Property)
+      return Engines.Convention_Kind
    is
    begin
       return Engine.Call_Convention.Get_Property
@@ -69,7 +69,7 @@ package body Properties.Declarations.Function_Renaming_Declaration is
       Element : Asis.Declaration;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type Engines.Call_Convention_Kind;
+      use type Engines.Convention_Kind;
 
       Subprogram_Name : constant League.Strings.Universal_String :=
         Engine.Text.Get_Property

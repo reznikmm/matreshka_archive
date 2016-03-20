@@ -58,8 +58,8 @@ package body Properties.Declarations.Function_Declarations is
    function Call_Convention
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind is
+      Name    : Engines.Convention_Property)
+      return Engines.Convention_Kind is
    begin
       if Asis.Elements.Is_Part_Of_Inherited (Element) then
          return Call_Convention

@@ -66,12 +66,12 @@ package body Properties.Statements.Procedure_Call_Statement is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type Engines.Call_Convention_Kind;
+      use type Engines.Convention_Kind;
 
       Text   : League.Strings.Universal_String;
       Prefix : constant Asis.Expression :=
         Asis.Statements.Called_Name (Element);
-      Conv   : constant Engines.Call_Convention_Kind :=
+      Conv   : constant Engines.Convention_Kind :=
         Engine.Call_Convention.Get_Property
           (Prefix,
            Engines.Call_Convention);

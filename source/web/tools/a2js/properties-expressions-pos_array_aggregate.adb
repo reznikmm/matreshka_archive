@@ -67,6 +67,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
         Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
    begin
       Result.Append ("function(_from,_to){");
+      Result.Append ("var _result=Object.create(_ec._ada_array);");
       Result.Append ("var _data=[");
 
       for J in List'Range loop
@@ -81,7 +82,6 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          end if;
       end loop;
       Result.Append ("];");
-      Result.Append ("var _result=Object.create(_ec._ada_array);");
       Result.Append ("_result._first=_from;");
       Result.Append ("_result._last=_to;");
       Result.Append ("_result._length=[");

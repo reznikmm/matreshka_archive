@@ -66,10 +66,10 @@ package Engines is
       Inside_Package,   --  Enclosing Element is a package
       Is_Dispatching);  --  Declaration/call is a dispatching subprogram
 
-   type Call_Convention_Property is
+   type Convention_Property is
      (Call_Convention);
 
-   type Call_Convention_Kind is
+   type Convention_Kind is
      (Intrinsic,
       JavaScript_Property_Getter,  --  obj.prop
       JavaScript_Property_Setter,  --  obj.prop = val

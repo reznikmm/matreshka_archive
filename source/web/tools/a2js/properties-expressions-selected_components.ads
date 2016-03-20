@@ -52,8 +52,8 @@ package Properties.Expressions.Selected_Components is
    function Call_Convention
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind;
+      Name    : Engines.Convention_Property)
+      return Engines.Convention_Kind;
 
    function Code
      (Engine  : access Engines.Contexts.Context;

@@ -72,8 +72,8 @@ package body Properties.Expressions.Function_Calls is
    function Call_Convention
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind is
+      Name    : Engines.Convention_Property)
+      return Engines.Convention_Kind is
    begin
       return Engine.Call_Convention.Get_Property
         (Asis.Expressions.Prefix (Element), Name);
@@ -88,11 +88,11 @@ package body Properties.Expressions.Function_Calls is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type Engines.Call_Convention_Kind;
+      use type Engines.Convention_Kind;
 
       Text   : League.Strings.Universal_String;
       Prefix : constant Asis.Expression := Asis.Expressions.Prefix (Element);
-      Conv   : constant Engines.Call_Convention_Kind :=
+      Conv   : constant Engines.Convention_Kind :=
         Engine.Call_Convention.Get_Property
           (Element, Engines.Call_Convention);
       Is_Dispatching : Boolean;

@@ -374,7 +374,7 @@ endif
 
 oci:
 ifdef HAS_GPRINSTALL
-	$(GPRINSTALL) $(GPRINSTALL_FLAGS) -p -P gnat/matreshka_sql_oci.gpr --install-name=sql_oci
+	$(GPRINSTALL) $(GPRINSTALL_FLAGS) -p -P gnat/matreshka_sql_oracle.gpr --install-name=sql_oci
 else
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/sql/oci
 	gnat ls -d -s -P gnat/matreshka_sql_oracle.gpr | sort | uniq | grep -v '^$$' > sql_oci-src.aux

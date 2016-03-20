@@ -52,8 +52,8 @@ package Properties.Declarations.Procedure_Declaration is
    function Call_Convention
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Call_Convention_Property)
-      return Engines.Call_Convention_Kind;
+      Name    : Engines.Convention_Property)
+      return Engines.Convention_Kind;
 
    function Intrinsic_Name
      (Engine  : access Engines.Contexts.Context;

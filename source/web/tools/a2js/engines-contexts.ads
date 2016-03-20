@@ -64,8 +64,8 @@ package Engines.Contexts is
       Abstract_Context => Context);
 
    package Call_Convention_Engines is new Generic_Engines
-     (Propert_Name     => Call_Convention_Property,
-      Property_Type    => Call_Convention_Kind,
+     (Propert_Name     => Convention_Property,
+      Property_Type    => Convention_Kind,
       Abstract_Context => Context);
 
    package Uniques is
