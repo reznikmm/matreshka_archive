@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -209,5 +209,76 @@ package WebAPI.DOM.Elements is
        with Import     => True,
             Convention => JavaScript_Method,
             Link_Name  => "getElementsByClassName";
+
+   ----------------------------------
+   -- CSSOM View Module Extensions --
+   ----------------------------------
+
+--  partial interface Element {
+--    sequence<DOMRect> getClientRects();
+--    [NewObject] DOMRect getBoundingClientRect();
+--    void scrollIntoView();
+--    void scrollIntoView((boolean or object) arg
+--  );
+--    void scroll(optional ScrollToOptions options
+--  );
+--    void scroll(unrestricted double x
+--  , unrestricted double y
+--  );
+--    void scrollTo(optional ScrollToOptions options
+--  );
+--    void scrollTo(unrestricted double x
+--  , unrestricted double y
+--  );
+--    void scrollBy(optional ScrollToOptions options
+--  );
+--    void scrollBy(unrestricted double x
+--  , unrestricted double y
+--  );
+--    attribute unrestricted double scrollTop;
+--    attribute unrestricted double scrollLeft;
+--  };
+
+   not overriding function Get_Scroll_Width
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "scrollWidth";
+
+   not overriding function Get_Scroll_Height
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "scrollHeight";
+
+   not overriding function Get_Client_Top
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientTop";
+
+   not overriding function Get_Client_Left
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientLeft";
+
+   not overriding function Get_Client_Width
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientWidth";
+
+   not overriding function Get_Client_Height
+    (Self : not null access constant Element)
+       return DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientHeight";
 
 end WebAPI.DOM.Elements;
