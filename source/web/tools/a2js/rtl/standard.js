@@ -160,7 +160,7 @@ define('standard', [], function(){
         },
         "_push_u1" : function (value) {
             this._align = 1;
-            this.f4[this._index++] = value;
+            this.u1[this._index++] = value;
         }
     };
 
