@@ -209,5 +209,4 @@ package WebAPI.HTML.Elements is
             Convention => JavaScript_Property_Setter,
             Link_Name  => "spellcheck";
 
---  interface HTMLUnknownElement : HTMLElement { };
 end WebAPI.HTML.Elements;
