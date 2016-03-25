@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,6 +57,7 @@ project Matreshka_XML_Tests is
      "test_350.adb",
      "test_386.adb",
      "test_41.adb",
+     "test_454.adb",
      "test_99.adb",
      "simple_test.adb",
      "escape_test.adb");
@@ -72,6 +73,7 @@ project Matreshka_XML_Tests is
      "../testsuite/xml/TN-350",
      "../testsuite/xml/TN-386",
      "../testsuite/xml/TN-41",
+     "../testsuite/xml/TN-454",
      "../testsuite/xml/TN-99",
      "../testsuite/xml/pretty_writer/simple_test",
      "../testsuite/xml/pretty_writer/escape_test");
