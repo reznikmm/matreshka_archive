@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -255,10 +255,18 @@ package body XML.Templates.Processors is
                   Container : constant League.JSON.Arrays.JSON_Array
                     := League.Holders.JSON_Arrays.Element
                         (Self.Container_Value);
+                  Stream    : constant
+                    XML.Templates.Streams.XML_Stream_Element_Vectors.Vector
+                      := Self.Stream;
+                  Name      : constant League.Strings.Universal_String
+                    := Self.Object_Name;
                   Holder    : League.Holders.Holder;
                   Success   : Boolean := True;
 
                begin
+                  Self.Stream.Clear;
+                  Self.Object_Name.Clear;
+
                   if not Container.Is_Empty then
                      for Index in 1 .. Container.Length loop
                         To_Holder (Container.Element (Index), Holder, Success);
@@ -267,18 +275,14 @@ package body XML.Templates.Processors is
                            return;
                         end if;
 
-                        Self.Parameters.Include (Self.Object_Name, Holder);
-                        Self.Process_Stream (Self.Stream, Success);
+                        Self.Parameters.Include (Name, Holder);
+                        Self.Process_Stream (Stream, Success);
 
                         if not Success then
                            return;
                         end if;
                      end loop;
-
-                     Self.Parameters.Delete (Self.Object_Name);
                   end if;
-
-                  Self.Stream.Clear;
                end;
             end if;
          end if;
