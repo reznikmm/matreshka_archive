@@ -488,6 +488,22 @@ package body Properties.Tools is
          Asis.Elements.Enclosing_Element (Type_Decl));
    end Has_Controlling_Result;
 
+   --------------
+   -- Is_Array --
+   --------------
+
+   function Is_Array (Exp : Asis.Expression) return Boolean is
+      Decl : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Exp);
+      View : constant Asis.Definition :=
+        Asis.Declarations.Type_Declaration_View (Decl);
+      Kind : constant Asis.Type_Kinds :=
+        Asis.Elements.Type_Kind (View);
+   begin
+      return Kind in Asis.An_Unconstrained_Array_Definition
+                    | Asis.A_Constrained_Array_Definition;
+   end Is_Array;
+
    -------------------
    -- Is_Equal_Type --
    -------------------

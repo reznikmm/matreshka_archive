@@ -44,6 +44,8 @@
 with Asis.Elements;
 with Asis.Expressions;
 
+with Properties.Tools;
+
 package body Properties.Expressions.Attribute_Reference is
 
    function Call_Convention
@@ -108,8 +110,16 @@ package body Properties.Expressions.Attribute_Reference is
         Asis.Elements.Attribute_Kind (Element);
    begin
       case Kind is
+         when Asis.An_Address_Attribute =>
+            Text := Engine.Text.Get_Property (Prefix, Engines.Address);
+
+            if Tools.Is_Array (Prefix) then
+               Text.Append (".A");
+            end if;
+
+            return Text;
+
          when Asis.An_Access_Attribute |
-              Asis.An_Address_Attribute |
               Asis.An_Unchecked_Access_Attribute =>
             return Engine.Text.Get_Property (Prefix, Engines.Address);
 

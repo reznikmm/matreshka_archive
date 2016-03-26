@@ -78,6 +78,8 @@ package Properties.Tools is
      (Left  : Asis.Declaration;
       Right : Asis.Declaration) return Boolean;
 
+   function Is_Array (Exp : Asis.Expression) return Boolean;
+
    function Enclosing_Declaration (X : Asis.Element) return Asis.Declaration;
 
    function Has_Controlling_Result (Func : Asis.Declaration) return Boolean;
