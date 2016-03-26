@@ -90,4 +90,9 @@ package Properties.Expressions.Identifiers is
       Name   : Asis.Identifier;
       Decl   : Asis.Declaration) return League.Strings.Universal_String;
 
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Integer_Property) return Integer;
+
 end Properties.Expressions.Identifiers;

@@ -49,13 +49,22 @@ with Asis.Iterator;
 
 package body Properties.Expressions.Pos_Array_Aggregate is
 
+   function Get_Depth (Tipe : Asis.Declaration) return Positive;
+
    function Get_Bounds
-     (List    : Asis.Association_List)
+     (Depth : Positive;
+      List  : Asis.Association_List)
       return League.Strings.Universal_String;
 
    function Is_Typed_Array
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression) return Boolean;
+
+   function Component
+     (Element : Asis.Expression;
+      List    : Asis.Association_List) return Asis.Definition;
+   --  Return Element's component definition.
+   --  List should be Component_Associations (Element)
 
    ----------
    -- Code --
@@ -69,18 +78,41 @@ package body Properties.Expressions.Pos_Array_Aggregate is
    is
       Down   : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
+      Tipe   : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Depth  : constant Positive := Get_Depth (Tipe);
       List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
-      Length : constant Wide_Wide_String :=
-        Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
 
       Typed_Array : constant Boolean := Is_Typed_Array (Engine, Element);
    begin
       Result.Append ("function(_from,_to){");
       Result.Append ("var _result=Object.create(_ec._ada_array);");
+      Result.Append ("var _first=_from.map (_ec._pos);");
+      Result.Append ("var _len=_to.map (function (_to, i)" &
+                       "{ return _ec._pos(_to) - _first[i] + 1; });");
+      Result.Append ("var _length=_len.reduce (function (a, b)" &
+                       "{ return a * b; }, 1);");
+      Result.Append ("_result._length=_len;");
 
       if Typed_Array then
-         Result.Append ("_result._ArrayBuffer(3*16);");
+         declare
+            Comp : constant Asis.Definition := Component (Element, List);
+            Size : constant League.Strings.Universal_String :=
+              Engine.Text.Get_Property (Comp, Engines.Size);
+            Align : constant Integer :=
+              Engine.Integer.Get_Property (Comp, Engines.Alignment);
+            Image : constant Wide_Wide_String :=
+              Integer'Wide_Wide_Image (Align - 1);
+         begin
+            Result.Append ("_result._ArrayBuffer(_length*((");
+            Result.Append (Size);  --  Size always x8 for TypedArray
+            Result.Append ("/8 + ");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append (") & ~");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append ("));");
+         end;
 
          for J in List'Range loop
             Down := Engine.Text.Get_Property
@@ -112,38 +144,131 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
       Result.Append ("_result._first=_from;");
       Result.Append ("_result._last=_to;");
-      Result.Append ("_result._length=[");
-      Result.Append (Length (2 .. Length'Last));
-      Result.Append ("];");
       Result.Append ("_result._offset=0;");
 
       Result.Append ("return _result;}(");
 
-      Result.Append (Get_Bounds (List));
+      Result.Append (Get_Bounds (Depth, List));
 
       Result.Append (")");
 
       return Result;
    end Code;
 
+   ---------------
+   -- Component --
+   ---------------
+
+   function Component
+     (Element : Asis.Expression;
+      List    : Asis.Association_List) return Asis.Definition
+   is
+      Tipe    : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Def     : Asis.Type_Definition;
+      Comp    : Asis.Definition;
+      View    : Asis.Definition;
+      Decl    : Asis.Declaration;
+      Item    : Asis.Expression;
+   begin
+      if not Asis.Elements.Is_Nil (Tipe) then
+         Def  := Asis.Declarations.Type_Declaration_View (Tipe);
+         Comp := Asis.Definitions.Array_Component_Definition (Def);
+         View := Asis.Definitions.Component_Definition_View (Comp);
+
+      else
+         --  Otherwise suppose we have subaggregate here. So just go deeper
+         Item := Asis.Expressions.Component_Expression (List (List'First));
+         Decl := Asis.Expressions.Corresponding_Expression_Type (Item);
+         View := Asis.Declarations.Type_Declaration_View (Decl);
+         pragma Assert (not Asis.Elements.Is_Nil (Decl));
+
+      end if;
+
+      return View;
+   end Component;
+
    ----------------
    -- Get_Bounds --
    ----------------
 
    function Get_Bounds
-     (List    : Asis.Association_List)
+     (Depth : Positive;
+      List  : Asis.Association_List)
       return League.Strings.Universal_String
    is
+      procedure Travel
+        (Depth : Positive;
+         List  : Asis.Association_List;
+         Lower : in out League.Strings.Universal_String;
+         Upper : in out League.Strings.Universal_String);
+
+      ------------
+      -- Travel --
+      ------------
+
+      procedure Travel
+        (Depth : Positive;
+         List  : Asis.Association_List;
+         Lower : in out League.Strings.Universal_String;
+         Upper : in out League.Strings.Universal_String)
+      is
+         Length : constant Wide_Wide_String :=
+           Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
+      begin
+         if not Lower.Is_Empty then
+            Lower.Append (", ");
+            Upper.Append (", ");
+         end if;
+
+         Lower.Append ("1");
+         Upper.Append (Length);
+
+         if Depth > 1 then
+            declare
+               Down : constant Asis.Expression :=
+                 Asis.Expressions.Component_Expression (List (List'First));
+            begin
+               Travel
+                 (Depth - 1,
+                  Asis.Expressions.Array_Component_Associations (Down),
+                  Lower,
+                  Upper);
+            end;
+         end if;
+      end Travel;
+
+      Lower  : League.Strings.Universal_String;
+      Upper  : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
-      Length : constant Wide_Wide_String :=
-        Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
    begin
-      Result.Append ("[1], [");
-      Result.Append (Length (2 .. Length'Last));
+      Travel (Depth, List, Lower, Upper);
+      Result.Append ("[");
+      Result.Append (Lower);
+      Result.Append ("], [");
+      Result.Append (Upper);
       Result.Append ("]");
 
       return Result;
    end Get_Bounds;
+
+   ---------------
+   -- Get_Depth --
+   ---------------
+
+   function Get_Depth (Tipe : Asis.Declaration) return Positive is
+      View : constant Asis.Definition :=
+        Asis.Declarations.Type_Declaration_View (Tipe);
+   begin
+      case Asis.Elements.Type_Kind (View) is
+         when Asis.A_Constrained_Array_Definition =>
+            return Asis.Definitions.Discrete_Subtype_Definitions (View)'Length;
+         when Asis.An_Unconstrained_Array_Definition =>
+            return Asis.Definitions.Index_Subtype_Definitions (View)'Length;
+         when others =>
+            raise Constraint_Error;
+      end case;
+   end Get_Depth;
 
    --------------------
    -- Is_Typed_Array --
@@ -249,33 +374,13 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Result  : League.Strings.Universal_String;
       Down    : League.Strings.Universal_String;
       Item    : Asis.Expression;
-      Tipe    : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type (Element);
-      Def     : Asis.Type_Definition;
-      Comp    : Asis.Definition;
-      View    : Asis.Definition;
-      Decl    : Asis.Declaration;
-      JS_Type : League.Strings.Universal_String;
       List    : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
+      Comp    : constant Asis.Definition := Component (Element, List);
+      JS_Type : League.Strings.Universal_String;
    begin
-      if not Asis.Elements.Is_Nil (Tipe) then
-         Def  := Asis.Declarations.Type_Declaration_View (Tipe);
-         Comp := Asis.Definitions.Array_Component_Definition (Def);
-         View := Asis.Definitions.Component_Definition_View (Comp);
-
-         JS_Type := Engine.Text.Get_Property
-           (View, Engines.Typed_Array_Item_Type);
-      else
-         --  Otherwise suppose we have subaggregate here. So just go deeper
-         Item := Asis.Expressions.Component_Expression (List (List'First));
-         Decl := Asis.Expressions.Corresponding_Expression_Type (Item);
-
-         pragma Assert (not Asis.Elements.Is_Nil (Decl));
-
-         JS_Type := Engine.Text.Get_Property
-           (Decl, Engines.Typed_Array_Item_Type);
-      end if;
+      JS_Type := Engine.Text.Get_Property
+        (Comp, Engines.Typed_Array_Item_Type);
 
       for J in List'Range loop
          pragma Assert (Asis.Expressions.Array_Component_Choices

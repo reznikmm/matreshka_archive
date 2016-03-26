@@ -92,6 +92,22 @@ package body Properties.Expressions.Identifiers is
       end if;
    end Address;
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      --  Expecting identifier as subtype name of subtype_mark
+      Decl : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Name_Declaration (Element);
+   begin
+      return Engine.Integer.Get_Property (Decl, Name);
+   end Alignment;
+
    ------------
    -- Bounds --
    ------------

@@ -58,8 +58,8 @@ package Engines is
       Typed_Array_Initialize,  --  Iniitalize component of Typed_Array aggr
       Typed_Array_Item_Type,  --  Elementary type of Typed_Array item
       Assign,  --  Code to copy component, discriminant or variant
-      Bounds  --  "First,Last" bounds for nested named array aggregate
-     );
+      Bounds,  --  "First,Last" bounds for nested named array aggregate
+      Size);   --  value of S'Size or X'Size
 
    type Boolean_Property is
      (Export,
@@ -67,6 +67,9 @@ package Engines is
       Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
       Inside_Package,   --  Enclosing Element is a package
       Is_Dispatching);  --  Declaration/call is a dispatching subprogram
+
+   type Integer_Property is
+     (Alignment);  --  value of S'Alignment or X'Alignment
 
    type Convention_Property is
      (Call_Convention);

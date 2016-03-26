@@ -144,6 +144,17 @@ is
       Action : Boolean_Callback;
    end record;
 
+   type Integer_Callback is access function
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Element;
+      Name    : Engines.Integer_Property) return Integer;
+
+   type Integer_Action_Item is record
+      Name   : Engines.Integer_Property;
+      Kind   : Asis.Extensions.Flat_Kinds.Flat_Element_Kinds;
+      Action : Integer_Callback;
+   end record;
+
    type Action_Array is array (Positive range <>) of Action_Item;
 
    type Action_Range is record
@@ -704,6 +715,23 @@ is
        Kind   => F.A_Selected_Component,
        Action => P.Expressions.Selected_Components.Method_Name'Access),
 
+      --  Size
+      (Name   => N.Size,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Code'Access),
+      (Name   => N.Size,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Bounds'Access),
+      (Name   => N.Size,
+       Kind   => F.An_Ordinary_Type_Declaration,
+       Action => P.Declarations.Ordinary_Type.Code'Access),
+      (Name   => N.Size,
+       Kind   => F.A_Derived_Type_Definition,
+       Action => P.Definitions.Derived_Type.Bounds'Access),
+      (Name   => N.Size,
+       Kind   => F.A_Floating_Point_Definition,
+       Action => P.Definitions.Float_Point.Size'Access),
+
       --  Tag_Name
       (Name   => N.Tag_Name,
        Kind   => F.A_Subtype_Indication,
@@ -790,6 +818,24 @@ is
       (N.Method_Name,
        F.A_Defining_And_Operator, F.A_Defining_Not_Operator,
        Action => P.Declarations.Defining_Names.Method_Name'Access));
+
+   Integer_Actions : constant array (Positive range <>) of Integer_Action_Item
+     :=
+     ((Name   => N.Alignment,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.An_Identifier,
+       Action => P.Expressions.Identifiers.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.An_Ordinary_Type_Declaration,
+       Action => P.Declarations.Ordinary_Type.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.A_Derived_Type_Definition,
+       Action => P.Definitions.Derived_Type.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.A_Floating_Point_Definition,
+       Action => P.Definitions.Float_Point.Alignment'Access));
 
    Boolean_Actions : constant array (Positive range <>) of Boolean_Action_Item
      :=
@@ -1058,6 +1104,13 @@ begin
         (Kind    => X,
          Name    => N.Is_Dispatching,
          Action  => P.Expressions.Identifiers.Is_Dispatching'Access);
+   end loop;
+
+   for X of Integer_Actions loop
+      Self.Integer.Register_Calculator
+        (Kind    => X.Kind,
+         Name    => X.Name,
+         Action  => X.Action);
    end loop;
 
    for X of Boolean_Actions loop

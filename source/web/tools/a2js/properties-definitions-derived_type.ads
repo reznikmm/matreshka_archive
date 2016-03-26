@@ -71,4 +71,9 @@ package Properties.Definitions.Derived_Type is
       Element : Asis.Definition;
       Name    : Engines.Boolean_Property) return Boolean;
 
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer;
+
 end Properties.Definitions.Derived_Type;

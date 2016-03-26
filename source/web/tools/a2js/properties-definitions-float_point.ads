@@ -49,9 +49,19 @@ with League.Strings;
 
 package Properties.Definitions.Float_Point is
 
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
    function Typed_Array_Item_Type
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
+      Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer;
 
 end Properties.Definitions.Float_Point;

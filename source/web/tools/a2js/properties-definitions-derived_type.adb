@@ -47,6 +47,21 @@ with Asis.Declarations;
 
 package body Properties.Definitions.Derived_Type is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      Parent : constant Asis.Subtype_Indication :=
+        Asis.Definitions.Parent_Subtype_Indication (Element);
+   begin
+      return Engine.Integer.Get_Property (Parent, Name);
+   end Alignment;
+
    ------------
    -- Bounds --
    ------------

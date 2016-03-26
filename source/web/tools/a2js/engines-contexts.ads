@@ -63,6 +63,11 @@ package Engines.Contexts is
       Property_Type    => Boolean,
       Abstract_Context => Context);
 
+   package Integer_Engines is new Generic_Engines
+     (Propert_Name     => Integer_Property,
+      Property_Type    => Integer,
+      Abstract_Context => Context);
+
    package Call_Convention_Engines is new Generic_Engines
      (Propert_Name     => Convention_Property,
       Property_Type    => Convention_Kind,
@@ -95,6 +100,8 @@ package Engines.Contexts is
    type Context is tagged limited record
       Text            : aliased Text_Engines.Engine (Context'Unchecked_Access);
       Boolean         : aliased Boolean_Engines.Engine
+        (Context'Unchecked_Access);
+      Integer         : aliased Integer_Engines.Engine
         (Context'Unchecked_Access);
       Call_Convention : aliased Call_Convention_Engines.Engine
         (Context'Unchecked_Access);

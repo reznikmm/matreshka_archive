@@ -59,4 +59,9 @@ package Properties.Declarations.Ordinary_Type is
       Element : Asis.Declaration;
       Name    : Engines.Boolean_Property) return Boolean;
 
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Integer_Property) return Integer;
+
 end Properties.Declarations.Ordinary_Type;

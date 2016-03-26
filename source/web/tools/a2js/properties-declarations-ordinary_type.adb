@@ -45,6 +45,19 @@ with Asis.Declarations;
 
 package body Properties.Declarations.Ordinary_Type is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Integer_Property) return Integer is
+   begin
+      return Engine.Integer.Get_Property
+        (Asis.Declarations.Type_Declaration_View (Element), Name);
+   end Alignment;
+
    ----------
    -- Code --
    ----------

@@ -46,6 +46,21 @@ with Asis.Elements;
 
 package body Properties.Definitions.Subtype_Indication is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      Mark : constant Asis.Definition :=
+        Asis.Definitions.Subtype_Mark (Element);
+   begin
+         return Engine.Integer.Get_Property (Mark, Name);
+   end Alignment;
+
    ------------
    -- Bounds --
    ------------

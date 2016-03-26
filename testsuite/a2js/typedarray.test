@@ -1,0 +1,70 @@
+--  EXPECTED OUTPUT:
+--  { '0': 0,
+--    '1': 0,
+--    '2': 128,
+--    '3': 63,
+--    '4': 0,
+--    '5': 0,
+--    '6': 0,
+--    '7': 64,
+--    '8': 0,
+--    '9': 0,
+--    '10': 64,
+--    '11': 64,
+--    '12': 0,
+--    '13': 0,
+--    '14': 128,
+--    '15': 64,
+--    slice: [Function: slice],
+--    byteLength: 16 }
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  p.adb
+--  run.adb
+--  END OF BIND LIST
+--
+--  MAIN: run
+
+package P is
+
+   type Float_1 is new Float;
+   type Float_2 is new Float;
+
+   type Float_1_Vector is array (Positive range 1 .. 2) of Float_1;
+   type Float_1_Matrix is array (Positive range 1 .. 2) of Float_1_Vector;
+
+   type Float_2_Matrix is
+     array (Positive range 1 .. 2, Positive range 1 .. 2) of Float_2
+       with Convention => Fortran;
+   pragma JavaScript_Typed_Array (Float_2_Matrix);
+
+   procedure Call (Value : Float_1_Matrix);
+
+end P;
+with System;
+
+package body P is
+
+   procedure Internal (Value : System.Address)
+     with Convention => JavaScript_Function,
+          Import     => True,
+          Link_Name  => "console.log";
+
+   procedure Call (Value : Float_1_Matrix) is
+      Value2 : constant Float_2_Matrix :=
+       ((Float_2 (Value (1) (1)),
+         Float_2 (Value (1) (2))),
+        (Float_2 (Value (2) (1)),
+         Float_2 (Value (2) (2))));
+   begin
+      Internal (Value2'Address);
+   end Call;
+
+end P;
+with P;
+procedure Run is
+   V : constant P.Float_1_Matrix := ((1.0, 2.0), (3.0, 4.0));
+begin
+   P.Call (V);
+end;

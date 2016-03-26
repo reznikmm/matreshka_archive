@@ -44,13 +44,43 @@
 
 package body Properties.Definitions.Float_Point is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      pragma Unreferenced (Engine, Element, Name);
+   begin
+      return 4;
+   end Alignment;
+
+   ----------
+   -- Size --
+   ----------
+
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Engine, Element, Name);
+      Result : League.Strings.Universal_String;
+   begin
+      Result.Append ("32");
+      return Result;
+   end Size;
+
    ---------------------------
    -- Typed_Array_Item_Type --
    ---------------------------
 
    function Typed_Array_Item_Type
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
+      Element : Asis.Definition;
       Name    : Engines.Text_Property)
       return League.Strings.Universal_String
    is
