@@ -45,6 +45,21 @@ with Asis.Definitions;
 
 package body Properties.Definitions.Component_Definition is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      Subtipe : constant Asis.Definition :=
+        Asis.Definitions.Component_Definition_View (Element);
+   begin
+      return Engine.Integer.Get_Property (Subtipe, Name);
+   end Alignment;
+
    ----------------
    -- Initialize --
    ----------------

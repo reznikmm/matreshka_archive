@@ -45,6 +45,21 @@ with Asis.Declarations;
 
 package body Properties.Declarations.Component_Declaration is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      Tipe : constant Asis.Definition :=
+        Asis.Declarations.Object_Declaration_View (Element);
+   begin
+      return Engine.Integer.Get_Property (Tipe, Name);
+   end Alignment;
+
    ------------
    -- Assign --
    ------------

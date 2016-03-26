@@ -49,6 +49,28 @@ with Properties.Tools;
 
 package body Properties.Definitions.Record_Type is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      List : constant Asis.Declaration_List :=
+        Properties.Tools.Corresponding_Type_Components (Element);
+      Result : Integer := 1;
+      Down   : Integer;
+   begin
+      for J in List'Range loop
+         Down := Engine.Integer.Get_Property (List (J), Name);
+         Result := Integer'Max (Result, Down);
+      end loop;
+
+      return Result;
+   end Alignment;
+
    ----------
    -- Code --
    ----------
@@ -252,5 +274,31 @@ package body Properties.Definitions.Record_Type is
       Text.Append ("}");
       return Text;
    end Initialize;
+
+   ----------
+   -- Size --
+   ----------
+
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      List : constant Asis.Declaration_List :=
+        Properties.Tools.Corresponding_Type_Components (Element);
+      Result : League.Strings.Universal_String;
+      Down   : League.Strings.Universal_String;
+   begin
+      Result.Append ("(0");
+
+      for J in List'Range loop
+         Down := Engine.Text.Get_Property (List (J), Name);
+         Result.Append ("+");
+         Result.Append (Down);
+      end loop;
+
+      Result.Append (")");
+      return Result;
+   end Size;
 
 end Properties.Definitions.Record_Type;

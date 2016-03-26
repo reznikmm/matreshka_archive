@@ -49,6 +49,21 @@ with Properties.Expressions.Identifiers;
 
 package body Properties.Definitions.Constrained_Array_Type is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Integer_Property) return Integer
+   is
+      Comp : constant Asis.Definition :=
+        Asis.Definitions.Array_Component_Definition (Element);
+   begin
+      return Engine.Integer.Get_Property (Comp, Name);
+   end Alignment;
+
    ------------
    -- Bounds --
    ------------
@@ -188,5 +203,32 @@ package body Properties.Definitions.Constrained_Array_Type is
    begin
       return False;
    end Is_Simple_Type;
+
+   ----------
+   -- Size --
+   ----------
+
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Result : League.Strings.Universal_String;
+      Comp   : constant Asis.Definition :=
+        Asis.Definitions.Array_Component_Definition (Element);
+      Limits : constant League.Strings.Universal_String :=
+          Engine.Text.Get_Property (Element, Engines.Bounds);
+      Down   : League.Strings.Universal_String;
+   begin
+      Down := Engine.Text.Get_Property (Comp, Name);
+
+      Result.Append ("(");
+      Result.Append (Down);
+      Result.Append (") * function (a, b){ return b[0] - a[0] + 1}(");
+      Result.Append (Limits);
+      Result.Append (")");
+
+      return Result;
+   end Size;
 
 end Properties.Definitions.Constrained_Array_Type;
