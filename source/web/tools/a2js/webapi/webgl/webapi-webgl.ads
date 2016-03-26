@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -66,17 +66,23 @@ package WebAPI.WebGL is
    type GLintptr is new Interfaces.Integer_64;
 
    type GLfloat_Vector_2 is array (Positive range 1 .. 2) of GLfloat;
+   pragma JavaScript_Typed_Array (GLfloat_Vector_2);
    type GLfloat_Vector_3 is array (Positive range 1 .. 3) of GLfloat;
+   pragma JavaScript_Typed_Array (GLfloat_Vector_3);
    type GLfloat_Vector_4 is array (Positive range 1 .. 4) of GLfloat;
+   pragma JavaScript_Typed_Array (GLfloat_Vector_4);
 
    type GLfloat_Matrix_2x2 is
      array (Positive range 1 .. 2, Positive range 1 .. 2) of GLfloat
        with Convention => Fortran;
+   pragma JavaScript_Typed_Array (GLfloat_Matrix_2x2);
    type GLfloat_Matrix_3x3 is
      array (Positive range 1 .. 3, Positive range 1 .. 3) of GLfloat
        with Convention => Fortran;
+   pragma JavaScript_Typed_Array (GLfloat_Matrix_3x3);
    type GLfloat_Matrix_4x4 is
      array (Positive range 1 .. 4, Positive range 1 .. 4) of GLfloat
        with Convention => Fortran;
+   pragma JavaScript_Typed_Array (GLfloat_Matrix_4x4);
 
 end WebAPI.WebGL;
