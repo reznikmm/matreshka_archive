@@ -91,4 +91,14 @@ package Properties.Expressions.Selected_Components is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Integer_Property) return Integer;
+
 end Properties.Expressions.Selected_Components;

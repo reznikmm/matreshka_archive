@@ -47,6 +47,19 @@ with Asis.Elements;
 
 package body Properties.Expressions.Selected_Components is
 
+   ---------------
+   -- Alignment --
+   ---------------
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Integer_Property) return Integer is
+   begin
+      return Engine.Integer.Get_Property
+        (Asis.Expressions.Selector (Element), Name);
+   end Alignment;
+
    ---------------------
    -- Call_Convention --
    ---------------------
@@ -155,6 +168,12 @@ package body Properties.Expressions.Selected_Components is
      renames Intrinsic_Name;
 
    function Typed_Array_Item_Type
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+     renames Intrinsic_Name;
+
+   function Size
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String

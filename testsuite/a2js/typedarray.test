@@ -26,10 +26,11 @@
 --
 --  MAIN: run
 
+with Interfaces;
 package P is
 
-   type Float_1 is new Float;
-   type Float_2 is new Float;
+   type Float_1 is new Interfaces.IEEE_Float_32;
+   type Float_2 is new Interfaces.IEEE_Float_32;
 
    type Float_1_Vector is array (Positive range 1 .. 2) of Float_1;
    type Float_1_Matrix is array (Positive range 1 .. 2) of Float_1_Vector;
