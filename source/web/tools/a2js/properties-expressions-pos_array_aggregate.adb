@@ -251,20 +251,31 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Item    : Asis.Expression;
       Tipe    : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
-      Def     : constant Asis.Type_Definition :=
-        Asis.Declarations.Type_Declaration_View (Tipe);
-      Comp    : constant Asis.Definition :=
-        Asis.Definitions.Array_Component_Definition (Def);
-      View    : constant Asis.Definition :=
-        Asis.Definitions.Component_Definition_View (Comp);
+      Def     : Asis.Type_Definition;
+      Comp    : Asis.Definition;
+      View    : Asis.Definition;
+      Decl    : Asis.Declaration;
       JS_Type : League.Strings.Universal_String;
       List    : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
    begin
-      pragma Assert (not Asis.Elements.Is_Nil (Tipe));
+      if not Asis.Elements.Is_Nil (Tipe) then
+         Def  := Asis.Declarations.Type_Declaration_View (Tipe);
+         Comp := Asis.Definitions.Array_Component_Definition (Def);
+         View := Asis.Definitions.Component_Definition_View (Comp);
 
-      JS_Type := Engine.Text.Get_Property
-        (View, Engines.Typed_Array_Item_Type);
+         JS_Type := Engine.Text.Get_Property
+           (View, Engines.Typed_Array_Item_Type);
+      else
+         --  Otherwise suppose we have subaggregate here. So just go deeper
+         Item := Asis.Expressions.Component_Expression (List (List'First));
+         Decl := Asis.Expressions.Corresponding_Expression_Type (Item);
+
+         pragma Assert (not Asis.Elements.Is_Nil (Decl));
+
+         JS_Type := Engine.Text.Get_Property
+           (Decl, Engines.Typed_Array_Item_Type);
+      end if;
 
       for J in List'Range loop
          pragma Assert (Asis.Expressions.Array_Component_Choices
