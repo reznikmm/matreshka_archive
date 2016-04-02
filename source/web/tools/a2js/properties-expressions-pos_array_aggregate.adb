@@ -76,16 +76,45 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Name    : Engines.Text_Property)
       return League.Strings.Universal_String
    is
+      procedure Append_Elements;
+
       Down   : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
       Tipe   : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
-      Depth  : constant Positive := Get_Depth (Tipe);
+      Depth  : Positive;
       List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
 
       Typed_Array : constant Boolean := Is_Typed_Array (Engine, Element);
+
+      ---------------------
+      -- Append_Elements --
+      ---------------------
+
+      procedure Append_Elements is
+      begin
+         for J in List'Range loop
+            Down := Engine.Text.Get_Property
+              (Asis.Expressions.Component_Expression (List (J)),
+               Name);
+
+            Result.Append (Down);
+
+            if J /= List'Last then
+               Result.Append (", ");
+            end if;
+         end loop;
+      end Append_Elements;
+
    begin
+      if Asis.Elements.Is_Nil (Tipe) then
+         Append_Elements;
+
+         return Result;
+      end if;
+
+      Depth := Get_Depth (Tipe);
       Result.Append ("function(_from,_to){");
       Result.Append ("var _result=Object.create(_ec._ada_array);");
       Result.Append ("var _first=_from.map (_ec._pos);");
@@ -125,18 +154,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       else
          Result.Append ("var _data=[");
 
-         for J in List'Range loop
-            Down := Engine.Text.Get_Property
-              (Asis.Expressions.Component_Expression (List (J)),
-               Name);
-
-            Result.Append (Down);
-
-            if J /= List'Last then
-               Result.Append (", ");
-            end if;
-         end loop;
-
+         Append_Elements;
          Result.Append ("];");
          Result.Append ("_result.A=_data;");
 

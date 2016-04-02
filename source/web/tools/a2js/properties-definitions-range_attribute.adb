@@ -78,11 +78,10 @@ package body Properties.Definitions.Range_Attribute is
       if Args'Length > 0 then
          Down := Engine.Text.Get_Property (Args (Args'First), Engines.Code);
          Text.Append (Down);
+         Text.Append ("-1]");
       else
-         Text.Append ("0");
+         Text.Append ("0]");
       end if;
-
-      Text.Append ("]");
 
       return Text;
    end Bound;

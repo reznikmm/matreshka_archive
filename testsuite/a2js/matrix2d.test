@@ -1,0 +1,340 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  generic_algebra_4.adb
+--  reals.ads
+--  test_1.adb
+--  END OF BIND LIST
+--
+--  MAIN: test_1
+
+package body Generic_Algebra_4 is
+
+   procedure Determinant
+    (Matrix      : Matrix_4x4;
+     Determinant : out Real;
+     M31M42      : out Real;
+     M31M43      : out Real;
+     M31M44      : out Real;
+     M32M43      : out Real;
+     M32M44      : out Real;
+     M33M44      : out Real;
+     B11         : out Real;
+     B12         : out Real;
+     B13         : out Real;
+     B14         : out Real);
+
+   ---------
+   -- "+" --
+   ---------
+
+   function "+" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4 is
+      Result : Matrix_4x4;
+
+   begin
+      for J in Left'Range (1) loop
+         for K in Left'Range (2) loop
+            Result (J, K) := Left (J, K) + Right (J, K);
+         end loop;
+      end loop;
+
+      return Result;
+   end "+";
+
+   ---------
+   -- "-" --
+   ---------
+
+   function "-" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4 is
+      Result : Matrix_4x4;
+
+   begin
+      for J in Left'Range (1) loop
+         for K in Left'Range (2) loop
+            Result (J, K) := Left (J, K) - Right (J, K);
+         end loop;
+      end loop;
+
+      return Result;
+   end "-";
+
+   ---------
+   -- "*" --
+   ---------
+
+   function "*" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4 is
+   begin
+      return
+       (1 =>
+          (1 => Left (1, 1) * Right (1, 1) + Left (1, 2) * Right (2, 1)
+                  + Left (1, 3) * Right (3, 1) + Left (1, 4) * Right (4, 1),
+           2 => Left (1, 1) * Right (1, 2) + Left (1, 2) * Right (2, 2)
+                  + Left (1, 3) * Right (3, 2) + Left (1, 4) * Right (4, 2),
+           3 => Left (1, 1) * Right (1, 3) + Left (1, 2) * Right (2, 3)
+                  + Left (1, 3) * Right (3, 3) + Left (1, 4) * Right (4, 3),
+           4 => Left (1, 1) * Right (1, 4) + Left (1, 2) * Right (2, 4)
+                  + Left (1, 4) * Right (3, 4) + Left (1, 4) * Right (4, 4)),
+        2 =>
+          (1 => Left (2, 1) * Right (1, 1) + Left (2, 2) * Right (2, 1)
+                  + Left (2, 3) * Right (3, 1) + Left (2, 4) * Right (4, 1),
+           2 => Left (2, 1) * Right (1, 2) + Left (2, 2) * Right (2, 2)
+                  + Left (2, 3) * Right (3, 2) + Left (2, 4) * Right (4, 2),
+           3 => Left (2, 1) * Right (1, 3) + Left (2, 2) * Right (2, 3)
+                  + Left (2, 3) * Right (3, 3) + Left (2, 4) * Right (4, 3),
+           4 => Left (2, 1) * Right (1, 4) + Left (2, 2) * Right (2, 4)
+                  + Left (2, 4) * Right (3, 4) + Left (2, 4) * Right (4, 4)),
+        3 =>
+          (1 => Left (3, 1) * Right (1, 1) + Left (3, 2) * Right (2, 1)
+                  + Left (3, 3) * Right (3, 1) + Left (3, 4) * Right (4, 1),
+           2 => Left (3, 1) * Right (1, 2) + Left (3, 2) * Right (2, 2)
+                  + Left (3, 3) * Right (3, 2) + Left (3, 4) * Right (4, 2),
+           3 => Left (3, 1) * Right (1, 3) + Left (3, 2) * Right (2, 3)
+                  + Left (3, 3) * Right (3, 3) + Left (3, 4) * Right (4, 3),
+           4 => Left (3, 1) * Right (1, 4) + Left (3, 2) * Right (2, 4)
+                  + Left (3, 4) * Right (3, 4) + Left (3, 4) * Right (4, 4)),
+        4 =>
+          (1 => Left (4, 1) * Right (1, 1) + Left (4, 2) * Right (2, 1)
+                  + Left (4, 3) * Right (3, 1) + Left (4, 4) * Right (4, 1),
+           2 => Left (4, 1) * Right (1, 2) + Left (4, 2) * Right (2, 2)
+                  + Left (4, 3) * Right (3, 2) + Left (4, 4) * Right (4, 2),
+           3 => Left (4, 1) * Right (1, 3) + Left (4, 2) * Right (2, 3)
+                  + Left (4, 3) * Right (3, 3) + Left (4, 4) * Right (4, 3),
+           4 => Left (4, 1) * Right (1, 4) + Left (4, 2) * Right (2, 4)
+                  + Left (4, 4) * Right (3, 4) + Left (4, 4) * Right (4, 4)));
+   end "*";
+
+   -----------------
+   -- Determinant --
+   -----------------
+
+   procedure Determinant
+    (Matrix      : Matrix_4x4;
+     Determinant : out Real;
+     M31M42      : out Real;
+     M31M43      : out Real;
+     M31M44      : out Real;
+     M32M43      : out Real;
+     M32M44      : out Real;
+     M33M44      : out Real;
+     B11         : out Real;
+     B12         : out Real;
+     B13         : out Real;
+     B14         : out Real)
+   is
+      M11 : constant Real := Matrix (1, 1);
+      M12 : constant Real := Matrix (1, 2);
+      M13 : constant Real := Matrix (1, 3);
+      M14 : constant Real := Matrix (1, 4);
+      M21 : constant Real := Matrix (2, 1);
+      M22 : constant Real := Matrix (2, 2);
+      M23 : constant Real := Matrix (2, 3);
+      M24 : constant Real := Matrix (2, 4);
+      M31 : constant Real := Matrix (3, 1);
+      M32 : constant Real := Matrix (3, 2);
+      M33 : constant Real := Matrix (3, 3);
+      M34 : constant Real := Matrix (3, 4);
+      M41 : constant Real := Matrix (4, 1);
+      M42 : constant Real := Matrix (4, 2);
+      M43 : constant Real := Matrix (4, 3);
+      M44 : constant Real := Matrix (4, 4);
+
+   begin
+      M31M42 := M31 * M42 - M32 * M41;
+      M31M43 := M31 * M43 - M33 * M41;
+      M31M44 := M31 * M44 - M34 * M41;
+      M32M43 := M32 * M43 - M33 * M42;
+      M32M44 := M32 * M44 - M34 * M42;
+      M33M44 := M33 * M44 - M34 * M43;
+
+      B11 := M22 * M33M44 - M23 * M32M44 + M24 * M32M43;
+      B12 := M21 * M33M44 - M23 * M31M44 + M24 * M31M43;
+      B13 := M21 * M32M44 - M22 * M31M44 + M24 * M31M42;
+      B14 := M21 * M32M43 - M22 * M31M43 + M23 * M31M42;
+
+      Determinant := M11 * B11 - M12 * B12 + M13 * B13 - M14 * B14;
+   end Determinant;
+
+   ------------
+   -- Invert --
+   ------------
+
+   procedure Invert (Matrix : in out Matrix_4x4) is
+      M11    : constant Real := Matrix (1, 1);
+      M12    : constant Real := Matrix (1, 2);
+      M13    : constant Real := Matrix (1, 3);
+      M14    : constant Real := Matrix (1, 4);
+      M21    : constant Real := Matrix (2, 1);
+      M22    : constant Real := Matrix (2, 2);
+      M23    : constant Real := Matrix (2, 3);
+      M24    : constant Real := Matrix (2, 4);
+      M31    : constant Real := Matrix (3, 1);
+      M32    : constant Real := Matrix (3, 2);
+      M33    : constant Real := Matrix (3, 3);
+      M34    : constant Real := Matrix (3, 4);
+      M41    : constant Real := Matrix (4, 1);
+      M42    : constant Real := Matrix (4, 2);
+      M43    : constant Real := Matrix (4, 3);
+      M44    : constant Real := Matrix (4, 4);
+
+      M21M32 : Real;
+      M21M33 : Real;
+      M21M34 : Real;
+      M21M42 : Real;
+      M21M43 : Real;
+      M21M44 : Real;
+      M22M33 : Real;
+      M22M34 : Real;
+      M22M43 : Real;
+      M22M44 : Real;
+      M23M34 : Real;
+      M23M44 : Real;
+      M31M42 : Real;
+      M31M43 : Real;
+      M31M44 : Real;
+      M32M43 : Real;
+      M32M44 : Real;
+      M33M44 : Real;
+
+      B11    : Real;
+      B12    : Real;
+      B13    : Real;
+      B14    : Real;
+      B21    : Real;
+      B22    : Real;
+      B23    : Real;
+      B24    : Real;
+      B31    : Real;
+      B32    : Real;
+      B33    : Real;
+      B34    : Real;
+      B41    : Real;
+      B42    : Real;
+      B43    : Real;
+      B44    : Real;
+
+      D      : Real;
+
+   begin
+      Determinant
+       (Matrix      => Matrix,
+        Determinant => D,
+        M31M42      => M31M42,
+        M31M43      => M31M43,
+        M31M44      => M31M44,
+        M32M43      => M32M43,
+        M32M44      => M32M44,
+        M33M44      => M33M44,
+        B11         => B11,
+        B12         => B12,
+        B13         => B13,
+        B14         => B14);
+
+      if D = 0.0 then
+         raise Constraint_Error;
+      end if;
+
+      M21M32 := M21 * M32 - M22 * M31;
+      M21M33 := M21 * M33 - M23 * M31;
+      M21M34 := M21 * M34 - M24 * M31;
+      M21M42 := M21 * M42 - M22 * M41;
+      M21M43 := M21 * M43 - M23 * M41;
+      M21M44 := M21 * M44 - M24 * M41;
+      M22M33 := M22 * M33 - M23 * M32;
+      M22M34 := M22 * M34 - M24 * M32;
+      M22M43 := M22 * M43 - M23 * M42;
+      M22M44 := M22 * M44 - M24 * M42;
+      M23M34 := M23 * M34 - M24 * M33;
+      M23M44 := M23 * M44 - M24 * M43;
+
+      B21 := M12 * M33M44 - M13 * M32M44 + M14 * M32M43;
+      B22 := M11 * M33M44 - M13 * M31M44 + M14 * M31M43;
+      B23 := M11 * M32M44 - M12 * M31M44 + M14 * M31M42;
+      B24 := M11 * M32M43 - M12 * M31M43 + M13 * M31M42;
+      B31 := M12 * M23M44 - M13 * M22M44 + M14 * M22M43;
+      B32 := M11 * M23M44 - M13 * M21M44 + M14 * M21M43;
+      B33 := M11 * M22M44 - M12 * M21M44 + M14 * M21M42;
+      B34 := M11 * M22M43 - M12 * M21M43 + M13 * M21M42;
+      B41 := M12 * M23M34 - M13 * M22M34 + M14 * M22M33;
+      B42 := M11 * M23M34 - M13 * M21M34 + M14 * M21M33;
+      B43 := M11 * M22M34 - M12 * M21M34 + M14 * M21M32;
+      B44 := M11 * M22M33 - M12 * M21M33 + M13 * M21M32;
+
+      Matrix (1, 1) := B11 / D;
+      Matrix (1, 2) := -B21 / D;
+      Matrix (1, 3) := B31 / D;
+      Matrix (1, 4) := -B41 / D;
+      Matrix (2, 1) := -B12 / D;
+      Matrix (2, 2) := B22 / D;
+      Matrix (2, 3) := -B32 / D;
+      Matrix (2, 4) := B42 / D;
+      Matrix (3, 1) := B13 / D;
+      Matrix (3, 2) := -B23 / D;
+      Matrix (3, 3) := B33 / D;
+      Matrix (3, 4) := -B43 / D;
+      Matrix (4, 1) := -B14 / D;
+      Matrix (4, 2) := B24 / D;
+      Matrix (4, 3) := -B34 / D;
+      Matrix (4, 4) := B44 / D;
+   end Invert;
+
+end Generic_Algebra_4;
+
+generic
+   type Real is digits <>;
+
+package Generic_Algebra_4 is
+
+   pragma Pure;
+
+   type Matrix_4x4 is
+     array (Positive range 1 .. 4, Positive range 1 .. 4) of Real;
+
+   function "+" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4;
+   function "-" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4;
+   function "*" (Left : Matrix_4x4; Right : Matrix_4x4) return Matrix_4x4;
+
+   procedure Invert (Matrix : in out Matrix_4x4);
+
+end Generic_Algebra_4;
+with Generic_Algebra_4;
+
+package Reals is
+
+   type Real is new Long_Float;
+
+   package Algebra_4 is new Generic_Algebra_4 (Real);
+
+end Reals;
+with Reals;
+
+procedure Test_1 is
+
+   use Reals;
+   use Reals.Algebra_4;
+
+   A : Matrix_4x4
+     := ((1.0, 2.0, 3.0, 4.0),
+         (5.0, 6.0, 7.0, 8.0),
+         (9.0, 0.0, 9.0, 8.0),
+         (7.0, 6.0, 5.0, 4.0));
+   B : Matrix_4x4
+     := ((9.0, 8.0, 7.0, 6.0),
+         (5.0, 4.0, 3.0, 2.0),
+         (1.0, 0.0, 1.0, 2.0),
+         (3.0, 4.0, 5.0, 6.0));
+   E : Matrix_4x4
+     := ((10.0, 10.0, 10.0, 10.0),
+         (10.0, 10.0, 10.0, 10.0),
+         (10.0,  0.0, 10.0, 10.0),
+         (10.0, 10.0, 10.0, 10.0));
+
+   C : Matrix_4x4;
+
+begin
+   C := A + B;
+
+   if C /= E then
+      raise Program_Error;
+   end if;
+end Test_1;

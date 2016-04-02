@@ -56,6 +56,8 @@ package body Properties.Expressions.Indexed_Component is
    is
       Text  : League.Strings.Universal_String;
       Down  : League.Strings.Universal_String;
+      List  : constant Asis.Expression_List :=
+        Asis.Expressions.Index_Expressions (Element);
    begin
       Down := Engine.Text.Get_Property
         (Asis.Expressions.Prefix (Element), Name);
@@ -63,9 +65,16 @@ package body Properties.Expressions.Indexed_Component is
       Text.Append (".A[");
       Text.Append (Down);
       Text.Append ("._index(");
-      Text.Append (Engine.Text.Get_Property
-        (Asis.Expressions.Index_Expressions (Element) (1),
-         Name));
+
+      for J in List'Range loop
+         Down := Engine.Text.Get_Property (List (J), Name);
+         Text.Append (Down);
+
+         if J /= List'Last then
+            Text.Append (", ");
+         end if;
+      end loop;
+
       Text.Append (")]");
 
       return Text;

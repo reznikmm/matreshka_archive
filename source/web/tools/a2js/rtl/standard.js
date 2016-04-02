@@ -139,6 +139,15 @@ define('standard', [], function(){
         "_assign" : function (src) {
             this.A = src.A.slice();
         },
+        "_eq" : function (arg) {
+            if (this.A.length != arg.A.length) return false;
+            for (var j=0; j<this.A.length; j++)
+                if (this.A[j] !== arg.A[j]) return false;
+            return true;
+        },
+        "_ne" : function (arg) {
+            return !this._eq(arg);
+        },
         "_ArrayBuffer" : function (size) {
             this.A = new ArrayBuffer(size);
             this.u1 = new Uint8Array(this.A);

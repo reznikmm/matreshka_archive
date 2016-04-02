@@ -51,6 +51,7 @@ with Asis.Statements;
 with League.String_Vectors;
 
 with Properties.Expressions.Identifiers;
+with Properties.Tools;
 
 package body Properties.Expressions.Function_Calls is
 
@@ -61,6 +62,7 @@ package body Properties.Expressions.Function_Calls is
 
    Op_From : League.String_Vectors.Universal_String_Vector;
    Op_To   : League.String_Vectors.Universal_String_Vector;
+   Arr_To  : League.String_Vectors.Universal_String_Vector;
 
    Fn_From : League.String_Vectors.Universal_String_Vector;
    Fn_To   : League.String_Vectors.Universal_String_Vector;
@@ -249,6 +251,9 @@ package body Properties.Expressions.Function_Calls is
       List   : constant Asis.Association_List :=
         Asis.Expressions.Function_Call_Parameters
           (Element, Normalized => False);
+      Is_Array : constant Boolean :=
+        Properties.Tools.Is_Array
+          (Asis.Expressions.Actual_Parameter (List (List'First)));
       Args   : array (List'Range) of League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
@@ -265,6 +270,15 @@ package body Properties.Expressions.Function_Calls is
         or else Func.To_Wide_Wide_String = "League.Strings.To_Wide_Wide_String"
       then
          return Args (1);
+      elsif Is_Array and Args'Length = 2 then
+         Text.Append (Args (1));
+         Text.Append (".");
+         Text.Append (Arr_To.Element (Index));
+         Text.Append ("(");
+         Text.Append (Args (2));
+         Text.Append (")");
+
+         return Text;
       elsif Args'Length = 2 and Index > 0 then
          Text.Append (Args (1));
          Text.Append (Op_To.Element (Index));
@@ -313,8 +327,10 @@ package body Properties.Expressions.Function_Calls is
 begin
    Op_From.Append (League.Strings.To_Universal_String ("""="""));
    Op_To.Append (League.Strings.To_Universal_String ("==="));
+   Arr_To.Append (League.Strings.To_Universal_String ("_eq"));
    Op_From.Append (League.Strings.To_Universal_String ("""/="""));
    Op_To.Append (League.Strings.To_Universal_String ("!=="));
+   Arr_To.Append (League.Strings.To_Universal_String ("_ne"));
    Op_From.Append (League.Strings.To_Universal_String ("""&"""));
    Op_To.Append (League.Strings.To_Universal_String ("+"));
    Op_From.Append (League.Strings.To_Universal_String ("""+"""));
@@ -343,6 +359,8 @@ begin
    Op_To.Append (League.Strings.To_Universal_String ("%"));
    Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""="""));
    Op_To.Append (League.Strings.To_Universal_String ("=="));
+   Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""&"""));
+   Op_To.Append (League.Strings.To_Universal_String ("+"));
 
    Fn_From.Append (League.Strings.To_Universal_String ("""abs"""));
    Fn_To.Append (League.Strings.To_Universal_String ("Math.abs"));

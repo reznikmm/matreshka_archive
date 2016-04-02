@@ -141,13 +141,12 @@ package body Properties.Expressions.Attribute_Reference is
                Text.Append ("[");
 
                if Args'Length = 0 then
-                  Text.Append ("0");
+                  Text.Append ("0]");
                else
                   Text.Append
                     (Engine.Text.Get_Property (Args (Args'First), Name));
+                  Text.Append ("-1]");
                end if;
-
-               Text.Append ("]");
 
                return Text;
             end;
