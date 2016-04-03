@@ -495,11 +495,14 @@ package body Properties.Tools is
    function Is_Array (Exp : Asis.Expression) return Boolean is
       Decl : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Exp);
-      View : constant Asis.Definition :=
-        Asis.Declarations.Type_Declaration_View (Decl);
-      Kind : constant Asis.Type_Kinds :=
-        Asis.Elements.Type_Kind (View);
+      View : Asis.Definition;
+      Kind : Asis.Type_Kinds := Asis.Not_A_Type_Definition;
    begin
+      if not Asis.Elements.Is_Nil (Decl) then
+         View := Asis.Declarations.Type_Declaration_View (Decl);
+         Kind := Asis.Elements.Type_Kind (View);
+      end if;
+
       return Kind in Asis.An_Unconstrained_Array_Definition
                     | Asis.A_Constrained_Array_Definition;
    end Is_Array;

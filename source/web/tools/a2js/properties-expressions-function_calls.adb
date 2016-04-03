@@ -270,7 +270,7 @@ package body Properties.Expressions.Function_Calls is
         or else Func.To_Wide_Wide_String = "League.Strings.To_Wide_Wide_String"
       then
          return Args (1);
-      elsif Is_Array and Args'Length = 2 then
+      elsif Is_Array and Args'Length = 2 and Index <= Arr_To.Length then
          Text.Append (Args (1));
          Text.Append (".");
          Text.Append (Arr_To.Element (Index));
