@@ -46,6 +46,7 @@ with WebAPI.DOM.HTML_Collections;
 with WebAPI.DOM.Nodes;
 with WebAPI.DOM.Non_Document_Type_Child_Nodes;
 with WebAPI.DOM.Parent_Nodes;
+with WebAPI.DOM.Rects;
 
 package WebAPI.DOM.Elements is
 
@@ -198,17 +199,17 @@ package WebAPI.DOM.Elements is
      Namespace  : WebAPI.DOM_String;
      Local_Name : WebAPI.DOM_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
-       with Import     => True,
-            Convention => JavaScript_Method,
-            Link_Name  => "getElementsByTagNameNS";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "getElementsByTagNameNS";
 
    not overriding function Get_Elements_By_Class_Name
     (Self       : not null access constant Element;
      Class_Name : WebAPI.DOM_String)
        return WebAPI.DOM.HTML_Collections.HTML_Collection is abstract
-       with Import     => True,
-            Convention => JavaScript_Method,
-            Link_Name  => "getElementsByClassName";
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "getElementsByClassName";
 
    ----------------------------------
    -- CSSOM View Module Extensions --
@@ -216,7 +217,6 @@ package WebAPI.DOM.Elements is
 
 --  partial interface Element {
 --    sequence<DOMRect> getClientRects();
---    [NewObject] DOMRect getBoundingClientRect();
 --    void scrollIntoView();
 --    void scrollIntoView((boolean or object) arg
 --  );
@@ -238,6 +238,13 @@ package WebAPI.DOM.Elements is
 --    attribute unrestricted double scrollTop;
 --    attribute unrestricted double scrollLeft;
 --  };
+
+   not overriding function Get_Bounding_Client_Rect
+    (Self : not null access constant Element)
+       return WebAPI.DOM.Rects.DOM_Rect_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "getBoundingClientRect";
 
    not overriding function Get_Scroll_Width
     (Self : not null access constant Element)
