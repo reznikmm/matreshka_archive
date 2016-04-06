@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -208,5 +208,44 @@ package WebAPI.HTML.Elements is
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "spellcheck";
+
+   ----------------------------------
+   -- CSSOM View Module Extensions --
+   ----------------------------------
+
+   not overriding function Get_Offset_Parent
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM.Elements.Element_Access is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Getter,
+            Link_Name  => "offsetParent";
+
+   not overriding function Get_Offset_Top
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "offsetTop";
+
+   not overriding function Get_Offset_Left
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "offsetLeft";
+
+   not overriding function Get_Offset_Width
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "offsetWidth";
+
+   not overriding function Get_Offset_Height
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "offsetHeight";
 
 end WebAPI.HTML.Elements;
