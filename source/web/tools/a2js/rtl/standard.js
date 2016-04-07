@@ -166,7 +166,7 @@ define('standard', [], function(){
     standard._ada_array = {  //  Prototype for any Ada array
         "_index" : function () {
             var index = this._offset, size = 1;
-            for (var i = 0; i < arguments.length; i++){
+            for (var i = arguments.length - 1; i >= 0; i--){
                 index +=
                     (standard._pos (arguments[i]) - this._first[i]) * size;
                 size *= this._length[i];
