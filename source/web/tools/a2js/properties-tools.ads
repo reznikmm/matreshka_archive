@@ -90,4 +90,7 @@ package Properties.Tools is
       return League.Strings.Universal_String;
    --  Return Left & Right
 
+   function Get_Dimension (Exp : Asis.Expression) return Natural;
+   --  Return dimention of an array aggregate Exp. Return 0 if subaggregate
+
 end Properties.Tools;

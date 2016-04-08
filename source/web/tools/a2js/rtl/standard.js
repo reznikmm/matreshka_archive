@@ -126,7 +126,7 @@ define('standard', [], function(){
             to_address : id
         }
     };
-    
+
     //  League.Holders.Generic_Holders
     standard._generic_holders = function(_parent) {
         function generic_holder (val) { this.data = val; };
@@ -147,7 +147,7 @@ define('standard', [], function(){
 
     //  Ada.Unchecked_Deallocation
     standard._unchecked_deallocation = function(){ return standard._null; };
-    
+
     standard._addEventListener = function (element, name, handler, cap){
         if (typeof handler._func === "undefined"){
             handler._func = function (event) {
@@ -163,7 +163,68 @@ define('standard', [], function(){
         }
     };
 
-    standard._ada_array = {  //  Prototype for any Ada array
+    standard._ada_array = //  A constructor for any Ada array
+    function (data, from, to){
+        var first = from.map (standard._pos);
+        var len = to.map (function (to, i){
+            return standard._pos(to) - first[i] + 1;
+        });
+        var length = len.reduce (function (a, b){ return a * b; }, 1);
+        this._length = len;
+        this.A = new Array (length);
+        this._first = from;
+        this._last = to;
+        this._offset = 0;
+        var index, saved = [], indexes = [];
+
+        function push_elements (elements) {
+            saved.push(index);
+            index = from[indexes.length];
+            for (var j = 0; j<elements.length; j++){
+                push_value.call(this, elements[j]);
+            }
+            index = saved.pop();
+        }
+
+        function push_value(bounds){
+            var value = bounds[0];
+            if (bounds.length == 1){
+                assign.call(this, index, value);
+                index = standard._succ (index);
+            }else
+                for (var j = 1; j < bounds.length; j+=2) {
+                    var lower = bounds[j];
+                    var upper = bounds[j+1];
+                    if (typeof lower == 'undefined'){
+                        //  FIXME: Only simple case implemented here:
+                        //  (1, 2, 3, others => 5)
+                        lower = index;
+                        upper = this._last [indexes.length];
+                    }else if (typeof upper == 'undefined')
+                        upper = lower;
+                    var count = standard._pos(upper) - standard._pos(lower) + 1;
+                    for (var k=0; k<count; k++){
+                        assign.call(this, lower, value);
+                        lower = standard._succ (lower);
+                    }
+                }
+        };
+
+        function assign(index, value){
+            indexes.push(index);
+
+            if (indexes.length == this._first.length)
+                this.A [this._index.apply (this, indexes)] = value
+            else
+                push_elements.call (this, value);
+
+            indexes.pop();
+        }
+
+        push_elements.call (this, data);
+    };
+
+    standard._ada_array.prototype = {  //  Prototype for any Ada array
         "_index" : function () {
             var index = this._offset, size = 1;
             for (var i = arguments.length - 1; i >= 0; i--){

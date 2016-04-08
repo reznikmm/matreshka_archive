@@ -441,6 +441,53 @@ package body Properties.Tools is
       return "";
    end Get_Aspect;
 
+   -------------------
+   -- Get_Dimension --
+   -------------------
+
+   function Get_Dimension (Exp : Asis.Expression) return Natural is
+      Tipe   : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Exp);
+      View : Asis.Definition;
+   begin
+      if Asis.Elements.Is_Nil (Tipe) then
+         return 0;
+      end if;
+
+      View := Asis.Declarations.Type_Declaration_View (Tipe);
+
+      loop
+         case Asis.Elements.Type_Kind (View) is
+            when Asis.A_Constrained_Array_Definition =>
+               return Asis.Definitions
+                 .Discrete_Subtype_Definitions (View)'Length;
+            when Asis.An_Unconstrained_Array_Definition =>
+               return Asis.Definitions.Index_Subtype_Definitions (View)'Length;
+            when Asis.A_Derived_Type_Definition =>
+               declare
+                  SI : constant Asis.Subtype_Indication :=
+                    Asis.Definitions.Parent_Subtype_Indication (View);
+                  Mark : Asis.Subtype_Mark :=
+                    Asis.Definitions.Subtype_Mark (SI);
+                  Decl : Asis.Declaration;
+               begin
+                  if Asis.Elements.Expression_Kind (Mark) in
+                    Asis.A_Selected_Component
+                  then
+                     Mark := Asis.Expressions.Selector (Mark);
+                  end if;
+
+                  Decl :=
+                    Asis.Expressions.Corresponding_Name_Declaration (Mark);
+
+                  View := Asis.Declarations.Type_Declaration_View (Decl);
+               end;
+            when others =>
+               raise Constraint_Error;
+         end case;
+      end loop;
+   end Get_Dimension;
+
    ----------------------------
    -- Has_Controlling_Result --
    ----------------------------

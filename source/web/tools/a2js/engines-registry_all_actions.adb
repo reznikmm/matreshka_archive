@@ -94,7 +94,6 @@ with Properties.Expressions.If_Expression;
 with Properties.Expressions.Indexed_Component;
 with Properties.Expressions.Integer_Literal;
 with Properties.Expressions.Membership_Test;
-with Properties.Expressions.Named_Array_Aggregate;
 with Properties.Expressions.Null_Literal;
 with Properties.Expressions.Parameter_Association;
 with Properties.Expressions.Parenthesized;
@@ -380,7 +379,7 @@ is
        Action => P.Expressions.Integer_Literal.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Named_Array_Aggregate,
-       Action => P.Expressions.Named_Array_Aggregate.Code'Access),
+       Action => P.Expressions.Pos_Array_Aggregate.Code'Access),
       (Name   => N.Code,
        Kind   => F.A_Positional_Array_Aggregate,
        Action => P.Expressions.Pos_Array_Aggregate.Code'Access),

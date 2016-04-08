@@ -87,7 +87,7 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Result.Append ("this._first=_from;");
       Result.Append ("this._last=_to;");
       Result.Append ("this._length=_len;");
-      Result.Append ("this._offset=0;}).prototype = _ec._ada_array;");
+      Result.Append ("this._offset=0;}).prototype = _ec._ada_array.prototype;");
 
       return Result;
    end Code;

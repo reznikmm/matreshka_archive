@@ -152,7 +152,7 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result.Append (Text);
       Result.Append (");");
 
-      Result.Append ("}).prototype = _ec._ada_array;");
+      Result.Append ("}).prototype = _ec._ada_array.prototype;");
 
       return Result;
    end Code;

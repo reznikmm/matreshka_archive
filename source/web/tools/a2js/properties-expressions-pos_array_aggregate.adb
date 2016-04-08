@@ -47,13 +47,15 @@ with Asis.Elements;
 with Asis.Expressions;
 with Asis.Iterator;
 
+with Properties.Tools;
+
 package body Properties.Expressions.Pos_Array_Aggregate is
 
-   function Get_Depth (Tipe : Asis.Declaration) return Positive;
-
    function Get_Bounds
-     (Depth : Positive;
-      List  : Asis.Association_List)
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Depth   : Natural;
+      List    : Asis.Association_List)
       return League.Strings.Universal_String;
 
    function Is_Typed_Array
@@ -82,7 +84,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Result : League.Strings.Universal_String;
       Tipe   : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
-      Depth  : Positive;
+      Depth  : constant Natural := Properties.Tools.Get_Dimension (Element);
       List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
 
@@ -93,38 +95,26 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       ---------------------
 
       procedure Append_Elements is
+         Down : League.Strings.Universal_String;
       begin
-         for J in List'Range loop
-            Down := Engine.Text.Get_Property
-              (Asis.Expressions.Component_Expression (List (J)),
-               Name);
+         Result.Append ("[");
 
-            Result.Append (Down);
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Name,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
 
-            if J /= List'Last then
-               Result.Append (", ");
-            end if;
-         end loop;
+         Result.Append (Down);
+
+         Result.Append ("]");
       end Append_Elements;
 
    begin
       if Asis.Elements.Is_Nil (Tipe) then
          Append_Elements;
 
-         return Result;
-      end if;
-
-      Depth := Get_Depth (Tipe);
-      Result.Append ("function(_from,_to){");
-      Result.Append ("var _result=Object.create(_ec._ada_array);");
-      Result.Append ("var _first=_from.map (_ec._pos);");
-      Result.Append ("var _len=_to.map (function (_to, i)" &
-                       "{ return _ec._pos(_to) - _first[i] + 1; });");
-      Result.Append ("var _length=_len.reduce (function (a, b)" &
-                       "{ return a * b; }, 1);");
-      Result.Append ("_result._length=_len;");
-
-      if Typed_Array then
+      elsif Typed_Array then
          declare
             Comp : constant Asis.Definition := Component (Element, List);
             Size : constant League.Strings.Universal_String :=
@@ -134,6 +124,15 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Image : constant Wide_Wide_String :=
               Integer'Wide_Wide_Image (Align - 1);
          begin
+            Result.Append ("function(_from,_to){");
+            Result.Append
+              ("var _result=Object.create(_ec._ada_array.prototype);");
+            Result.Append ("var _first=_from.map (_ec._pos);");
+            Result.Append ("var _len=_to.map (function (_to, i)" &
+                             "{ return _ec._pos(_to) - _first[i] + 1; });");
+            Result.Append ("var _length=_len.reduce (function (a, b)" &
+                             "{ return a * b; }, 1);");
+            Result.Append ("_result._length=_len;");
             Result.Append ("_result._ArrayBuffer(_length*((");
             Result.Append (Size);  --  Size always x8 for TypedArray
             Result.Append ("/8 + ");
@@ -151,24 +150,23 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Result.Append (Down);
          end loop;
 
-      else
-         Result.Append ("var _data=[");
+         Result.Append ("_result._first=_from;");
+         Result.Append ("_result._last=_to;");
+         Result.Append ("_result._offset=0;");
 
+         Result.Append ("return _result;}(");
+
+         Result.Append (Get_Bounds (Engine, Element, Depth, List));
+
+         Result.Append (")");
+      else
+         Result.Append ("(new _ec._ada_array (");
          Append_Elements;
-         Result.Append ("];");
-         Result.Append ("_result.A=_data;");
+         Result.Append (", ");
+         Result.Append (Get_Bounds (Engine, Element, Depth, List));
+         Result.Append ("))");
 
       end if;
-
-      Result.Append ("_result._first=_from;");
-      Result.Append ("_result._last=_to;");
-      Result.Append ("_result._offset=0;");
-
-      Result.Append ("return _result;}(");
-
-      Result.Append (Get_Bounds (Depth, List));
-
-      Result.Append (")");
 
       return Result;
    end Code;
@@ -211,10 +209,14 @@ package body Properties.Expressions.Pos_Array_Aggregate is
    ----------------
 
    function Get_Bounds
-     (Depth : Positive;
-      List  : Asis.Association_List)
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Depth   : Natural;
+      List    : Asis.Association_List)
       return League.Strings.Universal_String
    is
+      use type Asis.Definition_Kinds;
+
       procedure Travel
         (Depth : Positive;
          List  : Asis.Association_List;
@@ -231,16 +233,42 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          Lower : in out League.Strings.Universal_String;
          Upper : in out League.Strings.Universal_String)
       is
-         Length : constant Wide_Wide_String :=
-           Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
       begin
          if not Lower.Is_Empty then
             Lower.Append (", ");
             Upper.Append (", ");
          end if;
 
-         Lower.Append ("1");
-         Upper.Append (Length);
+         declare
+            Choices : constant Asis.Expression_List :=
+              Asis.Expressions.Array_Component_Choices (List (List'First));
+         begin
+            if Choices'Length = 0 then
+               Lower.Append ("1");
+            else
+               Lower.Append
+                 (Engine.Text.Get_Property
+                    (Choices (Choices'First), Engines.Code));
+            end if;
+         end;
+
+         declare
+            Choices : constant Asis.Expression_List :=
+              Asis.Expressions.Array_Component_Choices (List (List'Last));
+         begin
+            if Choices'Length = 0 then
+               declare
+                  Length : constant Wide_Wide_String :=
+                    Asis.ASIS_Integer'Wide_Wide_Image (List'Length);
+               begin
+                  Upper.Append (Length);
+               end;
+            else
+               Upper.Append
+                 (Engine.Text.Get_Property
+                    (Choices (Choices'Last), Engines.Code));
+            end if;
+         end;
 
          if Depth > 1 then
             declare
@@ -256,37 +284,34 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          end if;
       end Travel;
 
-      Lower  : League.Strings.Universal_String;
-      Upper  : League.Strings.Universal_String;
-      Result : League.Strings.Universal_String;
+      Result  : League.Strings.Universal_String;
+      Choices : constant Asis.Expression_List :=
+        Asis.Expressions.Array_Component_Choices (List (List'Last));
    begin
-      Travel (Depth, List, Lower, Upper);
-      Result.Append ("[");
-      Result.Append (Lower);
-      Result.Append ("], [");
-      Result.Append (Upper);
-      Result.Append ("]");
+      if Choices'Length = 1 and then
+        Asis.Elements.Definition_Kind (Choices (1)) in
+          Asis.An_Others_Choice | Asis.A_Discrete_Range
+      then
+         Result.Append
+           (Engine.Text.Get_Property
+              (Asis.Elements.Enclosing_Element (Element),
+               Engines.Bounds));
+      elsif Depth > 0 then
+         declare
+            Lower  : League.Strings.Universal_String;
+            Upper  : League.Strings.Universal_String;
+         begin
+            Travel (Depth, List, Lower, Upper);
+            Result.Append ("[");
+            Result.Append (Lower);
+            Result.Append ("], [");
+            Result.Append (Upper);
+            Result.Append ("]");
+         end;
+      end if;
 
       return Result;
    end Get_Bounds;
-
-   ---------------
-   -- Get_Depth --
-   ---------------
-
-   function Get_Depth (Tipe : Asis.Declaration) return Positive is
-      View : constant Asis.Definition :=
-        Asis.Declarations.Type_Declaration_View (Tipe);
-   begin
-      case Asis.Elements.Type_Kind (View) is
-         when Asis.A_Constrained_Array_Definition =>
-            return Asis.Definitions.Discrete_Subtype_Definitions (View)'Length;
-         when Asis.An_Unconstrained_Array_Definition =>
-            return Asis.Definitions.Index_Subtype_Definitions (View)'Length;
-         when others =>
-            raise Constraint_Error;
-      end case;
-   end Get_Depth;
 
    --------------------
    -- Is_Typed_Array --

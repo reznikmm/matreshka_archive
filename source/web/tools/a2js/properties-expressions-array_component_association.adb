@@ -61,29 +61,41 @@ package body Properties.Expressions.Array_Component_Association is
         Asis.Expressions.Array_Component_Choices (Element);
       Value  : constant Asis.Expression :=
         Asis.Expressions.Component_Expression (Element);
-      Down   : constant League.Strings.Universal_String :=
-        Engine.Text.Get_Property (Value, Name);
+      Down   : League.Strings.Universal_String;
       Kind   : Asis.Definition_Kinds;
    begin
+      Result.Append ("[");
+      --  Push actual value
+      Down := Engine.Text.Get_Property (Value, Name);
+      Result.Append (Down);
+
+      if List'Length > 0 then
+         Result.Append (", ");
+      end if;
+
+      --  Then push bounds as pairs of values
       for J in List'Range loop
          Kind := Asis.Elements.Definition_Kind (List (J));
 
          case Kind is
             when Asis.An_Others_Choice =>
-               Result.Append ("default:");
+               Result.Append ("undefined, undefined");
             when Asis.A_Discrete_Range =>
                --  FIXME: Only empty range is supported
-               return League.Strings.Empty_Universal_String;
+               Result.Append ("1, 0");
             when others =>
-               Result.Append ("case ");
-               Result.Append (Engine.Text.Get_Property (List (J), Name));
-               Result.Append (":");
+               Down := Engine.Text.Get_Property (List (J), Name);
+               Result.Append (Down);
+               Result.Append (", ");
+               Result.Append ("undefined");
          end case;
+
+         if J /= List'Last then
+            Result.Append (", ");
+         end if;
       end loop;
 
-      Result.Append ("_data[_j]=");
-      Result.Append (Down);
-      Result.Append (";break;");
+      Result.Append ("], ");
 
       return Result;
    end Code;
