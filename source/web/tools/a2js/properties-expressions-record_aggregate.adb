@@ -156,14 +156,14 @@ package body Properties.Expressions.Record_Aggregate is
          Names := Engine.Text.Get_Property (List (J), Engines.Associations);
 
          if Names /= League.Strings.To_Universal_String ("others") then
-            if J /= List'First then
-               Result.Append (",");
-            end if;
-
             Text := Engine.Text.Get_Property (List (J), Name);
 
             if not Text.Is_Empty then
                --  Box <> expression returns empty Code. We ignore such assoc.
+               if J /= List'First then
+                  Result.Append (",");
+               end if;
+
                Append (Names, Text);
             end if;
          end if;
