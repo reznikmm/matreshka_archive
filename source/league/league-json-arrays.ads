@@ -47,6 +47,7 @@ private with Ada.Finalization;
 
 limited with League.JSON.Documents;
 limited with League.JSON.Values;
+with League.Holders;
 private with Matreshka.JSON_Types;
 
 package League.JSON.Arrays is
@@ -125,6 +126,11 @@ package League.JSON.Arrays is
    function To_JSON_Document
     (Self : JSON_Array'Class) return League.JSON.Documents.JSON_Document;
    --  Converts JSON_Array into JSON_Document.
+
+   function First
+    (Self : aliased JSON_Array)
+       return League.Holders.Iterable_Holder_Cursors.Cursor'Class;
+   --  Return cursor used in iterable holders
 
 private
 

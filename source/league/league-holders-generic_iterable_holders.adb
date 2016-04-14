@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,81 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders.Generic_Iterable_Holders;
-with League.JSON.Arrays;
 
-package League.Holders.JSON_Arrays is
-  new League.Holders.Generic_Iterable_Holders
-    (League.JSON.Arrays.JSON_Array, League.JSON.Arrays.First);
-pragma Preelaborate (League.Holders.JSON_Arrays);
+package body League.Holders.Generic_Iterable_Holders is
+
+   -----------------
+   -- Constructor --
+   -----------------
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Element_Container
+   is
+      pragma Assert (Is_Empty.all);
+
+   begin
+      return
+       (Counter  => <>,
+        Is_Empty => Is_Empty.all,
+        Value    => <>);
+   end Constructor;
+
+   -------------
+   -- Element --
+   -------------
+
+   function Element (Self : Holder) return Element_Type is
+   begin
+      if Self.Data.all not in Element_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      if Self.Data.Is_Empty then
+         raise Constraint_Error with "value is empty";
+      end if;
+
+      return Element_Container'Class (Self.Data.all).Value;
+   end Element;
+
+   -----------
+   -- First --
+   -----------
+
+   overriding function First
+    (Self : not null access Element_Container)
+      return Iterable_Holder_Cursors.Cursor'Class is
+   begin
+      return First (Self.Value);
+   end First;
+
+   ---------------------
+   -- Replace_Element --
+   ---------------------
+
+   procedure Replace_Element (Self : in out Holder; To : Element_Type) is
+   begin
+      if Self.Data.all not in Element_Container then
+         raise Constraint_Error with "invalid type of value";
+      end if;
+
+      --  XXX This subprogram can be improved to reuse shared segment when
+      --  possible.
+
+      Dereference (Self.Data);
+      Self.Data :=
+        new Element_Container'(Counter  => <>, Is_Empty => False, Value => To);
+   end Replace_Element;
+
+   ---------------
+   -- To_Holder --
+   ---------------
+
+   function To_Holder (Item : Element_Type) return Holder is
+   begin
+      return
+       (Ada.Finalization.Controlled with
+          new Element_Container'
+               (Counter  => <>, Is_Empty => False, Value => Item));
+   end To_Holder;
+
+end League.Holders.Generic_Iterable_Holders;

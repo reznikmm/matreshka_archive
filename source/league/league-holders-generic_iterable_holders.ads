@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,42 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders.Generic_Iterable_Holders;
-with League.JSON.Arrays;
 
-package League.Holders.JSON_Arrays is
-  new League.Holders.Generic_Iterable_Holders
-    (League.JSON.Arrays.JSON_Array, League.JSON.Arrays.First);
-pragma Preelaborate (League.Holders.JSON_Arrays);
+generic
+   type Element_Type is private;
+
+   with function First
+     (Self : aliased Element_Type)
+      return League.Holders.Iterable_Holder_Cursors.Cursor'Class;
+
+package League.Holders.Generic_Iterable_Holders is
+
+   pragma Preelaborate;
+
+   Value_Tag : constant Tag;
+
+   function Element (Self : Holder) return Element_Type;
+   --  Returns internal value.
+
+   procedure Replace_Element (Self : in out Holder; To : Element_Type);
+   --  Set value. Tag of the value must be set before this call.
+
+   function To_Holder (Item : Element_Type) return Holder;
+   --  Creates new Value from specified value.
+
+private
+
+   type Element_Container is new Abstract_Container with record
+      Value : aliased Element_Type;
+   end record;
+
+   overriding function Constructor
+    (Is_Empty : not null access Boolean) return Element_Container;
+
+   overriding function First
+    (Self : not null access Element_Container)
+      return Iterable_Holder_Cursors.Cursor'Class;
+
+   Value_Tag : constant Tag := Tag (Element_Container'Tag);
+
+end League.Holders.Generic_Iterable_Holders;

@@ -52,6 +52,39 @@ package body League.Holders is
      new Ada.Tags.Generic_Dispatching_Constructor
           (Abstract_Container, Boolean, Constructor);
 
+   package Empty_Iterable_Holder_Cursors is
+      type Cursor is new Iterable_Holder_Cursors.Cursor with null record;
+
+      overriding function Next (Self : in out Cursor) return Boolean;
+
+      overriding function Element (Self : Cursor) return Holder;
+
+   end Empty_Iterable_Holder_Cursors;
+
+   package body Empty_Iterable_Holder_Cursors is
+
+      -------------
+      -- Element --
+      -------------
+
+      overriding function Element (Self : Cursor) return Holder is
+         pragma Unreferenced (Self);
+      begin
+         return Empty_Holder;
+      end Element;
+
+      ----------
+      -- Next --
+      ----------
+
+      overriding function Next (Self : in out Cursor) return Boolean is
+         pragma Unreferenced (Self);
+      begin
+         return False;
+      end Next;
+
+   end Empty_Iterable_Holder_Cursors;
+
    ------------
    -- Adjust --
    ------------
@@ -421,6 +454,29 @@ package body League.Holders is
       end if;
 
       return Abstract_Integer_Container'Class (Self.Data.all).First;
+   end First;
+
+   -----------
+   -- First --
+   -----------
+
+   function First
+    (Self : Holder) return Iterable_Holder_Cursors.Cursor'Class is
+   begin
+      return Self.Data.First;
+   end First;
+
+   -----------
+   -- First --
+   -----------
+
+   not overriding function First
+    (Self : not null access Abstract_Container)
+       return Iterable_Holder_Cursors.Cursor'Class
+   is
+      pragma Unreferenced (Self);
+   begin
+      return Result : Empty_Iterable_Holder_Cursors.Cursor;
    end First;
 
    ---------

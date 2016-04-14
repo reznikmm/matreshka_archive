@@ -205,6 +205,27 @@ package League.Holders is
    function To_Holder (Item : League.Calendars.Date_Time) return Holder;
    --  Constructs value object of type Date_Time with specified value.
 
+   ---------------------------------
+   --  Iterable Holder Operations --
+   ---------------------------------
+
+   package Iterable_Holder_Cursors is
+      type Cursor is limited interface;
+
+      not overriding function Next
+        (Self : in out Cursor) return Boolean is abstract;
+      --  Go to the next element if possible.
+      --  Returns False if there are no more elements.
+
+      not overriding function Element
+        (Self : Cursor) return Holder is abstract;
+      --  Returns True if contained value has any float type.
+
+   end Iterable_Holder_Cursors;
+
+   function First (Self : Holder) return Iterable_Holder_Cursors.Cursor'Class;
+   --  Returns cursor to iterate over nested elements.
+
 private
 
    ------------------------
@@ -232,6 +253,10 @@ private
 
    not overriding procedure Clear (Self : not null access Abstract_Container);
    --  Sets Is_Empty to True, derived types should override it to do cleanup.
+
+   not overriding function First
+    (Self : not null access Abstract_Container)
+      return Iterable_Holder_Cursors.Cursor'Class;
 
    ----------------------
    -- Container_Access --
