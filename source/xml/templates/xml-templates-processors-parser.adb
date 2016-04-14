@@ -45,6 +45,7 @@ with League.Characters.Latin;
 with League.Holders.Booleans;
 with League.Holders.JSON_Objects;
 with League.JSON.Objects;
+with League.JSON.Values;
 
 package body XML.Templates.Processors.Parser is
 
@@ -192,10 +193,12 @@ package body XML.Templates.Processors.Parser is
                      return;
                   end if;
 
-                  To_Holder
-                   (JS_Object.Value (Scanner.Token_Image), Value, Success);
+                  Value := League.JSON.Values.To_Holder
+                    (JS_Object.Value (Scanner.Token_Image));
 
-                  if not Success then
+                  if League.Holders.Is_Empty (Value) then
+                     Success := False;
+
                      return;
                   end if;
 

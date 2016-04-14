@@ -44,7 +44,6 @@
 private with Ada.Containers.Hashed_Maps;
 
 with League.Holders;
-private with League.JSON.Values;
 with League.Strings;
 private with League.Strings.Hash;
 private with XML.SAX.Attributes;
@@ -187,16 +186,5 @@ private
      Prefix        : League.Strings.Universal_String;
      Namespace_URI : League.Strings.Universal_String;
      Success       : in out Boolean);
-
-   --  Supplimentary subprograms.
-
-   procedure To_Holder
-    (Value   : League.JSON.Values.JSON_Value;
-     Holder  : out League.Holders.Holder;
-     Success : in out Boolean);
-   --  Converts JSON_Value object to holder of corresponding type. Supported
-   --  types are booleans, strings, numbers, arrays, and objects. For
-   --  unsupported kinds of JSON_Value (empty and null) is resets Holder to
-   --  empty state and sets Success to False.
 
 end XML.Templates.Processors;

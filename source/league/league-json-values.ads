@@ -134,8 +134,6 @@ package League.JSON.Values is
 
    function To_Holder (Self : JSON_Value'Class) return League.Holders.Holder;
    --  Converts the value to a holder.
-   --
-   --  XXX: Can be implemented for 'simple' types only.
 
    function To_Integer
     (Self    : JSON_Value'Class;

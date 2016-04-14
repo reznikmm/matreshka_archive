@@ -41,9 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with League.Holders.Booleans;
-with League.Holders.JSON_Arrays;
-with League.Holders.JSON_Objects;
 with League.JSON.Documents.Internals;
 with League.JSON.Values.Internals;
 with Matreshka.JSON_Documents;
@@ -63,15 +60,6 @@ package body League.JSON.Arrays is
 
    end Array_Iterable_Holder_Cursors;
 
-   procedure To_Holder
-    (Value   : League.JSON.Values.JSON_Value;
-     Holder  : out League.Holders.Holder;
-     Success : in out Boolean);
-   --  Converts JSON_Value object to holder of corresponding type. Supported
-   --  types are booleans, strings, numbers, arrays, and objects. For
-   --  unsupported kinds of JSON_Value (empty and null) is resets Holder to
-   --  empty state and sets Success to False.
-
    package body Array_Iterable_Holder_Cursors is
 
       -------------
@@ -79,14 +67,10 @@ package body League.JSON.Arrays is
       -------------
 
       overriding function Element
-       (Self : Cursor) return League.Holders.Holder
-      is
-         Result  : League.Holders.Holder;
-         Success : Boolean := True;
+       (Self : Cursor) return League.Holders.Holder is
       begin
-         To_Holder (Self.Data.Element (Self.Index), Result, Success);
-
-         return Result;
+         return League.JSON.Values.To_Holder
+           (Self.Data.Element (Self.Index));
       end Element;
 
       ----------
@@ -363,54 +347,6 @@ package body League.JSON.Arrays is
          return League.JSON.Values.Empty_JSON_Value;
       end if;
    end Take;
-
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   procedure To_Holder
-    (Value   : League.JSON.Values.JSON_Value;
-     Holder  : out League.Holders.Holder;
-     Success : in out Boolean) is
-   begin
-      case Value.Kind is
-         when League.JSON.Values.Empty_Value =>
-            League.Holders.Clear (Holder);
-            Success := False;
-
-            return;
-
-         when League.JSON.Values.Boolean_Value =>
-            Holder := League.Holders.Booleans.To_Holder (Value.To_Boolean);
-
-         when League.JSON.Values.Number_Value =>
-            if Value.Is_Integer_Number then
-               League.Holders.Set_Tag
-                (Holder, League.Holders.Universal_Integer_Tag);
-               League.Holders.Replace_Element (Holder, Value.To_Integer);
-
-            else
-               League.Holders.Set_Tag
-                (Holder, League.Holders.Universal_Float_Tag);
-               League.Holders.Replace_Element (Holder, Value.To_Float);
-            end if;
-
-         when League.JSON.Values.String_Value =>
-            Holder := League.Holders.To_Holder (Value.To_String);
-
-         when League.JSON.Values.Array_Value =>
-            Holder := League.Holders.JSON_Arrays.To_Holder (Value.To_Array);
-
-         when League.JSON.Values.Object_Value =>
-            Holder := League.Holders.JSON_Objects.To_Holder (Value.To_Object);
-
-         when League.JSON.Values.Null_Value =>
-            League.Holders.Clear (Holder);
-            Success := False;
-
-            return;
-      end case;
-   end To_Holder;
 
    ----------------------
    -- To_JSON_Document --

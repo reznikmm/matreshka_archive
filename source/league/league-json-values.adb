@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with League.Holders.Booleans;
 with League.JSON.Arrays.Internals;
+with League.Holders.JSON_Arrays;
+with League.Holders.JSON_Objects;
 with League.JSON.Objects.Internals;
 with League.Strings.Internals;
 with Matreshka.Internals.Strings;
@@ -281,10 +283,14 @@ package body League.JSON.Values is
                  (Self.Data.Value.String_Value));
 
          when Matreshka.JSON_Types.Array_Value =>
-            return League.Holders.Empty_Holder;
+            return League.Holders.JSON_Arrays.To_Holder
+              (League.JSON.Arrays.Internals.Create
+                 (Self.Data.Value.Array_Value));
 
          when Matreshka.JSON_Types.Object_Value =>
-            return League.Holders.Empty_Holder;
+            return League.Holders.JSON_Objects.To_Holder
+              (League.JSON.Objects.Internals.Create
+                 (Self.Data.Value.Object_Value));
 
          when Matreshka.JSON_Types.Null_Value =>
             return League.Holders.Empty_Holder;

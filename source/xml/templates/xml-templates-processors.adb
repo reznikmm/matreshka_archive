@@ -43,9 +43,6 @@
 ------------------------------------------------------------------------------
 with League.Characters;
 with League.Holders.Booleans;
-with League.Holders.JSON_Arrays;
-with League.Holders.JSON_Objects;
-with League.JSON.Arrays;
 
 with XML.Templates.Processors.Parser;
 with XML.Templates.Streams.Holders;
@@ -252,9 +249,8 @@ package body XML.Templates.Processors is
                Self.Namespaces.Pop_Context;
 
                declare
-                  Container : constant League.JSON.Arrays.JSON_Array
-                    := League.Holders.JSON_Arrays.Element
-                        (Self.Container_Value);
+                  Cursor : League.Holders.Iterable_Holder_Cursors.Cursor'Class
+                    := League.Holders.First (Self.Container_Value);
                   Stream    : constant
                     XML.Templates.Streams.XML_Stream_Element_Vectors.Vector
                       := Self.Stream;
@@ -267,22 +263,20 @@ package body XML.Templates.Processors is
                   Self.Stream.Clear;
                   Self.Object_Name.Clear;
 
-                  if not Container.Is_Empty then
-                     for Index in 1 .. Container.Length loop
-                        To_Holder (Container.Element (Index), Holder, Success);
+                  while Cursor.Next loop
+                     Holder := Cursor.Element;
 
-                        if not Success then
-                           return;
-                        end if;
+                     if League.Holders.Is_Empty (Holder) then
+                        return;
+                     end if;
 
-                        Self.Parameters.Include (Name, Holder);
-                        Self.Process_Stream (Stream, Success);
+                     Self.Parameters.Include (Name, Holder);
+                     Self.Process_Stream (Stream, Success);
 
-                        if not Success then
-                           return;
-                        end if;
-                     end loop;
-                  end if;
+                     if not Success then
+                        return;
+                     end if;
+                  end loop;
                end;
             end if;
          end if;
@@ -930,53 +924,5 @@ package body XML.Templates.Processors is
          end if;
       end loop;
    end Substitute;
-
-   ---------------
-   -- To_Holder --
-   ---------------
-
-   procedure To_Holder
-    (Value   : League.JSON.Values.JSON_Value;
-     Holder  : out League.Holders.Holder;
-     Success : in out Boolean) is
-   begin
-      case Value.Kind is
-         when League.JSON.Values.Empty_Value =>
-            League.Holders.Clear (Holder);
-            Success := False;
-
-            return;
-
-         when League.JSON.Values.Boolean_Value =>
-            Holder := League.Holders.Booleans.To_Holder (Value.To_Boolean);
-
-         when League.JSON.Values.Number_Value =>
-            if Value.Is_Integer_Number then
-               League.Holders.Set_Tag
-                (Holder, League.Holders.Universal_Integer_Tag);
-               League.Holders.Replace_Element (Holder, Value.To_Integer);
-
-            else
-               League.Holders.Set_Tag
-                (Holder, League.Holders.Universal_Float_Tag);
-               League.Holders.Replace_Element (Holder, Value.To_Float);
-            end if;
-
-         when League.JSON.Values.String_Value =>
-            Holder := League.Holders.To_Holder (Value.To_String);
-
-         when League.JSON.Values.Array_Value =>
-            Holder := League.Holders.JSON_Arrays.To_Holder (Value.To_Array);
-
-         when League.JSON.Values.Object_Value =>
-            Holder := League.Holders.JSON_Objects.To_Holder (Value.To_Object);
-
-         when League.JSON.Values.Null_Value =>
-            League.Holders.Clear (Holder);
-            Success := False;
-
-            return;
-      end case;
-   end To_Holder;
 
 end XML.Templates.Processors;
