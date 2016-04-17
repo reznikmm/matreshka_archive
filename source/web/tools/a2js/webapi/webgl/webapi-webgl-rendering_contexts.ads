@@ -94,28 +94,28 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    /*      NOTEQUAL */
 --    /*      GEQUAL */
 --    /*      ALWAYS */
---
---    /* BlendingFactorDest */
---    const GLenum ZERO                           = 0;
---    const GLenum ONE                            = 1;
---    const GLenum SRC_COLOR                      = 0x0300;
---    const GLenum ONE_MINUS_SRC_COLOR            = 0x0301;
---    const GLenum SRC_ALPHA                      = 0x0302;
---    const GLenum ONE_MINUS_SRC_ALPHA            = 0x0303;
---    const GLenum DST_ALPHA                      = 0x0304;
---    const GLenum ONE_MINUS_DST_ALPHA            = 0x0305;
---
---    /* BlendingFactorSrc */
---    /*      ZERO */
---    /*      ONE */
---    const GLenum DST_COLOR                      = 0x0306;
---    const GLenum ONE_MINUS_DST_COLOR            = 0x0307;
---    const GLenum SRC_ALPHA_SATURATE             = 0x0308;
---    /*      SRC_ALPHA */
---    /*      ONE_MINUS_SRC_ALPHA */
---    /*      DST_ALPHA */
---    /*      ONE_MINUS_DST_ALPHA */
---
+
+   ------------------------
+   -- BlendingFactorDest --
+   ------------------------
+
+   ZERO                : constant := 16#0000#;
+   ONE                 : constant := 16#0001#;
+   SRC_COLOR           : constant := 16#0300#;
+   ONE_MINUS_SRC_COLOR : constant := 16#0301#;
+   SRC_ALPHA           : constant := 16#0302#;
+   ONE_MINUS_SRC_ALPHA : constant := 16#0303#;
+   DST_ALPHA           : constant := 16#0304#;
+   ONE_MINUS_DST_ALPHA : constant := 16#0305#;
+
+   -----------------------
+   -- BlendingFactorSrc --
+   -----------------------
+
+   DST_COLOR           : constant := 16#0306#;
+   ONE_MINUS_DST_COLOR : constant := 16#0307#;
+   SRC_ALPHA_SATURATE  : constant := 16#0308#;
+
 --    /* BlendEquationSeparate */
 --    const GLenum FUNC_ADD                       = 0x8006;
 --    const GLenum BLEND_EQUATION                 = 0x8009;
@@ -131,10 +131,10 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum BLEND_SRC_RGB                  = 0x80C9;
 --    const GLenum BLEND_DST_ALPHA                = 0x80CA;
 --    const GLenum BLEND_SRC_ALPHA                = 0x80CB;
---    const GLenum CONSTANT_COLOR                 = 0x8001;
---    const GLenum ONE_MINUS_CONSTANT_COLOR       = 0x8002;
---    const GLenum CONSTANT_ALPHA                 = 0x8003;
---    const GLenum ONE_MINUS_CONSTANT_ALPHA       = 0x8004;
+   CONSTANT_COLOR           : constant := 16#8001#;
+   ONE_MINUS_CONSTANT_COLOR : constant := 16#8002#;
+   CONSTANT_ALPHA           : constant := 16#8003#;
+   ONE_MINUS_CONSTANT_ALPHA : constant := 16#8004#;
 --    const GLenum BLEND_COLOR                    = 0x8005;
 
    --------------------
@@ -170,18 +170,22 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    /*      GEQUAL */
 --    /*      ALWAYS */
 --
---    /* EnableCap */
+
+   ---------------
+   -- EnableCap --
+   ---------------
+
 --    /* TEXTURE_2D */
---    const GLenum CULL_FACE                      = 0x0B44;
---    const GLenum BLEND                          = 0x0BE2;
---    const GLenum DITHER                         = 0x0BD0;
---    const GLenum STENCIL_TEST                   = 0x0B90;
---    const GLenum DEPTH_TEST                     = 0x0B71;
---    const GLenum SCISSOR_TEST                   = 0x0C11;
---    const GLenum POLYGON_OFFSET_FILL            = 0x8037;
---    const GLenum SAMPLE_ALPHA_TO_COVERAGE       = 0x809E;
---    const GLenum SAMPLE_COVERAGE                = 0x80A0;
---
+   CULL_FACE                : constant := 16#0B44#;
+   BLEND                    : constant := 16#0BE2#;
+   DITHER                   : constant := 16#0BD0#;
+   STENCIL_TEST             : constant := 16#0B90#;
+   DEPTH_TEST               : constant := 16#0B71#;
+   SCISSOR_TEST             : constant := 16#0C11#;
+   POLYGON_OFFSET_FILL      : constant := 16#8037#;
+   SAMPLE_ALPHA_TO_COVERAGE : constant := 16#809E#;
+   SAMPLE_COVERAGE          : constant := 16#80A0#;
+
 --    /* ErrorCode */
 --    const GLenum NO_ERROR                       = 0;
 --    const GLenum INVALID_ENUM                   = 0x0500;
@@ -597,7 +601,16 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    void blendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
 --    void blendEquation(GLenum mode);
 --    void blendEquationSeparate(GLenum modeRGB, GLenum modeAlpha);
---    void blendFunc(GLenum sfactor, GLenum dfactor);
+
+   not overriding procedure Blend_Func
+    (Self               : not null access WebGL_Rendering_Context;
+     Source_Factor      : GLenum;
+     Destination_Factor : GLenum)
+       is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "blendFunc";
+
 --    void blendFuncSeparate(GLenum srcRGB, GLenum dstRGB,
 --                           GLenum srcAlpha, GLenum dstAlpha);
 --
@@ -753,7 +766,13 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    void depthMask(GLboolean flag);
 --    void depthRange(GLclampf zNear, GLclampf zFar);
 --    void detachShader(WebGLProgram? program, WebGLShader? shader);
---    void disable(GLenum cap);
+
+   not overriding procedure Disable
+    (Self       : not null access WebGL_Rendering_Context;
+     Capability : GLenum) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "disable";
 
    not overriding procedure Disable_Vertex_Attrib_Array
     (Self  : not null access WebGL_Rendering_Context;
@@ -772,8 +791,13 @@ package WebAPI.WebGL.Rendering_Contexts is
             Link_Name  => "drawArrays";
 
 --    void drawElements(GLenum mode, GLsizei count, GLenum type, GLintptr offset);
---
---    void enable(GLenum cap);
+
+   not overriding procedure Enable
+    (Self       : not null access WebGL_Rendering_Context;
+     Capability : GLenum) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "enable";
 
    not overriding procedure Enable_Vertex_Attrib_Array
     (Self  : not null access WebGL_Rendering_Context;
