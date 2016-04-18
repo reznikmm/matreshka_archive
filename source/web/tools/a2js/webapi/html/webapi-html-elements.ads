@@ -131,14 +131,15 @@ package WebAPI.HTML.Elements is
             Link_Name  => "click";
 
    not overriding function Get_Tab_Index
-    (Self : not null access constant HTML_Element) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "tabIndex";
+    (Self : not null access constant HTML_Element)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "tabIndex";
 
    not overriding procedure Set_Tab_Index
     (Self : not null access HTML_Element;
-     To   : Integer) is abstract
+     To   : WebAPI.DOM_Long) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "tabIndex";

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,34 +52,38 @@ package WebAPI.UI_Events.Mouse is
    type Mouse_Event is limited interface and WebAPI.UI_Events.Events.UI_Event;
 
    not overriding function Get_Screen_X
-    (Self : not null access constant Mouse_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "screenX";
+    (Self : not null access constant Mouse_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "screenX";
    --  The horizontal coordinate at which the event occurred relative to the
    --  origin of the screen coordinate system.
 
    not overriding function Get_Screen_Y
-    (Self : not null access constant Mouse_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "screenY";
+    (Self : not null access constant Mouse_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "screenY";
    --  The vertical coordinate at which the event occurred relative to the
    --  origin of the screen coordinate system.
 
    not overriding function Get_Client_X
-    (Self : not null access constant Mouse_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "clientX";
+    (Self : not null access constant Mouse_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientX";
    --  The horizontal coordinate at which the event occurred relative to the
    --  viewport associated with the event.
 
    not overriding function Get_Client_Y
-    (Self : not null access constant Mouse_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "clientY";
+    (Self : not null access constant Mouse_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "clientY";
    --  The vertical coordinate at which the event occurred relative to the
    --  viewport associated with the event.
 
@@ -112,10 +116,11 @@ package WebAPI.UI_Events.Mouse is
    --  True if the meta ('Meta') key modifier was active.
 
    not overriding function Get_Button
-    (Self : not null access constant Mouse_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "button";
+    (Self : not null access constant Mouse_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "button";
    --  During mouse events caused by the depression or release of a mouse
    --  button, button MUST be used to indicate which pointer device button
    --  changed state.

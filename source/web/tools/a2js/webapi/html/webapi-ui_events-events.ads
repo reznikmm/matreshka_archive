@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,10 +61,11 @@ package WebAPI.UI_Events.Events is
    --  generated.
 
    not overriding function Get_Detail
-    (Self : not null access constant UI_Event) return Integer is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Getter,
-            Link_Name  => "detail";
+    (Self : not null access constant UI_Event)
+       return WebAPI.DOM_Long is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "detail";
    --  Specifies some detail information about the Event, depending on the type
    --  of event.
 

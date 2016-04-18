@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,28 +58,28 @@ package WebAPI.HTML.Canvas_Elements is
 
    not overriding function Get_Width
     (Self : not null access constant HTML_Canvas_Element)
-       return Natural is abstract
+       return WebAPI.DOM_Unsigned_Long is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "width";
 
    not overriding procedure Set_Width
     (Self : not null access HTML_Canvas_Element;
-     To   : Natural) is abstract
+     To   : WebAPI.DOM_Unsigned_Long) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "width";
 
    not overriding function Get_Height
     (Self : not null access constant HTML_Canvas_Element)
-       return Natural is abstract
+       return WebAPI.DOM_Unsigned_Long is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "height";
 
    not overriding procedure Set_Height
     (Self : not null access HTML_Canvas_Element;
-     To   : Natural) is abstract
+     To   : WebAPI.DOM_Unsigned_Long) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "height";
