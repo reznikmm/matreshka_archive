@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -53,13 +53,17 @@ package WebAPI is
 
    pragma Preelaborate;
 
+   subtype DOM_Boolean is Boolean;
+
    subtype DOM_String is League.Strings.Universal_String;
 
    subtype DOM_Time_Stamp is League.Calendars.Date_Time;
 
    subtype DOM_Unsigned_Short is Interfaces.Unsigned_16;
 
-   subtype DOM_Long is Integer;
+   subtype DOM_Long is Interfaces.Integer_32;
+
+   subtype DOM_Unsigned_Long is Interfaces.Unsigned_32;
 
    subtype DOM_Double is Interfaces.IEEE_Float_64;
 
