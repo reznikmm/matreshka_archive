@@ -87,6 +87,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Depth  : constant Natural := Properties.Tools.Get_Dimension (Element);
       List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
+      Comp   : constant Asis.Definition := Component (Element, List);
 
       Typed_Array : constant Boolean := Is_Typed_Array (Engine, Element);
 
@@ -116,7 +117,6 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
       elsif Typed_Array then
          declare
-            Comp : constant Asis.Definition := Component (Element, List);
             Size : constant League.Strings.Universal_String :=
               Engine.Text.Get_Property (Comp, Engines.Size);
             Align : constant Integer :=
@@ -160,7 +160,15 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
          Result.Append (")");
       else
-         Result.Append ("(new _ec._ada_array (");
+         Result.Append ("(new _ec.");
+
+         if Engine.Boolean.Get_Property (Comp, Engines.Is_Simple_Type) then
+            Result.Append ("_ada_array_simple");
+         else
+            Result.Append ("_ada_array");
+         end if;
+
+         Result.Append ("(");
          Append_Elements;
          Result.Append (", ");
          Result.Append (Get_Bounds (Engine, Element, Depth, List));
@@ -188,7 +196,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Item    : Asis.Expression;
    begin
       if not Asis.Elements.Is_Nil (Tipe) then
-         Def  := Asis.Declarations.Type_Declaration_View (Tipe);
+         Def  := Properties.Tools.Type_Declaration_View (Tipe);
          Comp := Asis.Definitions.Array_Component_Definition (Def);
          View := Asis.Definitions.Component_Definition_View (Comp);
 

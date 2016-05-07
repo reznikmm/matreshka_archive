@@ -235,7 +235,7 @@ define('standard', [], function(){
             return index;
         },
         "_slice" : function (_from, _to) {
-            var result = Object.create(standard._ada_array);
+            var result = Object.create(Object.getPrototypeOf(this));
             result._first = [_from];
             result._last = [_to];
             result._length = [_to - _from + 1];
@@ -244,8 +244,11 @@ define('standard', [], function(){
             result.A = this.A;
             return result;
         },
-        "_assign" : function (src) {
-            this.A = src.A.slice();
+        "_assign" : function (r) {
+            var t,s,j; //  if multidim arr copy whole A else copy just slice
+            j=(this._length.length > 1) ? this.A.length : r._length[0];
+            for(t=this._offset, s=r._offset;j>0; t++,s++,j--)
+                this.A[t]._assign(r.A[s]);
         },
         "_eq" : function (arg) {
             if (this.A.length != arg.A.length) return false;
@@ -281,6 +284,45 @@ define('standard', [], function(){
         }
     };
 
+    standard._ada_array_simple = //  Ada array of items with simple type
+    function (){
+        standard._ada_array.apply (this, arguments);
+    };
+
+    standard._ada_array_simple.prototype =
+        Object.create (standard._ada_array.prototype);
+
+    standard._ada_array_simple.prototype._assign = function (r) {
+        if (this._length.length > 1)
+            this.A = r.A.slice();
+        else if (this.A.length == r._length[0])
+            this.A = r.A.slice(r._offset, r._offset + r._length[0]);
+        else{
+            var t,s,j; // reuse .A if only slice of it is assigned
+            for(t=this._offset, s=r._offset, j=r._length[0];
+                j>0; t++,s++,j--)
+                    this.A[t]=r.A[s];
+        }
+    };
+    
+    standard._fortran_array = //  A constructor for any Fortran array
+    function (){
+        standard._ada_array.apply (this, arguments);
+    };
+
+    standard._fortran_array.prototype =
+        Object.create (standard._ada_array.prototype);
+
+    standard._fortran_array.prototype._index = function () {
+        var index = this._offset, size = 1;
+        for (var j = 0; j < arguments.length; j++){
+            index +=
+                (standard._pos (arguments[j]) - this._first[j]) * size;
+            size *= this._length[j];
+        }
+        return index;
+    };
+    
     standard._tag ('event_listener','');
     standard.webapi = {
         "dom": {"event_listeners": {"event_listener": function(){}}}

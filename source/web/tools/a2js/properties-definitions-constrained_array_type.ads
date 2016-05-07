@@ -69,6 +69,11 @@ package Properties.Definitions.Constrained_Array_Type is
       Element : Asis.Definition;
       Name    : Engines.Boolean_Property) return Boolean;
 
+   function Is_Array_Of_Simple
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Boolean_Property) return Boolean;
+
    function Size
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Definition;

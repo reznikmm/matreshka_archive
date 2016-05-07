@@ -87,7 +87,15 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Result.Append ("this._first=_from;");
       Result.Append ("this._last=_to;");
       Result.Append ("this._length=_len;");
-      Result.Append ("this._offset=0;}).prototype = _ec._ada_array.prototype;");
+      Result.Append ("this._offset=0;}).prototype = _ec.");
+
+      if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
+         Result.Append ("_ada_array_simple");
+      else
+         Result.Append ("_ada_array");
+      end if;
+
+      Result.Append (".prototype;");
 
       return Result;
    end Code;

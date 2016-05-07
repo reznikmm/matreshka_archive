@@ -14,5 +14,6 @@ all:
 	./run.sh ind_constr.test
 	./run.sh ifexp.test
 	./run.sh matrix2d.test
-	./run.sh typedarray.test
+#	./run.sh typedarray.test
+	./run.sh slice.test
 	@echo A2JS Tests succeed!

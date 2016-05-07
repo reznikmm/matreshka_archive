@@ -1065,7 +1065,16 @@ is
        Action  => P.Definitions.Constrained_Array_Type.Is_Simple_Type'Access),
       (Kind    => F.A_Class_Attribute,
        Name    => N.Is_Simple_Type,
-       Action  => P.Common.False'Access));
+       Action  => P.Common.False'Access),
+
+      (Kind   => F.A_Constrained_Array_Definition,
+       Name   => N.Is_Array_Of_Simple,
+       Action => P.Definitions.Constrained_Array_Type
+                    .Is_Array_Of_Simple'Access),
+      (Kind   => F.An_Unconstrained_Array_Definition,
+       Name   => N.Is_Array_Of_Simple,
+       Action => P.Definitions.Constrained_Array_Type
+                    .Is_Array_Of_Simple'Access));
 
 begin
    for X of Action_List loop

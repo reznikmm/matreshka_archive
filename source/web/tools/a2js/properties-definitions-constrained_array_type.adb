@@ -152,7 +152,15 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result.Append (Text);
       Result.Append (");");
 
-      Result.Append ("}).prototype = _ec._ada_array.prototype;");
+      Result.Append ("}).prototype = _ec.");
+
+      if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
+         Result.Append ("_ada_array_simple");
+      else
+         Result.Append ("_ada_array");
+      end if;
+
+      Result.Append (".prototype;");
 
       return Result;
    end Code;
@@ -189,6 +197,24 @@ package body Properties.Definitions.Constrained_Array_Type is
 
       return Result;
    end Initialize;
+
+   ------------------------
+   -- Is_Array_Of_Simple --
+   ------------------------
+
+   function Is_Array_Of_Simple
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Boolean_Property) return Boolean
+   is
+      pragma Unreferenced (Name);
+      Item : constant Asis.Component_Definition :=
+        Asis.Definitions.Array_Component_Definition (Element);
+      View : constant Asis.Definition :=
+        Asis.Definitions.Component_Definition_View (Item);
+   begin
+      return Engine.Boolean.Get_Property (View, Engines.Is_Simple_Type);
+   end Is_Array_Of_Simple;
 
    --------------------
    -- Is_Simple_Type --

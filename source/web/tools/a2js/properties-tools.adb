@@ -883,4 +883,42 @@ package body Properties.Tools is
       end loop;
    end Name_Image;
 
+   ---------------------------
+   -- Type_Declaration_View --
+   ---------------------------
+
+   function Type_Declaration_View
+     (Declaration : Asis.Declaration) return Asis.Definition
+   is
+      View : Asis.Element :=
+        Asis.Declarations.Type_Declaration_View (Declaration);
+   begin
+      loop
+         case Asis.Elements.Type_Kind (View) is
+            when Asis.A_Derived_Type_Definition =>
+               declare
+                  SI : constant Asis.Subtype_Indication :=
+                    Asis.Definitions.Parent_Subtype_Indication (View);
+                  Mark : Asis.Subtype_Mark :=
+                    Asis.Definitions.Subtype_Mark (SI);
+                  Decl : Asis.Declaration;
+               begin
+                  if Asis.Elements.Expression_Kind (Mark) in
+                    Asis.A_Selected_Component
+                  then
+                     Mark := Asis.Expressions.Selector (Mark);
+                  end if;
+
+                  Decl :=
+                    Asis.Expressions.Corresponding_Name_Declaration (Mark);
+
+                  View := Asis.Declarations.Type_Declaration_View (Decl);
+               end;
+
+            when others =>
+               return View;
+         end case;
+      end loop;
+   end Type_Declaration_View;
+
 end Properties.Tools;

@@ -74,6 +74,10 @@ package Properties.Tools is
      (Declaration : Asis.Declaration) return Asis.Declaration;
    --  Return type declaration for given primitive subprogram
 
+   function Type_Declaration_View
+     (Declaration : Asis.Declaration) return Asis.Definition;
+   --  Like Asis.Declarations.Type_Declaration_View but expand derived types
+
    function Is_Equal_Type
      (Left  : Asis.Declaration;
       Right : Asis.Declaration) return Boolean;
