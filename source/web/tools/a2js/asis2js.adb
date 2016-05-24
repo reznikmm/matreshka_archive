@@ -44,6 +44,7 @@
 with Ada.Directories;
 with Ada.Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
+with Ada.Command_Line;
 
 with GNAT.Strings;
 
@@ -300,4 +301,5 @@ exception
       Ada.Wide_Text_IO.New_Line;
 
       Asis.Implementation.Set_Status;
+      Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
 end Asis2JS;
