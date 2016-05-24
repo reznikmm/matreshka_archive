@@ -52,6 +52,8 @@ package Engines is
       Associations, --  names of record assotiation a,b,c
       Tag_Name,  --  external tag name image
       Method_Name,  --  name of subrogram in virtual table
+      Simple_Output_Names,  --  names of parameters if it's Is_Simple_Type and
+                            --  has [in] out mode, empty string otherwise
       Address,  --  Access or address of an object
       Initialize,
       --  Code to initialize an object of given type

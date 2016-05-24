@@ -44,6 +44,8 @@
 with Asis.Declarations;
 with Asis.Elements;
 
+with League.String_Vectors;
+
 with Properties.Tools;
 
 package body Properties.Declarations.Procedure_Body_Declarations is
@@ -77,6 +79,10 @@ package body Properties.Declarations.Procedure_Body_Declarations is
         Engine.Text.Get_Property
           (Element => Asis.Declarations.Names (Element) (1),
            Name    => Name);
+
+      Output : constant League.Strings.Universal_String :=
+        Engine.Text.Get_Property
+          (Element, Engines.Simple_Output_Names);
 
       Text : League.Strings.Universal_String;
    begin
@@ -147,6 +153,27 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
       Text.Append ("){");
 
+      if Output.Length > 0 then
+         declare
+            Vector : constant League.String_Vectors.Universal_String_Vector :=
+              Output.Split (',');
+         begin
+            Text.Append ("function _return(){ return {");
+
+            for J in 1 .. Vector.Length loop
+               if J > 1 then
+                  Text.Append (", ");
+               end if;
+
+               Text.Append (Vector.Element (J));
+               Text.Append (": ");
+               Text.Append (Vector.Element (J));
+            end loop;
+
+            Text.Append ("}; };");
+         end;
+      end if;
+
       declare
          Down : League.Strings.Universal_String;
          List : constant Asis.Element_List :=
@@ -174,6 +201,10 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
          Text.Append (Down);
       end;
+
+      if Output.Length > 0 then
+         Text.Append ("return _return();");
+      end if;
 
       Text.Append ("};");
 
@@ -226,5 +257,30 @@ package body Properties.Declarations.Procedure_Body_Declarations is
          return Engine.Boolean.Get_Property (Spec, Name);
       end if;
    end Is_Dispatching;
+
+   -------------------------
+   -- Simple_Output_Names --
+   -------------------------
+
+   function Simple_Output_Names
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
+
+      List : constant Asis.Parameter_Specification_List :=
+        Asis.Declarations.Parameter_Profile (Element);
+
+      Output : constant League.Strings.Universal_String :=
+        Engine.Text.Get_Property
+          (List  => List,
+           Name  => Engines.Simple_Output_Names,
+           Empty => League.Strings.Empty_Universal_String,
+           Sum   => Properties.Tools.Comma'Access);
+
+   begin
+      return Output;
+   end Simple_Output_Names;
 
 end Properties.Declarations.Procedure_Body_Declarations;

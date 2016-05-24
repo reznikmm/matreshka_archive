@@ -79,10 +79,18 @@ package body Properties.Statements.Return_Statement is
       Result : League.Strings.Universal_String;
       Value  : constant Asis.Expression :=
         Asis.Statements.Return_Expression (Element);
+      Proc   : constant Asis.Declaration :=
+        Properties.Tools.Enclosing_Declaration (Element);
    begin
       Result.Append ("return");
 
-      if not Asis.Elements.Is_Nil (Value) then
+      if Asis.Elements.Is_Nil (Value) then
+         Down := Engine.Text.Get_Property (Proc, Engines.Simple_Output_Names);
+
+         if not Down.Is_Empty then
+            Result.Append (" _return()");
+         end if;
+      else
          Down := Engine.Text.Get_Property (Value, Name);
          Result.Append (" ");
          Result.Append (Down);

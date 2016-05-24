@@ -787,6 +787,19 @@ is
        Kind   => F.A_Limited_Interface,
        Action => P.Definitions.Tagged_Record_Type.Tag_Name'Access),
 
+      (Kind   => F.A_Parameter_Specification,
+       Name   => N.Simple_Output_Names,
+       Action => P.Declarations.Constant_Declarations
+                   .Simple_Output_Names'Access),
+      (Name   => N.Simple_Output_Names,
+       Kind   => F.A_Procedure_Body_Declaration,
+       Action => P.Declarations.Procedure_Body_Declarations
+                   .Simple_Output_Names'Access),
+      (Name   => N.Simple_Output_Names,
+       Kind   => F.A_Function_Body_Declaration,
+       Action => P.Declarations.Procedure_Body_Declarations
+                   .Simple_Output_Names'Access),
+
       (Name   => N.Typed_Array_Item_Type,
        Kind   => F.An_Ordinary_Type_Declaration,
        Action => P.Declarations.Ordinary_Type.Code'Access),

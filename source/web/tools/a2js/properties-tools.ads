@@ -70,6 +70,11 @@ package Properties.Tools is
       Subprogram : Asis.Declaration) return Boolean;
    --  Check if given Subprogram is primitive subprograms for given type
 
+   function Parameter_Profile
+     (Prefix : Asis.Expression) return Asis.Parameter_Specification_List;
+   --  For given prefix of procedure call return corresponding parameter
+   --  declaration list
+
    function Corresponding_Type
      (Declaration : Asis.Declaration) return Asis.Declaration;
    --  Return type declaration for given primitive subprogram
@@ -93,6 +98,11 @@ package Properties.Tools is
      (Left, Right : League.Strings.Universal_String)
       return League.Strings.Universal_String;
    --  Return Left & Right
+
+   function Comma
+     (Left, Right : League.Strings.Universal_String)
+      return League.Strings.Universal_String;
+   --  Return Left & "," & Right
 
    function Get_Dimension (Exp : Asis.Expression) return Natural;
    --  Return dimention of an array aggregate Exp. Return 0 if subaggregate

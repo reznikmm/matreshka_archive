@@ -45,6 +45,7 @@ with Asis.Clauses;
 with Asis.Compilation_Units;
 with Asis.Declarations;
 with Asis.Definitions;
+with Asis.Statements;
 with Asis.Elements;
 with Asis.Expressions;
 
@@ -54,6 +55,25 @@ package body Properties.Tools is
 
    function Name_Image
      (Name : Asis.Name) return League.Strings.Universal_String;
+
+   -----------
+   -- Comma --
+   -----------
+
+   function Comma
+     (Left, Right : League.Strings.Universal_String)
+      return League.Strings.Universal_String
+   is
+      use type League.Strings.Universal_String;
+   begin
+      if Left.Is_Empty then
+         return Right;
+      elsif Right.Is_Empty then
+         return Left;
+      else
+         return Left & "," & Right;
+      end if;
+   end Comma;
 
    ------------------------
    -- Corresponding_Type --
@@ -882,6 +902,38 @@ package body Properties.Tools is
          end case;
       end loop;
    end Name_Image;
+
+   -----------------------
+   -- Parameter_Profile --
+   -----------------------
+
+   function Parameter_Profile
+     (Prefix : Asis.Expression) return Asis.Parameter_Specification_List
+   is
+      Tipe : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type_Definition (Prefix);
+      Stmt : constant Asis.Statement :=
+        Asis.Elements.Enclosing_Element (Prefix);
+      Entity : Asis.Declaration :=
+        Asis.Statements.Corresponding_Called_Entity (Stmt);
+   begin
+      loop
+         if not Asis.Elements.Is_Nil (Entity) then
+            if Asis.Elements.Declaration_Kind (Entity) in
+              Asis.A_Generic_Instantiation
+            then
+               Entity := Asis.Declarations.Corresponding_Declaration (Entity);
+            else
+               return Asis.Declarations.Parameter_Profile (Entity);
+            end if;
+         elsif not Asis.Elements.Is_Nil (Tipe) then
+            return
+              Asis.Definitions.Access_To_Subprogram_Parameter_Profile (Tipe);
+         else
+            raise Constraint_Error;
+         end if;
+      end loop;
+   end Parameter_Profile;
 
    ---------------------------
    -- Type_Declaration_View --

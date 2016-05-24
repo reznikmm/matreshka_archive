@@ -44,6 +44,8 @@
 with Asis.Declarations;
 with Asis.Elements;
 
+with Properties.Tools;
+
 package body Properties.Declarations.Constant_Declarations is
 
    ------------
@@ -151,11 +153,47 @@ package body Properties.Declarations.Constant_Declarations is
       Tipe : constant Asis.Definition :=
         Asis.Declarations.Object_Declaration_View (Element);
    begin
-      return (Asis.Elements.Has_Aliased (Element)
-              or else Asis.Elements.Mode_Kind (Element) in
-                Asis.An_In_Out_Mode | Asis.An_Out_Mode)
+      return Asis.Elements.Has_Aliased (Element)
         and then
           Engine.Boolean.Get_Property (Tipe, Engines.Is_Simple_Type);
    end Is_Simple_Ref;
+
+   -------------------------
+   -- Simple_Output_Names --
+   -------------------------
+
+   function Simple_Output_Names
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Name);
+
+      Simple : Boolean;
+      Result : League.Strings.Universal_String;
+   begin
+      if Asis.Elements.Mode_Kind (Element) in
+        Asis.An_In_Out_Mode | Asis.An_Out_Mode
+      then
+         Simple := Engine.Boolean.Get_Property
+           (Asis.Declarations.Object_Declaration_View (Element),
+            Engines.Is_Simple_Type);
+
+         if Simple then
+            declare
+               Name  : League.Strings.Universal_String;
+               Names : constant Asis.Defining_Name_List :=
+                 Asis.Declarations.Names (Element);
+            begin
+               for J in Names'Range loop
+                  Name := Engine.Text.Get_Property (Names (J), Engines.Code);
+                  Result := Properties.Tools.Comma (Result, Name);
+               end loop;
+            end;
+         end if;
+      end if;
+
+      return Result;
+   end Simple_Output_Names;
 
 end Properties.Declarations.Constant_Declarations;

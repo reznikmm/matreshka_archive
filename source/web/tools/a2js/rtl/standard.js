@@ -146,7 +146,9 @@ define('standard', [], function(){
     };
 
     //  Ada.Unchecked_Deallocation
-    standard._unchecked_deallocation = function(){ return standard._null; };
+    standard._unchecked_deallocation = function(){
+        return function _free (x) { return {x: null} };
+    };
 
     standard._addEventListener = function (element, name, handler, cap){
         if (typeof handler._func === "undefined"){
