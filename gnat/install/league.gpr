@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,7 +43,7 @@
 ------------------------------------------------------------------------------
 with "matreshka_config.gpr";
 
-library project League is
+library project Matreshka_League is
 
    Library_Name := "league" & Matreshka_Config.RTL_Version_Suffix;
 
@@ -173,4 +173,4 @@ library project League is
 
    end Naming;
 
-end League;
+end Matreshka_League;

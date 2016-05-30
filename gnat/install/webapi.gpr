@@ -42,9 +42,9 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "matreshka_config.gpr";
-with "league.gpr";
+with "matreshka_league.gpr";
 
-library project WebAPI is
+library project Matreshka_WebAPI is
 
    for Source_Dirs use (Matreshka_Config.Include_Dir & "/matreshka/webapi");
    for Library_Name use "WebAPI";
@@ -52,4 +52,4 @@ library project WebAPI is
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
-end WebAPI;
+end Matreshka_WebAPI;

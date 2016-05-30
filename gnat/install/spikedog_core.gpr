@@ -42,10 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with "matreshka_config.gpr";
-with "league.gpr";
-with "spikedog_api.gpr";
+with "matreshka_league.gpr";
+with "matreshka_spikedog_api.gpr";
 
-library project Spikedog_Core is
+library project Matreshka_Spikedog_Core is
 
    Library_Name := "spikedog-core" & Matreshka_Config.RTL_Version_Suffix;
 
@@ -64,4 +64,4 @@ library project Spikedog_Core is
    for Library_ALI_Dir use Matreshka_Config.Library_ALI_Dir;
    for Externally_Built use "True";
 
-end Spikedog_Core;
+end Matreshka_Spikedog_Core;
