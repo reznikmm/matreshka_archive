@@ -219,7 +219,7 @@ package body League.JSON.Objects is
    -------------------
 
    function To_JSON_Value
-    (Self : JSON_Object) return League.JSON.Values.JSON_Value is
+    (Self : JSON_Object'Class) return League.JSON.Values.JSON_Value is
    begin
       Matreshka.JSON_Types.Reference (Self.Data);
 
