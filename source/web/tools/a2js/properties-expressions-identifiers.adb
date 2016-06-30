@@ -187,6 +187,13 @@ package body Properties.Expressions.Identifiers is
            (Asis.Declarations.Renamed_Entity (Decl), Name);
       end if;
 
+      if Asis.Elements.Declaration_Kind (Decl) in
+        Asis.A_Private_Extension_Declaration | Asis.A_Private_Type_Declaration
+      then
+         --  Use full type view instead of private type
+         Decl := Asis.Declarations.Corresponding_Type_Declaration (Decl);
+      end if;
+
       while Asis.Elements.Is_Part_Of_Inherited (Decl)
         and then Asis.Elements.Declaration_Kind (Decl) in
             Asis.A_Function_Declaration | Asis.A_Procedure_Declaration
@@ -373,8 +380,10 @@ package body Properties.Expressions.Identifiers is
       function Is_Imported (Item : Asis.Declaration) return Boolean is
          Import : constant Wide_String :=
            Properties.Tools.Get_Aspect (Item, "Import");
+         Export : constant Wide_String :=
+           Properties.Tools.Get_Aspect (Item, "Export");
       begin
-         return Import = "True";
+         return Import = "True" or Export = "True";
       end Is_Imported;
 
       Top_Item   : Boolean := True;
@@ -395,7 +404,8 @@ package body Properties.Expressions.Identifiers is
                  Asis.A_Subtype_Declaration |  --  ???
                  Asis.A_Private_Type_Declaration |
                  Asis.A_Private_Extension_Declaration =>
-               null;
+
+               exit when Is_Imported (Item);
 
             when Asis.A_Discriminant_Specification |
                  Asis.A_Component_Declaration |

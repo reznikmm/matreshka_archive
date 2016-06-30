@@ -49,8 +49,8 @@ package WebAPI.XHR.Requests is
 
    pragma Preelaborate;
 
-   type XML_Http_Request is limited interface
-     and WebAPI.XHR.Event_Targets.Event_Target;
+   type XML_Http_Request is limited new WebAPI.XHR.Event_Targets.Event_Target
+     with private;
 
    --  The following is the event handler (and its corresponding event handler
    --  event type) that must be supported as attribute solely by the
@@ -58,11 +58,13 @@ package WebAPI.XHR.Requests is
    --
    --  * "readystatechange"
 
+   type XML_Http_Request_Access is access all XML_Http_Request;
+
    subtype State is Natural range 0 .. 4;
 
    not overriding function Get_Ready_State
     (Self : not null access constant XML_Http_Request)
-       return State is abstract
+       return State
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "readyState";
@@ -94,7 +96,7 @@ package WebAPI.XHR.Requests is
      Username : League.Strings.Universal_String :=
        League.Strings.Empty_Universal_String;
      Password : League.Strings.Universal_String :=
-       League.Strings.Empty_Universal_String) is abstract
+       League.Strings.Empty_Universal_String)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "open";
@@ -103,7 +105,7 @@ package WebAPI.XHR.Requests is
    not overriding procedure Set_Request_Header
     (Self   : not null access XML_Http_Request;
      Header : League.Strings.Universal_String;
-     Value  : League.Strings.Universal_String) is abstract
+     Value  : League.Strings.Universal_String)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "setRequestHeader";
@@ -113,14 +115,14 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Timeout
     (Self : not null access constant XML_Http_Request)
-       return Natural is abstract
+       return Natural
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "timeout";
 
    not overriding procedure Set_Timeout
     (Self  : not null access XML_Http_Request;
-     Value : Natural) is abstract
+     Value : Natural)
          with Import     => True,
               Convention => JavaScript_Property_Setter,
               Link_Name  => "timeout";
@@ -133,7 +135,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_With_Credentials
     (Self : not null access constant XML_Http_Request)
-       return Natural is abstract
+       return Natural
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "withCredentials";
@@ -143,14 +145,14 @@ package WebAPI.XHR.Requests is
 
    not overriding procedure Set_With_Credentials
     (Self  : not null access XML_Http_Request;
-     Value : Natural) is abstract
+     Value : Natural)
          with Import     => True,
               Convention => JavaScript_Property_Setter,
               Link_Name  => "withCredentials";
 
    not overriding function Get_Upload
     (Self : not null access constant XML_Http_Request)
-       return access WebAPI.XHR.Event_Targets.Event_Target'Class is abstract
+       return access WebAPI.XHR.Event_Targets.Event_Target'Class
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "upload";
@@ -158,7 +160,7 @@ package WebAPI.XHR.Requests is
    --  gather transmission information when data is transferred to a server.
 
    not overriding procedure Send
-    (Self     : not null access XML_Http_Request) is abstract
+    (Self     : not null access XML_Http_Request)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "send";
@@ -166,7 +168,7 @@ package WebAPI.XHR.Requests is
    --  body. The argument is ignored if request method is GET or HEAD.
    --
    not overriding procedure Abort_Request
-    (Self     : not null access XML_Http_Request) is abstract
+    (Self     : not null access XML_Http_Request)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "abort";
@@ -176,7 +178,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Status
     (Self : not null access constant XML_Http_Request)
-       return Natural is abstract
+       return Natural
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "status";
@@ -184,7 +186,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Status_Text
     (Self : not null access constant XML_Http_Request)
-       return League.Strings.Universal_String is abstract
+       return League.Strings.Universal_String
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "statusText";
@@ -193,7 +195,7 @@ package WebAPI.XHR.Requests is
    not overriding function Get_Response_Header
     (Self   : not null access constant XML_Http_Request;
      Header : League.Strings.Universal_String)
-       return League.Strings.Universal_String is abstract
+       return League.Strings.Universal_String
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "getResponseHeader";
@@ -203,7 +205,7 @@ package WebAPI.XHR.Requests is
    not overriding function Get_All_Response_Headers
     (Self   : not null access constant XML_Http_Request;
      Header : League.Strings.Universal_String)
-       return League.Strings.Universal_String is abstract
+       return League.Strings.Universal_String
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "getAllResponseHeaders";
@@ -212,7 +214,7 @@ package WebAPI.XHR.Requests is
 
    not overriding procedure Override_Mime_Type
     (Self : not null access constant XML_Http_Request;
-     MIME : WebAPI.DOM_String) is abstract
+     MIME : WebAPI.DOM_String)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "overrideMimeType";
@@ -220,7 +222,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Response_Type
     (Self : not null access constant XML_Http_Request)
-       return League.Strings.Universal_String is abstract
+       return League.Strings.Universal_String
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "responseType";
@@ -228,7 +230,7 @@ package WebAPI.XHR.Requests is
 
    not overriding procedure Set_Response_Type
     (Self  : not null access XML_Http_Request;
-     Value : League.Strings.Universal_String) is abstract
+     Value : League.Strings.Universal_String)
          with Import     => True,
               Convention => JavaScript_Property_Setter,
               Link_Name  => "responseType";
@@ -237,7 +239,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Response_Text
     (Self : not null access constant XML_Http_Request)
-       return WebAPI.DOM_String is abstract
+       return WebAPI.DOM_String
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "responseText";
@@ -245,10 +247,18 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_Response_XML
     (Self : not null access constant XML_Http_Request)
-       return WebAPI.DOM.Documents.Document_Access is abstract
+       return WebAPI.DOM.Documents.Document_Access
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "responseXML";
    --  Returns the document response entity body.
+
+private
+
+   type XML_Http_Request is limited new WebAPI.XHR.Event_Targets.Event_Target
+     with null record
+         with Export     => True,
+              Convention => JavaScript,
+              Link_Name  => "XMLHttpRequest";
 
 end WebAPI.XHR.Requests;

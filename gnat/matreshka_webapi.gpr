@@ -51,7 +51,8 @@ project Matreshka_WebAPI is
     ("../source/web/tools/a2js/webapi",
      "../source/web/tools/a2js/webapi/dom",
      "../source/web/tools/a2js/webapi/html",
-     "../source/web/tools/a2js/webapi/webgl");
+     "../source/web/tools/a2js/webapi/webgl",
+     "../source/web/tools/a2js/webapi/xhr");
    for Object_Dir use "../.objs/webapi";
 
    --------------
