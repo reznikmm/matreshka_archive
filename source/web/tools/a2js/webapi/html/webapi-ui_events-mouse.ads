@@ -43,13 +43,11 @@
 ------------------------------------------------------------------------------
 with WebAPI.DOM.Event_Targets;
 
-with WebAPI.UI_Events.Events;
-
 package WebAPI.UI_Events.Mouse is
 
    pragma Preelaborate;
 
-   type Mouse_Event is limited interface and WebAPI.UI_Events.Events.UI_Event;
+   type Mouse_Event is limited interface and WebAPI.UI_Events.UI_Event;
 
    not overriding function Get_Screen_X
     (Self : not null access constant Mouse_Event)

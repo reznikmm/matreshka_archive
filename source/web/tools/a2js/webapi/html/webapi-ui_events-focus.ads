@@ -43,13 +43,11 @@
 ------------------------------------------------------------------------------
 with WebAPI.DOM.Event_Targets;
 
-with WebAPI.UI_Events.Events;
-
 package WebAPI.UI_Events.Focus is
 
    pragma Preelaborate;
 
-   type Focus_Event is limited interface and WebAPI.UI_Events.Events.UI_Event;
+   type Focus_Event is limited interface and WebAPI.UI_Events.UI_Event;
 
    not overriding function Get_Related_Target
     (Self : not null access constant Focus_Event)

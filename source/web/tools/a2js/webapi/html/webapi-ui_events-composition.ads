@@ -41,14 +41,13 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WebAPI.UI_Events.Events;
 
 package WebAPI.UI_Events.Composition is
 
    pragma Preelaborate;
 
    type Composition_Event is
-     limited interface and WebAPI.UI_Events.Events.UI_Event;
+     limited interface and WebAPI.UI_Events.UI_Event;
 
    not overriding function Get_Data
     (Self : not null access constant Composition_Event)

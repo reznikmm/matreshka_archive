@@ -41,7 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WebAPI.UI_Events.Events;
 
 package WebAPI.UI_Events.Keyboard is
 
@@ -50,7 +49,7 @@ package WebAPI.UI_Events.Keyboard is
    type Key_Locations is (Standard, Left, Right, Numpad);
 
    type Keyboard_Event is
-     limited interface and WebAPI.UI_Events.Events.UI_Event;
+     limited interface and WebAPI.UI_Events.UI_Event;
 
    not overriding function Get_Key
     (Self : not null access constant Keyboard_Event)
