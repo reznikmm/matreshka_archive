@@ -72,7 +72,7 @@ define('standard', [], function(){
     };
     standard._in = function (a, b){
         var a_tag = a._external_tag;
-        var b_tag = b.prototype._external_tag;
+        var b_tag = b._constructor.prototype._external_tag;
         while (b_tag != '') {
             if (a_tag == b_tag) return true;
             b_tag = all_types[b_tag]._parent_tag;

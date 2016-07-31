@@ -92,7 +92,10 @@ package body Properties.Definitions.Record_Type is
 
       Result.Append ("_ec.");
       Result.Append (Name_Image);
-      Result.Append (" =  function (");
+      Result.Append (" =  (function (){");
+
+      --  Write constructor function
+      Result.Append ("function _constructor (");
 
       declare
          List : constant Asis.Discriminant_Association_List :=
@@ -188,14 +191,13 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("};");
 
       if not Asis.Elements.Has_Limited (Decl) then
+         --  Write _assign in prototype
          declare
             Down : League.Strings.Universal_String;
             List : constant Asis.Declaration_List :=
               Properties.Tools.Corresponding_Type_Discriminants (Element);
          begin
-            Result.Append ("_ec.");
-            Result.Append (Name_Image);
-            Result.Append (".prototype._assign = function(src){");
+            Result.Append ("_constructor.prototype._assign = function(src){");
 
             Down := Engine.Text.Get_Property
               (List  => List,
@@ -225,6 +227,17 @@ package body Properties.Definitions.Record_Type is
             Result.Append ("};");
          end;
       end if;
+
+      --  Write _new function
+      Result.Append ("function _new(){");
+      Result.Append ("var result=Object.create(_constructor.prototype);");
+      Result.Append ("_constructor.apply(result, arguments);");
+      Result.Append ("return result;");
+      Result.Append ("};");
+
+      --  Return resulting object
+      Result.Append ("return {_constructor: _constructor, _new: _new};");
+      Result.Append ("})();");
 
       return Result;
    end Code;
