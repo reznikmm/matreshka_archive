@@ -1,0 +1,117 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  data.ads
+--  main.adb
+--  END OF BIND LIST
+--
+--  MAIN: main
+
+with Interfaces;
+
+package Data is
+
+   type Real is new Interfaces.IEEE_Float_32;
+
+   type Item is record
+      X : Real;
+      Y : Real;
+      Z : Real;
+   end record;
+   pragma JavaScript_Typed_Array (Item);
+
+   type Item_Array is array (Positive range <>) of Item;
+   pragma JavaScript_Typed_Array (Item_Data);
+
+end Data;
+
+with Data; use Data;
+
+procedure Main is
+--   A : Item := (1.0, 2.0, 3.0);
+   A : Item;
+   B : Item;
+
+   X : Item_Array (1 .. 2);
+   Y : Item_Array (1 .. 2);
+
+   procedure Check_Array (V : Item_Array);
+
+   -----------------
+   -- Check_Array --
+   -----------------
+
+   procedure Check_Array (V : Item_Array) is
+   begin
+      if V (1).X /= 1.0 then
+         raise Program_Error;
+      end if;
+
+      if V (1).Y /= 2.0 then
+         raise Program_Error;
+      end if;
+
+      if V (1).Z /= 3.0 then
+         raise Program_Error;
+      end if;
+
+      if V (2).X /= 4.0 then
+         raise Program_Error;
+      end if;
+
+      if V (2).Y /= 5.0 then
+         raise Program_Error;
+      end if;
+
+      if V (2).Z /= 6.0 then
+         raise Program_Error;
+      end if;
+   end Check_Array;
+
+begin
+   --  Check values of components of A
+
+   A.X := 1.0;
+   A.Y := 2.0;
+   A.Z := 3.0;
+   
+   if A.X /= 1.0 then
+      raise Program_Error;
+   end if;
+
+   if A.Y /= 2.0 then
+      raise Program_Error;
+   end if;
+
+   if A.Z /= 3.0 then
+      raise Program_Error;
+   end if;
+
+   --  Fill components of B and check their values
+
+   B.X := 4.0;
+   B.Y := 5.0;
+   B.Z := 6.0;
+
+   if B.X /= 4.0 then
+      raise Program_Error;
+   end if;
+
+   if B.Y /= 5.0 then
+      raise Program_Error;
+   end if;
+
+   if B.Z /= 6.0 then
+      raise Program_Error;
+   end if;
+
+--   X := (A, B);
+
+--   Check_Array (X);
+
+--   Y (1) := A;
+--   Y (2) := B;
+
+--   Check_Array (Y);
+end Main;

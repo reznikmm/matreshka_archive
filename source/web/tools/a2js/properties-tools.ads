@@ -94,6 +94,10 @@ package Properties.Tools is
    function Has_Controlling_Result (Func : Asis.Declaration) return Boolean;
    --  Check if function Func is like 'function F return T' where T is tagged
 
+   function Is_Typed_Array (Element : Asis.Declaration) return Boolean;
+   --  Check if given type declaration has corresponding pragma
+   --  JavaScript_Typed_Array
+
    function Join
      (Left, Right : League.Strings.Universal_String)
       return League.Strings.Universal_String;

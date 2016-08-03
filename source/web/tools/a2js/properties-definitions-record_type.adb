@@ -84,6 +84,10 @@ package body Properties.Definitions.Record_Type is
 
       Decl : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
+
+      Is_Typed_Array : constant Boolean :=
+        Properties.Tools.Is_Typed_Array (Decl);
+
       Result     : League.Strings.Universal_String;
       Name_Image : League.Strings.Universal_String;
    begin
@@ -228,9 +232,58 @@ package body Properties.Definitions.Record_Type is
          end;
       end if;
 
+      if Is_Typed_Array then
+         Result.Append ("var props = {");
+
+         declare
+            List  : constant Asis.Declaration_List :=
+              Properties.Tools.Corresponding_Type_Components (Element);
+            Index : Natural := 0;
+         begin
+            for J in List'Range loop
+               declare
+                  Id    : League.Strings.Universal_String;
+                  Names : constant Asis.Defining_Name_List :=
+                    Asis.Declarations.Names (List (J));
+               begin
+                  for N in Names'Range loop
+                     Id := Engine.Text.Get_Property (Names (N), Name);
+
+                     Result.Append (Id);
+                     Result.Append (": {get: function(){ return this._f4[");
+                     Result.Append (Natural'Wide_Wide_Image (Index));
+                     Result.Append ("];},");
+                     Result.Append ("set: function(_v){ this._f4[");
+                     Result.Append (Natural'Wide_Wide_Image (Index));
+                     Result.Append ("]=_v}},");
+                     Index := Index + 1;
+                  end loop;
+               end;
+            end loop;
+         end;
+
+         Result.Append ("_assign: {value: _constructor.prototype._assign}");
+         Result.Append ("};");
+      end if;
+
       --  Write _new function
       Result.Append ("function _new(){");
-      Result.Append ("var result=Object.create(_constructor.prototype);");
+
+      if Is_Typed_Array then
+         declare
+           Size : constant League.Strings.Universal_String :=
+             Engine.Text.Get_Property (Element, Engines.Size);
+         begin
+            Result.Append ("var result=ArrayBuffer(");
+            Result.Append (Size);
+            Result.Append ("/8);");
+            Result.Append ("result._f4 = new Float32Array(result);");
+            Result.Append ("Object.defineProperties(result, props);");
+         end;
+      else
+         Result.Append ("var result=Object.create(_constructor.prototype);");
+      end if;
+
       Result.Append ("_constructor.apply(result, arguments);");
       Result.Append ("return result;");
       Result.Append ("};");

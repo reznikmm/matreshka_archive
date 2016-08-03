@@ -45,9 +45,10 @@ with Asis.Clauses;
 with Asis.Compilation_Units;
 with Asis.Declarations;
 with Asis.Definitions;
-with Asis.Statements;
 with Asis.Elements;
 with Asis.Expressions;
+with Asis.Iterator;
+with Asis.Statements;
 
 with League.String_Vectors;
 
@@ -667,6 +668,85 @@ package body Properties.Tools is
 
       return False;
    end Is_Primitive_Subprogram;
+
+   --------------------
+   -- Is_Typed_Array --
+   --------------------
+
+   function Is_Typed_Array (Element : Asis.Declaration) return Boolean is
+      Env  : constant Asis.Element :=
+        Asis.Elements.Enclosing_Element (Element);
+
+      Name : constant Asis.Program_Text :=
+        Asis.Declarations.Defining_Name_Image
+          (Asis.Declarations.Names (Element) (1));
+
+      procedure Pre_Operation
+        (Element :        Asis.Element;
+         Control : in out Asis.Traverse_Control;
+         State   : in out Boolean);
+
+      procedure Post_Operation
+        (Element :        Asis.Element;
+         Control : in out Asis.Traverse_Control;
+         State   : in out Boolean) is null;
+
+      -------------------
+      -- Pre_Operation --
+      -------------------
+
+      procedure Pre_Operation
+        (Element :        Asis.Element;
+         Control : in out Asis.Traverse_Control;
+         State   : in out Boolean)
+      is
+         use type Asis.Pragma_Kinds;
+      begin
+         if Asis.Elements.Pragma_Kind (Element)
+           = Asis.An_Unknown_Pragma
+         then
+            declare
+               Image : constant Asis.Program_Text :=
+                 Asis.Elements.Pragma_Name_Image (Element);
+            begin
+               if Image = "JavaScript_Typed_Array" then
+                  declare
+                     Args : constant Asis.Association_List :=
+                       Asis.Elements.Pragma_Argument_Associations (Element);
+                     Arg : Asis.Expression;
+                  begin
+                     pragma Assert
+                       (Args'Length = 1,
+                        "Expected one argument in pragma"
+                        &" JavaScript_Typed_Array");
+
+                     Arg := Asis.Expressions.Actual_Parameter (Args (1));
+
+                     if Name = Asis.Expressions.Name_Image (Arg) then
+                        State := True;
+                        Control := Asis.Terminate_Immediately;
+                     end if;
+                  end;
+               end if;
+            end;
+         elsif not Asis.Elements.Is_Identical (Element, Env) then
+            Control := Asis.Abandon_Children;
+         end if;
+      end Pre_Operation;
+
+      procedure Search_Typed_Array_Pragma is
+        new Asis.Iterator.Traverse_Element
+          (State_Information => Boolean,
+           Pre_Operation     => Pre_Operation,
+           Post_Operation    => Post_Operation);
+
+      Control : Asis.Traverse_Control := Asis.Continue;
+      Found   : Boolean := False;
+   begin
+         Search_Typed_Array_Pragma (Env, Control, Found);
+
+      return Found;
+   end Is_Typed_Array;
 
    ----------
    -- Join --

@@ -45,7 +45,6 @@ with Asis.Declarations;
 with Asis.Definitions;
 with Asis.Elements;
 with Asis.Expressions;
-with Asis.Iterator;
 
 with Properties.Tools;
 
@@ -332,85 +331,12 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       pragma Unreferenced (Engine);
       Tipe : constant Asis.Expression :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
-      Env  : Asis.Element;
    begin
       if Asis.Elements.Is_Nil (Tipe) then
          return False;
       else
-         Env := Asis.Elements.Enclosing_Element (Tipe);
+         return Properties.Tools.Is_Typed_Array (Tipe);
       end if;
-
-      declare
-         Name : constant Asis.Program_Text :=
-           Asis.Declarations.Defining_Name_Image
-             (Asis.Declarations.Names (Tipe) (1));
-
-         procedure Pre_Operation
-           (Element :        Asis.Element;
-            Control : in out Asis.Traverse_Control;
-            State   : in out Boolean);
-
-         procedure Post_Operation
-           (Element :        Asis.Element;
-            Control : in out Asis.Traverse_Control;
-            State   : in out Boolean) is null;
-
-         -------------------
-         -- Pre_Operation --
-         -------------------
-
-         procedure Pre_Operation
-           (Element :        Asis.Element;
-            Control : in out Asis.Traverse_Control;
-            State   : in out Boolean)
-         is
-            use type Asis.Pragma_Kinds;
-         begin
-            if Asis.Elements.Pragma_Kind (Element)
-                 = Asis.An_Unknown_Pragma
-            then
-               declare
-                  Image : constant Asis.Program_Text :=
-                    Asis.Elements.Pragma_Name_Image (Element);
-               begin
-                  if Image = "JavaScript_Typed_Array" then
-                     declare
-                        Args : constant Asis.Association_List :=
-                          Asis.Elements.Pragma_Argument_Associations (Element);
-                        Arg : Asis.Expression;
-                     begin
-                        pragma Assert
-                          (Args'Length = 1,
-                           "Expected one argument in pragma"
-                           &" JavaScript_Typed_Array");
-
-                        Arg := Asis.Expressions.Actual_Parameter (Args (1));
-
-                        if Name = Asis.Expressions.Name_Image (Arg) then
-                           State := True;
-                           Control := Asis.Terminate_Immediately;
-                        end if;
-                     end;
-                  end if;
-               end;
-            elsif not Asis.Elements.Is_Identical (Element, Env) then
-               Control := Asis.Abandon_Children;
-            end if;
-         end Pre_Operation;
-
-         procedure Search_Typed_Array_Pragma is
-           new Asis.Iterator.Traverse_Element
-             (State_Information => Boolean,
-              Pre_Operation     => Pre_Operation,
-              Post_Operation    => Post_Operation);
-
-         Control : Asis.Traverse_Control := Asis.Continue;
-         Found   : Boolean := False;
-      begin
-         Search_Typed_Array_Pragma (Env, Control, Found);
-
-         return Found;
-      end;
    end Is_Typed_Array;
 
    ----------------------------
