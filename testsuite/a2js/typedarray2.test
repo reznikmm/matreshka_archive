@@ -22,7 +22,7 @@ package Data is
    pragma JavaScript_Typed_Array (Item);
 
    type Item_Array is array (Positive range <>) of Item;
-   pragma JavaScript_Typed_Array (Item_Data);
+   pragma JavaScript_Typed_Array (Item_Array);
 
 end Data;
 
@@ -106,12 +106,12 @@ begin
       raise Program_Error;
    end if;
 
---   X := (A, B);
+   X := (A, B);
 
---   Check_Array (X);
+   Check_Array (X);
 
---   Y (1) := A;
---   Y (2) := B;
+   Y (1) := A;
+   Y (2) := B;
 
---   Check_Array (Y);
+   Check_Array (Y);
 end Main;

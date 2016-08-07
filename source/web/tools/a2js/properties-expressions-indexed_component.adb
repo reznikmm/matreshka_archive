@@ -43,6 +43,8 @@
 ------------------------------------------------------------------------------
 with Asis.Expressions;
 
+with Properties.Tools;
+
 package body Properties.Expressions.Indexed_Component is
 
    ----------
@@ -58,13 +60,24 @@ package body Properties.Expressions.Indexed_Component is
       Down  : League.Strings.Universal_String;
       List  : constant Asis.Expression_List :=
         Asis.Expressions.Index_Expressions (Element);
+      Prefix : constant Asis.Expression :=
+        Asis.Expressions.Prefix (Element);
+      Tipe   : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Prefix);
+      Is_Typed_Array : constant Boolean :=
+        Properties.Tools.Is_Typed_Array (Tipe);
    begin
       Down := Engine.Text.Get_Property
         (Asis.Expressions.Prefix (Element), Name);
       Text.Append (Down);
-      Text.Append (".A[");
-      Text.Append (Down);
-      Text.Append ("._index(");
+
+      if Is_Typed_Array then
+         Text.Append ("._get(");
+      else
+         Text.Append (".A[");
+         Text.Append (Down);
+         Text.Append ("._index(");
+      end if;
 
       for J in List'Range loop
          Down := Engine.Text.Get_Property (List (J), Name);
@@ -75,7 +88,11 @@ package body Properties.Expressions.Indexed_Component is
          end if;
       end loop;
 
-      Text.Append (")]");
+      Text.Append (")");
+
+      if not Is_Typed_Array then
+         Text.Append ("]");
+      end if;
 
       return Text;
    end Code;

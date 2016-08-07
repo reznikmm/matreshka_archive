@@ -132,9 +132,11 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Result.Append ("var _length=_len.reduce (function (a, b)" &
                              "{ return a * b; }, 1);");
             Result.Append ("_result._length=_len;");
-            Result.Append ("_result._ArrayBuffer(_length*((");
+            Result.Append ("_result._element_size=");
             Result.Append (Size);  --  Size always x8 for TypedArray
-            Result.Append ("/8 + ");
+            Result.Append ("/8;");
+            Result.Append ("_result._ArrayBuffer(_length*((");
+            Result.Append ("_result._element_size + ");
             Result.Append (Image (2 .. Image'Last));
             Result.Append (") & ~");
             Result.Append (Image (2 .. Image'Last));

@@ -267,20 +267,30 @@ package body Properties.Definitions.Record_Type is
       end if;
 
       --  Write _new function
-      Result.Append ("function _new(){");
 
       if Is_Typed_Array then
          declare
            Size : constant League.Strings.Universal_String :=
              Engine.Text.Get_Property (Element, Engines.Size);
          begin
-            Result.Append ("var result=ArrayBuffer(");
+            Result.Append ("function _cast(result,offset,length) {");
+            Result.Append
+              ("result._f4 = new Float32Array(result,offset,length/4);");
+            Result.Append
+              ("result._u1 = new Uint8Array(result,offset,length);");
+            Result.Append ("Object.defineProperties(result, props);");
+            Result.Append ("return result;");
+            Result.Append ("};");
+
+            Result.Append ("function _new(){");
+            Result.Append ("var result=new ArrayBuffer(");
             Result.Append (Size);
             Result.Append ("/8);");
-            Result.Append ("result._f4 = new Float32Array(result);");
+            Result.Append ("_cast(result,0,result.byteLength);");
             Result.Append ("Object.defineProperties(result, props);");
          end;
       else
+         Result.Append ("function _new(){");
          Result.Append ("var result=Object.create(_constructor.prototype);");
       end if;
 
@@ -289,8 +299,13 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("};");
 
       --  Return resulting object
-      Result.Append ("return {_constructor: _constructor, _new: _new};");
-      Result.Append ("})();");
+      Result.Append ("return {_constructor: _constructor, _new: _new");
+
+      if Is_Typed_Array then
+         Result.Append (",_cast: _cast");
+      end if;
+
+      Result.Append ("};})();");
 
       return Result;
    end Code;

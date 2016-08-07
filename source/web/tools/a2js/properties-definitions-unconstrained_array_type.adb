@@ -45,6 +45,8 @@ with Asis.Definitions;
 with Asis.Declarations;
 with Asis.Elements;
 
+with Properties.Tools;
+
 package body Properties.Definitions.Unconstrained_Array_Type is
 
    ----------
@@ -58,6 +60,8 @@ package body Properties.Definitions.Unconstrained_Array_Type is
    is
       Decl : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
+      Is_Typed_Array : constant Boolean :=
+        Properties.Tools.Is_Typed_Array (Decl);
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
@@ -73,31 +77,74 @@ package body Properties.Definitions.Unconstrained_Array_Type is
                        "{ return _ec._pos(_to) - _first[i] + 1; });");
       Result.Append ("var _length=_len.reduce (function (a, b)" &
                        "{ return a * b; }, 1);");
-      Result.Append ("var _data=Array(_length);");
-      Result.Append ("for (var _j=0;_j<_length;_j++)");
-      Result.Append ("_data[_j] = ");
 
-      Text := Engine.Text.Get_Property
-        (Asis.Definitions.Array_Component_Definition (Element),
-         Engines.Initialize);
+      if Is_Typed_Array then
+         declare
+            Comp : constant Asis.Component_Definition :=
+              Asis.Definitions.Array_Component_Definition (Element);
+            View : constant Asis.Definition :=
+              Asis.Definitions.Component_Definition_View (Comp);
+            Size : constant League.Strings.Universal_String :=
+              Engine.Text.Get_Property (View, Engines.Size);
+            Align : constant Integer :=
+              Engine.Integer.Get_Property (View, Engines.Alignment);
+            Image : constant Wide_Wide_String :=
+              Integer'Wide_Wide_Image (Align - 1);
+         begin
+            Result.Append ("this._element_size =");
+            Result.Append (Size);  --  Size always x8 for TypedArray
+            Result.Append ("/8;");
+            Result.Append
+              ("this._ArrayBuffer(_length * ((this._element_size + ");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append (") & ~");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append ("));");
 
-      Result.Append (Text);
-      Result.Append (";");
+            Text := Engine.Text.Get_Property
+              (Asis.Definitions.Array_Component_Definition (Element),
+               Name);
+            Result.Append ("this._element_type = ");
+            Result.Append (Text);
+            Result.Append (";");
+         end;
+      else
+         Result.Append ("var _data=Array(_length);");
+         Result.Append ("for (var _j=0;_j<_length;_j++)");
+         Result.Append ("_data[_j] = ");
 
-      Result.Append ("this.A=_data;");
+         Text := Engine.Text.Get_Property
+           (Asis.Definitions.Array_Component_Definition (Element),
+            Engines.Initialize);
+
+         Result.Append (Text);
+         Result.Append (";");
+
+         Result.Append ("this.A=_data;");
+      end if;
+
       Result.Append ("this._first=_from;");
       Result.Append ("this._last=_to;");
       Result.Append ("this._length=_len;");
-      Result.Append ("this._offset=0;};");
-      Result.Append ("_constructor.prototype = _ec.");
+      Result.Append ("this._offset=0;");
+      Result.Append ("};");
 
-      if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
-         Result.Append ("_ada_array_simple");
+      if Is_Typed_Array then
+         Result.Append ("_constructor.prototype = " &
+                          "Object.create(_ec._ada_array_ta.prototype);");
       else
-         Result.Append ("_ada_array");
-      end if;
+         Result.Append ("_constructor.prototype = _ec.");
 
-      Result.Append (".prototype;");
+         if Engine.Boolean.Get_Property
+           (Element, Engines.Is_Array_Of_Simple)
+         then
+            Result.Append ("_ada_array_simple");
+         else
+            Result.Append ("_ada_array");
+         end if;
+
+         Result.Append (".prototype;");
+      end if;
 
       --  Write _new function
       Result.Append ("function _new(){");

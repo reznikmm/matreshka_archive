@@ -95,4 +95,9 @@ package Properties.Expressions.Identifiers is
       Element : Asis.Expression;
       Name    : Engines.Integer_Property) return Integer;
 
+   function Typed_Array_Initialize
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
 end Properties.Expressions.Identifiers;

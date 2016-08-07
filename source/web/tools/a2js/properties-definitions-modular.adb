@@ -87,7 +87,7 @@ package body Properties.Definitions.Modular is
       pragma Unreferenced (Engine, Element, Name);
       Result : League.Strings.Universal_String;
    begin
-      Result.Append ("u1");
+      Result.Append ("_u1");
       return Result;
    end Typed_Array_Item_Type;
 

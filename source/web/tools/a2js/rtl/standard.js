@@ -263,26 +263,31 @@ define('standard', [], function(){
         },
         "_ArrayBuffer" : function (size) {
             this.A = new ArrayBuffer(size);
-            this.u1 = new Uint8Array(this.A);
-            this.f4 = new Float32Array(this.A);
-            this._index = 0;
+            this._u1 = new Uint8Array(this.A);
+            this._f4 = new Float32Array(this.A);
+            this._ta_index = 0;
             this._align = 4;
         },
         "_TA_allign" : function (size) {
             if (this._align < size)
-                this._index =
-                    size * Math.floor((this._index + size - 1) / size);
+                this._ta_index =
+                    size * Math.floor((this._ta_index + size - 1) / size);
 
             this._align = size;
         },
+        "_push_ta" : function (value) {
+            this._TA_allign (4);
+            this._f4.set (value._f4, this._ta_index / 4);
+            this._ta_index += value._f4.length*4;
+        },
         "_push_f4" : function (value) {
             this._TA_allign (4);
-            this.f4[this._index / 4] = value;
-            this._index += 4;
+            this._f4[this._ta_index / 4] = value;
+            this._ta_index += 4;
         },
         "_push_u1" : function (value) {
             this._align = 1;
-            this.u1[this._index++] = value;
+            this._u1[this._ta_index++] = value;
         }
     };
 
@@ -305,6 +310,39 @@ define('standard', [], function(){
                 j>0; t++,s++,j--)
                     this.A[t]=r.A[s];
         }
+    };
+
+    standard._ada_array_ta = //  Ada array for Typed_Array
+    function (){
+        standard._ada_array.apply (this, arguments);
+    };
+
+    standard._ada_array_ta.prototype =
+        Object.create (standard._ada_array.prototype);
+
+    standard._ada_array_ta.prototype._assign = function (r) {
+        if (this._length.length > 1)
+            this.A = r.A.slice(0); //  Copy of ArrayBuffer
+        else if (this.A.length == r._length[0])
+            this.A = r.A.slice(r._offset * r._element_size,
+                               r._length[0] * r._element_size);
+        else{
+            var t,s; // reuse .A if only slice of it is assigned
+            t=this._u1.subarray
+              (this._offset * this._element_size,
+               (this._offset + this._length[0]) * this._element_size);
+            s=r._u1.subarray
+              (r._offset * r._element_size,
+               (r._offset + r._length[0]) * r._element_size);
+            t.set (s);
+        }
+    };
+
+    standard._ada_array_ta.prototype._get = function(index){
+        var offset = this._index.apply(this, arguments);
+        var ta = this._u1.subarray (offset * this._element_size,
+                                    (offset + 1) * this._element_size);
+        return this._element_type._cast(ta.buffer,ta.byteOffset,ta.byteLength);
     };
     
     standard._fortran_array = //  A constructor for any Fortran array
