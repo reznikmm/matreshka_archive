@@ -743,7 +743,7 @@ package body Properties.Tools is
       Control : Asis.Traverse_Control := Asis.Continue;
       Found   : Boolean := False;
    begin
-         Search_Typed_Array_Pragma (Env, Control, Found);
+      Search_Typed_Array_Pragma (Env, Control, Found);
 
       return Found;
    end Is_Typed_Array;

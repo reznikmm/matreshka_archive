@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Elements;
 with Asis.Expressions;
 
 with Properties.Tools;
@@ -64,9 +65,12 @@ package body Properties.Expressions.Indexed_Component is
         Asis.Expressions.Prefix (Element);
       Tipe   : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Prefix);
-      Is_Typed_Array : constant Boolean :=
-        Properties.Tools.Is_Typed_Array (Tipe);
+      Is_Typed_Array : Boolean := False;
    begin
+      if not Asis.Elements.Is_Nil (Tipe) then
+         Is_Typed_Array := Properties.Tools.Is_Typed_Array (Tipe);
+      end if;
+
       Down := Engine.Text.Get_Property
         (Asis.Expressions.Prefix (Element), Name);
       Text.Append (Down);
