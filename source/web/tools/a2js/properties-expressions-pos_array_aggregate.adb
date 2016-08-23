@@ -81,8 +81,6 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
       Down   : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
-      Tipe   : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type (Element);
       Depth  : constant Natural := Properties.Tools.Get_Dimension (Element);
       List   : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
@@ -111,7 +109,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       end Append_Elements;
 
    begin
-      if Asis.Elements.Is_Nil (Tipe) then
+      if Depth = 0 then
          Append_Elements;
 
       elsif Typed_Array then

@@ -54,6 +54,11 @@ package Properties.Common is
       Element : Asis.Element;
       Name    : Engines.Boolean_Property) return Boolean is (False);
 
+   function True
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Element;
+      Name    : Engines.Boolean_Property) return Boolean is (True);
+
    function Empty
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Element;

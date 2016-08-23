@@ -472,10 +472,21 @@ package body Properties.Tools is
       View : Asis.Definition;
    begin
       if Asis.Elements.Is_Nil (Tipe) then
-         return 0;
+         declare
+            Enclosing : constant Asis.Declaration :=
+              Asis.Elements.Enclosing_Element (Exp);
+         begin
+            if Asis.Elements.Declaration_Kind (Enclosing) in
+              Asis.An_Object_Declaration
+            then
+               View := Asis.Declarations.Object_Declaration_View (Enclosing);
+            else
+               return 0;
+            end if;
+         end;
+      else
+         View := Asis.Declarations.Type_Declaration_View (Tipe);
       end if;
-
-      View := Asis.Declarations.Type_Declaration_View (Tipe);
 
       loop
          case Asis.Elements.Type_Kind (View) is
