@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,7 +58,15 @@ package body Loader is
    use type
      Servlet.Container_Initializers.Servlet_Container_Initializer_Access;
 
-   procedure Load (Context : in out Servlet.Contexts.Servlet_Context'Class) is
+   ----------
+   -- Load --
+   ----------
+
+   procedure Load
+    (Container   : in out Servlet_Container'Class;
+     Initializer : out
+       Servlet.Container_Initializers.Servlet_Container_Initializer_Access)
+   is
 
       RTLD_LAZY   : constant Interfaces.C.int := 16#0_0001#;
       RTLD_NOW    : constant Interfaces.C.int := 16#0_0002#;
@@ -90,7 +98,9 @@ package body Loader is
 
       N : Interfaces.C.Strings.chars_ptr
         := Interfaces.C.Strings.New_String
-            ("install/WEB-INF/lib/x86_64-linux/libhdaServer.so");
+            ("install/WEB-INF/lib/x86_64-linux/lib"
+               & Container.Descriptor.Library_Name.To_UTF_8_String
+               & ".so");
       M : Interfaces.C.Strings.chars_ptr
         := Interfaces.C.Strings.New_String ("spikedog_container_initializer");
       E : Interfaces.C.Strings.chars_ptr;
@@ -115,13 +125,13 @@ package body Loader is
       end if;
 
       declare
-         Initializer :
+         Aux :
            Servlet.Container_Initializers.Servlet_Container_Initializer_Access
              with Import     => True,
                   Convention => Ada,
                   Address    => S;
       begin
-         Initializer.On_Startup (Context);
+         Initializer := Aux;
       end;
    end Load;
 

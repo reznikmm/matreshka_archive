@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,62 +41,66 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces.C.Strings;
-with System;
+private with Ada.Containers.Vectors;
 
-with Servlet.Container_Initializers;
-with Matreshka.Internals.Windows.Kernel;
+private with League.Strings;
+private with XML.SAX.Attributes;
+with XML.SAX.Content_Handlers;
 
-separate (Matreshka.Servlet_Containers)
-package body Loader is
+package Matreshka.Spikedog_Deployment_Descriptors.Parsers is
 
-   use type Matreshka.Internals.Windows.HMODULE;
-   use type System.Address;
+   type Deployment_Descriptor_Parser is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with private;
 
-   ----------
-   -- Load --
-   ----------
+   procedure Set_Deployment_Descriptor
+    (Self       : in out Deployment_Descriptor_Parser'Class;
+     Descriptor : Deployment_Descriptor_Access);
+   --  Set deployment descriptor object to be filled during parsing.
 
-   procedure Load
-    (Container   : in out Servlet_Container'Class;
-     Initializer : out
-       Servlet.Container_Initializers.Servlet_Container_Initializer_Access)
-   is
-      Initializer_Name : Interfaces.C.Strings.chars_ptr
-        := Interfaces.C.Strings.New_String ("spikedog_container_initializer");
-      File_Name        : constant League.Strings.Universal_String
-        := "install/WEB-INF/lib/x86_64-linux/lib"
-             & Container.Descriptor.Library_Name
-             & ".DLL";
-      M : constant Matreshka.Internals.Windows.HMODULE
-        := Matreshka.Internals.Windows.Kernel.LoadLibrary (File_Name);
-      S : System.Address;
+private
 
-   begin
-      if M = Matreshka.Internals.Windows.HMODULE (System.Null_Address) then
-         Interfaces.C.Strings.Free (Initializer_Name);
+   type States is
+    (Initial,
+     Web_App,
+     Library_Name);
 
-         raise Program_Error;
-      end if;
+   package State_Vectors is new Ada.Containers.Vectors (Positive, States);
 
-      S :=
-        Matreshka.Internals.Windows.Kernel.GetProcAddress
-         (M, Initializer_Name);
-      Interfaces.C.Strings.Free (Initializer_Name);
+   type Deployment_Descriptor_Parser is
+     limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
+      State      : States;
+      Stack      : State_Vectors.Vector;
+      Diagnosis  : League.Strings.Universal_String;
+      Text       : League.Strings.Universal_String;
+      Descriptor : Deployment_Descriptor_Access;
+   end record;
 
-      if S = System.Null_Address then
-         raise Program_Error;
-      end if;
+   overriding procedure Characters
+    (Self    : in out Deployment_Descriptor_Parser;
+     Text    : League.Strings.Universal_String;
+     Success : in out Boolean);
 
-      declare
-         Aux :
-           Servlet.Container_Initializers.Servlet_Container_Initializer_Access
-             with Import     => True,
-                  Convention => Ada,
-                  Address    => S;
-      begin
-         Initializer := Aux;
-      end;
-   end Load;
+   overriding procedure End_Element
+    (Self           : in out Deployment_Descriptor_Parser;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Success        : in out Boolean);
 
-end Loader;
+   overriding function Error_String
+    (Self : Deployment_Descriptor_Parser)
+       return League.Strings.Universal_String;
+
+   overriding procedure Start_Document
+    (Self    : in out Deployment_Descriptor_Parser;
+     Success : in out Boolean);
+
+   overriding procedure Start_Element
+    (Self           : in out Deployment_Descriptor_Parser;
+     Namespace_URI  : League.Strings.Universal_String;
+     Local_Name     : League.Strings.Universal_String;
+     Qualified_Name : League.Strings.Universal_String;
+     Attributes     : XML.SAX.Attributes.SAX_Attributes;
+     Success        : in out Boolean);
+
+end Matreshka.Spikedog_Deployment_Descriptors.Parsers;

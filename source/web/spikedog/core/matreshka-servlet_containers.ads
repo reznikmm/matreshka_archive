@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,6 +58,7 @@ with Matreshka.Servlet_HTTP_Requests;
 with Matreshka.Servlet_HTTP_Responses;
 with Matreshka.Servlet_Registrations;
 with Matreshka.Servlet_Servers;
+private with Matreshka.Spikedog_Deployment_Descriptors;
 
 package Matreshka.Servlet_Containers is
 
@@ -108,6 +109,8 @@ private
        and Spikedog.Servlet_Contexts.Spikedog_Servlet_Context
        and Servlet.Contexts.Servlet_Context with
    record
+      Descriptor        :
+        Matreshka.Spikedog_Deployment_Descriptors.Deployment_Descriptor_Access;
       State             : Container_States := Uninitialized;
       Context_Listeners : Servlet_Context_Listener_Vectors.Vector;
       Servlets          : Servlet_Registration_Maps.Map;

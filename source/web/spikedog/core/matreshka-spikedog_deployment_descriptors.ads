@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,62 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Interfaces.C.Strings;
-with System;
+with League.Strings;
 
-with Servlet.Container_Initializers;
-with Matreshka.Internals.Windows.Kernel;
+package Matreshka.Spikedog_Deployment_Descriptors is
 
-separate (Matreshka.Servlet_Containers)
-package body Loader is
+   type Deployment_Descriptor is limited record
+      Library_Name : League.Strings.Universal_String;
+   end record;
 
-   use type Matreshka.Internals.Windows.HMODULE;
-   use type System.Address;
+   type Deployment_Descriptor_Access is access all Deployment_Descriptor;
 
-   ----------
-   -- Load --
-   ----------
-
-   procedure Load
-    (Container   : in out Servlet_Container'Class;
-     Initializer : out
-       Servlet.Container_Initializers.Servlet_Container_Initializer_Access)
-   is
-      Initializer_Name : Interfaces.C.Strings.chars_ptr
-        := Interfaces.C.Strings.New_String ("spikedog_container_initializer");
-      File_Name        : constant League.Strings.Universal_String
-        := "install/WEB-INF/lib/x86_64-linux/lib"
-             & Container.Descriptor.Library_Name
-             & ".DLL";
-      M : constant Matreshka.Internals.Windows.HMODULE
-        := Matreshka.Internals.Windows.Kernel.LoadLibrary (File_Name);
-      S : System.Address;
-
-   begin
-      if M = Matreshka.Internals.Windows.HMODULE (System.Null_Address) then
-         Interfaces.C.Strings.Free (Initializer_Name);
-
-         raise Program_Error;
-      end if;
-
-      S :=
-        Matreshka.Internals.Windows.Kernel.GetProcAddress
-         (M, Initializer_Name);
-      Interfaces.C.Strings.Free (Initializer_Name);
-
-      if S = System.Null_Address then
-         raise Program_Error;
-      end if;
-
-      declare
-         Aux :
-           Servlet.Container_Initializers.Servlet_Container_Initializer_Access
-             with Import     => True,
-                  Convention => Ada,
-                  Address    => S;
-      begin
-         Initializer := Aux;
-      end;
-   end Load;
-
-end Loader;
+end Matreshka.Spikedog_Deployment_Descriptors;

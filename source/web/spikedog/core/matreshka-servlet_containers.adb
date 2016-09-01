@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,10 +44,13 @@
 with Ada.Exceptions;
 with Ada.Text_IO;
 
-with League.String_Vectors;
+with Servlet.Container_Initializers;
 with Servlet.Generic_Servlets;
+with XML.SAX.File_Input_Sources;
+with XML.SAX.Simple_Readers;
 
 with Matreshka.Servlet_Defaults;
+with Matreshka.Spikedog_Deployment_Descriptors.Parsers;
 
 package body Matreshka.Servlet_Containers is
 
@@ -55,7 +58,10 @@ package body Matreshka.Servlet_Containers is
 
    package Loader is
 
-      procedure Load (Context : in out Servlet.Contexts.Servlet_Context'Class);
+      procedure Load
+       (Container   : in out Servlet_Container'Class;
+        Initializer : out
+          Servlet.Container_Initializers.Servlet_Container_Initializer_Access);
 
    end Loader;
 
@@ -271,16 +277,43 @@ package body Matreshka.Servlet_Containers is
     (Self   : not null access Servlet_Container'Class;
      Server : not null Matreshka.Servlet_Servers.Server_Access)
    is
-      Success : Boolean;
+      Source      : aliased XML.SAX.File_Input_Sources.File_Input_Source;
+      Reader      : XML.SAX.Simple_Readers.Simple_Reader;
+      Parser      : aliased
+        Matreshka.Spikedog_Deployment_Descriptors.Parsers
+          .Deployment_Descriptor_Parser;
+      Descriptor  :
+        Matreshka.Spikedog_Deployment_Descriptors.Deployment_Descriptor_Access;
+      Initializer :
+          Servlet.Container_Initializers.Servlet_Container_Initializer_Access;
+      Success     : Boolean;
 
    begin
-      Server.Set_Container (Self);
+      --  Load deployment descriptor.
+
+      Descriptor :=
+        new Matreshka.Spikedog_Deployment_Descriptors.Deployment_Descriptor;
+
+      Reader.Set_Input_Source (Source'Unchecked_Access);
+      Reader.Set_Content_Handler (Parser'Unchecked_Access);
+      Parser.Set_Deployment_Descriptor (Descriptor);
+
+      Source.Open_By_File_Name
+       (League.Strings.To_Universal_String ("install/WEB-INF/web.xml"));
+      Reader.Parse;
+      Source.Close;
+
+      --  Start initialization of container.
 
       Self.State := Initialization;
+      Self.Descriptor := Descriptor;
+
+      Server.Set_Container (Self);
 
       --  Load application.
 
-      Loader.Load (Self.all);
+      Loader.Load (Self.all, Initializer);
+      Initializer.On_Startup (Self.all);
 
       for Listener of Self.Context_Listeners loop
          Listener.Context_Initialized (Self);
