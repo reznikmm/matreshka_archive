@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -48,12 +48,35 @@ with League.Calendars;
 
 package Matreshka.RFC2616_Dates is
 
+   pragma Preelaborate;
+
+   type Format is tagged private;
+
    procedure From_String
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean);
 
-   function To_String (Value : League.Calendars.Date_Time)
-     return League.Strings.Universal_String;
+   function To_String
+     (Self  : Format;
+      Value : League.Calendars.Date_Time)
+        return League.Strings.Universal_String;
+
+private
+
+   function "+"
+     (Text : Wide_Wide_String) return League.Strings.Universal_String
+       renames League.Strings.To_Universal_String;
+
+   type Format is tagged record
+      Month_List : League.Strings.Universal_String
+        := +"  JanFebMarAprMayJunJulAugSepOctNovDec";
+
+      GMT : League.Strings.Universal_String := +"GMT";
+
+      Pattern : League.Strings.Universal_String
+        := +"EEE, dd MMM yyyy HH:mm:ss ";
+   end record;
 
 end Matreshka.RFC2616_Dates;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,11 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with League.Calendars;
+with League.Calendars.ISO_8601;
+with League.Strings;
+
 with Servlet.Generic_Servlets;
 with Servlet.HTTP_Requests;
 with Servlet.HTTP_Responses;
 with Servlet.Requests;
 with Servlet.Responses;
+
+with Matreshka.RFC2616_Dates;
 
 package Servlet.HTTP_Servlets is
 
@@ -209,6 +215,18 @@ package Servlet.HTTP_Servlets is
    --  request to the client, so that they can be used in debugging. There's no
    --  need to override this method.
 
+   not overriding function Get_Last_Modified
+    (Self     : in out HTTP_Servlet;
+     Request  : Servlet.HTTP_Requests.HTTP_Servlet_Request'Class)
+      return League.Calendars.Date_Time;
+   --  Returns the time the Http_Servlet_Request object was last modified.
+   --  If the time is unknown, the method returns a special value (the default)
+   --
+   --  Servlets that support HTTP GET requests and can quickly determine their
+   --  last modification time should override this method. This makes browser
+   --  and proxy caches work more effectively, reducing the load on server and
+   --  network resources.
+
    overriding procedure Service
     (Self     : in out HTTP_Servlet;
      Request  : Servlet.Requests.Servlet_Request'Class;
@@ -217,6 +235,26 @@ package Servlet.HTTP_Servlets is
 private
 
    type HTTP_Servlet is
-     abstract new Servlet.Generic_Servlets.Generic_Servlet with null record;
+     abstract new Servlet.Generic_Servlets.Generic_Servlet with record
+
+      Format : Matreshka.RFC2616_Dates.Format;
+
+      Last_Modified_Header : League.Strings.Universal_String :=
+        League.Strings.To_Universal_String ("Last-Modified");
+
+      If_Modified_Since_Header : League.Strings.Universal_String :=
+        League.Strings.To_Universal_String ("If-Modified-Since");
+
+      Unknown_Time : League.Calendars.Date_Time :=
+        League.Calendars.ISO_8601.Create
+          (Year           => League.Calendars.ISO_8601.Year_Number'First,
+           Month          => 1,
+           Day            => 1,
+           Hour           => 0,
+           Minute         => 0,
+           Second         => 0,
+           Nanosecond_100 => 0);
+
+   end record;
 
 end Servlet.HTTP_Servlets;

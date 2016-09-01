@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,20 +47,6 @@ with League.String_Vectors;
 
 package body Matreshka.RFC2616_Dates is
 
-   function "+"
-     (Text : Wide_Wide_String) return League.Strings.Universal_String
-       renames League.Strings.To_Universal_String;
-
-   package Constants is
-      Month_List : constant League.Strings.Universal_String
-        := +"  JanFebMarAprMayJunJulAugSepOctNovDec";
-
-      GMT : constant League.Strings.Universal_String := +"GMT";
-
-      Pattern : constant League.Strings.Universal_String
-        := +"EEE, dd MMM yyyy HH:mm:ss ";
-   end Constants;
-
    procedure Parse_Time
      (Text   : League.Strings.Universal_String;
       Hour   : out League.Calendars.ISO_8601.Hour_Number;
@@ -68,17 +54,20 @@ package body Matreshka.RFC2616_Dates is
       Second : out League.Calendars.ISO_8601.Second_Number);
    
    procedure Parse_ANSI_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean);
 
    procedure Parse_RFC_1123_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean);
    
    procedure Parse_RFC_850_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean);
    
@@ -88,7 +77,8 @@ package body Matreshka.RFC2616_Dates is
    -----------------
 
    procedure From_String
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean)
    is
@@ -97,11 +87,11 @@ package body Matreshka.RFC2616_Dates is
 
    begin
       if Char_4 = ',' then
-         Parse_RFC_1123_Date (Text, Value, Success);
+         Self.Parse_RFC_1123_Date (Text, Value, Success);
       elsif Char_4 = ' ' then
-         Parse_ANSI_Date (Text, Value, Success);
+         Self.Parse_ANSI_Date (Text, Value, Success);
       else
-         Parse_RFC_850_Date (Text, Value, Success);
+         Self.Parse_RFC_850_Date (Text, Value, Success);
       end if;
    end From_String;
    
@@ -110,7 +100,8 @@ package body Matreshka.RFC2616_Dates is
    ---------------------
 
    procedure Parse_ANSI_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean)
    is
@@ -131,7 +122,7 @@ package body Matreshka.RFC2616_Dates is
         (List.Element (5).To_Wide_Wide_String);
 
       Month := Month_Number
-        (Constants.Month_List.Index (List.Element (2)) / 3);
+        (Self.Month_List.Index (List.Element (2)) / 3);
 
       Day := Day_Number'Wide_Wide_Value
         (List.Element (3).To_Wide_Wide_String);
@@ -152,7 +143,8 @@ package body Matreshka.RFC2616_Dates is
    -------------------------
 
    procedure Parse_RFC_1123_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean)
    is
@@ -174,12 +166,12 @@ package body Matreshka.RFC2616_Dates is
         (List.Element (4).To_Wide_Wide_String);
 
       Month := Month_Number
-        (Constants.Month_List.Index (List.Element (3)) / 3);
+        (Self.Month_List.Index (List.Element (3)) / 3);
 
       Day := Day_Number'Wide_Wide_Value
         (List.Element (2).To_Wide_Wide_String);
 
-      Success := List.Element (6) = Constants.GMT;
+      Success := List.Element (6) = Self.GMT;
 
       Parse_Time (List.Element (5), Hour, Minute, Second);
 
@@ -195,7 +187,8 @@ package body Matreshka.RFC2616_Dates is
    ------------------------
 
    procedure Parse_RFC_850_Date
-     (Text    : League.Strings.Universal_String;
+     (Self    : Format'Class;
+      Text    : League.Strings.Universal_String;
       Value   : out League.Calendars.Date_Time;
       Success : out Boolean)
    is
@@ -226,12 +219,12 @@ package body Matreshka.RFC2616_Dates is
       end if;
 
       Month := Month_Number
-        (Constants.Month_List.Index (Date.Slice (4, 6)) / 3);
+        (Self.Month_List.Index (Date.Slice (4, 6)) / 3);
 
       Day := Day_Number'Wide_Wide_Value
         (Date.Head_To (2).To_Wide_Wide_String);
 
-      Success := List.Element (4) = Constants.GMT;
+      Success := List.Element (4) = Self.GMT;
 
       Parse_Time (List.Element (3), Hour, Minute, Second);
 
@@ -268,19 +261,20 @@ package body Matreshka.RFC2616_Dates is
         (Time.Element (3).To_Wide_Wide_String);
    end Parse_Time;
    
-   
    ---------------
    -- To_String --
    ---------------
 
-   function To_String (Value : League.Calendars.Date_Time)
-     return League.Strings.Universal_String
+   function To_String
+     (Self  : Format;
+      Value : League.Calendars.Date_Time)
+        return League.Strings.Universal_String
    is
       Result : League.Strings.Universal_String;
    begin
-      Result := League.Calendars.ISO_8601.Image (Constants.Pattern, Value);
+      Result := League.Calendars.ISO_8601.Image (Self.Pattern, Value);
 
-      Result.Append (Constants.GMT);
+      Result.Append (Self.GMT);
 
       return Result;
    end To_String;
