@@ -235,13 +235,13 @@ package body Servlet.HTTP_Servlets is
                if Last_Modified = Self.Unknown_Time
                  or else Modified_Since (Last_Modified)
                then
-                  HTTP_Servlet'Class (Self).Do_Get
-                    (HTTP_Request, HTTP_Response);
-
                   if Last_Modified /= Self.Unknown_Time then
                      HTTP_Response.Set_Date_Header
                        (Self.Last_Modified_Header, Last_Modified);
                   end if;
+
+                  HTTP_Servlet'Class (Self).Do_Get
+                    (HTTP_Request, HTTP_Response);
                else
 
                   HTTP_Response.Set_Status
