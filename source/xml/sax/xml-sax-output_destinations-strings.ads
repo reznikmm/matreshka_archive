@@ -50,8 +50,6 @@ package XML.SAX.Output_Destinations.Strings is
      limited new XML.SAX.Output_Destinations.SAX_Output_Destination
        with private;
 
-   type SAX_Output_Destination is limited interface;
-
    function Get_Text
     (Self : String_Output_Destination)
        return League.Strings.Universal_String;
