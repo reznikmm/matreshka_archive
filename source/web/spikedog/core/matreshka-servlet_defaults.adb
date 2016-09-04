@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,10 +49,28 @@ package body Matreshka.Servlet_Defaults is
    ----------------------
 
    overriding function Get_Servlet_Info
-    (Self : Default_Servlet) return League.Strings.Universal_String is
+    (Self : Default_Servlet) return League.Strings.Universal_String
+   is
+      pragma Unreferenced (Self);
+
    begin
       return
         League.Strings.To_Universal_String ("Matreshka's Default Servlet");
    end Get_Servlet_Info;
+
+   -----------------
+   -- Instantiate --
+   -----------------
+
+   overriding function Instantiate
+    (Parameters : not null access
+       Servlet.Generic_Servlets.Instantiation_Parameters'Class)
+         return Default_Servlet
+   is
+      pragma Unreferenced (Parameters);
+
+   begin
+      return (Servlet.HTTP_Servlets.HTTP_Servlet with null record);
+   end Instantiate;
 
 end Matreshka.Servlet_Defaults;

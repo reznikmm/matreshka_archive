@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Ada.Exceptions;
+with Ada.Tags.Generic_Dispatching_Constructor;
 with Ada.Text_IO;
 
 with Servlet.Container_Initializers;
@@ -55,6 +56,12 @@ with Matreshka.Spikedog_Deployment_Descriptors.Parsers;
 package body Matreshka.Servlet_Containers is
 
    use type League.Strings.Universal_String;
+
+   function Instantiate_Servlet is
+     new Ada.Tags.Generic_Dispatching_Constructor
+          (Servlet.Generic_Servlets.Generic_Servlet,
+           Servlet.Generic_Servlets.Instantiation_Parameters'Class,
+           Servlet.Generic_Servlets.Instantiate);
 
    package Loader is
 
@@ -307,16 +314,36 @@ package body Matreshka.Servlet_Containers is
 
       Self.State := Initialization;
       Self.Descriptor := Descriptor;
-
       Server.Set_Container (Self);
+      --  XXX Can container be connected to server later, after successful
+      --  initialization?
 
       --  Load application.
 
       Loader.Load (Self.all, Initializer);
       Initializer.On_Startup (Self.all);
 
+      --  Notify ServletContextListeners about initialization of context
+
       for Listener of Self.Context_Listeners loop
          Listener.Context_Initialized (Self);
+      end loop;
+
+      --  Instantiate servlets defined by deployment descriptor
+
+      for Descriptor of Self.Descriptor.Servlets loop
+         declare
+            P : aliased Servlet.Generic_Servlets.Instantiation_Parameters;
+            S : constant Matreshka.Servlet_Registrations.Servlet_Access
+              := new Servlet.Generic_Servlets.Generic_Servlet'Class'
+                      (Instantiate_Servlet
+                        (Ada.Tags.Internal_Tag
+                          (Descriptor.Tag.To_UTF_8_String),
+                         P'Access));
+
+         begin
+            Self.Add_Servlet (Descriptor.Name, S);
+         end;
       end loop;
 
       Self.State := Initialized;

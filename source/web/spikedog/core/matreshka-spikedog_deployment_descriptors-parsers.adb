@@ -50,9 +50,15 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
      := League.Strings.To_Universal_String
          ("http://forge.ada-ru.org/matreshka/xml/ns/spikedogdd");
 
-   Library_Name_Tag_Name : constant League.Strings.Universal_String
+   Library_Name_Tag_Name  : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("library-name");
-   Web_App_Tag_Name     : constant League.Strings.Universal_String
+   Servlet_Tag_Name       : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("servlet");
+   Servlet_Name_Tag_Name  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("servlet-name");
+   Servlet_Tag_Tag_Name   : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("servlet-tag");
+   Web_App_Tag_Name       : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("web-app");
 
    procedure Push
@@ -76,10 +82,16 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
    overriding procedure Characters
     (Self    : in out Deployment_Descriptor_Parser;
      Text    : League.Strings.Universal_String;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       case Self.State is
-         when Library_Name =>
+         when Library_Name
+           | Servlet_Name
+           | Servlet_Tag
+          =>
             Self.Text.Append (Text);
 
          when others =>
@@ -100,10 +112,21 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
    begin
       if Namespace_URI = DD_Namespace_URI then
          if Local_Name = Library_Name_Tag_Name then
-            if Self.State = Library_Name then
-               Self.Descriptor.Library_Name := Self.Text;
-               Self.Text.Clear;
-            end if;
+            Self.Descriptor.Library_Name := Self.Text;
+            Self.Text.Clear;
+
+         elsif Local_Name = Servlet_Tag_Name then
+            Self.Descriptor.Servlets.Append
+             ((Name => Self.Servlet_Name,
+               Tag  => Self.Servlet_Tag));
+
+         elsif Local_Name = Servlet_Name_Tag_Name then
+            Self.Servlet_Name := Self.Text;
+            Self.Text.Clear;
+
+         elsif Local_Name = Servlet_Tag_Tag_Name then
+            Self.Servlet_Tag := Self.Text;
+            Self.Text.Clear;
          end if;
       end if;
 
@@ -196,6 +219,36 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
          if Local_Name = Library_Name_Tag_Name then
             if Self.State = Web_App then
                Self.Push (Library_Name);
+
+            else
+               Self.Error_Unexpected_Tag (Local_Name, Success);
+
+               return;
+            end if;
+
+         elsif Local_Name = Servlet_Tag_Name then
+            if Self.State = Web_App then
+               Self.Push (Servlet);
+
+            else
+               Self.Error_Unexpected_Tag (Local_Name, Success);
+
+               return;
+            end if;
+
+         elsif Local_Name = Servlet_Name_Tag_Name then
+            if Self.State = Servlet then
+               Self.Push (Servlet_Name);
+
+            else
+               Self.Error_Unexpected_Tag (Local_Name, Success);
+
+               return;
+            end if;
+
+         elsif Local_Name = Servlet_Tag_Tag_Name then
+            if Self.State = Servlet then
+               Self.Push (Servlet_Tag);
 
             else
                Self.Error_Unexpected_Tag (Local_Name, Success);

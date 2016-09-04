@@ -62,17 +62,22 @@ private
    type States is
     (Initial,
      Web_App,
-     Library_Name);
+     Library_Name,
+     Servlet,
+     Servlet_Name,
+     Servlet_Tag);
 
    package State_Vectors is new Ada.Containers.Vectors (Positive, States);
 
    type Deployment_Descriptor_Parser is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler with record
-      State      : States;
-      Stack      : State_Vectors.Vector;
-      Diagnosis  : League.Strings.Universal_String;
-      Text       : League.Strings.Universal_String;
-      Descriptor : Deployment_Descriptor_Access;
+      State        : States;
+      Stack        : State_Vectors.Vector;
+      Diagnosis    : League.Strings.Universal_String;
+      Text         : League.Strings.Universal_String;
+      Descriptor   : Deployment_Descriptor_Access;
+      Servlet_Name : League.Strings.Universal_String;
+      Servlet_Tag  : League.Strings.Universal_String;
    end record;
 
    overriding procedure Characters

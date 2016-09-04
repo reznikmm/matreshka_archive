@@ -41,12 +41,23 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Containers.Vectors;
+
 with League.Strings;
 
 package Matreshka.Spikedog_Deployment_Descriptors is
 
+   type Servlet_Descriptor is record
+      Name : League.Strings.Universal_String;
+      Tag  : League.Strings.Universal_String;
+   end record;
+
+   package Servlet_Vectors is
+     new Ada.Containers.Vectors (Positive, Servlet_Descriptor);
+
    type Deployment_Descriptor is limited record
       Library_Name : League.Strings.Universal_String;
+      Servlets     : Servlet_Vectors.Vector;
    end record;
 
    type Deployment_Descriptor_Access is access all Deployment_Descriptor;

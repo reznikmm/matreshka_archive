@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -93,6 +93,12 @@ package Servlet.Generic_Servlets is
       return not null access Servlet.Contexts.Servlet_Context'Class;
    --  Returns a reference to the ServletContext in which the caller is
    --  executing.
+
+   type Instantiation_Parameters is tagged limited null record;
+
+   not overriding function Instantiate
+    (Parameters : not null access Instantiation_Parameters'Class)
+       return Generic_Servlet is abstract;
 
 private
 

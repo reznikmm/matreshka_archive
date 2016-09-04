@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 with League.Strings;
 
+with Servlet.Generic_Servlets;
 with Servlet.HTTP_Servlets;
 
 package Matreshka.Servlet_Defaults is
@@ -56,5 +57,10 @@ package Matreshka.Servlet_Defaults is
     (Self : Default_Servlet) return League.Strings.Universal_String;
    --  Returns information about the servlet, such as author, version, and
    --  copyright.
+
+   overriding function Instantiate
+    (Parameters : not null access
+       Servlet.Generic_Servlets.Instantiation_Parameters'Class)
+         return Default_Servlet;
 
 end Matreshka.Servlet_Defaults;
