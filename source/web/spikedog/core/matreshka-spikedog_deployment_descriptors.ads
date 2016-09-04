@@ -44,6 +44,7 @@
 with Ada.Containers.Vectors;
 
 with League.Strings;
+with League.String_Vectors;
 
 package Matreshka.Spikedog_Deployment_Descriptors is
 
@@ -55,9 +56,18 @@ package Matreshka.Spikedog_Deployment_Descriptors is
    package Servlet_Vectors is
      new Ada.Containers.Vectors (Positive, Servlet_Descriptor);
 
+   type Servlet_Mapping_Descriptor is record
+      Name         : League.Strings.Universal_String;
+      URL_Patterns : League.String_Vectors.Universal_String_Vector;
+   end record;
+
+   package Servlet_Mapping_Vectors is
+     new Ada.Containers.Vectors (Positive, Servlet_Mapping_Descriptor);
+
    type Deployment_Descriptor is limited record
-      Library_Name : League.Strings.Universal_String;
-      Servlets     : Servlet_Vectors.Vector;
+      Library_Name     : League.Strings.Universal_String;
+      Servlets         : Servlet_Vectors.Vector;
+      Servlet_Mappings : Servlet_Mapping_Vectors.Vector;
    end record;
 
    type Deployment_Descriptor_Access is access all Deployment_Descriptor;

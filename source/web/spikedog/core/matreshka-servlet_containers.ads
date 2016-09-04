@@ -143,6 +143,11 @@ private
        return League.Strings.Universal_String;
    --  Gets the real path corresponding to the given virtual path.
 
+   overriding function Get_Servlet_Registration
+    (Self         : not null access Servlet_Container;
+     Servlet_Name : League.Strings.Universal_String)
+       return access Servlet.Servlet_Registrations.Servlet_Registration'Class;
+
    overriding procedure Set_Session_Manager
     (Self    : in out Servlet_Container;
      Manager :

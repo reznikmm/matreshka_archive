@@ -50,15 +50,19 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
      := League.Strings.To_Universal_String
          ("http://forge.ada-ru.org/matreshka/xml/ns/spikedogdd");
 
-   Library_Name_Tag_Name  : constant League.Strings.Universal_String
+   Library_Name_Tag_Name     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("library-name");
-   Servlet_Tag_Name       : constant League.Strings.Universal_String
+   Servlet_Tag_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("servlet");
-   Servlet_Name_Tag_Name  : constant League.Strings.Universal_String
+   Servlet_Name_Tag_Name     : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("servlet-name");
-   Servlet_Tag_Tag_Name   : constant League.Strings.Universal_String
+   Servlet_Mapping_Tag_Name  : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("servlet-mapping");
+   Servlet_Tag_Tag_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("servlet-tag");
-   Web_App_Tag_Name       : constant League.Strings.Universal_String
+   URL_Pattern_Tag_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("url-pattern");
+   Web_App_Tag_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("web-app");
 
    procedure Push
@@ -91,6 +95,7 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
          when Library_Name
            | Servlet_Name
            | Servlet_Tag
+           | URL_Pattern
           =>
             Self.Text.Append (Text);
 
@@ -108,7 +113,11 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
      Namespace_URI  : League.Strings.Universal_String;
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Success);
+
    begin
       if Namespace_URI = DD_Namespace_URI then
          if Local_Name = Library_Name_Tag_Name then
@@ -119,6 +128,15 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
             Self.Descriptor.Servlets.Append
              ((Name => Self.Servlet_Name,
                Tag  => Self.Servlet_Tag));
+            Self.Servlet_Name.Clear;
+            Self.Servlet_Tag.Clear;
+
+         elsif Local_Name = Servlet_Mapping_Tag_Name then
+            Self.Descriptor.Servlet_Mappings.Append
+             ((Name         => Self.Servlet_Name,
+               URL_Patterns => Self.URL_Patterns));
+            Self.Servlet_Name.Clear;
+            Self.URL_Patterns.Clear;
 
          elsif Local_Name = Servlet_Name_Tag_Name then
             Self.Servlet_Name := Self.Text;
@@ -126,6 +144,10 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
 
          elsif Local_Name = Servlet_Tag_Tag_Name then
             Self.Servlet_Tag := Self.Text;
+            Self.Text.Clear;
+
+         elsif Local_Name = URL_Pattern_Tag_Name then
+            Self.URL_Patterns.Append (Self.Text);
             Self.Text.Clear;
          end if;
       end if;
@@ -196,11 +218,18 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
 
    overriding procedure Start_Document
     (Self    : in out Deployment_Descriptor_Parser;
-     Success : in out Boolean) is
+     Success : in out Boolean)
+   is
+      pragma Unreferenced (Success);
+
    begin
       Self.State := Initial;
       Self.Stack.Clear;
       Self.Diagnosis.Clear;
+      Self.Text.Clear;
+      Self.Servlet_Name.Clear;
+      Self.Servlet_Tag.Clear;
+      Self.URL_Patterns.Clear;
    end Start_Document;
 
    -------------------
@@ -213,7 +242,11 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
      Local_Name     : League.Strings.Universal_String;
      Qualified_Name : League.Strings.Universal_String;
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
-     Success        : in out Boolean) is
+     Success        : in out Boolean)
+   is
+      pragma Unreferenced (Qualified_Name);
+      pragma Unreferenced (Attributes);
+
    begin
       if Namespace_URI = DD_Namespace_URI then
          if Local_Name = Library_Name_Tag_Name then
@@ -236,8 +269,18 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
                return;
             end if;
 
+         elsif Local_Name = Servlet_Mapping_Tag_Name then
+            if Self.State = Web_App then
+               Self.Push (Servlet_Mapping);
+
+            else
+               Self.Error_Unexpected_Tag (Local_Name, Success);
+
+               return;
+            end if;
+
          elsif Local_Name = Servlet_Name_Tag_Name then
-            if Self.State = Servlet then
+            if Self.State in Servlet | Servlet_Mapping then
                Self.Push (Servlet_Name);
 
             else
@@ -249,6 +292,16 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
          elsif Local_Name = Servlet_Tag_Tag_Name then
             if Self.State = Servlet then
                Self.Push (Servlet_Tag);
+
+            else
+               Self.Error_Unexpected_Tag (Local_Name, Success);
+
+               return;
+            end if;
+
+         elsif Local_Name = URL_Pattern_Tag_Name then
+            if Self.State = Servlet_Mapping then
+               Self.Push (URL_Pattern);
 
             else
                Self.Error_Unexpected_Tag (Local_Name, Success);

@@ -65,7 +65,9 @@ private
      Library_Name,
      Servlet,
      Servlet_Name,
-     Servlet_Tag);
+     Servlet_Tag,
+     Servlet_Mapping,
+     URL_Pattern);
 
    package State_Vectors is new Ada.Containers.Vectors (Positive, States);
 
@@ -78,6 +80,7 @@ private
       Descriptor   : Deployment_Descriptor_Access;
       Servlet_Name : League.Strings.Universal_String;
       Servlet_Tag  : League.Strings.Universal_String;
+      URL_Patterns : League.String_Vectors.Universal_String_Vector;
    end record;
 
    overriding procedure Characters

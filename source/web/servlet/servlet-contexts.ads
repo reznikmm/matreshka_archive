@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -140,5 +140,13 @@ package Servlet.Contexts is
    --
    --  This method returns null if the servlet container is unable to translate
    --  the given virtual path to a real path.
+
+   not overriding function Get_Servlet_Registration
+    (Self         : not null access Servlet_Context;
+     Servlet_Name : League.Strings.Universal_String)
+       return access Servlet.Servlet_Registrations.Servlet_Registration'Class
+         is abstract;
+   --  Gets the Servlet_Registration corresponding to the servlet with the
+   --  given Servlet_Name.
 
 end Servlet.Contexts;

@@ -276,6 +276,24 @@ package body Matreshka.Servlet_Containers is
       return "install" & Path;
    end Get_Real_Path;
 
+   ------------------------------
+   -- Get_Servlet_Registration --
+   ------------------------------
+
+   overriding function Get_Servlet_Registration
+    (Self         : not null access Servlet_Container;
+     Servlet_Name : League.Strings.Universal_String)
+       return access Servlet.Servlet_Registrations.Servlet_Registration'Class is
+   begin
+      for Registration of Self.Servlets loop
+         if Registration.Name = Servlet_Name then
+            return Registration;
+         end if;
+      end loop;
+
+      return null;
+   end Get_Servlet_Registration;
+
    ----------------
    -- Initialize --
    ----------------
@@ -344,6 +362,13 @@ package body Matreshka.Servlet_Containers is
          begin
             Self.Add_Servlet (Descriptor.Name, S);
          end;
+      end loop;
+
+      --  Add URL mappings
+
+      for Descriptor of Self.Descriptor.Servlet_Mappings loop
+         Self.Get_Servlet_Registration
+          (Descriptor.Name).Add_Mapping (Descriptor.URL_Patterns);
       end loop;
 
       Self.State := Initialized;
