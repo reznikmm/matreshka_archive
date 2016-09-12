@@ -372,7 +372,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Result.Append (Down);
          else
             Down := Engine.Text.Get_Property (Item, Engines.Code);
-            Result.Append ("_result._push_");
+            Result.Append ("_result._push");
             Result.Append (JS_Type);
             Result.Append ("(");
             Result.Append (Down);

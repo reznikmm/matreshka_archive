@@ -513,7 +513,7 @@ package body Properties.Expressions.Identifiers is
          Result.Append (Down);
          Result.Append (");");
       else
-         Result.Append ("_result._push_");
+         Result.Append ("_result._push");
          Result.Append (JS_Type);
          Result.Append ("(");
          Result.Append (Down);
