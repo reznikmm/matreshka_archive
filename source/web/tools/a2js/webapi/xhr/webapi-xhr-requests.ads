@@ -44,6 +44,7 @@
 
 with WebAPI.DOM.Documents;
 with WebAPI.XHR.Event_Targets;
+with WebAPI.XHR.Form_Datas;
 
 package WebAPI.XHR.Requests is
 
@@ -135,7 +136,7 @@ package WebAPI.XHR.Requests is
 
    not overriding function Get_With_Credentials
     (Self : not null access constant XML_Http_Request)
-       return Natural
+       return Boolean
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "withCredentials";
@@ -145,7 +146,7 @@ package WebAPI.XHR.Requests is
 
    not overriding procedure Set_With_Credentials
     (Self  : not null access XML_Http_Request;
-     Value : Natural)
+     Value : Boolean)
          with Import     => True,
               Convention => JavaScript_Property_Setter,
               Link_Name  => "withCredentials";
@@ -160,13 +161,14 @@ package WebAPI.XHR.Requests is
    --  gather transmission information when data is transferred to a server.
 
    not overriding procedure Send
-    (Self     : not null access XML_Http_Request)
+    (Self : not null access XML_Http_Request;
+     Data : access WebAPI.XHR.Form_Datas.Form_Data'Class := null)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "send";
    --  Initiates the request. The optional argument provides the request entity
    --  body. The argument is ignored if request method is GET or HEAD.
-   --
+
    not overriding procedure Abort_Request
     (Self     : not null access XML_Http_Request)
          with Import     => True,
