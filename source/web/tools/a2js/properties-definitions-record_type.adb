@@ -90,17 +90,16 @@ package body Properties.Definitions.Record_Type is
 
       Result     : League.Strings.Universal_String;
       Name_Image : League.Strings.Universal_String;
+      Size       : League.Strings.Universal_String;
    begin
       Name_Image := Engine.Text.Get_Property
         (Asis.Declarations.Names (Decl) (1), Name);
 
       Result.Append ("_ec.");
       Result.Append (Name_Image);
-      Result.Append (" =  (function (){");
+      Result.Append (" =  function (");
 
-      --  Write constructor function
-      Result.Append ("function _constructor (");
-
+      --  Declare type's discriminant
       declare
          List : constant Asis.Discriminant_Association_List :=
            Properties.Tools.Corresponding_Type_Discriminants (Element);
@@ -124,6 +123,16 @@ package body Properties.Definitions.Record_Type is
 
          Result.Append ("){");
 
+         if Is_Typed_Array then
+            Size := Engine.Text.Get_Property (Element, Engines.Size);
+            Result.Append ("this.A = new ArrayBuffer(");
+            Result.Append (Size);
+            Result.Append ("/8);");
+            Result.Append ("this._u1 = new Uint8Array(this.A);");
+            Result.Append ("this._f4 = new Float32Array(this.A);");
+         end if;
+
+         --  Copy type's discriminant
          for J in List'Range loop
             declare
                Id    : League.Strings.Universal_String;
@@ -155,6 +164,7 @@ package body Properties.Definitions.Record_Type is
          end loop;
       end;
 
+      --  Initialize type's components
       declare
          List : constant Asis.Declaration_List :=
            Properties.Tools.Corresponding_Type_Components (Element);
@@ -195,13 +205,14 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("};");
 
       if not Asis.Elements.Has_Limited (Decl) then
-         --  Write _assign in prototype
          declare
             Down : League.Strings.Universal_String;
             List : constant Asis.Declaration_List :=
               Properties.Tools.Corresponding_Type_Discriminants (Element);
          begin
-            Result.Append ("_constructor.prototype._assign = function(src){");
+            Result.Append ("_ec.");
+            Result.Append (Name_Image);
+            Result.Append (".prototype._assign = function(src){");
 
             Down := Engine.Text.Get_Property
               (List  => List,
@@ -262,50 +273,27 @@ package body Properties.Definitions.Record_Type is
             end loop;
          end;
 
-         Result.Append ("_assign: {value: _constructor.prototype._assign}");
+         Result.Append ("};");
+
+         Result.Append ("Object.defineProperties(_ec.");
+         Result.Append (Name_Image);
+         Result.Append (".prototype, props);");
+
+         Result.Append ("_ec.");
+         Result.Append (Name_Image);
+         Result.Append ("._cast_ta = function _cast_ta(_u1) {");
+         Result.Append ("var result = Object.create (_ec.");
+         Result.Append (Name_Image);
+         Result.Append (".prototype);");
+         Result.Append ("result.A = _u1.buffer;");
+         Result.Append
+           ("result._f4 = new Float32Array(_u1.buffer,_u1.byteOffset,");
+         Result.Append (Size);
+         Result.Append ("/8/4);");
+         Result.Append ("result._u1 = _u1;");
+         Result.Append ("return result;");
          Result.Append ("};");
       end if;
-
-      --  Write _new function
-
-      if Is_Typed_Array then
-         declare
-           Size : constant League.Strings.Universal_String :=
-             Engine.Text.Get_Property (Element, Engines.Size);
-         begin
-            Result.Append ("function _cast(result,offset,length) {");
-            Result.Append
-              ("result._f4 = new Float32Array(result,offset,length/4);");
-            Result.Append
-              ("result._u1 = new Uint8Array(result,offset,length);");
-            Result.Append ("Object.defineProperties(result, props);");
-            Result.Append ("return result;");
-            Result.Append ("};");
-
-            Result.Append ("function _new(){");
-            Result.Append ("var result=new ArrayBuffer(");
-            Result.Append (Size);
-            Result.Append ("/8);");
-            Result.Append ("_cast(result,0,result.byteLength);");
-            Result.Append ("Object.defineProperties(result, props);");
-         end;
-      else
-         Result.Append ("function _new(){");
-         Result.Append ("var result=Object.create(_constructor.prototype);");
-      end if;
-
-      Result.Append ("_constructor.apply(result, arguments);");
-      Result.Append ("return result;");
-      Result.Append ("};");
-
-      --  Return resulting object
-      Result.Append ("return {_constructor: _constructor, _new: _new");
-
-      if Is_Typed_Array then
-         Result.Append (",_cast: _cast");
-      end if;
-
-      Result.Append ("};})();");
 
       return Result;
    end Code;

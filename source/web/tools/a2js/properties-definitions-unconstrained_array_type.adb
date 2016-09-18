@@ -68,10 +68,9 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Text := Engine.Text.Get_Property
         (Asis.Declarations.Names (Decl) (1), Name);
 
-      Result.Append ("_ec.");
+      Result.Append ("(_ec.");
       Result.Append (Text);
-      Result.Append (" = (function (){");
-      Result.Append ("function _constructor(_from,_to){");
+      Result.Append (" = function (_from,_to){");
       Result.Append ("var _first=_from.map (_ec._pos);");
       Result.Append ("var _len=_to.map (function (_to, i)" &
                        "{ return _ec._pos(_to) - _first[i] + 1; });");
@@ -127,13 +126,13 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Result.Append ("this._last=_to;");
       Result.Append ("this._length=_len;");
       Result.Append ("this._offset=0;");
-      Result.Append ("};");
+      Result.Append ("}).");
 
       if Is_Typed_Array then
-         Result.Append ("_constructor.prototype = " &
+         Result.Append ("prototype = " &
                           "Object.create(_ec._ada_array_ta.prototype);");
       else
-         Result.Append ("_constructor.prototype = _ec.");
+         Result.Append ("prototype = _ec.");
 
          if Engine.Boolean.Get_Property
            (Element, Engines.Is_Array_Of_Simple)
@@ -146,16 +145,6 @@ package body Properties.Definitions.Unconstrained_Array_Type is
          Result.Append (".prototype;");
       end if;
 
-      --  Write _new function
-      Result.Append ("function _new(){");
-      Result.Append ("var result=Object.create(_constructor.prototype);");
-      Result.Append ("_constructor.apply(result, arguments);");
-      Result.Append ("return result;");
-      Result.Append ("};");
-
-      --  Return resulting object
-      Result.Append ("return {_constructor: _constructor, _new: _new};");
-      Result.Append ("})();");
       return Result;
    end Code;
 

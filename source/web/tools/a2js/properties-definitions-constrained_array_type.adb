@@ -120,10 +120,9 @@ package body Properties.Definitions.Constrained_Array_Type is
       Text := Engine.Text.Get_Property
         (Asis.Declarations.Names (Decl) (1), Name);
 
-      Result.Append ("_ec.");
+      Result.Append ("(_ec.");
       Result.Append (Text);
-      Result.Append (" = (function (){");
-      Result.Append ("function _constructor(){");
+      Result.Append (" = function (){");
 
       Result.Append ("function _init (_from,_to){");
       Result.Append ("var _first=_from.map (_ec._pos);");
@@ -152,9 +151,8 @@ package body Properties.Definitions.Constrained_Array_Type is
       Text := Engine.Text.Get_Property (Element, Engines.Bounds);
       Result.Append (Text);
       Result.Append (");");
-      Result.Append ("};");
 
-      Result.Append ("_constructor.prototype = _ec.");
+      Result.Append ("}).prototype = _ec.");
 
       if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
          Result.Append ("_ada_array_simple");
@@ -163,17 +161,6 @@ package body Properties.Definitions.Constrained_Array_Type is
       end if;
 
       Result.Append (".prototype;");
-
-      --  Write _new function
-      Result.Append ("function _new(){");
-      Result.Append ("var result=Object.create(_constructor.prototype);");
-      Result.Append ("_constructor.apply(result, arguments);");
-      Result.Append ("return result;");
-      Result.Append ("};");
-
-      --  Return resulting object
-      Result.Append ("return {_constructor: _constructor, _new: _new};");
-      Result.Append ("})();");
 
       return Result;
    end Code;
@@ -194,6 +181,8 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
+      Result.Append (" new ");
+
       Text :=
         Properties.Expressions.Identifiers.Name_Prefix (Engine, Element, Decl);
 
@@ -204,7 +193,7 @@ package body Properties.Definitions.Constrained_Array_Type is
          Engines.Code);
 
       Result.Append (Text);
-      Result.Append ("._new()");
+      Result.Append ("()");
 
       return Result;
    end Initialize;

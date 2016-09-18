@@ -72,7 +72,7 @@ define('standard', [], function(){
     };
     standard._in = function (a, b){
         var a_tag = a._external_tag;
-        var b_tag = b._constructor.prototype._external_tag;
+        var b_tag = b.prototype._external_tag;
         while (b_tag != '') {
             if (a_tag == b_tag) return true;
             b_tag = all_types[b_tag]._parent_tag;
@@ -342,7 +342,7 @@ define('standard', [], function(){
         var offset = this._index.apply(this, arguments);
         var ta = this._u1.subarray (offset * this._element_size,
                                     (offset + 1) * this._element_size);
-        return this._element_type._cast(ta.buffer,ta.byteOffset,ta.byteLength);
+        return this._element_type._cast_ta(ta);
     };
     
     standard._fortran_array = //  A constructor for any Fortran array

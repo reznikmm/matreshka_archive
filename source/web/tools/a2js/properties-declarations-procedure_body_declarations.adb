@@ -116,7 +116,7 @@ package body Properties.Declarations.Procedure_Body_Declarations is
             end if;
 
             Text.Append (Image);
-            Text.Append ("._constructor.prototype.");
+            Text.Append (".prototype.");
             Text.Append (Method_Name);
             Text.Append (" = ");
          end;

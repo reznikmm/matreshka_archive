@@ -119,9 +119,9 @@ package body Properties.Definitions.Subtype_Indication is
       if Is_Simple then
          Text := Engine.Text.Get_Property (Mark, Name);
       else
-         Text.Append ("");
+         Text.Append (" new ");
          Text.Append (Engine.Text.Get_Property (Mark, Engines.Code));
-         Text.Append ("._new(");
+         Text.Append ("(");
 
          if not Asis.Elements.Is_Nil (Constr) then
             Text.Append (Engine.Text.Get_Property (Constr, Engines.Code));

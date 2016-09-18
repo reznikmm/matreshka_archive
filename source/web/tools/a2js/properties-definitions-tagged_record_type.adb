@@ -84,10 +84,7 @@ package body Properties.Definitions.Tagged_Record_Type is
 
       Result.Append ("_ec.");
       Result.Append (Name_Image);
-      Result.Append (" =  (function (){");
-
-      --  Write constructor function
-      Result.Append ("function _constructor (");
+      Result.Append (" =  function (");
 
       declare
          List : constant Asis.Discriminant_Association_List :=
@@ -145,7 +142,7 @@ package body Properties.Definitions.Tagged_Record_Type is
          if not Asis.Elements.Is_Nil (Parent) then
             Result.Append
               (Engine.Text.Get_Property (Parent, Name));
-            Result.Append ("._constructor.call (this");
+            Result.Append (".call (this");
 
             for J in List'Range loop
                declare
@@ -203,14 +200,14 @@ package body Properties.Definitions.Tagged_Record_Type is
       end;
 
       Result.Append ("};");
-
-      Result.Append ("_constructor.prototype = _ec._tag('");
+      Result.Append ("_ec.");
+      Result.Append (Name_Image);
+      Result.Append (".prototype = _ec._tag('");
       Text := Engine.Text.Get_Property (Element, Engines.Tag_Name);
       Result.Append (Text);
+      Text := League.Strings.Empty_Universal_String;
 
-      if Asis.Elements.Is_Nil (Parent) then
-         Text := League.Strings.Empty_Universal_String;
-      else
+      if not Asis.Elements.Is_Nil (Parent) then
          Text := Engine.Text.Get_Property (Parent, Engines.Tag_Name);
       end if;
 
@@ -227,7 +224,9 @@ package body Properties.Definitions.Tagged_Record_Type is
               and then (Asis.Elements.Has_Abstract (List (J))
                         or else Is_Null_Procedure (List (J)))
             then
-               Result.Append ("_constructor.prototype.");
+               Result.Append ("_ec.");
+               Result.Append (Name_Image);
+               Result.Append (".prototype.");
                Result.Append
                  (Engine.Text.Get_Property
                     (Asis.Declarations.Names (List (J)) (1),
@@ -241,17 +240,6 @@ package body Properties.Definitions.Tagged_Record_Type is
             end if;
          end loop;
       end;
-
-      --  Write _new function
-      Result.Append ("function _new(){");
-      Result.Append ("var result=Object.create(_constructor.prototype);");
-      Result.Append ("_constructor.apply(result, arguments);");
-      Result.Append ("return result;");
-      Result.Append ("};");
-
-      --  Return resulting object
-      Result.Append ("return {_constructor: _constructor, _new: _new};");
-      Result.Append ("})();");
 
       return Result;
    end Code;
@@ -278,6 +266,8 @@ package body Properties.Definitions.Tagged_Record_Type is
          return Result;
       end if;
 
+      Result.Append (" new ");
+
       Text :=
         Properties.Expressions.Identifiers.Name_Prefix (Engine, Element, Decl);
 
@@ -288,7 +278,7 @@ package body Properties.Definitions.Tagged_Record_Type is
          Engines.Code);
 
       Result.Append (Text);
-      Result.Append ("._new()");
+      Result.Append ("()");
 
       return Result;
    end Initialize;
