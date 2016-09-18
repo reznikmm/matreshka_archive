@@ -199,43 +199,48 @@ package body Properties.Definitions.Record_Type is
 
       Result.Append ("};");  --  End of constructor
 
-      if not Asis.Elements.Has_Limited (Decl) then
-         declare
-            Down : League.Strings.Universal_String;
-            List : constant Asis.Declaration_List :=
-              Properties.Tools.Corresponding_Type_Discriminants (Element);
-         begin
-            --  Update prototype with _assign
-            Result.Append ("_result.prototype._assign = function(src){");
+      --  Limited types should also have _cast, so we need _assign
+      declare
+         Down : League.Strings.Universal_String;
+         List : constant Asis.Declaration_List :=
+           Properties.Tools.Corresponding_Type_Discriminants (Element);
+      begin
+         --  Update prototype with _assign
+         Result.Append ("_result.prototype._assign = function(src){");
 
-            Down := Engine.Text.Get_Property
-              (List  => List,
-               Name  => Engines.Assign,
-               Empty => League.Strings.Empty_Universal_String,
-               Sum   => Properties.Tools.Join'Access);
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Engines.Assign,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
 
-            Result.Append (Down);
+         Result.Append (Down);
 
-         end;
+      end;
 
-         declare
-            Down : League.Strings.Universal_String;
-            Def  : constant Asis.Definition :=
-              Asis.Definitions.Record_Definition (Element);
-            List : constant Asis.Declaration_List :=
-              Asis.Definitions.Record_Components (Def);
-         begin
-            Down := Engine.Text.Get_Property
-              (List  => List,
-               Name  => Engines.Assign,
-               Empty => League.Strings.Empty_Universal_String,
-               Sum   => Properties.Tools.Join'Access);
+      declare
+         Down : League.Strings.Universal_String;
+         Def  : constant Asis.Definition :=
+           Asis.Definitions.Record_Definition (Element);
+         List : constant Asis.Declaration_List :=
+           Properties.Tools.Corresponding_Type_Components (Def);
+      begin
+         Down := Engine.Text.Get_Property
+           (List  => List,
+            Name  => Engines.Assign,
+            Empty => League.Strings.Empty_Universal_String,
+            Sum   => Properties.Tools.Join'Access);
 
-            Result.Append (Down);
+         Result.Append (Down);
 
-            Result.Append ("};");  --  End of _assign
-         end;
-      end if;
+         Result.Append ("};");  --  End of _assign
+      end;
+
+      Result.Append ("_result._cast = function _cast (value){");
+      Result.Append ("var result = new _result();");
+      Result.Append ("result._assign (value);");
+      Result.Append ("return result;");
+      Result.Append ("};");
 
       if Is_Typed_Array then
          Result.Append ("var props = {");

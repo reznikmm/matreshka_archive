@@ -44,9 +44,12 @@
 with League.String_Vectors;
 
 with Asis.Declarations;
+with Asis.Definitions;
+with Asis.Elements;
 with Asis.Expressions;
 
 with Properties.Tools;
+with Properties.Expressions.Identifiers;
 
 package body Properties.Expressions.Record_Aggregate is
 
@@ -72,7 +75,9 @@ package body Properties.Expressions.Record_Aggregate is
       function Get_Name
         (Index : Positive) return League.Strings.Universal_String;
 
-      Tipe   : constant Asis.Declaration :=
+      function Get_Type_Name return League.Strings.Universal_String;
+
+      Tipe   : constant Asis.Element :=
         Asis.Expressions.Corresponding_Expression_Type_Definition (Element);
       Parts  : constant Asis.Declaration_List :=
         Tools.Corresponding_Type_Discriminants (Tipe) &
@@ -125,6 +130,52 @@ package body Properties.Expressions.Record_Aggregate is
          return Engine.Text.Get_Property (Names (Names'First), Code.Name);
       end Get_Name;
 
+      -------------------
+      -- Get_Type_Name --
+      -------------------
+
+      function Get_Type_Name return League.Strings.Universal_String is
+         use type Asis.Definition_Kinds;
+         use type Asis.Expression_Kinds;
+
+         Result : League.Strings.Universal_String;
+         Name   : League.Strings.Universal_String;
+         X      : Asis.Element := Tipe;
+         Decl   : Asis.Declaration;
+      begin
+         --  Unwind all subtype declarations
+         while Asis.Elements.Definition_Kind (X)
+           = Asis.A_Subtype_Indication
+         loop
+            X := Asis.Definitions.Subtype_Mark (X);
+
+            if Asis.Elements.Expression_Kind (X)
+              = Asis.A_Selected_Component
+            then
+               X := Asis.Expressions.Selector (X);
+            end if;
+
+            X := Asis.Expressions.Corresponding_Name_Declaration (X);
+            X := Asis.Declarations.Type_Declaration_View (X);
+         end loop;
+
+         if Asis.Elements.Definition_Kind (X) = Asis.A_Type_Definition then
+            Decl := Asis.Elements.Enclosing_Element (X);
+
+            Result := Properties.Expressions.Identifiers.Name_Prefix
+              (Engine => Engine,
+               Name   => Element,
+               Decl   => Asis.Elements.Enclosing_Element (X));
+
+            Name := Engine.Text.Get_Property
+              (Asis.Declarations.Names (Decl) (1), Code.Name);
+
+            Result.Append (Name);
+         end if;
+
+         return Result;
+      end Get_Type_Name;
+
       ---------------
       -- Mark_Done --
       ---------------
@@ -145,11 +196,18 @@ package body Properties.Expressions.Record_Aggregate is
          end loop;
       end Mark_Done;
 
-      List : constant Asis.Association_List :=
+      Names : League.Strings.Universal_String;
+      Text  : League.Strings.Universal_String;
+      List  : constant Asis.Association_List :=
         Asis.Expressions.Record_Component_Associations (Element);
-      Names  : League.Strings.Universal_String;
-      Text   : League.Strings.Universal_String;
+
+      Tipe_Name : constant League.Strings.Universal_String := Get_Type_Name;
    begin
+      if not Tipe_Name.Is_Empty then
+         Result.Append (Tipe_Name);
+         Result.Append ("._cast(");
+      end if;
+
       Result.Append ("{");
 
       for J in List'Range loop
@@ -181,6 +239,11 @@ package body Properties.Expressions.Record_Aggregate is
       end loop;
 
       Result.Append ("}");
+
+      if not Tipe_Name.Is_Empty then
+         Result.Append (")");
+      end if;
+
       return Result;
    end Code;
 
