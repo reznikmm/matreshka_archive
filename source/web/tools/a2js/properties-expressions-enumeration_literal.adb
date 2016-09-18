@@ -46,6 +46,8 @@ with Asis.Declarations;
 with Asis.Elements;
 with Asis.Expressions;
 
+with Properties.Expressions.Identifiers;
+
 package body Properties.Expressions.Enumeration_Literal is
 
    ----------
@@ -62,14 +64,18 @@ package body Properties.Expressions.Enumeration_Literal is
       Unit   : constant Asis.Compilation_Unit :=
         Asis.Elements.Enclosing_Compilation_Unit (Tipe);
       Image  : constant Wide_String := Asis.Expressions.Name_Image (Element);
+      Down   : League.Strings.Universal_String;
       Result : League.Strings.Universal_String;
    begin
       if not Asis.Compilation_Units.Is_Nil
         (Asis.Compilation_Units.Corresponding_Parent_Declaration (Unit))
       then
          --  if not in Standard
-         Result := Engine.Text.Get_Property
+         Result := Properties.Expressions.Identifiers.Name_Prefix
+           (Engine, Element, Tipe);
+         Down := Engine.Text.Get_Property
            (Asis.Declarations.Names (Tipe) (1), Name);
+         Result.Append (Down);
          Result.Append (".");
 
       end if;

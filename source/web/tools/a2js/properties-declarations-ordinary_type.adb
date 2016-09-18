@@ -67,10 +67,51 @@ package body Properties.Declarations.Ordinary_Type is
       Element : Asis.Declaration;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
+      Inside_Package : constant Boolean := Engine.Boolean.Get_Property
+        (Element, Engines.Inside_Package);
+
+      Result     : League.Strings.Universal_String;
+      Down       : League.Strings.Universal_String;
+      Name_Image : constant League.Strings.Universal_String :=
+        Engine.Text.Get_Property
+          (Asis.Declarations.Names (Element) (1), Name);
+   begin
+      if Inside_Package then
+         Result.Append ("_ec.");
+      else
+         Result.Append ("var ");
+      end if;
+
+      Result.Append (Name_Image);
+      Result.Append ("=");
+
+      Down := Engine.Text.Get_Property
+        (Asis.Declarations.Type_Declaration_View (Element), Name);
+
+      if Down.Is_Empty then
+         Result.Clear;
+      else
+         Result.Append (Down);
+         Result.Append (";");
+      end if;
+
+      return Result;
+   end Code;
+
+   ----------------
+   -- Initialize --
+   ----------------
+
+   function Initialize
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
    begin
       return Engine.Text.Get_Property
         (Asis.Declarations.Type_Declaration_View (Element), Name);
-   end Code;
+   end Initialize;
+
 
    --------------------
    -- Is_Simple_Type --

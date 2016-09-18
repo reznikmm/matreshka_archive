@@ -89,15 +89,10 @@ package body Properties.Definitions.Record_Type is
         Properties.Tools.Is_Typed_Array (Decl);
 
       Result     : League.Strings.Universal_String;
-      Name_Image : League.Strings.Universal_String;
       Size       : League.Strings.Universal_String;
    begin
-      Name_Image := Engine.Text.Get_Property
-        (Asis.Declarations.Names (Decl) (1), Name);
-
-      Result.Append ("_ec.");
-      Result.Append (Name_Image);
-      Result.Append (" =  function (");
+      Result.Append ("(function (){");  --  Wrapper
+      Result.Append ("var _result =  function (");  --  Type constructor
 
       --  Declare type's discriminant
       declare
@@ -202,7 +197,7 @@ package body Properties.Definitions.Record_Type is
          end loop;
       end;
 
-      Result.Append ("};");
+      Result.Append ("};");  --  End of constructor
 
       if not Asis.Elements.Has_Limited (Decl) then
          declare
@@ -210,9 +205,8 @@ package body Properties.Definitions.Record_Type is
             List : constant Asis.Declaration_List :=
               Properties.Tools.Corresponding_Type_Discriminants (Element);
          begin
-            Result.Append ("_ec.");
-            Result.Append (Name_Image);
-            Result.Append (".prototype._assign = function(src){");
+            --  Update prototype with _assign
+            Result.Append ("_result.prototype._assign = function(src){");
 
             Down := Engine.Text.Get_Property
               (List  => List,
@@ -239,7 +233,7 @@ package body Properties.Definitions.Record_Type is
 
             Result.Append (Down);
 
-            Result.Append ("};");
+            Result.Append ("};");  --  End of _assign
          end;
       end if;
 
@@ -273,18 +267,13 @@ package body Properties.Definitions.Record_Type is
             end loop;
          end;
 
-         Result.Append ("};");
+         Result.Append ("};");  --  End of props
 
-         Result.Append ("Object.defineProperties(_ec.");
-         Result.Append (Name_Image);
-         Result.Append (".prototype, props);");
+         Result.Append ("Object.defineProperties(_result.prototype, props);");
 
-         Result.Append ("_ec.");
-         Result.Append (Name_Image);
-         Result.Append ("._cast_ta = function _cast_ta(_u1) {");
-         Result.Append ("var result = Object.create (_ec.");
-         Result.Append (Name_Image);
-         Result.Append (".prototype);");
+         --  Set _cast_ta
+         Result.Append ("_result._cast_ta = function _cast_ta(_u1){");
+         Result.Append ("var result = Object.create (_result.prototype);");
          Result.Append ("result.A = _u1.buffer;");
          Result.Append
            ("result._f4 = new Float32Array(_u1.buffer,_u1.byteOffset,");
@@ -292,9 +281,11 @@ package body Properties.Definitions.Record_Type is
          Result.Append ("/8/4);");
          Result.Append ("result._u1 = _u1;");
          Result.Append ("return result;");
-         Result.Append ("};");
+         Result.Append ("};");  --  End of _cast_ta
       end if;
 
+      Result.Append ("return _result;");
+      Result.Append ("})();");  --  End of Wrapper and call it
       return Result;
    end Code;
 

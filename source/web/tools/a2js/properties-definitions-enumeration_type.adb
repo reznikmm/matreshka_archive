@@ -43,7 +43,6 @@
 ------------------------------------------------------------------------------
 with Asis.Declarations;
 with Asis.Definitions;
-with Asis.Elements;
 
 package body Properties.Definitions.Enumeration_Type is
 
@@ -62,18 +61,7 @@ package body Properties.Definitions.Enumeration_Type is
         Asis.Definitions.Enumeration_Literal_Declarations (Element);
       Text  : League.Strings.Universal_String;
    begin
-      declare
-         Image : constant Wide_String :=
-           Asis.Declarations.Defining_Name_Image
-             (Asis.Declarations.Names
-                (Asis.Elements.Enclosing_Element (Element)) (1));
-         Name : constant League.Strings.Universal_String :=
-           League.Strings.From_UTF_16_Wide_String (Image);
-      begin
-         Text.Append (Name.To_Lowercase);
-      end;
-
-      Text.Append (" = {");
+      Text.Append ("{");
 
       for J in List'Range loop
          declare

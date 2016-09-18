@@ -112,17 +112,12 @@ package body Properties.Definitions.Constrained_Array_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Decl : constant Asis.Declaration :=
-        Asis.Elements.Enclosing_Element (Element);
+      pragma Unreferenced (Name);
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
-      Text := Engine.Text.Get_Property
-        (Asis.Declarations.Names (Decl) (1), Name);
-
-      Result.Append ("(_ec.");
-      Result.Append (Text);
-      Result.Append (" = function (){");
+      Result.Append ("(function(){");  --  Wrapper
+      Result.Append ("var _result = function (){");  --  Array constructor
 
       Result.Append ("function _init (_from,_to){");
       Result.Append ("var _first=_from.map (_ec._pos);");
@@ -145,14 +140,17 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result.Append ("this._first=_from;");
       Result.Append ("this._last=_to;");
       Result.Append ("this._length=_len;");
-      Result.Append ("this._offset=0;};");
+      Result.Append ("this._offset=0;");
+      Result.Append ("};");  --  End _init
       Result.Append ("_init.call (this, ");
 
       Text := Engine.Text.Get_Property (Element, Engines.Bounds);
       Result.Append (Text);
       Result.Append (");");
 
-      Result.Append ("}).prototype = _ec.");
+      Result.Append ("};");  --  End of constructor
+      --  Assign prototype
+      Result.Append ("_result.prototype = _ec.");
 
       if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
          Result.Append ("_ada_array_simple");
@@ -161,6 +159,9 @@ package body Properties.Definitions.Constrained_Array_Type is
       end if;
 
       Result.Append (".prototype;");
+
+      Result.Append ("return _result;");
+      Result.Append ("})();");  --  End of Wrapper and call it
 
       return Result;
    end Code;

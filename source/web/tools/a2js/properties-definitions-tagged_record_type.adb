@@ -66,12 +66,9 @@ package body Properties.Definitions.Tagged_Record_Type is
    is
       use type Asis.Type_Kinds;
 
-      Decl : constant Asis.Declaration :=
-        Asis.Elements.Enclosing_Element (Element);
       Parent : Asis.Subtype_Indication := Asis.Nil_Element;
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
-      Name_Image : League.Strings.Universal_String;
    begin
       if Asis.Elements.Type_Kind (Element) =
         Asis.A_Derived_Record_Extension_Definition
@@ -79,13 +76,10 @@ package body Properties.Definitions.Tagged_Record_Type is
          Parent := Asis.Definitions.Parent_Subtype_Indication (Element);
       end if;
 
-      Name_Image := Engine.Text.Get_Property
-        (Asis.Declarations.Names (Decl) (1), Name);
+      Result.Append ("(function (){");  --  Wrapper
+      Result.Append ("var _result =  function (");  --  Constructor
 
-      Result.Append ("_ec.");
-      Result.Append (Name_Image);
-      Result.Append (" =  function (");
-
+      --  Declare type's discriminant
       declare
          List : constant Asis.Discriminant_Association_List :=
            Properties.Tools.Corresponding_Type_Discriminants (Element);
@@ -109,6 +103,7 @@ package body Properties.Definitions.Tagged_Record_Type is
 
          Result.Append ("){");
 
+         --  Copy type's discriminant
          for J in List'Range loop
             declare
                Id    : League.Strings.Universal_String;
@@ -162,6 +157,7 @@ package body Properties.Definitions.Tagged_Record_Type is
          end if;
       end;
 
+      --  Initialize type's components
       declare
          List : constant Asis.Declaration_List :=
            Properties.Tools.Corresponding_Type_Components (Element);
@@ -199,10 +195,10 @@ package body Properties.Definitions.Tagged_Record_Type is
          end loop;
       end;
 
-      Result.Append ("};");
-      Result.Append ("_ec.");
-      Result.Append (Name_Image);
-      Result.Append (".prototype = _ec._tag('");
+      Result.Append ("};");  --  End of Constructor
+
+      --  Set prototype
+      Result.Append ("_result.prototype = _ec._tag('");
       Text := Engine.Text.Get_Property (Element, Engines.Tag_Name);
       Result.Append (Text);
       Text := League.Strings.Empty_Universal_String;
@@ -215,6 +211,7 @@ package body Properties.Definitions.Tagged_Record_Type is
       Result.Append (Text);
       Result.Append ("');");
 
+      --  Define null and abstract methods
       declare
          List : constant Asis.Declaration_List :=
            Properties.Tools.Corresponding_Type_Subprograms (Element);
@@ -224,9 +221,7 @@ package body Properties.Definitions.Tagged_Record_Type is
               and then (Asis.Elements.Has_Abstract (List (J))
                         or else Is_Null_Procedure (List (J)))
             then
-               Result.Append ("_ec.");
-               Result.Append (Name_Image);
-               Result.Append (".prototype.");
+               Result.Append ("_result.prototype.");
                Result.Append
                  (Engine.Text.Get_Property
                     (Asis.Declarations.Names (List (J)) (1),
@@ -240,6 +235,9 @@ package body Properties.Definitions.Tagged_Record_Type is
             end if;
          end loop;
       end;
+
+      Result.Append ("return _result;");
+      Result.Append ("})();");  --  End of Wrapper and call it
 
       return Result;
    end Code;

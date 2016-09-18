@@ -51,7 +51,7 @@ package Properties.Statements.Procedure_Call_Statement is
 
    function Code
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
+      Element : Asis.Statement;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
 end Properties.Statements.Procedure_Call_Statement;
