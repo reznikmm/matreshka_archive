@@ -349,6 +349,8 @@ package body Properties.Expressions.Identifiers is
 
       function Is_Imported (Item : Asis.Declaration) return Boolean;
 
+      procedure Prepend_Decl_List (Value : League.Strings.Universal_String);
+
       ----------------
       -- Add_Prefix --
       ----------------
@@ -386,10 +388,22 @@ package body Properties.Expressions.Identifiers is
          return Import = "True" or Export = "True";
       end Is_Imported;
 
+      Decl_List  : League.String_Vectors.Universal_String_Vector;
+
+      -----------------------
+      -- Prepend_Decl_List --
+      -----------------------
+
+      procedure Prepend_Decl_List (Value : League.Strings.Universal_String) is
+         Tmp   : League.String_Vectors.Universal_String_Vector;
+      begin
+         Tmp.Append (Value);
+         Decl_List.Prepend (Tmp);
+      end Prepend_Decl_List;
+
       Top_Item   : Boolean := True;
       Is_Package : Boolean := False;
       Item       : Asis.Element := Decl;
-      Decl_List  : League.String_Vectors.Universal_String_Vector;
       Result     : League.Strings.Universal_String;
       Kind       : Asis.Declaration_Kinds;
    begin
@@ -439,21 +453,27 @@ package body Properties.Expressions.Identifiers is
                elsif Is_Imported (Item) then
                   --  Imported operation has no prefix
                   exit;
+               elsif Asis.Elements.Is_Nil
+                 (Asis.Elements.Enclosing_Element (Item))
+               then
+                  --  Top item library level subprograms should be qualified
+                  --  by parent package name
+                  Add_Parent_Name (Result);
+                  return Result;
                end if;
 
             when Asis.A_Package_Declaration |
                  Asis.A_Package_Body_Declaration =>
 
                declare
-                  Tmp   : League.String_Vectors.Universal_String_Vector;
                   Names : constant Asis.Defining_Name_List :=
                     Asis.Declarations.Names (Item);
                begin
                   if not Top_Item then
-                     Tmp.Append
-                       (Engine.Text.Get_Property (Names (1), Engines.Code));
+                     Result :=
+                       Engine.Text.Get_Property (Names (1), Engines.Code);
 
-                     Decl_List.Prepend (Tmp);
+                     Prepend_Decl_List (Result);
                      Is_Package := True;
 
                   end if;

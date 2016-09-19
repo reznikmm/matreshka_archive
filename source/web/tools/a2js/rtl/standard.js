@@ -365,7 +365,7 @@ define('standard', [], function(){
 
     standard._tag ('event_listener','');
     standard.webapi = {
-        dom: {event_listeners: {event_listener: {_constructor: function(){}}}}
+        dom: {event_listeners: {event_listener: function(){}}}
     };
 
     return standard;
