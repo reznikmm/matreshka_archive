@@ -162,13 +162,20 @@ package WebAPI.XHR.Requests is
 
    not overriding procedure Send
     (Self : not null access XML_Http_Request;
-     Data : access WebAPI.XHR.Form_Datas.Form_Data'Class := null)
+     Data : League.Strings.Universal_String)
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "send";
    --  Initiates the request. The optional argument provides the request entity
    --  body. The argument is ignored if request method is GET or HEAD.
-
+   
+   not overriding procedure Send
+    (Self : not null access XML_Http_Request;
+     Data : access WebAPI.XHR.Form_Datas.Form_Data'Class := null)
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "send";
+   
    not overriding procedure Abort_Request
     (Self     : not null access XML_Http_Request)
          with Import     => True,

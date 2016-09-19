@@ -73,7 +73,7 @@ package WebAPI.XHR.Form_Datas is
      Name  : League.Strings.Universal_String)
        return League.Strings.Universal_String
          with Import     => True,
-              Convention => JavaScript_Property_Getter,
+              Convention => JavaScript_Method,
               Link_Name  => "get";
 
    not overriding function Has
@@ -81,7 +81,7 @@ package WebAPI.XHR.Form_Datas is
      Name  : League.Strings.Universal_String)
        return Boolean
          with Import     => True,
-              Convention => JavaScript_Property_Getter,
+              Convention => JavaScript_Method,
               Link_Name  => "has";
 
    not overriding procedure Set
