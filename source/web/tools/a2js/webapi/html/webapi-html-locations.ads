@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,24 +41,38 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with WebAPI.DOM.Documents;
-with WebAPI.HTML.Locations;
 
-package WebAPI.HTML.Documents is
+package WebAPI.HTML.Locations is
 
    pragma Preelaborate;
 
-   type Document is limited interface
-     and WebAPI.DOM.Documents.Document;
+   type Location is limited interface;
 
-   type Document_Access is access all Document'Class
+   type Location_Access is access all Location'Class
      with Storage_Size => 0;
 
-   not overriding function Get_Location
-    (Self : not null access constant Document)
-       return not null WebAPI.HTML.Locations.Location_Access is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "location";
+   not overriding procedure Assign
+    (Self : not null access Location;
+     URL  : WebAPI.DOM_String) is abstract
+        with Import     => True,
+             Convention => JavaScript_Method,
+             Link_Name  => "assign";
+   --  Navigates to the given page.
 
-end WebAPI.HTML.Documents;
+   not overriding procedure Replace
+    (Self : not null access Location;
+     URL  : WebAPI.DOM_String) is abstract
+        with Import     => True,
+             Convention => JavaScript_Method,
+             Link_Name  => "replace";
+   --  Removes the current page from the session history and navigates to
+   --  the given page.
+
+   not overriding procedure Reload
+    (Self : not null access Location) is abstract
+        with Import     => True,
+             Convention => JavaScript_Method,
+             Link_Name  => "reload";
+   --  Reloads the current page.
+
+end WebAPI.HTML.Locations;
