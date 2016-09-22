@@ -236,6 +236,9 @@ package body Matreshka.Servlet_Containers is
       elsif Path.Ends_With (".frag") then
          return League.Strings.To_Universal_String ("x-shader/x-fragment");
 
+      elsif Path.Ends_With (".html") then
+         return League.Strings.To_Universal_String ("text/html");
+
       elsif Path.Ends_With (".js") then
          return League.Strings.To_Universal_String ("text/javascript");
 
