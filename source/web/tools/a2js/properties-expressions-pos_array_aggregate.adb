@@ -123,7 +123,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          begin
             Result.Append ("function(_from,_to){");
             Result.Append
-              ("var _result=Object.create(_ec._ada_array.prototype);");
+              ("var _result=Object.create(_ec._ada_array_ta.prototype);");
             Result.Append ("var _first=_from.map (_ec._pos);");
             Result.Append ("var _len=_to.map (function (_to, i)" &
                              "{ return _ec._pos(_to) - _first[i] + 1; });");

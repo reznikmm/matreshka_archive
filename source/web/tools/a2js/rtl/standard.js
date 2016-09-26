@@ -321,12 +321,16 @@ define('standard', [], function(){
         Object.create (standard._ada_array.prototype);
 
     standard._ada_array_ta.prototype._assign = function (r) {
-        if (this._length.length > 1)
+        if (this._length.length > 1){
             this.A = r.A.slice(0); //  Copy of ArrayBuffer
-        else if (this.A.length == r._length[0])
+            this._u1 = new Uint8Array(this.A);
+            this._f4 = new Float32Array(this.A);
+        }else if (this.A.byteLength == r._length[0] * r._element_size){
             this.A = r.A.slice(r._offset * r._element_size,
-                               r._length[0] * r._element_size);
-        else{
+                               (r._offset + r._length[0]) * r._element_size);
+            this._u1 = new Uint8Array(this.A);
+            this._f4 = new Float32Array(this.A);
+        }else{
             var t,s; // reuse .A if only slice of it is assigned
             t=this._u1.subarray
               (this._offset * this._element_size,
@@ -343,6 +347,15 @@ define('standard', [], function(){
         var ta = this._u1.subarray (offset * this._element_size,
                                     (offset + 1) * this._element_size);
         return this._element_type._cast_ta(ta);
+    };
+
+    standard._ada_array_ta.prototype._slice = function (_from, _to) {
+        var result = standard._ada_array.prototype._slice.apply(this, arguments);
+        result._u1 = this._u1;
+        result._f4 = this._f4;
+        result._element_type = this._element_type;
+        result._element_size = this._element_size;
+        return result;
     };
     
     standard._fortran_array = //  A constructor for any Fortran array
