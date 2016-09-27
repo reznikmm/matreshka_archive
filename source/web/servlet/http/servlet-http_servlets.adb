@@ -232,13 +232,17 @@ package body Servlet.HTTP_Servlets is
                  HTTP_Servlet'Class (Self).Get_Last_Modified (HTTP_Request);
 
             begin
+               if Last_Modified /= Self.Unknown_Time then
+
+                  --  Current version of AWS sets Last_Modified on ALL
+                  --  responses made with AWS.Response.Set.Stream
+                  HTTP_Response.Set_Date_Header
+                    (Self.Last_Modified_Header, Last_Modified);
+               end if;
+
                if Last_Modified = Self.Unknown_Time
                  or else Modified_Since (Last_Modified)
                then
-                  if Last_Modified /= Self.Unknown_Time then
-                     HTTP_Response.Set_Date_Header
-                       (Self.Last_Modified_Header, Last_Modified);
-                  end if;
 
                   HTTP_Servlet'Class (Self).Do_Get
                     (HTTP_Request, HTTP_Response);
