@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -242,7 +242,21 @@ package WebAPI.HTML.Input_Elements is
             Link_Name  => "formTarget";
 
    --             attribute unsigned long height;
-   --             attribute boolean indeterminate;
+
+   not overriding function Get_Indeterminate
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "indeterminate";
+
+   not overriding procedure Set_Indeterminate
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "indeterminate";
+
    --    readonly attribute HTMLElement? list;
 
    not overriding function Get_Max
@@ -260,12 +274,78 @@ package WebAPI.HTML.Input_Elements is
             Link_Name  => "max";
 
    --             attribute long maxLength;
-   --             attribute DOMString min;
+
+   not overriding function Get_Min
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "min";
+
+   not overriding procedure Set_Min
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "min";
+
    --             attribute long minLength;
-   --             attribute boolean multiple;
-   --             attribute DOMString name;
-   --             attribute DOMString pattern;
-   --             attribute DOMString placeholder;
+
+   not overriding function Get_Multiple
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "multiple";
+
+   not overriding procedure Set_Multiple
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "multiple";
+
+   not overriding function Get_Name
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "name";
+
+   not overriding procedure Set_Name
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "name";
+
+   not overriding function Get_Pattern
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "pattern";
+
+   not overriding procedure Set_Pattern
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "pattern";
+
+   not overriding function Get_Placeholder
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "placeholder";
+
+   not overriding procedure Set_Placeholder
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "placeholder";
 
    not overriding function Get_Read_Only
     (Self : not null access constant HTML_Input_Element)
@@ -296,20 +376,86 @@ package WebAPI.HTML.Input_Elements is
             Link_Name  => "required";
 
    --             attribute unsigned long size;
-   --             attribute DOMString src;
-   --             attribute DOMString step;
-   --             attribute DOMString type;
-   --             attribute DOMString defaultValue;
+
+   not overriding function Get_Src
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "src";
+
+   not overriding procedure Set_Src
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "src";
+
+   not overriding function Get_Step
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "step";
+
+   not overriding procedure Set_Step
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "step";
+
+   not overriding function Get_Type
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "type";
+
+   not overriding procedure Set_Type
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "type";
+
+   not overriding function Get_Default_Value
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "defaultValue";
+
+   not overriding procedure Set_Default_Value
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "defaultValue";
+
    --             attribute Date? valueAsDate;
    --             attribute unrestricted double valueAsNumber;
    --             attribute unsigned long width;
    --
    --    void stepUp(optional long n = 1);
    --    void stepDown(optional long n = 1);
-   --
-   --    readonly attribute boolean willValidate;
+
+   not overriding function Get_Will_Validate
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "willValidate";
+
    --    readonly attribute ValidityState validity;
-   --    readonly attribute DOMString validationMessage;
+
+   not overriding function Get_Validation_Message
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "validationMessage";
+
    --    boolean checkValidity();
    --    void setCustomValidity(DOMString error);
    --
@@ -318,11 +464,24 @@ package WebAPI.HTML.Input_Elements is
    --    void select();
    --             attribute unsigned long selectionStart;
    --             attribute unsigned long selectionEnd;
-   --             attribute DOMString selectionDirection;
+
+   not overriding function Get_Selection_Direction
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "selectionDirection";
+
+   not overriding procedure Set_Selection_Direction
+    (Self : not null access constant HTML_Input_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "selectionDirection";
+
    --    void setRangeText(DOMString replacement);
    --    void setRangeText(DOMString replacement, unsigned long start, unsigned long end, optional SelectionMode selectionMode = "preserve");
    --    void setSelectionRange(unsigned long start, unsigned long end, optional DOMString direction);
-   --  };
 
    not overriding function Get_Value
     (Self : not null access constant HTML_Input_Element)
