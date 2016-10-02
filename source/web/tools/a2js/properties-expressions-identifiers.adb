@@ -181,7 +181,7 @@ package body Properties.Expressions.Identifiers is
       end if;
 
       if Asis.Elements.Declaration_Kind (Decl) in
-        Asis.An_Object_Renaming_Declaration
+        Asis.A_Renaming_Declaration
       then
          return Engine.Text.Get_Property
            (Asis.Declarations.Renamed_Entity (Decl), Name);
