@@ -279,6 +279,9 @@ is
        Kind   => F.A_Function_Renaming_Declaration,
        Action => P.Declarations.Function_Renaming_Declaration.Code'Access),
       (Name   => N.Code,
+       Kind   => F.A_Procedure_Renaming_Declaration,
+       Action => P.Declarations.Function_Renaming_Declaration.Code'Access),
+      (Name   => N.Code,
        Kind   => F.A_Defining_Identifier,
        Action => P.Declarations.Defining_Names.Code'Access),
       (Name   => N.Code,
@@ -942,6 +945,10 @@ is
        Name   => N.Is_Dispatching,
        Action => P.Declarations.Function_Renaming_Declaration
        .Is_Dispatching'Access),
+      (Kind   => F.A_Procedure_Renaming_Declaration,
+       Name   => N.Is_Dispatching,
+       Action => P.Declarations.Function_Renaming_Declaration
+       .Is_Dispatching'Access),
       (Name   => N.Is_Dispatching,
        Kind   => F.A_Procedure_Instantiation,
        Action =>
@@ -1002,6 +1009,9 @@ is
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
       (Kind   => F.A_Function_Renaming_Declaration,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Common.False'Access),
+      (Kind   => F.A_Procedure_Renaming_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
       (Kind   => F.A_Null_Procedure_Declaration,
@@ -1129,6 +1139,11 @@ begin
    Self.Call_Convention.Register_Calculator
      (Name   => N.Call_Convention,
       Kind   => F.A_Function_Renaming_Declaration,
+      Action => P.Declarations.Function_Renaming_Declaration
+      .Call_Convention'Access);
+   Self.Call_Convention.Register_Calculator
+     (Name   => N.Call_Convention,
+      Kind   => F.A_Procedure_Renaming_Declaration,
       Action => P.Declarations.Function_Renaming_Declaration
       .Call_Convention'Access);
    Self.Call_Convention.Register_Calculator
