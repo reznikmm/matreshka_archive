@@ -310,6 +310,11 @@ package body Properties.Expressions.Function_Calls is
          Text.Append (".length == 0");
 
          return Text;
+      elsif Func.To_Wide_Wide_String = "League.Strings.Length" then
+         Text.Append (Args (1));
+         Text.Append (".length");
+
+         return Text;
       elsif Func.To_Wide_Wide_String = "System.Storage_Elements.""+""" then
          Text.Append (Args (1));
          Text.Append ("[");
