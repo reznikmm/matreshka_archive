@@ -109,7 +109,7 @@ package body Properties.Definitions.Record_Type is
                   Id := Engine.Text.Get_Property (Names (N), Name);
                   Result.Append (Id);
 
-                  if J /= List'Last and N /= Names'Last then
+                  if J /= List'Last or N /= Names'Last then
                      Result.Append (",");
                   end if;
                end loop;

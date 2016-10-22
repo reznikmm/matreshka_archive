@@ -358,7 +358,9 @@ begin
    Op_From.Append (League.Strings.To_Universal_String ("""mod"""));
    Op_To.Append (League.Strings.To_Universal_String ("%"));
    Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""="""));
-   Op_To.Append (League.Strings.To_Universal_String ("=="));
+   Op_To.Append (League.Strings.To_Universal_String ("==="));
+   Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""/="""));
+   Op_To.Append (League.Strings.To_Universal_String ("!=="));
    Op_From.Append (League.Strings.To_Universal_String ("League.Strings.""&"""));
    Op_To.Append (League.Strings.To_Universal_String ("+"));
 
