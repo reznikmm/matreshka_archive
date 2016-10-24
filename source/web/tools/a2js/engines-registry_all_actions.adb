@@ -351,6 +351,12 @@ is
        Kind   => F.A_Pool_Specific_Access_To_Variable,
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
+       Kind   => F.An_Access_To_Procedure,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.An_Access_To_Function,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
        Kind   => F.A_Box_Expression,
        Action => P.Common.Empty'Access),  --  return "" for <>
       (Name   => N.Code,
