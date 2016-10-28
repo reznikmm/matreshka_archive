@@ -43,6 +43,7 @@
 ------------------------------------------------------------------------------
 
 with WebAPI.DOM.Documents;
+with WebAPI.DOM.Events;
 with WebAPI.XHR.Event_Targets;
 with WebAPI.XHR.Form_Datas;
 
@@ -270,4 +271,12 @@ private
               Convention => JavaScript,
               Link_Name  => "XMLHttpRequest";
 
+   overriding function Dispatch_Event
+    (Self  : not null access XML_Http_Request;
+     Event : not null access WebAPI.DOM.Events.Event'Class)
+     return Boolean
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "dispatchEvent";
+   
 end WebAPI.XHR.Requests;

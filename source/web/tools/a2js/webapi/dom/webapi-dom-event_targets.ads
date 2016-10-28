@@ -44,6 +44,7 @@
 --  This package provides binding to interface EventTarget.
 ------------------------------------------------------------------------------
 with WebAPI.DOM.Event_Listeners;
+with WebAPI.DOM.Events;
 
 package WebAPI.DOM.Event_Targets is
 
@@ -90,5 +91,23 @@ package WebAPI.DOM.Event_Targets is
    --  EventListeners can never be invoked after being removed.
    --  Calling removeEventListener with arguments which do not identify any
    --  currently registered EventListener on the EventTarget has no effect.
+
+   not overriding function Dispatch_Event
+    (Self  : not null access Event_Target;
+     Event : not null access WebAPI.DOM.Events.Event'Class)
+     return Boolean is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "dispatchEvent";
+   --  Dispatches a synthetic event event to target and returns true if either
+   --  event’s cancelable attribute value is false or its preventDefault()
+   --  method was not invoked, and false otherwise.
+
+   not overriding procedure Dispatch_Event
+    (Self  : not null access Event_Target;
+     Event : not null access WebAPI.DOM.Events.Event'Class) is null
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "dispatchEvent";
 
 end WebAPI.DOM.Event_Targets;
