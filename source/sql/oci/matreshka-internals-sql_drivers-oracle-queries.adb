@@ -953,7 +953,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
 
       Code := OCIStmtFetch2 (Self.Handle, Self.DB.Error);
 
-      if Databases.Check_Error (Self.DB, Code) or Code = OCI_NO_DATA then
+      if Code = OCI_NO_DATA or else Databases.Check_Error (Self.DB, Code) then
          Self.State := No_More_Rows;
 
       else

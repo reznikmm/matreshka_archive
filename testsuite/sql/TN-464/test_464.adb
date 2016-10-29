@@ -74,7 +74,7 @@ begin
    declare
       Database : SQL.Databases.SQL_Database :=
         SQL.Databases.Create (Driver, Options);
-        Query    : SQL.Queries.SQL_Query;
+      Query    : SQL.Queries.SQL_Query;
    begin
       Database.Open;
       Query := Database.Query
@@ -82,10 +82,21 @@ begin
 
       begin
          Query.Execute;
-         raise Constraint_Error;
+         raise Program_Error with "SQL_Error is expected";
       exception when SQL.SQL_Error =>
          null;
       end;
+
+      Query := Database.Query (+"select * from dual where 0=1");
+      Query.Execute;
+
+      if Query.Next then
+         raise Program_Error with "No rows are expected";
+      elsif not Query.Error_Message.Is_Empty then
+         raise Program_Error
+           with "unexpected Error_Message: " &
+                   Query.Error_Message.To_UTF_8_String;
+      end if;
 
       Database.Close;
       Database.Open;

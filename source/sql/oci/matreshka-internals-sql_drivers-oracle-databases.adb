@@ -72,7 +72,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
    begin
       case Code is
          when OCI_SUCCESS =>
-            null;
+            Set_Error (Self, "");
 
          when OCI_NEED_DATA =>
             Set_Error (Self, "OCI_NEED_DATA");
@@ -382,10 +382,13 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
    begin
       if Self.Error_Text /= null then
          Matreshka.Internals.Strings.Dereference (Self.Error_Text);
+         Self.Error_Text := null;
       end if;
 
-      Self.Error_Text := League.Strings.Internals.Internal (String);
-      Matreshka.Internals.Strings.Reference (Self.Error_Text);
+      if Text /= "" then
+         Self.Error_Text := League.Strings.Internals.Internal (String);
+         Matreshka.Internals.Strings.Reference (Self.Error_Text);
+      end if;
    end Set_Error;
 
 end Matreshka.Internals.SQL_Drivers.Oracle.Databases;
