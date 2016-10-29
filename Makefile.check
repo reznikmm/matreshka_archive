@@ -132,6 +132,7 @@ sqlite3-valgrind: sqlite3
 oracle:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_sql_oracle_tests.gpr
 	.objs/test_337
+	.objs/test_464
 
 export AMF_DATA_DIR
 amf: AMF_DATA_DIR = .objs/share

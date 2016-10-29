@@ -4,11 +4,11 @@
 --                                                                          --
 --                           SQL Database Access                            --
 --                                                                          --
---                           Testsuite Component                            --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,21 +41,54 @@
 ------------------------------------------------------------------------------
 --  $Revision: 3927 $ $Date: 2013-05-02 22:43:26 +0300 (Чт., 02 мая 2013) $
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_league.gpr";
-with "matreshka_sql.gpr";
-with "matreshka_sql_oracle.gpr";
+--  Checks whether wheter reopen connection hangs the driver.
+------------------------------------------------------------------------------
+with League.Strings;
+with League.Application;
+with SQL.Databases;
+with SQL.Options;
+with SQL.Queries;
 
-project Matreshka_SQL_Oracle_Tests is
+with Matreshka.Internals.SQL_Drivers.Oracle.Factory;
 
-   for Main use
-     ("test_337", "test_464");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/sql/TN-337", "../testsuite/sql/TN-464");
+procedure Test_464 is
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   function "+"
+     (Text : Wide_Wide_String)
+      return League.Strings.Universal_String renames
+        League.Strings.To_Universal_String;
 
-end Matreshka_SQL_Oracle_Tests;
+   Driver   : constant League.Strings.Universal_String := +"ORACLE";
+   Options  : SQL.Options.SQL_Options;
+
+begin
+   Options.Set
+     (Matreshka.Internals.SQL_Drivers.Oracle.User_Option,
+      League.Application.Environment.Value (+"ORACLE_TEST_USER"));
+   Options.Set
+     (Matreshka.Internals.SQL_Drivers.Oracle.Password_Option,
+      League.Application.Environment.Value (+"ORACLE_TEST_PASSWORD"));
+   Options.Set
+     (Matreshka.Internals.SQL_Drivers.Oracle.Database_Option, +"TEST");
+
+   declare
+      Database : SQL.Databases.SQL_Database :=
+        SQL.Databases.Create (Driver, Options);
+        Query    : SQL.Queries.SQL_Query;
+   begin
+      Database.Open;
+      Query := Database.Query
+        (+"declare x number; begin select 1 into x from dual where 0=1;end;");
+
+      begin
+         Query.Execute;
+         raise Constraint_Error;
+      exception when SQL.SQL_Error =>
+         null;
+      end;
+
+      Database.Close;
+      Database.Open;
+   end;
+
+end Test_464;

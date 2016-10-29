@@ -75,12 +75,11 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
             null;
 
          when OCI_NEED_DATA =>
-            null;
+            Set_Error (Self, "OCI_NEED_DATA");
 
-         when OCI_NO_DATA =>
-            null;
+            return True;
 
-         when OCI_SUCCESS_WITH_INFO | OCI_ERROR =>
+         when OCI_SUCCESS_WITH_INFO | OCI_ERROR | OCI_NO_DATA =>
             declare
                use Matreshka.Internals.Strings;
                use type Utf16.Utf16_String_Index;
@@ -126,15 +125,19 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Databases is
             end;
 
          when OCI_INVALID_HANDLE =>
-            Set_Error (Self, "Invalid Handle");
+            Set_Error (Self, "OCI_INVALID_HANDLE");
 
             return True;
 
          when OCI_STILL_EXECUTING =>
-            null;
+            Set_Error (Self, "OCI_STILL_EXECUTING");
+
+            return True;
 
          when OCI_CONTINUE =>
-            null;
+            Set_Error (Self, "OCI_CONTINUE");
+
+            return True;
 
          when others =>
             Set_Error
