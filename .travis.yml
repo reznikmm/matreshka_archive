@@ -1,22 +1,20 @@
 os:
-  - linux
+  - osx
 
-sudo: required
-dist: trusty
 language: generic
 
 services:
 
 before_install:
-  - sudo apt-get update
-  - echo 'DPkg { Options {"--force-confdef";"--force-confnew";}}' > /tmp/dpkg
-  - sudo cp /tmp/dpkg /etc/apt/apt.conf.d/
-  - sudo apt-get upgrade
-  - sudo apt-get dist-upgrade
-  - sudo apt-get install update-manager-core
-  - sudo do-release-upgrade -f DistUpgradeViewNonInteractive
-  - sudo apt-get install gnat gprbuild make
+  - export OSX_GCC=gcc-5.1.0-x86_64-apple-darwin13-2015-bin
+  - export URL=http://sourceforge.net/projects/gnuada/files
+  - wget $URL/'GNAT_GCC%20Mac%20OS%20X/5.1.0/native-2015'/$OSX_GCC.tar.bz2
+  - tar xjf $OSX_GCC.tar.bz2
+  - cd $OSX_GCC; echo -e "\n$HOME/gnat\ny\ny\n" | ./doinstall
+  - export PATH=$HOME/gnat/bin:$PATH
+  - cd $TRAVIS_BUILD_DIR
 
 script:
+  - gnatls -v
   - make
   - make check
