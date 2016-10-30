@@ -9,10 +9,11 @@ services:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install gnat-4.8 gprbuild make
-  - pwd
-  - ls
-  - sudo cp packages/Ubuntu/trusty-gnat48.xml /usr/share/gprconfig/
+  - sudo apt-get upgrade
+  - sudo apt-get dist-upgrade
+  - sudo apt-get install update-manager-core
+  - sudo do-release-upgrade -f DistUpgradeViewNonInteractive
+  - sudo apt-get install gnat gprbuild make
 
 script:
   - gnatmake --version
