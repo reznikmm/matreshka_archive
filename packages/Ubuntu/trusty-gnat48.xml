@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+<gprconfig>
+  <!-- This is gprconfig file to use gnat-4.8 on Ubuntu Trusty LTS 14.04.
+       Default files in Ubuntu allow gprconfig to find gnat-4.6 only. -->
+  <compiler_description>
+    <name>GCC-4.8</name>
+    <executable prefix="1">(.*(-wrs-|-elf-|-eabispe-|avr-|-elinos-linux|-pc).*)?gcc-4.8</executable>
+    <version>
+      <external>${PREFIX}gcc-4.8 -dumpversion</external>
+      <grep regexp=".+"></grep>
+    </version>
+    <languages>C</languages>
+    <target>
+      <external>${PREFIX}gcc-4.8 -dumpmachine</external>
+      <grep regexp="[^\r\n]+"></grep>
+    </target>
+  </compiler_description>
+
+   <configuration>
+     <compilers>
+       <compiler name="GCC-4.8" language="C" />
+     </compilers>
+     <config>
+   package Compiler is
+      for Driver              ("C") use "${PATH(c)}${PREFIX(c)}gcc-4.8";
+      for Leading_Required_Switches   ("C") use
+         Compiler'Leading_Required_Switches ("C") &amp; ("-c", "-x", "c");
+      for Include_Path        ("C") use "CPATH";
+      for Dependency_Switches ("C") use ("-MMD", "-MF", "");
+      for PIC_Option ("C") use ("-fPIC");
+   end Compiler;
+     </config>
+   </configuration>
+  
+  <compiler_description>
+    <name>G++-4.8</name>
+    <executable>g\+\+-4\.6</executable>
+    <version>
+      <external>g++-4.8 -dumpversion</external>
+      <grep regexp=".+"></grep>
+    </version>
+    <languages>C++</languages>
+    <target>
+      <external>g++-4.8 -dumpmachine</external>
+      <grep regexp="[^\r\n]+"></grep>
+    </target>
+  </compiler_description>
+
+   <configuration>
+     <compilers>
+        <compiler name="G++-4.8" language="C++" />
+     </compilers>
+     <config>
+   package Compiler is
+      for Driver              ("C++") use "${PATH(c++)}g++-4.8${PREFIX(c++)}";
+      for Leading_Required_Switches   ("C++") use
+        Compiler'Leading_Required_Switches ("C++") &amp;
+        ("-c", "-x", "c++");
+      for Dependency_Switches ("C++") use ("-MMD", "-MF", "");
+      for Include_Path        ("C++") use "CPATH";
+      for PIC_Option      ("C++") use ("-fPIC");
+   end Compiler;
+     </config>
+   </configuration>
+  
+  <compiler_description>
+    <name>GNAT-4.8</name>
+    <executable prefix="1">(.*(-wrs-|-elf-|-eabispe-|avr-|elinos-linux|pc-).*)?gnatmake</executable>
+    <version>
+      <external>${PREFIX}gnatls -v</external>
+      <grep regexp="^GNATLS.+?(\d+(\.\d+)?)" group="1"></grep>
+    </version>
+    <variable name="gcc_version">
+      <external>${PREFIX}gcc-4.8 -dumpversion</external>
+      <grep regexp=".+"></grep>
+    </variable>
+    <languages>Ada</languages>
+    <runtimes default="default,kernel">
+       <directory group="default" >\.\./lib/gcc/$TARGET/$gcc_version/adalib/</directory>
+       <directory group="default" >\.\./lib/gcc/$TARGET/$gcc_version/ada_source_path</directory>
+       <directory group="2" >\.\./lib/gcc/$TARGET/$gcc_version/rts-(.*)/adalib/</directory>
+    </runtimes>
+    <target>
+      <external>${PREFIX}gcc-4.8 -dumpmachine</external>
+      <grep regexp="[^\r\n]+"></grep>
+    </target>
+  </compiler_description>
+
+  <configuration>
+     <compilers>
+        <compiler name="GNAT-4.8" />
+     </compilers>
+   <config>
+   package Naming is
+      for Spec_Suffix ("Ada") use ".ads";
+      for Body_Suffix ("Ada") use ".adb";
+      for Casing use "lowercase";
+      for Dot_Replacement use "-";
+   end Naming;
+
+   package Compiler is
+      for Driver                   ("Ada") use "${PATH(ada)}${PREFIX(ada)}gcc-4.8";
+      for Leading_Required_Switches        ("Ada") use
+          Compiler'Leading_Required_Switches ("Ada")
+             &amp; ("-c", "-x", "ada", "-gnatA");
+      for Mapping_File_Switches    ("Ada") use ("-gnatem=");
+      for Mapping_Spec_Suffix      ("Ada") use "%s";
+      for Mapping_Body_Suffix      ("Ada") use "%b";
+      for Config_File_Switches     ("Ada") use ("-gnatec=");
+      for Include_Path_File     ("Ada") use "ADA_PRJ_INCLUDE_FILE";
+      for PIC_Option      ("Ada") use ("-fPIC");
+   end Compiler;
+
+   package Binder is
+      for Objects_Path_File     ("Ada") use "ADA_PRJ_OBJECTS_FILE";
+      for Required_Switches     ("Ada") use
+          Binder'Required_Switches ("Ada")  &amp; ("-I-");
+      for Driver         ("Ada") use
+          "${GPRCONFIG_PREFIX}lib/gprbind";
+   end Binder;
+
+   for Toolchain_Version     ("Ada") use "GNAT ${VERSION(ada)}";
+   for Runtime_Library_Dir   ("Ada") use "${RUNTIME_DIR(ada)}";
+   for Runtime_Source_Dir    ("Ada") use "${RUNTIME_DIR(ada)}/../adainclude";
+   </config>
+  </configuration>
+  
+</gprconfig>
