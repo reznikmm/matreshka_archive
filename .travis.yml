@@ -9,6 +9,8 @@ services:
 
 before_install:
   - sudo apt-get update
+  - echo 'DPkg { Options {"--force-confdef";"--force-confnew";}}' > /tmp/dpkg
+  - sudo cp /tmp/dpkg /etc/apt/apt.conf.d/
   - sudo apt-get upgrade
   - sudo apt-get dist-upgrade
   - sudo apt-get install update-manager-core
@@ -16,7 +18,5 @@ before_install:
   - sudo apt-get install gnat gprbuild make
 
 script:
-  - gnatmake --version
-  - gprbuild --version
   - make
   - make check
