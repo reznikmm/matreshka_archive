@@ -111,4 +111,18 @@ private
      Attributes     : XML.SAX.Attributes.SAX_Attributes;
      Success        : in out Boolean);
 
+   not overriding procedure Push
+    (Self  : in out Deployment_Descriptor_Parser;
+     State : States);
+   --  Push given state into state stack.
+
+   not overriding procedure Pop (Self : in out Deployment_Descriptor_Parser);
+   --  Pop state stack to previous state.
+
+   not overriding procedure Error_Unexpected_Tag
+    (Self       : in out Deployment_Descriptor_Parser;
+     Local_Name : League.Strings.Universal_String;
+     Success    : out Boolean);
+   --  Reports "unexpected tag" error. Sets Success to False.
+
 end Matreshka.Spikedog_Deployment_Descriptors.Parsers;

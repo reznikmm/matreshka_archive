@@ -65,20 +65,6 @@ package body Matreshka.Spikedog_Deployment_Descriptors.Parsers is
    Web_App_Tag_Name          : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("web-app");
 
-   procedure Push
-    (Self  : in out Deployment_Descriptor_Parser;
-     State : States);
-   --  Push given state into state stack.
-
-   procedure Pop (Self : in out Deployment_Descriptor_Parser);
-   --  Pop state stack to previous state.
-
-   procedure Error_Unexpected_Tag
-    (Self       : in out Deployment_Descriptor_Parser;
-     Local_Name : League.Strings.Universal_String;
-     Success    : out Boolean);
-   --  Reports "unexpected tag" error. Sets Success to False.
-
    ----------------
    -- Characters --
    ----------------

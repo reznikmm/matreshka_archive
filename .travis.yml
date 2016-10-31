@@ -3,12 +3,13 @@ os:
 
 language: generic
 
-services:
-
 before_install:
-  - export OSX_GCC=gcc-5.1.0-x86_64-apple-darwin13-2015-bin
+  - export NODE_PATH=$(npm config get prefix)/lib/node_modules
+  - npm -g install requirejs
+  - npm -g install js-beautify
+  - export OSX_GCC=gcc-5.2.0-x86_64-apple-darwin15-bin
   - export URL=http://sourceforge.net/projects/gnuada/files
-  - wget $URL/'GNAT_GCC%20Mac%20OS%20X/5.1.0/native-2015'/$OSX_GCC.tar.bz2
+  - wget $URL/'GNAT_GCC%20Mac%20OS%20X/5.2.0/native'/$OSX_GCC.tar.bz2
   - tar xjf $OSX_GCC.tar.bz2
   - cd $OSX_GCC; echo -e "\n$HOME/gnat\ny\ny\n" | ./doinstall
   - export PATH=$HOME/gnat/bin:$PATH
@@ -18,3 +19,7 @@ script:
   - gnatls -v
   - make
   - make check
+
+notifications:
+  irc: "irc.rusnet.org.ru#ada"
+
