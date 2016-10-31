@@ -61,6 +61,8 @@ package body XML.Templates.Processors is
      := League.Strings.To_Universal_String ("if");
    For_Name        : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("for");
+   Boolean_Name    : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("boolean.");
 
    procedure Substitute
     (Self         : in out Template_Processor'Class;
@@ -704,20 +706,52 @@ package body XML.Templates.Processors is
 
          else
             for J in 1 .. Attributes.Length loop
-               Self.Substitute (Attributes (J), True, Aux, Success);
 
-               if not Success then
-                  return;
-               end if;
+               if Attributes.Namespace_URI (J) = Template_URI then
+                  if Attributes.Local_Name (J).Starts_With (Boolean_Name) then
+                     Parser.Evaluate_Simple_Expression
+                       (Attributes.Value (J),
+                        Self.Parameters,
+                        Value,
+                        Success);
 
-               if Attributes.Namespace_URI (J).Is_Empty then
+                     if not Success then
+                        return;
+                     end if;
+
+                     if League.Holders.Has_Tag
+                       (Value, League.Holders.Booleans.Value_Tag)
+                     then
+                        if League.Holders.Booleans.Element (Value) then
+                           Aux := Attributes.Local_Name (J).Tail_From
+                             (Boolean_Name.Length + 1);
+
+                           Result.Set_Value (Aux, Aux);
+                        end if;
+
+                     else
+                        raise Program_Error;
+                     end if;
+
+                  else
+                     raise Program_Error;
+                  end if;
+
+               elsif Attributes.Namespace_URI (J).Is_Empty then
+                  Self.Substitute (Attributes (J), True, Aux, Success);
                   Result.Set_Value (Attributes.Qualified_Name (J), Aux);
 
                else
+                  Self.Substitute (Attributes (J), True, Aux, Success);
+
                   Result.Set_Value
                    (Attributes.Namespace_URI (J),
                     Attributes.Local_Name (J),
                     Aux);
+               end if;
+
+               if not Success then
+                  return;
                end if;
             end loop;
 
