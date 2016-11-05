@@ -81,7 +81,7 @@ procedure Asis2JS is
    Engine        : aliased Engines.Contexts.Context;
    Context       : Asis.Context;
    Source_File   : League.Strings.Universal_String;
-   Include_Paths : League.String_Vectors.Universal_String_Vector;
+   Options       : League.String_Vectors.Universal_String_Vector;
    ADT_File      : League.Strings.Universal_String;
    Output_File   : League.Strings.Universal_String;
 
@@ -204,12 +204,11 @@ procedure Asis2JS is
       Success   : Boolean;
       Source    : GNAT.Strings.String_Access
         := new String'(Source_File.To_UTF_8_String);
-      Arguments : GNAT.Strings.String_List (1 .. Include_Paths.Length);
+      Arguments : GNAT.Strings.String_List (1 .. Options.Length);
 
    begin
-      for J in 1 .. Include_Paths.Length loop
-         Arguments (J) :=
-           new String'("-I" & Include_Paths (J).To_UTF_8_String);
+      for J in 1 .. Options.Length loop
+         Arguments (J) := new String'(Options (J).To_UTF_8_String);
       end loop;
 
       Asis.Extensions.Compile (Source, Arguments, Success);
@@ -234,8 +233,10 @@ begin
 
    begin
       for J in 1 .. Arguments.Length loop
-         if Arguments (J).Starts_With ("-I") then
-            Include_Paths.Append (Arguments (J).Tail_From (3));
+         if Arguments (J).Starts_With ("-I")
+           or Arguments (J).Starts_With ("-g")
+         then
+            Options.Append (Arguments (J));
 
          elsif Source_File.Is_Empty then
             Source_File := Arguments (J);
