@@ -456,9 +456,20 @@ package WebAPI.HTML.Input_Elements is
               Convention => JavaScript_Property_Getter,
               Link_Name  => "validationMessage";
 
-   --    boolean checkValidity();
-   --    void setCustomValidity(DOMString error);
-   --
+   not overriding function Check_Validity
+    (Self : not null access constant HTML_Input_Element)
+       return Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "checkValidity";
+
+   not overriding procedure Set_Custom_Validity
+    (Self  : not null access constant HTML_Input_Element;
+     Error : WebAPI.DOM_String) is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "setCustomValidity";
+
    --    readonly attribute NodeList labels;
    --
    --    void select();

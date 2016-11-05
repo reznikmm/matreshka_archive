@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,188 +43,167 @@
 ------------------------------------------------------------------------------
 with WebAPI.HTML.Elements;
 
-package WebAPI.HTML.Button_Elements is
+package WebAPI.HTML.Form_Elements is
 
    pragma Preelaborate;
 
-   type HTML_Button_Element is limited interface
+   type HTML_Form_Element is limited interface
      and WebAPI.HTML.Elements.HTML_Element;
 
-   type HTML_Button_Element_Access is access all HTML_Button_Element'Class
-     with Storage_Size => 0;
+   type HTML_Form_Element_Access is access all HTML_Form_Element'Class
+      with Storage_Size => 0;
 
-   not overriding function Get_Autofocus
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_Boolean is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "autofocus";
+--   XXX Not implemented
+--
+--   interface HTMLFormElement : HTMLElement {
+--    readonly attribute HTMLFormControlsCollection elements;
+--    readonly attribute long length;
+--    getter Element (unsigned long index);
+--    getter (RadioNodeList or Element) (DOMString name);
 
-   not overriding procedure Set_Autofocus
-    (Self : not null access constant HTML_Button_Element;
-     To   : WebAPI.DOM_Boolean) is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Setter,
-            Link_Name  => "autofocus";
-
-   not overriding function Get_Disabled
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_Boolean is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "disabled";
-
-   not overriding procedure Set_Disabled
-    (Self : not null access constant HTML_Button_Element;
-     To   : WebAPI.DOM_Boolean) is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Setter,
-            Link_Name  => "disabled";
-
-   --    readonly attribute HTMLFormElement? form;
-
-   not overriding function Get_Form_Action
-    (Self : not null access constant HTML_Button_Element)
+   not overriding function Get_Accept_Charset
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
-              Link_Name  => "formAction";
+              Link_Name  => "acceptCharset";
 
-   not overriding procedure Set_Form_Action
-    (Self : not null access constant HTML_Button_Element;
+   not overriding procedure Set_Accept_Charset
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
-            Link_Name  => "formAction";
+            Link_Name  => "acceptCharset";
 
-   not overriding function Get_Form_Enctype
-    (Self : not null access constant HTML_Button_Element)
+   not overriding function Get_Action
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
-              Link_Name  => "formEnctype";
+              Link_Name  => "action";
 
-   not overriding procedure Set_Form_Enctype
-    (Self : not null access constant HTML_Button_Element;
+   not overriding procedure Set_Action
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
-            Link_Name  => "formEnctype";
+            Link_Name  => "action";
 
-   not overriding function Get_Form_Method
-    (Self : not null access constant HTML_Button_Element)
+   not overriding function Get_Autocomplete
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
-              Link_Name  => "formMethod";
+              Link_Name  => "autocomplete";
 
-   not overriding procedure Set_Form_Method
-    (Self : not null access constant HTML_Button_Element;
+   not overriding procedure Set_Autocomplete
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
-            Link_Name  => "formMethod";
+            Link_Name  => "autocomplete";
 
-   not overriding function Get_Form_No_Validate
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_Boolean is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "formNoValidate";
-
-   not overriding procedure Set_Form_No_Validate
-    (Self : not null access constant HTML_Button_Element;
-     To   : WebAPI.DOM_Boolean) is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Setter,
-            Link_Name  => "formNoValidate";
-
-   not overriding function Get_Form_Target
-    (Self : not null access constant HTML_Button_Element)
+   not overriding function Get_Enctype
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
-              Link_Name  => "formTarget";
+              Link_Name  => "enctype";
 
-   not overriding procedure Set_Form_Target
-    (Self : not null access constant HTML_Button_Element;
+   not overriding procedure Set_Enctype
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
-            Link_Name  => "formTarget";
+            Link_Name  => "enctype";
+
+   not overriding function Get_Encoding
+    (Self : not null access constant HTML_Form_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "encoding";
+
+   not overriding procedure Set_Encoding
+    (Self : not null access constant HTML_Form_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "encoding";
+
+   not overriding function Get_Method
+    (Self : not null access constant HTML_Form_Element)
+       return WebAPI.DOM_String is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "method";
+
+   not overriding procedure Set_Method
+    (Self : not null access constant HTML_Form_Element;
+     To   : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "method";
 
    not overriding function Get_Name
-    (Self : not null access constant HTML_Button_Element)
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "name";
 
    not overriding procedure Set_Name
-    (Self : not null access constant HTML_Button_Element;
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "name";
 
-   not overriding function Get_Type
-    (Self : not null access constant HTML_Button_Element)
+   not overriding function Get_No_Validate
+    (Self : not null access constant HTML_Form_Element)
+       return Boolean is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "noValidate";
+
+   not overriding procedure Set_No_Validate
+    (Self : not null access constant HTML_Form_Element;
+     To   : Boolean) is abstract
+       with Import     => True,
+            Convention => JavaScript_Property_Setter,
+            Link_Name  => "noValidate";
+
+   not overriding function Get_Target
+    (Self : not null access constant HTML_Form_Element)
        return WebAPI.DOM_String is abstract
          with Import     => True,
               Convention => JavaScript_Property_Getter,
-              Link_Name  => "type";
+              Link_Name  => "target";
 
-   not overriding procedure Set_Type
-    (Self : not null access constant HTML_Button_Element;
+   not overriding procedure Set_Target
+    (Self : not null access constant HTML_Form_Element;
      To   : WebAPI.DOM_String) is abstract
        with Import     => True,
             Convention => JavaScript_Property_Setter,
-            Link_Name  => "type";
+            Link_Name  => "target";
 
-   not overriding function Get_Value
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_String is abstract
+   not overriding procedure Submit
+    (Self : not null access constant HTML_Form_Element) is abstract
          with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "vlaue";
+              Convention => JavaScript_Method,
+              Link_Name  => "submit";
 
-   not overriding procedure Set_Value
-    (Self : not null access constant HTML_Button_Element;
-     To   : WebAPI.DOM_String) is abstract
-       with Import     => True,
-            Convention => JavaScript_Property_Setter,
-            Link_Name  => "value";
-
-   not overriding function Get_Will_Validate
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_Boolean is abstract
+   not overriding procedure Reset
+    (Self : not null access constant HTML_Form_Element) is abstract
          with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "willValidate";
-
-   --    readonly attribute ValidityState validity;
-
-   not overriding function Get_Validation_Message
-    (Self : not null access constant HTML_Button_Element)
-       return WebAPI.DOM_String is abstract
-         with Import     => True,
-              Convention => JavaScript_Property_Getter,
-              Link_Name  => "validationMessage";
+              Convention => JavaScript_Method,
+              Link_Name  => "reset";
 
    not overriding function Check_Validity
-    (Self : not null access constant HTML_Button_Element)
+    (Self : not null access constant HTML_Form_Element)
        return Boolean is abstract
          with Import     => True,
               Convention => JavaScript_Method,
               Link_Name  => "checkValidity";
 
-   not overriding procedure Set_Custom_Validity
-    (Self  : not null access constant HTML_Button_Element;
-     Error : WebAPI.DOM_String) is abstract
-         with Import     => True,
-              Convention => JavaScript_Method,
-              Link_Name  => "setCustomValidity";
-
-   --    readonly attribute NodeList labels;
-
-end WebAPI.HTML.Button_Elements;
+end WebAPI.HTML.Form_Elements;
