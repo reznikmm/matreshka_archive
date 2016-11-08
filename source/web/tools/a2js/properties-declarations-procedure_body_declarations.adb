@@ -131,12 +131,16 @@ package body Properties.Declarations.Procedure_Body_Declarations is
       Text.Append (" (");
 
       declare
-         List : constant Asis.Declaration_List :=
+         Default : League.Strings.Universal_String;
+         List    : constant Asis.Declaration_List :=
            Asis.Declarations.Parameter_Profile (Element);
       begin
          for J in List'Range loop
             declare
-               Arg_Code : constant League.Strings.Universal_String :=
+               Init_Code : League.Strings.Universal_String;
+               Init      : constant Asis.Expression :=
+                 Asis.Declarations.Initialization_Expression (List (J));
+               Arg_Code  : constant League.Strings.Universal_String :=
                  Engine.Text.Get_Property
                    (Asis.Declarations.Names (List (J)) (1), Name);
             begin
@@ -146,12 +150,26 @@ package body Properties.Declarations.Procedure_Body_Declarations is
                   if J /= List'Last then
                      Text.Append (",");
                   end if;
+
+                  if not Asis.Elements.Is_Nil (Init) then
+                     Init_Code := Engine.Text.Get_Property (Init, Name);
+
+                     Default.Append (Arg_Code);
+                     Default.Append (" = typeof ");
+                     Default.Append (Arg_Code);
+                     Default.Append (" === 'undefined' ? ");
+                     Default.Append (Init_Code);
+                     Default.Append (" : ");
+                     Default.Append (Arg_Code);
+                     Default.Append (";");
+                  end if;
                end if;
             end;
          end loop;
-      end;
 
-      Text.Append ("){");
+         Text.Append ("){");
+         Text.Append (Default);
+      end;
 
       if Output.Length > 0 then
          declare
