@@ -17,7 +17,7 @@ before_install:
 
 script:
   - gnatls -v
-  - make
+  - make config && ./configure --disable-amf && make
   - make check
 
 notifications:
