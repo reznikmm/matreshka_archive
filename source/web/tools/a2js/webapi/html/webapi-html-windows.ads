@@ -115,4 +115,27 @@ package WebAPI.HTML.Windows is
               Link_Name  => "stop";
    --  Cancels the document load.
 
+   --  other browsing contexts
+
+   not overriding function Get_Opener
+    (Self : not null access Window)
+      return WebAPI.HTML.Windows.Window_Access is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "opener";
+   --  The opener IDL attribute on the Window object, on getting, must return
+   --  the WindowProxy object of the browsing context from which the current
+   --  browsing context was created (its opener browsing context), if there is
+   --  one, if it is still available, and if the current browsing context has
+   --  not disowned its opener; otherwise, it must return null.
+
+   not overriding procedure Set_Opener
+    (Self  : not null access Window;
+     Value :  WebAPI.HTML.Windows.Window_Access) is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Setter,
+             Link_Name  => "opener";
+   --  On setting, if the new value is null then the current browsing context
+   --  must disown its opener;
+
 end WebAPI.HTML.Windows;
