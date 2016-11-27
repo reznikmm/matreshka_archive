@@ -42,7 +42,6 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with League.Characters;
-with League.Holders.Booleans;
 
 with XML.Templates.Processors.Parser;
 with XML.Templates.Streams.Holders;
@@ -613,7 +612,7 @@ package body XML.Templates.Processors is
    is
       Result : XML.SAX.Attributes.SAX_Attributes;
       Aux    : League.Strings.Universal_String;
-      Value  : League.Holders.Holder;
+      Value  : Boolean;
 
    begin
       if Self.Accumulate /= 0 then
@@ -679,7 +678,7 @@ package body XML.Templates.Processors is
                   return;
                end if;
 
-               Parser.Evaluate_Simple_Expression
+               Parser.Evaluate_Boolean_Expression
                 (Attributes (Expression_Name),
                  Self.Parameters,
                  Value,
@@ -689,15 +688,8 @@ package body XML.Templates.Processors is
                   return;
                end if;
 
-               if League.Holders.Has_Tag
-                   (Value, League.Holders.Booleans.Value_Tag)
-               then
-                  if not League.Holders.Booleans.Element (Value) then
-                     Self.Skip := 1;
-                  end if;
-
-               else
-                  raise Program_Error;
+               if not Value then
+                  Self.Skip := 1;
                end if;
 
             else
@@ -709,7 +701,7 @@ package body XML.Templates.Processors is
 
                if Attributes.Namespace_URI (J) = Template_URI then
                   if Attributes.Local_Name (J).Starts_With (Boolean_Name) then
-                     Parser.Evaluate_Simple_Expression
+                     Parser.Evaluate_Boolean_Expression
                        (Attributes.Value (J),
                         Self.Parameters,
                         Value,
@@ -719,18 +711,11 @@ package body XML.Templates.Processors is
                         return;
                      end if;
 
-                     if League.Holders.Has_Tag
-                       (Value, League.Holders.Booleans.Value_Tag)
-                     then
-                        if League.Holders.Booleans.Element (Value) then
-                           Aux := Attributes.Local_Name (J).Tail_From
-                             (Boolean_Name.Length + 1);
+                     if Value then
+                        Aux := Attributes.Local_Name (J).Tail_From
+                          (Boolean_Name.Length + 1);
 
-                           Result.Set_Value (Aux, Aux);
-                        end if;
-
-                     else
-                        raise Program_Error;
+                        Result.Set_Value (Aux, Aux);
                      end if;
 
                   else

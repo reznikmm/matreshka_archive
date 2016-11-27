@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                        Runtime Library Component                         --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,26 +41,62 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Characters.Wide_Wide_Latin_1;
 
-private package XML.Templates.Processors.Parser is
+with League.Holders;
+with League.Strings;
 
-   procedure Evaluate_Boolean_Expression
-    (Text    : League.Strings.Universal_String;
-     Context : String_Holder_Maps.Map;
-     Value   : out Boolean;
-     Success : out Boolean);
+with XML.SAX.HTML5_Writers;
+with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
+with XML.SAX.String_Output_Destinations;
+with XML.Templates.Processors;
 
-   procedure Evaluate_For_Expression
-    (Text     : League.Strings.Universal_String;
-     Context  : String_Holder_Maps.Map;
-     Variable : out League.Strings.Universal_String;
-     Value    : out League.Holders.Holder;
-     Success  : out Boolean);
+procedure Test_424 is
 
-   procedure Evaluate_Simple_Expression
-    (Text    : League.Strings.Universal_String;
-     Context : String_Holder_Maps.Map;
-     Value   : out League.Holders.Holder;
-     Success : out Boolean);
+   use type League.Strings.Universal_String;
 
-end XML.Templates.Processors.Parser;
+   Source : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("<html xmlns='http://www.w3.org/1999/xhtml'"
+            & " xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
+            & "<body>"
+            & "<ul>"
+            & "<mtl:if expression='item is null'>is null"
+            & "</mtl:if>"
+            & "<mtl:if expression='item is not null'>is not null"
+            & "</mtl:if>"
+            & "</ul>"
+            & "</body>"
+            & "</html>");
+   Expected : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("<!DOCTYPE html>"
+            & Ada.Characters.Wide_Wide_Latin_1.LF
+            & "<ul>is null</ul>");
+
+   Input     : aliased XML.SAX.String_Input_Sources.String_Input_Source;
+   Reader    : XML.SAX.Simple_Readers.Simple_Reader;
+   Processor : aliased XML.Templates.Processors.Template_Processor;
+   Writer    : aliased XML.SAX.HTML5_Writers.HTML5_Writer;
+   Output    : aliased
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
+
+begin
+   Reader.Set_Content_Handler (Processor'Unchecked_Access);
+   Reader.Set_Lexical_Handler (Processor'Unchecked_Access);
+   Processor.Set_Content_Handler (Writer'Unchecked_Access);
+   Processor.Set_Lexical_Handler (Writer'Unchecked_Access);
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
+
+   Processor.Set_Parameter
+     (League.Strings.To_Universal_String ("item"),
+      League.Holders.Empty_Holder);
+
+   Input.Set_String (Source);
+   Reader.Parse (Input'Unchecked_Access);
+
+   if Output.Get_Text /= Expected then
+      raise Program_Error;
+   end if;
+end Test_424;

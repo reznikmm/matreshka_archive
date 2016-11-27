@@ -52,14 +52,17 @@ package body XML.Templates.Processors.Parser is
    type Token_Kinds is
     (Token_Identifier,
      Token_Full_Stop,
+     Token_Is,
      Token_Of,
      Token_Not,
+     Token_Null,
      Token_End_Of_Expression);
-   subtype Keyword_Token is Token_Kinds range Token_Of .. Token_Not;
+   subtype Keyword_Token is Token_Kinds range Token_Is .. Token_Null;
 
    type Scanner_Type is tagged record
       Text    : League.Strings.Universal_String;
       Current : Positive := 1;
+      Token   : Token_Kinds;
       First   : Positive;
       Last    : Natural;
    end record;
@@ -69,10 +72,92 @@ package body XML.Templates.Processors.Parser is
    function Token_Image
     (Self : Scanner_Type'Class) return League.Strings.Universal_String;
 
+   procedure Evaluate_Simple_Expression
+    (Scanner : in out Scanner_Type'Class;
+     Context : String_Holder_Maps.Map;
+     Value   : out League.Holders.Holder;
+     Success : out Boolean);
+
    Keywords : constant array (Keyword_Token)
      of League.Strings.Universal_String
-       := (Token_Of  => League.Strings.To_Universal_String ("of"),
-           Token_Not => League.Strings.To_Universal_String ("not"));
+       := (Token_Is   => League.Strings.To_Universal_String ("is"),
+           Token_Of   => League.Strings.To_Universal_String ("of"),
+           Token_Not  => League.Strings.To_Universal_String ("not"),
+           Token_Null => League.Strings.To_Universal_String ("null"));
+
+   ---------------------------------
+   -- Evaluate_Boolean_Expression --
+   ---------------------------------
+
+   procedure Evaluate_Boolean_Expression
+    (Text    : League.Strings.Universal_String;
+     Context : String_Holder_Maps.Map;
+     Value   : out Boolean;
+     Success : out Boolean)
+   is
+      Scanner   : Scanner_Type;
+      Holder    : League.Holders.Holder;
+      Invert    : Boolean := False;
+   begin
+      Scanner.Text := Text;
+
+      --  Process leading 'not' keywords
+
+      loop
+         case Scanner.Next_Token is
+            when Token_Not =>
+               Invert := not Invert;
+
+            when others =>
+               --  Rewind scanner to the beginning of text
+               Scanner.Current := 1;
+               exit;
+
+         end case;
+      end loop;
+
+      Scanner.Evaluate_Simple_Expression (Context, Holder, Success);
+
+      if Success then
+         case Scanner.Token is
+            when Token_End_Of_Expression =>
+               if League.Holders.Has_Tag
+                 (Holder, League.Holders.Booleans.Value_Tag)
+               then
+                  Value := League.Holders.Booleans.Element (Holder);
+
+               else
+                  --  Only Boolean result is allowed in boolean expression
+                  Success := False;
+               end if;
+
+            when Token_Is =>
+               case Scanner.Next_Token is
+                  when Token_Null =>
+                     Value := League.Holders.Is_Empty (Holder);
+
+                  when Token_Not =>
+                     Value := not League.Holders.Is_Empty (Holder);
+
+                     if Scanner.Next_Token /= Token_Null then
+                        Success := False;
+                     end if;
+
+                  when others =>
+                     Success := False;
+               end case;
+
+               if Scanner.Next_Token /= Token_End_Of_Expression then
+                  Success := False;
+               end if;
+
+            when others =>
+               Success := False;
+         end case;
+
+         Value := Value xor Invert;
+      end if;
+   end Evaluate_Boolean_Expression;
 
    -----------------------------
    -- Evaluate_For_Expression --
@@ -119,8 +204,8 @@ package body XML.Templates.Processors.Parser is
 
       --  Evaluate rest of expression.
 
-      Evaluate_Simple_Expression
-       (Text.Slice (Scanner.Current, Text.Length), Context, Value, Success);
+      Scanner.Evaluate_Simple_Expression (Context, Value, Success);
+      Success := Success and then Scanner.Token = Token_End_Of_Expression;
    end Evaluate_For_Expression;
 
    --------------------------------
@@ -134,19 +219,30 @@ package body XML.Templates.Processors.Parser is
      Success : out Boolean)
    is
       Scanner   : Scanner_Type;
-      JS_Object : League.JSON.Objects.JSON_Object;
-      Invert    : Boolean := False;
-
    begin
       Scanner.Text := Text;
+      Scanner.Evaluate_Simple_Expression (Context, Value, Success);
+      Success := Success and then Scanner.Token = Token_End_Of_Expression;
+   end Evaluate_Simple_Expression;
 
-      --  Lookup for identifier. Process leading 'not' keywords
+   --------------------------------
+   -- Evaluate_Simple_Expression --
+   --------------------------------
+
+   procedure Evaluate_Simple_Expression
+    (Scanner : in out Scanner_Type'Class;
+     Context : String_Holder_Maps.Map;
+     Value   : out League.Holders.Holder;
+     Success : out Boolean)
+   is
+      JS_Object : League.JSON.Objects.JSON_Object;
+
+   begin
+
+      --  Lookup for identifier
 
       loop
          case Scanner.Next_Token is
-            when Token_Not =>
-               Invert := not Invert;
-
             when Token_Identifier =>
                Value := Context (Scanner.Token_Image.To_Casefold);
                Success := True;
@@ -171,9 +267,7 @@ package body XML.Templates.Processors.Parser is
                null;
 
             when others =>
-               League.Holders.Clear (Value);
-               Success := False;
-
+               --  Return on end of expression or any other token
                return;
          end case;
 
@@ -216,24 +310,6 @@ package body XML.Templates.Processors.Parser is
                return;
          end case;
       end loop;
-
-      --  Invert result if 'not' was presented
-
-      if Invert then
-         --  Only boolean values could be inverted
-         if League.Holders.Has_Tag
-           (Value, League.Holders.Booleans.Value_Tag)
-         then
-            Value := League.Holders.Booleans.To_Holder
-              (not League.Holders.Booleans.Element (Value));
-
-         else
-            League.Holders.Clear (Value);
-            Success := False;
-
-            return;
-         end if;
-      end if;
    end Evaluate_Simple_Expression;
 
    ----------------
@@ -257,12 +333,11 @@ package body XML.Templates.Processors.Parser is
       end loop;
 
       if Self.First > Self.Text.Length then
-         return Token_End_Of_Expression;
-      end if;
+         Self.Token := Token_End_Of_Expression;
 
       --  Extract identifier
 
-      if Self.Text (Self.First).Is_ID_Start then
+      elsif Self.Text (Self.First).Is_ID_Start then
          Self.Current := Self.Current + 1;
 
          while Self.Current <= Self.Text.Length loop
@@ -272,25 +347,28 @@ package body XML.Templates.Processors.Parser is
          end loop;
 
          Self.Last := Self.Current - 1;
+         Self.Token := Token_Identifier;
 
          for J in Keywords'Range loop
             if Self.Last - Self.First + 1 = Keywords (J).Length
               and then Self.Token_Image = Keywords (J)
             then
-               return J;
+               Self.Token := J;
+
+               exit;
             end if;
          end loop;
 
-         return Token_Identifier;
-
       elsif Self.Text (Self.First) = League.Characters.Latin.Full_Stop then
          Self.Current := Self.Current + 1;
+         Self.Token := Token_Full_Stop;
 
-         return Token_Full_Stop;
       else
 
          raise Constraint_Error with "Syntax error";
       end if;
+
+      return Self.Token;
    end Next_Token;
 
    -----------------
