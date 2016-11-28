@@ -98,6 +98,7 @@ package body XML.Templates.Processors.Parser is
       Scanner   : Scanner_Type;
       Holder    : League.Holders.Holder;
       Invert    : Boolean := False;
+      Save      : Positive := 1;  --  Position of scanner after last 'not'
    begin
       Scanner.Text := Text;
 
@@ -107,10 +108,11 @@ package body XML.Templates.Processors.Parser is
          case Scanner.Next_Token is
             when Token_Not =>
                Invert := not Invert;
+               Save := Scanner.Current;
 
             when others =>
                --  Rewind scanner to the beginning of text
-               Scanner.Current := 1;
+               Scanner.Current := Save;
                exit;
 
          end case;
@@ -289,12 +291,6 @@ package body XML.Templates.Processors.Parser is
 
                   Value := League.JSON.Values.To_Holder
                     (JS_Object.Value (Scanner.Token_Image));
-
-                  if League.Holders.Is_Empty (Value) then
-                     Success := False;
-
-                     return;
-                  end if;
 
                else
                   League.Holders.Clear (Value);
