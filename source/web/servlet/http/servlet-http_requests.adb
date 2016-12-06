@@ -83,7 +83,7 @@ package body Servlet.HTTP_Requests is
 
    begin
       if Parameters.Length /= 0 then
-         return Parameters (1);
+         return Parameters.Element (1);
 
       else
          return X : Servlet.HTTP_Parameters.HTTP_Parameter;
