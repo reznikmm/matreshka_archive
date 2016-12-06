@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,8 @@ with League.String_Vectors;
 with League.Strings;
 
 with Servlet.HTTP_Cookie_Sets;
+with Servlet.HTTP_Parameters;
+with Servlet.HTTP_Parameter_Vectors;
 with Servlet.HTTP_Sessions;
 with Servlet.HTTP_Upgrade_Handlers;
 with Servlet.Requests;
@@ -109,6 +111,18 @@ package Servlet.HTTP_Requests is
    --  Returns the name of the HTTP method with which this request was made,
    --  for example, GET, POST, or PUT. Same as the value of the CGI variable
    --  REQUEST_METHOD.
+
+   function Get_Parameter
+    (Self : HTTP_Servlet_Request'Class;
+     Name : League.Strings.Universal_String)
+       return Servlet.HTTP_Parameters.HTTP_Parameter;
+   --  Gets the Parameters with the given name.
+
+   not overriding function Get_Parameter_Values
+    (Self : HTTP_Servlet_Request;
+     Name : League.Strings.Universal_String)
+       return Servlet.HTTP_Parameter_Vectors.HTTP_Parameter_Vector is abstract;
+   --  Gets the Parameters with the given name.
 
    not overriding function Get_Path_Info
     (Self : HTTP_Servlet_Request)

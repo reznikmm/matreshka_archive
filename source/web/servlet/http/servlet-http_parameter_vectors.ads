@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,91 +41,21 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Containers;
+with Ada.Containers.Vectors;
 
-package body Servlet.HTTP_Requests is
+with Servlet.HTTP_Parameters;
 
-   use type League.Strings.Universal_String;
+package Servlet.HTTP_Parameter_Vectors is
 
-   ----------------------
-   -- Get_Context_Path --
-   ----------------------
+   pragma Preelaborate;
 
-   function Get_Context_Path
-    (Self : HTTP_Servlet_Request'Class) return League.Strings.Universal_String
-   is
-      Aux : constant League.String_Vectors.Universal_String_Vector
-        := Self.Get_Context_Path;
+   package HTTP_Parameter_Vectors is
+     new Ada.Containers.Vectors
+          (Positive,
+           Servlet.HTTP_Parameters.HTTP_Parameter,
+           Servlet.HTTP_Parameters."=");
 
-   begin
-      if Aux.Is_Empty then
-         return League.Strings.Empty_Universal_String;
+   type HTTP_Parameter_Vector is
+     new HTTP_Parameter_Vectors.Vector with null record;
 
-      else
-         return '/' & Aux.Join ('/');
-      end if;
-   end Get_Context_Path;
-
-   -------------------
-   -- Get_Parameter --
-   -------------------
-
-   function Get_Parameter
-    (Self : HTTP_Servlet_Request'Class;
-     Name : League.Strings.Universal_String)
-       return Servlet.HTTP_Parameters.HTTP_Parameter
-   is
-      use type Ada.Containers.Count_Type;
-
-      Parameters :
-        constant Servlet.HTTP_Parameter_Vectors.HTTP_Parameter_Vector
-          := Self.Get_Parameter_Values (Name);
-
-   begin
-      if Parameters.Length /= 0 then
-         return Parameters (1);
-
-      else
-         return X : Servlet.HTTP_Parameters.HTTP_Parameter;
-      end if;
-   end Get_Parameter;
-
-   -------------------
-   -- Get_Path_Info --
-   -------------------
-
-   function Get_Path_Info
-    (Self : HTTP_Servlet_Request'Class) return League.Strings.Universal_String
-   is
-      Aux : constant League.String_Vectors.Universal_String_Vector
-        := Self.Get_Path_Info;
-
-   begin
-      if Aux.Is_Empty then
-         return League.Strings.Empty_Universal_String;
-
-      else
-         return '/' & Aux.Join ('/');
-      end if;
-   end Get_Path_Info;
-
-   ----------------------
-   -- Get_Servlet_Path --
-   ----------------------
-
-   function Get_Servlet_Path
-    (Self : HTTP_Servlet_Request'Class) return League.Strings.Universal_String
-   is
-      Aux : constant League.String_Vectors.Universal_String_Vector
-        := Self.Get_Servlet_Path;
-
-   begin
-      if Aux.Is_Empty then
-         return League.Strings.Empty_Universal_String;
-
-      else
-         return '/' & Aux.Join ('/');
-      end if;
-   end Get_Servlet_Path;
-
-end Servlet.HTTP_Requests;
+end Servlet.HTTP_Parameter_Vectors;
