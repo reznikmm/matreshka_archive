@@ -59,8 +59,13 @@ package body Matreshka.Internals.Calendars.Times is
       Correction : Absolute_Time;
    end record;
 
+   --  When adding new leap second check this:
+   --  (Leaps(1).Julian_Day - Leaps(2).Julian_Day) * 24*60*60 + 1 leap second
+   --  should be equal to (Leaps(1).Stamp - Leaps(2).Stamp)/10_000_000
+
    Leaps : constant array (Positive range <>) of Leap_Second_Information
-     := ((2457204, 136550016250000000, 260000000),   --  2015-06-30
+     := ((2457754, 137025216260000000, 270000000),   --  2016-12-31
+         (2457204, 136550016250000000, 260000000),   --  2015-06-30
          (2456109, 135603936240000000, 250000000),   --  2012-06-30
          (2454832, 134500608230000000, 240000000),   --  2008-12-31
          (2453736, 133553664220000000, 230000000),   --  2005-12-31
