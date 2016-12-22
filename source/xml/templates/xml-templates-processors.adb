@@ -54,6 +54,10 @@ package body XML.Templates.Processors is
      := League.Strings.To_Universal_String
          ("http://forge.ada-ru.org/matreshka/template");
 
+   Else_Name       : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("else");
+   Elsif_Name      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("elsif");
    Expression_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("expression");
    If_Name         : constant League.Strings.Universal_String
@@ -285,6 +289,11 @@ package body XML.Templates.Processors is
       elsif Self.Skip /= 0 then
          Self.Skip := Self.Skip - 1;
 
+         if Self.Skip = 0 then
+            pragma Assert (Local_Name = If_Name);
+            Pop (Self.Run_Else_Stack, Self.Run_Else);
+
+         end if;
       else
          Self.Process_Characters (Success);
 
@@ -295,7 +304,9 @@ package body XML.Templates.Processors is
          Self.Namespaces.Pop_Context;
 
          if Namespace_URI = Template_URI then
-            null;
+            if Local_Name = If_Name then
+               Pop (Self.Run_Else_Stack, Self.Run_Else);
+            end if;
 
          else
             Self.Content_Handler.End_Element
@@ -362,6 +373,16 @@ package body XML.Templates.Processors is
    begin
       return Self.Diagnosis;
    end Error_String;
+
+   ---------
+   -- Pop --
+   ---------
+
+   procedure Pop (Self : in out Boolean_Stack; Value : out Boolean) is
+   begin
+      Value := Boolean'Val (Self and 1);
+      Self := Self / 2;
+   end Pop;
 
    ------------------------
    -- Process_Characters --
@@ -482,6 +503,15 @@ package body XML.Templates.Processors is
          end if;
       end if;
    end Processing_Instruction;
+
+   ----------
+   -- Push --
+   ----------
+
+   procedure Push (Self : in out Boolean_Stack; Value : Boolean) is
+   begin
+      Self := Self * 2 + Boolean'Pos (Value);
+   end Push;
 
    -------------------------
    -- Set_Content_Handler --
@@ -627,7 +657,12 @@ package body XML.Templates.Processors is
             Qualified_Name => Qualified_Name,
             Attributes     => Attributes));
 
-      elsif Self.Skip /= 0 then
+      elsif Self.Skip > 1 or else
+        (Self.Skip = 1
+         and not (Self.Run_Else
+                  and Namespace_URI = Template_URI
+                  and Local_Name in Else_Name | Elsif_Name))
+      then
          Self.Skip := Self.Skip + 1;
 
       else
@@ -667,6 +702,9 @@ package body XML.Templates.Processors is
                Self.Accumulate := 1;
 
             elsif Local_Name = If_Name then
+               Push (Self.Run_Else_Stack, Self.Run_Else);
+               Self.Run_Else := True;
+
                if not Attributes.Is_Specified (Expression_Name) then
                   --  Expression is not specified.
 
@@ -688,8 +726,50 @@ package body XML.Templates.Processors is
                   return;
                end if;
 
-               if not Value then
+               if Value then
+                  Self.Run_Else := False;
+               else
                   Self.Skip := 1;
+               end if;
+
+            elsif Local_Name = Elsif_Name then
+               if not Self.Run_Else then
+                  Self.Skip := 2;  --  Skip 'elsif' and everything after it
+
+                  return;
+               elsif not Attributes.Is_Specified (Expression_Name) then
+                  --  Expression is not specified.
+
+                  Self.Diagnosis :=
+                    League.Strings.To_Universal_String
+                     ("'expression' attribute is not specified in elsif");
+                  Success := False;
+
+                  return;
+               end if;
+
+               Parser.Evaluate_Boolean_Expression
+                (Attributes (Expression_Name),
+                 Self.Parameters,
+                 Value,
+                 Success);
+
+               if not Success then
+                  return;
+               end if;
+
+               if Value then
+                  Self.Run_Else := False;
+                  Self.Skip := 0;
+               else
+                  Self.Skip := 2;  --  Skip 'elsif' and everything after it
+               end if;
+
+            elsif Local_Name = Else_Name then
+               if Self.Run_Else then
+                  Self.Skip := 0;
+               else
+                  Self.Skip := 2;  --  Skip 'else' and everything after it
                end if;
 
             else

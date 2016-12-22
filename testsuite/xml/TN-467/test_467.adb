@@ -4,11 +4,11 @@
 --                                                                          --
 --                               XML Processor                              --
 --                                                                          --
---                              Tools Component                             --
+--                            Testsuite Component                           --
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,53 +41,94 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with "matreshka_common.gpr";
-with "matreshka_xml.gpr";
+with League.Holders.JSON_Arrays;
+with League.JSON.Arrays;
+with League.JSON.Documents;
+with League.Strings;
+with XML.SAX.Pretty_Writers;
+with XML.SAX.Simple_Readers;
+with XML.SAX.String_Input_Sources;
+with XML.SAX.String_Output_Destinations;
+with XML.Templates.Processors;
 
-project Matreshka_XML_Tests is
+procedure Test_467 is
 
-   for Main use
-    ("xmlconf_test.adb",
-     "xmlcatconf-driver.adb",
-     "test_126.adb",
-     "test_157.adb",
-     "test_20.adb",
-     "test_245.adb",
-     "test_26.adb",
-     "test_350.adb",
-     "test_386.adb",
-     "test_41.adb",
-     "test_424.adb",
-     "test_454.adb",
-     "test_467.adb",
-     "test_99.adb",
-     "simple_test.adb",
-     "escape_test.adb");
-   for Object_Dir use "../.objs";
-   for Source_Dirs use
-    ("../testsuite/xml",
-     "../examples/sax_events_printer",
-     "../testsuite/xml/TN-126",
-     "../testsuite/xml/TN-157",
-     "../testsuite/xml/TN-20",
-     "../testsuite/xml/TN-245",
-     "../testsuite/xml/TN-26",
-     "../testsuite/xml/TN-350",
-     "../testsuite/xml/TN-386",
-     "../testsuite/xml/TN-41",
-     "../testsuite/xml/TN-424",
-     "../testsuite/xml/TN-454",
-     "../testsuite/xml/TN-467",
-     "../testsuite/xml/TN-99",
-     "../testsuite/xml/pretty_writer/simple_test",
-     "../testsuite/xml/pretty_writer/escape_test");
+   use type League.Strings.Universal_String;
 
-   package Compiler is
-      for Default_Switches ("Ada") use Matreshka_Common.Common_Ada_Switches;
-   end Compiler;
+   Data     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("["
+            & "{""name"": null,""value"": null},"
+            & "{""name"": null,""value"": 1},"
+            & "{""name"": 2,""value"": null},"
+            & "{""name"": 3,""value"": 4}"
+            & "]");
 
-   package Builder is
-      for Executable ("xmlcatconf-driver.adb") use "xmlcatconf_test";
-   end Builder;
+   Page     : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("<html xmlns='http://www.w3.org/1999/xhtml'"
+            & "  xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
+            & " <body>"
+            & "  <mtl:for expression='item of posts'>"
+            & "   <mtl:if expression='item.name is null'>"
+            & "     <mtl:if expression='item.value is null'>1"
+            & "     <mtl:else/>2"
+            & "     </mtl:if>"
+            & "   <mtl:elsif expression='item.value is null'/>3"
+            & "   <mtl:else/>4"
+            & "   </mtl:if>"
+            & "  </mtl:for>"
+            & " </body>"
+            & "</html>");
 
-end Matreshka_XML_Tests;
+   Expected : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String
+         ("<?xml version='1.0'?>"
+           & "<html xmlns='http://www.w3.org/1999/xhtml'>"
+           & " <body>          1"
+           & "                  2"
+           & "             3"
+           & "        4"
+           & "      </body></html>");
+
+   Posts  : constant League.JSON.Arrays.JSON_Array
+     := League.JSON.Documents.From_JSON (Data).To_JSON_Array;
+   Input  : aliased XML.SAX.String_Input_Sources.String_Input_Source;
+   Reader : aliased XML.SAX.Simple_Readers.Simple_Reader;
+   Filter : aliased XML.Templates.Processors.Template_Processor;
+   Writer : aliased XML.SAX.Pretty_Writers.XML_Pretty_Writer;
+   Output : aliased
+     XML.SAX.String_Output_Destinations.String_Output_Destination;
+
+begin
+   Input.Set_String (Page);
+
+   --  Configure reader.
+
+   Reader.Set_Input_Source (Input'Unchecked_Access);
+   Reader.Set_Content_Handler (Filter'Unchecked_Access);
+   Reader.Set_Lexical_Handler (Filter'Unchecked_Access);
+
+   --  Configure template processor.
+
+   Filter.Set_Content_Handler (Writer'Unchecked_Access);
+   Filter.Set_Lexical_Handler (Writer'Unchecked_Access);
+
+   Filter.Set_Parameter
+    (League.Strings.To_Universal_String ("posts"),
+     League.Holders.JSON_Arrays.To_Holder (Posts));
+
+   --  Configure XML writer.
+
+   Writer.Set_Output_Destination (Output'Unchecked_Access);
+
+   --  Process template.
+
+   Reader.Parse;
+
+   --  Output result.
+
+   if Output.Get_Text /= Expected then
+      raise Program_Error;
+   end if;
+end Test_467;

@@ -84,6 +84,10 @@ private
            League.Strings."=",
            League.Holders."=");
 
+   type Boolean_Stack is mod 2 ** 64;
+   procedure Push (Self : in out Boolean_Stack; Value : Boolean);
+   procedure Pop (Self : in out Boolean_Stack; Value : out Boolean);
+
    type Template_Processor is
      limited new XML.SAX.Content_Handlers.SAX_Content_Handler
        and XML.SAX.Lexical_Handlers.SAX_Lexical_Handler with record
@@ -98,6 +102,10 @@ private
       Accumulate       : Natural := 0;
       Skip             : Natural := 0;
       --  Skip all events. Used to process 'if' directive.
+      Run_Else         : Boolean := False;
+      --  All conditions on current 'if' level are evaluated to False
+      Run_Else_Stack   : Boolean_Stack := 0;
+      --  Stack of Run_Else values
       Accumulated_Text : League.Strings.Universal_String;
       --  Character data is accumulated in this member to simplify processing.
       Object_Name      : League.Strings.Universal_String;
