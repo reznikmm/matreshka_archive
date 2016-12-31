@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,8 @@
 --  This class implements the Wrapper or Decorator pattern. Methods default to
 --  calling through to the wrapped request object.
 ------------------------------------------------------------------------------
+with Ada.Streams;
+
 with League.String_Vectors;
 with League.Strings;
 
@@ -59,6 +61,10 @@ package Servlet.Request_Wrappers is
    type Servlet_Request_Wrapper
     (Request : not null access Servlet.Requests.Servlet_Request'Class) is
        limited new Servlet.Requests.Servlet_Request with null record;
+
+   overriding function Get_Input_Stream
+    (Self : Servlet_Request_Wrapper)
+       return access Ada.Streams.Root_Stream_Type'Class;
 
    overriding function Get_Parameter_Names
     (Self : Servlet_Request_Wrapper)

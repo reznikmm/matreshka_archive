@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,6 +45,8 @@
 --  servlet container creates a ServletRequest object and passes it as an
 --  argument to the servlet's service method.
 ------------------------------------------------------------------------------
+with Ada.Streams;
+
 with League.String_Vectors;
 with League.Strings;
 
@@ -57,6 +59,11 @@ package Servlet.Requests is
    type Servlet_Request is limited interface;
 
    type Servlet_Request_Access is access all Servlet_Request'Class;
+
+   not overriding function Get_Input_Stream
+    (Self : Servlet_Request)
+       return access Ada.Streams.Root_Stream_Type'Class is abstract;
+   --  Retrieves the body of the request as binary data using a stream.
 
    function Get_Parameter
     (Self : Servlet_Request'Class;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,17 @@
 ------------------------------------------------------------------------------
 
 package body Servlet.Request_Wrappers is
+
+   ----------------------
+   -- Get_Input_Stream --
+   ----------------------
+
+   overriding function Get_Input_Stream
+    (Self : Servlet_Request_Wrapper)
+       return access Ada.Streams.Root_Stream_Type'Class is
+   begin
+      return Self.Request.Get_Input_Stream;
+   end Get_Input_Stream;
 
    -------------------------
    -- Get_Parameter_Names --
