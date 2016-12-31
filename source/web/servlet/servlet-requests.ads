@@ -62,7 +62,7 @@ package Servlet.Requests is
 
    not overriding function Get_Input_Stream
     (Self : Servlet_Request)
-       return access Ada.Streams.Root_Stream_Type'Class is abstract;
+       return not null access Ada.Streams.Root_Stream_Type'Class is abstract;
    --  Retrieves the body of the request as binary data using a stream.
 
    function Get_Parameter

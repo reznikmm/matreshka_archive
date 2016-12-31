@@ -64,7 +64,7 @@ package Servlet.Request_Wrappers is
 
    overriding function Get_Input_Stream
     (Self : Servlet_Request_Wrapper)
-       return access Ada.Streams.Root_Stream_Type'Class;
+       return not null access Ada.Streams.Root_Stream_Type'Class;
 
    overriding function Get_Parameter_Names
     (Self : Servlet_Request_Wrapper)
