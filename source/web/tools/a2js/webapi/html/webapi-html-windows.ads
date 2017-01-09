@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,7 @@
 with WebAPI.DOM.Event_Targets;
 
 with WebAPI.HTML.Documents;
+with WebAPI.HTML.Frame_Request_Callbacks;
 
 package WebAPI.HTML.Windows is
 
@@ -131,11 +132,31 @@ package WebAPI.HTML.Windows is
 
    not overriding procedure Set_Opener
     (Self  : not null access Window;
-     Value :  WebAPI.HTML.Windows.Window_Access) is abstract
+     Value : WebAPI.HTML.Windows.Window_Access) is abstract
         with Import     => True,
              Convention => JavaScript_Property_Setter,
              Link_Name  => "opener";
    --  On setting, if the new value is null then the current browsing context
    --  must disown its opener;
+
+   function Request_Animation_Frame
+    (Self     : not null access Window'Class;
+     Callback : not null access
+       WebAPI.HTML.Frame_Request_Callbacks.Frame_Request_Callback'Class)
+         return WebAPI.DOM_Long
+           with Import     => True,
+                Convention => JavaScript_Function,
+                Link_Name  => "_ec._requestAnimationFrame";
+   --  This subprogram is used to signal to the user agent that a script-based
+   --  animation needs to be resampled.
+
+   not overriding procedure Cancel_Animation_Frame
+    (Self   : not null access Window;
+     Handle : WebAPI.DOM_Long) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "cancelAnimationFrame";
+   --  This subprogram is used to cancel a previously made request to schedule
+   --  an animation frame update.
 
 end WebAPI.HTML.Windows;

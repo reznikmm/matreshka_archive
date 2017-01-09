@@ -165,6 +165,15 @@ define('standard', [], function(){
         }
     };
 
+    standard._requestAnimationFrame = function (window, handler) {
+        if (typeof handler._func === "undefined") {
+            handler._func = function (time) {
+                handler.handle_animation_frame (time);
+            }
+        }
+        return window.requestAnimationFrame (handler._func);
+    };
+
     standard._ada_array = //  A constructor for any Ada array
     function (data, from, to){
         var first = from.map (standard._pos);
@@ -377,8 +386,10 @@ define('standard', [], function(){
     };
 
     standard._tag ('event_listener','');
+    standard._tag ('frame_request_callback','');
     standard.webapi = {
-        dom: {event_listeners: {event_listener: function(){}}}
+        dom: {event_listeners: {event_listener: function(){}}},
+        html: {frame_request_callbacks: {frame_request_callback: function(){}}}
     };
 
     return standard;

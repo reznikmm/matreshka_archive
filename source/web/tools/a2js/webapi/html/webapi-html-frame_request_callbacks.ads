@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2017, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,39 +41,18 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This is root package to represent different Web API accessible to Ada
---  application.
+--  This package provides handler interface to replace FrameRequestCallback
+--  callback.
 ------------------------------------------------------------------------------
-with Interfaces;
 
-with League.Calendars;
-with League.Strings;
-
-package WebAPI is
+package WebAPI.HTML.Frame_Request_Callbacks is
 
    pragma Preelaborate;
 
-   subtype DOM_Boolean is Boolean;
+   type Frame_Request_Callback is limited interface;
 
-   subtype DOM_String is League.Strings.Universal_String;
+   not overriding procedure Handle_Animation_Frame
+    (Self : in out Frame_Request_Callback;
+     Time : WebAPI.DOM_High_Res_Time_Stamp) is abstract;
 
-   subtype DOM_Time_Stamp is League.Calendars.Date_Time;
-
-   subtype DOM_Unsigned_Short is Interfaces.Unsigned_16;
-
-   subtype DOM_Long is Interfaces.Integer_32;
-
-   subtype DOM_Unsigned_Long is Interfaces.Unsigned_32;
-
-   subtype DOM_Double is Interfaces.IEEE_Float_64;
-
-   function To_DOM_String (Item : Wide_Wide_String) return DOM_String
-     renames League.Strings.To_Universal_String;
-
-   ----------------------------------
-   -- High Resolution Time Level 2 --
-   ----------------------------------
-
-   subtype DOM_High_Res_Time_Stamp is DOM_Double;
-
-end WebAPI;
+end WebAPI.HTML.Frame_Request_Callbacks;
