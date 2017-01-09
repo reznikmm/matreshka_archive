@@ -147,6 +147,13 @@ package WebAPI.HTML.Windows is
            with Import     => True,
                 Convention => JavaScript_Function,
                 Link_Name  => "_ec._requestAnimationFrame";
+   procedure Request_Animation_Frame
+    (Self     : not null access Window'Class;
+     Callback : not null access
+       WebAPI.HTML.Frame_Request_Callbacks.Frame_Request_Callback'Class)
+         with Import     => True,
+              Convention => JavaScript_Function,
+              Link_Name  => "_ec._requestAnimationFrame";
    --  This subprogram is used to signal to the user agent that a script-based
    --  animation needs to be resampled.
 
