@@ -8,7 +8,7 @@
 //                                                                          //
 //--------------------------------------------------------------------------//
 //                                                                          //
-// Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     //
+// Copyright © 2016-2017, Vadim Godunko <vgodunko@gmail.com>                //
 // All rights reserved.                                                     //
 //                                                                          //
 // Redistribution and use in source and binary forms, with or without       //
