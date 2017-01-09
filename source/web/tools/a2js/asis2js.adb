@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -237,6 +237,11 @@ begin
            or Arguments (J).Starts_With ("-g")
          then
             Options.Append (Arguments (J));
+
+         elsif Arguments (J) = League.Strings.To_Universal_String ("-g") then
+            Ada.Wide_Text_IO.Put_Line
+             (Ada.Wide_Text_IO.Standard_Error,
+              "warning: -g switch is not supported yet");
 
          elsif Source_File.Is_Empty then
             Source_File := Arguments (J);
