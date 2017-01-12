@@ -1,6 +1,7 @@
 --  EXPECTED OUTPUT:
 --  4503599627370494
 --  3.141592653589793
+--  3
 --  END OF EXPECTED OUTPUT
 --
 --  BIND LIST:
@@ -25,6 +26,8 @@ begin
    A := B;
    Console.Log (Float'Wide_Wide_Image (A + B));
    A := Ada.Numerics.Pi;
+   Console.Log (Float'Wide_Wide_Image (A));
+   A := Float'Floor (A);
    Console.Log (Float'Wide_Wide_Image (A));
 end;
 

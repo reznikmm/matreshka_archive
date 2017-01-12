@@ -60,9 +60,10 @@ package body Properties.Expressions.Attribute_Reference is
    begin
       case Kind is
          when Asis.An_Image_Attribute |
-              Asis.A_Wide_Wide_Image_Attribute |
+              Asis.A_Floor_Attribute |
               Asis.A_Max_Attribute |
               Asis.A_Min_Attribute |
+              Asis.A_Wide_Wide_Image_Attribute |
               Asis.A_Wide_Wide_Value_Attribute =>
             return Engines.Intrinsic;
          when others =>

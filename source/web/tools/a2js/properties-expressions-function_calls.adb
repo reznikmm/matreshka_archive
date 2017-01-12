@@ -390,5 +390,7 @@ begin
    Fn_To.Append (League.Strings.To_Universal_String ("Math.max"));
    Fn_From.Append (League.Strings.To_Universal_String ("A_MIN_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("Math.min"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_FLOOR_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("Math.floor"));
 
 end Properties.Expressions.Function_Calls;
