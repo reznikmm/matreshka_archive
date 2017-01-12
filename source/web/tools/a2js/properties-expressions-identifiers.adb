@@ -166,6 +166,9 @@ package body Properties.Expressions.Identifiers is
 
       Decl : Asis.Declaration :=
         Asis.Expressions.Corresponding_Name_Declaration (Element);
+      Decl_Kind : Asis.Declaration_Kinds :=
+        Asis.Elements.Declaration_Kind (Decl);
+      Impl : Asis.Declaration;
       Image : constant Wide_String :=
         Asis.Expressions.Name_Image (Element);
       Text : League.Strings.Universal_String;
@@ -178,33 +181,44 @@ package body Properties.Expressions.Identifiers is
          return Text.To_Lowercase;
       elsif Is_Current_Instance_Of_Type (Element, Decl) then
          return League.Strings.To_Universal_String ("this");
-      end if;
 
-      if Asis.Elements.Declaration_Kind (Decl) in
-        Asis.A_Renaming_Declaration
-      then
+      elsif Decl_Kind in Asis.A_Renaming_Declaration then
          return Engine.Text.Get_Property
            (Asis.Declarations.Renamed_Entity (Decl), Name);
-      end if;
 
-      if Asis.Elements.Declaration_Kind (Decl) in
+      elsif Decl_Kind in
+        Asis.A_Function_Declaration | Asis.A_Procedure_Declaration
+      then
+         Impl := Asis.Declarations.Corresponding_Body (Decl);
+
+         if Asis.Elements.Declaration_Kind (Impl) in
+           Asis.A_Renaming_Declaration
+         then
+            return Engine.Text.Get_Property
+              (Asis.Declarations.Renamed_Entity (Impl), Name);
+         end if;
+
+      elsif Decl_Kind in
         Asis.A_Private_Extension_Declaration | Asis.A_Private_Type_Declaration
       then
          --  Use full type view instead of private type
          Decl := Asis.Declarations.Corresponding_Type_Declaration (Decl);
+         Decl_Kind := Asis.Elements.Declaration_Kind (Decl);
+
       end if;
 
       while Asis.Elements.Is_Part_Of_Inherited (Decl)
-        and then Asis.Elements.Declaration_Kind (Decl) in
+        and then Decl_Kind in
             Asis.A_Function_Declaration | Asis.A_Procedure_Declaration
       loop
          Decl := Asis.Declarations.Corresponding_Subprogram_Derivation (Decl);
+         Decl_Kind := Asis.Elements.Declaration_Kind (Decl);
       end loop;
 
       Is_Simple_Ref :=
         Engine.Boolean.Get_Property (Decl, Engines.Is_Simple_Ref);
 
-      if Asis.Elements.Declaration_Kind (Decl) in
+      if Decl_Kind in
            Asis.A_Procedure_Declaration |
            Asis.A_Null_Procedure_Declaration |
            Asis.A_Function_Declaration |
@@ -215,7 +229,7 @@ package body Properties.Expressions.Identifiers is
          --  Dispatching operation has no prefix
          return Engine.Text.Get_Property
            (Asis.Declarations.Names (Decl) (1), Name);
-      elsif Asis.Elements.Declaration_Kind (Decl) in
+      elsif Decl_Kind in
               Asis.An_Integer_Number_Declaration |
               Asis.A_Real_Number_Declaration
       then
