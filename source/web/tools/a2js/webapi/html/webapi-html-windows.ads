@@ -166,4 +166,101 @@ package WebAPI.HTML.Windows is
    --  This subprogram is used to cancel a previously made request to schedule
    --  an animation frame update.
 
+   ----------------------------------
+   -- CSSOM View Module extensions --
+   ----------------------------------
+
+   --  [NewObject] MediaQueryList matchMedia(DOMString query);
+   --  [SameObject, Replaceable] readonly attribute Screen screen;
+   --
+   --  // browsing context
+   --  void moveTo(long x, long y);
+   --  void moveBy(long x, long y);
+   --  void resizeTo(long x, long y);
+   --  void resizeBy(long x, long y);
+
+   not overriding function Get_Inner_Width
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "innerWidth";
+
+   not overriding function Get_Inner_Height
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "innerHeight";
+
+   not overriding function Get_Scroll_X
+    (Self : not null access Window)
+      return WebAPI.DOM_Double is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "scrollX";
+
+   not overriding function Get_Page_X_Offset
+    (Self : not null access Window)
+      return WebAPI.DOM_Double is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "pageXOffset";
+
+   not overriding function Get_Scroll_Y
+    (Self : not null access Window)
+      return WebAPI.DOM_Double is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "scrollY";
+
+   not overriding function Get_Page_Y_Offset
+    (Self : not null access Window)
+      return WebAPI.DOM_Double is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "pageYOffset";
+
+   --  void scroll(optional ScrollToOptions options);
+   --  void scroll(unrestricted double x, unrestricted double y);
+   --  void scrollTo(optional ScrollToOptions options);
+   --  void scrollTo(unrestricted double x, unrestricted double y);
+   --  void scrollBy(optional ScrollToOptions options);
+   --  void scrollBy(unrestricted double x, unrestricted double y);
+
+   not overriding function Get_Screen_X
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "screenX";
+
+   not overriding function Get_Screen_Y
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "screenY";
+
+   not overriding function Get_Outer_Width
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "outerWidth";
+
+   not overriding function Get_Outer_Height
+    (Self : not null access Window)
+      return WebAPI.DOM_Long is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "outerHeight";
+
+   not overriding function Get_Device_Pixel_Ratio
+    (Self : not null access Window)
+      return WebAPI.DOM_Double is abstract
+        with Import     => True,
+             Convention => JavaScript_Property_Getter,
+             Link_Name  => "devicePixelRatio";
+
 end WebAPI.HTML.Windows;
