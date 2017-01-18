@@ -213,7 +213,9 @@ package body Properties.Tools is
 
             return Asis.Nil_Element_List;
 
-         when Asis.A_Private_Type_Definition =>
+         when Asis.A_Private_Type_Definition |
+              Asis.A_Tagged_Private_Type_Definition
+            =>
             declare
                Decl : Asis.Declaration :=
                  Asis.Elements.Enclosing_Element (Definition);
@@ -1001,15 +1003,16 @@ package body Properties.Tools is
    function Parameter_Profile
      (Prefix : Asis.Expression) return Asis.Parameter_Specification_List
    is
-      Tipe : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type_Definition (Prefix);
+      Tipe : Asis.Declaration;
       Stmt : constant Asis.Statement :=
         Asis.Elements.Enclosing_Element (Prefix);
       Entity : Asis.Declaration :=
         Asis.Statements.Corresponding_Called_Entity (Stmt);
    begin
       loop
-         if not Asis.Elements.Is_Nil (Entity) then
+         if Asis.Elements.Is_Nil (Entity) then
+            exit;
+         else
             if Asis.Elements.Declaration_Kind (Entity) in
               Asis.A_Generic_Instantiation
             then
@@ -1017,13 +1020,17 @@ package body Properties.Tools is
             else
                return Asis.Declarations.Parameter_Profile (Entity);
             end if;
-         elsif not Asis.Elements.Is_Nil (Tipe) then
-            return
-              Asis.Definitions.Access_To_Subprogram_Parameter_Profile (Tipe);
-         else
-            raise Constraint_Error;
          end if;
       end loop;
+
+      Tipe :=
+        Asis.Expressions.Corresponding_Expression_Type_Definition (Prefix);
+
+      if Asis.Elements.Is_Nil (Tipe) then
+         raise Constraint_Error;
+      else
+         return Asis.Definitions.Access_To_Subprogram_Parameter_Profile (Tipe);
+      end if;
    end Parameter_Profile;
 
    ---------------------------
