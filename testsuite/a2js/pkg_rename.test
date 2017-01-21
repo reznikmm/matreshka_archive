@@ -1,0 +1,38 @@
+--  EXPECTED OUTPUT:
+--  Hello A2JS
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  p.ads
+--  p-b.ads
+--  p-b-consoles.ads
+--  p-consoles.ads
+--  hello_world.adb
+--  END OF BIND LIST
+--
+--  MAIN: hello_world
+
+with P.Consoles;
+procedure Hello_World is
+begin
+   P.Consoles.Log ("Hello A2JS");
+end;
+
+package P is end P;
+package P.B is end P.B;
+package P.B.Consoles is
+   procedure Log (Text : String);
+end P.B.Consoles;
+package body P.B.Consoles is
+   procedure Internal (Text : String)
+     with Import     => True,
+          Convention => JavaScript_Function,
+          Link_Name  => "console.log";
+
+   procedure Log (Text : String) is
+   begin
+      Internal (Text);
+   end Log;
+end P.B.Consoles;
+with P.B.Consoles;
+package P.Consoles renames P.B.Consoles;

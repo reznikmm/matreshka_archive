@@ -781,40 +781,71 @@ package body Properties.Tools is
    function Library_Level_Header
      (Unit : Asis.Compilation_Unit) return League.Strings.Universal_String
    is
-      procedure Append (Name : Asis.Name);
+      procedure Append_Dependencies (Unit : Asis.Compilation_Unit);
+      procedure Append (Unit : Asis.Compilation_Unit);
       procedure Check_And_Append (Name : Asis.Name);
-      function Body_Context_Clause_Elements return Asis.Context_Clause_List;
-      function To_Module_Name (Unit : League.Strings.Universal_String)
+      function Body_Context_Clause_Elements (Unit : Asis.Compilation_Unit)
+        return Asis.Context_Clause_List;
+      function To_Module_Name (Unit : Asis.Compilation_Unit)
         return League.Strings.Universal_String;
+      function To_Unit (Name : Asis.Name) return Asis.Compilation_Unit;
 
       Text : League.Strings.Universal_String;
+      Deps : League.String_Vectors.Universal_String_Vector;
 
       ------------
       -- Append --
       ------------
 
-      procedure Append (Name : Asis.Name) is
-         Image : League.Strings.Universal_String;
+      procedure Append (Unit : Asis.Compilation_Unit) is
+         Name : constant League.Strings.Universal_String :=
+           To_Module_Name (Unit);
       begin
-         case Asis.Elements.Expression_Kind (Name) is
-            when Asis.An_Identifier =>
-               Image := League.Strings.From_UTF_16_Wide_String
-                 (Asis.Expressions.Name_Image (Name));
-               Text.Append (Image.To_Lowercase);
-            when Asis.A_Selected_Component =>
-               Append (Asis.Expressions.Prefix (Name));
-               Text.Append ('-');
-               Append (Asis.Expressions.Selector (Name));
-            when others =>
-               raise Program_Error;
-         end case;
+         if Deps.Index (Name) = 0 then
+            Deps.Append (Name);
+         end if;
       end Append;
+
+      -------------------------
+      -- Append_Dependencies --
+      -------------------------
+
+      procedure Append_Dependencies (Unit : Asis.Compilation_Unit) is
+         use type Asis.Context_Clause_List;
+
+         Parent : constant Asis.Compilation_Unit :=
+           Asis.Compilation_Units.Corresponding_Parent_Declaration (Unit);
+         List : constant Asis.Context_Clause_List :=
+           Asis.Elements.Context_Clause_Elements (Unit) &
+           Body_Context_Clause_Elements (Unit);
+      begin
+         Append (Parent);
+
+         for Clause of List loop
+            case Asis.Elements.Clause_Kind (Clause) is
+               when Asis.A_With_Clause =>
+                  declare
+                     Names : constant Asis.Name_List :=
+                       Asis.Clauses.Clause_Names (Clause);
+                  begin
+                     if not Asis.Elements.Has_Limited (Clause) then
+                        for Name of Names loop
+                           Check_And_Append (Name);
+                        end loop;
+                     end if;
+                  end;
+               when others =>
+                  null;
+            end case;
+         end loop;
+      end Append_Dependencies;
 
       ----------------------------------
       -- Body_Context_Clause_Elements --
       ----------------------------------
 
-      function Body_Context_Clause_Elements return Asis.Context_Clause_List is
+      function Body_Context_Clause_Elements (Unit : Asis.Compilation_Unit)
+        return Asis.Context_Clause_List is
          Impl : constant Asis.Compilation_Unit :=
            Asis.Compilation_Units.Corresponding_Body (Unit);
       begin
@@ -847,7 +878,64 @@ package body Properties.Tools is
       -- Is_Generic --
       ----------------
 
-      function Is_Generic (Name : Asis.Name) return Boolean is
+      function Is_Generic (Unit : Asis.Compilation_Unit) return Boolean is
+      begin
+         return Asis.Compilation_Units.Unit_Kind (Unit) in
+           Asis.A_Generic_Unit_Declaration;
+      end Is_Generic;
+
+      -----------------
+      -- Is_Renaming --
+      -----------------
+
+      function Is_Renaming (Unit : Asis.Compilation_Unit) return Boolean is
+      begin
+         return Asis.Compilation_Units.Unit_Kind (Unit) in Asis.A_Renaming;
+      end Is_Renaming;
+
+      ----------------------
+      -- Check_And_Append --
+      ----------------------
+
+      procedure Check_And_Append (Name : Asis.Name) is
+         Unit : constant Asis.Compilation_Unit := To_Unit (Name);
+      begin
+         if Is_Generic (Unit)
+           or else Is_WebAPI (Name)
+           or else Is_Ada_Numerics (Name)
+         then
+            return;
+         elsif Is_Renaming (Unit) then
+            Append_Dependencies (Unit);
+
+            return;
+         end if;
+
+         Append (Unit);
+      end Check_And_Append;
+
+      --------------------
+      -- To_Module_Name --
+      --------------------
+
+      function To_Module_Name
+        (Unit : Asis.Compilation_Unit)
+         return League.Strings.Universal_String
+      is
+         Full_Name : constant League.Strings.Universal_String :=
+           League.Strings.From_UTF_16_Wide_String
+             (Asis.Compilation_Units.Unit_Full_Name (Unit)).To_Lowercase;
+         List : constant League.String_Vectors.Universal_String_Vector :=
+           Full_Name.Split ('.');
+      begin
+         return List.Join ('-');
+      end To_Module_Name;
+
+      -------------
+      -- To_Unit --
+      -------------
+
+      function To_Unit (Name : Asis.Name) return Asis.Compilation_Unit is
          Decl : Asis.Declaration;
       begin
          case Asis.Elements.Expression_Kind (Name) is
@@ -859,94 +947,19 @@ package body Properties.Tools is
                Decl := Asis.Expressions.Corresponding_Name_Declaration (Name);
 
             when others =>
-               return False;
+               raise Constraint_Error;
          end case;
 
-         return Asis.Elements.Declaration_Kind (Decl) in
-           Asis.A_Generic_Declaration;
-      end Is_Generic;
-
-      ----------------------
-      -- Check_And_Append --
-      ----------------------
-
-      procedure Check_And_Append (Name : Asis.Name) is
-      begin
-         if Is_Generic (Name)
-           or else Is_WebAPI (Name)
-           or else Is_Ada_Numerics (Name)
-         then
-            return;
-         end if;
-
-         Text.Append ("', '");
-
-         Append (Name);
-      end Check_And_Append;
-
-      --------------------
-      -- To_Module_Name --
-      --------------------
-
-      function To_Module_Name
-        (Unit : League.Strings.Universal_String)
-         return League.Strings.Universal_String
-      is
-         List : constant League.String_Vectors.Universal_String_Vector :=
-           Unit.Split ('.');
-      begin
-         return List.Join ('-');
-      end To_Module_Name;
-
-      Parent : constant Asis.Compilation_Unit :=
-        Asis.Compilation_Units.Corresponding_Parent_Declaration (Unit);
-
-      Grand_Parent : constant Asis.Compilation_Unit :=
-        Asis.Compilation_Units.Corresponding_Parent_Declaration (Parent);
-
-      Full_Name : constant League.Strings.Universal_String :=
-        League.Strings.From_UTF_16_Wide_String
-          (Asis.Compilation_Units.Unit_Full_Name (Unit)).To_Lowercase;
-
-      Parent_Name : constant League.Strings.Universal_String :=
-        League.Strings.From_UTF_16_Wide_String
-          (Asis.Compilation_Units.Unit_Full_Name (Parent)).To_Lowercase;
-
-      use type Asis.Context_Clause_List;
-
-      List : constant Asis.Context_Clause_List :=
-        Asis.Elements.Context_Clause_Elements (Unit) &
-       Body_Context_Clause_Elements;
+         return Asis.Elements.Enclosing_Compilation_Unit (Decl);
+      end To_Unit;
 
    begin
       Text.Append ("define('");
-      Text.Append (To_Module_Name (Full_Name));
+      Text.Append (To_Module_Name (Unit));
       Text.Append ("', ['");
 
-      if Asis.Compilation_Units.Is_Nil (Grand_Parent) then
-         Text.Append ("standard");
-      else
-         --  if Parent is not standard
-         Text.Append (To_Module_Name (Parent_Name));
-      end if;
-
-      for Clause of List loop
-         case Asis.Elements.Clause_Kind (Clause) is
-            when Asis.A_With_Clause =>
-               declare
-                  Names : constant Asis.Name_List :=
-                    Asis.Clauses.Clause_Names (Clause);
-               begin
-                  if not Asis.Elements.Has_Limited (Clause) then
-                     for Name of Names loop
-                        Check_And_Append (Name);
-                     end loop;
-                  end if;
-               end;
-            when others =>
-               null;
-         end case;
-      end loop;
+      Append_Dependencies (Unit);
+      Text.Append (Deps.Join ("', '"));
 
       Text.Append ("'], function(_ec) {");
 

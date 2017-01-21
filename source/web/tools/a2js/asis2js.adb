@@ -112,10 +112,9 @@ procedure Asis2JS is
                   exit;
 
                when Asis.A_Package
-                  | Asis.A_Package_Instance
-                  | Asis.A_Generic_Package
-                  | Asis.A_Generic_Package_Renaming
-                  | Asis.A_Generic_Function_Renaming =>
+                  | Asis.A_Generic_Unit_Instance
+                  | Asis.A_Renaming
+                  | Asis.A_Generic_Unit_Declaration =>
 
                   Success := True;
                   Compile_Unit (Units (J), Output_File);
