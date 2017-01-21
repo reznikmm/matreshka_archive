@@ -66,22 +66,28 @@ package body Properties.Declarations.Package_Instantiation is
 
       Spec : constant Asis.Declaration :=
         Asis.Declarations.Corresponding_Declaration (Element);
+
+      Text  : League.Strings.Universal_String;
+      Down  : League.Strings.Universal_String;
+      Named : League.Strings.Universal_String;
+
+      Is_Library_Level : constant Boolean := Asis.Elements.Is_Nil
+        (Asis.Elements.Enclosing_Element (Element));
+
+      Inside_Package   : constant Boolean :=
+        Engine.Boolean.Get_Property (Element, Engines.Inside_Package);
    begin
+      Named := Engine.Text.Get_Property
+        (Asis.Declarations.Names (Element) (1), Name);
+
       case Asis.Elements.Expression_Kind (Generic_Name) is
          when Asis.A_Selected_Component =>
             if Is_Predefined (Generic_Name) then
                declare
-                  Text     : League.Strings.Universal_String;
-                  Named    : League.Strings.Universal_String;
                   Selector : constant Asis.Identifier :=
                     Asis.Expressions.Selector (Generic_Name);
                   Image : constant Asis.Program_Text :=
                     Asis.Expressions.Name_Image (Selector);
-                  Is_Library_Level : constant Boolean := Asis.Elements.Is_Nil
-                    (Asis.Elements.Enclosing_Element (Element));
-                  Inside_Package : constant Boolean :=
-                    Engine.Boolean.Get_Property
-                      (Element, Engines.Inside_Package);
                begin
                   if Is_Library_Level then
                      Text.Append
@@ -97,9 +103,6 @@ package body Properties.Declarations.Package_Instantiation is
                      Text.Append ("var ");
                   end if;
 
-                  Named := Engine.Text.Get_Property
-                    (Asis.Declarations.Names (Element) (1), Name);
-
                   Text.Append (Named);
                   Text.Append ("= _ec._");
 
@@ -114,7 +117,27 @@ package body Properties.Declarations.Package_Instantiation is
             null;
       end case;
 
-      return Engine.Text.Get_Property (Spec, Name);
+      if Is_Library_Level then
+         Text.Append
+           (Properties.Tools.Library_Level_Header
+              (Asis.Elements.Enclosing_Compilation_Unit (Element)));
+         Text.Append ("return ");
+      end if;
+
+      if not Inside_Package then
+         Text.Append ("var ");
+         Text.Append (Named);
+         Text.Append ("=");
+      end if;
+
+      Down := Engine.Text.Get_Property (Spec, Name);
+      Text.Append (Down);
+
+      if Is_Library_Level then
+         Text.Append ("});");
+      end if;
+
+      return Text;
    end Code;
 
    -------------------
