@@ -315,11 +315,27 @@ package body Properties.Expressions.Function_Calls is
          Text.Append (".length");
 
          return Text;
+      elsif Func.To_Wide_Wide_String = "League.Strings.Head" then
+         Text.Append (Args (1));
+         Text.Append (".slice(0, ");
+         Text.Append (Args (2));
+         Text.Append (")");
+
+         return Text;
       elsif Func.To_Wide_Wide_String = "League.Strings.Tail_From" then
          Text.Append (Args (1));
          Text.Append (".slice(");
          Text.Append (Args (2));
          Text.Append ("-1)");
+
+         return Text;
+      elsif Func.To_Wide_Wide_String = "League.Strings.Slice" then
+         Text.Append (Args (1));
+         Text.Append (".slice(");
+         Text.Append (Args (2));
+         Text.Append ("-1, ");
+         Text.Append (Args (3));
+         Text.Append (")");
 
          return Text;
       elsif Func.To_Wide_Wide_String = "System.Storage_Elements.""+""" then
