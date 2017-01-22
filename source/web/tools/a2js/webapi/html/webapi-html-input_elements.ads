@@ -257,7 +257,12 @@ package WebAPI.HTML.Input_Elements is
             Convention => JavaScript_Property_Setter,
             Link_Name  => "indeterminate";
 
-   --    readonly attribute HTMLElement? list;
+   not overriding function Get_List
+    (Self : not null access constant HTML_Input_Element)
+       return WebAPI.HTML.Elements.HTML_Element_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "list";
 
    not overriding function Get_Max
     (Self : not null access constant HTML_Input_Element)
