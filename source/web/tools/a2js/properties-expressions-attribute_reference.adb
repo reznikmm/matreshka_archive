@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -60,6 +60,7 @@ package body Properties.Expressions.Attribute_Reference is
    begin
       case Kind is
          when Asis.An_Image_Attribute |
+              Asis.A_Ceiling_Attribute |
               Asis.A_Floor_Attribute |
               Asis.A_Max_Attribute |
               Asis.A_Min_Attribute |

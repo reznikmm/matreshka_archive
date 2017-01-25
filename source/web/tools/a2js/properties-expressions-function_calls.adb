@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -408,5 +408,7 @@ begin
    Fn_To.Append (League.Strings.To_Universal_String ("Math.min"));
    Fn_From.Append (League.Strings.To_Universal_String ("A_FLOOR_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("Math.floor"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_CEILING_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("Math.ceil"));
 
 end Properties.Expressions.Function_Calls;
