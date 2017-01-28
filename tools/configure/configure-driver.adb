@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,7 @@ with Configure.Instantiate;
 with Configure.Internals;
 with Configure.RTL_Version;
 with Configure.Tests.Asis;
+with Configure.Tests.AWS;
 with Configure.Tests.Modules.AMF;
 with Configure.Tests.Gprbuild;
 with Configure.Tests.Install;
@@ -108,6 +109,7 @@ procedure Configure.Driver is
    Gprbuild_Test   : Configure.Tests.Gprbuild.Gprbuild_Test;
    Install_Test    : Configure.Tests.Install.Install_Test;
    Asis_Test       : Configure.Tests.Asis.Asis_Test;
+   AWS_Test        : Configure.Tests.AWS.AWS_Test;
    AMF_Test        :
      Configure.Tests.Modules.AMF.AMF_Test (Operating_System_Test'Access);
    MySQL_Test      : Configure.Tests.MySQL.MySQL_Test;
@@ -172,6 +174,7 @@ begin
    Install_Test.Execute (Arguments);
    Gprbuild_Test.Execute (Arguments);
    Asis_Test.Execute (Arguments);
+   AWS_Test.Execute (Arguments);
    AMF_Test.Execute (Arguments);
    MySQL_Test.Execute (Arguments);
    OCI_Test.Execute (Arguments);
