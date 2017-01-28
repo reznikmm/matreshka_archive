@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -54,23 +54,11 @@ package body Servlet.HTTP_Parameters.AWS_Parameters is
     (Attachment : AWS.Attachments.Element) return HTTP_Parameter is
    begin
       return
-       (Ada.Finalization.Controlled with
-          Parameter =>
-            new AWS_Attachment_Parameter'
-                 (Attachment => Attachment,
-                  Input      => <>));
+       (Parameter =>
+          new AWS_Attachment_Parameter'
+               (Attachment => Attachment,
+                Input      => <>));
    end Create;
-
-   --------------
-   -- Finalize --
-   --------------
-
-   overriding procedure Finalize (Self : in out AWS_Attachment_Parameter) is
-   begin
-      if Ada.Streams.Stream_IO.Is_Open (Self.Input) then
-         Ada.Streams.Stream_IO.Close (Self.Input);
-      end if;
-   end Finalize;
 
    ----------------------
    -- Get_Content_Type --

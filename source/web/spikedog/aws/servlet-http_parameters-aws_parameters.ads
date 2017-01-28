@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,8 +57,6 @@ private
       Attachment : AWS.Attachments.Element;
       Input      : Ada.Streams.Stream_IO.File_Type;
    end record;
-
-   overriding procedure Finalize (Self : in out AWS_Attachment_Parameter);
 
    overriding function Get_Content_Type
     (Self : AWS_Attachment_Parameter) return League.Strings.Universal_String;
