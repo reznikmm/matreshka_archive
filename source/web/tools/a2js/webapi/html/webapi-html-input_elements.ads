@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with WebAPI.HTML.Elements;
+with WebAPI.HTML.Validity_States;
 
 package WebAPI.HTML.Input_Elements is
 
@@ -453,6 +454,14 @@ package WebAPI.HTML.Input_Elements is
               Link_Name  => "willValidate";
 
    --    readonly attribute ValidityState validity;
+
+   not overriding function Get_Validity
+    (Self : not null access constant HTML_Input_Element)
+       return not null access WebAPI.HTML.Validity_States.Validity_State'Class
+         is abstract
+           with Import     => True,
+                Convention => JavaScript_Property_Getter,
+                Link_Name  => "validity";
 
    not overriding function Get_Validation_Message
     (Self : not null access constant HTML_Input_Element)
