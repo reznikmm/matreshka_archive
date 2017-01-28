@@ -172,7 +172,10 @@ package body Matreshka.Servlet_HTTP_Requests is
    overriding function Get_Session
     (Self   : Abstract_HTTP_Servlet_Request;
      Create : Boolean := True)
-       return access Servlet.HTTP_Sessions.HTTP_Session'Class is
+       return access Servlet.HTTP_Sessions.HTTP_Session'Class
+   is
+      use type Spikedog.HTTP_Session_Managers.HTTP_Session_Manager_Access;
+
    begin
       if Self.Data.Session /= null
         or else Self.Data.Session_Computed
