@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -190,7 +190,13 @@ package body Matreshka.Servlet_HTTP_Requests is
          --  Check whether session identifier was passed in HTTP cookie and
          --  attempt to reconstruct session.
 
-         if not Identifier.Is_Empty then
+         if Self.Session_Manager = null then
+            --  XXX Suspicuous behavior should be reported: session manager is
+            --  not setted up.
+
+            null;
+
+         elsif not Identifier.Is_Empty then
             --  Decode session identifier specified in request. Detect and
             --  report security event if this conversion fails.
 
@@ -219,7 +225,10 @@ package body Matreshka.Servlet_HTTP_Requests is
       --  Allocate new session when it was not specified in HTTP cookie or
       --  resolved.
 
-      if Self.Data.Session = null and Create then
+      if Self.Data.Session = null
+        and Self.Session_Manager /= null
+        and Create
+      then
          Self.Data.Session := Self.Session_Manager.New_Session;
       end if;
 
