@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -256,6 +256,10 @@ begin
      League.Strings.From_UTF_8_String
       (Ada.Directories.Simple_Name (ADT_File.To_UTF_8_String));
    Output_File := ADT_File.Head (ADT_File.Length - 4) & ".js";
+
+   --  Enable use of UTF-8 as source code encoding.
+
+   Options.Append (League.Strings.From_UTF_8_String ("-gnatW8"));
 
    --  Execute GNAT to generate ADT files.
 
