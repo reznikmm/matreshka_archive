@@ -69,7 +69,8 @@ with Web_Socket.Handlers.AWS_Handlers;
 
 package body Matreshka.Servlet_Servers.AWS_Servers is
 
-   Config           : AWS.Config.Object;
+   Config           : AWS.Config.Object := AWS.Config.Get_Current;
+   --  Initialize config from .ini file
    Server           : AWS.Server.HTTP;
    Shutdown_Request : Ada.Synchronous_Task_Control.Suspension_Object;
    Container        : Matreshka.Servlet_Containers.Servlet_Container_Access;
