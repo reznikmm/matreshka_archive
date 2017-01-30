@@ -980,17 +980,15 @@ package body XML.Templates.Processors is
                end if;
             end if;
 
-            if Dollar < Text.Length
-              and then Text (Dollar + 1) = '$'
+            if Dollar = Text.Length
+              or else Text (Dollar + 1) /= '{'
             then
-               --  Escaped dollar sign.
-
                if In_Attribute then
                   Result.Append ('$');
 
                else
                   Self.Content_Handler.Characters
-                   (Text.Slice (Dollar + 1, Dollar + 1), Success);
+                   (Text.Slice (Dollar, Dollar), Success);
 
                   if not Success then
                      Self.Diagnosis := Self.Content_Handler.Error_String;
@@ -999,9 +997,15 @@ package body XML.Templates.Processors is
                   end if;
                end if;
 
-            elsif Dollar <= Text.Length
-              and then Text (Dollar + 1) = '{'
-            then
+               if Dollar < Text.Length and then Text (Dollar + 1) = '$' then
+                  --  Escaped dollar sign.
+
+                  First := Dollar + 2;
+               else
+                  First := Dollar + 1;
+               end if;
+
+            else
                --  Expression.
 
                First := Dollar + 2;
