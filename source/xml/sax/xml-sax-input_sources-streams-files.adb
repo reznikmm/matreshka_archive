@@ -112,7 +112,8 @@ package body XML.SAX.Input_Sources.Streams.Files is
       Open
        (Self.File,
         Ada.Streams.Stream_IO.In_File,
-        Naming_Utilities.To_Ada_RTL_File_Name (File_Name));
+        Naming_Utilities.To_Ada_RTL_File_Name (File_Name),
+        "SHARED=NO");
       Self.Set_System_Id (Naming_Utilities.File_Name_To_URI (File_Name));
       Self.Set_Stream (Stream_Access (Stream (Self.File)));
    end Open_By_File_Name;
