@@ -254,6 +254,9 @@ package body Matreshka.Servlet_Containers is
       elsif Path.Ends_With (".png") then
          return League.Strings.To_Universal_String ("image/png");
 
+      elsif Path.Ends_With (".svg") then
+         return League.Strings.To_Universal_String ("image/svg+xml");
+
       elsif Path.Ends_With (".tiff") then
          return League.Strings.To_Universal_String ("image/tiff");
 
