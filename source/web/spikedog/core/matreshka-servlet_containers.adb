@@ -230,7 +230,10 @@ package body Matreshka.Servlet_Containers is
       pragma Unreferenced (Self);
 
    begin
-      if Path.Ends_With (".css") then
+      if Path.Ends_With (".atom") then
+         return League.Strings.To_Universal_String ("application/atom+xml");
+
+      elsif Path.Ends_With (".css") then
          return League.Strings.To_Universal_String ("text/css");
 
       elsif Path.Ends_With (".frag") then
