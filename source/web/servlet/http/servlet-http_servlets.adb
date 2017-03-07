@@ -192,6 +192,10 @@ package body Servlet.HTTP_Servlets is
       --  * Request doesn't have valid If-Modified-Since
       --  * or If-Modified-Since earlier then Time
 
+      function Round_Time
+        (Value : League.Calendars.Date_Time) return League.Calendars.Date_Time;
+      --  Round time to second by trimming subsecond part of time
+
       --------------------
       -- Modified_Since --
       --------------------
@@ -221,6 +225,34 @@ package body Servlet.HTTP_Servlets is
          return True;
       end Modified_Since;
 
+      ----------------
+      -- Round_Time --
+      ----------------
+
+      function Round_Time
+        (Value : League.Calendars.Date_Time) return League.Calendars.Date_Time
+      is
+         use type League.Calendars.ISO_8601.Nanosecond_100_Number;
+
+         Year           : League.Calendars.ISO_8601.Year_Number;
+         Month          : League.Calendars.ISO_8601.Month_Number;
+         Day            : League.Calendars.ISO_8601.Day_Number;
+         Hour           : League.Calendars.ISO_8601.Hour_Number;
+         Minute         : League.Calendars.ISO_8601.Minute_Number;
+         Second         : League.Calendars.ISO_8601.Second_Number;
+         Nanosecond_100 : League.Calendars.ISO_8601.Nanosecond_100_Number;
+      begin
+         if League.Calendars.ISO_8601.Nanosecond_100 (Value) = 0 then
+            return Value;
+         end if;
+
+         League.Calendars.ISO_8601.Split
+           (Value, Year, Month, Day, Hour, Minute, Second, Nanosecond_100);
+
+         return League.Calendars.ISO_8601.Create
+           (Year, Month, Day, Hour, Minute, Second, 0);
+      end Round_Time;
+
    begin
       case HTTP_Request.Get_Method is
          when Servlet.HTTP_Requests.Options =>
@@ -229,8 +261,10 @@ package body Servlet.HTTP_Servlets is
          when Servlet.HTTP_Requests.Get =>
             declare
                Last_Modified : constant League.Calendars.Date_Time :=
-                 HTTP_Servlet'Class (Self).Get_Last_Modified (HTTP_Request);
-
+                 Round_Time (HTTP_Servlet'Class (Self)
+                               .Get_Last_Modified (HTTP_Request));
+               --  We are not interested in subsecond part of time, because
+               --  HTTP doesn't transfer subseconds
             begin
                if Last_Modified /= Self.Unknown_Time then
 
