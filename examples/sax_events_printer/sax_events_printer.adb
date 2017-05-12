@@ -51,7 +51,7 @@ with Put_Line;
 
 procedure Sax_Events_Printer is
    Source  : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-   Reader  : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+   Reader  : aliased XML.SAX.Simple_Readers.Simple_Reader;
    Handler : aliased Events_Printers.Events_Printer;
 
 begin

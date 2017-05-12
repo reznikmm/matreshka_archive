@@ -469,10 +469,16 @@ package body Properties.Tools is
    -------------------
 
    function Get_Dimension (Exp : Asis.Expression) return Natural is
-      Tipe   : constant Asis.Declaration :=
+      Tipe   : Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Exp);
       View : Asis.Definition;
    begin
+      if Asis.Elements.Declaration_Kind (Tipe)
+        in Asis.A_Private_Type_Declaration
+      then
+         Tipe := Asis.Declarations.Corresponding_Type_Completion (Tipe);
+      end if;
+
       if Asis.Elements.Is_Nil (Tipe) then
          declare
             Enclosing : constant Asis.Declaration :=

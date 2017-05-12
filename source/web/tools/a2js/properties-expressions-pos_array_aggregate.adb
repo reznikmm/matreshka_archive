@@ -186,7 +186,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
      (Element : Asis.Expression;
       List    : Asis.Association_List) return Asis.Definition
    is
-      Tipe    : constant Asis.Declaration :=
+      Tipe    : Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
       Def     : Asis.Type_Definition;
       Comp    : Asis.Definition;
@@ -194,6 +194,12 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Decl    : Asis.Declaration;
       Item    : Asis.Expression;
    begin
+      if Asis.Elements.Declaration_Kind (Tipe)
+        in Asis.A_Private_Type_Declaration
+      then
+         Tipe := Asis.Declarations.Corresponding_Type_Completion (Tipe);
+      end if;
+
       if not Asis.Elements.Is_Nil (Tipe) then
          Def  := Properties.Tools.Type_Declaration_View (Tipe);
          Comp := Asis.Definitions.Array_Component_Definition (Def);
