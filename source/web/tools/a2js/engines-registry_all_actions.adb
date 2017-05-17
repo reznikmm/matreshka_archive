@@ -238,6 +238,12 @@ is
        Kind   => F.An_Object_Renaming_Declaration,
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
+       Kind   => F.An_Integer_Number_Declaration,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Real_Number_Declaration,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
        Kind   => F.A_Private_Extension_Declaration,
        Action => P.Common.Empty'Access),
       (Name   => N.Code,
