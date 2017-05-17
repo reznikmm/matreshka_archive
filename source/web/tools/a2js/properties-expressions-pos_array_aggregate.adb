@@ -200,6 +200,21 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          Tipe := Asis.Declarations.Corresponding_Type_Completion (Tipe);
       end if;
 
+      while Asis.Elements.Declaration_Kind (Tipe) in
+        Asis.A_Subtype_Declaration
+      loop
+         Def := Asis.Declarations.Type_Declaration_View (Tipe);
+         Item := Asis.Definitions.Subtype_Mark (Def);
+
+         if Asis.Elements.Expression_Kind (Item) in
+           Asis.A_Selected_Component
+         then
+            Item := Asis.Expressions.Selector (Item);
+         end if;
+
+         Tipe := Asis.Expressions.Corresponding_Name_Declaration (Item);
+      end loop;
+
       if not Asis.Elements.Is_Nil (Tipe) then
          Def  := Properties.Tools.Type_Declaration_View (Tipe);
          Comp := Asis.Definitions.Array_Component_Definition (Def);

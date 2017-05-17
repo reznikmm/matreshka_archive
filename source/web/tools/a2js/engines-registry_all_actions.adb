@@ -184,12 +184,12 @@ is
        Action => P.Expressions.Explicit_Dereference.Address'Access),
 
      --  Associations
-     (Name   => N.Associations,
+      (Name   => N.Associations,
        Kind   => F.A_Record_Component_Association,
        Action =>
          P.Expressions.Record_Component_Association.Associations'Access),
      --  Code
-     (Name   => N.Code,
+      (Name   => N.Code,
        Kind   => F.A_Use_Package_Clause,
        Action => P.Common.Empty'Access),
       (Name   => N.Code,
@@ -561,6 +561,15 @@ is
       (Name   => N.Bounds,
        Kind   => F.A_Parameter_Association,
        Action => P.Expressions.Parameter_Association.Bounds'Access),
+      (Name   => N.Bounds,
+       Kind   => F.A_Subtype_Declaration,
+       Action => P.Declarations.Ordinary_Type.Initialize'Access),
+      (Name   => N.Bounds,
+       Kind   => F.A_Record_Component_Association,
+       Action => P.Expressions.Record_Component_Association.Bounds'Access),
+      (Name   => N.Bounds,
+       Kind   => F.A_Qualified_Expression,
+       Action => P.Expressions.Type_Conversion.Bounds'Access),
 
       --  Initialize
       (Name   => N.Initialize,
@@ -707,6 +716,18 @@ is
       (Name   => N.Upper,
        Kind   => F.An_Enumeration_Type_Definition,
        Action => P.Definitions.Enumeration_Type.Upper'Access),
+      (Name   => N.Lower,
+       Kind   => F.A_Subtype_Declaration,
+       Action => P.Declarations.Ordinary_Type.Initialize'Access),
+      (Name   => N.Upper,
+       Kind   => F.A_Subtype_Declaration,
+       Action => P.Declarations.Ordinary_Type.Initialize'Access),
+      (Name   => N.Lower,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Bounds'Access),
+      (Name   => N.Upper,
+       Kind   => F.A_Subtype_Indication,
+       Action => P.Definitions.Subtype_Indication.Bounds'Access),
 
       --  Intrinsic_Name
       (Name   => N.Intrinsic_Name,
@@ -1117,6 +1138,9 @@ is
       (Kind    => F.A_Class_Attribute,
        Name    => N.Is_Simple_Type,
        Action  => P.Common.False'Access),
+      (Kind    => F.A_Base_Attribute,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Common.True'Access),
 
       (Kind   => F.A_Constrained_Array_Definition,
        Name   => N.Is_Array_Of_Simple,

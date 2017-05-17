@@ -410,5 +410,13 @@ begin
    Fn_To.Append (League.Strings.To_Universal_String ("Math.floor"));
    Fn_From.Append (League.Strings.To_Universal_String ("A_CEILING_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("Math.ceil"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_POS_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._pos"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_VAL_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._val"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_PRED_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._pred"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_SUCC_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._succ"));
 
 end Properties.Expressions.Function_Calls;

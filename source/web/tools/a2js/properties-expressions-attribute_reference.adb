@@ -64,6 +64,10 @@ package body Properties.Expressions.Attribute_Reference is
               Asis.A_Floor_Attribute |
               Asis.A_Max_Attribute |
               Asis.A_Min_Attribute |
+              Asis.A_Pos_Attribute |
+              Asis.A_Pred_Attribute |
+              Asis.A_Succ_Attribute |
+              Asis.A_Val_Attribute |
               Asis.A_Wide_Wide_Image_Attribute |
               Asis.A_Wide_Wide_Value_Attribute =>
             return Engines.Intrinsic;

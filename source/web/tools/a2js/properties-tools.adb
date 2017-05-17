@@ -496,6 +496,24 @@ package body Properties.Tools is
          View := Asis.Declarations.Type_Declaration_View (Tipe);
       end if;
 
+      if Asis.Elements.Definition_Kind (View) in Asis.A_Subtype_Indication then
+         declare
+            Constraint : constant Asis.Constraint :=
+              Asis.Definitions.Subtype_Constraint (View);
+         begin
+            if Asis.Elements.Is_Nil (Constraint) then
+               raise Constraint_Error;
+            else
+               declare
+                  Ranges : constant Asis.Discrete_Range_List :=
+                    Asis.Definitions.Discrete_Ranges (Constraint);
+               begin
+                  return Ranges'Length;
+               end;
+            end if;
+         end;
+      end if;
+
       loop
          case Asis.Elements.Type_Kind (View) is
             when Asis.A_Constrained_Array_Definition =>
@@ -522,6 +540,7 @@ package body Properties.Tools is
 
                   View := Asis.Declarations.Type_Declaration_View (Decl);
                end;
+
             when others =>
                raise Constraint_Error;
          end case;

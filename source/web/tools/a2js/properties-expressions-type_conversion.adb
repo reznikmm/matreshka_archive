@@ -45,6 +45,21 @@ with Asis.Expressions;
 
 package body Properties.Expressions.Type_Conversion is
 
+   ------------
+   -- Bounds --
+   ------------
+
+   function Bounds
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Item : constant Asis.Expression :=
+        Asis.Expressions.Converted_Or_Qualified_Subtype_Mark (Element);
+   begin
+      return Engine.Text.Get_Property (Item, Name);
+   end Bounds;
+
    ----------
    -- Code --
    ----------

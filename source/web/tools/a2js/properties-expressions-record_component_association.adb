@@ -72,6 +72,34 @@ package body Properties.Expressions.Record_Component_Association is
       return Result;
    end Associations;
 
+   ------------
+   -- Bounds --
+   ------------
+
+   function Bounds
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Result : League.Strings.Universal_String;
+      List   : constant Asis.Defining_Name_List :=
+        Asis.Expressions.Record_Component_Choices (Element);
+   begin
+      if List'Length = 0 then
+         raise Constraint_Error with
+           "Bounds on positional record association is not implemented";
+      end if;
+
+      declare
+         Component : constant Asis.Declaration :=
+           Asis.Expressions.Corresponding_Name_Declaration (List (List'First));
+      begin
+         Result := Engine.Text.Get_Property (Component, Name);
+
+         return Result;
+      end;
+   end Bounds;
+
    ----------
    -- Code --
    ----------

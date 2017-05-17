@@ -95,6 +95,10 @@ define('standard', [], function(){
             default: return x;
         }
     };
+    //  T'Val(x) for discrete type T. FIXME how to do it for all types?
+    standard._val = function (x){
+        return x;
+    };
 
     //  T'Succ(x) for discrete type T
     standard._succ = function (x){
