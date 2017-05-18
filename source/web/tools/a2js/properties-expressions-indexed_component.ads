@@ -49,9 +49,19 @@ with League.Strings;
 
 package Properties.Expressions.Indexed_Component is
 
+   function Address
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
+   function Is_Simple_Ref
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean;
 
 end Properties.Expressions.Indexed_Component;

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,12 +41,51 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Declarations;
 with Asis.Elements;
 with Asis.Expressions;
 
 with Properties.Tools;
 
 package body Properties.Expressions.Indexed_Component is
+
+   -------------
+   -- Address --
+   -------------
+
+   function Address
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Text  : League.Strings.Universal_String;
+      Down  : League.Strings.Universal_String;
+      List  : constant Asis.Expression_List :=
+        Asis.Expressions.Index_Expressions (Element);
+      Prefix : constant Asis.Expression := Asis.Expressions.Prefix (Element);
+   begin
+      Down := Engine.Text.Get_Property
+        (Prefix, Name);
+      Text.Append (Down);
+
+      Text.Append (".A[");
+      Text.Append (Down);
+      Text.Append ("._index(");
+
+      for J in List'Range loop
+         Down := Engine.Text.Get_Property (List (J), Engines.Code);
+         Text.Append (Down);
+
+         if J /= List'Last then
+            Text.Append (", ");
+         end if;
+      end loop;
+
+      Text.Append (")");
+      Text.Append ("]");
+
+      return Text;
+   end Address;
 
    ----------
    -- Code --
@@ -66,13 +105,14 @@ package body Properties.Expressions.Indexed_Component is
       Tipe   : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Prefix);
       Is_Typed_Array : Boolean := False;
+      Is_Simple_Ref  : constant Boolean :=
+        Engine.Boolean.Get_Property (Element, Engines.Is_Simple_Ref);
    begin
       if not Asis.Elements.Is_Nil (Tipe) then
          Is_Typed_Array := Properties.Tools.Is_Typed_Array (Tipe);
       end if;
 
-      Down := Engine.Text.Get_Property
-        (Asis.Expressions.Prefix (Element), Name);
+      Down := Engine.Text.Get_Property (Prefix, Name);
       Text.Append (Down);
 
       if Is_Typed_Array then
@@ -96,9 +136,45 @@ package body Properties.Expressions.Indexed_Component is
 
       if not Is_Typed_Array then
          Text.Append ("]");
+
+         if Is_Simple_Ref then
+            Text.Append (".all");
+         end if;
       end if;
 
       return Text;
    end Code;
+
+   -------------------
+   -- Is_Simple_Ref --
+   -------------------
+
+   function Is_Simple_Ref
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean
+   is
+      Prefix : constant Asis.Expression :=
+        Asis.Expressions.Prefix (Element);
+      Prefix_Type : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Prefix);
+      View        : Asis.Definition;
+      Component   : Asis.Component_Definition;
+   begin
+      if Asis.Elements.Is_Nil (Prefix_Type) then
+         declare
+            Decl : constant Asis.Declaration :=
+              Asis.Expressions.Corresponding_Name_Declaration (Prefix);
+         begin
+            View := Asis.Declarations.Object_Declaration_View (Decl);
+         end;
+      else
+         View := Properties.Tools.Type_Declaration_View (Prefix_Type);
+      end if;
+
+      Component := Properties.Tools.Array_Component_Definition (View);
+
+      return Engine.Boolean.Get_Property (Component, Name);
+   end Is_Simple_Ref;
 
 end Properties.Expressions.Indexed_Component;

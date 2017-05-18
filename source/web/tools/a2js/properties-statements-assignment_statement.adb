@@ -46,6 +46,21 @@ with Asis.Statements;
 
 package body Properties.Statements.Assignment_Statement is
 
+   ------------
+   -- Bounds --
+   ------------
+
+   function Bounds
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String
+   is
+      Left  : constant Asis.Expression :=
+        Asis.Statements.Assignment_Variable_Name (Element);
+   begin
+      return Engine.Text.Get_Property (Left, Name);
+   end Bounds;
+
    ----------
    -- Code --
    ----------

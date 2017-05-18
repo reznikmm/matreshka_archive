@@ -83,6 +83,12 @@ package Properties.Tools is
      (Declaration : Asis.Declaration) return Asis.Definition;
    --  Like Asis.Declarations.Type_Declaration_View but expand derived types
 
+   function Array_Component_Definition
+     (Type_Definition : Asis.Type_Definition)
+      return Asis.Component_Definition;
+   --  Like Asis.Definitions.Array_Component_Definition, but takes into account
+   --  implicit dereference.
+
    function Is_Equal_Type
      (Left  : Asis.Declaration;
       Right : Asis.Declaration) return Boolean;

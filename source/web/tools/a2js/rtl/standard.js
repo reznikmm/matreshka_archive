@@ -389,6 +389,12 @@ define('standard', [], function(){
         return index;
     };
 
+    standard._singleton =
+        function (value) { this.all = value }
+    standard._singleton.prototype = {
+        "_assign" : function (r) { this.all = r.all }
+    }
+        
     standard._tag ('event_listener','');
     standard._tag ('frame_request_callback','');
     standard.webapi = {

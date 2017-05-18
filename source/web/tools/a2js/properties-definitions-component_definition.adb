@@ -42,6 +42,7 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 with Asis.Definitions;
+with Asis.Elements;
 
 package body Properties.Definitions.Component_Definition is
 
@@ -69,10 +70,44 @@ package body Properties.Definitions.Component_Definition is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
+      Text    : League.Strings.Universal_String;
+      Down    : League.Strings.Universal_String;
       Subtipe : constant Asis.Definition :=
         Asis.Definitions.Component_Definition_View (Element);
+
+      Is_Simple_Ref : constant Boolean :=
+        Engine.Boolean.Get_Property (Element, Engines.Is_Simple_Ref);
    begin
-      return Engine.Text.Get_Property (Subtipe, Name);
+      if Is_Simple_Ref then
+         Text.Append ("new _ec._singleton(");
+      end if;
+
+      Down := Engine.Text.Get_Property (Subtipe, Name);
+      Text.Append (Down);
+
+      if Is_Simple_Ref then
+         Text.Append (")");
+      end if;
+
+      return Text;
    end Initialize;
+
+   -------------------
+   -- Is_Simple_Ref --
+   -------------------
+
+   function Is_Simple_Ref
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean
+   is
+      pragma Unreferenced (Name);
+      Tipe : constant Asis.Definition :=
+        Asis.Definitions.Component_Definition_View (Element);
+      Is_Simple_Type : constant Boolean :=
+        Engine.Boolean.Get_Property (Tipe, Engines.Is_Simple_Type);
+   begin
+      return Is_Simple_Type and then Asis.Elements.Has_Aliased (Element);
+   end Is_Simple_Ref;
 
 end Properties.Definitions.Component_Definition;

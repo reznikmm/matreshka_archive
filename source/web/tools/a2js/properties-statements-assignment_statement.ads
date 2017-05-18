@@ -49,6 +49,11 @@ with League.Strings;
 
 package Properties.Statements.Assignment_Statement is
 
+   function Bounds
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Expression;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
    function Code
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;

@@ -182,6 +182,9 @@ is
       (Name   => N.Address,
        Kind   => F.An_Explicit_Dereference,
        Action => P.Expressions.Explicit_Dereference.Address'Access),
+      (Name   => N.Address,
+       Kind   => F.An_Indexed_Component,
+       Action => P.Expressions.Indexed_Component.Address'Access),
 
      --  Associations
       (Name   => N.Associations,
@@ -570,6 +573,9 @@ is
       (Name   => N.Bounds,
        Kind   => F.A_Qualified_Expression,
        Action => P.Expressions.Type_Conversion.Bounds'Access),
+      (Name   => N.Bounds,
+       Kind   => F.An_Assignment_Statement,
+       Action => P.Statements.Assignment_Statement.Bounds'Access),
 
       --  Initialize
       (Name   => N.Initialize,
@@ -1068,6 +1074,12 @@ is
       (Kind   => F.A_Real_Number_Declaration,
        Name   => N.Is_Simple_Ref,
        Action => P.Common.False'Access),
+      (Kind   => F.An_Indexed_Component,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Expressions.Indexed_Component.Is_Simple_Ref'Access),
+      (Kind   => F.A_Component_Definition,
+       Name   => N.Is_Simple_Ref,
+       Action => P.Definitions.Component_Definition.Is_Simple_Ref'Access),
 
       (Kind   => F.A_Subtype_Indication,
        Name   => N.Is_Simple_Type,
@@ -1141,6 +1153,13 @@ is
       (Kind    => F.A_Base_Attribute,
        Name    => N.Is_Simple_Type,
        Action  => P.Common.True'Access),
+      (Kind    => F.An_Anonymous_Access_To_Constant,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Common.True'Access),
+      (Kind    => F.An_Anonymous_Access_To_Variable,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Common.True'Access),
+
 
       (Kind   => F.A_Constrained_Array_Definition,
        Name   => N.Is_Array_Of_Simple,

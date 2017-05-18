@@ -57,6 +57,42 @@ package body Properties.Tools is
    function Name_Image
      (Name : Asis.Name) return League.Strings.Universal_String;
 
+   function Full_Type_View
+     (Type_Definition : Asis.Type_Definition) return Asis.Type_Definition;
+
+   --------------------------------
+   -- Array_Component_Definition --
+   --------------------------------
+
+   function Array_Component_Definition
+     (Type_Definition : Asis.Type_Definition)
+      return Asis.Component_Definition
+   is
+      Subtipe_Indication : Asis.Subtype_Indication;
+      Mark               : Asis.Expression;
+      Decl               : Asis.Declaration;
+      View               : Asis.Type_Definition :=
+        Type_Declaration_View
+          (Asis.Elements.Enclosing_Element (Type_Definition));
+   begin
+      if Asis.Elements.Type_Kind (View) in Asis.An_Access_Type_Definition then
+         Subtipe_Indication :=
+           Asis.Definitions.Access_To_Object_Definition (View);
+         Mark := Asis.Definitions.Subtype_Mark (Subtipe_Indication);
+
+         if Asis.Elements.Expression_Kind (Mark) in
+           Asis.A_Selected_Component
+         then
+            Mark := Asis.Expressions.Selector (Mark);
+         end if;
+
+         Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
+         View := Asis.Declarations.Type_Declaration_View (Decl);
+      end if;
+
+      return Asis.Definitions.Array_Component_Definition (View);
+   end Array_Component_Definition;
+
    -----------
    -- Comma --
    -----------
@@ -422,6 +458,29 @@ package body Properties.Tools is
 
       return Parent;
    end Enclosing_Declaration;
+
+   --------------------
+   -- Full_Type_View --
+   --------------------
+
+   function Full_Type_View
+     (Type_Definition : Asis.Type_Definition) return Asis.Type_Definition
+   is
+      Decl : Asis.Declaration :=
+        Asis.Elements.Enclosing_Element (Type_Definition);
+   begin
+      while Asis.Elements.Declaration_Kind (Decl) in
+        Asis.An_Incomplete_Type_Declaration |
+        Asis.A_Tagged_Incomplete_Type_Declaration |
+        Asis.A_Private_Type_Declaration |
+        Asis.A_Private_Extension_Declaration
+      loop
+         Decl :=
+           Asis.Declarations.Corresponding_Type_Completion (Decl);
+      end loop;
+
+      return Asis.Declarations.Type_Declaration_View (Decl);
+   end Full_Type_View;
 
    ----------------
    -- Get_Aspect --
@@ -1082,6 +1141,8 @@ package body Properties.Tools is
         Asis.Declarations.Type_Declaration_View (Declaration);
    begin
       loop
+         View := Full_Type_View (View);
+
          case Asis.Elements.Type_Kind (View) is
             when Asis.A_Derived_Type_Definition =>
                declare

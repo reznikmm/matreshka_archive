@@ -65,4 +65,9 @@ package Properties.Definitions.Component_Definition is
       Element : Asis.Definition;
       Name    : Engines.Integer_Property) return Integer;
 
+   function Is_Simple_Ref
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean;
+
 end Properties.Definitions.Component_Definition;
