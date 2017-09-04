@@ -41,7 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-with Ada.Unchecked_Conversion;
+with System.Storage_Elements;
 with Interfaces.C;
 
 with League.Characters;
@@ -80,15 +80,25 @@ package body Matreshka.Internals.Settings.Registry is
 
    REG_SZ : constant DWORD := 1;
 
-   function To_HKEY is
-     new Ada.Unchecked_Conversion (Interfaces.C.unsigned, HKEY);
+   function A_To_HKEY (Value : System.Storage_Elements.Integer_Address)
+     return HKEY;
+
+   ---------------
+   -- A_To_HKEY --
+   ---------------
+
+   function A_To_HKEY (Value : System.Storage_Elements.Integer_Address)
+     return HKEY is
+   begin
+      return HKEY (System.Storage_Elements.To_Address (Value));
+   end A_To_HKEY;
 
    No_HKEY : constant HKEY := HKEY (System.Null_Address);
 
-   HKEY_CLASSES_ROOT  : constant HKEY := To_HKEY (16#8000_0000#);
-   HKEY_CURRENT_USER  : constant HKEY := To_HKEY (16#8000_0001#);
-   HKEY_LOCAL_MACHINE : constant HKEY := To_HKEY (16#8000_0002#);
-   HKEY_USERS         : constant HKEY := To_HKEY (16#8000_0003#);
+   HKEY_CLASSES_ROOT  : constant HKEY := A_To_HKEY (16#8000_0000#);
+   HKEY_CURRENT_USER  : constant HKEY := A_To_HKEY (16#8000_0001#);
+   HKEY_LOCAL_MACHINE : constant HKEY := A_To_HKEY (16#8000_0002#);
+   HKEY_USERS         : constant HKEY := A_To_HKEY (16#8000_0003#);
 
    function RegOpenKeyEx
     (hKey       : Registry.HKEY;
