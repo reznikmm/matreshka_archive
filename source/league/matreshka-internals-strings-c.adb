@@ -256,7 +256,7 @@ package body Matreshka.Internals.Strings.C is
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Valid  : out Boolean)
    is
-      pragma Assert (String.Size < Size);
+      pragma Assert (String.Size >= Size);
       pragma Assert (String /= null);
       pragma Suppress (Access_Check);
 
