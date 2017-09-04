@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -585,9 +585,8 @@ package body Matreshka.Internals.Settings.Registry is
                     V_Size'Unchecked_Access) = 0
                then
                   V (V'Last) := 0;
-                  League.Holders.Replace_Element
-                   (Value,
-                    Matreshka.Internals.Strings.C.To_Valid_Universal_String
+                  Value := League.Holders.To_Holder
+                   (Matreshka.Internals.Strings.C.To_Valid_Universal_String
                      (V (0)'Unchecked_Access));
                end if;
             end;
