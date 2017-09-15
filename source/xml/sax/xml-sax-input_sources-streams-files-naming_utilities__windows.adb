@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2011-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -112,7 +112,7 @@ package body Naming_Utilities is
       Size :=
         GetFullPathName
          (League.Strings.Internals.Internal (Name).Value (0)'Access,
-          DWORD (Result.Size),
+          DWORD (Result.Capacity),
           Result.Value (0)'Access,
           Dummy);
 
