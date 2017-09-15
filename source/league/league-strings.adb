@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -2507,7 +2507,7 @@ package body League.Strings is
                raise Constraint_Error with "Illegal Unicode code point";
             end if;
 
-            if Destination.Size < Destination.Unused + 2 then
+            if Destination.Capacity < Destination.Unused + 2 then
                --  For some improvement of performance this check ignores
                --  actual number of code units which are occupied by encoded
                --  code point. Additional code unit is allocated to prevent

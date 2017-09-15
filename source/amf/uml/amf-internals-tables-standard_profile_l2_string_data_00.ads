@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,10 +50,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Library"
 
    MS_0000 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#004C#, 16#0069#,
@@ -65,10 +65,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_ImplementationClass"
 
    MS_0001 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0049#, 16#006D#,
@@ -83,10 +83,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Specifies a refinement relationship between model elements at different semantic levels, such as analysis and design. The mapping specifies the relationship between the two elements or sets of elements. The mapping may or may not be computable, and it may be unidirectional or bidirectional. Refinement can be used to model transformations from analysis to design and other such changes."
 
    MS_0002 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 399,
-         Unused => 387,
-         Length => 387,
-         Value  =>
+     := (Capacity => 399,
+         Unused   => 387,
+         Length   => 387,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -190,10 +190,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Executable"
 
    MS_0003 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0045#, 16#0078#, 16#0065#, 16#0063#,
            16#0075#, 16#0074#, 16#0061#, 16#0062#,
            16#006C#, 16#0065#,
@@ -203,10 +203,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A physical file in the context of the system developed."
 
    MS_0004 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 55,
-         Length => 55,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 55,
+         Length   => 55,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0068#,
            16#0079#, 16#0073#, 16#0069#, 16#0063#,
            16#0061#, 16#006C#, 16#0020#, 16#0066#,
@@ -227,10 +227,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Type"
 
    MS_0005 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0054#, 16#0079#,
@@ -241,10 +241,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Abstraction_Derive"
 
    MS_0006 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0041#, 16#0062#, 16#0073#, 16#0074#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -256,10 +256,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Framework"
 
    MS_0007 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0046#, 16#0072#, 16#0061#, 16#006D#,
            16#0065#, 16#0077#, 16#006F#, 16#0072#,
            16#006B#,
@@ -269,10 +269,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Document"
 
    MS_0008 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0044#, 16#006F#,
@@ -284,10 +284,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A persistent information component representing a business concept."
 
    MS_0009 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 67,
-         Length => 67,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 67,
+         Length   => 67,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0065#,
            16#0072#, 16#0073#, 16#0069#, 16#0073#,
            16#0074#, 16#0065#, 16#006E#, 16#0074#,
@@ -311,10 +311,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Realization"
 
    MS_000A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0052#, 16#0065#, 16#0061#, 16#006C#,
            16#0069#, 16#007A#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#,
@@ -324,10 +324,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Service"
 
    MS_000B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0053#, 16#0065#, 16#0072#, 16#0076#,
            16#0069#, 16#0063#, 16#0065#,
            others => 16#0000#),
@@ -336,10 +336,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Class"
 
    MS_000C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0043#, 16#006C#, 16#0061#,
            16#0073#, 16#0073#,
@@ -349,10 +349,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Auxiliary"
 
    MS_000D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0041#, 16#0075#,
@@ -364,10 +364,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_Metaclass"
 
    MS_000E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#004D#, 16#0065#,
            16#0074#, 16#0061#, 16#0063#, 16#006C#,
@@ -378,10 +378,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Specifies that the designated feature destroys an instance of the classifier to which the feature is attached."
 
    MS_000F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 110,
-         Length => 110,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 110,
+         Length   => 110,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -416,10 +416,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "File"
 
    MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0046#, 16#0069#, 16#006C#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -427,10 +427,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Artifact"
 
    MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0041#, 16#0072#, 16#0074#,
            16#0069#, 16#0066#, 16#0061#, 16#0063#,
@@ -441,10 +441,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Process"
 
    MS_0012 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0050#, 16#0072#,
@@ -456,10 +456,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Document"
 
    MS_0013 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0044#, 16#006F#, 16#0063#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
            others => 16#0000#),
@@ -468,10 +468,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Specification"
 
    MS_0014 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0063#,
            16#0061#, 16#0074#, 16#0069#, 16#006F#,
@@ -482,10 +482,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "computation"
 
    MS_0015 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0063#, 16#006F#, 16#006D#, 16#0070#,
            16#0075#, 16#0074#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#,
@@ -495,10 +495,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Metaclass"
 
    MS_0016 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#004D#, 16#0065#,
@@ -510,10 +510,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_Type"
 
    MS_0017 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#0054#, 16#0079#,
            16#0070#, 16#0065#,
@@ -523,10 +523,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "The implementation of a class in some programming language (e.g., C++, Smalltalk, Java) in which an instance may not have more than one class. This is in contrast to Class, for which an instance may have multiple classes at one time and may gain or lose classes over time, and an object (a child of instance) may dynamically have multiple classes. An Implementation class is said to realize a Classifier if it provides all of the operations defined for the Classifier with the same behavior as specified for the Classifier's operations. An Implementation Class may realize a number of different Types. Note that the physical attributes and associations of the Implementation class do not have to be the same as those of any Classifier it realizes and that the Implementation Class may provide methods for its operations in terms of its physical attributes and associations. See also: «Type»."
 
    MS_0018 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 919,
-         Unused => 891,
-         Length => 891,
-         Value  =>
+     := (Capacity => 919,
+         Unused   => 891,
+         Length   => 891,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0069#, 16#006D#, 16#0070#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -756,10 +756,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Specifies a trace relationship between model elements or sets of model elements that represent the same concept in different models. Traces are mainly used for tracking requirements and changes across models. Since model changes can occur in both directions, the directionality of the dependency can often be ignored. The mapping specifies the relationship between the two, but it is rarely computable and is usually informal."
 
    MS_0019 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 439,
-         Unused => 426,
-         Length => 426,
-         Value  =>
+     := (Capacity => 439,
+         Unused   => 426,
+         Length   => 426,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -873,10 +873,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Trace"
 
    MS_001A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0054#, 16#0072#, 16#0061#, 16#0063#,
            16#0065#,
            others => 16#0000#),
@@ -885,10 +885,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Script"
 
    MS_001B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0053#, 16#0063#, 16#0072#, 16#0069#,
            16#0070#, 16#0074#,
            others => 16#0000#),
@@ -897,10 +897,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "The specification for computing the derived client element from the derivation supplier element."
 
    MS_001C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 96,
-         Length => 96,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 96,
+         Length   => 96,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0063#,
@@ -931,10 +931,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Destroy"
 
    MS_001D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0044#, 16#0065#, 16#0073#, 16#0074#,
            16#0072#, 16#006F#, 16#0079#,
            others => 16#0000#),
@@ -943,10 +943,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Metaclass"
 
    MS_001E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#004D#, 16#0065#, 16#0074#, 16#0061#,
            16#0063#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#,
@@ -956,10 +956,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Script"
 
    MS_001F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#0063#,
@@ -970,10 +970,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Classifier_Realization"
 
    MS_0020 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
            16#0065#, 16#0072#, 16#005F#, 16#0052#,
@@ -986,10 +986,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A class that specifies a domain of objects together with the operations applicable to the objects, without defining the physical implementation of those objects. However, it may have attributes and associations. Behavioral specifications for type operations may be expressed using, for example, activity diagrams. An object may have at most one implementation class, however it may conform to multiple different types. See also: «ImplementationClass»."
 
    MS_0021 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 471,
-         Unused => 451,
-         Length => 451,
-         Value  =>
+     := (Capacity => 471,
+         Unused   => 451,
+         Length   => 451,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -1109,10 +1109,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Utility"
 
    MS_0022 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0055#, 16#0074#, 16#0069#, 16#006C#,
            16#0069#, 16#0074#, 16#0079#,
            others => 16#0000#),
@@ -1121,10 +1121,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "is_utility"
 
    MS_0023 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0069#, 16#0073#, 16#005F#, 16#0075#,
            16#0074#, 16#0069#, 16#006C#, 16#0069#,
            16#0074#, 16#0079#,
@@ -1134,10 +1134,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A usage dependency whose client is an operation and whose supplier is a signal, specifying that the client sends the supplier signal."
 
    MS_0024 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 143,
-         Unused => 133,
-         Length => 133,
-         Value  =>
+     := (Capacity => 143,
+         Unused   => 133,
+         Length   => 133,
+         Value    =>
           (16#0041#, 16#0020#, 16#0075#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#0020#,
            16#0064#, 16#0065#, 16#0070#, 16#0065#,
@@ -1178,10 +1178,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Implement"
 
    MS_0025 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0049#, 16#006D#,
@@ -1193,10 +1193,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A unit of hierarchical decomposition for large systems. A subsystem is commonly instantiated indirectly. Definitions of subsystems vary widely among domains and methods, and it is expected that domain and method profiles will specialize this construct. A subsystem may be defined to have specification and realization elements. See also: «Specification» and «Realization»."
 
    MS_0026 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 383,
-         Unused => 372,
-         Length => 372,
-         Value  =>
+     := (Capacity => 383,
+         Unused   => 372,
+         Length   => 372,
+         Value    =>
           (16#0041#, 16#0020#, 16#0075#, 16#006E#,
            16#0069#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0068#, 16#0069#,
@@ -1296,10 +1296,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Usage_Send"
 
    MS_0027 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0055#, 16#0073#, 16#0061#, 16#0067#,
            16#0065#, 16#005F#, 16#0053#, 16#0065#,
            16#006E#, 16#0064#,
@@ -1309,10 +1309,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_Document"
 
    MS_0028 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#0044#, 16#006F#, 16#0063#,
@@ -1324,10 +1324,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Auxiliary"
 
    MS_0029 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0041#, 16#0075#, 16#0078#, 16#0069#,
            16#006C#, 16#0069#, 16#0061#, 16#0072#,
            16#0079#,
@@ -1337,10 +1337,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "When applied to a usage dependency, it specifies that the client classifier creates instances of the supplier classifier. When applied to a BehavioralFeature, it specifies that the designated feature creates an instance of the classifier to which the feature is attached."
 
    MS_002A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 279,
-         Unused => 271,
-         Length => 271,
-         Value  =>
+     := (Capacity => 279,
+         Unused   => 271,
+         Length   => 271,
+         Value    =>
           (16#0057#, 16#0068#, 16#0065#, 16#006E#,
            16#0020#, 16#0061#, 16#0070#, 16#0070#,
            16#006C#, 16#0069#, 16#0065#, 16#0064#,
@@ -1415,10 +1415,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Send"
 
    MS_002B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#0065#,
@@ -1429,10 +1429,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "cannot_be_specification"
 
    MS_002C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0063#, 16#0061#, 16#006E#, 16#006E#,
            16#006F#, 16#0074#, 16#005F#, 16#0062#,
            16#0065#, 16#005F#, 16#0073#, 16#0070#,
@@ -1445,10 +1445,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "client_operation_sends_supplier_signal"
 
    MS_002D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0063#, 16#006C#, 16#0069#, 16#0065#,
            16#006E#, 16#0074#, 16#005F#, 16#006F#,
            16#0070#, 16#0065#, 16#0072#, 16#0061#,
@@ -1465,10 +1465,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A stateless, functional component (computes a value)."
 
    MS_002E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 53,
-         Length => 53,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 53,
+         Length   => 53,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0074#,
            16#0061#, 16#0074#, 16#0065#, 16#006C#,
            16#0065#, 16#0073#, 16#0073#, 16#002C#,
@@ -1489,10 +1489,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Destroy"
 
    MS_002F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0044#, 16#0065#,
@@ -1504,10 +1504,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_Auxiliary"
 
    MS_0030 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#0041#, 16#0075#,
            16#0078#, 16#0069#, 16#006C#, 16#0069#,
@@ -1518,10 +1518,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A program file that can be executed on a computer system. Subclass of «File»."
 
    MS_0031 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 77,
-         Length => 77,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 77,
+         Length   => 77,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0072#,
            16#006F#, 16#0067#, 16#0072#, 16#0061#,
            16#006D#, 16#0020#, 16#0066#, 16#0069#,
@@ -1548,10 +1548,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Component_Process"
 
    MS_0032 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#006E#, 16#0065#, 16#006E#,
            16#0074#, 16#005F#, 16#0050#, 16#0072#,
@@ -1563,10 +1563,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "ImplementationClass"
 
    MS_0033 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0049#, 16#006D#, 16#0070#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
            16#0074#, 16#0061#, 16#0074#, 16#0069#,
@@ -1578,10 +1578,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A component definition that is not intended to have a specification itself. Rather, it is an implementation for a separate «Specification» to which it has a Dependency."
 
    MS_0034 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 168,
-         Length => 168,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 168,
+         Length   => 168,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006D#, 16#0070#, 16#006F#, 16#006E#,
            16#0065#, 16#006E#, 16#0074#, 16#0020#,
@@ -1630,10 +1630,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Service"
 
    MS_0035 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#0065#,
@@ -1645,10 +1645,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Implement"
 
    MS_0036 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0049#, 16#006D#, 16#0070#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
            16#0074#,
@@ -1658,10 +1658,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Component"
 
    MS_0037 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0043#, 16#006F#, 16#006D#,
            16#0070#, 16#006F#, 16#006E#, 16#0065#,
@@ -1672,10 +1672,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_Script"
 
    MS_0038 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#0053#, 16#0063#, 16#0072#,
@@ -1686,10 +1686,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A package that contains model elements that specify a reusable architecture for all or part of a system. Frameworks typically include classes, patterns, or templates. When frameworks are specialized for an application domain they are sometimes referred to as application frameworks."
 
    MS_0039 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 295,
-         Unused => 282,
-         Length => 282,
-         Value  =>
+     := (Capacity => 295,
+         Unused   => 282,
+         Length   => 282,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0063#, 16#006B#, 16#0061#, 16#0067#,
            16#0065#, 16#0020#, 16#0074#, 16#0068#,
@@ -1767,10 +1767,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A contract or an obligation of an element in its relationship to other elements."
 
    MS_003A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 80,
-         Length => 80,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 80,
+         Length   => 80,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006E#, 16#0074#, 16#0072#, 16#0061#,
            16#0063#, 16#0074#, 16#0020#, 16#006F#,
@@ -1797,10 +1797,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_ModelLibrary"
 
    MS_003B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#004D#, 16#006F#,
@@ -1813,10 +1813,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "org.omg.xmi.nsPrefix"
 
    MS_003C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -1828,10 +1828,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Usage_Responsibility"
 
    MS_003D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0055#, 16#0073#, 16#0061#, 16#0067#,
            16#0065#, 16#005F#, 16#0052#, 16#0065#,
            16#0073#, 16#0070#, 16#006F#, 16#006E#,
@@ -1843,10 +1843,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Component_Entity"
 
    MS_003E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#006E#, 16#0065#, 16#006E#,
            16#0074#, 16#005F#, 16#0045#, 16#006E#,
@@ -1857,10 +1857,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A transaction based component."
 
    MS_003F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 30,
-         Length => 30,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 30,
+         Length   => 30,
+         Value    =>
           (16#0041#, 16#0020#, 16#0074#, 16#0072#,
            16#0061#, 16#006E#, 16#0073#, 16#0061#,
            16#0063#, 16#0074#, 16#0069#, 16#006F#,
@@ -1875,10 +1875,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Library"
 
    MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#004C#, 16#0069#, 16#0062#, 16#0072#,
            16#0061#, 16#0072#, 16#0079#,
            others => 16#0000#),
@@ -1887,10 +1887,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Trace"
 
    MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0054#, 16#0072#,
@@ -1901,10 +1901,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_Focus"
 
    MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#0046#, 16#006F#,
            16#0063#, 16#0075#, 16#0073#,
@@ -1914,10 +1914,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Classifier"
 
    MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0043#, 16#006C#, 16#0061#,
            16#0073#, 16#0073#, 16#0069#, 16#0066#,
@@ -1928,10 +1928,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Framework"
 
    MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0046#, 16#0072#,
@@ -1943,10 +1943,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Specification"
 
    MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#0070#,
@@ -1959,10 +1959,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A specific kind of file that is not an «Executable», «Library», «Script» or «Source». Subclass of «File»."
 
    MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 105,
-         Length => 105,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 105,
+         Length   => 105,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0070#,
            16#0065#, 16#0063#, 16#0069#, 16#0066#,
            16#0069#, 16#0063#, 16#0020#, 16#006B#,
@@ -1996,10 +1996,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A class that defines the core logic or control flow for one or more auxiliary classes that support it. Support classes may be defined explicitly using Auxiliary classes or implicitly as clients of dependency relationships whose supplier is a focus class. Focus classes are typically used together with one or more Auxiliary classes, and are particularly useful for specifying the core business logic or control flow of components during design. See also: «Auxiliary»."
 
    MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 487,
-         Unused => 467,
-         Length => 467,
-         Value  =>
+     := (Capacity => 487,
+         Unused   => 467,
+         Length   => 467,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -2123,10 +2123,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A usage dependency whose source is an operation and whose target is an operation. The relationship may also be subsumed to the class containing an operation, with the meaning that there exists an operation in the class to which the dependency applies. A call dependency specifies that the source operation or an operation in the source class invokes the target operation or an operation in the target class. A call dependency may connect a source operation to any target operation that is within scope including, but not limited to, operations of the enclosing classifier and operations of other visible classifiers."
 
    MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 639,
-         Unused => 616,
-         Length => 616,
-         Value  =>
+     := (Capacity => 639,
+         Unused   => 616,
+         Length   => 616,
+         Value    =>
           (16#0041#, 16#0020#, 16#0075#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#0020#,
            16#0064#, 16#0065#, 16#0070#, 16#0065#,
@@ -2287,10 +2287,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "http://www.omg.org/spec/UML/20100901/StandardProfileL2"
 
    MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 54,
-         Length => 54,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 54,
+         Length   => 54,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#006F#,
@@ -2311,10 +2311,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Call"
 
    MS_004A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0043#, 16#0061#, 16#006C#, 16#006C#,
            others => 16#0000#),
          others => <>);
@@ -2322,10 +2322,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "BehavioralFeature_Create"
 
    MS_004B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0042#, 16#0065#, 16#0068#, 16#0061#,
            16#0076#, 16#0069#, 16#006F#, 16#0072#,
            16#0061#, 16#006C#, 16#0046#, 16#0065#,
@@ -2338,10 +2338,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Process"
 
    MS_004C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0050#, 16#0072#, 16#006F#, 16#0063#,
            16#0065#, 16#0073#, 16#0073#,
            others => 16#0000#),
@@ -2350,10 +2350,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "client_and_supplier_are_operations"
 
    MS_004D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 34,
-         Length => 34,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 34,
+         Length   => 34,
+         Value    =>
           (16#0063#, 16#006C#, 16#0069#, 16#0065#,
            16#006E#, 16#0074#, 16#005F#, 16#0061#,
            16#006E#, 16#0064#, 16#005F#, 16#0073#,
@@ -2369,10 +2369,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Abstraction_Trace"
 
    MS_004E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0041#, 16#0062#, 16#0073#, 16#0074#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -2384,10 +2384,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Component_Service"
 
    MS_004F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#006E#, 16#0065#, 16#006E#,
            16#0074#, 16#005F#, 16#0053#, 16#0065#,
@@ -2399,10 +2399,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Usage_Instantiate"
 
    MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0055#, 16#0073#, 16#0061#, 16#0067#,
            16#0065#, 16#005F#, 16#0049#, 16#006E#,
            16#0073#, 16#0074#, 16#0061#, 16#006E#,
@@ -2414,10 +2414,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Subsystem"
 
    MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0053#, 16#0075#, 16#0062#, 16#0073#,
            16#0079#, 16#0073#, 16#0074#, 16#0065#,
            16#006D#,
@@ -2427,10 +2427,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "ModelLibrary"
 
    MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#004D#, 16#006F#, 16#0064#, 16#0065#,
            16#006C#, 16#004C#, 16#0069#, 16#0062#,
            16#0072#, 16#0061#, 16#0072#, 16#0079#,
@@ -2440,10 +2440,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "client_and_supplier_are_classifiers"
 
    MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0063#, 16#006C#, 16#0069#, 16#0065#,
            16#006E#, 16#0074#, 16#005F#, 16#0061#,
            16#006E#, 16#0064#, 16#005F#, 16#0073#,
@@ -2459,10 +2459,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Usage_Create"
 
    MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0055#, 16#0073#, 16#0061#, 16#0067#,
            16#0065#, 16#005F#, 16#0043#, 16#0072#,
            16#0065#, 16#0061#, 16#0074#, 16#0065#,
@@ -2472,10 +2472,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Responsibility"
 
    MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0052#, 16#0065#, 16#0073#, 16#0070#,
            16#006F#, 16#006E#, 16#0073#, 16#0069#,
            16#0062#, 16#0069#, 16#006C#, 16#0069#,
@@ -2486,10 +2486,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Executable"
 
    MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0045#, 16#0078#,
@@ -2501,10 +2501,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A class that has no instances, but rather denotes a named collection of static attributes and static operations, all of which are class-scoped."
 
    MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 143,
-         Length => 143,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 143,
+         Length   => 143,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -2547,10 +2547,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A classifier that specifies a domain of objects and that also defines the physical implementation of those objects. For example, a Component stereotyped by «realization» will only have realizing Classifiers that implement behavior specified by a separate «Specification» Component. See «specification». This differs from «ImplementationClass» because an «ImplementationClass» is a realization of a Class that can have features such as attributes and methods that are useful to system designers."
 
    MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 511,
-         Unused => 494,
-         Length => 494,
-         Value  =>
+     := (Capacity => 511,
+         Unused   => 494,
+         Length   => 494,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0069#,
            16#0066#, 16#0069#, 16#0065#, 16#0072#,
@@ -2681,10 +2681,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Package_Framework"
 
    MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0050#, 16#0061#, 16#0063#, 16#006B#,
            16#0061#, 16#0067#, 16#0065#, 16#005F#,
            16#0046#, 16#0072#, 16#0061#, 16#006D#,
@@ -2696,10 +2696,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "cannot_be_type"
 
    MS_005A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0063#, 16#0061#, 16#006E#, 16#006E#,
            16#006F#, 16#0074#, 16#005F#, 16#0062#,
            16#0065#, 16#005F#, 16#0074#, 16#0079#,
@@ -2710,10 +2710,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "ValueSpecification_Derive"
 
    MS_005B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0056#, 16#0061#, 16#006C#, 16#0075#,
            16#0065#, 16#0053#, 16#0070#, 16#0065#,
            16#0063#, 16#0069#, 16#0066#, 16#0069#,
@@ -2727,10 +2727,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Create"
 
    MS_005C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0043#, 16#0072#,
@@ -2741,10 +2741,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Instantiate"
 
    MS_005D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0049#, 16#006E#,
@@ -2757,10 +2757,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A source file that can be compiled into an executable file. Subclass of «File»."
 
    MS_005E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 79,
-         Length => 79,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 79,
+         Length   => 79,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#006F#,
            16#0075#, 16#0072#, 16#0063#, 16#0065#,
            16#0020#, 16#0066#, 16#0069#, 16#006C#,
@@ -2787,10 +2787,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "cannot_be_implementationClass"
 
    MS_005F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0063#, 16#0061#, 16#006E#, 16#006E#,
            16#006F#, 16#0074#, 16#005F#, 16#0062#,
            16#0065#, 16#005F#, 16#0069#, 16#006D#,
@@ -2805,10 +2805,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Derive"
 
    MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0044#, 16#0065#,
@@ -2819,10 +2819,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "BehavioralFeature_Destroy"
 
    MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0042#, 16#0065#, 16#0068#, 16#0061#,
            16#0076#, 16#0069#, 16#006F#, 16#0072#,
            16#0061#, 16#006C#, 16#0046#, 16#0065#,
@@ -2836,10 +2836,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Send"
 
    MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0053#, 16#0065#, 16#006E#, 16#0064#,
            others => 16#0000#),
          others => <>);
@@ -2847,10 +2847,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Component_Subsystem"
 
    MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#006E#, 16#0065#, 16#006E#,
            16#0074#, 16#005F#, 16#0053#, 16#0075#,
@@ -2862,10 +2862,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Utility"
 
    MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0055#, 16#0074#,
@@ -2877,10 +2877,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Entity"
 
    MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0045#, 16#006E#,
@@ -2891,10 +2891,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A usage dependency among classifiers indicating that operations on the client create instances of the supplier."
 
    MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 111,
-         Length => 111,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 111,
+         Length   => 111,
+         Value    =>
           (16#0041#, 16#0020#, 16#0075#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#0020#,
            16#0064#, 16#0065#, 16#0070#, 16#0065#,
@@ -2929,10 +2929,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_Source"
 
    MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#0053#, 16#006F#, 16#0075#,
@@ -2943,10 +2943,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Usage_Call"
 
    MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0055#, 16#0073#, 16#0061#, 16#0067#,
            16#0065#, 16#005F#, 16#0043#, 16#0061#,
            16#006C#, 16#006C#,
@@ -2956,10 +2956,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Classifier_Specification"
 
    MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
            16#0065#, 16#0072#, 16#005F#, 16#0053#,
@@ -2972,10 +2972,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Create"
 
    MS_006A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0043#, 16#0072#, 16#0065#, 16#0061#,
            16#0074#, 16#0065#,
            others => 16#0000#),
@@ -2984,10 +2984,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_File"
 
    MS_006B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0046#, 16#0069#,
@@ -2998,10 +2998,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A static or dynamic library file. Subclass of «File»."
 
    MS_006C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 53,
-         Length => 53,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 53,
+         Length   => 53,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0074#,
            16#0061#, 16#0074#, 16#0069#, 16#0063#,
            16#0020#, 16#006F#, 16#0072#, 16#0020#,
@@ -3022,10 +3022,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Type"
 
    MS_006D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0054#, 16#0079#, 16#0070#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -3033,10 +3033,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Source"
 
    MS_006E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0053#, 16#006F#, 16#0075#, 16#0072#,
            16#0063#, 16#0065#,
            others => 16#0000#),
@@ -3045,10 +3045,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_File"
 
    MS_006F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#0046#, 16#0069#, 16#006C#,
@@ -3059,10 +3059,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Package_ModelLibrary"
 
    MS_0070 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0050#, 16#0061#, 16#0063#, 16#006B#,
            16#0061#, 16#0067#, 16#0065#, 16#005F#,
            16#004D#, 16#006F#, 16#0064#, 16#0065#,
@@ -3074,10 +3074,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Entity"
 
    MS_0071 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0045#, 16#006E#, 16#0074#, 16#0069#,
            16#0074#, 16#0079#,
            others => 16#0000#),
@@ -3086,10 +3086,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A class that supports another more central or fundamental class, typically by implementing secondary logic or control flow. The class that the auxiliary supports may be defined explicitly using a Focus class or implicitly as the supplier of dependency relationship whose client is an auxiliary class. Auxiliary classes are typically used together with Focus classes, and are particularly useful for specifying the secondary business logic or control flow of components during design. See also: «Focus»."
 
    MS_0072 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 519,
-         Unused => 502,
-         Length => 502,
-         Value  =>
+     := (Capacity => 519,
+         Unused   => 502,
+         Length   => 502,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -3222,10 +3222,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Refine"
 
    MS_0073 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0052#, 16#0065#,
@@ -3236,10 +3236,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Component_Implement"
 
    MS_0074 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#006E#, 16#0065#, 16#006E#,
            16#0074#, 16#005F#, 16#0049#, 16#006D#,
@@ -3251,10 +3251,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Source"
 
    MS_0075 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#006F#,
@@ -3265,10 +3265,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Focus"
 
    MS_0076 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0046#, 16#006F#, 16#0063#, 16#0075#,
            16#0073#,
            others => 16#0000#),
@@ -3277,10 +3277,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_Executable"
 
    MS_0077 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#0045#, 16#0078#, 16#0065#,
@@ -3292,10 +3292,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Abstraction"
 
    MS_0078 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0041#, 16#0062#, 16#0073#,
            16#0074#, 16#0072#, 16#0061#, 16#0063#,
@@ -3306,10 +3306,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Instantiate"
 
    MS_0079 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0049#, 16#006E#, 16#0073#, 16#0074#,
            16#0061#, 16#006E#, 16#0074#, 16#0069#,
            16#0061#, 16#0074#, 16#0065#,
@@ -3319,10 +3319,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A script file that can be interpreted by a computer system. Subclass of «File»."
 
    MS_007A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 79,
-         Length => 79,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 79,
+         Length   => 79,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0063#,
            16#0072#, 16#0069#, 16#0070#, 16#0074#,
            16#0020#, 16#0066#, 16#0069#, 16#006C#,
@@ -3349,10 +3349,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Package"
 
    MS_007B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0050#, 16#0061#, 16#0063#,
            16#006B#, 16#0061#, 16#0067#, 16#0065#,
@@ -3362,10 +3362,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_ImplementationClass"
 
    MS_007C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#0049#, 16#006D#,
            16#0070#, 16#006C#, 16#0065#, 16#006D#,
@@ -3379,10 +3379,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "StandardProfileL2"
 
    MS_007D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0053#, 16#0074#, 16#0061#, 16#006E#,
            16#0064#, 16#0061#, 16#0072#, 16#0064#,
            16#0050#, 16#0072#, 16#006F#, 16#0066#,
@@ -3394,10 +3394,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Abstraction_Refine"
 
    MS_007E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0041#, 16#0062#, 16#0073#, 16#0074#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -3409,10 +3409,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Artifact_Library"
 
    MS_007F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0041#, 16#0072#, 16#0074#, 16#0069#,
            16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#005F#, 16#004C#, 16#0069#, 16#0062#,
@@ -3423,10 +3423,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Realization"
 
    MS_0080 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0052#, 16#0065#,
@@ -3439,10 +3439,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Focus"
 
    MS_0081 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0046#, 16#006F#,
@@ -3453,10 +3453,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Refine"
 
    MS_0082 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0069#,
            16#006E#, 16#0065#,
            others => 16#0000#),
@@ -3465,10 +3465,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A package that contains model elements that are intended to be reused by other packages. Model libraries are frequently used in conjunction with applied profiles. This is expressed by defining a dependency between a profile and a model library package, or by defining a model library as contained in a profile package. The classes in a model library are not stereotypes and tagged definitions extending the metamodel. A model library is analogous to a class library in some programming languages. When a model library is defined as a part of a profile, it is imported or deleted with the application or removal of the profile. The profile is implicitly applied to its model library. In the other case, when the model library is defined as an external package imported by a profile, the profile requires that the model library be there in the model at the stage of the profile application. The application or the removal of the profile does not affect the presence of the model library elements."
 
    MS_0083 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 1031,
-         Unused => 994,
-         Length => 994,
-         Value  =>
+     := (Capacity => 1031,
+         Unused   => 994,
+         Length   => 994,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0063#, 16#006B#, 16#0061#, 16#0067#,
            16#0065#, 16#0020#, 16#0074#, 16#0068#,
@@ -3724,10 +3724,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Call"
 
    MS_0084 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0043#, 16#0061#,
@@ -3738,10 +3738,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_BehavioralFeature"
 
    MS_0085 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0042#, 16#0065#, 16#0068#,
            16#0061#, 16#0076#, 16#0069#, 16#006F#,
@@ -3754,10 +3754,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "A class whose instances are also classes."
 
    MS_0086 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 41,
-         Length => 41,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 41,
+         Length   => 41,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0020#,
            16#0077#, 16#0068#, 16#006F#, 16#0073#,
@@ -3775,10 +3775,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "implements_specification"
 
    MS_0087 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0069#, 16#006D#, 16#0070#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
            16#0074#, 16#0073#, 16#005F#, 16#0073#,
@@ -3791,10 +3791,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Derive"
 
    MS_0088 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0044#, 16#0065#, 16#0072#, 16#0069#,
            16#0076#, 16#0065#,
            others => 16#0000#),
@@ -3803,10 +3803,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Subsystem"
 
    MS_0089 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0053#, 16#0075#,
@@ -3818,10 +3818,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "extension_Responsibility"
 
    MS_008A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#005F#, 16#0052#, 16#0065#,
@@ -3834,10 +3834,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Specifies a derivation relationship among model elements that are usually, but not necessarily, of the same type. A derived dependency specifies that the client may be computed from the supplier. The mapping specifies the computation. The client may be implemented for design reasons, such as efficiency, even though it is logically redundant."
 
    MS_008B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 359,
-         Unused => 343,
-         Length => 343,
-         Value  =>
+     := (Capacity => 359,
+         Unused   => 343,
+         Length   => 343,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -3930,10 +3930,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "Class_Utility"
 
    MS_008C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#005F#, 16#0055#, 16#0074#,
            16#0069#, 16#006C#, 16#0069#, 16#0074#,
@@ -3944,10 +3944,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "base_Usage"
 
    MS_008D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0062#, 16#0061#, 16#0073#, 16#0065#,
            16#005F#, 16#0055#, 16#0073#, 16#0061#,
            16#0067#, 16#0065#,
@@ -3957,10 +3957,10 @@ package AMF.Internals.Tables.Standard_Profile_L2_String_Data_00 is
    --  "cannot_be_realization"
 
    MS_008E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0063#, 16#0061#, 16#006E#, 16#006E#,
            16#006F#, 16#0074#, 16#005F#, 16#0062#,
            16#0065#, 16#005F#, 16#0072#, 16#0065#,

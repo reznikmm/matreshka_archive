@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,10 +50,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the edge's source diagram element, i.e. where the edge starts from."
 
    MS_0000 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 67,
-         Length => 67,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 67,
+         Length   => 67,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#0064#, 16#0067#, 16#0065#,
            16#0027#, 16#0073#, 16#0020#, 16#0073#,
@@ -77,10 +77,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "sourceEdge"
 
    MS_0001 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0073#, 16#006F#, 16#0075#, 16#0072#,
            16#0063#, 16#0065#, 16#0045#, 16#0064#,
            16#0067#, 16#0065#,
@@ -90,10 +90,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Style contains formatting properties that affect the appearance or style of diagram elements, including diagram themselves."
 
    MS_0002 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 123,
-         Length => 123,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 123,
+         Length   => 123,
+         Value    =>
           (16#0053#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#, 16#0020#, 16#0063#, 16#006F#,
            16#006E#, 16#0074#, 16#0061#, 16#0069#,
@@ -131,10 +131,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "ownedElement"
 
    MS_0003 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#006F#, 16#0077#, 16#006E#, 16#0065#,
            16#0064#, 16#0045#, 16#006C#, 16#0065#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
@@ -144,10 +144,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "DiagramElement"
 
    MS_0004 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -158,10 +158,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "di"
 
    MS_0005 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0064#, 16#0069#,
            others => 16#0000#),
          others => <>);
@@ -169,10 +169,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "styledElement"
 
    MS_0006 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0073#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#, 16#0064#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -183,10 +183,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the optional bounds of the shape relative to the origin of its nesting plane."
 
    MS_0007 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 77,
-         Length => 77,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 77,
+         Length   => 77,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0070#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0061#, 16#006C#,
@@ -213,10 +213,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a collection of edges that reference this diagram element as a target."
 
    MS_0008 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 70,
-         Length => 70,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 70,
+         Length   => 70,
+         Value    =>
           (16#0061#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006C#, 16#0065#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -241,10 +241,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "resolution"
 
    MS_0009 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0072#, 16#0065#, 16#0073#, 16#006F#,
            16#006C#, 16#0075#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#,
@@ -254,10 +254,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the documentation of the diagram."
 
    MS_000A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 33,
-         Length => 33,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 33,
+         Length   => 33,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0064#, 16#006F#, 16#0063#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
@@ -273,10 +273,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a reference to a depicted model element, which can be any MOF-based element"
 
    MS_000B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 75,
-         Length => 75,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 75,
+         Length   => 75,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -302,10 +302,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "source"
 
    MS_000C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0073#, 16#006F#, 16#0075#, 16#0072#,
            16#0063#, 16#0065#,
            others => 16#0000#),
@@ -314,10 +314,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "sharedStyle"
 
    MS_000D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0073#, 16#0068#, 16#0061#, 16#0072#,
            16#0065#, 16#0064#, 16#0053#, 16#0074#,
            16#0079#, 16#006C#, 16#0065#,
@@ -327,10 +327,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "bounds"
 
    MS_000E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#,
            others => 16#0000#),
@@ -339,10 +339,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "The Diagram Interchange (DI) package enables interchange of graphical information that language users have control over, such as position of nodes and line routing points. Language specifications specialize elements of DI to define diagram interchange elements for a language."
 
    MS_000F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 287,
-         Unused => 276,
-         Length => 276,
-         Value  =>
+     := (Capacity => 287,
+         Unused   => 276,
+         Length   => 276,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0020#,
@@ -418,10 +418,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "org.omg.xmi.nsURI"
 
    MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -433,10 +433,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "localStyle"
 
    MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#006C#, 16#006F#, 16#0063#, 16#0061#,
            16#006C#, 16#0053#, 16#0074#, 16#0079#,
            16#006C#, 16#0065#,
@@ -446,10 +446,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "http://www.omg.org/spec/DD/20110901/DI"
 
    MS_0012 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#006F#,
@@ -466,10 +466,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_source_sourceEdge"
 
    MS_0013 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#006F#,
            16#0075#, 16#0072#, 16#0063#, 16#0065#,
            16#005F#, 16#0073#, 16#006F#, 16#0075#,
@@ -481,10 +481,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "300"
 
    MS_0014 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 3,
-         Length => 3,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 3,
+         Length   => 3,
+         Value    =>
           (16#0033#, 16#0030#, 16#0030#,
            others => 16#0000#),
          others => <>);
@@ -492,10 +492,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "name"
 
    MS_0015 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#006E#, 16#0061#, 16#006D#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -503,10 +503,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "waypoint"
 
    MS_0016 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0077#, 16#0061#, 16#0079#, 16#0070#,
            16#006F#, 16#0069#, 16#006E#, 16#0074#,
            others => 16#0000#),
@@ -515,10 +515,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "DI"
 
    MS_0017 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0044#, 16#0049#,
            others => 16#0000#),
          others => <>);
@@ -526,10 +526,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Diagram"
 
    MS_0018 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#,
            others => 16#0000#),
@@ -538,10 +538,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "modelElement"
 
    MS_0019 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#006D#, 16#006F#, 16#0064#, 16#0065#,
            16#006C#, 16#0045#, 16#006C#, 16#0065#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
@@ -551,10 +551,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a collection of diagram elements that are directly owned by this diagram element."
 
    MS_001A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 81,
-         Length => 81,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 81,
+         Length   => 81,
+         Value    =>
           (16#0061#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006C#, 16#0065#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -582,10 +582,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the name of the diagram."
 
    MS_001B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006E#, 16#0061#, 16#006D#, 16#0065#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -598,10 +598,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "target"
 
    MS_001C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0074#, 16#0061#, 16#0072#, 16#0067#,
            16#0065#, 16#0074#,
            others => 16#0000#),
@@ -610,10 +610,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Diagram is an abstract container of a graph of diagram elements. Diagrams are diagram elements with an origin point in the x-y coordinate system. Their elements are laid out relative to their origin point."
 
    MS_001D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 215,
-         Unused => 205,
-         Length => 205,
-         Value  =>
+     := (Capacity => 215,
+         Unused   => 205,
+         Length   => 205,
+         Value    =>
           (16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0020#,
            16#0069#, 16#0073#, 16#0020#, 16#0061#,
@@ -672,10 +672,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Edge is a diagram element that renders as a polyline, connecting a source diagram element to a target diagram element, and is positioned relative to the origin of the diagram."
 
    MS_001E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 183,
-         Unused => 175,
-         Length => 175,
-         Value  =>
+     := (Capacity => 183,
+         Unused   => 175,
+         Length   => 175,
+         Value    =>
           (16#0045#, 16#0064#, 16#0067#, 16#0065#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0061#, 16#0020#, 16#0064#, 16#0069#,
@@ -726,10 +726,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a collection of edges that reference this diagram element as a source."
 
    MS_001F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 70,
-         Length => 70,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 70,
+         Length   => 70,
+         Value    =>
           (16#0061#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006C#, 16#0065#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -754,10 +754,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the resolution of the diagram expressed in user units per inch."
 
    MS_0020 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 63,
-         Length => 63,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 63,
+         Length   => 63,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0072#, 16#0065#, 16#0073#, 16#006F#,
            16#006C#, 16#0075#, 16#0074#, 16#0069#,
@@ -780,10 +780,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_sharedStyle_styledElement"
 
    MS_0021 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 27,
-         Length => 27,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 27,
+         Length   => 27,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0068#,
            16#0061#, 16#0072#, 16#0065#, 16#0064#,
            16#0053#, 16#0074#, 16#0079#, 16#006C#,
@@ -797,10 +797,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Shape is a diagram element with given bounds that is laid out relative to the origin of the diagram"
 
    MS_0022 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 99,
-         Length => 99,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 99,
+         Length   => 99,
+         Value    =>
           (16#0053#, 16#0068#, 16#0061#, 16#0070#,
            16#0065#, 16#0020#, 16#0069#, 16#0073#,
            16#0020#, 16#0061#, 16#0020#, 16#0064#,
@@ -832,10 +832,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a reference to the diagram element that directly owns this diagram element."
 
    MS_0023 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 75,
-         Length => 75,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 75,
+         Length   => 75,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -861,10 +861,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "owningElement"
 
    MS_0024 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#006F#, 16#0077#, 16#006E#, 16#0069#,
            16#006E#, 16#0067#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -875,10 +875,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "the edge's target diagram element, i.e. where the edge ends at."
 
    MS_0025 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 63,
-         Length => 63,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 63,
+         Length   => 63,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#0064#, 16#0067#, 16#0065#,
            16#0027#, 16#0073#, 16#0020#, 16#0074#,
@@ -901,10 +901,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_localStyle_styledElement"
 
    MS_0026 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 26,
-         Length => 26,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 26,
+         Length   => 26,
+         Value    =>
           (16#0041#, 16#005F#, 16#006C#, 16#006F#,
            16#0063#, 16#0061#, 16#006C#, 16#0053#,
            16#0074#, 16#0079#, 16#006C#, 16#0065#,
@@ -918,10 +918,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "org.omg.xmi.nsPrefix"
 
    MS_0027 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -933,10 +933,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_ownedElement_owningElement"
 
    MS_0028 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#006F#, 16#0077#,
            16#006E#, 16#0065#, 16#0064#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -950,10 +950,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Style"
 
    MS_0029 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0053#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#,
            others => 16#0000#),
@@ -962,10 +962,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_target_targetEdge"
 
    MS_002A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0041#, 16#005F#, 16#0074#, 16#0061#,
            16#0072#, 16#0067#, 16#0065#, 16#0074#,
            16#005F#, 16#0074#, 16#0061#, 16#0072#,
@@ -977,10 +977,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Shape"
 
    MS_002B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0053#, 16#0068#, 16#0061#, 16#0070#,
            16#0065#,
            others => 16#0000#),
@@ -989,10 +989,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "Edge"
 
    MS_002C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0045#, 16#0064#, 16#0067#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -1000,10 +1000,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "A_modelElement_diagramElement"
 
    MS_002D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#006F#,
            16#0064#, 16#0065#, 16#006C#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -1018,10 +1018,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "targetEdge"
 
    MS_002E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0074#, 16#0061#, 16#0072#, 16#0067#,
            16#0065#, 16#0074#, 16#0045#, 16#0064#,
            16#0067#, 16#0065#,
@@ -1031,10 +1031,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "DiagramElement is the abstract super type of all elements in diagrams, including diagrams themselves. When contained in a diagram, diagram elements are laid out relative to the diagram’s origin."
 
    MS_002F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 207,
-         Unused => 194,
-         Length => 194,
-         Value  =>
+     := (Capacity => 207,
+         Unused   => 194,
+         Length   => 194,
+         Value    =>
           (16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -1090,10 +1090,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "documentation"
 
    MS_0030 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0064#, 16#006F#, 16#0063#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
            16#0061#, 16#0074#, 16#0069#, 16#006F#,
@@ -1104,10 +1104,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a reference to an optional locally-owned style for this diagram element."
 
    MS_0031 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 72,
-         Length => 72,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 72,
+         Length   => 72,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -1132,10 +1132,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "an optional list of points relative to the origin of the nesting diagram that specifies the connected line segments of the edge"
 
    MS_0032 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 127,
-         Length => 127,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 127,
+         Length   => 127,
+         Value    =>
           (16#0061#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -1174,10 +1174,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "diagramElement"
 
    MS_0033 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0064#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -1188,10 +1188,10 @@ package AMF.Internals.Tables.DI_String_Data_00 is
    --  "a reference to an optional shared style element for this diagram element."
 
    MS_0034 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 73,
-         Length => 73,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 73,
+         Length   => 73,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,

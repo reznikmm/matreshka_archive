@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -236,7 +236,7 @@ package body CSMIB.Parser is
 
    procedure Parse (File : League.Strings.Universal_String) is
       Source : aliased XML.SAX.Input_Sources.Streams.Files.File_Input_Source;
-      Reader : aliased XML.SAX.Simple_Readers.SAX_Simple_Reader;
+      Reader : aliased XML.SAX.Simple_Readers.Simple_Reader;
       Parser : aliased CSMIB_Parser;
 
    begin

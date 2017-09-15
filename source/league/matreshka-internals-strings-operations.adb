@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -369,7 +369,7 @@ package body Matreshka.Internals.Strings.Operations is
 
    procedure Reset (Self : in out not null Shared_String_Access) is
    begin
-      if Can_Be_Reused (Self, Self.Size) then
+      if Can_Be_Reused (Self, Self.Capacity) then
          Free (Self.Index_Map);
          Self.Unused := 0;
          Self.Length := 0;

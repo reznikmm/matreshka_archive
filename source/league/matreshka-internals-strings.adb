@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -97,12 +97,12 @@ package body Matreshka.Internals.Strings is
     (Size : Utf16_String_Index) return Utf16_String_Index
    is
       Static_Size  : constant Utf16_String_Index
-        := (Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Size + 1))
+        := (Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Capacity + 1))
              / Code_Unit_16'Size;
       --  Total size of all static components in Code_Unit_16 units.
 
       pragma Assert
-       ((Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Size + 1))
+       ((Shared_Empty'Size - Code_Unit_16'Size * (Shared_Empty.Capacity + 1))
           mod Code_Unit_16'Size = 0);
       --  Reminder must be zero to compute value correctly.
 
@@ -136,7 +136,7 @@ package body Matreshka.Internals.Strings is
    begin
       return
         Self /= Shared_Empty'Access
-          and Self.Size > Size
+          and Self.Capacity > Size
           and Matreshka.Atomics.Counters.Is_One (Self.Counter);
    end Can_Be_Reused;
 

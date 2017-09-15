@@ -205,7 +205,7 @@ package body Matreshka.Internals.Strings.C is
       --  suppress range check for surrogate pair. Check for unterminated
       --  string which ends by surrogate pair is done after loop below.
 
-      while Valid and String.Unused < String.Size loop
+      while Valid and String.Unused < String.Capacity loop
          exit when String.Value (String.Unused) = 0;
 
          Matreshka.Internals.Utf16.Unchecked_Validate_Next
@@ -215,7 +215,7 @@ package body Matreshka.Internals.Strings.C is
 
       --  Check whether string is properly terminated.
 
-      if String.Unused > String.Size then
+      if String.Unused > String.Capacity then
          --  String is not terminated properly and last character is
          --  represented by surrogate pair.
 
@@ -256,7 +256,7 @@ package body Matreshka.Internals.Strings.C is
      Size   : Matreshka.Internals.Utf16.Utf16_String_Index;
      Valid  : out Boolean)
    is
-      pragma Assert (String.Size >= Size);
+      pragma Assert (String.Capacity >= Size);
       pragma Assert (String /= null);
       pragma Suppress (Access_Check);
 

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,10 +50,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The multiplicities on connected elements must be consistent."
 
    MS_0900 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 60,
-         Length => 60,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 60,
+         Length   => 60,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006D#, 16#0075#, 16#006C#, 16#0074#,
            16#0069#, 16#0070#, 16#006C#, 16#0069#,
@@ -75,10 +75,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "activityScope"
 
    MS_0901 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0061#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            16#0053#, 16#0063#, 16#006F#, 16#0070#,
@@ -89,10 +89,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_signal_broadcastSignalAction"
 
    MS_0902 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 30,
-         Length => 30,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 30,
+         Length   => 30,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0069#,
            16#0067#, 16#006E#, 16#0061#, 16#006C#,
            16#005F#, 16#0062#, 16#0072#, 16#006F#,
@@ -107,10 +107,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The association of the association end of the qualifier attribute must be an association class."
 
    MS_0903 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0073#, 16#0073#, 16#006F#,
            16#0063#, 16#0069#, 16#0061#, 16#0074#,
@@ -141,10 +141,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The instance that is the specified value."
 
    MS_0904 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 41,
-         Length => 41,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 41,
+         Length   => 41,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0069#, 16#006E#, 16#0073#, 16#0074#,
            16#0061#, 16#006E#, 16#0063#, 16#0065#,
@@ -162,10 +162,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state."
 
    MS_0905 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 165,
-         Length => 165,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 165,
+         Length   => 165,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006E#, 16#006E#, 16#0065#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -214,10 +214,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An InstanceSpecification can be a DeploymentTarget if it is the instance specification of a Node and functions as a part in the internal structure of an encompassing Node."
 
    MS_0906 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 183,
-         Unused => 171,
-         Length => 171,
-         Value  =>
+     := (Capacity => 183,
+         Unused   => 171,
+         Length   => 171,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0049#,
            16#006E#, 16#0073#, 16#0074#, 16#0061#,
            16#006E#, 16#0063#, 16#0065#, 16#0053#,
@@ -267,10 +267,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "arguments_are_constants"
 
    MS_0907 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0061#, 16#0072#, 16#0067#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
            16#0073#, 16#005F#, 16#0061#, 16#0072#,
@@ -283,10 +283,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The startEvent and the finishEvent must be on the same Lifeline"
 
    MS_0908 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 63,
-         Length => 63,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 63,
+         Length   => 63,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0074#, 16#0061#, 16#0072#,
            16#0074#, 16#0045#, 16#0076#, 16#0065#,
@@ -309,10 +309,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "activityParameterNode"
 
    MS_0909 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0061#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            16#0050#, 16#0061#, 16#0072#, 16#0061#,
@@ -325,10 +325,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_ownedParameterSet_behavior"
 
    MS_090A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#006F#, 16#0077#,
            16#006E#, 16#0065#, 16#0064#, 16#0050#,
            16#0061#, 16#0072#, 16#0061#, 16#006D#,
@@ -342,10 +342,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "observation"
 
    MS_090B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#006F#, 16#0062#, 16#0073#, 16#0065#,
            16#0072#, 16#0076#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#,
@@ -355,10 +355,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "initial"
 
    MS_090C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0069#, 16#006E#, 16#0069#, 16#0074#,
            16#0069#, 16#0061#, 16#006C#,
            others => 16#0000#),
@@ -367,10 +367,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "associationEndOwnership"
 
    MS_090D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0061#, 16#0073#, 16#0073#, 16#006F#,
            16#0063#, 16#0069#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#0045#,
@@ -383,10 +383,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before."
 
    MS_090E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 100,
-         Length => 100,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 100,
+         Length   => 100,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#004F#, 16#0063#, 16#0063#, 16#0075#,
            16#0072#, 16#0072#, 16#0065#, 16#006E#,
@@ -418,10 +418,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The Nodes that are defined (nested) within the Node."
 
    MS_090F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 52,
-         Length => 52,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 52,
+         Length   => 52,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#004E#, 16#006F#, 16#0064#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -441,10 +441,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The parameters of the behavior must match the parameters of the implemented behavioral feature."
 
    MS_0910 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0070#, 16#0061#, 16#0072#, 16#0061#,
            16#006D#, 16#0065#, 16#0074#, 16#0065#,
@@ -475,10 +475,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The parameter substitutions owned by this template binding."
 
    MS_0911 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 59,
-         Length => 59,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 59,
+         Length   => 59,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0070#, 16#0061#, 16#0072#, 16#0061#,
            16#006D#, 16#0065#, 16#0074#, 16#0065#,
@@ -500,10 +500,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_loopVariableInput_loopNode"
 
    MS_0912 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#006C#, 16#006F#,
            16#006F#, 16#0070#, 16#0056#, 16#0061#,
            16#0072#, 16#0069#, 16#0061#, 16#0062#,
@@ -517,10 +517,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "destinations_or_sources_of_transitions"
 
    MS_0913 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0064#, 16#0065#, 16#0073#, 16#0074#,
            16#0069#, 16#006E#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#0073#,
@@ -537,10 +537,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "messages_actual_gate"
 
    MS_0914 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#006D#, 16#0065#, 16#0073#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#0073#,
            16#005F#, 16#0061#, 16#0063#, 16#0074#,
@@ -552,10 +552,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ExtensionEnd"
 
    MS_0915 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0045#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0073#, 16#0069#, 16#006F#,
            16#006E#, 16#0045#, 16#006E#, 16#0064#,
@@ -565,10 +565,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "OpaqueBehavior"
 
    MS_0916 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#004F#, 16#0070#, 16#0061#, 16#0071#,
            16#0075#, 16#0065#, 16#0042#, 16#0065#,
            16#0068#, 16#0061#, 16#0076#, 16#0069#,
@@ -579,10 +579,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The connectable elements attached to the ends of a connector must be compatible."
 
    MS_0917 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 80,
-         Length => 80,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 80,
+         Length   => 80,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006E#, 16#006E#,
            16#0065#, 16#0063#, 16#0074#, 16#0061#,
@@ -609,10 +609,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_subsettedProperty_property"
 
    MS_0918 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0075#,
            16#0062#, 16#0073#, 16#0065#, 16#0074#,
            16#0074#, 16#0065#, 16#0064#, 16#0050#,
@@ -626,10 +626,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype."
 
    MS_0919 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0054#, 16#0068#, 16#0069#, 16#0073#,
            16#0020#, 16#0063#, 16#006F#, 16#006E#,
            16#0074#, 16#0061#, 16#0069#, 16#006E#,
@@ -667,10 +667,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Languages the body strings use, in the same order as the body strings"
 
    MS_091A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 69,
-         Length => 69,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 69,
+         Length   => 69,
+         Value    =>
           (16#004C#, 16#0061#, 16#006E#, 16#0067#,
            16#0075#, 16#0061#, 16#0067#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -695,10 +695,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The classifier context of a state machine cannot be an interface."
 
    MS_091B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 65,
-         Length => 65,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 65,
+         Length   => 65,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
@@ -722,10 +722,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A read is classified object action is an action that determines whether a runtime object is classified by a given classifier."
 
    MS_091C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 125,
-         Length => 125,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 125,
+         Length   => 125,
+         Value    =>
           (16#0041#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#0064#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0063#, 16#006C#,
@@ -764,10 +764,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "test_and_body"
 
    MS_091D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0074#, 16#0065#, 16#0073#, 16#0074#,
            16#005F#, 16#0061#, 16#006E#, 16#0064#,
            16#005F#, 16#0062#, 16#006F#, 16#0064#,
@@ -778,10 +778,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "superClass"
 
    MS_091E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0073#, 16#0075#, 16#0070#, 16#0065#,
            16#0072#, 16#0043#, 16#006C#, 16#0061#,
            16#0073#, 16#0073#,
@@ -791,10 +791,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "join"
 
    MS_091F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#006A#, 16#006F#, 16#0069#, 16#006E#,
            others => 16#0000#),
          others => <>);
@@ -802,10 +802,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The multiplicity of the connector end may not be more general than the multiplicity of the association typing the owning connector."
 
    MS_0920 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 131,
-         Length => 131,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 131,
+         Length   => 131,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006D#, 16#0075#, 16#006C#, 16#0074#,
            16#0069#, 16#0070#, 16#006C#, 16#0069#,
@@ -845,10 +845,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The fromAction of an action input pin must only have action input pins as input pins."
 
    MS_0921 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 85,
-         Length => 85,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 85,
+         Length   => 85,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0066#, 16#0072#, 16#006F#, 16#006D#,
            16#0041#, 16#0063#, 16#0074#, 16#0069#,
@@ -877,10 +877,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_result_callAction"
 
    MS_0922 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0073#, 16#0075#, 16#006C#, 16#0074#,
            16#005F#, 16#0063#, 16#0061#, 16#006C#,
@@ -892,10 +892,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "types_of_parameters"
 
    MS_0923 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0074#, 16#0079#, 16#0070#, 16#0065#,
            16#0073#, 16#005F#, 16#006F#, 16#0066#,
            16#005F#, 16#0070#, 16#0061#, 16#0072#,
@@ -907,10 +907,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "substitutingClassifier"
 
    MS_0924 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0073#, 16#0075#, 16#0062#, 16#0073#,
            16#0074#, 16#0069#, 16#0074#, 16#0075#,
            16#0074#, 16#0069#, 16#006E#, 16#0067#,
@@ -923,10 +923,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A fork segment must not have guards or triggers."
 
    MS_0925 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 48,
-         Length => 48,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 48,
+         Length   => 48,
+         Value    =>
           (16#0041#, 16#0020#, 16#0066#, 16#006F#,
            16#0072#, 16#006B#, 16#0020#, 16#0073#,
            16#0065#, 16#0067#, 16#006D#, 16#0065#,
@@ -945,10 +945,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query isMultivalued() checks whether this multiplicity has an upper bound greater than one."
 
    MS_0926 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#0073#,
@@ -979,10 +979,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "boundElement"
 
    MS_0927 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0045#, 16#006C#, 16#0065#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
@@ -992,10 +992,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Refers to the time and duration observations that are involved in expr."
 
    MS_0928 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 71,
-         Length => 71,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 71,
+         Length   => 71,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0073#, 16#0020#, 16#0074#,
            16#006F#, 16#0020#, 16#0074#, 16#0068#,
@@ -1020,10 +1020,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_stateInvariant_owningState"
 
    MS_0929 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0074#,
            16#0061#, 16#0074#, 16#0065#, 16#0049#,
            16#006E#, 16#0076#, 16#0061#, 16#0072#,
@@ -1037,10 +1037,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query isConsistentWith() specifies, for any two Operations in a context in which redefinition is possible, whether redefinition would be consistent in the sense of maintaining type covariance. Other senses of consistency may be required, for example to determine consistency in the sense of contravariance. Users may define alternative queries under names different from 'isConsistentWith()', as for example, users may define a query named 'isContravariantWith()'."
 
    MS_092A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 487,
-         Unused => 468,
-         Length => 468,
-         Value  =>
+     := (Capacity => 487,
+         Unused   => 468,
+         Length   => 468,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#0073#,
@@ -1164,10 +1164,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Junction vertices are semantic-free vertices that are used to chain together multiple transitions. They are used to construct compound transition paths between states. For example, a junction can be used to converge multiple incoming transitions into a single outgoing transition representing a shared transition path (this is known as an merge). Conversely, they can be used to split an incoming transition into multiple outgoing transition segments with different guard conditions. This realizes a static conditional branch. (In the latter case, outgoing transitions whose guard conditions evaluate to false are disabled. A predefined guard denoted 'else' may be defined for at most one outgoing transition. This transition is enabled if all the guards labeling the other transitions are false.) Static conditional branches are distinct from dynamic conditional branches that are realized by choice vertices (described below)."
 
    MS_092B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 959,
-         Unused => 928,
-         Length => 928,
-         Value  =>
+     := (Capacity => 959,
+         Unused   => 928,
+         Length   => 928,
+         Value    =>
           (16#004A#, 16#0075#, 16#006E#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
            16#0020#, 16#0076#, 16#0065#, 16#0072#,
@@ -1406,10 +1406,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "value_specification_no_side_effects"
 
    MS_092C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0075#,
            16#0065#, 16#005F#, 16#0073#, 16#0070#,
            16#0065#, 16#0063#, 16#0069#, 16#0066#,
@@ -1425,10 +1425,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The Classifier that maps to a GeneralizationSet may neither be a specific nor a general Classifier in any of the Generalization relationships defined for that GeneralizationSet. In other words, a power type may not be an instance of itself nor may its instances also be its subclasses."
 
    MS_092D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 295,
-         Unused => 285,
-         Length => 285,
-         Value  =>
+     := (Capacity => 295,
+         Unused   => 285,
+         Length   => 285,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0043#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
@@ -1507,10 +1507,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports."
 
    MS_092E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 223,
-         Unused => 216,
-         Length => 216,
-         Value  =>
+     := (Capacity => 223,
+         Unused   => 216,
+         Length   => 216,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0069#, 16#006E#, 16#0074#, 16#0065#,
            16#0072#, 16#0066#, 16#0061#, 16#0063#,
@@ -1571,10 +1571,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "role"
 
    MS_092F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0072#, 16#006F#, 16#006C#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -1582,10 +1582,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "signal"
 
    MS_0930 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0073#, 16#0069#, 16#0067#, 16#006E#,
            16#0061#, 16#006C#,
            others => 16#0000#),
@@ -1594,10 +1594,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Clause"
 
    MS_0931 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0043#, 16#006C#, 16#0061#, 16#0075#,
            16#0073#, 16#0065#,
            others => 16#0000#),
@@ -1606,10 +1606,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The operation containingStateMachine() returns the sate machine in which this Region is defined"
 
    MS_0932 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0070#, 16#0065#, 16#0072#,
            16#0061#, 16#0074#, 16#0069#, 16#006F#,
@@ -1640,10 +1640,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_refersTo_interactionUse"
 
    MS_0933 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0073#,
            16#0054#, 16#006F#, 16#005F#, 16#0069#,
@@ -1657,10 +1657,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "WriteLinkAction"
 
    MS_0934 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0057#, 16#0072#, 16#0069#, 16#0074#,
            16#0065#, 16#004C#, 16#0069#, 16#006E#,
            16#006B#, 16#0041#, 16#0063#, 16#0074#,
@@ -1671,10 +1671,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The recipient of the return value."
 
    MS_0935 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 34,
-         Length => 34,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 34,
+         Length   => 34,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0072#, 16#0065#, 16#0063#, 16#0069#,
            16#0070#, 16#0069#, 16#0065#, 16#006E#,
@@ -1690,10 +1690,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration."
 
    MS_0936 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 207,
-         Unused => 194,
-         Length => 194,
-         Value  =>
+     := (Capacity => 207,
+         Unused   => 194,
+         Length   => 194,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006C#, 16#0061#, 16#0062#,
            16#006F#, 16#0072#, 16#0061#, 16#0074#,
@@ -1749,10 +1749,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "activityPartition"
 
    MS_0937 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0061#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            16#0050#, 16#0061#, 16#0072#, 16#0074#,
@@ -1764,10 +1764,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "templateParameterSubstitution"
 
    MS_0938 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0074#, 16#0065#, 16#006D#, 16#0070#,
            16#006C#, 16#0061#, 16#0074#, 16#0065#,
            16#0050#, 16#0061#, 16#0072#, 16#0061#,
@@ -1782,10 +1782,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "only_return_result_parameters"
 
    MS_0939 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#006F#, 16#006E#, 16#006C#, 16#0079#,
            16#005F#, 16#0072#, 16#0065#, 16#0074#,
            16#0075#, 16#0072#, 16#006E#, 16#005F#,
@@ -1800,10 +1800,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Defines from which source the conveyed InformationItems are initiated."
 
    MS_093A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 70,
-         Length => 70,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 70,
+         Length   => 70,
+         Value    =>
           (16#0044#, 16#0065#, 16#0066#, 16#0069#,
            16#006E#, 16#0065#, 16#0073#, 16#0020#,
            16#0066#, 16#0072#, 16#006F#, 16#006D#,
@@ -1828,10 +1828,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A literal specification identifies a literal constant being modeled."
 
    MS_093B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0041#, 16#0020#, 16#006C#, 16#0069#,
            16#0074#, 16#0065#, 16#0072#, 16#0061#,
            16#006C#, 16#0020#, 16#0073#, 16#0070#,
@@ -1855,10 +1855,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Association to be cleared."
 
    MS_093C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 26,
-         Length => 26,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 26,
+         Length   => 26,
+         Value    =>
           (16#0041#, 16#0073#, 16#0073#, 16#006F#,
            16#0063#, 16#0069#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#0020#,
@@ -1872,10 +1872,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_replyValue_replyAction"
 
    MS_093D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0070#, 16#006C#, 16#0079#, 16#0056#,
            16#0061#, 16#006C#, 16#0075#, 16#0065#,
@@ -1888,10 +1888,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_inputValue_opaqueAction"
 
    MS_093E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0041#, 16#005F#, 16#0069#, 16#006E#,
            16#0070#, 16#0075#, 16#0074#, 16#0056#,
            16#0061#, 16#006C#, 16#0075#, 16#0065#,
@@ -1905,10 +1905,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "LiteralUnlimitedNatural"
 
    MS_093F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#004C#, 16#0069#, 16#0074#, 16#0065#,
            16#0072#, 16#0061#, 16#006C#, 16#0055#,
            16#006E#, 16#006C#, 16#0069#, 16#006D#,
@@ -1921,10 +1921,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_required_port"
 
    MS_0940 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0071#, 16#0075#, 16#0069#, 16#0072#,
            16#0065#, 16#0064#, 16#005F#, 16#0070#,
@@ -1935,10 +1935,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "MultiplicityElement"
 
    MS_0941 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#004D#, 16#0075#, 16#006C#, 16#0074#,
            16#0069#, 16#0070#, 16#006C#, 16#0069#,
            16#0063#, 16#0069#, 16#0074#, 16#0079#,
@@ -1950,10 +1950,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "References all the Interfaces redefined by this Interface."
 
    MS_0942 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 58,
-         Length => 58,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 58,
+         Length   => 58,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0065#, 16#006E#, 16#0063#,
            16#0065#, 16#0073#, 16#0020#, 16#0061#,
@@ -1975,10 +1975,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "opaqueAction"
 
    MS_0943 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#006F#, 16#0070#, 16#0061#, 16#0071#,
            16#0075#, 16#0065#, 16#0041#, 16#0063#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -1988,10 +1988,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "AnyReceiveEvent"
 
    MS_0944 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#006E#, 16#0079#, 16#0052#,
            16#0065#, 16#0063#, 16#0065#, 16#0069#,
            16#0076#, 16#0065#, 16#0045#, 16#0076#,
@@ -2002,10 +2002,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "setting"
 
    MS_0945 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0073#, 16#0065#, 16#0074#, 16#0074#,
            16#0069#, 16#006E#, 16#0067#,
            others => 16#0000#),
@@ -2014,10 +2014,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Indicates that the property is aggregated compositely, i.e., the composite object has responsibility for the existence and storage of the composed objects (parts)."
 
    MS_0946 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 163,
-         Length => 163,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 163,
+         Length   => 163,
+         Value    =>
           (16#0049#, 16#006E#, 16#0064#, 16#0069#,
            16#0063#, 16#0061#, 16#0074#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -2065,10 +2065,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An interaction constraint is a Boolean expression that guards an operand in a combined fragment."
 
    MS_0947 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 96,
-         Length => 96,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 96,
+         Length   => 96,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0074#, 16#0065#, 16#0072#,
            16#0061#, 16#0063#, 16#0074#, 16#0069#,
@@ -2099,10 +2099,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The bodyOutput pins are output pins on actions in the body of the loop node."
 
    MS_0948 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 76,
-         Length => 76,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 76,
+         Length   => 76,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#006F#, 16#0064#, 16#0079#,
            16#004F#, 16#0075#, 16#0074#, 16#0070#,
@@ -2128,10 +2128,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier."
 
    MS_0949 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 287,
-         Unused => 276,
-         Length => 276,
-         Value  =>
+     := (Capacity => 287,
+         Unused   => 276,
+         Length   => 276,
+         Value    =>
           (16#0043#, 16#006F#, 16#006E#, 16#006E#,
            16#0065#, 16#0063#, 16#0074#, 16#0061#,
            16#0062#, 16#006C#, 16#0065#, 16#0045#,
@@ -2207,10 +2207,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The DeployedTarget which is the target of a Deployment."
 
    MS_094A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 55,
-         Length => 55,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 55,
+         Length   => 55,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0044#, 16#0065#, 16#0070#, 16#006C#,
            16#006F#, 16#0079#, 16#0065#, 16#0064#,
@@ -2231,10 +2231,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Activity containing the group."
 
    MS_094B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 30,
-         Length => 30,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 30,
+         Length   => 30,
+         Value    =>
           (16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            16#0020#, 16#0063#, 16#006F#, 16#006E#,
@@ -2249,10 +2249,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An optional association that specifies the link corresponding to this connector."
 
    MS_094C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 80,
-         Length => 80,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 80,
+         Length   => 80,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -2279,10 +2279,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "If the decision node has no decision input flow and an incoming object flow, then a decision input behavior has one input parameter whose type is the same as or a supertype of the type of object tokens offered on the incoming edge."
 
    MS_094D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 239,
-         Unused => 231,
-         Length => 231,
-         Value  =>
+     := (Capacity => 239,
+         Unused   => 231,
+         Length   => 231,
+         Value    =>
           (16#0049#, 16#0066#, 16#0020#, 16#0074#,
            16#0068#, 16#0065#, 16#0020#, 16#0064#,
            16#0065#, 16#0063#, 16#0069#, 16#0073#,
@@ -2347,10 +2347,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported."
 
    MS_094E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 295,
-         Unused => 285,
-         Length => 285,
-         Value  =>
+     := (Capacity => 295,
+         Unused   => 285,
+         Length   => 285,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#006D#,
@@ -2429,10 +2429,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region of the composite state or state machine referenced by a submachine state implies the exit of this composite state or submachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the submachine or composite state."
 
    MS_094F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 407,
-         Unused => 394,
-         Length => 394,
-         Value  =>
+     := (Capacity => 407,
+         Unused   => 394,
+         Length   => 394,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0065#,
            16#0078#, 16#0069#, 16#0074#, 16#0020#,
            16#0070#, 16#006F#, 16#0069#, 16#006E#,
@@ -2538,10 +2538,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ValuePin"
 
    MS_0950 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0056#, 16#0061#, 16#006C#, 16#0075#,
            16#0065#, 16#0050#, 16#0069#, 16#006E#,
            others => 16#0000#),
@@ -2550,10 +2550,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Activity immediately containing the node."
 
    MS_0951 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 41,
-         Length => 41,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 41,
+         Length   => 41,
+         Value    =>
           (16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            16#0020#, 16#0069#, 16#006D#, 16#006D#,
@@ -2571,10 +2571,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "InitialNode"
 
    MS_0952 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0049#, 16#006E#, 16#0069#, 16#0074#,
            16#0069#, 16#0061#, 16#006C#, 16#004E#,
            16#006F#, 16#0064#, 16#0065#,
@@ -2584,10 +2584,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "alt"
 
    MS_0953 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 3,
-         Length => 3,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 3,
+         Length   => 3,
+         Value    =>
           (16#0061#, 16#006C#, 16#0074#,
            others => 16#0000#),
          others => <>);
@@ -2595,10 +2595,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_ownedOperation_artifact"
 
    MS_0954 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0041#, 16#005F#, 16#006F#, 16#0077#,
            16#006E#, 16#0065#, 16#0064#, 16#004F#,
            16#0070#, 16#0065#, 16#0072#, 16#0061#,
@@ -2612,10 +2612,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_inputElement_regionAsInput"
 
    MS_0955 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#0069#, 16#006E#,
            16#0070#, 16#0075#, 16#0074#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -2629,10 +2629,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "name_not_clash"
 
    MS_0956 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#006E#, 16#0061#, 16#006D#, 16#0065#,
            16#005F#, 16#006E#, 16#006F#, 16#0074#,
            16#005F#, 16#0063#, 16#006C#, 16#0061#,
@@ -2643,10 +2643,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited."
 
    MS_0957 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 223,
-         Unused => 215,
-         Length => 215,
-         Value  =>
+     := (Capacity => 223,
+         Unused   => 215,
+         Length   => 215,
+         Value    =>
           (16#0041#, 16#0020#, 16#0064#, 16#0075#,
            16#0072#, 16#0061#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0020#, 16#006F#,
@@ -2707,10 +2707,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy."
 
    MS_0958 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 156,
-         Length => 156,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 156,
+         Length   => 156,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -2756,10 +2756,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A broadcast signal action is an action that transmits a signal instance to all the potential target objects in the system, which may cause the firing of a state machine transitions or the execution of associated activities of a target object. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately after the signals are sent out. It does not wait for receipt. Any reply messages are ignored and are not transmitted to the requestor."
 
    MS_0959 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 519,
-         Unused => 499,
-         Length => 499,
-         Value  =>
+     := (Capacity => 519,
+         Unused   => 499,
+         Length   => 499,
+         Value    =>
           (16#0041#, 16#0020#, 16#0062#, 16#0072#,
            16#006F#, 16#0061#, 16#0064#, 16#0063#,
            16#0061#, 16#0073#, 16#0074#, 16#0020#,
@@ -2891,10 +2891,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Parameters are allowed to be treated as connectable elements."
 
    MS_095A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 61,
-         Length => 61,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 61,
+         Length   => 61,
+         Value    =>
           (16#0050#, 16#0061#, 16#0072#, 16#0061#,
            16#006D#, 16#0065#, 16#0074#, 16#0065#,
            16#0072#, 16#0073#, 16#0020#, 16#0061#,
@@ -2917,10 +2917,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "UnmarshallAction"
 
    MS_095B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0055#, 16#006E#, 16#006D#, 16#0061#,
            16#0072#, 16#0073#, 16#0068#, 16#0061#,
            16#006C#, 16#006C#, 16#0041#, 16#0063#,
@@ -2931,10 +2931,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A part decomposition is a description of the internal interactions of one lifeline relative to an interaction."
 
    MS_095C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 110,
-         Length => 110,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 110,
+         Length   => 110,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0072#, 16#0074#, 16#0020#, 16#0064#,
            16#0065#, 16#0063#, 16#006F#, 16#006D#,
@@ -2969,10 +2969,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "CallAction is an abstract class for actions that invoke behavior and receive return values."
 
    MS_095D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 91,
-         Length => 91,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 91,
+         Length   => 91,
+         Value    =>
           (16#0043#, 16#0061#, 16#006C#, 16#006C#,
            16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0020#, 16#0069#,
@@ -3002,10 +3002,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The union of the ExecutableNodes in the setupPart, test and bodyPart of a LoopNode must be the same as the subset of nodes contained in the LoopNode (considered as a StructuredActivityNode) that are ExecutableNodes."
 
    MS_095E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 223,
-         Unused => 215,
-         Length => 215,
-         Value  =>
+     := (Capacity => 223,
+         Unused   => 215,
+         Length   => 215,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0075#, 16#006E#, 16#0069#, 16#006F#,
            16#006E#, 16#0020#, 16#006F#, 16#0066#,
@@ -3066,10 +3066,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "input_pin_edges"
 
    MS_095F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0069#, 16#006E#, 16#0070#, 16#0075#,
            16#0074#, 16#005F#, 16#0070#, 16#0069#,
            16#006E#, 16#005F#, 16#0065#, 16#0064#,
@@ -3080,10 +3080,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The guard must contain only references to values local to the Lifeline on which it resides, or values global to the whole Interaction."
 
    MS_0960 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 143,
-         Unused => 134,
-         Length => 134,
-         Value  =>
+     := (Capacity => 143,
+         Unused   => 134,
+         Length   => 134,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0067#, 16#0075#, 16#0061#, 16#0072#,
            16#0064#, 16#0020#, 16#006D#, 16#0075#,
@@ -3124,10 +3124,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_bodyOutput_clause"
 
    MS_0961 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0041#, 16#005F#, 16#0062#, 16#006F#,
            16#0064#, 16#0079#, 16#004F#, 16#0075#,
            16#0074#, 16#0070#, 16#0075#, 16#0074#,
@@ -3139,10 +3139,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "conveyed"
 
    MS_0962 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0063#, 16#006F#, 16#006E#, 16#0076#,
            16#0065#, 16#0079#, 16#0065#, 16#0064#,
            others => 16#0000#),
@@ -3151,10 +3151,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "testIdentityAction"
 
    MS_0963 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0074#, 16#0065#, 16#0073#, 16#0074#,
            16#0049#, 16#0064#, 16#0065#, 16#006E#,
            16#0074#, 16#0069#, 16#0074#, 16#0079#,
@@ -3166,10 +3166,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_parameter_activityParameterNode"
 
    MS_0964 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 33,
-         Length => 33,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 33,
+         Length   => 33,
+         Value    =>
           (16#0041#, 16#005F#, 16#0070#, 16#0061#,
            16#0072#, 16#0061#, 16#006D#, 16#0065#,
            16#0074#, 16#0065#, 16#0072#, 16#005F#,
@@ -3185,10 +3185,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Languages the body strings use in the same order as the body strings."
 
    MS_0965 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 69,
-         Length => 69,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 69,
+         Length   => 69,
+         Value    =>
           (16#004C#, 16#0061#, 16#006E#, 16#0067#,
            16#0075#, 16#0061#, 16#0067#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -3213,10 +3213,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Missing derivation for Parameter::/default : String"
 
    MS_0966 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 51,
-         Length => 51,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 51,
+         Length   => 51,
+         Value    =>
           (16#004D#, 16#0069#, 16#0073#, 16#0073#,
            16#0069#, 16#006E#, 16#0067#, 16#0020#,
            16#0064#, 16#0065#, 16#0072#, 16#0069#,
@@ -3236,10 +3236,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "inStructuredNode"
 
    MS_0967 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0069#, 16#006E#, 16#0053#, 16#0074#,
            16#0072#, 16#0075#, 16#0063#, 16#0074#,
            16#0075#, 16#0072#, 16#0065#, 16#0064#,
@@ -3250,10 +3250,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The specification of signal object transmitted to the target objects."
 
    MS_0968 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 69,
-         Length => 69,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 69,
+         Length   => 69,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0063#,
@@ -3278,10 +3278,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "generalization_same_classifier"
 
    MS_0969 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 30,
-         Length => 30,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 30,
+         Length   => 30,
+         Value    =>
           (16#0067#, 16#0065#, 16#006E#, 16#0065#,
            16#0072#, 16#0061#, 16#006C#, 16#0069#,
            16#007A#, 16#0061#, 16#0074#, 16#0069#,
@@ -3296,10 +3296,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Action whose execution is occurring."
 
    MS_096A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0020#, 16#0077#,
            16#0068#, 16#006F#, 16#0073#, 16#0065#,
@@ -3315,10 +3315,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The result pins must match the in and inout parameters of the operation specified by the trigger event in number, type, and order."
 
    MS_096B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 130,
-         Length => 130,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 130,
+         Length   => 130,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0072#, 16#0065#, 16#0073#, 16#0075#,
            16#006C#, 16#0074#, 16#0020#, 16#0070#,
@@ -3358,10 +3358,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "LinkAction"
 
    MS_096C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#006B#,
            16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#,
@@ -3371,10 +3371,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "subsetting_context_conforms"
 
    MS_096D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 27,
-         Length => 27,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 27,
+         Length   => 27,
+         Value    =>
           (16#0073#, 16#0075#, 16#0062#, 16#0073#,
            16#0065#, 16#0074#, 16#0074#, 16#0069#,
            16#006E#, 16#0067#, 16#005F#, 16#0063#,
@@ -3388,10 +3388,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Partitions containing the edge."
 
    MS_096E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 31,
-         Length => 31,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 31,
+         Length   => 31,
+         Value    =>
           (16#0050#, 16#0061#, 16#0072#, 16#0074#,
            16#0069#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0073#, 16#0020#, 16#0063#,
@@ -3406,10 +3406,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_value_valueSpecificationAction"
 
    MS_096F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 32,
-         Length => 32,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 32,
+         Length   => 32,
+         Value    =>
           (16#0041#, 16#005F#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#005F#,
            16#0076#, 16#0061#, 16#006C#, 16#0075#,
@@ -3424,10 +3424,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The classifier against which the classification of the input object is tested."
 
    MS_0970 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 78,
-         Length => 78,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 78,
+         Length   => 78,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
@@ -3454,10 +3454,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ownedLiteral"
 
    MS_0971 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#006F#, 16#0077#, 16#006E#, 16#0065#,
            16#0064#, 16#004C#, 16#0069#, 16#0074#,
            16#0065#, 16#0072#, 16#0061#, 16#006C#,
@@ -3467,10 +3467,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_represents_activityPartition"
 
    MS_0972 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 30,
-         Length => 30,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 30,
+         Length   => 30,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0070#, 16#0072#, 16#0065#, 16#0073#,
            16#0065#, 16#006E#, 16#0074#, 16#0073#,
@@ -3485,10 +3485,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "addStructuralFeatureValueAction"
 
    MS_0973 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 31,
-         Length => 31,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 31,
+         Length   => 31,
+         Value    =>
           (16#0061#, 16#0064#, 16#0064#, 16#0053#,
            16#0074#, 16#0072#, 16#0075#, 16#0063#,
            16#0074#, 16#0075#, 16#0072#, 16#0061#,
@@ -3503,10 +3503,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ownedParameter"
 
    MS_0974 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#006F#, 16#0077#, 16#006E#, 16#0065#,
            16#0064#, 16#0050#, 16#0061#, 16#0072#,
            16#0061#, 16#006D#, 16#0065#, 16#0074#,
@@ -3517,10 +3517,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Specifies the protocol state machine to which the specific state machine conforms."
 
    MS_0975 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 82,
-         Length => 82,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 82,
+         Length   => 82,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -3548,10 +3548,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The operation belongsToPSM () checks if the region belongs to a protocol state machine"
 
    MS_0976 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 86,
-         Length => 86,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 86,
+         Length   => 86,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0070#, 16#0065#, 16#0072#,
            16#0061#, 16#0074#, 16#0069#, 16#006F#,
@@ -3580,10 +3580,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "classifier_not_abstract"
 
    MS_0977 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0063#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
            16#0065#, 16#0072#, 16#005F#, 16#006E#,
@@ -3596,10 +3596,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation."
 
    MS_0978 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 166,
-         Length => 166,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 166,
+         Length   => 166,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -3648,10 +3648,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The classifier containing the referenced ConnectableElement must be the same classifier, or an ancestor, of the classifier that contains the interaction enclosing this lifeline."
 
    MS_0979 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 183,
-         Unused => 177,
-         Length => 177,
-         Value  =>
+     := (Capacity => 183,
+         Unused   => 177,
+         Length   => 177,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006C#, 16#0061#, 16#0073#,
            16#0073#, 16#0069#, 16#0066#, 16#0069#,
@@ -3703,10 +3703,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "isDestroyDuplicates"
 
    MS_097A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0069#, 16#0073#, 16#0044#, 16#0065#,
            16#0073#, 16#0074#, 16#0072#, 16#006F#,
            16#0079#, 16#0044#, 16#0075#, 16#0070#,
@@ -3718,10 +3718,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Choice vertices which, when reached, result in the dynamic evaluation of the guards of the triggers of its outgoing transitions. This realizes a dynamic conditional branch. It allows splitting of transitions into multiple outgoing paths such that the decision on which path to take may be a function of the results of prior actions performed in the same run-tocompletion step. If more than one of the guards evaluates to true, an arbitrary one is selected. If none of the guards evaluates to true, then the model is considered ill-formed. (To avoid this, it is recommended to define one outgoing transition with the predefined else guard for every choice vertex.) Choice vertices should be distinguished from static branch points that are based on junction points (described above)."
 
    MS_097B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 807,
-         Unused => 782,
-         Length => 782,
-         Value  =>
+     := (Capacity => 807,
+         Unused   => 782,
+         Length   => 782,
+         Value    =>
           (16#0043#, 16#0068#, 16#006F#, 16#0069#,
            16#0063#, 16#0065#, 16#0020#, 16#0076#,
            16#0065#, 16#0072#, 16#0074#, 16#0069#,
@@ -3924,10 +3924,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "References the Operations that are redefined by this Operation."
 
    MS_097C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 63,
-         Length => 63,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 63,
+         Length   => 63,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0065#, 16#006E#, 16#0063#,
            16#0065#, 16#0073#, 16#0020#, 16#0074#,
@@ -3950,10 +3950,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_operation_callEvent"
 
    MS_097D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0041#, 16#005F#, 16#006F#, 16#0070#,
            16#0065#, 16#0072#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -3966,10 +3966,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_variable_activityScope"
 
    MS_097E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0041#, 16#005F#, 16#0076#, 16#0061#,
            16#0072#, 16#0069#, 16#0061#, 16#0062#,
            16#006C#, 16#0065#, 16#005F#, 16#0061#,
@@ -3982,10 +3982,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_variable_scope"
 
    MS_097F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0041#, 16#005F#, 16#0076#, 16#0061#,
            16#0072#, 16#0069#, 16#0061#, 16#0062#,
            16#006C#, 16#0065#, 16#005F#, 16#0073#,
@@ -3996,10 +3996,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine."
 
    MS_0980 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 112,
-         Length => 112,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 112,
+         Length   => 112,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0053#, 16#0074#, 16#0061#, 16#0074#,
            16#0065#, 16#0020#, 16#0074#, 16#0068#,
@@ -4034,10 +4034,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The arguments of the Message"
 
    MS_0981 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0072#, 16#0067#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
@@ -4051,10 +4051,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Indicates whether the classifier must directly classify the input object."
 
    MS_0982 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 73,
-         Length => 73,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 73,
+         Length   => 73,
+         Value    =>
           (16#0049#, 16#006E#, 16#0064#, 16#0069#,
            16#0063#, 16#0061#, 16#0074#, 16#0065#,
            16#0073#, 16#0020#, 16#0077#, 16#0068#,
@@ -4080,10 +4080,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "scope_of_variable"
 
    MS_0983 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0073#, 16#0063#, 16#006F#, 16#0070#,
            16#0065#, 16#005F#, 16#006F#, 16#0066#,
            16#005F#, 16#0076#, 16#0061#, 16#0072#,
@@ -4095,10 +4095,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "collaboration"
 
    MS_0984 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0063#, 16#006F#, 16#006C#, 16#006C#,
            16#0061#, 16#0062#, 16#006F#, 16#0072#,
            16#0061#, 16#0074#, 16#0069#, 16#006F#,
@@ -4109,10 +4109,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A transition with kind local must have a composite state or an entry point as its source."
 
    MS_0985 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 89,
-         Length => 89,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 89,
+         Length   => 89,
+         Value    =>
           (16#0041#, 16#0020#, 16#0074#, 16#0072#,
            16#0061#, 16#006E#, 16#0073#, 16#0069#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -4142,10 +4142,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "regionAsInput"
 
    MS_0986 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0072#, 16#0065#, 16#0067#, 16#0069#,
            16#006F#, 16#006E#, 16#0041#, 16#0073#,
            16#0049#, 16#006E#, 16#0070#, 16#0075#,
@@ -4156,10 +4156,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Event"
 
    MS_0987 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0045#, 16#0076#, 16#0065#, 16#006E#,
            16#0074#,
            others => 16#0000#),
@@ -4168,10 +4168,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Control pins have a control type"
 
    MS_0988 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 32,
-         Length => 32,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 32,
+         Length   => 32,
+         Value    =>
           (16#0043#, 16#006F#, 16#006E#, 16#0074#,
            16#0072#, 16#006F#, 16#006C#, 16#0020#,
            16#0070#, 16#0069#, 16#006E#, 16#0073#,
@@ -4186,10 +4186,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_general_classifier"
 
    MS_0989 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0041#, 16#005F#, 16#0067#, 16#0065#,
            16#006E#, 16#0065#, 16#0072#, 16#0061#,
            16#006C#, 16#005F#, 16#0063#, 16#006C#,
@@ -4201,10 +4201,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A parameter may only be associated with a connector end within the context of a collaboration."
 
    MS_098A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 94,
-         Length => 94,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 94,
+         Length   => 94,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0072#, 16#0061#, 16#006D#, 16#0065#,
            16#0074#, 16#0065#, 16#0072#, 16#0020#,
@@ -4235,10 +4235,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A fork node has one incoming edge."
 
    MS_098B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 34,
-         Length => 34,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 34,
+         Length   => 34,
+         Value    =>
           (16#0041#, 16#0020#, 16#0066#, 16#006F#,
            16#0072#, 16#006B#, 16#0020#, 16#006E#,
            16#006F#, 16#0064#, 16#0065#, 16#0020#,
@@ -4254,10 +4254,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "trigger_events"
 
    MS_098C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0074#, 16#0072#, 16#0069#, 16#0067#,
            16#0067#, 16#0065#, 16#0072#, 16#005F#,
            16#0065#, 16#0076#, 16#0065#, 16#006E#,
@@ -4268,10 +4268,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "InstanceValue"
 
    MS_098D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0049#, 16#006E#, 16#0073#, 16#0074#,
            16#0061#, 16#006E#, 16#0063#, 16#0065#,
            16#0056#, 16#0061#, 16#006C#, 16#0075#,
@@ -4282,10 +4282,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Activity"
 
    MS_098E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0041#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            others => 16#0000#),
@@ -4294,10 +4294,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An information flow can only convey classifiers that are allowed to represent an information item."
 
    MS_098F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 98,
-         Length => 98,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 98,
+         Length   => 98,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0066#, 16#006F#, 16#0072#,
            16#006D#, 16#0061#, 16#0074#, 16#0069#,
@@ -4329,10 +4329,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "feature_of_context_classifier"
 
    MS_0990 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0066#, 16#0065#, 16#0061#, 16#0074#,
            16#0075#, 16#0072#, 16#0065#, 16#005F#,
            16#006F#, 16#0066#, 16#005F#, 16#0063#,
@@ -4347,10 +4347,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The message leading to/from an (expression) Gate within a CombinedFragment must correspond to the message leading from/to the CombinedFragment on its outside."
 
    MS_0991 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 158,
-         Length => 158,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 158,
+         Length   => 158,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006D#, 16#0065#, 16#0073#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#0020#,
@@ -4397,10 +4397,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior or behavioral feature."
 
    MS_0992 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 142,
-         Length => 142,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 142,
+         Length   => 142,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0074#, 16#0079#, 16#0070#, 16#0065#,
            16#002C#, 16#0020#, 16#006F#, 16#0072#,
@@ -4443,10 +4443,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The deployment with which the DeploymentSpecification is associated."
 
    MS_0993 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0064#, 16#0065#, 16#0070#, 16#006C#,
            16#006F#, 16#0079#, 16#006D#, 16#0065#,
@@ -4470,10 +4470,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query isIntegral() tells whether an expression is intended to produce an integer."
 
    MS_0994 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 85,
-         Length => 85,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 85,
+         Length   => 85,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#0073#,
@@ -4502,10 +4502,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The ValueSpecification when must return a non-negative Integer."
 
    MS_0995 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 63,
-         Length => 63,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 63,
+         Length   => 63,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0056#, 16#0061#, 16#006C#, 16#0075#,
            16#0065#, 16#0053#, 16#0070#, 16#0065#,
@@ -4528,10 +4528,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_object_readLinkObjectEndAction"
 
    MS_0996 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 32,
-         Length => 32,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 32,
+         Length   => 32,
+         Value    =>
           (16#0041#, 16#005F#, 16#006F#, 16#0062#,
            16#006A#, 16#0065#, 16#0063#, 16#0074#,
            16#005F#, 16#0072#, 16#0065#, 16#0061#,
@@ -4546,10 +4546,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "composite_states"
 
    MS_0997 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0063#, 16#006F#, 16#006D#, 16#0070#,
            16#006F#, 16#0073#, 16#0069#, 16#0074#,
            16#0065#, 16#005F#, 16#0073#, 16#0074#,
@@ -4560,10 +4560,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The Interaction enclosing this InteractionFragment."
 
    MS_0998 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 51,
-         Length => 51,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 51,
+         Length   => 51,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0049#, 16#006E#, 16#0074#, 16#0065#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
@@ -4583,10 +4583,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The number of result pins and the number of parameters of the behavior of type return, out, and in-out must be equal."
 
    MS_0999 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006E#, 16#0075#, 16#006D#, 16#0062#,
            16#0065#, 16#0072#, 16#0020#, 16#006F#,
@@ -4623,10 +4623,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Continuations are always global in the enclosing InteractionFragment e.g. it always covers all Lifelines covered by the enclosing InteractionFragment."
 
    MS_099A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 159,
-         Unused => 150,
-         Length => 150,
-         Value  =>
+     := (Capacity => 159,
+         Unused   => 150,
+         Length   => 150,
+         Value    =>
           (16#0043#, 16#006F#, 16#006E#, 16#0074#,
            16#0069#, 16#006E#, 16#0075#, 16#0061#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
@@ -4671,10 +4671,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "edges"
 
    MS_099B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0065#, 16#0064#, 16#0067#, 16#0065#,
            16#0073#,
            others => 16#0000#),
@@ -4683,10 +4683,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Missing derivation for RedefinableTemplateSignature::/inheritedParameter : TemplateParameter"
 
    MS_099C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 92,
-         Length => 92,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 92,
+         Length   => 92,
+         Value    =>
           (16#004D#, 16#0069#, 16#0073#, 16#0073#,
            16#0069#, 16#006E#, 16#0067#, 16#0020#,
            16#0064#, 16#0065#, 16#0072#, 16#0069#,
@@ -4716,10 +4716,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The actual arguments of the Interaction"
 
    MS_099D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 39,
-         Length => 39,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 39,
+         Length   => 39,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0063#, 16#0074#, 16#0075#,
            16#0061#, 16#006C#, 16#0020#, 16#0061#,
@@ -4736,10 +4736,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, and the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property."
 
    MS_099E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 447,
-         Unused => 434,
-         Length => 434,
-         Value  =>
+     := (Capacity => 447,
+         Unused   => 434,
+         Length   => 434,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#0073#,
@@ -4855,10 +4855,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body."
 
    MS_099F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 183,
-         Unused => 176,
-         Length => 176,
-         Value  =>
+     := (Capacity => 183,
+         Unused   => 176,
+         Length   => 176,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006B#, 16#0069#, 16#006E#, 16#0064#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -4909,10 +4909,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "zero_input_parameters"
 
    MS_09A0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#007A#, 16#0065#, 16#0072#, 16#006F#,
            16#005F#, 16#0069#, 16#006E#, 16#0070#,
            16#0075#, 16#0074#, 16#005F#, 16#0070#,
@@ -4925,10 +4925,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A passive class may not own receptions."
 
    MS_09A1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 39,
-         Length => 39,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 39,
+         Length   => 39,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0073#, 16#0073#, 16#0069#, 16#0076#,
            16#0065#, 16#0020#, 16#0063#, 16#006C#,
@@ -4945,10 +4945,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_subpartition_superPartition"
 
    MS_09A2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0075#,
            16#0062#, 16#0070#, 16#0061#, 16#0072#,
            16#0074#, 16#0069#, 16#0074#, 16#0069#,
@@ -4963,10 +4963,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "invocationAction"
 
    MS_09A3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0069#, 16#006E#, 16#0076#, 16#006F#,
            16#0063#, 16#0061#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0041#, 16#0063#,
@@ -4977,10 +4977,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "activity"
 
    MS_09A4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0061#, 16#0063#, 16#0074#, 16#0069#,
            16#0076#, 16#0069#, 16#0074#, 16#0079#,
            others => 16#0000#),
@@ -4989,10 +4989,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact."
 
    MS_09A5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 255,
-         Unused => 246,
-         Length => 246,
-         Value  =>
+     := (Capacity => 255,
+         Unused   => 246,
+         Length   => 246,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0073#, 16#0074#, 16#0061#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -5061,10 +5061,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "non_final_parents"
 
    MS_09A6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#006E#, 16#006F#, 16#006E#, 16#005F#,
            16#0066#, 16#0069#, 16#006E#, 16#0061#,
            16#006C#, 16#005F#, 16#0070#, 16#0061#,
@@ -5076,10 +5076,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The owned attributes and owned ends of an AssociationClass are disjoint"
 
    MS_09A7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 71,
-         Length => 71,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 71,
+         Length   => 71,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0077#, 16#006E#, 16#0065#,
            16#0064#, 16#0020#, 16#0061#, 16#0074#,
@@ -5104,10 +5104,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "isRemoveDuplicates"
 
    MS_09A8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0069#, 16#0073#, 16#0052#, 16#0065#,
            16#006D#, 16#006F#, 16#0076#, 16#0065#,
            16#0044#, 16#0075#, 16#0070#, 16#006C#,
@@ -5119,10 +5119,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain."
 
    MS_09A9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 359,
-         Unused => 344,
-         Length => 344,
-         Value  =>
+     := (Capacity => 359,
+         Unused   => 344,
+         Length   => 344,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0077#, 16#0068#,
@@ -5215,10 +5215,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_result_writeStructuralFeatureAction"
 
    MS_09AA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 37,
-         Length => 37,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 37,
+         Length   => 37,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#0073#, 16#0075#, 16#006C#, 16#0074#,
            16#005F#, 16#0077#, 16#0072#, 16#0069#,
@@ -5235,10 +5235,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_newClassifier_reclassifyObjectAction"
 
    MS_09AB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0041#, 16#005F#, 16#006E#, 16#0065#,
            16#0077#, 16#0043#, 16#006C#, 16#0061#,
            16#0073#, 16#0073#, 16#0069#, 16#0066#,
@@ -5255,10 +5255,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The visibility of all features owned by an interface must be public."
 
    MS_09AC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0076#, 16#0069#, 16#0073#, 16#0069#,
            16#0062#, 16#0069#, 16#006C#, 16#0069#,
@@ -5282,10 +5282,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A state models a situation during which some (usually implicit) invariant condition holds."
 
    MS_09AD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 90,
-         Length => 90,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 90,
+         Length   => 90,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0074#,
            16#0061#, 16#0074#, 16#0065#, 16#0020#,
            16#006D#, 16#006F#, 16#0064#, 16#0065#,
@@ -5315,10 +5315,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "not_query"
 
    MS_09AE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#006E#, 16#006F#, 16#0074#, 16#005F#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#,
@@ -5328,10 +5328,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_inputValue_linkAction"
 
    MS_09AF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0041#, 16#005F#, 16#0069#, 16#006E#,
            16#0070#, 16#0075#, 16#0074#, 16#0056#,
            16#0061#, 16#006C#, 16#0075#, 16#0065#,
@@ -5344,10 +5344,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "In a complete statemachine, a join vertex must have at least two incoming transitions and exactly one outgoing transition."
 
    MS_09B0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 122,
-         Length => 122,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 122,
+         Length   => 122,
+         Value    =>
           (16#0049#, 16#006E#, 16#0020#, 16#0061#,
            16#0020#, 16#0063#, 16#006F#, 16#006D#,
            16#0070#, 16#006C#, 16#0065#, 16#0074#,
@@ -5385,10 +5385,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "DataStoreNode"
 
    MS_09B1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0044#, 16#0061#, 16#0074#, 16#0061#,
            16#0053#, 16#0074#, 16#006F#, 16#0072#,
            16#0065#, 16#004E#, 16#006F#, 16#0064#,
@@ -5399,10 +5399,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "result_pin_equal_parameter"
 
    MS_09B2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 26,
-         Length => 26,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 26,
+         Length   => 26,
+         Value    =>
           (16#0072#, 16#0065#, 16#0073#, 16#0075#,
            16#006C#, 16#0074#, 16#005F#, 16#0070#,
            16#0069#, 16#006E#, 16#005F#, 16#0065#,
@@ -5416,10 +5416,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The element exposed by this template parameter."
 
    MS_09B3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 47,
-         Length => 47,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 47,
+         Length   => 47,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#006C#, 16#0065#, 16#006D#,
            16#0065#, 16#006E#, 16#0074#, 16#0020#,
@@ -5438,10 +5438,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query separator() gives the string that is used to separate names when constructing a qualified name."
 
    MS_09B4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 105,
-         Length => 105,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 105,
+         Length   => 105,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0073#, 16#0065#,
@@ -5475,10 +5475,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "There are no output pins if the trigger events are only ChangeEvents, or if they are only CallEvents when this action is an instance of AcceptEventAction and not an instance of a descendant of AcceptEventAction (such as AcceptCallAction)."
 
    MS_09B5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 247,
-         Unused => 238,
-         Length => 238,
-         Value  =>
+     := (Capacity => 247,
+         Unused   => 238,
+         Length   => 238,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0072#,
            16#0065#, 16#0020#, 16#0061#, 16#0072#,
            16#0065#, 16#0020#, 16#006E#, 16#006F#,
@@ -5545,10 +5545,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself."
 
    MS_09B6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 255,
-         Unused => 247,
-         Length => 247,
-         Value  =>
+     := (Capacity => 255,
+         Unused   => 247,
+         Length   => 247,
+         Value    =>
           (16#0041#, 16#0020#, 16#006E#, 16#0061#,
            16#006D#, 16#0065#, 16#0020#, 16#0077#,
            16#0068#, 16#0069#, 16#0063#, 16#0068#,
@@ -5617,10 +5617,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "transition"
 
    MS_09B7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0074#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#0069#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#,
@@ -5630,10 +5630,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "argument"
 
    MS_09B8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0061#, 16#0072#, 16#0067#, 16#0075#,
            16#006D#, 16#0065#, 16#006E#, 16#0074#,
            others => 16#0000#),
@@ -5642,10 +5642,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ParameterEffectKind"
 
    MS_09B9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#0050#, 16#0061#, 16#0072#, 16#0061#,
            16#006D#, 16#0065#, 16#0074#, 16#0065#,
            16#0072#, 16#0045#, 16#0066#, 16#0066#,
@@ -5657,10 +5657,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "If the interactionOperator is opt, loop, break, assert or neg, there must be exactly one operand."
 
    MS_09BA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 97,
-         Length => 97,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 97,
+         Length   => 97,
+         Value    =>
           (16#0049#, 16#0066#, 16#0020#, 16#0074#,
            16#0068#, 16#0065#, 16#0020#, 16#0069#,
            16#006E#, 16#0074#, 16#0065#, 16#0072#,
@@ -5692,10 +5692,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied."
 
    MS_09BB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -5732,10 +5732,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "readVariableAction"
 
    MS_09BC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0072#, 16#0065#, 16#0061#, 16#0064#,
            16#0056#, 16#0061#, 16#0072#, 16#0069#,
            16#0061#, 16#0062#, 16#006C#, 16#0065#,
@@ -5747,10 +5747,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The attributes (i.e. the properties) owned by the class."
 
    MS_09BD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 56,
-         Length => 56,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 56,
+         Length   => 56,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0074#, 16#0074#, 16#0072#,
            16#0069#, 16#0062#, 16#0075#, 16#0074#,
@@ -5771,10 +5771,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "partWithPort"
 
    MS_09BE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0070#, 16#0061#, 16#0072#, 16#0074#,
            16#0057#, 16#0069#, 16#0074#, 16#0068#,
            16#0050#, 16#006F#, 16#0072#, 16#0074#,
@@ -5784,10 +5784,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "synchCall"
 
    MS_09BF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0073#, 16#0079#, 16#006E#, 16#0063#,
            16#0068#, 16#0043#, 16#0061#, 16#006C#,
            16#006C#,
@@ -5797,10 +5797,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Interaction"
 
    MS_09C0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0049#, 16#006E#, 16#0074#, 16#0065#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#,
@@ -5810,10 +5810,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Edges that have the node as target."
 
    MS_09C1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0045#, 16#0064#, 16#0067#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
            16#0061#, 16#0074#, 16#0020#, 16#0068#,
@@ -5829,10 +5829,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "readSelfAction"
 
    MS_09C2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0072#, 16#0065#, 16#0061#, 16#0064#,
            16#0053#, 16#0065#, 16#006C#, 16#0066#,
            16#0041#, 16#0063#, 16#0074#, 16#0069#,
@@ -5843,10 +5843,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_formal_templateParameterSubstitution"
 
    MS_09C3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0041#, 16#005F#, 16#0066#, 16#006F#,
            16#0072#, 16#006D#, 16#0061#, 16#006C#,
            16#005F#, 16#0074#, 16#0065#, 16#006D#,
@@ -5863,10 +5863,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_parameter_templateSignature"
 
    MS_09C4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0070#, 16#0061#,
            16#0072#, 16#0061#, 16#006D#, 16#0065#,
            16#0074#, 16#0065#, 16#0072#, 16#005F#,
@@ -5881,10 +5881,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_source_directedRelationship"
 
    MS_09C5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#006F#,
            16#0075#, 16#0072#, 16#0063#, 16#0065#,
            16#005F#, 16#0064#, 16#0069#, 16#0072#,
@@ -5899,10 +5899,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification"
 
    MS_09C6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 112,
-         Length => 112,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 112,
+         Length   => 112,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0065#, 16#006E#, 16#0063#,
            16#0065#, 16#0073#, 16#0020#, 16#0074#,
@@ -5937,10 +5937,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "signatures_compatible"
 
    MS_09C7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0073#, 16#0069#, 16#0067#, 16#006E#,
            16#0061#, 16#0074#, 16#0075#, 16#0072#,
            16#0065#, 16#0073#, 16#005F#, 16#0063#,
@@ -5953,10 +5953,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_feature_featuringClassifier"
 
    MS_09C8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0066#, 16#0065#,
            16#0061#, 16#0074#, 16#0075#, 16#0072#,
            16#0065#, 16#005F#, 16#0066#, 16#0065#,
@@ -5971,10 +5971,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ConnectionPointReference"
 
    MS_09C9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 24,
-         Length => 24,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 24,
+         Length   => 24,
+         Value    =>
           (16#0043#, 16#006F#, 16#006E#, 16#006E#,
            16#0065#, 16#0063#, 16#0074#, 16#0069#,
            16#006F#, 16#006E#, 16#0050#, 16#006F#,
@@ -5987,10 +5987,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Missing derivation for Class::/extension : Extension"
 
    MS_09CA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 52,
-         Length => 52,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 52,
+         Length   => 52,
+         Value    =>
           (16#004D#, 16#0069#, 16#0073#, 16#0073#,
            16#0069#, 16#006E#, 16#0067#, 16#0020#,
            16#0064#, 16#0065#, 16#0072#, 16#0069#,
@@ -6010,10 +6010,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "template"
 
    MS_09CB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0074#, 16#0065#, 16#006D#, 16#0070#,
            16#006C#, 16#0061#, 16#0074#, 16#0065#,
            others => 16#0000#),
@@ -6022,10 +6022,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model."
 
    MS_09CC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 247,
-         Unused => 235,
-         Length => 235,
-         Value  =>
+     := (Capacity => 247,
+         Unused   => 235,
+         Length   => 235,
+         Value    =>
           (16#0050#, 16#0069#, 16#006E#, 16#0020#,
            16#0077#, 16#0068#, 16#0065#, 16#0072#,
            16#0065#, 16#0020#, 16#0061#, 16#0020#,
@@ -6091,10 +6091,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty."
 
    MS_09CD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 207,
-         Unused => 199,
-         Length => 199,
-         Value  =>
+     := (Capacity => 207,
+         Unused   => 199,
+         Length   => 199,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#006C#, 16#006F#,
@@ -6151,10 +6151,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "concurrency"
 
    MS_09CE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0063#, 16#006F#, 16#006E#, 16#0063#,
            16#0075#, 16#0072#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0079#,
@@ -6164,10 +6164,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_classifier_readIsClassifiedObjectAction"
 
    MS_09CF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 41,
-         Length => 41,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 41,
+         Length   => 41,
+         Value    =>
           (16#0041#, 16#005F#, 16#0063#, 16#006C#,
            16#0061#, 16#0073#, 16#0073#, 16#0069#,
            16#0066#, 16#0069#, 16#0065#, 16#0072#,
@@ -6185,10 +6185,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "initial_transition"
 
    MS_09D0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0069#, 16#006E#, 16#0069#, 16#0074#,
            16#0069#, 16#0061#, 16#006C#, 16#005F#,
            16#0074#, 16#0072#, 16#0061#, 16#006E#,
@@ -6200,10 +6200,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "association_ends"
 
    MS_09D1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0061#, 16#0073#, 16#0073#, 16#006F#,
            16#0063#, 16#0069#, 16#0061#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -6214,10 +6214,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "isSubstitutable"
 
    MS_09D2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0069#, 16#0073#, 16#0053#, 16#0075#,
            16#0062#, 16#0073#, 16#0074#, 16#0069#,
            16#0074#, 16#0075#, 16#0074#, 16#0061#,
@@ -6228,10 +6228,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_argument_invocationAction"
 
    MS_09D3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 27,
-         Length => 27,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 27,
+         Length   => 27,
+         Value    =>
           (16#0041#, 16#005F#, 16#0061#, 16#0072#,
            16#0067#, 16#0075#, 16#006D#, 16#0065#,
            16#006E#, 16#0074#, 16#005F#, 16#0069#,
@@ -6245,10 +6245,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A package element is owned by a namespace that is not a package, and is visible to elements that are in the same package as its owning namespace. Only named elements that are not owned by packages can be marked as having package visibility. Any element marked as having package visibility is visible to all elements within the nearest enclosing package (given that other owning elements have proper visibility). Outside the nearest enclosing package, an element marked as having package visibility is not visible."
 
    MS_09D4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 535,
-         Unused => 513,
-         Length => 513,
-         Value  =>
+     := (Capacity => 535,
+         Unused   => 513,
+         Length   => 513,
+         Value    =>
           (16#0041#, 16#0020#, 16#0070#, 16#0061#,
            16#0063#, 16#006B#, 16#0061#, 16#0067#,
            16#0065#, 16#0020#, 16#0065#, 16#006C#,
@@ -6384,10 +6384,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Specifies the behavior of the opaque expression."
 
    MS_09D5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 48,
-         Length => 48,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 48,
+         Length   => 48,
+         Value    =>
           (16#0053#, 16#0070#, 16#0065#, 16#0063#,
            16#0069#, 16#0066#, 16#0069#, 16#0065#,
            16#0073#, 16#0020#, 16#0074#, 16#0068#,
@@ -6406,10 +6406,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "MessageKind"
 
    MS_09D6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#004D#, 16#0065#, 16#0073#, 16#0073#,
            16#0061#, 16#0067#, 16#0065#, 16#004B#,
            16#0069#, 16#006E#, 16#0064#,
@@ -6419,10 +6419,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier."
 
    MS_09D7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 130,
-         Length => 130,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 130,
+         Length   => 130,
+         Value    =>
           (16#0041#, 16#0020#, 16#0072#, 16#0065#,
            16#0064#, 16#0065#, 16#0066#, 16#0069#,
            16#006E#, 16#0061#, 16#0062#, 16#006C#,
@@ -6462,10 +6462,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_end_readLinkObjectEndAction"
 
    MS_09D8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0065#, 16#006E#,
            16#0064#, 16#005F#, 16#0072#, 16#0065#,
            16#0061#, 16#0064#, 16#004C#, 16#0069#,
@@ -6480,10 +6480,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_partition_activity"
 
    MS_09D9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0041#, 16#005F#, 16#0070#, 16#0061#,
            16#0072#, 16#0074#, 16#0069#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#005F#,
@@ -6495,10 +6495,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Edges immediately contained in the group."
 
    MS_09DA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 41,
-         Length => 41,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 41,
+         Length   => 41,
+         Value    =>
           (16#0045#, 16#0064#, 16#0067#, 16#0065#,
            16#0073#, 16#0020#, 16#0069#, 16#006D#,
            16#006D#, 16#0065#, 16#0064#, 16#0069#,
@@ -6516,10 +6516,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Comment"
 
    MS_09DB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0043#, 16#006F#, 16#006D#, 16#006D#,
            16#0065#, 16#006E#, 16#0074#,
            others => 16#0000#),
@@ -6528,10 +6528,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An element constraining behaviors invoked by nodes in the partition."
 
    MS_09DC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0065#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
            16#006E#, 16#0074#, 16#0020#, 16#0063#,
@@ -6555,10 +6555,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The internal structure of a Node (if defined) consists solely of parts of type Node."
 
    MS_09DD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 84,
-         Length => 84,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 84,
+         Length   => 84,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0069#, 16#006E#, 16#0074#, 16#0065#,
            16#0072#, 16#006E#, 16#0061#, 16#006C#,
@@ -6586,10 +6586,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Utility returning the set of realized interfaces of a component."
 
    MS_09DE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 64,
-         Length => 64,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 64,
+         Length   => 64,
+         Value    =>
           (16#0055#, 16#0074#, 16#0069#, 16#006C#,
            16#0069#, 16#0074#, 16#0079#, 16#0020#,
            16#0072#, 16#0065#, 16#0074#, 16#0075#,
@@ -6612,10 +6612,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A communication path is an association between two deployment targets, through which they are able to exchange signals and messages."
 
    MS_09DF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 143,
-         Unused => 132,
-         Length => 132,
-         Value  =>
+     := (Capacity => 143,
+         Unused   => 132,
+         Length   => 132,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006D#, 16#006D#, 16#0075#, 16#006E#,
            16#0069#, 16#0063#, 16#0061#, 16#0074#,
@@ -6655,10 +6655,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region."
 
    MS_09E0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 126,
-         Length => 126,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 126,
+         Length   => 126,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0074#,
            16#0061#, 16#0074#, 16#0065#, 16#0020#,
            16#0077#, 16#0069#, 16#0074#, 16#0068#,
@@ -6697,10 +6697,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier."
 
    MS_09E1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 110,
-         Length => 110,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 110,
+         Length   => 110,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0073#, 16#0020#, 16#0074#,
            16#006F#, 16#0020#, 16#0061#, 16#006C#,
@@ -6735,10 +6735,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "acceptEventAction"
 
    MS_09E2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0061#, 16#0063#, 16#0063#, 16#0065#,
            16#0070#, 16#0074#, 16#0045#, 16#0076#,
            16#0065#, 16#006E#, 16#0074#, 16#0041#,
@@ -6750,10 +6750,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "isService"
 
    MS_09E3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0069#, 16#0073#, 16#0053#, 16#0065#,
            16#0072#, 16#0076#, 16#0069#, 16#0063#,
            16#0065#,
@@ -6763,10 +6763,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class."
 
    MS_09E4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 647,
-         Unused => 621,
-         Length => 621,
-         Value  =>
+     := (Capacity => 647,
+         Unused   => 621,
+         Length   => 621,
+         Value    =>
           (16#0041#, 16#0020#, 16#006C#, 16#0069#,
            16#006E#, 16#006B#, 16#0020#, 16#0065#,
            16#006E#, 16#0064#, 16#0020#, 16#0064#,
@@ -6929,10 +6929,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The query isNull() returns true when it can be computed that the value is null."
 
    MS_09E5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 79,
-         Length => 79,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 79,
+         Length   => 79,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0071#, 16#0075#, 16#0065#, 16#0072#,
            16#0079#, 16#0020#, 16#0069#, 16#0073#,
@@ -6959,10 +6959,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "InteractionOperatorKind"
 
    MS_09E6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0049#, 16#006E#, 16#0074#, 16#0065#,
            16#0072#, 16#0061#, 16#0063#, 16#0074#,
            16#0069#, 16#006F#, 16#006E#, 16#004F#,
@@ -6975,10 +6975,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ancestor"
 
    MS_09E7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0061#, 16#006E#, 16#0063#, 16#0065#,
            16#0073#, 16#0074#, 16#006F#, 16#0072#,
            others => 16#0000#),
@@ -6987,10 +6987,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An informationItem has no feature, no generalization, and no associations."
 
    MS_09E8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 74,
-         Length => 74,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 74,
+         Length   => 74,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0066#, 16#006F#, 16#0072#,
            16#006D#, 16#0061#, 16#0074#, 16#0069#,
@@ -7016,10 +7016,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection."
 
    MS_09E9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 130,
-         Length => 130,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 130,
+         Length   => 130,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0065#,
            16#0078#, 16#0070#, 16#0061#, 16#006E#,
            16#0073#, 16#0069#, 16#006F#, 16#006E#,
@@ -7059,10 +7059,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "no_supergroups"
 
    MS_09EA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#006E#, 16#006F#, 16#005F#, 16#0073#,
            16#0075#, 16#0070#, 16#0065#, 16#0072#,
            16#0067#, 16#0072#, 16#006F#, 16#0075#,
@@ -7073,10 +7073,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The association of the association end must be an association class."
 
    MS_09EB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0073#, 16#0073#, 16#006F#,
            16#0063#, 16#0069#, 16#0061#, 16#0074#,
@@ -7100,10 +7100,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "realizedInterfaces"
 
    MS_09EC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0072#, 16#0065#, 16#0061#, 16#006C#,
            16#0069#, 16#007A#, 16#0065#, 16#0064#,
            16#0049#, 16#006E#, 16#0074#, 16#0065#,
@@ -7115,10 +7115,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "navigable_open_end"
 
    MS_09ED : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#006E#, 16#0061#, 16#0076#, 16#0069#,
            16#0067#, 16#0061#, 16#0062#, 16#006C#,
            16#0065#, 16#005F#, 16#006F#, 16#0070#,
@@ -7130,10 +7130,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "WriteVariableAction is an abstract class for variable actions that change variable values."
 
    MS_09EE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 90,
-         Length => 90,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 90,
+         Length   => 90,
+         Value    =>
           (16#0057#, 16#0072#, 16#0069#, 16#0074#,
            16#0065#, 16#0056#, 16#0061#, 16#0072#,
            16#0069#, 16#0061#, 16#0062#, 16#006C#,
@@ -7163,10 +7163,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "member"
 
    MS_09EF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#006D#, 16#0065#, 16#006D#, 16#0062#,
            16#0065#, 16#0072#,
            others => 16#0000#),
@@ -7175,10 +7175,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "The number of result output pins must be the same as the number of structural features of the unmarshall classifier."
 
    MS_09F0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 116,
-         Length => 116,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 116,
+         Length   => 116,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#006E#, 16#0075#, 16#006D#, 16#0062#,
            16#0065#, 16#0072#, 16#0020#, 16#006F#,
@@ -7214,10 +7214,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "ports_connected"
 
    MS_09F1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0070#, 16#006F#, 16#0072#, 16#0074#,
            16#0073#, 16#005F#, 16#0063#, 16#006F#,
            16#006E#, 16#006E#, 16#0065#, 16#0063#,
@@ -7228,10 +7228,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "signature"
 
    MS_09F2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0073#, 16#0069#, 16#0067#, 16#006E#,
            16#0061#, 16#0074#, 16#0075#, 16#0072#,
            16#0065#,
@@ -7241,10 +7241,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "incoming_object_one_input_parameter"
 
    MS_09F3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0069#, 16#006E#, 16#0063#, 16#006F#,
            16#006D#, 16#0069#, 16#006E#, 16#0067#,
            16#005F#, 16#006F#, 16#0062#, 16#006A#,
@@ -7260,10 +7260,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified."
 
    MS_09F4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 164,
-         Length => 164,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 164,
+         Length   => 164,
+         Value    =>
           (16#0041#, 16#0020#, 16#0063#, 16#006F#,
            16#006E#, 16#0073#, 16#0069#, 16#0064#,
            16#0065#, 16#0072#, 16#0020#, 16#0069#,
@@ -7311,10 +7311,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_max_timeInterval"
 
    MS_09F5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#0061#,
            16#0078#, 16#005F#, 16#0074#, 16#0069#,
            16#006D#, 16#0065#, 16#0049#, 16#006E#,
@@ -7326,10 +7326,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_relatedElement_relationship"
 
    MS_09F6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0041#, 16#005F#, 16#0072#, 16#0065#,
            16#006C#, 16#0061#, 16#0074#, 16#0065#,
            16#0064#, 16#0045#, 16#006C#, 16#0065#,
@@ -7344,10 +7344,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_metamodelReference_profile"
 
    MS_09F7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 28,
-         Length => 28,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 28,
+         Length   => 28,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#0065#,
            16#0074#, 16#0061#, 16#006D#, 16#006F#,
            16#0064#, 16#0065#, 16#006C#, 16#0052#,
@@ -7361,10 +7361,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A_test_loopNode"
 
    MS_09F8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#005F#, 16#0074#, 16#0065#,
            16#0073#, 16#0074#, 16#005F#, 16#006C#,
            16#006F#, 16#006F#, 16#0070#, 16#004E#,
@@ -7375,10 +7375,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A time event can be defined relative to entering the current state of the executing state machine."
 
    MS_09F9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 98,
-         Length => 98,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 98,
+         Length   => 98,
+         Value    =>
           (16#0041#, 16#0020#, 16#0074#, 16#0069#,
            16#006D#, 16#0065#, 16#0020#, 16#0065#,
            16#0076#, 16#0065#, 16#006E#, 16#0074#,
@@ -7410,10 +7410,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it."
 
    MS_09FA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 279,
-         Unused => 266,
-         Length => 266,
-         Value  =>
+     := (Capacity => 279,
+         Unused   => 266,
+         Length   => 266,
+         Value    =>
           (16#0052#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0065#, 16#006E#, 16#0063#,
            16#0065#, 16#0073#, 16#0020#, 16#0074#,
@@ -7487,10 +7487,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "extendedSignature"
 
    MS_09FB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0065#, 16#0078#, 16#0074#, 16#0065#,
            16#006E#, 16#0064#, 16#0065#, 16#0064#,
            16#0053#, 16#0069#, 16#0067#, 16#006E#,
@@ -7502,10 +7502,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "0"
 
    MS_09FC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0030#,
            others => 16#0000#),
          others => <>);
@@ -7513,10 +7513,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "A literal null specifies the lack of a value."
 
    MS_09FD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 45,
-         Length => 45,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 45,
+         Length   => 45,
+         Value    =>
           (16#0041#, 16#0020#, 16#006C#, 16#0069#,
            16#0074#, 16#0065#, 16#0072#, 16#0061#,
            16#006C#, 16#0020#, 16#006E#, 16#0075#,
@@ -7535,10 +7535,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "An instance value is a value specification that identifies an instance."
 
    MS_09FE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 71,
-         Length => 71,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 71,
+         Length   => 71,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0073#, 16#0074#, 16#0061#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -7563,10 +7563,10 @@ package AMF.Internals.Tables.UML_String_Data_09 is
    --  "Vertex"
 
    MS_09FF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0056#, 16#0065#, 16#0072#, 16#0074#,
            16#0065#, 16#0078#,
            others => 16#0000#),

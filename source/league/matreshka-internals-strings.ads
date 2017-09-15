@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -87,7 +87,7 @@ package Matreshka.Internals.Strings is
    type Index_Map_Access is access all Index_Map;
    pragma Volatile (Index_Map_Access);
 
-   type Shared_String (Size : Matreshka.Internals.Utf16.Utf16_String_Index)
+   type Shared_String (Capacity : Matreshka.Internals.Utf16.Utf16_String_Index)
      is limited record
       Counter   : Matreshka.Atomics.Counters.Counter;
       --  Atomic reference counter.
@@ -105,7 +105,7 @@ package Matreshka.Internals.Strings is
       --  buffer. Used only if string has both BMP and non-BMP characters.
       --  Is built on-demand.
 
-      Value     : Matreshka.Internals.Utf16.Utf16_String (0 .. Size);
+      Value     : Matreshka.Internals.Utf16.Utf16_String (0 .. Capacity);
       --  String data. Internal data always has well-formed UTF-16 encoded
       --  sequence of valid Unicode code points. Validity checks proceed only
       --  for potentially invalid user specified data, and never proceed for
@@ -115,9 +115,9 @@ package Matreshka.Internals.Strings is
    type Shared_String_Access is access all Shared_String;
 
    Shared_Empty : aliased Shared_String :=
-     (Size   => Standard'Maximum_Alignment / 2 - 1,
-      Value  => (others => 0),
-      others => <>);
+     (Capacity => Standard'Maximum_Alignment / 2 - 1,
+      Value    => (others => 0),
+      others   => <>);
    --  Globally defined empty shared string to be used as default value.
    --  Reference and Dereference subprograms known about this object and
    --  never change its reference counter for speed optimization (atomic

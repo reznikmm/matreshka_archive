@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,10 +50,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "primitives"
 
    MS_0000 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0070#, 16#0072#, 16#0069#, 16#006D#,
            16#0069#, 16#0074#, 16#0069#, 16#0076#,
            16#0065#, 16#0073#,
@@ -63,10 +63,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "http://www.omg.org/spec/PrimitiveTypes/20100901"
 
    MS_0001 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 47,
-         Length => 47,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 47,
+         Length   => 47,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#006F#,
@@ -85,10 +85,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "UnlimitedNatural"
 
    MS_0002 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0055#, 16#006E#, 16#006C#, 16#0069#,
            16#006D#, 16#0069#, 16#0074#, 16#0065#,
            16#0064#, 16#004E#, 16#0061#, 16#0074#,
@@ -99,10 +99,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "Integer"
 
    MS_0003 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0049#, 16#006E#, 16#0074#, 16#0065#,
            16#0067#, 16#0065#, 16#0072#,
            others => 16#0000#),
@@ -111,10 +111,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "org.omg.xmi.schemaType"
 
    MS_0004 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -127,10 +127,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "http://www.w3.org/2001/XMLSchema#boolean"
 
    MS_0005 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 40,
-         Length => 40,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 40,
+         Length   => 40,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#0077#,
@@ -147,10 +147,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "A Boolean type is used for logical expression, consisting of the predefined values true and false."
 
    MS_0006 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 98,
-         Length => 98,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 98,
+         Length   => 98,
+         Value    =>
           (16#0041#, 16#0020#, 16#0042#, 16#006F#,
            16#006F#, 16#006C#, 16#0065#, 16#0061#,
            16#006E#, 16#0020#, 16#0074#, 16#0079#,
@@ -182,10 +182,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "http://www.w3.org/2001/XMLSchema#double"
 
    MS_0007 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 39,
-         Length => 39,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 39,
+         Length   => 39,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#0077#,
@@ -202,10 +202,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "A real is a primitive type representing the mathematical concept of real."
 
    MS_0008 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 73,
-         Length => 73,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 73,
+         Length   => 73,
+         Value    =>
           (16#0041#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -231,10 +231,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "Boolean"
 
    MS_0009 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0042#, 16#006F#, 16#006F#, 16#006C#,
            16#0065#, 16#0061#, 16#006E#,
            others => 16#0000#),
@@ -243,10 +243,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "An unlimited natural is a primitive type representing unlimited natural values."
 
    MS_000A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 79,
-         Length => 79,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 79,
+         Length   => 79,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0075#,
            16#006E#, 16#006C#, 16#0069#, 16#006D#,
            16#0069#, 16#0074#, 16#0065#, 16#0064#,
@@ -273,10 +273,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "An integer is a primitive type representing integer values."
 
    MS_000B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 59,
-         Length => 59,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 59,
+         Length   => 59,
+         Value    =>
           (16#0041#, 16#006E#, 16#0020#, 16#0069#,
            16#006E#, 16#0074#, 16#0065#, 16#0067#,
            16#0065#, 16#0072#, 16#0020#, 16#0069#,
@@ -298,10 +298,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "http://www.w3.org/2001/XMLSchema#integer"
 
    MS_000C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 40,
-         Length => 40,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 40,
+         Length   => 40,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#0077#,
@@ -318,10 +318,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "Real"
 
    MS_000D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0052#, 16#0065#, 16#0061#, 16#006C#,
            others => 16#0000#),
          others => <>);
@@ -329,10 +329,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "PrimitiveTypes"
 
    MS_000E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0050#, 16#0072#, 16#0069#, 16#006D#,
            16#0069#, 16#0074#, 16#0069#, 16#0076#,
            16#0065#, 16#0054#, 16#0079#, 16#0070#,
@@ -343,10 +343,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "org.omg.xmi.nsPrefix"
 
    MS_000F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -358,10 +358,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "A string is a sequence of characters in some suitable character set used to display information about the model. Character sets may include non-Roman alphabets and characters."
 
    MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 183,
-         Unused => 175,
-         Length => 175,
-         Value  =>
+     := (Capacity => 183,
+         Unused   => 175,
+         Length   => 175,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0074#,
            16#0072#, 16#0069#, 16#006E#, 16#0067#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
@@ -412,10 +412,10 @@ package AMF.Internals.Tables.Primitive_Types_String_Data_00 is
    --  "String"
 
    MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0053#, 16#0074#, 16#0072#, 16#0069#,
            16#006E#, 16#0067#,
            others => 16#0000#),

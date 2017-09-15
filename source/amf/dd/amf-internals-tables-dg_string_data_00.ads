@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -50,10 +50,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "opacity"
 
    MS_0000 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#006F#, 16#0070#, 16#0061#, 16#0063#,
            16#0069#, 16#0074#, 16#0079#,
            others => 16#0000#),
@@ -62,10 +62,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "QuadraticCurveTo is a kind of path command that draws a quadratic bézier curve from the current point to a new point using a single control point."
 
    MS_0001 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 146,
-         Length => 146,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 146,
+         Length   => 146,
+         Value    =>
           (16#0051#, 16#0075#, 16#0061#, 16#0064#,
            16#0072#, 16#0061#, 16#0074#, 16#0069#,
            16#0063#, 16#0043#, 16#0075#, 16#0072#,
@@ -109,10 +109,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "d"
 
    MS_0002 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0064#,
            others => 16#0000#),
          others => <>);
@@ -120,10 +120,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the color of the font used to render a text element. The default is black (red=0, green=0, blue=0)."
 
    MS_0003 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 99,
-         Length => 99,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 99,
+         Length   => 99,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#, 16#0020#, 16#006F#, 16#0066#,
@@ -155,10 +155,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the bounds inside which the text is rendered (possibly wrapped into multiple lines)"
 
    MS_0004 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 83,
-         Length => 83,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 83,
+         Length   => 83,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#, 16#0020#, 16#0069#,
@@ -186,10 +186,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the opacity of the fill is non-negative"
 
    MS_0005 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 39,
-         Length => 39,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 39,
+         Length   => 39,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0070#, 16#0061#, 16#0063#,
            16#0069#, 16#0074#, 16#0079#, 16#0020#,
@@ -206,10 +206,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "x1"
 
    MS_0006 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0078#, 16#0031#,
            others => 16#0000#),
          others => <>);
@@ -217,10 +217,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "The Diagram Graphics (DG) package contains a model of graphical primitives that can be instantiated when mapping from a language abstract syntax models and diagram interchange (DI) models to visual presentations. The mapping effectively defines the concrete syntax of a language. This specification does not restrict how the mappings are done, or what languages are used to define them."
 
    MS_0007 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 399,
-         Unused => 386,
-         Length => 386,
-         Value  =>
+     := (Capacity => 399,
+         Unused   => 386,
+         Length   => 386,
+         Value    =>
           (16#0054#, 16#0068#, 16#0065#, 16#0020#,
            16#0044#, 16#0069#, 16#0061#, 16#0067#,
            16#0072#, 16#0061#, 16#006D#, 16#0020#,
@@ -324,10 +324,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the text as a string of characters."
 
    MS_0008 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0074#, 16#0065#, 16#0078#, 16#0074#,
            16#0020#, 16#0061#, 16#0073#, 16#0020#,
@@ -343,10 +343,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Scale is a kind of transform that scales (resizes) a graphical element by a given factor in the x-y coordinate system."
 
    MS_0009 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 118,
-         Length => 118,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 118,
+         Length   => 118,
+         Value    =>
           (16#0053#, 16#0063#, 16#0061#, 16#006C#,
            16#0065#, 16#0020#, 16#0069#, 16#0073#,
            16#0020#, 16#0061#, 16#0020#, 16#006B#,
@@ -383,10 +383,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Gradient is a kind of fill that paints a continuously smooth color transition along the gradient range from one color to the next."
 
    MS_000A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 130,
-         Length => 130,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 130,
+         Length   => 130,
+         Value    =>
           (16#0047#, 16#0072#, 16#0061#, 16#0064#,
            16#0069#, 16#0065#, 16#006E#, 16#0074#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
@@ -426,10 +426,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a reference to the canvas that owns this fill."
 
    MS_000B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 46,
-         Length => 46,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 46,
+         Length   => 46,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -448,10 +448,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the c value of the transform matrix."
 
    MS_000C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -467,10 +467,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the coordinates specified by the command are relative to the current point (when true) or to the origin point of the coordinate system (when false)."
 
    MS_000D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 156,
-         Length => 156,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 156,
+         Length   => 156,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -516,10 +516,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "centerX"
 
    MS_000E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0063#, 16#0065#, 16#006E#, 16#0074#,
            16#0065#, 16#0072#, 16#0058#,
            others => 16#0000#),
@@ -528,10 +528,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Image is a graphical element that defines a shape that paints an image with a given URL within given bounds."
 
    MS_000F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 108,
-         Length => 108,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 108,
+         Length   => 108,
+         Value    =>
           (16#0049#, 16#006D#, 16#0061#, 16#0067#,
            16#0065#, 16#0020#, 16#0069#, 16#0073#,
            16#0020#, 16#0061#, 16#0020#, 16#0067#,
@@ -565,10 +565,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the e value of the transform matrix."
 
    MS_0010 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -584,10 +584,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_center_point"
 
    MS_0011 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0063#, 16#0065#,
            16#006E#, 16#0074#, 16#0065#, 16#0072#,
@@ -599,10 +599,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a radius for the rectangle's rounded corners. When the radius is 0, the rectangle is drawn with sharp corners."
 
    MS_0012 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 110,
-         Length => 110,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 110,
+         Length   => 110,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0061#,
            16#0064#, 16#0069#, 16#0075#, 16#0073#,
            16#0020#, 16#0066#, 16#006F#, 16#0072#,
@@ -637,10 +637,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point to move to in the coordinate system"
 
    MS_0013 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 43,
-         Length => 43,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 43,
+         Length   => 43,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0074#, 16#006F#, 16#0020#, 16#006D#,
@@ -658,10 +658,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "tile"
 
    MS_0014 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0074#, 16#0069#, 16#006C#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -669,10 +669,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Skew"
 
    MS_0015 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0053#, 16#006B#, 16#0065#, 16#0077#,
            others => 16#0000#),
          others => <>);
@@ -680,10 +680,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "group"
 
    MS_0016 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0067#, 16#0072#, 16#006F#, 16#0075#,
            16#0070#,
            others => 16#0000#),
@@ -692,10 +692,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "clippedElement"
 
    MS_0017 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0063#, 16#006C#, 16#0069#, 16#0070#,
            16#0070#, 16#0065#, 16#0064#, 16#0045#,
            16#006C#, 16#0065#, 16#006D#, 16#0065#,
@@ -706,10 +706,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a reference to a graphical element, owned by the pattern, that works as a tile to be painted repeatedly at a fixed interval to fill an closed area."
 
    MS_0018 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 147,
-         Length => 147,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 147,
+         Length   => 147,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -753,10 +753,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "0.5"
 
    MS_0019 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 3,
-         Length => 3,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 3,
+         Length   => 3,
+         Value    =>
           (16#0030#, 16#002E#, 16#0035#,
            others => 16#0000#),
          others => <>);
@@ -764,10 +764,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Transform defines an operation that changes the geometry of a graphical element in a specific way."
 
    MS_001A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 98,
-         Length => 98,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 98,
+         Length   => 98,
+         Value    =>
           (16#0054#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#0066#, 16#006F#, 16#0072#,
            16#006D#, 16#0020#, 16#0064#, 16#0065#,
@@ -799,10 +799,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_endMarker_markedElement"
 
    MS_001B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0041#, 16#005F#, 16#0065#, 16#006E#,
            16#0064#, 16#004D#, 16#0061#, 16#0072#,
            16#006B#, 16#0065#, 16#0072#, 16#005F#,
@@ -816,10 +816,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of two or more gradient stops defining the color transitions of the gradient."
 
    MS_001C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 84,
-         Length => 84,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 84,
+         Length   => 84,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0074#, 16#0077#,
@@ -847,10 +847,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontUnderline"
 
    MS_001D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0055#, 16#006E#, 16#0064#, 16#0065#,
            16#0072#, 16#006C#, 16#0069#, 16#006E#,
@@ -861,10 +861,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing a translate delta along the x-axis. Both positive and negative values are allowed."
 
    MS_001E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 109,
-         Length => 109,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 109,
+         Length   => 109,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -899,10 +899,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Polyline is a marked element that defines a shape consisting of a sequence of connected straight line segments."
 
    MS_001F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 111,
-         Length => 111,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 111,
+         Length   => 111,
+         Value    =>
           (16#0050#, 16#006F#, 16#006C#, 16#0079#,
            16#006C#, 16#0069#, 16#006E#, 16#0065#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
@@ -937,10 +937,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the offset must be between 0 and 1."
 
    MS_0020 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0066#, 16#0066#, 16#0073#,
            16#0065#, 16#0074#, 16#0020#, 16#006D#,
@@ -956,10 +956,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Matrix"
 
    MS_0021 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#004D#, 16#0061#, 16#0074#, 16#0072#,
            16#0069#, 16#0078#,
            others => 16#0000#),
@@ -968,10 +968,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fillColor"
 
    MS_0022 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0066#, 16#0069#, 16#006C#, 16#006C#,
            16#0043#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#,
@@ -981,10 +981,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "end"
 
    MS_0023 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 3,
-         Length => 3,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 3,
+         Length   => 3,
+         Value    =>
           (16#0065#, 16#006E#, 16#0064#,
            others => 16#0000#),
          others => <>);
@@ -992,10 +992,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "non_negative_radius"
 
    MS_0024 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 19,
-         Length => 19,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 19,
+         Length   => 19,
+         Value    =>
           (16#006E#, 16#006F#, 16#006E#, 16#005F#,
            16#006E#, 16#0065#, 16#0067#, 16#0061#,
            16#0074#, 16#0069#, 16#0076#, 16#0065#,
@@ -1007,10 +1007,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "x2"
 
    MS_0025 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0078#, 16#0032#,
            others => 16#0000#),
          others => <>);
@@ -1018,10 +1018,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "startControl"
 
    MS_0026 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0073#, 16#0074#, 16#0061#, 16#0072#,
            16#0074#, 16#0043#, 16#006F#, 16#006E#,
            16#0074#, 16#0072#, 16#006F#, 16#006C#,
@@ -1031,10 +1031,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Fill"
 
    MS_0027 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0046#, 16#0069#, 16#006C#, 16#006C#,
            others => 16#0000#),
          others => <>);
@@ -1042,10 +1042,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Ellipse is a graphical element that defines an elliptical shape with a given center point and two radii on the x and y axes."
 
    MS_0028 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0045#, 16#006C#, 16#006C#, 16#0069#,
            16#0070#, 16#0073#, 16#0065#, 16#0020#,
            16#0069#, 16#0073#, 16#0020#, 16#0061#,
@@ -1083,10 +1083,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Rectangle"
 
    MS_0029 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0052#, 16#0065#, 16#0063#, 16#0074#,
            16#0061#, 16#006E#, 16#0067#, 16#006C#,
            16#0065#,
@@ -1096,10 +1096,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the focus point coordinates must be between 0 and 1"
 
    MS_002A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 51,
-         Length => 51,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 51,
+         Length   => 51,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0066#, 16#006F#, 16#0063#, 16#0075#,
            16#0073#, 16#0020#, 16#0070#, 16#006F#,
@@ -1119,10 +1119,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_radius"
 
    MS_002B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0072#, 16#0061#,
            16#0064#, 16#0069#, 16#0075#, 16#0073#,
@@ -1132,10 +1132,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_member_group"
 
    MS_002C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#0065#,
            16#006D#, 16#0062#, 16#0065#, 16#0072#,
            16#005F#, 16#0067#, 16#0072#, 16#006F#,
@@ -1146,10 +1146,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "RadialGradient"
 
    MS_002D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0052#, 16#0061#, 16#0064#, 16#0069#,
            16#0061#, 16#006C#, 16#0047#, 16#0072#,
            16#0061#, 16#0064#, 16#0069#, 16#0065#,
@@ -1160,10 +1160,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the opacity must be between 0 and 1."
 
    MS_002E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006F#, 16#0070#, 16#0061#, 16#0063#,
            16#0069#, 16#0074#, 16#0079#, 16#0020#,
@@ -1179,10 +1179,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the b value of the transform matrix."
 
    MS_002F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -1198,10 +1198,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of real numbers specifying a pattern of alternating dash and gap lengths used in stroking the outline of a graphical element with the first one specifying a dash length. The size of the list is expected to be even. If the list is empty, the stroke is drawn solid. The default is empty list."
 
    MS_0030 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 311,
-         Unused => 297,
-         Length => 297,
-         Value  =>
+     := (Capacity => 311,
+         Unused   => 297,
+         Length   => 297,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0072#, 16#0065#,
@@ -1283,10 +1283,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_fill_opacity"
 
    MS_0031 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0066#, 16#0069#,
            16#006C#, 16#006C#, 16#005F#, 16#006F#,
@@ -1298,10 +1298,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing the angle (in degrees) of skew along the y-axis. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed."
 
    MS_0032 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 156,
-         Length => 156,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 156,
+         Length   => 156,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -1347,10 +1347,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Line"
 
    MS_0033 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -1358,10 +1358,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "strokeOpacity"
 
    MS_0034 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0073#, 16#0074#, 16#0072#, 16#006F#,
            16#006B#, 16#0065#, 16#004F#, 16#0070#,
            16#0061#, 16#0063#, 16#0069#, 16#0074#,
@@ -1372,10 +1372,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_stroke_width"
 
    MS_0035 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0073#, 16#0074#,
            16#0072#, 16#006F#, 16#006B#, 16#0065#,
@@ -1387,10 +1387,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "radii"
 
    MS_0036 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0072#, 16#0061#, 16#0064#, 16#0069#,
            16#0069#,
            others => 16#0000#),
@@ -1399,10 +1399,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "1"
 
    MS_0037 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0031#,
            others => 16#0000#),
          others => <>);
@@ -1410,10 +1410,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of shared styles for this graphical element."
 
    MS_0038 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 51,
-         Length => 51,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 51,
+         Length   => 51,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0073#, 16#0068#,
@@ -1433,10 +1433,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "cornerRadius"
 
    MS_0039 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0063#, 16#006F#, 16#0072#, 16#006E#,
            16#0065#, 16#0072#, 16#0052#, 16#0061#,
            16#0064#, 16#0069#, 16#0075#, 16#0073#,
@@ -1446,10 +1446,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "clipPath"
 
    MS_003A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0063#, 16#006C#, 16#0069#, 16#0070#,
            16#0050#, 16#0061#, 16#0074#, 16#0068#,
            others => 16#0000#),
@@ -1458,10 +1458,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Text"
 
    MS_003B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0054#, 16#0065#, 16#0078#, 16#0074#,
            others => 16#0000#),
          others => <>);
@@ -1469,10 +1469,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_fill_style"
 
    MS_003C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0041#, 16#005F#, 16#0066#, 16#0069#,
            16#006C#, 16#006C#, 16#005F#, 16#0073#,
            16#0074#, 16#0079#, 16#006C#, 16#0065#,
@@ -1482,10 +1482,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of 3 or more points making up the polygon."
 
    MS_003D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 49,
-         Length => 49,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 49,
+         Length   => 49,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0033#, 16#0020#,
@@ -1505,10 +1505,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point to draw a straight line to from the current point in the coordinate system."
 
    MS_003E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 83,
-         Length => 83,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 83,
+         Length   => 83,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0074#, 16#006F#, 16#0020#, 16#0064#,
@@ -1536,10 +1536,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the y center point of the gradient."
 
    MS_003F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 125,
-         Length => 125,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 125,
+         Length   => 125,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -1578,10 +1578,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "wether to preserve the aspect ratio of the image upon scaling, i.e. the same scale factor for width and height."
 
    MS_0040 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 111,
-         Length => 111,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 111,
+         Length   => 111,
+         Value    =>
           (16#0077#, 16#0065#, 16#0074#, 16#0068#,
            16#0065#, 16#0072#, 16#0020#, 16#0074#,
            16#006F#, 16#0020#, 16#0070#, 16#0072#,
@@ -1616,10 +1616,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Skew is a kind of transform that skews (deforms) a graphical element by given angles in the x-y coordinate system."
 
    MS_0041 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 114,
-         Length => 114,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 114,
+         Length   => 114,
+         Value    =>
           (16#0053#, 16#006B#, 16#0065#, 16#0077#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0061#, 16#0020#, 16#006B#, 16#0069#,
@@ -1655,10 +1655,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_marker_canvas"
 
    MS_0042 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#0061#,
            16#0072#, 16#006B#, 16#0065#, 16#0072#,
            16#005F#, 16#0063#, 16#0061#, 16#006E#,
@@ -1669,10 +1669,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the center point coordinates must be between 0 and 1"
 
    MS_0043 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 52,
-         Length => 52,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 52,
+         Length   => 52,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#0065#, 16#006E#, 16#0074#,
            16#0065#, 16#0072#, 16#0020#, 16#0070#,
@@ -1692,10 +1692,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontSize"
 
    MS_0044 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0053#, 16#0069#, 16#007A#, 16#0065#,
            others => 16#0000#),
@@ -1704,10 +1704,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point in the x-y coordinate system about which the rotation is performed. If the point is not specified, it is assumed to be the origin of the x-y coordinate system."
 
    MS_0045 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 167,
-         Length => 167,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 167,
+         Length   => 167,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0069#, 16#006E#, 16#0020#, 16#0074#,
@@ -1756,10 +1756,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Image"
 
    MS_0046 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0049#, 16#006D#, 16#0061#, 16#0067#,
            16#0065#,
            others => 16#0000#),
@@ -1768,10 +1768,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "org.omg.xmi.nsURI"
 
    MS_0047 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -1783,10 +1783,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "ClipPath"
 
    MS_0048 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0043#, 16#006C#, 16#0069#, 16#0070#,
            16#0050#, 16#0061#, 16#0074#, 16#0068#,
            others => 16#0000#),
@@ -1795,10 +1795,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a color that is used to paint the background of the canvas itself. A backgroundColor value is exclusive with a backgroundFill value. If both are specified, the backgroundFill value is used. If none is specified, no fill is applied (i.e. the canvas becomes see-through)."
 
    MS_0049 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 279,
-         Unused => 269,
-         Length => 269,
-         Value  =>
+     := (Capacity => 279,
+         Unused   => 269,
+         Length   => 269,
+         Value    =>
           (16#0061#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006F#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -1873,10 +1873,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Pattern is a kind of fill that paints a graphical element (a tile) repeatedly at fixed intervals in x and y axes to cover the areas to be filled."
 
    MS_004A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 145,
-         Length => 145,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 145,
+         Length   => 145,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0074#,
            16#0065#, 16#0072#, 16#006E#, 16#0020#,
            16#0069#, 16#0073#, 16#0020#, 16#0061#,
@@ -1920,10 +1920,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point to draw a quadratic bézier curve to from the current point in the coordinate system."
 
    MS_004B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 92,
-         Length => 92,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 92,
+         Length   => 92,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0074#, 16#006F#, 16#0020#, 16#0064#,
@@ -1953,10 +1953,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "markedElement"
 
    MS_004C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#006D#, 16#0061#, 16#0072#, 16#006B#,
            16#0065#, 16#0064#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -1967,10 +1967,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing the angle (in degrees) of rotation. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed."
 
    MS_004D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 151,
-         Unused => 143,
-         Length => 143,
-         Value  =>
+     := (Capacity => 151,
+         Unused   => 143,
+         Length   => 143,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2013,10 +2013,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_sharedStyle_styledElement"
 
    MS_004E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 27,
-         Length => 27,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 27,
+         Length   => 27,
+         Value    =>
           (16#0041#, 16#005F#, 16#0073#, 16#0068#,
            16#0061#, 16#0072#, 16#0065#, 16#0064#,
            16#0053#, 16#0074#, 16#0079#, 16#006C#,
@@ -2030,10 +2030,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the control point of the quadratic bézier curve."
 
    MS_004F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 48,
-         Length => 48,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 48,
+         Length   => 48,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006E#, 16#0074#,
            16#0072#, 16#006F#, 16#006C#, 16#0020#,
@@ -2052,10 +2052,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of zero or more transforms to apply to this fill."
 
    MS_0050 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 56,
-         Length => 56,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 56,
+         Length   => 56,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#007A#, 16#0065#,
@@ -2076,10 +2076,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and<=1) representing the opacity of the color at the stop. A value of 0 means totally transparent, while a value of 1 means totally opaque."
 
    MS_0051 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 158,
-         Length => 158,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 158,
+         Length   => 158,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2126,10 +2126,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "isLargeArc"
 
    MS_0052 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0069#, 16#0073#, 16#004C#, 16#0061#,
            16#0072#, 16#0067#, 16#0065#, 16#0041#,
            16#0072#, 16#0063#,
@@ -2139,10 +2139,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number(>=0) representing a scale factor along the y-axis."
 
    MS_0053 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 64,
-         Length => 64,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 64,
+         Length   => 64,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2165,10 +2165,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "MoveTo is a kind of path command that establishes a new current point in the coordinate system."
 
    MS_0054 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#004D#, 16#006F#, 16#0076#, 16#0065#,
            16#0054#, 16#006F#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -2199,10 +2199,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_backgroundFill_canvas"
 
    MS_0055 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 23,
-         Length => 23,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 23,
+         Length   => 23,
+         Value    =>
           (16#0041#, 16#005F#, 16#0062#, 16#0061#,
            16#0063#, 16#006B#, 16#0067#, 16#0072#,
            16#006F#, 16#0075#, 16#006E#, 16#0064#,
@@ -2215,10 +2215,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "localStyle"
 
    MS_0056 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#006C#, 16#006F#, 16#0063#, 16#0061#,
            16#006C#, 16#0053#, 16#0074#, 16#0079#,
            16#006C#, 16#0065#,
@@ -2228,10 +2228,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "all the components of the gradient vector must be between 0 and 1."
 
    MS_0057 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 66,
-         Length => 66,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 66,
+         Length   => 66,
+         Value    =>
           (16#0061#, 16#006C#, 16#006C#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006D#, 16#0070#,
@@ -2255,10 +2255,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A set of markers packaged by the canvas and referenced by marked elements in the canvas."
 
    MS_0058 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 88,
-         Length => 88,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 88,
+         Length   => 88,
+         Value    =>
           (16#0041#, 16#0020#, 16#0073#, 16#0065#,
            16#0074#, 16#0020#, 16#006F#, 16#0066#,
            16#0020#, 16#006D#, 16#0061#, 16#0072#,
@@ -2287,10 +2287,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "MoveTo"
 
    MS_0059 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#004D#, 16#006F#, 16#0076#, 16#0065#,
            16#0054#, 16#006F#,
            others => 16#0000#),
@@ -2299,10 +2299,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the bounds of the pattern that define a private coordinate system for the pattern's tile."
 
    MS_005A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 89,
-         Length => 89,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 89,
+         Length   => 89,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#, 16#0020#, 16#006F#,
@@ -2332,10 +2332,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Polygon is a marked element that defines a closed shape consisting of a sequence of connected straight line segments."
 
    MS_005B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#0050#, 16#006F#, 16#006C#, 16#0079#,
            16#0067#, 16#006F#, 16#006E#, 16#0020#,
            16#0069#, 16#0073#, 16#0020#, 16#0061#,
@@ -2372,10 +2372,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and <=1) representing the opacity of the fill or fillColor used to paint a graphical element. A value of 0 means totally transparent, while a value of 1 means totally opaque. The default is 1."
 
    MS_005C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 223,
-         Unused => 211,
-         Length => 211,
-         Value  =>
+     := (Capacity => 223,
+         Unused   => 211,
+         Length   => 211,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2435,10 +2435,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the text alignment when wrapped into multiple lines."
 
    MS_005D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 52,
-         Length => 52,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 52,
+         Length   => 52,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0074#, 16#0065#, 16#0078#, 16#0074#,
            16#0020#, 16#0061#, 16#006C#, 16#0069#,
@@ -2458,10 +2458,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_dash_length_size"
 
    MS_005E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0064#, 16#0061#,
            16#0073#, 16#0068#, 16#005F#, 16#006C#,
@@ -2474,10 +2474,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Marker"
 
    MS_005F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#004D#, 16#0061#, 16#0072#, 16#006B#,
            16#0065#, 16#0072#,
            others => 16#0000#),
@@ -2486,10 +2486,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the y focus point of the gradient."
 
    MS_0060 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2527,10 +2527,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the ending point of the line in the x-y coordinate system."
 
    MS_0061 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 58,
-         Length => 58,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 58,
+         Length   => 58,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#006E#, 16#0064#, 16#0069#,
            16#006E#, 16#0067#, 16#0020#, 16#0070#,
@@ -2552,10 +2552,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the two radii of the ellipse from which the arc is created."
 
    MS_0062 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 59,
-         Length => 59,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 59,
+         Length   => 59,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0074#, 16#0077#, 16#006F#, 16#0020#,
            16#0072#, 16#0061#, 16#0064#, 16#0069#,
@@ -2577,10 +2577,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a dimension that specifies the two radii of the ellipse (a width along the x-axis and a height along the y-axis)"
 
    MS_0063 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 112,
-         Length => 112,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 112,
+         Length   => 112,
+         Value    =>
           (16#0061#, 16#0020#, 16#0064#, 16#0069#,
            16#006D#, 16#0065#, 16#006E#, 16#0073#,
            16#0069#, 16#006F#, 16#006E#, 16#0020#,
@@ -2615,10 +2615,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "EllipticalArcTo is a kind of path command that draws an elliptical arc from the current point to a new point in the coordinate system."
 
    MS_0064 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 143,
-         Unused => 134,
-         Length => 134,
-         Value  =>
+     := (Capacity => 143,
+         Unused   => 134,
+         Length   => 134,
+         Value    =>
           (16#0045#, 16#006C#, 16#006C#, 16#0069#,
            16#0070#, 16#0074#, 16#0069#, 16#0063#,
            16#0061#, 16#006C#, 16#0041#, 16#0072#,
@@ -2659,10 +2659,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's size that is the radius of the gradient."
 
    MS_0065 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 116,
-         Length => 116,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 116,
+         Length   => 116,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -2698,10 +2698,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "stop"
 
    MS_0066 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0073#, 16#0074#, 16#006F#, 16#0070#,
            others => 16#0000#),
          others => <>);
@@ -2709,10 +2709,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "reference"
 
    MS_0067 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0072#, 16#0065#, 16#0066#, 16#0065#,
            16#0072#, 16#0065#, 16#006E#, 16#0063#,
            16#0065#,
@@ -2722,10 +2722,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_fill_canvas"
 
    MS_0068 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0041#, 16#005F#, 16#0066#, 16#0069#,
            16#006C#, 16#006C#, 16#005F#, 16#0063#,
            16#0061#, 16#006E#, 16#0076#, 16#0061#,
@@ -2736,10 +2736,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_midMarker_markedElement"
 
    MS_0069 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 25,
-         Length => 25,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 25,
+         Length   => 25,
+         Value    =>
           (16#0041#, 16#005F#, 16#006D#, 16#0069#,
            16#0064#, 16#004D#, 16#0061#, 16#0072#,
            16#006B#, 16#0065#, 16#0072#, 16#005F#,
@@ -2753,10 +2753,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "an optional end marker that aligns with the last vertex of the marked element."
 
    MS_006A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 78,
-         Length => 78,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 78,
+         Length   => 78,
+         Value    =>
           (16#0061#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -2783,10 +2783,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the color of the stroke used to paint the outline of a graphical element. The default is black (red=0, green=0, blue=0)."
 
    MS_006B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 120,
-         Length => 120,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 120,
+         Length   => 120,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#, 16#0020#, 16#006F#, 16#0066#,
@@ -2823,10 +2823,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_gradient_vector"
 
    MS_006C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 21,
-         Length => 21,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 21,
+         Length   => 21,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0067#, 16#0072#,
            16#0061#, 16#0064#, 16#0069#, 16#0065#,
@@ -2839,10 +2839,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "strokeWidth"
 
    MS_006D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0073#, 16#0074#, 16#0072#, 16#006F#,
            16#006B#, 16#0065#, 16#0057#, 16#0069#,
            16#0064#, 16#0074#, 16#0068#,
@@ -2852,10 +2852,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the font size is non-negative"
 
    MS_006E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0020#, 16#0073#, 16#0069#, 16#007A#,
@@ -2870,10 +2870,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "CubicCurveTo is a kind of path command that draws a cubic bézier curve from the current point to a new point using a start and an end control points."
 
    MS_006F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 159,
-         Unused => 149,
-         Length => 149,
-         Value  =>
+     := (Capacity => 159,
+         Unused   => 149,
+         Length   => 149,
+         Value    =>
           (16#0043#, 16#0075#, 16#0062#, 16#0069#,
            16#0063#, 16#0043#, 16#0075#, 16#0072#,
            16#0076#, 16#0065#, 16#0054#, 16#006F#,
@@ -2918,10 +2918,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "LinearGradient is a kind of gradient that fills a graphical element by smoothly changing color values along a vector."
 
    MS_0070 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#0065#,
            16#0061#, 16#0072#, 16#0047#, 16#0072#,
            16#0061#, 16#0064#, 16#0069#, 16#0065#,
@@ -2958,10 +2958,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Path is a marked element that defines a custom shape whose geometry is specified with a sequence of path commands."
 
    MS_0071 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 114,
-         Length => 114,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 114,
+         Length   => 114,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0068#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0061#, 16#0020#, 16#006D#, 16#0061#,
@@ -2997,10 +2997,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Path"
 
    MS_0072 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0068#,
            others => 16#0000#),
          others => <>);
@@ -3008,10 +3008,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing a rotation (in degrees) of the ellipse from which the arc is created."
 
    MS_0073 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 96,
-         Length => 96,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 96,
+         Length   => 96,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -3042,10 +3042,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a set of fills packaged by the canvas and referenced by graphical elements in the canvas."
 
    MS_0074 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 89,
-         Length => 89,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 89,
+         Length   => 89,
+         Value    =>
           (16#0061#, 16#0020#, 16#0073#, 16#0065#,
            16#0074#, 16#0020#, 16#006F#, 16#0066#,
            16#0020#, 16#0066#, 16#0069#, 16#006C#,
@@ -3075,10 +3075,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Matrix is a kind of transform that represents any transform operation with a 3x3 transformation matrix."
 
    MS_0075 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 103,
-         Length => 103,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 103,
+         Length   => 103,
+         Value    =>
           (16#004D#, 16#0061#, 16#0074#, 16#0072#,
            16#0069#, 16#0078#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -3111,10 +3111,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_stroke_opacity"
 
    MS_0076 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0073#, 16#0074#,
            16#0072#, 16#006F#, 16#006B#, 16#0065#,
@@ -3126,10 +3126,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the bounds of the rectangle in the x-y coordinate system."
 
    MS_0077 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 57,
-         Length => 57,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 57,
+         Length   => 57,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#, 16#0020#, 16#006F#,
@@ -3151,10 +3151,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the URL of a referenced image file."
 
    MS_0078 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0055#, 16#0052#, 16#004C#, 16#0020#,
            16#006F#, 16#0066#, 16#0020#, 16#0061#,
@@ -3170,10 +3170,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "size"
 
    MS_0079 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0073#, 16#0069#, 16#007A#, 16#0065#,
            others => 16#0000#),
          others => <>);
@@ -3181,10 +3181,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "MarkedElement is a graphic element that can be decorated at its vertices with markers (e.g. arrowheads)."
 
    MS_007A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 104,
-         Length => 104,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 104,
+         Length   => 104,
+         Value    =>
           (16#004D#, 16#0061#, 16#0072#, 16#006B#,
            16#0065#, 16#0064#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -3217,10 +3217,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "start"
 
    MS_007B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0073#, 16#0074#, 16#0061#, 16#0072#,
            16#0074#,
            others => 16#0000#),
@@ -3229,10 +3229,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Polyline"
 
    MS_007C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0050#, 16#006F#, 16#006C#, 16#0079#,
            16#006C#, 16#0069#, 16#006E#, 16#0065#,
            others => 16#0000#),
@@ -3241,10 +3241,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of zero or more transforms to apply to this graphical element."
 
    MS_007D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 69,
-         Length => 69,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 69,
+         Length   => 69,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#007A#, 16#0065#,
@@ -3269,10 +3269,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the name of the font used to render a text element (e.g. "Times New Roman", "Arial" or "Helvetica"). The default is "Arial"."
 
    MS_007E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006E#, 16#0061#, 16#006D#, 16#0065#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -3310,10 +3310,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "isRelative"
 
    MS_007F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0069#, 16#0073#, 16#0052#, 16#0065#,
            16#006C#, 16#0061#, 16#0074#, 16#0069#,
            16#0076#, 16#0065#,
@@ -3323,10 +3323,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontName"
 
    MS_0080 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#004E#, 16#0061#, 16#006D#, 16#0065#,
            others => 16#0000#),
@@ -3335,10 +3335,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "isAspectRatioPreserved"
 
    MS_0081 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0069#, 16#0073#, 16#0041#, 16#0073#,
            16#0070#, 16#0065#, 16#0063#, 16#0074#,
            16#0052#, 16#0061#, 16#0074#, 16#0069#,
@@ -3351,10 +3351,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Fill is the abstract super class of all kinds of fills that are used to paint the interior of graphical elements."
 
    MS_0082 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 113,
-         Length => 113,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 113,
+         Length   => 113,
+         Value    =>
           (16#0046#, 16#0069#, 16#006C#, 16#006C#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -3390,10 +3390,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the arc is drawn in a positive-angle direction"
 
    MS_0083 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 54,
-         Length => 54,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 54,
+         Length   => 54,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -3414,10 +3414,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the radius  must be between 0 and 1"
 
    MS_0084 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 35,
-         Length => 35,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 35,
+         Length   => 35,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0072#, 16#0061#, 16#0064#, 16#0069#,
            16#0075#, 16#0073#, 16#0020#, 16#0020#,
@@ -3433,10 +3433,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "QuadraticCurveTo"
 
    MS_0085 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0051#, 16#0075#, 16#0061#, 16#0064#,
            16#0072#, 16#0061#, 16#0074#, 16#0069#,
            16#0063#, 16#0043#, 16#0075#, 16#0072#,
@@ -3447,10 +3447,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "y2"
 
    MS_0086 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0079#, 16#0032#,
            others => 16#0000#),
          others => <>);
@@ -3458,10 +3458,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "factorY"
 
    MS_0087 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#006F#, 16#0072#, 16#0059#,
            others => 16#0000#),
@@ -3470,10 +3470,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Scale"
 
    MS_0088 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0053#, 16#0063#, 16#0061#, 16#006C#,
            16#0065#,
            others => 16#0000#),
@@ -3482,10 +3482,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0) representing the size (in unit of length) of the font used to render a text element. The default is 10."
 
    MS_0089 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 123,
-         Length => 123,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 123,
+         Length   => 123,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -3523,10 +3523,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the size of the stroke dash length list must be even."
 
    MS_008A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 53,
-         Length => 53,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 53,
+         Length   => 53,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0069#, 16#007A#, 16#0065#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -3547,10 +3547,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the arc sweep is equal to or greater than 180 degrees (the large arc)."
 
    MS_008B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 78,
-         Length => 78,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 78,
+         Length   => 78,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -3577,10 +3577,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Translate is a kind of transform that translates (moves) a graphical element by a given delta along the x-y coordinate system."
 
    MS_008C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 126,
-         Length => 126,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 126,
+         Length   => 126,
+         Value    =>
           (16#0054#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#006C#, 16#0061#, 16#0074#,
            16#0065#, 16#0020#, 16#0069#, 16#0073#,
@@ -3619,10 +3619,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_offset"
 
    MS_008D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#006F#, 16#0066#,
            16#0066#, 16#0073#, 16#0065#, 16#0074#,
@@ -3632,10 +3632,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "bounds"
 
    MS_008E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#,
            others => 16#0000#),
@@ -3644,10 +3644,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "LinearGradient"
 
    MS_008F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#0065#,
            16#0061#, 16#0072#, 16#0047#, 16#0072#,
            16#0061#, 16#0064#, 16#0069#, 16#0065#,
@@ -3658,10 +3658,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "false"
 
    MS_0090 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0066#, 16#0061#, 16#006C#, 16#0073#,
            16#0065#,
            others => 16#0000#),
@@ -3670,10 +3670,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the font used to render a text element has a <b>strike-through</b> style. The default is false."
 
    MS_0091 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 103,
-         Length => 103,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 103,
+         Length   => 103,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -3706,10 +3706,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "GradientStop"
 
    MS_0092 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 12,
-         Length => 12,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 12,
+         Length   => 12,
+         Value    =>
           (16#0047#, 16#0072#, 16#0061#, 16#0064#,
            16#0069#, 16#0065#, 16#006E#, 16#0074#,
            16#0053#, 16#0074#, 16#006F#, 16#0070#,
@@ -3719,10 +3719,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing the angle (in degrees) of skew along the x-axis. Both positive (clock-wise) and negative (counter-clock-wise) values are allowed."
 
    MS_0093 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 167,
-         Unused => 156,
-         Length => 156,
-         Value  =>
+     := (Capacity => 167,
+         Unused   => 156,
+         Length   => 156,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -3768,10 +3768,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a reference to the owning element that is clipped by this clip path."
 
    MS_0094 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 68,
-         Length => 68,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 68,
+         Length   => 68,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -3795,10 +3795,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fillOpacity"
 
    MS_0095 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0066#, 16#0069#, 16#006C#, 16#006C#,
            16#004F#, 16#0070#, 16#0061#, 16#0063#,
            16#0069#, 16#0074#, 16#0079#,
@@ -3808,10 +3808,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Circle"
 
    MS_0096 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0043#, 16#0069#, 16#0072#, 16#0063#,
            16#006C#, 16#0065#,
            others => 16#0000#),
@@ -3820,10 +3820,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the start control point of the cubic bézier curve."
 
    MS_0097 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 50,
-         Length => 50,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 50,
+         Length   => 50,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0074#, 16#0061#, 16#0072#,
            16#0074#, 16#0020#, 16#0063#, 16#006F#,
@@ -3843,10 +3843,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "dg"
 
    MS_0098 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0064#, 16#0067#,
            others => 16#0000#),
          others => <>);
@@ -3854,10 +3854,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point to draw an elliptical arc to from the current point in the coordinate system."
 
    MS_0099 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 85,
-         Length => 85,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 85,
+         Length   => 85,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0074#, 16#006F#, 16#0020#, 16#0064#,
@@ -3886,10 +3886,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "PathCommand is the abstract super type of all commands that participate in specifying a path element."
 
    MS_009A : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 101,
-         Length => 101,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 101,
+         Length   => 101,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0068#,
            16#0043#, 16#006F#, 16#006D#, 16#006D#,
            16#0061#, 16#006E#, 16#0064#, 16#0020#,
@@ -3922,10 +3922,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "b"
 
    MS_009B : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0062#,
            others => 16#0000#),
          others => <>);
@@ -3933,10 +3933,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "style"
 
    MS_009C : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0073#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#,
            others => 16#0000#),
@@ -3945,10 +3945,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "focusY"
 
    MS_009D : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0066#, 16#006F#, 16#0063#, 16#0075#,
            16#0073#, 16#0059#,
            others => 16#0000#),
@@ -3957,10 +3957,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "deltaY"
 
    MS_009E : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0064#, 16#0065#, 16#006C#, 16#0074#,
            16#0061#, 16#0059#,
            others => 16#0000#),
@@ -3969,10 +3969,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Canvas is a kind of group that represents the root of containment for all graphical elements that render one diagram."
 
    MS_009F : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#0043#, 16#0061#, 16#006E#, 16#0076#,
            16#0061#, 16#0073#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -4009,10 +4009,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "deltaX"
 
    MS_00A0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0064#, 16#0065#, 16#006C#, 16#0074#,
            16#0061#, 16#0058#,
            others => 16#0000#),
@@ -4021,10 +4021,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontColor"
 
    MS_00A1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0043#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#,
@@ -4034,10 +4034,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "strokeColor"
 
    MS_00A2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0073#, 16#0074#, 16#0072#, 16#006F#,
            16#006B#, 16#0065#, 16#0043#, 16#006F#,
            16#006C#, 16#006F#, 16#0072#,
@@ -4047,10 +4047,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "an optional start marker that aligns with the first vertex of the marked element."
 
    MS_00A3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 87,
-         Unused => 81,
-         Length => 81,
-         Value  =>
+     := (Capacity => 87,
+         Unused   => 81,
+         Length   => 81,
+         Value    =>
           (16#0061#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -4078,10 +4078,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "sharedStyle"
 
    MS_00A4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0073#, 16#0068#, 16#0061#, 16#0072#,
            16#0065#, 16#0064#, 16#0053#, 16#0074#,
            16#0079#, 16#006C#, 16#0065#,
@@ -4091,10 +4091,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "transform"
 
    MS_00A5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0074#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#0066#, 16#006F#, 16#0072#,
            16#006D#,
@@ -4104,10 +4104,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the group element that owns this graphical element."
 
    MS_00A6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 51,
-         Length => 51,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 51,
+         Length   => 51,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0067#, 16#0072#, 16#006F#, 16#0075#,
            16#0070#, 16#0020#, 16#0065#, 16#006C#,
@@ -4127,10 +4127,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "y1"
 
    MS_00A7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0079#, 16#0031#,
            others => 16#0000#),
          others => <>);
@@ -4138,10 +4138,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "focusX"
 
    MS_00A8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0066#, 16#006F#, 16#0063#, 16#0075#,
            16#0073#, 16#0058#,
            others => 16#0000#),
@@ -4150,10 +4150,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontBold"
 
    MS_00A9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0042#, 16#006F#, 16#006C#, 16#0064#,
            others => 16#0000#),
@@ -4162,10 +4162,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "PathCommand"
 
    MS_00AA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 11,
-         Length => 11,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 11,
+         Length   => 11,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0068#,
            16#0043#, 16#006F#, 16#006D#, 16#006D#,
            16#0061#, 16#006E#, 16#0064#,
@@ -4175,10 +4175,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Rotate is a kind of transform that rotates a graphical element by a given angle about a given center point in the x-y coordinate system."
 
    MS_00AB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 143,
-         Unused => 136,
-         Length => 136,
-         Value  =>
+     := (Capacity => 143,
+         Unused   => 136,
+         Length   => 136,
+         Value    =>
           (16#0052#, 16#006F#, 16#0074#, 16#0061#,
            16#0074#, 16#0065#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -4219,10 +4219,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a reference to a fill that is used to paint the background of the canvas itself. A backgroundFill value is exclusive with a backgroundColor value. If both are specified, the backgroundFill value is used. If none is specified, no fill is applied (i.e. the canvas becomes see-through)."
 
    MS_00AC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 295,
-         Unused => 283,
-         Length => 283,
-         Value  =>
+     := (Capacity => 295,
+         Unused   => 283,
+         Length   => 283,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -4300,10 +4300,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_tile_pattern"
 
    MS_00AD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0041#, 16#005F#, 16#0074#, 16#0069#,
            16#006C#, 16#0065#, 16#005F#, 16#0070#,
            16#0061#, 16#0074#, 16#0074#, 16#0065#,
@@ -4314,10 +4314,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "midMarker"
 
    MS_00AE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#006D#, 16#0069#, 16#0064#, 16#004D#,
            16#0061#, 16#0072#, 16#006B#, 16#0065#,
            16#0072#,
@@ -4327,10 +4327,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "fontStrikeThrough"
 
    MS_00AF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 17,
-         Length => 17,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 17,
+         Length   => 17,
+         Value    =>
           (16#0066#, 16#006F#, 16#006E#, 16#0074#,
            16#0053#, 16#0074#, 16#0072#, 16#0069#,
            16#006B#, 16#0065#, 16#0054#, 16#0068#,
@@ -4342,10 +4342,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the font used to render a text element has an <i>italic</i> style. The default is false."
 
    MS_00B0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 96,
-         Length => 96,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 96,
+         Length   => 96,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -4376,10 +4376,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "centerY"
 
    MS_00B1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0063#, 16#0065#, 16#006E#, 16#0074#,
            16#0065#, 16#0072#, 16#0059#,
            others => 16#0000#),
@@ -4388,10 +4388,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the radius cannot be negative"
 
    MS_00B2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 29,
-         Length => 29,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 29,
+         Length   => 29,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0072#, 16#0061#, 16#0064#, 16#0069#,
            16#0075#, 16#0073#, 16#0020#, 16#0063#,
@@ -4406,10 +4406,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "canvas"
 
    MS_00B3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0063#, 16#0061#, 16#006E#, 16#0076#,
            16#0061#, 16#0073#,
            others => 16#0000#),
@@ -4418,10 +4418,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Rectangle is a graphical element that defines a rectangular shape with given bounds. A rectangle may be given rounded corners by setting its corner radius."
 
    MS_00B4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 159,
-         Unused => 155,
-         Length => 155,
-         Value  =>
+     := (Capacity => 159,
+         Unused   => 155,
+         Length   => 155,
+         Value    =>
           (16#0052#, 16#0065#, 16#0063#, 16#0074#,
            16#0061#, 16#006E#, 16#0067#, 16#006C#,
            16#0065#, 16#0020#, 16#0069#, 16#0073#,
@@ -4467,10 +4467,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Transform"
 
    MS_00B5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0054#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#0066#, 16#006F#, 16#0072#,
            16#006D#,
@@ -4480,10 +4480,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number representing a translate delta along the y-axis. Both positive and negative values are allowed."
 
    MS_00B6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 119,
-         Unused => 109,
-         Length => 109,
-         Value  =>
+     := (Capacity => 119,
+         Unused   => 109,
+         Length   => 109,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -4518,10 +4518,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point within the bounds of the marker that aligns exactly with the marked element's vertex."
 
    MS_00B7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 93,
-         Length => 93,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 93,
+         Length   => 93,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0077#, 16#0069#, 16#0074#, 16#0068#,
@@ -4552,10 +4552,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "angleX"
 
    MS_00B8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0061#, 16#006E#, 16#0067#, 16#006C#,
            16#0065#, 16#0058#,
            others => 16#0000#),
@@ -4564,10 +4564,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the font used to render a text element has an <b>underline</b> style. The default is false."
 
    MS_00B9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 99,
-         Length => 99,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 99,
+         Length   => 99,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -4599,10 +4599,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Line is a marked element that defines a shape consisting of one straight line between two points."
 
    MS_00BA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 97,
-         Length => 97,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 97,
+         Length   => 97,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#0065#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0061#, 16#0020#, 16#006D#, 16#0061#,
@@ -4634,10 +4634,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the color to use at this gradient stop."
 
    MS_00BB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 39,
-         Length => 39,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 39,
+         Length   => 39,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#, 16#0020#, 16#0074#, 16#006F#,
@@ -4654,10 +4654,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0) that represents the radius of the circle."
 
    MS_00BC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 61,
-         Length => 61,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 61,
+         Length   => 61,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -4680,10 +4680,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "endMarker"
 
    MS_00BD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0065#, 16#006E#, 16#0064#, 16#004D#,
            16#0061#, 16#0072#, 16#006B#, 16#0065#,
            16#0072#,
@@ -4693,10 +4693,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "center"
 
    MS_00BE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0063#, 16#0065#, 16#006E#, 16#0074#,
            16#0065#, 16#0072#,
            others => 16#0000#),
@@ -4705,10 +4705,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "packagedMarker"
 
    MS_00BF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 14,
-         Length => 14,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 14,
+         Length   => 14,
+         Value    =>
           (16#0070#, 16#0061#, 16#0063#, 16#006B#,
            16#0061#, 16#0067#, 16#0065#, 16#0064#,
            16#004D#, 16#0061#, 16#0072#, 16#006B#,
@@ -4719,10 +4719,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "GradientStop defines a color transition along the distance from a gradient's start to its end offsets."
 
    MS_00C0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 102,
-         Length => 102,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 102,
+         Length   => 102,
+         Value    =>
           (16#0047#, 16#0072#, 16#0061#, 16#0064#,
            16#0069#, 16#0065#, 16#006E#, 16#0074#,
            16#0053#, 16#0074#, 16#006F#, 16#0070#,
@@ -4755,10 +4755,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "c"
 
    MS_00C1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0063#,
            others => 16#0000#),
          others => <>);
@@ -4766,10 +4766,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "endControl"
 
    MS_00C2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 10,
-         Length => 10,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 10,
+         Length   => 10,
+         Value    =>
           (16#0065#, 16#006E#, 16#0064#, 16#0043#,
            16#006F#, 16#006E#, 16#0074#, 16#0072#,
            16#006F#, 16#006C#,
@@ -4779,10 +4779,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's height that is the y start point of the gradient."
 
    MS_00C3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 125,
-         Length => 125,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 125,
+         Length   => 125,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -4821,10 +4821,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the f value of the transform matrix."
 
    MS_00C4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0066#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -4840,10 +4840,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a color that is used to paint the enclosed regions of graphical element. A fillColor value is exclusive with a fill value. If both are specified, the fill value is used. If none is specified, no fill is applied (i.e. the element becomes see-through)."
 
    MS_00C5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 263,
-         Unused => 250,
-         Length => 250,
-         Value  =>
+     := (Capacity => 263,
+         Unused   => 250,
+         Length   => 250,
+         Value    =>
           (16#0061#, 16#0020#, 16#0063#, 16#006F#,
            16#006C#, 16#006F#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0061#, 16#0074#,
@@ -4913,10 +4913,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Circle is a graphical element that defines a circular shape with a given center point and a radius."
 
    MS_00C6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 99,
-         Length => 99,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 99,
+         Length   => 99,
+         Value    =>
           (16#0043#, 16#0069#, 16#0072#, 16#0063#,
            16#006C#, 16#0065#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -4948,10 +4948,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "non-negative-scale"
 
    MS_00C7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 18,
-         Length => 18,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 18,
+         Length   => 18,
+         Value    =>
           (16#006E#, 16#006F#, 16#006E#, 16#002D#,
            16#006E#, 16#0065#, 16#0067#, 16#0061#,
            16#0074#, 16#0069#, 16#0076#, 16#0065#,
@@ -4963,10 +4963,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "e"
 
    MS_00C8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 1,
-         Length => 1,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 1,
+         Length   => 1,
+         Value    =>
           (16#0065#,
            others => 16#0000#),
          others => <>);
@@ -4974,10 +4974,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Translate"
 
    MS_00C9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0054#, 16#0072#, 16#0061#, 16#006E#,
            16#0073#, 16#006C#, 16#0061#, 16#0074#,
            16#0065#,
@@ -4987,10 +4987,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "MarkedElement"
 
    MS_00CA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#004D#, 16#0061#, 16#0072#, 16#006B#,
            16#0065#, 16#0064#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -5001,10 +5001,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x focus point of the gradient."
 
    MS_00CB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -5042,10 +5042,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Style contains formatting properties that affect the appearance or style of graphical elements."
 
    MS_00CC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0053#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#, 16#0020#, 16#0063#, 16#006F#,
            16#006E#, 16#0074#, 16#0061#, 16#0069#,
@@ -5076,10 +5076,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "pattern"
 
    MS_00CD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0070#, 16#0061#, 16#0074#, 16#0074#,
            16#0065#, 16#0072#, 16#006E#,
            others => 16#0000#),
@@ -5088,10 +5088,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a list of 2 or more points making up the polyline."
 
    MS_00CE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 50,
-         Length => 50,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 50,
+         Length   => 50,
+         Value    =>
           (16#0061#, 16#0020#, 16#006C#, 16#0069#,
            16#0073#, 16#0074#, 16#0020#, 16#006F#,
            16#0066#, 16#0020#, 16#0032#, 16#0020#,
@@ -5111,10 +5111,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a point to draw a cubic bézier curve to from the current point in the coordinate system."
 
    MS_00CF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 88,
-         Length => 88,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 88,
+         Length   => 88,
+         Value    =>
           (16#0061#, 16#0020#, 16#0070#, 16#006F#,
            16#0069#, 16#006E#, 16#0074#, 16#0020#,
            16#0074#, 16#006F#, 16#0020#, 16#0064#,
@@ -5143,10 +5143,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "EllipticalArcTo"
 
    MS_00D0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0045#, 16#006C#, 16#006C#, 16#0069#,
            16#0070#, 16#0074#, 16#0069#, 16#0063#,
            16#0061#, 16#006C#, 16#0041#, 16#0072#,
@@ -5157,10 +5157,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the a value of the transform matrix."
 
    MS_00D1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0061#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -5176,10 +5176,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the list of graphical elements that are members of (owned by) this group."
 
    MS_00D2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 79,
-         Unused => 73,
-         Length => 73,
-         Value  =>
+     := (Capacity => 79,
+         Unused   => 73,
+         Length   => 73,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#006C#, 16#0069#, 16#0073#, 16#0074#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -5205,10 +5205,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "ClosePath is a kind of path command that ends the current subpath and causes an automatic straight line to be drawn from the current point to the initial point of the current subpath."
 
    MS_00D3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 191,
-         Unused => 183,
-         Length => 183,
-         Value  =>
+     := (Capacity => 191,
+         Unused   => 183,
+         Length   => 183,
+         Value    =>
           (16#0043#, 16#006C#, 16#006F#, 16#0073#,
            16#0065#, 16#0050#, 16#0061#, 16#0074#,
            16#0068#, 16#0020#, 16#0069#, 16#0073#,
@@ -5261,10 +5261,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "rotation"
 
    MS_00D4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 8,
-         Length => 8,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 8,
+         Length   => 8,
+         Value    =>
           (16#0072#, 16#006F#, 16#0074#, 16#0061#,
            16#0074#, 16#0069#, 16#006F#, 16#006E#,
            others => 16#0000#),
@@ -5273,10 +5273,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_font_size"
 
    MS_00D5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 15,
-         Length => 15,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 15,
+         Length   => 15,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#0066#, 16#006F#,
            16#006E#, 16#0074#, 16#005F#, 16#0073#,
@@ -5287,10 +5287,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a reference to the canvas that owns this marker."
 
    MS_00D6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 48,
-         Length => 48,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 48,
+         Length   => 48,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0066#, 16#0065#, 16#0072#, 16#0065#,
            16#006E#, 16#0063#, 16#0065#, 16#0020#,
@@ -5309,10 +5309,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Pattern"
 
    MS_00D7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0050#, 16#0061#, 16#0074#, 16#0074#,
            16#0065#, 16#0072#, 16#006E#,
            others => 16#0000#),
@@ -5321,10 +5321,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "ClipPath is a kind of group whose members collectively define a painting mask for its referencing graphical elements."
 
    MS_00D8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 117,
-         Length => 117,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 117,
+         Length   => 117,
+         Value    =>
           (16#0043#, 16#006C#, 16#0069#, 16#0070#,
            16#0050#, 16#0061#, 16#0074#, 16#0068#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
@@ -5361,10 +5361,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "control"
 
    MS_00D9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0063#, 16#006F#, 16#006E#, 16#0074#,
            16#0072#, 16#006F#, 16#006C#,
            others => 16#0000#),
@@ -5373,10 +5373,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the center point of the ellipse in the x-y coordinate system."
 
    MS_00DA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 61,
-         Length => 61,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 61,
+         Length   => 61,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0063#, 16#0065#, 16#006E#, 16#0074#,
            16#0065#, 16#0072#, 16#0020#, 16#0070#,
@@ -5399,10 +5399,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the end control point of the cubic bézier curve."
 
    MS_00DB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 55,
-         Unused => 48,
-         Length => 48,
-         Value  =>
+     := (Capacity => 55,
+         Unused   => 48,
+         Length   => 48,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0065#, 16#006E#, 16#0064#, 16#0020#,
            16#0063#, 16#006F#, 16#006E#, 16#0074#,
@@ -5421,10 +5421,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Marker is a kind of group that is used as a decoration (e.g. an arrowhead) for the vertices of a marked graphical element."
 
    MS_00DC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 122,
-         Length => 122,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 122,
+         Length   => 122,
+         Value    =>
           (16#004D#, 16#0061#, 16#0072#, 16#006B#,
            16#0065#, 16#0072#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -5462,10 +5462,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the d value of the transform matrix."
 
    MS_00DD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 36,
-         Length => 36,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 36,
+         Length   => 36,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0064#, 16#0020#, 16#0076#, 16#0061#,
            16#006C#, 16#0075#, 16#0065#, 16#0020#,
@@ -5481,10 +5481,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Style"
 
    MS_00DE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0053#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#,
            others => 16#0000#),
@@ -5493,10 +5493,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0) representing the width of the stroke used to paint the outline of a graphical element. A value of 0 specifies no stroke is painted. The default is 1."
 
    MS_00DF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 175,
-         Unused => 169,
-         Length => 169,
-         Value  =>
+     := (Capacity => 175,
+         Unused   => 169,
+         Length   => 169,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -5546,10 +5546,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the size of the marker"
 
    MS_00E0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 22,
-         Length => 22,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 22,
+         Length   => 22,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0069#, 16#007A#, 16#0065#,
            16#0020#, 16#006F#, 16#0066#, 16#0020#,
@@ -5562,10 +5562,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "alignment"
 
    MS_00E1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 9,
-         Length => 9,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 9,
+         Length   => 9,
+         Value    =>
           (16#0061#, 16#006C#, 16#0069#, 16#0067#,
            16#006E#, 16#006D#, 16#0065#, 16#006E#,
            16#0074#,
@@ -5575,10 +5575,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Polygon"
 
    MS_00E2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0050#, 16#006F#, 16#006C#, 16#0079#,
            16#0067#, 16#006F#, 16#006E#,
            others => 16#0000#),
@@ -5587,10 +5587,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "an optional mid marker that aligns with all vertices of the marked element except the first and the last."
 
    MS_00E3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 105,
-         Length => 105,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 105,
+         Length   => 105,
+         Value    =>
           (16#0061#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -5624,10 +5624,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the stroke width is non-negative"
 
    MS_00E4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 39,
-         Unused => 32,
-         Length => 32,
-         Value  =>
+     := (Capacity => 39,
+         Unused   => 32,
+         Length   => 32,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0074#, 16#0072#, 16#006F#,
            16#006B#, 16#0065#, 16#0020#, 16#0077#,
@@ -5642,10 +5642,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Ellipse"
 
    MS_00E5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0045#, 16#006C#, 16#006C#, 16#0069#,
            16#0070#, 16#0073#, 16#0065#,
            others => 16#0000#),
@@ -5654,10 +5654,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "GraphicalElement is the abstract superclass of all graphical elements that can be nested in a canvas."
 
    MS_00E6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 101,
-         Length => 101,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 101,
+         Length   => 101,
+         Value    =>
           (16#0047#, 16#0072#, 16#0061#, 16#0070#,
            16#0068#, 16#0069#, 16#0063#, 16#0061#,
            16#006C#, 16#0045#, 16#006C#, 16#0065#,
@@ -5690,10 +5690,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the bounds within which the image is rendered."
 
    MS_00E7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 46,
-         Length => 46,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 46,
+         Length   => 46,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0062#, 16#006F#, 16#0075#, 16#006E#,
            16#0064#, 16#0073#, 16#0020#, 16#0077#,
@@ -5712,10 +5712,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "an optional reference to a clip path element that masks the painting of this graphical element."
 
    MS_00E8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 95,
-         Length => 95,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 95,
+         Length   => 95,
+         Value    =>
           (16#0061#, 16#006E#, 16#0020#, 16#006F#,
            16#0070#, 16#0074#, 16#0069#, 16#006F#,
            16#006E#, 16#0061#, 16#006C#, 16#0020#,
@@ -5746,10 +5746,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "org.omg.xmi.nsPrefix"
 
    MS_00E9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 20,
-         Length => 20,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 20,
+         Length   => 20,
+         Value    =>
           (16#006F#, 16#0072#, 16#0067#, 16#002E#,
            16#006F#, 16#006D#, 16#0067#, 16#002E#,
            16#0078#, 16#006D#, 16#0069#, 16#002E#,
@@ -5761,10 +5761,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x center point of the gradient."
 
    MS_00EA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 135,
-         Unused => 125,
-         Length => 125,
-         Value  =>
+     := (Capacity => 135,
+         Unused   => 125,
+         Length   => 125,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -5803,10 +5803,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "A_localStyle_styledElement"
 
    MS_00EB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 31,
-         Unused => 26,
-         Length => 26,
-         Value  =>
+     := (Capacity => 31,
+         Unused   => 26,
+         Length   => 26,
+         Value    =>
           (16#0041#, 16#005F#, 16#006C#, 16#006F#,
            16#0063#, 16#0061#, 16#006C#, 16#0053#,
            16#0074#, 16#0079#, 16#006C#, 16#0065#,
@@ -5820,10 +5820,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "color"
 
    MS_00EC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0063#, 16#006F#, 16#006C#, 16#006F#,
            16#0072#,
            others => 16#0000#),
@@ -5832,10 +5832,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "factorX"
 
    MS_00ED : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0066#, 16#0061#, 16#0063#, 16#0074#,
            16#006F#, 16#0072#, 16#0058#,
            others => 16#0000#),
@@ -5844,10 +5844,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "data"
 
    MS_00EE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 4,
-         Length => 4,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 4,
+         Length   => 4,
+         Value    =>
           (16#0064#, 16#0061#, 16#0074#, 16#0061#,
            others => 16#0000#),
          others => <>);
@@ -5855,10 +5855,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "radius"
 
    MS_00EF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0072#, 16#0061#, 16#0064#, 16#0069#,
            16#0075#, 16#0073#,
            others => 16#0000#),
@@ -5867,10 +5867,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "angleY"
 
    MS_00F0 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0061#, 16#006E#, 16#0067#, 16#006C#,
            16#0065#, 16#0059#,
            others => 16#0000#),
@@ -5879,10 +5879,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "valid_opacity"
 
    MS_00F1 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0076#, 16#0061#, 16#006C#, 16#0069#,
            16#0064#, 16#005F#, 16#006F#, 16#0070#,
            16#0061#, 16#0063#, 16#0069#, 16#0074#,
@@ -5893,10 +5893,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "Text is a graphical element that defines a shape that renders a character string within a bounding box."
 
    MS_00F2 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 111,
-         Unused => 103,
-         Length => 103,
-         Value  =>
+     := (Capacity => 111,
+         Unused   => 103,
+         Length   => 103,
+         Value    =>
           (16#0054#, 16#0065#, 16#0078#, 16#0074#,
            16#0020#, 16#0069#, 16#0073#, 16#0020#,
            16#0061#, 16#0020#, 16#0067#, 16#0072#,
@@ -5929,10 +5929,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "GraphicalElement"
 
    MS_00F3 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 23,
-         Unused => 16,
-         Length => 16,
-         Value  =>
+     := (Capacity => 23,
+         Unused   => 16,
+         Length   => 16,
+         Value    =>
           (16#0047#, 16#0072#, 16#0061#, 16#0070#,
            16#0068#, 16#0069#, 16#0063#, 16#0061#,
            16#006C#, 16#0045#, 16#006C#, 16#0065#,
@@ -5943,10 +5943,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "source"
 
    MS_00F4 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#0073#, 16#006F#, 16#0075#, 16#0072#,
            16#0063#, 16#0065#,
            others => 16#0000#),
@@ -5955,10 +5955,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "styledElement"
 
    MS_00F5 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 13,
-         Length => 13,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 13,
+         Length   => 13,
+         Value    =>
           (16#0073#, 16#0074#, 16#0079#, 16#006C#,
            16#0065#, 16#0064#, 16#0045#, 16#006C#,
            16#0065#, 16#006D#, 16#0065#, 16#006E#,
@@ -5969,10 +5969,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "whether the font used to render a text element has a <b>bold</b> style. The default is false."
 
    MS_00F6 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 95,
-         Unused => 93,
-         Length => 93,
-         Value  =>
+     := (Capacity => 95,
+         Unused   => 93,
+         Length   => 93,
+         Value    =>
           (16#0077#, 16#0068#, 16#0065#, 16#0074#,
            16#0068#, 16#0065#, 16#0072#, 16#0020#,
            16#0074#, 16#0068#, 16#0065#, 16#0020#,
@@ -6003,10 +6003,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "http://www.omg.org/spec/DD/20110901/DG"
 
    MS_00F7 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 47,
-         Unused => 38,
-         Length => 38,
-         Value  =>
+     := (Capacity => 47,
+         Unused   => 38,
+         Length   => 38,
+         Value    =>
           (16#0068#, 16#0074#, 16#0074#, 16#0070#,
            16#003A#, 16#002F#, 16#002F#, 16#0077#,
            16#0077#, 16#0077#, 16#002E#, 16#006F#,
@@ -6023,10 +6023,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "DG"
 
    MS_00F8 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 2,
-         Length => 2,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 2,
+         Length   => 2,
+         Value    =>
           (16#0044#, 16#0047#,
            others => 16#0000#),
          others => <>);
@@ -6034,10 +6034,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "offset"
 
    MS_00F9 : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 6,
-         Length => 6,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 6,
+         Length   => 6,
+         Value    =>
           (16#006F#, 16#0066#, 16#0066#, 16#0073#,
            16#0065#, 16#0074#,
            others => 16#0000#),
@@ -6046,10 +6046,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0) representing a scale factor along the x-axis."
 
    MS_00FA : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 71,
-         Unused => 65,
-         Length => 65,
-         Value  =>
+     := (Capacity => 71,
+         Unused   => 65,
+         Length   => 65,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -6073,10 +6073,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "the starting point of the line in the x-y coordinate system."
 
    MS_00FB : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 63,
-         Unused => 60,
-         Length => 60,
-         Value  =>
+     := (Capacity => 63,
+         Unused   => 60,
+         Length   => 60,
+         Value    =>
           (16#0074#, 16#0068#, 16#0065#, 16#0020#,
            16#0073#, 16#0074#, 16#0061#, 16#0072#,
            16#0074#, 16#0069#, 16#006E#, 16#0067#,
@@ -6098,10 +6098,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "a real number (>=0 and >=1) representing a ratio of the graphical element's width that is the x start point of the gradient."
 
    MS_00FC : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 127,
-         Unused => 124,
-         Length => 124,
-         Value  =>
+     := (Capacity => 127,
+         Unused   => 124,
+         Length   => 124,
+         Value    =>
           (16#0061#, 16#0020#, 16#0072#, 16#0065#,
            16#0061#, 16#006C#, 16#0020#, 16#006E#,
            16#0075#, 16#006D#, 16#0062#, 16#0065#,
@@ -6139,10 +6139,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "isSweep"
 
    MS_00FD : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 15,
-         Unused => 7,
-         Length => 7,
-         Value  =>
+     := (Capacity => 15,
+         Unused   => 7,
+         Length   => 7,
+         Value    =>
           (16#0069#, 16#0073#, 16#0053#, 16#0077#,
            16#0065#, 16#0065#, 16#0070#,
            others => 16#0000#),
@@ -6151,10 +6151,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "LineTo is a kind of path command that draw a straight line from the current point to a new point."
 
    MS_00FE : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 103,
-         Unused => 97,
-         Length => 97,
-         Value  =>
+     := (Capacity => 103,
+         Unused   => 97,
+         Length   => 97,
+         Value    =>
           (16#004C#, 16#0069#, 16#006E#, 16#0065#,
            16#0054#, 16#006F#, 16#0020#, 16#0069#,
            16#0073#, 16#0020#, 16#0061#, 16#0020#,
@@ -6186,10 +6186,10 @@ package AMF.Internals.Tables.DG_String_Data_00 is
    --  "point"
 
    MS_00FF : aliased Matreshka.Internals.Strings.Shared_String
-     := (Size   => 7,
-         Unused => 5,
-         Length => 5,
-         Value  =>
+     := (Capacity => 7,
+         Unused   => 5,
+         Length   => 5,
+         Value    =>
           (16#0070#, 16#006F#, 16#0069#, 16#006E#,
            16#0074#,
            others => 16#0000#),

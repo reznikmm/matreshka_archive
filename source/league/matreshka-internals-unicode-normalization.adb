@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -326,7 +326,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Source is not in Normalization Form probably, so start more complex
       --  algorithm.
 
-      Destination := Allocate (Source.Size);
+      Destination := Allocate (Source.Capacity);
 
       if S_Index /= 0 then
          Destination.Value (0 .. S_Index - 1) :=
@@ -511,7 +511,7 @@ package body Matreshka.Internals.Unicode.Normalization is
       --  Source is not in Normalization Form probably, so start more complex
       --  algorithm.
 
-      Destination := Allocate (Source.Size);
+      Destination := Allocate (Source.Capacity);
 
       if S_Index /= 0 then
          Destination.Value (0 .. S_Index - 1) :=

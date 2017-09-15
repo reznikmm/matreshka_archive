@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -95,22 +95,22 @@ package body CSMIB.Generator is
       Put ("   N");
       Put (Number, Width => 0);
       Put_Line (" : aliased Matreshka.Internals.Strings.Shared_String");
-      Put ("     := (Size   => ");
-      Put (Integer (Internal.Size), Width => 0);
+      Put ("     := (Capacity => ");
+      Put (Integer (Internal.Capacity), Width => 0);
       Put_Line (",");
-      Put ("         Unused => ");
+      Put ("         Unused   => ");
       Put (Integer (Internal.Unused), Width => 0);
       Put_Line (",");
-      Put ("         Length => ");
+      Put ("         Length   => ");
       Put (Internal.Length, Width => 0);
       Put_Line (",");
-      Put_Line ("         Value  =>");
-      Put ("          (");
+      Put_Line ("         Value    =>");
+      Put ("            (");
 
       for J in 0 .. Internal.Unused - 1 loop
          if J /= 0 and J mod 4 = 0 then
             Put_Line (",");
-            Put ("           ");
+            Put ("             ");
 
          elsif J /= 0 then
             Put (", ");
@@ -120,8 +120,8 @@ package body CSMIB.Generator is
       end loop;
 
       Put_Line (",");
-      Put_Line ("           others => 16#0000#),");
-      Put_Line ("         others => <>);");
+      Put_Line ("             others => 16#0000#),");
+      Put_Line ("           others => <>);");
       Put_Line ("   --  " & MIBs.Element (Number).Name.To_Wide_Wide_String);
    end Generate_String_Constant;
 
