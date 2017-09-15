@@ -70,8 +70,6 @@ with TEMPLATE_MANAGER; use MISC_DEFS;
 
 function Aflex return Integer is
 
-   use Ada.Wide_Wide_Text_IO;
-
    Copyright   : constant String :=
      "@(#) Copyright (c) 1990 Regents of the University of California.";
    Copyright_2 : constant String :=

@@ -32,7 +32,6 @@ package body CCL is
    use Ada.Strings.Unbounded;
    use Ada.Strings.Wide_Wide_Maps;
    use Ada.Wide_Wide_Text_IO;
-   use Unicode;
 
    -- ccladd - add a single character to a ccl
 

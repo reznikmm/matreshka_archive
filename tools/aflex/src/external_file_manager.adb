@@ -28,7 +28,7 @@ with Ada.Characters.Conversions;
 with Ada.Strings.Unbounded;
 with Ada.Strings.Wide_Wide_Unbounded;
 
-with MISC_DEFS, MISC; use MISC_DEFS, MISC;
+with MISC_DEFS, MISC; use MISC_DEFS;
 
 package body External_File_Manager is
 

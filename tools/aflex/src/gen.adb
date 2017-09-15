@@ -31,7 +31,7 @@ with Ada.Wide_Wide_Text_IO;
 
 with MISC_DEFS, MISC;
 with Scanner, SKELETON_MANAGER, EXTERNAL_FILE_MANAGER;
-use MISC_DEFS, EXTERNAL_FILE_MANAGER;
+use MISC_DEFS;
 with Parser_Tokens; use Parser_Tokens;
 with Unicode;
 
