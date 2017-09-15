@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -117,8 +117,6 @@ package body Matreshka.CLDR.Collation_Compiler is
         First    : out Matreshka.Internals.Unicode.Ucd.Sequence_Index;
         Last     : out Matreshka.Internals.Unicode.Ucd.Sequence_Index)
       is
-         use type Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence;
-
          Internal        :
            Matreshka.Internals.Unicode.Ucd.Collation_Element_Sequence
             (1 .. Sequence'Length);

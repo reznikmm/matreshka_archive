@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,8 +51,6 @@ with XML.SAX.Simple_Readers.Scanner;
 package body XML.SAX.Simple_Readers.Parser is
 
    use Matreshka.Internals.XML;
-   use Matreshka.Internals.XML.Entity_Tables;
-   use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Parser.Tables;
 
    function YY_Goto_State (State : Integer; Sym : Integer) return Integer;

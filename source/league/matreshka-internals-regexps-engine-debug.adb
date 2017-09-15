@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2011 Vadim Godunko <vgodunko@gmail.com>                 --
+-- Copyright © 2010-2017 Vadim Godunko <vgodunko@gmail.com>                 --
 --                                                                          --
 -- Matreshka is free software;  you can  redistribute it  and/or modify  it --
 -- under terms of the  GNU General Public License as published  by the Free --
@@ -37,8 +37,6 @@ with Ada.Strings.Unbounded;
 
 package body Matreshka.Internals.Regexps.Engine.Debug is
 
-   use Matreshka.Internals.Strings;
-   use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Utf16;
 
    type State is record

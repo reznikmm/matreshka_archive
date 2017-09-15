@@ -61,7 +61,6 @@ package body XML.SAX.Simple_Readers.Scanner is
    use Matreshka.Internals.XML;
    use Matreshka.Internals.XML.Base_Scopes;
    use Matreshka.Internals.XML.Entity_Tables;
-   use Matreshka.Internals.XML.Symbol_Tables;
    use XML.SAX.Simple_Readers.Scanner.Tables;
 
    procedure Set_Whitespace_Matched (Self : in out Simple_Reader'Class)

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,7 +51,6 @@ package body Matreshka.Internals.Unicode.Casing is
    use Matreshka.Internals.Strings;
    use Matreshka.Internals.Strings.Configuration;
    use Matreshka.Internals.Strings.Operations;
-   use Matreshka.Internals.Unicode;
    use Matreshka.Internals.Unicode.Ucd;
    use Matreshka.Internals.Unicode.Ucd.Properties;
    use Matreshka.Internals.Utf16;

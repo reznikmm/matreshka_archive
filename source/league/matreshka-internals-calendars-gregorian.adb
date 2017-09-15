@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2013, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,8 +43,6 @@
 ------------------------------------------------------------------------------
 
 package body Matreshka.Internals.Calendars.Gregorian is
-
-   use type Julian_Day_Number;
 
    --  Gregorian_Epoch : constant := 1_721_426;
 
