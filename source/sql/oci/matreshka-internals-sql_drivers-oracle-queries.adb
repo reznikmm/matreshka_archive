@@ -1052,7 +1052,7 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
          end if;
 
          if octxp.String /= null
-           and then Can_Be_Reused (octxp.String, octxp.String.Size - 1)
+           and then Can_Be_Reused (octxp.String, octxp.String.Capacity - 1)
          then
             Reference (octxp.String);
 
@@ -1067,10 +1067,11 @@ package body Matreshka.Internals.SQL_Drivers.Oracle.Queries is
       else
          piecep.all := OCI_NEXT_PIECE;
          octxp.String.Unused := octxp.String.Unused + octxp.String_Size;
-         Mutate (octxp.String, 8 * octxp.String.Size);
+         Mutate (octxp.String, 8 * octxp.String.Capacity);
       end if;
 
-      octxp.String_Size := Ub4 ((octxp.String.Size - octxp.String.Unused) * 2);
+      octxp.String_Size := Ub4
+        ((octxp.String.Capacity - octxp.String.Unused) * 2);
 
       bufpp.all := octxp.String.Value (octxp.String.Unused)'Access;
       alenp.all := octxp.String_Size'Access;
