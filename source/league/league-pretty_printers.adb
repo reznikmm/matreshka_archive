@@ -46,9 +46,6 @@ with League.Strings.Hash;
 
 package body League.Pretty_Printers is
 
-   Space : constant Output_Item :=
-     (Kind => Text_Output, Text => League.Strings.To_Universal_String (" "));
-
    ------------
    -- Append --
    ------------
@@ -133,11 +130,12 @@ package body League.Pretty_Printers is
             Self.Flatten (Item.Down, Result);
 
          when New_Line_Output =>
-            if Item.Force then
-               Result := Input;
-            else
+            declare
+               Space : constant Output_Item :=
+                 (Kind => Text_Output, Text => Item.Gap);
+            begin
                Self.Append (Space, Result);
-            end if;
+            end;
 
          when Union_Output =>
             Self.Flatten (Item.Left, Result);
@@ -198,7 +196,7 @@ package body League.Pretty_Printers is
             return 1;
 
          when New_Line_Output =>
-            return 2 + Boolean'Pos (Item.Force);
+            return League.Strings.Hash (Item.Gap) * 11;
 
          when Text_Output =>
             return League.Strings.Hash (Item.Text);
@@ -275,9 +273,9 @@ package body League.Pretty_Printers is
    procedure New_Line
      (Self   : in out Printer;
       Result : out Document_Index;
-      Force  : Boolean := False) is
+      Gap    : League.Strings.Universal_String) is
    begin
-      Self.Append ((New_Line_Output, Force), Result);
+      Self.Append ((New_Line_Output, Gap), Result);
    end New_Line;
 
    --------------
@@ -288,10 +286,9 @@ package body League.Pretty_Printers is
      (Self : Document'Class;
       Gap  : Wide_Wide_String := " ") return Document
    is
-      pragma Unreferenced (Gap);
       Index : Document_Index;
    begin
-      Self.Printer.New_Line (Index);
+      Self.Printer.New_Line (Index, League.Strings.To_Universal_String (Gap));
       Self.Printer.Concat (Self.Index, Index, Index);
       return (Self.Printer, Index);
    end New_Line;
@@ -304,10 +301,9 @@ package body League.Pretty_Printers is
      (Self : in out Document;
       Gap  : Wide_Wide_String := " ")
    is
-      pragma Unreferenced (Gap);
       Index : Document_Index;
    begin
-      Self.Printer.New_Line (Index);
+      Self.Printer.New_Line (Index, League.Strings.To_Universal_String (Gap));
       Self.Printer.Concat (Self.Index, Index, Self.Index);
    end New_Line;
 

@@ -150,7 +150,7 @@ private
          when Empty_Output =>
             null;
          when New_Line_Output =>
-            Force : Boolean;
+            Gap  : League.Strings.Universal_String;
          when Text_Output =>
             Text : League.Strings.Universal_String;
          when Nest_Output =>
@@ -202,7 +202,7 @@ private
    procedure New_Line
      (Self   : in out Printer;
       Result : out Document_Index;
-      Force  : Boolean := False);
+      Gap    : League.Strings.Universal_String);
 
    procedure Nil
      (Self   : in out Printer;
