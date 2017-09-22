@@ -235,9 +235,6 @@ package WebAPI.DOM.Elements is
 --    void scrollBy(unrestricted double x
 --  , unrestricted double y
 --  );
---    attribute unrestricted double scrollTop;
---    attribute unrestricted double scrollLeft;
---  };
 
    not overriding function Get_Bounding_Client_Rect
     (Self : not null access constant Element)
@@ -259,6 +256,20 @@ package WebAPI.DOM.Elements is
          with Import     => True,
               Convention => JavaScript_Property_Getter,
               Link_Name  => "scrollHeight";
+
+   not overriding function Get_Scroll_Top
+    (Self : not null access constant Element)
+       return DOM_Double is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "scrollTop";
+
+   not overriding function Get_Scroll_Left
+    (Self : not null access constant Element)
+       return DOM_Double is abstract
+         with Import     => True,
+              Convention => JavaScript_Property_Getter,
+              Link_Name  => "scrollLeft";
 
    not overriding function Get_Client_Top
     (Self : not null access constant Element)
