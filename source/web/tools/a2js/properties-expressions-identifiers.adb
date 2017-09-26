@@ -162,8 +162,6 @@ package body Properties.Expressions.Identifiers is
       Element : Asis.Declaration;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_String;
-
       Decl : Asis.Declaration :=
         Asis.Expressions.Corresponding_Name_Declaration (Element);
       Decl_Kind : Asis.Declaration_Kinds :=
