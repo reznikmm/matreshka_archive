@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -51,6 +51,7 @@
 --
 
 with League.Strings;
+with League.String_Vectors;
 private with Ada.Containers.Vectors;
 private with Ada.Containers.Hashed_Maps;
 
@@ -130,7 +131,8 @@ package League.Pretty_Printers is
    function Pretty
      (Self   : in out Printer;
       Width  : Positive;
-      Input  : Document'Class) return League.Strings.Universal_String;
+      Input  : Document'Class)
+        return League.String_Vectors.Universal_String_Vector;
    --  Convert Input document to string with given prefered line Width
 
 private

@@ -2,6 +2,9 @@ os:
   - osx
   - linux
 
+services:
+  - docker
+
 language: generic
 
 before_install:
@@ -13,12 +16,3 @@ script:
 notifications:
   irc: "irc.rusnet.org.ru#ada"
 
-services:
-  - docker
-
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
-    - os: osx

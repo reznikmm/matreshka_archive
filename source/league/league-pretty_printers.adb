@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -325,7 +325,8 @@ package body League.Pretty_Printers is
    function Pretty
      (Self   : in out Printer;
       Width  : Positive;
-      Input  : Document'Class) return League.Strings.Universal_String
+      Input  : Document'Class)
+        return League.String_Vectors.Universal_String_Vector
    is
       package Formatted_Documents is
 
@@ -340,9 +341,17 @@ package body League.Pretty_Printers is
             Next : aliased Document;
          end record;
 
+         type Text_Collector is record
+            Lines     : League.String_Vectors.Universal_String_Vector;
+            Last      : League.Strings.Universal_String;
+            Last_Used : Boolean := False;
+         end record;
+
+         procedure Append_Last_Line (Result : in out Text_Collector);
+
          not overriding procedure Append
            (Self   : Item;
-            Result : in out League.Strings.Universal_String) is abstract;
+            Result : in out Text_Collector) is abstract;
          --  Append text representation of given item to Result
 
          type Text_Item is new Item with record
@@ -351,7 +360,7 @@ package body League.Pretty_Printers is
 
          overriding procedure Append
            (Self   : Text_Item;
-            Result : in out League.Strings.Universal_String);
+            Result : in out Text_Collector);
 
          type Line_Item is new Item with record
             Indent : Natural;
@@ -359,7 +368,7 @@ package body League.Pretty_Printers is
 
          overriding procedure Append
            (Self   : Line_Item;
-            Result : in out League.Strings.Universal_String);
+            Result : in out Text_Collector);
 
          type Pair;
          type Pair_Access is access all Pair;
@@ -379,8 +388,8 @@ package body League.Pretty_Printers is
            (Offset : Natural;
             List   : not null Pair_Access) return Document;
 
-         function Layout
-           (Input : Document) return League.Strings.Universal_String;
+         function Layout (Input : Document)
+           return League.String_Vectors.Universal_String_Vector;
 
       end Formatted_Documents;
 
@@ -400,9 +409,10 @@ package body League.Pretty_Printers is
 
          overriding procedure Append
            (Self   : Text_Item;
-            Result : in out League.Strings.Universal_String) is
+            Result : in out Text_Collector) is
          begin
-            Result.Append (Self.Text);
+            Result.Last.Append (Self.Text);
+            Result.Last_Used := True;
          end Append;
 
          ------------
@@ -411,15 +421,31 @@ package body League.Pretty_Printers is
 
          overriding procedure Append
            (Self   : Line_Item;
-            Result : in out League.Strings.Universal_String)
+            Result : in out Text_Collector)
          is
-            NL    : constant Wide_Wide_Character :=
-              Wide_Wide_Character'Val (10);
             Space : constant Wide_Wide_String := (1 .. Self.Indent => ' ');
          begin
-            Result.Append (NL);
-            Result.Append (Space);
+            Append_Last_Line (Result);
+            Result.Last.Append (Space);
          end Append;
+
+         ----------------------
+         -- Append_Last_Line --
+         ----------------------
+
+         procedure Append_Last_Line (Result : in out Text_Collector) is
+         begin
+            if not Result.Last_Used then
+               Result.Last_Used := True;
+            elsif Result.Last.Count (' ') = Result.Last.Length then
+               --  if line with spaces only, output an empty line
+               Result.Last.Clear;
+               Result.Lines.Append (Result.Last);
+            else
+               Result.Lines.Append (Result.Last);
+               Result.Last.Clear;
+            end if;
+         end Append_Last_Line;
 
          ----------
          -- Best --
@@ -618,18 +644,20 @@ package body League.Pretty_Printers is
          -- Layout --
          ------------
 
-         function Layout
-           (Input  : Document) return League.Strings.Universal_String
+         function Layout (Input : Document)
+           return League.String_Vectors.Universal_String_Vector
          is
             Next   : Document := Input;
-            Result : League.Strings.Universal_String;
+            Result : Text_Collector;
          begin
             while Next /= null loop
                Next.Append (Result);
                Next := Next.Next;
             end loop;
 
-            return Result;
+            Append_Last_Line (Result);
+
+            return Result.Lines;
          end Layout;
 
          --------------
