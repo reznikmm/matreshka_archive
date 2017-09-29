@@ -121,9 +121,9 @@ package body Matreshka.Servlet_Servers.AWS_Servers is
       --  Upload_Directory is required to process files in POST parameters.
       Read_Setting (Config, Settings, "log_file_directory", ".");
  
+      AWS.Server.Start (Server, Request_Callback'Access, Config);
       AWS.Server.Log.Start (Server);
       AWS.Server.Log.Start_Error (Server);
-      AWS.Server.Start (Server, Request_Callback'Access, Config);
 
       AWS.Net.WebSocket.Registry.Register_Pattern
         ("/.*", WebSocket_Callback'Access);
