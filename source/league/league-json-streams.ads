@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -63,6 +63,10 @@ package League.JSON.Streams is
    procedure Start_Array (Self : not null access JSON_Stream'Class);
 
    procedure End_Array (Self : not null access JSON_Stream'Class);
+
+   function End_Of_Array
+    (Self : not null access JSON_Stream'Class) return Boolean;
+   --  Returns True when there are no array elements to be read.
 
    procedure Key
     (Self : not null access JSON_Stream'Class;

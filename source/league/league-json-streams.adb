@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -74,6 +74,20 @@ package body League.JSON.Streams is
    ----------------
 
    procedure End_Object (Self : not null access JSON_Stream'Class) renames Pop;
+
+   ------------------
+   -- End_Of_Array --
+   ------------------
+
+   function End_Of_Array
+    (Self : not null access JSON_Stream'Class) return Boolean is
+   begin
+      return
+       (case Self.Current.Kind is
+          when Array_State =>
+            Self.Current.Index > Self.Current.Current_Array.Length,
+          when Object_State => True);
+   end End_Of_Array;
 
    -----------------------
    -- Get_JSON_Document --
