@@ -32,8 +32,9 @@ function linux_before_install()
 
 function linux_script()
 {
-    docker run -i -t --user=max matreshka /bin/bash -c \
-           'su -c "rpmbuild -bb /src/matreshka.spec" max'
+    mkdir $HOME/upload
+    docker run -i -t -v$HOME/upload:/upload --user=max matreshka /bin/bash -c \
+           'rpmbuild -bb /src/matreshka.spec --define "_rpmdir /upload"'
 
 }
 

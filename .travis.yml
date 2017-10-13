@@ -16,3 +16,11 @@ script:
 notifications:
   irc: "irc.rusnet.org.ru#ada"
 
+deploy:
+  skip_cleanup: true
+  on:
+    condition: "$TRAVIS_OS_NAME = linux"
+  provider: bintray
+  file: packages/travis/bintray.json
+  user: reznikmm
+  key: 856f6dfa9b5699630f5bab3bd1f14f33bb9ecd50
