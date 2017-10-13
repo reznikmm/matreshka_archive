@@ -397,7 +397,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %{summary}
 
 %prep 
-%setup -q -n %{name}
+%setup -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
 %if !%{with_uaflex}
 %patch1 -p1

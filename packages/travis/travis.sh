@@ -25,8 +25,10 @@ function osx_script()
 function linux_before_install()
 {
     cp -r packages/travis /tmp/
-    tar --exclude=.svn --exclude=.objs --exclude=.libs --exclude=design \
-        '--transform=s/^/matreshka\//' -c -z -f /tmp/travis/matreshka.tar.gz .
+    cd ..
+    tar --exclude=.svn --exclude=design \
+        -c -z -f /tmp/travis/matreshka.tar.gz matreshka
+    tar tzvf /tmp/travis/matreshka.tar.gz | head -n 300
     docker build --tag matreshka /tmp/travis/
 }
 
