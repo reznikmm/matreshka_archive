@@ -1,18 +1,18 @@
 {
     "package": {
-        "name": "matreshka",
+        "subject": "reznikmm",
         "repo": "matreshka",
-        "subject": "matreshka",
-        "desc": "I was pushed completely automatically",
+        "name": "matreshka",
+        "desc": "I was pushed completely automatically by travis CI",
+        "labels": ["ada"],
+        "licenses": ["BSD-3"],
+        "vcs_url": "https://github.com/reznikmm/matreshka.git",
         "website_url": "www.jfrog.com",
         "issue_tracker_url": "https://forge.ada-ru.org/matreshka",
-        "vcs_url": "https://github.com/reznikmm/matreshka.git",
+        "github_repo": "reznikmm/matreshka",
         "github_use_tag_release_notes": false,
-        "github_release_notes_file": "RELEASE.txt",
-        "licenses": ["BSD-3"],
-        "labels": ["ada"],
-        "public_download_numbers": false,
-        "public_stats": false
+        "public_download_numbers": true,
+        "public_stats": true
     },
 
     "version": {
