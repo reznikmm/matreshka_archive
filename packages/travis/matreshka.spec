@@ -1,5 +1,6 @@
 %undefine _hardened_build
 %global with_uaflex_debug 0
+%global with_amf 0
 %define _gprdir %_GNAT_project_dir
 
 Name:       matreshka
@@ -232,6 +233,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %description xml-devel
 %{summary}
 
+%if !%{with_amf}
 %package amf
 Summary:    Implementation of OMG's Meta Object Facility (MOF)
 License:    BSD
@@ -307,7 +309,6 @@ Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
 %description amf-utp
 %{summary}
 
-
 %package amf-utp-devel
 Summary:    Devel package for Matreshka-uml
 License:    BSD
@@ -346,7 +347,6 @@ Requires:   %{name}-amf%{?_isa} = %{version}-%{release}
 %description amf-mofext
 %{summary}
 
-
 %package amf-mofext-devel
 Summary:    Devel package for Matreshka-amf-mofext
 License:    BSD
@@ -356,6 +356,7 @@ Requires:   fedora-gnat-project-common  >= 2
 
 %description amf-mofext-devel
 %{summary}
+%endif
 
 %package spikedog-api-lib
 Summary:    Web-application server to execute Ada applications (api library)
@@ -589,6 +590,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_gprdir}/%{name}_xml.gpr
 %{_gprdir}/manifests/xml
 
+%if !%{with_amf}
 %files amf
 %dir %{_libdir}/%{name}/sql_amf
 %{_libdir}/%{name}/sql_amf/libmatreshka-amf-%{rtl_version}.so.%{version}
@@ -667,6 +669,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/sql_amf_mofext/*.ali
 %{_gprdir}/%{name}_amf_mofext.gpr
 %{_gprdir}/manifests/sql_amf_mofext
+%endif
 
 %files spikedog-api-devel
 %{_includedir}/%{name}/spikedog_api
