@@ -1,5 +1,6 @@
 FROM fedora
 RUN dnf --assumeyes install rpmdevtools && \
+    dnf --assumeyes install aws-devel && \
     dnf --assumeyes install mariadb-devel && \
     dnf --assumeyes install 'dnf-command(builddep)'
 COPY * /src/

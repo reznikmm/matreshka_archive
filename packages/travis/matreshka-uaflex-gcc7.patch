@@ -2,34 +2,13 @@ diff --git a/Makefile.build b/Makefile.build
 index b40d399..6c230f5 100644
 --- a/Makefile.build
 +++ b/Makefile.build
-@@ -6,7 +6,7 @@ endif
- GPRBUILD_FLAGS = -p $(SMP_MFLAGS)
- 
- ALL_TARGETS = league xml fastcgi servlet spikedog-api spikedog-core soap wsse\
--               wsdl2ada sql uaflex
-+               wsdl2ada sql 
- 
- ifdef HAS_ASIS
- ALL_TARGETS += a2js
-@@ -127,8 +127,5 @@ ocl: league xml amf uml
- utp: league xml amf uml
+@@ -128,6 +128,9 @@
  	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_amf_utp.gpr
  
--uaflex: league
--	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_uaflex.gpr
--
+ uaflex: league
++        # Disable debug information for the file due to gcc 7 bug
++	$(GPRBUILD) $(GPRBUILD_FLAGS) -f -c -g0 -Pgnat/matreshka_uaflex.gpr \
++          source/uaflex/matreshka-internals-finite_automatons.adb
+ 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_uaflex.gpr
+ 
  # Disable parallel build, it is handled by gnatmake/gprbuild
- .NOTPARALLEL:
-diff --git a/Makefile.install b/Makefile.install
-index 7e7224e..62a5ce0 100644
---- a/Makefile.install
-+++ b/Makefile.install
-@@ -32,7 +32,7 @@ EXEEXT = .exe
- endif
- 
- INSTALL_TARGETS = league cldr_data xml fastcgi servlet spikedog-api \
--                  spikedog-core soap wsse wsdl2ada sql uaflex
-+                  spikedog-core soap wsse wsdl2ada sql 
- 
- ifdef HAS_ASIS
- INSTALL_TARGETS += a2js a2js-webapi

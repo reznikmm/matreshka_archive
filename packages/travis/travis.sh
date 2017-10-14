@@ -28,7 +28,6 @@ function linux_before_install()
     cd ..
     tar --exclude=.svn --exclude=design \
         -c -z -f /tmp/travis/matreshka.tar.gz matreshka
-    tar tzvf /tmp/travis/matreshka.tar.gz | head -n 300
     docker build --tag matreshka /tmp/travis/
 }
 

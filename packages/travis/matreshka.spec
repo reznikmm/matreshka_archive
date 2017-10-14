@@ -1,5 +1,5 @@
 %undefine _hardened_build
-%global with_uaflex 0
+%global with_uaflex_debug 0
 %define _gprdir %_GNAT_project_dir
 
 Name:       matreshka
@@ -11,7 +11,7 @@ License:    BSD
 URL:        http://forge.ada-ru.org/matreshka
 ### Direct download is not availeble
 Source0:    matreshka.tar.gz
-%if !%{with_uaflex}
+%if !%{with_uaflex_debug}
 Patch1:     %{name}-uaflex-gcc7.patch
 %endif
 Patch2:     %{name}-gprinstall.patch
@@ -19,7 +19,7 @@ BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3 
 BuildRequires:   chrpath
 BuildRequires:   gprbuild valgrind
-BuildRequires:   postgresql-devel sqlite-devel
+BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
 
 # gprbuild only available on these:
 ExclusiveArch: %GPRbuild_arches
@@ -182,6 +182,26 @@ Requires:   fedora-gnat-project-common  >= 2
 %description sql-postgresql-devel
 %{summary}
 
+%package sql-mysql
+Summary:    mysql bindings for Ada
+License:    BSD
+Group:      System Environment/Libraries
+Requires:   %{name}%{?_isa}  = %{version}-%{release}
+Requires:   %{name}-sql-core%{?_isa}  = %{version}-%{release}
+
+%description sql-mysql
+%{summary}
+
+%package sql-mysql-devel
+Summary:    Devel package for Matreshka-sql-mysql
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-sql-mysql%{?_isa} = %{version}-%{release}
+Requires:   %{name}-sql-core-devel%{?_isa}  = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description sql-mysql-devel
+%{summary}
 
 %package xml
 Summary:    Manipulate with XML streams and document
@@ -399,7 +419,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %prep 
 %setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
-%if !%{with_uaflex}
+%if !%{with_uaflex_debug}
 %patch1 -p1
 %endif
 %patch2 -p1
@@ -440,15 +460,16 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %post   sql-postgresql  -p /sbin/ldconfig
 %postun sql-postgresql  -p /sbin/ldconfig
 
+%post   sql-mysql  -p /sbin/ldconfig
+%postun sql-mysql  -p /sbin/ldconfig
+
 %files
 %doc CONTRIBUTORS  LICENSE
 %dir %{_libdir}/%{name}/league
 %{_libdir}/%{name}/league/libleague-%{rtl_version}.so.%{version}
 %{_libdir}/libleague-%{rtl_version}.so.%{version}
 %{_datadir}/%{name}/cldr
-%if %{with_uaflex}
 %{_bindir}/uaflex
-%endif
 %dir %{_datadir}/%{name}
 
 %files devel
@@ -526,8 +547,8 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/sql_sqlite3/libmatreshka-sql-sqlite3-%{rtl_version}.so
 %{_libdir}/libmatreshka-sql-sqlite3-%{rtl_version}.so
 %{_libdir}/%{name}/sql_sqlite3/*.ali
-%{_gprdir}/%{name}_sql_postgresql.gpr
-%{_gprdir}/manifests/sql_postgresql
+%{_gprdir}/%{name}_sql_sqlite3.gpr
+%{_gprdir}/manifests/sql_sqlite3
 
 %files sql-postgresql
 %dir %{_libdir}/%{name}/sql_postgresql
@@ -539,8 +560,21 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/sql_postgresql/libmatreshka-sql-postgresql-%{rtl_version}.so
 %{_libdir}/libmatreshka-sql-postgresql-%{rtl_version}.so
 %{_libdir}/%{name}/sql_postgresql/*.ali
-%{_gprdir}/%{name}_sql_sqlite3.gpr
-%{_gprdir}/manifests/sql_sqlite3
+%{_gprdir}/%{name}_sql_postgresql.gpr
+%{_gprdir}/manifests/sql_postgresql
+
+%files sql-mysql
+%dir %{_libdir}/%{name}/sql_mysql
+%{_libdir}/%{name}/sql_mysql/libmatreshka-sql-mysql-%{rtl_version}.so.%{version}
+%{_libdir}/libmatreshka-sql-mysql-%{rtl_version}.so.%{version}
+
+%files sql-mysql-devel
+%{_includedir}/%{name}/sql_mysql
+%{_libdir}/%{name}/sql_mysql/libmatreshka-sql-mysql-%{rtl_version}.so
+%{_libdir}/libmatreshka-sql-mysql-%{rtl_version}.so
+%{_libdir}/%{name}/sql_mysql/*.ali
+%{_gprdir}/%{name}_sql_mysql.gpr
+%{_gprdir}/manifests/sql_mysql
 
 %files xml
 %dir %{_libdir}/%{name}/xml/
