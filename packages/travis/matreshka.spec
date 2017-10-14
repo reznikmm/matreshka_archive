@@ -233,7 +233,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %description xml-devel
 %{summary}
 
-%if !%{with_amf}
+%if %{with_amf}
 %package amf
 Summary:    Implementation of OMG's Meta Object Facility (MOF)
 License:    BSD
@@ -594,7 +594,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_gprdir}/%{name}_xml.gpr
 %{_gprdir}/manifests/xml
 
-%if !%{with_amf}
+%if %{with_amf}
 %files amf
 %dir %{_libdir}/%{name}/sql_amf
 %{_libdir}/%{name}/sql_amf/libmatreshka-amf-%{rtl_version}.so.%{version}
