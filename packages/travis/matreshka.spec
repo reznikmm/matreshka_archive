@@ -427,7 +427,11 @@ Requires:   fedora-gnat-project-common  >= 2
 
 %build
 make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
+%if %{with_amf}
 %configure
+%else
+%configure --without-amf
+%endif
 make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 
 %check 
