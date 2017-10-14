@@ -5,7 +5,7 @@
         "name": "matreshka",
         "desc": "I was pushed completely automatically by travis CI",
         "labels": ["ada"],
-        "licenses": ["BSD-3"],
+        "licenses": ["BSD 3-Clause"],
         "vcs_url": "https://github.com/reznikmm/matreshka.git",
         "website_url": "www.jfrog.com",
         "issue_tracker_url": "https://forge.ada-ru.org/matreshka",
