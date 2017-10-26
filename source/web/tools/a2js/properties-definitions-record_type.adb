@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -80,16 +80,15 @@ package body Properties.Definitions.Record_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type Asis.Type_Kinds;
-
-      Decl : constant Asis.Declaration :=
+      Decl           : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
 
       Is_Typed_Array : constant Boolean :=
         Properties.Tools.Is_Typed_Array (Decl);
 
-      Result     : League.Strings.Universal_String;
-      Size       : League.Strings.Universal_String;
+      Result         : League.Strings.Universal_String;
+      Size           : League.Strings.Universal_String;
+
    begin
       Result.Append ("(function (){");  --  Wrapper
       Result.Append ("var _result =  function (");  --  Type constructor

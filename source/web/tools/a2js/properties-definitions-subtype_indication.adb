@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -106,8 +106,6 @@ package body Properties.Definitions.Subtype_Indication is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      use type League.Strings.Universal_String;
-
       Text : League.Strings.Universal_String;
       Mark : constant Asis.Definition :=
         Asis.Definitions.Subtype_Mark (Element);
@@ -115,6 +113,7 @@ package body Properties.Definitions.Subtype_Indication is
         Engine.Boolean.Get_Property (Element, Engines.Is_Simple_Type);
       Constr : constant Asis.Definition :=
         Asis.Definitions.Subtype_Constraint (Element);
+
    begin
       if Is_Simple then
          Text := Engine.Text.Get_Property (Mark, Name);

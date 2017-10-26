@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -71,13 +71,11 @@ package body Engines.Contexts is
          end if;
 
          declare
-            use type League.Strings.Universal_String;
-
             Result : League.Strings.Universal_String :=
               League.Strings.To_Universal_String (Prefix);
-
-            Image : constant Wide_Wide_String :=
+            Image  : constant Wide_Wide_String :=
               Positive'Wide_Wide_Image (Value);
+
          begin
             Result.Append (Image (2 .. Image'Last));
 
