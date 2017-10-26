@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -304,21 +304,32 @@ package body Matreshka.Servlet_AWS_Requests is
     (Self : in out AWS_Servlet_Request'Class;
      Data : AWS.Status.Data)
    is
+      use type League.String_Vectors.Universal_String_Vector;
+
       Headers   : constant AWS.Headers.List := AWS.Status.Header (Data);
       AWS_URI   : constant AWS.URL.Object := AWS.Status.URI (Data);
       Protocol  : constant String := AWS.URL.Protocol_Name (AWS_URI);
-      Path      : constant League.String_Vectors.Universal_String_Vector
+      URI_Text  : constant String := AWS.Status.URI (Data);
+      Path      : League.String_Vectors.Universal_String_Vector
         := League.Strings.From_UTF_8_String
-            (AWS.Status.URI (Data)).Split ('/', League.Strings.Skip_Empty);
+            (URI_Text).Split ('/', League.Strings.Skip_Empty);
       --  XXX HTTP protocol uses some protocol specific escaping sequnces, they
       --  should be handled here.
-      --  XXX Use of UTF-9 to encode URI by AWS should be checked.
+      --  XXX Use of UTF-8 to encode URI by AWS should be checked.
       Host      : League.Strings.Universal_String;
       Delimiter : Natural;
 
       URL       : League.IRIs.IRI;
 
    begin
+      --  Add empty string at the end of constructed path when URI text ends
+      --  with '/' character to distinguish requests of directory or its
+      --  contents.
+
+      if URI_Text (URI_Text'Last) = '/' then
+         Path.Append (League.Strings.Empty_Universal_String);
+      end if;
+
       --  Reconstruct request's URL.
 
       URL.Set_Scheme (League.Strings.From_UTF_8_String (Protocol));
