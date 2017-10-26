@@ -82,6 +82,16 @@ package body Matreshka.Servlet_HTTP_Requests is
       return Path.Slice (Self.Servlet_Last + 1, Path.Length);
    end Get_Path_Info;
 
+   ---------------------
+   -- Get_Request_URL --
+   ---------------------
+
+   overriding function Get_Request_URL
+    (Self : Abstract_HTTP_Servlet_Request) return League.IRIs.IRI is
+   begin
+      return Self.URL;
+   end Get_Request_URL;
+
    ------------------------------
    -- Get_Requested_Session_Id --
    ------------------------------

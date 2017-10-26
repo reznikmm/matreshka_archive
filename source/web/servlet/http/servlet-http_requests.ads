@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@
 --  The servlet container creates an HttpServletRequest object and passes it as
 --  an argument to the servlet's service methods (doGet, doPost, etc).
 ------------------------------------------------------------------------------
+with League.IRIs;
 with League.String_Vectors;
 with League.Strings;
 
@@ -137,6 +138,19 @@ package Servlet.HTTP_Requests is
    --  This method returns null if there was no extra path information.
    --
    --  Same as the value of the CGI variable PATH_INFO.
+
+   not overriding function Get_Request_URL
+    (Self : HTTP_Servlet_Request) return League.IRIs.IRI is abstract;
+   --  Returns the URL the client used to make the request. The returned URL
+   --  contains a protocol, server name, port number, and server path, but it
+   --  does not include query string parameters.
+   --
+   --  If this request has been forwarded using RequestDispatcher.forward
+   --  (ServletRequest, ServletResponse), the server path in the reconstructed
+   --  URL must reflect the path used to obtain the RequestDispatcher, and not
+   --  the server path specified by the client.
+   --
+   --  This method is useful for creating redirect messages and for reporting errors.
 
    not overriding function Get_Requested_Session_Id
     (Self : HTTP_Servlet_Request)

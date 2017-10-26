@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -113,6 +113,17 @@ package Matreshka.Servlet_HTTP_Requests is
    --  sent when it made this request. The extra path information follows the
    --  servlet path but precedes the query string and will start with a "/"
    --  character.
+
+   overriding function Get_Request_URL
+    (Self : Abstract_HTTP_Servlet_Request) return League.IRIs.IRI;
+   --  Returns the URL the client used to make the request. The returned URL
+   --  contains a protocol, server name, port number, and server path, but it
+   --  does not include query string parameters.
+   --
+   --  If this request has been forwarded using RequestDispatcher.forward
+   --  (ServletRequest, ServletResponse), the server path in the reconstructed
+   --  URL must reflect the path used to obtain the RequestDispatcher, and not
+   --  the server path specified by the client.
 
    overriding function Get_Requested_Session_Id
     (Self : Abstract_HTTP_Servlet_Request)
