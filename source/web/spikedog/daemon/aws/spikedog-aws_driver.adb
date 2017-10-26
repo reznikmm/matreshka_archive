@@ -41,24 +41,34 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Exceptions;
+with Ada.Text_IO;
+
 with AWS.Server;
 
-with League.Application;
 with League.Strings;
 
 with Servlet.Application;
 
 procedure Spikedog.AWS_Driver is
 begin
-   Servlet.Application.Initialize
-    (Application_Name =>
-       League.Strings.To_Universal_String ("Spikedog Application Server"),
-     Application_Version =>
-       League.Strings.To_Universal_String ("0.1"),
-     Organization_Name =>
-       League.Strings.To_Universal_String ("Matreshka Project"),
-     Organization_Domain =>
-       League.Strings.To_Universal_String ("forge.ada-ru.org"));
+   begin
+      Servlet.Application.Initialize
+       (Application_Name =>
+          League.Strings.To_Universal_String ("Spikedog Application Server"),
+        Application_Version =>
+          League.Strings.To_Universal_String ("0.1"),
+        Organization_Name =>
+          League.Strings.To_Universal_String ("Matreshka Project"),
+        Organization_Domain =>
+          League.Strings.To_Universal_String ("forge.ada-ru.org"));
+
+   exception
+      when E : others =>
+         Ada.Text_IO.Put_Line
+          (Ada.Text_IO.Standard_Error,
+           Ada.Exceptions.Exception_Information (E));
+   end;
 
    --  Wait till built-in HTTP server is running.
 
