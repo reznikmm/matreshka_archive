@@ -269,7 +269,6 @@ package body Matreshka.Servlet_Dispatchers is
             Servlet := Self.Default_Servlet;
             Servlet_Found := True;
          end if;
-
       end if;
 
       --  Set indices of last segment of context and servlet paths.
