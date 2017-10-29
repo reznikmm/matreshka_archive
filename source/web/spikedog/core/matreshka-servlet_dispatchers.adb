@@ -120,7 +120,7 @@ package body Matreshka.Servlet_Dispatchers is
               := (if Is_Pattern
                     then URL_Pattern.Head (URL_Pattern.Length - 2)
                     else URL_Pattern);
-            Path       : constant League.String_Vectors.Universal_String_Vector
+            Path       : League.String_Vectors.Universal_String_Vector
               := URL.Split ('/', League.Strings.Skip_Empty);
             Index      : Positive          := 1;
             Current    : Dispatcher_Access;
@@ -129,6 +129,10 @@ package body Matreshka.Servlet_Dispatchers is
             Position   : Dispatcher_Maps.Cursor;
 
          begin
+            if URL_Pattern.Ends_With (Solidus) then
+               Path.Append (League.Strings.Empty_Universal_String);
+            end if;
+
             loop
                Position :=
                  Segment_Dispatcher'Class
