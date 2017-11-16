@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -45,13 +45,16 @@ package UAFLEX.Lexer_Types is
    pragma Preelaborate;
 
    type State is mod +85;
-   subtype Valid_State is State range 0 .. State'Last - 1;
+   subtype Looping_State is State range 0 .. 72;
+   subtype Final_State is State range 28 .. State'Last - 1;
+
+   Error_State : constant State := State'Last;
 
    DEF : constant State := 0;
-   INITIAL : constant State := 4;
-   INRULE : constant State := 19;
-   NAMELIST : constant State := 25;
-   SECT2 : constant State := 29;
+   INITIAL : constant State := 1;
+   INRULE : constant State := 10;
+   NAMELIST : constant State := 13;
+   SECT2 : constant State := 14;
 
    type Character_Class is mod +20;
 

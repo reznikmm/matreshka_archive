@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -78,21 +78,20 @@ package body UAFLEX.Generator.Tables is
    package Second_Stage_Array_Maps is new Ada.Containers.Ordered_Maps
      (Second_Stage_Array, Natural);
 
-   procedure Split_To_Distinct
-     (List   : Char_Set_Vectors.Vector;
-      Result : out Char_Set_Vectors.Vector);
-
    --------
    -- Go --
    --------
 
    procedure Go
-     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
-      Unit    : League.Strings.Universal_String;
-      File    : String;
-      Types   : League.Strings.Universal_String;
-      Scanner : League.Strings.Universal_String;
-      Classes : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
+     (DFA            : Matreshka.Internals.Finite_Automatons.DFA;
+      Dead_End_Map   : State_Map;
+      First_Dead_End : Matreshka.Internals.Finite_Automatons.State;
+      First_Final    : Matreshka.Internals.Finite_Automatons.State;
+      Unit           : League.Strings.Universal_String;
+      File           : String;
+      Types          : League.Strings.Universal_String;
+      Scanner        : League.Strings.Universal_String;
+      Classes        : Matreshka.Internals.Finite_Automatons.Vectors.Vector)
    is
       pragma Unreferenced (Types);
       procedure P (Text : Wide_Wide_String);
@@ -266,25 +265,27 @@ package body UAFLEX.Generator.Tables is
                N (", ");
             end if;
 
-            N (Image (Natural (State_Maps.Key (Cursor)) - 1) &
+            N (Image (Natural (Dead_End_Map (State_Maps.Key (Cursor))) - 1) &
                  " => " & Image (State_Maps.Element (Cursor)));
 
             Count := Count + 1;
          end Each_Rule;
       begin
-         P ("   Rule_Table : constant array (State range 0 .. " &
-              Image (Positive (DFA.Graph.Node_Count - 1)) &
+         P ("   Rule_Table : constant array (State range " &
+              Image (Positive (First_Final) - 1) & " .. " &
+              Image (Positive (DFA.Graph.Node_Count) - 1) &
               ") of Rule_Index :=");
          DFA.Final.Iterate (Each_Rule'Access);
-         P (", others => 0);");
+         P (");");
          P ("");
       end Print_Rules;
 
       procedure Print_Switch is
+         First : Boolean := True;
       begin
          P ("   Switch_Table : constant array " &
               "(State range 0 .. " &
-              Image (Positive (DFA.Graph.Node_Count - 1)) & ",");
+              Image (Positive (First_Dead_End) - 2) & ",");
 
          P ("                                  Character_Class range 0 .. " &
               Image (Positive (Classes.Length)) &
@@ -303,49 +304,53 @@ package body UAFLEX.Generator.Tables is
                L : constant Matreshka.Internals.Graphs.Edge_List_Length :=
                  Item.Last_Edge_Index;
             begin
-               if J = 1 then
-                  N ("     (");
-               else
-                  P (",");
-                  N ("      ");
-               end if;
-
-               P (Image (Positive (J) - 1) & " =>");
-
-               for K in F .. L loop
-                  Edge := DFA.Graph.Get_Edge (K);
-
-                  if K = F then
-                     N ("        (");
+               if Dead_End_Map (J) < First_Dead_End then
+                  if First then
+                     N ("     (");
+                     First := False;
                   else
-                     N (" ");
+                     P (",");
+                     N ("      ");
                   end if;
 
-                  Print_Classes (Edge.Edge_Id, Count);
+                  P (Image (Positive (Dead_End_Map (J)) - 1) & " =>");
 
-                  N (" =>");
-                  N (State'Wide_Wide_Image (Edge.Target_Node.Index - 1));
+                  for K in F .. L loop
+                     Edge := DFA.Graph.Get_Edge (K);
 
-                  if K /= L then
-                     N (",");
+                     if K = F then
+                        N ("        (");
+                     else
+                        N (" ");
+                     end if;
+
+                     Print_Classes (Edge.Edge_Id, Count);
+
+                     N (" =>");
+                     N (State'Wide_Wide_Image
+                        (Dead_End_Map (Edge.Target_Node.Index) - 1));
+
+                     if K /= L then
+                        N (",");
+                     end if;
+                  end loop;
+
+                  if Count /= Positive (Classes.Length) + 1 then
+                     if Count = 0 then
+                        N ("        (");
+                     elsif Length > 65 then
+                        P ("");
+                        N ("        , ");
+                     else
+                        N (", ");
+                     end if;
+
+                     N ("others =>" &
+                          State'Wide_Wide_Image (DFA.Graph.Node_Count));
                   end if;
-               end loop;
 
-               if Count /= Positive (Classes.Length) + 1 then
-                  if Count = 0 then
-                     N ("        (");
-                  elsif Length > 65 then
-                     P ("");
-                     N ("        , ");
-                  else
-                     N (", ");
-                  end if;
-
-                  N ("others =>" &
-                       State'Wide_Wide_Image (DFA.Graph.Node_Count));
+                  N (")");
                end if;
-
-               N (")");
             end;
          end loop;
 
@@ -404,6 +409,51 @@ package body UAFLEX.Generator.Tables is
       P ("end " & Unit.To_Wide_Wide_String & ";");
    end Go;
 
+   ---------------------------
+   -- Remap_Final_Dead_Ends --
+   ---------------------------
+
+   procedure Map_Final_Dead_Ends
+     (DFA            : Matreshka.Internals.Finite_Automatons.DFA;
+      First_Dead_End : out Matreshka.Internals.Finite_Automatons.State;
+      First_Final    : out Matreshka.Internals.Finite_Automatons.State;
+      Dead_End_Map   : out State_Map)
+   is
+      Dead_End_Index : Matreshka.Internals.Finite_Automatons.State;
+      Final_Index    : Matreshka.Internals.Finite_Automatons.State;
+      Free_Index     : Matreshka.Internals.Finite_Automatons.State;
+   begin
+      First_Dead_End := Dead_End_Map'Last + 1;
+      First_Final := First_Dead_End;
+
+      for J in Dead_End_Map'Range loop
+         if DFA.Final.Contains (J) then
+            First_Final := First_Final - 1;
+
+            if DFA.Graph.Get_Node (J).Outgoing_Edges'Length = 0 then
+               First_Dead_End := First_Dead_End - 1;
+            end if;
+         end if;
+      end loop;
+
+      Dead_End_Index := First_Dead_End;
+      Final_Index    := First_Final;
+      Free_Index     := 1;
+
+      for J in Dead_End_Map'Range loop
+         if not DFA.Final.Contains (J) then
+            Dead_End_Map (J) := Free_Index;
+            Free_Index := Free_Index + 1;
+         elsif DFA.Graph.Get_Node (J).Outgoing_Edges'Length > 0 then
+            Dead_End_Map (J) := Final_Index;
+            Final_Index := Final_Index + 1;
+         else
+            Dead_End_Map (J) := Dead_End_Index;
+            Dead_End_Index := Dead_End_Index + 1;
+         end if;
+      end loop;
+   end Map_Final_Dead_Ends;
+
    -----------------------
    -- Split_To_Distinct --
    -----------------------
@@ -454,10 +504,13 @@ package body UAFLEX.Generator.Tables is
    -----------
 
    procedure Types
-     (DFA     : Matreshka.Internals.Finite_Automatons.DFA;
-      Unit    : League.Strings.Universal_String;
-      File    : String;
-      Classes : out Char_Set_Vectors.Vector)
+     (DFA            : Matreshka.Internals.Finite_Automatons.DFA;
+      Dead_End_Map   : State_Map;
+      First_Dead_End : Matreshka.Internals.Finite_Automatons.State;
+      First_Final    : Matreshka.Internals.Finite_Automatons.State;
+      Unit           : League.Strings.Universal_String;
+      File           : String;
+      Classes        : Char_Set_Vectors.Vector)
    is
       use type Ada.Containers.Count_Type;
 
@@ -465,7 +518,6 @@ package body UAFLEX.Generator.Tables is
       procedure Print_Start (Cursor : Start_Maps.Cursor);
 
       Output  : Ada.Wide_Wide_Text_IO.File_Type;
-
 
       procedure P (Text : Wide_Wide_String) is
       begin
@@ -477,13 +529,13 @@ package body UAFLEX.Generator.Tables is
       begin
          P ("   " & Start_Maps.Key (Cursor).To_Wide_Wide_String &
               " : constant State :=" &
-              State'Wide_Wide_Image (Start_Maps.Element (Cursor) - 1) &
+              State'Wide_Wide_Image
+              (Dead_End_Map (Start_Maps.Element (Cursor)) - 1) &
               ";");
       end Print_Start;
 
    begin
       Ada.Wide_Wide_Text_IO.Create (Output, Name => File);
-      Split_To_Distinct (DFA.Edge_Char_Set, Classes);
 
       --  Debug.Print_Character_Classes (Classes);
 
@@ -494,7 +546,13 @@ package body UAFLEX.Generator.Tables is
            Image (Positive (DFA.Graph.Node_Count + 1)) &
            ";");
 
-      P ("   subtype Valid_State is State range 0 .. State'Last - 1;");
+      P ("   subtype Looping_State is State range 0 .. " &
+           Image (Positive (First_Dead_End) - 2) & ";");
+      P ("   subtype Final_State is State range " &
+           Image (Positive (First_Final) - 1) &
+           " .. State'Last - 1;");
+      P ("");
+      P ("   Error_State : constant State := State'Last;");
       P ("");
       DFA.Start.Iterate (Print_Start'Access);
 

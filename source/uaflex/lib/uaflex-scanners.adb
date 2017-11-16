@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2012-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2012-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -154,11 +154,15 @@ package body UAFLEX.Scanners is
             if Char /= Error_Character then
                Current_State := Switch (Current_State, Char);
 
-               exit when Current_State = Error_State;
+               if Current_State not in Looping_State then
+                  if Current_State in Final_State then
+                     Self.Rule := Rule (Current_State);
+                     Self.To := Self.Next;
+                  end if;
 
-               Next_Rule := Rule (Current_State);
-
-               if Next_Rule /= 0 then
+                  exit;
+               elsif Current_State in Final_State then
+                  Next_Rule := Rule (Current_State);
                   Self.Rule := Next_Rule;
                   Self.To := Self.Next;
                end if;
@@ -171,14 +175,13 @@ package body UAFLEX.Scanners is
             end if;
          end loop;
 
+         Self.Next := Self.To;
+         Next;
+
          if Self.Rule = 0 then
-            Self.Next := Self.To + 1;
             Result := Parser_Tokens.Error;
             return;
          else
-            Self.Next := Self.To;
-            Next;
-
             On_Accept (Self.Handler, Self, Self.Rule, Result, Skip);
 
             if not Skip then

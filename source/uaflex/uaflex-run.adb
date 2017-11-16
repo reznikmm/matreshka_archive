@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2017, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -94,7 +94,6 @@ is
        renames League.Strings.To_Universal_String;
 
    DFA : Matreshka.Internals.Finite_Automatons.DFA_Constructor;
-
 
    ----------
    -- Each --
@@ -230,20 +229,35 @@ begin
    begin
       DFA.Complete (Output => X);
       Matreshka.Internals.Finite_Automatons.Minimize (X);
+      Generator.Tables.Split_To_Distinct (X.Edge_Char_Set, Classes);
 
-      Generator.Tables.Types
-        (X,
-         Types,
-         To_File_Name (Types, ".ads"),
-         Classes);
+      declare
+         Map   : Generator.Tables.State_Map (1 .. X.Graph.Node_Count);
+         Dead  : Matreshka.Internals.Finite_Automatons.State;
+         Final : Matreshka.Internals.Finite_Automatons.State;
+      begin
+         Generator.Tables.Map_Final_Dead_Ends (X, Dead, Final, Map);
 
-      Generator.Tables.Go
-        (X,
-         +"Tables",
-         To_File_Name (Scanner & ".Tables", ".adb"),
-         Types,
-         Scanner,
-         Classes);
+         Generator.Tables.Types
+           (X,
+            Map,
+            Dead,
+            Final,
+            Types,
+            To_File_Name (Types, ".ads"),
+            Classes);
+
+         Generator.Tables.Go
+           (X,
+            Map,
+            Dead,
+            Final,
+            +"Tables",
+            To_File_Name (Scanner & ".Tables", ".adb"),
+            Types,
+            Scanner,
+            Classes);
+      end;
    end;
 
    Generator.OOP_Handler.Go
