@@ -14,7 +14,7 @@ script:
   - packages/travis/travis.sh script
 
 notifications:
-  irc: "irc.rusnet.org.ru#ada"
+  irc: "irc.rusnet.org.ru#ada-commits"
 
 deploy:
   skip_cleanup: true

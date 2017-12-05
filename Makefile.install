@@ -40,6 +40,10 @@ endif
 
 ifdef HAS_AWS
 INSTALL_TARGETS += spikedog-aws
+
+ifeq ($(OPERATING_SYSTEM), Windows)
+INSTALL_TARGETS += spikedog-service
+endif
 endif
 
 ifdef ENABLE_AMF
@@ -254,6 +258,9 @@ endif
 endif
 	$(INSTALL) -d $(INSTALL_EXEC_DIR)
 	$(INSTALL) .objs/spikedog_awsd/spikedog_awsd$(EXEEXT) $(INSTALL_EXEC_DIR)/spikedog_awsd$(EXEEXT)
+
+spikedog-service:
+	$(INSTALL) .objs/spikedog_service/spikedog$(EXEEXT) $(INSTALL_EXEC_DIR)/spikedog$(EXEEXT)
 
 soap:
 ifdef HAS_GPRINSTALL

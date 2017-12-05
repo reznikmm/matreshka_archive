@@ -14,6 +14,10 @@ endif
 
 ifdef HAS_AWS
 ALL_TARGETS += spikedog-aws
+
+ifeq ($(OPERATING_SYSTEM), Windows)
+ALL_TARGETS += spikedog-service
+endif
 endif
 
 ifdef ENABLE_AMF
@@ -78,6 +82,9 @@ spikedog-core:
 spikedog-aws:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_aws.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_awsd.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
+
+spikedog-service:
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_service.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
 
 soap: league xml
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_soap.gpr
