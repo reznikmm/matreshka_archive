@@ -65,7 +65,8 @@ private
 
    type Service is new Services.Service with record
       AWS_Server : aliased Matreshka.Servlet_Servers.AWS_Servers.AWS_Server;
-      Container  : aliased Matreshka.Servlet_Containers.Servlet_Container;
+      Container  : Matreshka.Servlet_Containers.Servlet_Container_Access :=
+        new Matreshka.Servlet_Containers.Servlet_Container;
       Stop_Flag  : Semaphore;
       Application_Name : League.Strings.Universal_String :=
         League.Strings.To_Universal_String ("Spikedog Application Server");
