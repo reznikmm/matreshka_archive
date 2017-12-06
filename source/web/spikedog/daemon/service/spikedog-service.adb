@@ -137,7 +137,8 @@ package body Spikedog.Service is
          begin
             Ada.Text_IO.Create
               (File, Name => Temp.To_UTF_8_String & "\spikedog-raise.log");
-            Ada.Text_IO.Put_Line (Ada.Exceptions.Exception_Information (E));
+            Ada.Text_IO.Put_Line
+              (File, Ada.Exceptions.Exception_Information (E));
             Ada.Text_IO.Close (File);
             raise;
          end;
