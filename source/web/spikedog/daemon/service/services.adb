@@ -184,6 +184,9 @@ package body Services is
 
       Service.Listener.Set_Status (Start_Pending);
       Service.Run (Args, Service.Listener'Access);
+   exception
+      when others =>
+         Service.Listener.Set_Status (Stopped);
    end Service_Main;
 
    ----------------

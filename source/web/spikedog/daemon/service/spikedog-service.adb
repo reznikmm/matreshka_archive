@@ -41,8 +41,10 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
+with Ada.Command_Line;
+with Ada.Directories;
 with Ada.Text_IO;
+with Ada.Exceptions;
 
 with AWS.Server;
 
@@ -88,12 +90,16 @@ package body Spikedog.Service is
       Args   : League.String_Vectors.Universal_String_Vector;
       Status : Services.Status_Listener_Access)
    is
+      Exec : constant String := Ada.Command_Line.Command_Name;
+      Dir  : constant String := Ada.Directories.Containing_Directory (Exec);
       Temp : constant League.Strings.Universal_String :=
         League.Application.Environment.Value
           (League.Strings.To_Universal_String ("TEMP"));
+      --  This is usually C:|Windows\TEMP
       Server : Matreshka.Servlet_Servers.Server_Access;
       File   : Ada.Text_IO.File_Type;
    begin
+      Ada.Directories.Set_Directory (Dir);
       Status.Set_Status (Services.Running);
 
       League.Application.Set_Application_Name (Self.Application_Name);
@@ -105,7 +111,7 @@ package body Spikedog.Service is
         (League.Strings.To_Universal_String ("forge.ada-ru.org"));
 
       Ada.Text_IO.Create
-        (File, Name => Temp.To_UTF_8_String & "\spikedog,log");
+        (File, Name => Temp.To_UTF_8_String & "\spikedog.log");
       Ada.Text_IO.Put_Line (File, "Starting " & Args (1).To_UTF_8_String);
       Ada.Text_IO.Flush (File);
       Ada.Text_IO.Set_Output (File);
@@ -124,6 +130,17 @@ package body Spikedog.Service is
       AWS.Server.Wait (AWS.Server.No_Server);
 
       Status.Set_Status (Services.Stopped);
+   exception
+      when E: others =>
+         declare
+            File : Ada.Text_IO.File_Type;
+         begin
+            Ada.Text_IO.Create
+              (File, Name => Temp.To_UTF_8_String & "\spikedog-raise.log");
+            Ada.Text_IO.Put_Line (Ada.Exceptions.Exception_Information (E));
+            Ada.Text_IO.Close (File);
+            raise;
+         end;
    end Run;
 
    ---------------
