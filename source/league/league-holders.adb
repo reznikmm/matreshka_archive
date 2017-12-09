@@ -141,6 +141,42 @@ package body League.Holders is
       end if;
    end Clear;
 
+   ---------------
+   -- Component --
+   ---------------
+
+   procedure Component
+    (Self    : Holder;
+     Name    : League.Strings.Universal_String;
+     Value   : out Holder;
+     Success : out Boolean)
+   is
+      Result : Container_Access;
+   begin
+      Self.Data.Component (Name, Result, Success);
+      Value.Clear;
+
+      if Success then
+         Value.Data := Result;
+      end if;
+   end Component;
+
+   ---------------
+   -- Component --
+   ---------------
+
+   not overriding procedure Component
+    (Self    : not null access Abstract_Container;
+     Name    : League.Strings.Universal_String;
+     Value   : out Container_Access;
+     Success : out Boolean)
+   is
+      pragma Unreferenced (Self, Name);
+   begin
+      Value := null;
+      Success := False;
+   end Component;
+
    -----------------
    -- Constructor --
    -----------------

@@ -235,10 +235,7 @@ package body XML.Templates.Processors.Parser is
     (Scanner : in out Scanner_Type'Class;
      Context : String_Holder_Maps.Map;
      Value   : out League.Holders.Holder;
-     Success : out Boolean)
-   is
-      JS_Object : League.JSON.Objects.JSON_Object;
-
+     Success : out Boolean) is
    begin
 
       --  Lookup for identifier
@@ -280,23 +277,27 @@ package body XML.Templates.Processors.Parser is
                if League.Holders.Has_Tag
                    (Value, League.Holders.JSON_Objects.Value_Tag)
                then
-                  JS_Object := League.Holders.JSON_Objects.Element (Value);
+                  declare
+                     JS_Object : constant League.JSON.Objects.JSON_Object
+                       := League.Holders.JSON_Objects.Element (Value);
+                  begin
+                     if not JS_Object.Contains (Scanner.Token_Image) then
+                        League.Holders.Clear (Value);
+                        Success := False;
 
-                  if not JS_Object.Contains (Scanner.Token_Image) then
-                     League.Holders.Clear (Value);
-                     Success := False;
+                        return;
+                     end if;
 
+                     Value := League.JSON.Values.To_Holder
+                       (JS_Object.Value (Scanner.Token_Image));
+                  end;
+               else
+                  League.Holders.Component
+                    (Value, Scanner.Token_Image, Value, Success);
+
+                  if not Success then
                      return;
                   end if;
-
-                  Value := League.JSON.Values.To_Holder
-                    (JS_Object.Value (Scanner.Token_Image));
-
-               else
-                  League.Holders.Clear (Value);
-                  Success := False;
-
-                  return;
                end if;
 
             when others =>

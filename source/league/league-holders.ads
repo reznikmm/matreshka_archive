@@ -226,6 +226,17 @@ package League.Holders is
    function First (Self : Holder) return Iterable_Holder_Cursors.Cursor'Class;
    --  Returns cursor to iterate over nested elements.
 
+   ---------------------------------
+   --  Compound Holder Operations --
+   ---------------------------------
+
+   procedure Component
+    (Self    : Holder;
+     Name    : League.Strings.Universal_String;
+     Value   : out Holder;
+     Success : out Boolean);
+   --  Returns a named component of the given compound holder.
+
 private
 
    ------------------------
@@ -257,6 +268,14 @@ private
    not overriding function First
     (Self : not null access Abstract_Container)
       return Iterable_Holder_Cursors.Cursor'Class;
+   --  Returns cursor to iterate over nested elements if supported.
+
+   not overriding procedure Component
+    (Self    : not null access Abstract_Container;
+     Name    : League.Strings.Universal_String;
+     Value   : out Container_Access;
+     Success : out Boolean);
+   --  Returns a named component of the given holder if supported.
 
    ----------------------
    -- Container_Access --
