@@ -146,7 +146,7 @@ procedure Test_386 is
    Source    : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String
          ("<document xmlns:mtl='http://forge.ada-ru.org/matreshka/template'>"
-            & "${content}"
+            & "<mtl:evaluate expression='content'/>"
             & "</document>");
 
    Expected  : constant League.Strings.Universal_String
