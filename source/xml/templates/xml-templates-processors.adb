@@ -58,6 +58,8 @@ package body XML.Templates.Processors is
      := League.Strings.To_Universal_String ("else");
    Elsif_Name      : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("elsif");
+   Evaluate_Name : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("evaluate");
    Expression_Name : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("expression");
    If_Name         : constant League.Strings.Universal_String
@@ -76,11 +78,14 @@ package body XML.Templates.Processors is
    --  Process text and substitute parameters.
 
    procedure Process_Stream
-    (Self    : in out Template_Processor'Class;
+    (Content_Handler : in out XML.SAX.Content_Handlers
+                                .SAX_Content_Handler'Class;
+     Lexical_Handler : in out XML.SAX.Lexical_Handlers
+                                .SAX_Lexical_Handler'Class;
      Stream  : XML.Templates.Streams.XML_Stream_Element_Vectors.Vector;
      Success : in out Boolean);
-   --  Process specified stream be dispatching each event to the template
-   --  processor's event handler.
+   --  Process specified stream by dispatching each event to the content
+   --  or handler the lexical handler.
 
    procedure Process_Characters
     (Self    : in out Template_Processor'Class;
@@ -276,7 +281,7 @@ package body XML.Templates.Processors is
                      end if;
 
                      Self.Parameters.Include (Name, Holder);
-                     Self.Process_Stream (Stream, Success);
+                     Process_Stream (Self, Self, Stream, Success);
 
                      if not Success then
                         return;
@@ -407,7 +412,10 @@ package body XML.Templates.Processors is
    --------------------
 
    procedure Process_Stream
-    (Self    : in out Template_Processor'Class;
+    (Content_Handler : in out XML.SAX.Content_Handlers
+                                .SAX_Content_Handler'Class;
+     Lexical_Handler : in out XML.SAX.Lexical_Handlers
+                                .SAX_Lexical_Handler'Class;
      Stream  : XML.Templates.Streams.XML_Stream_Element_Vectors.Vector;
      Success : in out Boolean) is
    begin
@@ -417,10 +425,10 @@ package body XML.Templates.Processors is
                raise Program_Error;
 
             when XML.Templates.Streams.Text =>
-               Self.Characters (Event.Text, Success);
+               Content_Handler.Characters (Event.Text, Success);
 
             when XML.Templates.Streams.Start_Element =>
-               Self.Start_Element
+               Content_Handler.Start_Element
                 (Event.Namespace_URI,
                  Event.Local_Name,
                  Event.Qualified_Name,
@@ -428,37 +436,37 @@ package body XML.Templates.Processors is
                  Success);
 
             when XML.Templates.Streams.End_Element =>
-               Self.End_Element
+               Content_Handler.End_Element
                 (Event.Namespace_URI,
                  Event.Local_Name,
                  Event.Qualified_Name,
                  Success);
 
             when XML.Templates.Streams.Start_Prefix_Mapping =>
-               Self.Start_Prefix_Mapping
+               Content_Handler.Start_Prefix_Mapping
                 (Event.Prefix, Event.Mapped_Namespace_URI, Success);
 
             when XML.Templates.Streams.End_Prefix_Mapping =>
-               Self.End_Prefix_Mapping (Event.Prefix, Success);
+               Content_Handler.End_Prefix_Mapping (Event.Prefix, Success);
 
             when XML.Templates.Streams.Processing_Instruction =>
-               Self.Processing_Instruction (Event.Target, Event.Data, Success);
+               Content_Handler.Processing_Instruction (Event.Target, Event.Data, Success);
 
             when XML.Templates.Streams.Comment =>
-               Self.Comment (Event.Text, Success);
+               Lexical_Handler.Comment (Event.Text, Success);
 
             when XML.Templates.Streams.Start_CDATA =>
-               Self.Start_CDATA (Success);
+               Lexical_Handler.Start_CDATA (Success);
 
             when XML.Templates.Streams.End_CDATA =>
-               Self.End_CDATA (Success);
+               Lexical_Handler.End_CDATA (Success);
 
             when XML.Templates.Streams.Start_DTD =>
-               Self.Start_DTD
+               Lexical_Handler.Start_DTD
                 (Event.Name, Event.Public_Id, Event.System_Id, Success);
 
             when XML.Templates.Streams.End_DTD =>
-               Self.End_DTD (Success);
+               Lexical_Handler.End_DTD (Success);
          end case;
 
          if not Success then
@@ -674,17 +682,45 @@ package body XML.Templates.Processors is
          end if;
 
          if Namespace_URI = Template_URI then
-            if Local_Name = For_Name then
-               if not Attributes.Is_Specified (Expression_Name) then
-                  --  Expression is not specified.
+            if Local_Name in Evaluate_Name | For_Name | If_Name | Elsif_Name
+              and then not Attributes.Is_Specified (Expression_Name)
+            then
+               --  Expression is not specified.
 
-                  Self.Diagnosis :=
-                    League.Strings.To_Universal_String
-                     ("'expression' attribute is not specified");
-                  Success := False;
+               Self.Diagnosis :=
+                 League.Strings.To_Universal_String
+                   ("'expression' attribute is not specified");
+               Success := False;
 
-                  return;
-               end if;
+               return;
+            elsif Local_Name = Evaluate_Name then
+               declare
+                  Value : League.Holders.Holder;
+               begin
+                  Parser.Evaluate_Simple_Expression
+                   (Attributes (Expression_Name),
+                    Self.Parameters,
+                    Value,
+                    Success);
+
+                  if League.Holders.Has_Tag
+                    (Value, XML.Templates.Streams.Holders.Value_Tag)
+                  then
+                     Process_Stream
+                      (Self,
+                       Self,
+                       XML.Templates.Streams.Holders.Element (Value),
+                       Success);
+
+                     if not Success then
+                        return;
+                     end if;
+
+                  else
+                     raise Program_Error;
+                  end if;
+               end;
+            elsif Local_Name = For_Name then
 
                Parser.Evaluate_For_Expression
                 (Attributes (Expression_Name),
@@ -705,17 +741,6 @@ package body XML.Templates.Processors is
                Push (Self.Run_Else_Stack, Self.Run_Else);
                Self.Run_Else := True;
 
-               if not Attributes.Is_Specified (Expression_Name) then
-                  --  Expression is not specified.
-
-                  Self.Diagnosis :=
-                    League.Strings.To_Universal_String
-                     ("'expression' attribute is not specified");
-                  Success := False;
-
-                  return;
-               end if;
-
                Parser.Evaluate_Boolean_Expression
                 (Attributes (Expression_Name),
                  Self.Parameters,
@@ -735,15 +760,6 @@ package body XML.Templates.Processors is
             elsif Local_Name = Elsif_Name then
                if not Self.Run_Else then
                   Self.Skip := 2;  --  Skip 'elsif' and everything after it
-
-                  return;
-               elsif not Attributes.Is_Specified (Expression_Name) then
-                  --  Expression is not specified.
-
-                  Self.Diagnosis :=
-                    League.Strings.To_Universal_String
-                     ("'expression' attribute is not specified in elsif");
-                  Success := False;
 
                   return;
                end if;
@@ -924,8 +940,10 @@ package body XML.Templates.Processors is
                raise Program_Error;
 
             else
-               Self.Process_Stream
-                (XML.Templates.Streams.Holders.Element (Value),
+               Process_Stream
+                (Self.Content_Handler.all,
+                 Self.Lexical_Handler.all,
+                 XML.Templates.Streams.Holders.Element (Value),
                  Success);
 
                if not Success then
