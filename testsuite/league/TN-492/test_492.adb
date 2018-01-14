@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2018, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2018, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,38 +41,24 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
---  This test checks encoding of characters in UTF-8.
+--  This test checks encoding of an emoji character in UTF-8.
 ------------------------------------------------------------------------------
 with Ada.Streams;
-
-with League.Stream_Element_Vectors;
 with League.Strings;
 with League.Text_Codecs;
 
-procedure Test_35 is
-   use type League.Stream_Element_Vectors.Stream_Element_Vector;
-
-   S : constant League.Strings.Universal_String
-     := League.Strings.To_Universal_String
-          (Wide_Wide_String'
-            (Wide_Wide_Character'Val (16#0040#),
-             Wide_Wide_Character'Val (16#0410#),
-             Wide_Wide_Character'Val (16#5831#),
-             Wide_Wide_Character'Val (16#E01EF#)));
-   E : constant Ada.Streams.Stream_Element_Array
-     := (16#40#,
-         16#D0#, 16#90#,
-         16#E5#, 16#A0#, 16#B1#,
-         16#F3#, 16#A0#, 16#87#, 16#AF#);
-
-   C : League.Text_Codecs.Text_Codec
-     := League.Text_Codecs.Codec
-         (League.Strings.To_Universal_String ("UTF-8"));
-   D : constant League.Stream_Element_Vectors.Stream_Element_Vector
-     := C.Encode (S);
-
+procedure Text_492 is
+   use type Ada.Streams.Stream_Element_Array;
+   Line : constant Wide_Wide_String :=
+     (1 => Wide_Wide_Character'Val (16#1F60A#));  --  😊
+   Text : constant League.Strings.Universal_String :=
+     League.Strings.To_Universal_String (Line);
+   UTF8 : constant League.Text_Codecs.Text_Codec :=
+     League.Text_Codecs.Codec (League.Strings.To_Universal_String ("utf-8"));
+   Raw  : constant Ada.Streams.Stream_Element_Array :=
+     UTF8.Encode (Text).To_Stream_Element_Array;
 begin
-   if D /= E then
+   if Raw /= (16#F0#, 16#9F#, 16#98#, 16#8A#) then
       raise Program_Error;
    end if;
-end Test_35;
+end Text_492;

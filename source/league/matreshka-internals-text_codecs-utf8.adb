@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -275,7 +275,7 @@ package body Matreshka.Internals.Text_Codecs.UTF8 is
                Buffer.Length := Buffer.Length + 1;
                Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
-                  (2#11000000# or ((Code / 16#1000#) and 2#00111111#));
+                  (2#10000000# or ((Code / 16#1000#) and 2#00111111#));
                Buffer.Length := Buffer.Length + 1;
                Buffer.Value (Buffer.Length) :=
                  Ada.Streams.Stream_Element
