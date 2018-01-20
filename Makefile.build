@@ -80,8 +80,8 @@ spikedog-core:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_core.gpr
 
 spikedog-aws:
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_aws.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
-	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_awsd.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_aws.gpr -XXMLADA_BUILD=relocatable
+	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_awsd.gpr -XXMLADA_BUILD=relocatable
 
 spikedog-service:
 	$(GPRBUILD) $(GPRBUILD_FLAGS) -Pgnat/matreshka_spikedog_service.gpr -XAWS_BUILD=relocatable -XXMLADA_BUILD=relocatable
