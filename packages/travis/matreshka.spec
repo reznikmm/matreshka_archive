@@ -432,7 +432,7 @@ Summary:    Ada to JavaScript translator and WebAPI binding
 License:    BSD
 Group:      Development/Libraries
 Requires:   %{name}-devel%{?_isa} = %{version}-%{release}
-Requires:   asis%{?_isa} = %{version}-%{release}
+Requires:   asis%{?_isa}
 
 %description a2js
 %{summary}
