@@ -1,5 +1,4 @@
 %undefine _hardened_build
-%global with_uaflex_debug 0
 %global with_amf 0
 %define _gprdir %_GNAT_project_dir
 
@@ -12,15 +11,16 @@ License:    BSD
 URL:        http://forge.ada-ru.org/matreshka
 ### Direct download is not availeble
 Source0:    matreshka.tar.gz
-%if !%{with_uaflex_debug}
-Patch1:     %{name}-uaflex-gcc7.patch
-%endif
 Patch2:     %{name}-gprinstall.patch
 BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3 
 BuildRequires:   chrpath
 BuildRequires:   gprbuild valgrind
 BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
+BuildRequires:   aws-devel
+BuildRequires:   asis-devel
+# We need node.js for testing a2js
+BuildRequires:   nodejs nodejs-requirejs
 
 # gprbuild only available on these:
 ExclusiveArch: %GPRbuild_arches
@@ -397,6 +397,16 @@ Requires:   fedora-gnat-project-common  >= 2
 %description spikedog-core-devel
 %{summary}
 
+#%package spikedog-awsd
+#Summary:    Web-application server to execute Ada applications (executable)
+#License:    BSD
+#Group:      Development/Libraries
+#Requires:   %{name}%{?_isa} = %{version}-%{release}
+#Requires:   fedora-gnat-project-common  >= 2
+#
+#%description spikedog-awsd
+#%{summary}
+
 %package servlet-lib
 Summary:    Server-independent implementation of Servlet API
 License:    BSD
@@ -417,12 +427,19 @@ Requires:   fedora-gnat-project-common  >= 2
 %description servlet-devel
 %{summary}
 
+%package a2js
+Summary:    Ada to JavaScript translator and WebAPI binding
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-devel%{?_isa} = %{version}-%{release}
+Requires:   asis%{?_isa} = %{version}-%{release}
+
+%description a2js
+%{summary}
+
 %prep 
 %setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
-%if !%{with_uaflex_debug}
-%patch1 -p1
-%endif
 %patch2 -p1
 
 %build
@@ -437,6 +454,8 @@ make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %check 
 ## find libs without RPATH, Fedora specific
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
+## To find installed nodejs modules by default
+export NODE_PATH=/usr/lib/node_modules
 # FIXME http://forge.ada-ru.org/matreshka/ticket/482#ticket
 %ifnarch ppc64le
 make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check
@@ -701,6 +720,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/spikedog_core/libspikedog-core-%{rtl_version}.so.%{version}
 %{_libdir}/libspikedog-core-%{rtl_version}.so.%{version}
 
+##%files spikedog-awsd
+##%{_bindir}/spikedog_awsd
+
 %files servlet-devel
 %{_includedir}/%{name}/servlet
 %{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so
@@ -714,7 +736,19 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so.%{version}
 %{_libdir}/libmatreshka-servlet-%{rtl_version}.so.%{version}
 
+%files a2js
+%{_bindir}/a2js
+%{_includedir}/%{name}/webapi
+%{_libdir}/%{name}/webapi
+%{_datadir}/%{name}/a2js
+%{_datadir}/gprconfig/*.xml
+%{_gprdir}/%{name}_webapi.gpr
+%{_gprdir}/manifests/webapi
+
 %changelog
+* Sat Jan 20 2018 Maxim Reznik <reznikmm@gmail.com> - 0.8.0-11
+- Add package for a2js
+
 * Thu Aug  3 2017 Pavel Zhukov <pzhukov@redhat.com> - 0.8.0-10.20170302svn
 - Don't overwrite HAS_VALGRIND
 

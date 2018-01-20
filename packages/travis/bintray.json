@@ -21,9 +21,12 @@
         "gpgSign": false
     },
 
-    "files":
-        [
-        {"includePattern": "upload/x86_64/(.*)", "uploadPattern": "$1"}
-        ],
+    "files": [{
+        "includePattern": "upload/x86_64/(.*)",
+        "uploadPattern": "$1",
+        "matrixParams": {
+            "override": 1
+        }
+    }],
     "publish": true
 }
