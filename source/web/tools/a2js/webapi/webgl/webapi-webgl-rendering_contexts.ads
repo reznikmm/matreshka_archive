@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -387,39 +387,42 @@ package WebAPI.WebGL.Rendering_Contexts is
    TEXTURE_CUBE_MAP_NEGATIVE_Z : constant := 16#851A#;
 --    const GLenum MAX_CUBE_MAP_TEXTURE_SIZE      = 0x851C;
 
---    /* TextureUnit */
---    const GLenum TEXTURE0                       = 0x84C0;
---    const GLenum TEXTURE1                       = 0x84C1;
---    const GLenum TEXTURE2                       = 0x84C2;
---    const GLenum TEXTURE3                       = 0x84C3;
---    const GLenum TEXTURE4                       = 0x84C4;
---    const GLenum TEXTURE5                       = 0x84C5;
---    const GLenum TEXTURE6                       = 0x84C6;
---    const GLenum TEXTURE7                       = 0x84C7;
---    const GLenum TEXTURE8                       = 0x84C8;
---    const GLenum TEXTURE9                       = 0x84C9;
---    const GLenum TEXTURE10                      = 0x84CA;
---    const GLenum TEXTURE11                      = 0x84CB;
---    const GLenum TEXTURE12                      = 0x84CC;
---    const GLenum TEXTURE13                      = 0x84CD;
---    const GLenum TEXTURE14                      = 0x84CE;
---    const GLenum TEXTURE15                      = 0x84CF;
---    const GLenum TEXTURE16                      = 0x84D0;
---    const GLenum TEXTURE17                      = 0x84D1;
---    const GLenum TEXTURE18                      = 0x84D2;
---    const GLenum TEXTURE19                      = 0x84D3;
---    const GLenum TEXTURE20                      = 0x84D4;
---    const GLenum TEXTURE21                      = 0x84D5;
---    const GLenum TEXTURE22                      = 0x84D6;
---    const GLenum TEXTURE23                      = 0x84D7;
---    const GLenum TEXTURE24                      = 0x84D8;
---    const GLenum TEXTURE25                      = 0x84D9;
---    const GLenum TEXTURE26                      = 0x84DA;
---    const GLenum TEXTURE27                      = 0x84DB;
---    const GLenum TEXTURE28                      = 0x84DC;
---    const GLenum TEXTURE29                      = 0x84DD;
---    const GLenum TEXTURE30                      = 0x84DE;
---    const GLenum TEXTURE31                      = 0x84DF;
+   -----------------
+   -- TextureUnit --
+   -----------------
+
+   TEXTURE0      : constant := 16#84C0#;
+   TEXTURE1      : constant := 16#84C1#;
+   TEXTURE2      : constant := 16#84C2#;
+   TEXTURE3      : constant := 16#84C3#;
+   TEXTURE4      : constant := 16#84C4#;
+   TEXTURE5      : constant := 16#84C5#;
+   TEXTURE6      : constant := 16#84C6#;
+   TEXTURE7      : constant := 16#84C7#;
+   TEXTURE8      : constant := 16#84C8#;
+   TEXTURE9      : constant := 16#84C9#;
+   TEXTURE10     : constant := 16#84CA#;
+   TEXTURE11     : constant := 16#84CB#;
+   TEXTURE12     : constant := 16#84CC#;
+   TEXTURE13     : constant := 16#84CD#;
+   TEXTURE14     : constant := 16#84CE#;
+   TEXTURE15     : constant := 16#84CF#;
+   TEXTURE16     : constant := 16#84D0#;
+   TEXTURE17     : constant := 16#84D1#;
+   TEXTURE18     : constant := 16#84D2#;
+   TEXTURE19     : constant := 16#84D3#;
+   TEXTURE20     : constant := 16#84D4#;
+   TEXTURE21     : constant := 16#84D5#;
+   TEXTURE22     : constant := 16#84D6#;
+   TEXTURE23     : constant := 16#84D7#;
+   TEXTURE24     : constant := 16#84D8#;
+   TEXTURE25     : constant := 16#84D9#;
+   TEXTURE26     : constant := 16#84DA#;
+   TEXTURE27     : constant := 16#84DB#;
+   TEXTURE28     : constant := 16#84DC#;
+   TEXTURE29     : constant := 16#84DD#;
+   TEXTURE30     : constant := 16#84DE#;
+   TEXTURE31     : constant := 16#84DF#;
 --    const GLenum ACTIVE_TEXTURE                 = 0x84E0;
 
    ---------------------
@@ -546,8 +549,13 @@ package WebAPI.WebGL.Rendering_Contexts is
 --
 --    sequence<DOMString>? getSupportedExtensions();
 --    object? getExtension(DOMString name);
---
---    void activeTexture(GLenum texture);
+
+   not overriding procedure Active_Texture
+    (Self    : not null access WebGL_Rendering_Context;
+     Texture : GLenum) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "activeTexture";
 
    not overriding procedure Attach_Shader
     (Self    : not null access WebGL_Rendering_Context;
