@@ -79,6 +79,11 @@ package Properties.Tools is
      (Declaration : Asis.Declaration) return Asis.Declaration;
    --  Return type declaration for given primitive subprogram
 
+   function Corresponding_Declaration
+     (Name : Asis.Expression) return Asis.Declaration;
+   --  Like Asis.Expressions.Corresponding_Name_Declaration, but takes
+   --  selector of selected_component
+
    function Type_Declaration_View
      (Declaration : Asis.Declaration) return Asis.Definition;
    --  Like Asis.Declarations.Type_Declaration_View but expand derived types

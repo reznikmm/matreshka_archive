@@ -79,14 +79,7 @@ package body Properties.Tools is
          Subtipe_Indication :=
            Asis.Definitions.Access_To_Object_Definition (View);
          Mark := Asis.Definitions.Subtype_Mark (Subtipe_Indication);
-
-         if Asis.Elements.Expression_Kind (Mark) in
-           Asis.A_Selected_Component
-         then
-            Mark := Asis.Expressions.Selector (Mark);
-         end if;
-
-         Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
+         Decl := Corresponding_Declaration (Mark);
          View := Asis.Declarations.Type_Declaration_View (Decl);
       end if;
 
@@ -112,6 +105,25 @@ package body Properties.Tools is
       end if;
    end Comma;
 
+   -------------------------------
+   -- Corresponding_Declaration --
+   -------------------------------
+
+   function Corresponding_Declaration
+     (Name : Asis.Expression) return Asis.Declaration
+   is
+      Mark : Asis.Subtype_Mark := Name;
+   begin
+      case Asis.Elements.Expression_Kind (Mark) is
+         when Asis.A_Selected_Component =>
+            Mark := Asis.Expressions.Selector (Mark);
+         when others =>
+            null;
+      end case;
+
+      return Asis.Expressions.Corresponding_Name_Declaration (Mark);
+   end Corresponding_Declaration;
+
    ------------------------
    -- Corresponding_Type --
    ------------------------
@@ -124,8 +136,6 @@ package body Properties.Tools is
       View : constant Asis.Element :=
         Asis.Declarations.Object_Declaration_View (List (List'First));
       Mark : Asis.Subtype_Mark;
---        Asis.Definitions.Subtype_Mark (View);
-      Decl : Asis.Declaration;
    begin
       case Asis.Elements.Access_Definition_Kind (View) is
          when Asis.An_Anonymous_Access_To_Variable |
@@ -138,16 +148,7 @@ package body Properties.Tools is
             Mark := View;
       end case;
 
-      case Asis.Elements.Expression_Kind (Mark) is
-         when Asis.A_Selected_Component =>
-            Mark := Asis.Expressions.Selector (Mark);
-         when others =>
-            null;
-      end case;
-
-      Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
-
-      return Decl;
+      return Corresponding_Declaration (Mark);
    end Corresponding_Type;
 
    -----------------------------------
@@ -379,19 +380,10 @@ package body Properties.Tools is
       function Parent_Discriminants
         (Parent : Asis.Subtype_Indication) return Asis.Declaration_List
       is
-         Mark : Asis.Subtype_Mark :=
+         Mark : constant Asis.Subtype_Mark :=
            Asis.Definitions.Subtype_Mark (Parent);
-         Decl : Asis.Declaration;
+         Decl : constant Asis.Declaration := Corresponding_Declaration (Mark);
       begin
-         case Asis.Elements.Expression_Kind (Mark) is
-            when Asis.A_Selected_Component =>
-               Mark := Asis.Expressions.Selector (Mark);
-            when others =>
-               null;
-         end case;
-
-         Decl := Asis.Expressions.Corresponding_Name_Declaration (Mark);
-
          return Discriminants (Decl);
       end Parent_Discriminants;
 
@@ -1137,8 +1129,10 @@ package body Properties.Tools is
    function Type_Declaration_View
      (Declaration : Asis.Declaration) return Asis.Definition
    is
+      First : constant Asis.Declaration :=
+        Asis.Declarations.Corresponding_First_Subtype (Declaration);
       View : Asis.Element :=
-        Asis.Declarations.Type_Declaration_View (Declaration);
+        Asis.Declarations.Type_Declaration_View (First);
    begin
       loop
          View := Full_Type_View (View);

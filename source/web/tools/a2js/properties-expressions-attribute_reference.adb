@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,6 +41,7 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis.Definitions;
 with Asis.Elements;
 with Asis.Expressions;
 
@@ -132,6 +133,18 @@ package body Properties.Expressions.Attribute_Reference is
          when Asis.A_Class_Attribute =>
             --  FIX ME, but I have no idea how
             return Engine.Text.Get_Property (Prefix, Name);
+
+         when Asis.A_Component_Size_Attribute =>
+            declare
+               Decl : constant Asis.Declaration :=
+                 Properties.Tools.Corresponding_Declaration (Prefix);
+               View : constant Asis.Definition :=
+                 Properties.Tools.Type_Declaration_View (Decl);
+               Comp : constant Asis.Definition :=
+                 Asis.Definitions.Array_Component_Definition (View);
+            begin
+               return Engine.Text.Get_Property (Comp, Engines.Size);
+            end;
 
          when Asis.A_Length_Attribute |
               Asis.A_First_Attribute |

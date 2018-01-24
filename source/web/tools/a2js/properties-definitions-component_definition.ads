@@ -57,8 +57,13 @@ package Properties.Definitions.Component_Definition is
    function Bounds
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+
+   function Size
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
-        renames Initialize;
+        renames Bounds;
 
    function Alignment
      (Engine  : access Engines.Contexts.Context;
