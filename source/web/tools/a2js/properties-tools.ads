@@ -122,4 +122,9 @@ package Properties.Tools is
    function Get_Dimension (Exp : Asis.Expression) return Natural;
    --  Return dimention of an array aggregate Exp. Return 0 if subaggregate
 
+   function Attribute_Definition
+     (Decl : Asis.Declaration;
+      Attr : Wide_String) return Asis.Expression;
+   --  find corresponding attribute declaration
+
 end Properties.Tools;

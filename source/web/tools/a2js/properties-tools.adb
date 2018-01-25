@@ -60,6 +60,59 @@ package body Properties.Tools is
    function Full_Type_View
      (Type_Definition : Asis.Type_Definition) return Asis.Type_Definition;
 
+   --------------------------
+   -- Attribute_Definition --
+   --------------------------
+
+   function Attribute_Definition
+     (Decl : Asis.Declaration;
+      Attr : Wide_String) return Asis.Expression
+   is
+      Parent : constant Asis.Declaration := Enclosing_Declaration (Decl);
+      Name   : Asis.Name := Asis.Declarations.Names (Decl) (1);
+      Image  : constant Wide_String :=
+        Asis.Declarations.Defining_Name_Image (Name);
+   begin
+      case Asis.Elements.Declaration_Kind (Parent) is
+         when Asis.A_Package_Declaration =>
+            declare
+               use type Asis.Expression_Kinds;
+               use type Asis.Representation_Clause_Kinds;
+               use type Asis.Declaration_List;
+               List : constant Asis.Declaration_List :=
+                 Asis.Declarations.Visible_Part_Declarative_Items (Parent) &
+                 Asis.Declarations.Private_Part_Declarative_Items (Parent);
+            begin
+               for Item in List'Range loop
+                  if Asis.Elements.Representation_Clause_Kind (List (Item))
+                      = Asis.An_Attribute_Definition_Clause
+                  then
+                     Name :=
+                       Asis.Clauses.Representation_Clause_Name (List (Item));
+
+                     if Asis.Elements.Expression_Kind (Name) =
+                       Asis.An_Attribute_Reference
+                       and then
+                         Asis.Expressions.Name_Image
+                           (Asis.Expressions.Prefix (Name)) = Image
+                       and then
+                         Asis.Expressions.Name_Image
+                           (Asis.Expressions.Attribute_Designator_Identifier
+                              (Name)) = Attr
+                     then
+                        return Asis.Clauses.Representation_Clause_Expression
+                          (List (Item));
+                     end if;
+                  end if;
+               end loop;
+            end;
+         when others =>
+            null;
+      end case;
+
+      return Asis.Nil_Element;
+   end Attribute_Definition;
+
    --------------------------------
    -- Array_Component_Definition --
    --------------------------------

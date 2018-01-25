@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -42,6 +42,10 @@
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
 
+with Asis.Elements;
+
+with Properties.Tools;
+
 package body Properties.Definitions.Modular is
 
    ---------------
@@ -67,10 +71,18 @@ package body Properties.Definitions.Modular is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      pragma Unreferenced (Engine, Element, Name);
+      pragma Unreferenced (Name);
+
       Result : League.Strings.Universal_String;
+      Size : constant Asis.Expression := Tools.Attribute_Definition
+        (Asis.Elements.Enclosing_Element (Element), "Size");
    begin
-      Result.Append ("8");
+      if Asis.Elements.Is_Nil (Size) then
+         Result.Append ("8");
+      else
+         Result := Engine.Text.Get_Property (Size, Engines.Code);
+      end if;
+
       return Result;
    end Size;
 
