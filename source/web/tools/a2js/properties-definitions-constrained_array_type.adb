@@ -46,6 +46,7 @@ with Asis.Declarations;
 with Asis.Elements;
 
 with Properties.Expressions.Identifiers;
+with Properties.Tools;
 
 package body Properties.Definitions.Constrained_Array_Type is
 
@@ -112,53 +113,101 @@ package body Properties.Definitions.Constrained_Array_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      pragma Unreferenced (Name);
+      Decl            : constant Asis.Declaration :=
+        Asis.Elements.Enclosing_Element (Element);
+      Is_Array_Buffer : constant Boolean :=
+        Properties.Tools.Is_Array_Buffer (Decl);
+      Is_Array_Of_Simple : constant Boolean :=
+        Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple);
+
+      Comp : constant Asis.Component_Definition :=
+        Asis.Definitions.Array_Component_Definition (Element);
+      View : constant Asis.Definition :=
+        Asis.Definitions.Component_Definition_View (Comp);
       Result : League.Strings.Universal_String;
       Text   : League.Strings.Universal_String;
    begin
       Result.Append ("(function(){");  --  Wrapper
-      Result.Append ("var _result = function (){");  --  Array constructor
+      --  Create prototype
+      Result.Append ("var _p=");
 
-      Result.Append ("function _init (_from,_to){");
-      Result.Append ("var _first=_from.map (_ec._pos);");
-      Result.Append ("var _len=_to.map (function (_to, i)" &
-                       "{ return _ec._pos(_to) - _first[i] + 1; });");
-      Result.Append ("var _length=_len.reduce (function (a, b)" &
-                       "{ return a * b; }, 1);");
-      Result.Append ("var _data=Array(_length);");
-      Result.Append ("for (var _j=0;_j<_length;_j++)");
-      Result.Append ("_data[_j] = ");
+      if Is_Array_Buffer then
+         Result.Append ("Object.create(_ec._ada_array_ta.prototype);");
+         Result.Append ("_p._element_size =");
+         Text := Engine.Text.Get_Property (View, Engines.Size);
+         Result.Append (Text);  --  Size always x8 for TypedArray
+         Result.Append ("/8;");
 
-      Text := Engine.Text.Get_Property
-        (Asis.Definitions.Array_Component_Definition (Element),
-         Engines.Initialize);
+         if not Is_Array_Of_Simple then
+            Text := Engine.Text.Get_Property
+              (Asis.Definitions.Array_Component_Definition (Element),
+               Name);
 
-      Result.Append (Text);
-      Result.Append (";");
-
-      Result.Append ("this.A=_data;");
-      Result.Append ("this._first=_from;");
-      Result.Append ("this._last=_to;");
-      Result.Append ("this._length=_len;");
-      Result.Append ("this._offset=0;");
-      Result.Append ("};");  --  End _init
-      Result.Append ("_init.call (this, ");
-
-      Text := Engine.Text.Get_Property (Element, Engines.Bounds);
-      Result.Append (Text);
-      Result.Append (");");
-
-      Result.Append ("};");  --  End of constructor
-      --  Assign prototype
-      Result.Append ("_result.prototype = _ec.");
-
-      if Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple) then
-         Result.Append ("_ada_array_simple");
+            Result.Append ("_p._element_type = ");
+            Result.Append (Text);
+            Result.Append (";");
+         end if;
       else
-         Result.Append ("_ada_array");
+         Result.Append ("Object.create(_ec.");
+
+         if Is_Array_Of_Simple then
+            Result.Append ("_ada_array_simple");
+         else
+            Result.Append ("_ada_array");
+         end if;
+
+         Result.Append (".prototype);");
       end if;
 
-      Result.Append (".prototype;");
+      Result.Append ("var _bound = [");  --  Bounds
+      Text := Engine.Text.Get_Property (Element, Engines.Bounds);
+      Result.Append (Text);
+      Result.Append ("];");
+      -- Set _length ot per dimension length, like _length[k] = S'Length (k)
+      Result.Append
+        ("_p._length=_bound[1].map (function (to, i)" &
+           "{ return _ec._pos(to) - _ec._pos(_bound[0][i]) + 1; });");
+      --  Set _total to total count of items
+      Result.Append ("_p._total=_p._length.reduce (function (a, b)" &
+                       "{ return a * b; }, 1);");
+      Result.Append ("_p._first=_bound[0];");
+      Result.Append ("_p._last=_bound[1];");
+
+      Result.Append ("var _result = function (){");  --  Array constructor
+
+      if Is_Array_Buffer then
+         declare
+            Align : constant Integer :=
+              Engine.Integer.Get_Property (View, Engines.Alignment);
+            Image : constant Wide_Wide_String :=
+              Integer'Wide_Wide_Image (Align - 1);
+         begin
+            Result.Append
+              ("this._ArrayBuffer(_p._total * ((_p._element_size + ");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append (") & ~");
+            Result.Append (Image (2 .. Image'Last));
+            Result.Append ("));");
+         end;
+
+      else
+         Result.Append ("var _data=Array(_p._total);");
+         Result.Append ("for (var _j=0;_j<_p._total;_j++)");
+         Result.Append ("_data[_j] = ");
+
+         Text := Engine.Text.Get_Property
+           (Asis.Definitions.Array_Component_Definition (Element),
+            Engines.Initialize);
+
+         Result.Append (Text);
+         Result.Append (";");
+
+         Result.Append ("this.A=_data;");
+      end if;
+
+      Result.Append ("this._offset=0;");
+      Result.Append ("};");  --  End of constructor
+      Result.Append ("_result.prototype=_p;");
 
       Result.Append ("return _result;");
       Result.Append ("})();");  --  End of Wrapper and call it

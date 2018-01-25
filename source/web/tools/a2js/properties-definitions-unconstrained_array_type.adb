@@ -61,6 +61,8 @@ package body Properties.Definitions.Unconstrained_Array_Type is
         Asis.Elements.Enclosing_Element (Element);
       Is_Array_Buffer : constant Boolean :=
         Properties.Tools.Is_Array_Buffer (Decl);
+      Is_Array_Of_Simple : constant Boolean :=
+        Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple);
 
       Result          : League.Strings.Universal_String;
       Text            : League.Strings.Universal_String;
@@ -97,12 +99,14 @@ package body Properties.Definitions.Unconstrained_Array_Type is
             Result.Append (Image (2 .. Image'Last));
             Result.Append ("));");
 
-            Text := Engine.Text.Get_Property
-              (Asis.Definitions.Array_Component_Definition (Element),
-               Name);
-            Result.Append ("this._element_type = ");
-            Result.Append (Text);
-            Result.Append (";");
+            if not Is_Array_Of_Simple then
+               Text := Engine.Text.Get_Property
+                 (Asis.Definitions.Array_Component_Definition (Element),
+                  Name);
+               Result.Append ("this._element_type = ");
+               Result.Append (Text);
+               Result.Append (";");
+            end if;
          end;
 
       else
@@ -134,9 +138,7 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       else
          Result.Append ("_ec.");
 
-         if Engine.Boolean.Get_Property
-           (Element, Engines.Is_Array_Of_Simple)
-         then
+         if Is_Array_Of_Simple then
             Result.Append ("_ada_array_simple");
          else
             Result.Append ("_ada_array");
