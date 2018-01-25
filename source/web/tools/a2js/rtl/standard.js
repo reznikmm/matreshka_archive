@@ -8,7 +8,7 @@
 //                                                                          //
 //--------------------------------------------------------------------------//
 //                                                                          //
-// Copyright © 2016-2017, Vadim Godunko <vgodunko@gmail.com>                //
+// Copyright © 2016-2018, Vadim Godunko <vgodunko@gmail.com>                //
 // All rights reserved.                                                     //
 //                                                                          //
 // Redistribution and use in source and binary forms, with or without       //
@@ -359,7 +359,7 @@ define('standard', [], function(){
         var offset = this._index.apply(this, arguments);
         var ta = this._u1.subarray (offset * this._element_size,
                                     (offset + 1) * this._element_size);
-        return this._element_type._cast_ta(ta);
+        return this._element_type._from_dataview(ta);
     };
 
     standard._ada_array_ta.prototype._slice = function (_from, _to) {
@@ -370,7 +370,7 @@ define('standard', [], function(){
         result._element_size = this._element_size;
         return result;
     };
-    
+
     standard._fortran_array = //  A constructor for any Fortran array
     function (){
         standard._ada_array.apply (this, arguments);
@@ -394,7 +394,7 @@ define('standard', [], function(){
     standard._singleton.prototype = {
         "_assign" : function (r) { this.all = r.all }
     }
-        
+
     standard._tag ('event_listener','');
     standard._tag ('frame_request_callback','');
     standard.webapi = {

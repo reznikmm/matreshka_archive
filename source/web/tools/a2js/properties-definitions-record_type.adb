@@ -274,8 +274,9 @@ package body Properties.Definitions.Record_Type is
 
          Result.Append ("Object.defineProperties(_result.prototype, props);");
 
-         --  Set _cast_ta
-         Result.Append ("_result._cast_ta = function _cast_ta(_u1){");
+         --  Set _from_dataview
+         Result.Append
+           ("_result._from_dataview = function _from_dataview(_u1){");
          Result.Append ("var result = Object.create (_result.prototype);");
          Result.Append ("result.A = _u1.buffer;");
          Result.Append
@@ -284,7 +285,7 @@ package body Properties.Definitions.Record_Type is
          Result.Append ("/8/4);");
          Result.Append ("result._u1 = _u1;");
          Result.Append ("return result;");
-         Result.Append ("};");  --  End of _cast_ta
+         Result.Append ("};");  --  End of _from_dataview
       end if;
 
       Result.Append ("return _result;");
