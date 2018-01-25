@@ -159,9 +159,11 @@ package body Properties.Definitions.Tagged_Record_Type is
 
       --  Initialize type's components
       declare
+         Props : League.Strings.Universal_String;
          List : constant Asis.Declaration_List :=
            Properties.Tools.Corresponding_Type_Components (Element);
       begin
+         Props.Append ("var _props = {");
          for J in List'Range loop
             declare
                Id    : League.Strings.Universal_String;
@@ -190,12 +192,18 @@ package body Properties.Definitions.Tagged_Record_Type is
                   end if;
 
                   Result.Append (";");
+                  Props.Append ("_pos_");
+                  Props.Append (Id);
+                  Props.Append (": {value: '");
+                  Props.Append (Id);
+                  Props.Append ("'},");
                end loop;
             end;
          end loop;
+         Result.Append ("};");  --  End of Constructor
+         Props.Append ("};");
+         Result.Append (Props);
       end;
-
-      Result.Append ("};");  --  End of Constructor
 
       --  Set prototype
       Result.Append ("_result.prototype = _ec._tag('");
@@ -210,6 +218,8 @@ package body Properties.Definitions.Tagged_Record_Type is
       Result.Append ("', '");
       Result.Append (Text);
       Result.Append ("');");
+      Result.Append ("Object.defineProperties(_result.prototype, _props);");
+
 
       --  Define null and abstract methods
       declare

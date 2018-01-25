@@ -56,9 +56,7 @@ package Demo.Walls is
 
 private
 
-   Dummy_Wall : constant Wall (null)
-     with Import     => True,
-          Convention => Ada;
+   Dummy_Wall : Wall (null);
 
    Wall_Descriptor : aliased constant AMF3.Metadata.Descriptor (1 .. 3)
      := (1 => (AMF3.Metadata.Slot,

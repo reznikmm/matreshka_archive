@@ -44,7 +44,6 @@
 with Asis.Definitions;
 with Asis.Elements;
 with Asis.Expressions;
-with Asis.Declarations;
 
 with Properties.Tools;
 
@@ -173,52 +172,17 @@ package body Properties.Expressions.Attribute_Reference is
 
          when Asis.A_Position_Attribute =>
             declare
+               Parent : constant Asis.Identifier :=
+                 Asis.Expressions.Prefix (Prefix);
                Selector : constant Asis.Identifier :=
                  Asis.Expressions.Selector (Prefix);
-               Def : constant Asis.Defining_Name :=
-                 Asis.Expressions.Corresponding_Name_Definition (Selector);
-               Type_Decl : constant Asis.Declaration :=
-                 Tools.Enclosing_Declaration
-                   (Asis.Elements.Enclosing_Element (Def));
-
+               Down : League.Strings.Universal_String;
             begin
-               if Tools.Is_Array_Buffer (Type_Decl) then
-                  declare
-                     Type_View : constant Asis.Definition :=
-                       Tools.Type_Declaration_View (Type_Decl);
-                     List : constant Asis.Declaration_List :=
-                       Tools.Corresponding_Type_Components (Type_View);
-                  begin
-                     Text.Append ("(0");
-                     for J in List'Range loop
-                        declare
-                           Size  : League.Strings.Universal_String;
-                           Names : constant Asis.Defining_Name_List :=
-                             Asis.Declarations.Names (List (J));
-                        begin
-                           for K in Names'Range loop
-                              if Asis.Elements.Is_Identical
-                                (Names (K), Def)
-                              then
-                                 Text.Append (")/8");
-                                 return Text;
-                              else
-                                 Size := Engine.Text.Get_Property
-                                   (List (J), Engines.Size);
-                                 Text.Append ("+");
-                                 Text.Append (Size);
-                              end if;
-                           end loop;
-                        end;
-                     end loop;
+               Text := Engine.Text.Get_Property (Parent, Name);
+               Text.Append ("._pos_");
+               Down := Engine.Text.Get_Property (Selector, Name);
+               Text.Append (Down);
 
-                     raise Constraint_Error with "Component not found";
-                  end;
-               else
-                  Text := Engine.Text.Get_Property (Def, Name);
-                  Text.Prepend ("'");
-                  Text.Append ("'");
-               end if;
                return Text;
             end;
 

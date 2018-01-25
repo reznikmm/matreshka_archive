@@ -240,40 +240,67 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("return result;");
       Result.Append ("};");
 
-      if Is_Array_Buffer then
-         Result.Append ("var props = {");
+      Result.Append ("var props = {}");
 
-         declare
-            List  : constant Asis.Declaration_List :=
-              Properties.Tools.Corresponding_Type_Components (Element);
-            Index : Natural := 0;
-         begin
-            for J in List'Range loop
-               declare
-                  Id    : League.Strings.Universal_String;
-                  Names : constant Asis.Defining_Name_List :=
-                    Asis.Declarations.Names (List (J));
-               begin
-                  for N in Names'Range loop
-                     Id := Engine.Text.Get_Property (Names (N), Name);
+      declare
+         List  : constant Asis.Declaration_List :=
+           Properties.Tools.Corresponding_Type_Components (Element);
+         Prev  : League.Strings.Universal_String;
+      begin
+         Prev.Append ("0");
 
+         for J in List'Range loop
+            declare
+               Id    : League.Strings.Universal_String;
+               Names : constant Asis.Defining_Name_List :=
+                 Asis.Declarations.Names (List (J));
+            begin
+               if Is_Array_Buffer then
+                  Size := Engine.Text.Get_Property (List (J), Engines.Size);
+               end if;
+
+               for N in Names'Range loop
+                  Id := Engine.Text.Get_Property (Names (N), Name);
+
+                  Result.Append ("props._pos_");
+                  Result.Append (Id);
+                  Result.Append ("={value: ");
+
+                  if Is_Array_Buffer then
+                     Result.Append (Prev);
+                     Result.Append ("};");
+                     Result.Append ("props._size_");
                      Result.Append (Id);
-                     Result.Append (": {get: function(){ return this._f4[");
-                     Result.Append (Natural'Wide_Wide_Image (Index));
+                     Result.Append ("={value: ");
+                     Result.Append (Size);
+                     Result.Append ("}; props.");
+                     Result.Append (Id);
+                     Result.Append ("= {get: function(){ return this._f4[");
+                     Result.Append ("this._pos_");
+                     Result.Append (Id);
                      Result.Append ("];},");
                      Result.Append ("set: function(_v){ this._f4[");
-                     Result.Append (Natural'Wide_Wide_Image (Index));
-                     Result.Append ("]=_v}},");
-                     Index := Index + 1;
-                  end loop;
-               end;
-            end loop;
-         end;
+                     Result.Append ("this._pos_");
+                     Result.Append (Id);
+                     Result.Append ("]=_v}};");
+                     Prev.Clear;
+                     Prev.Append ("props._pos_");
+                     Prev.Append (Id);
+                     Prev.Append ("+props._size_");
+                     Prev.Append (Id);
+                  else
+                     Result.Append ("'");
+                     Result.Append (Id);
+                     Result.Append ("'};");
+                  end if;
+               end loop;
+            end;
+         end loop;
+      end;
 
-         Result.Append ("};");  --  End of props
+      Result.Append ("Object.defineProperties(_result.prototype, props);");
 
-         Result.Append ("Object.defineProperties(_result.prototype, props);");
-
+      if Is_Array_Buffer then
          --  Set _from_dataview
          Result.Append
            ("_result._from_dataview = function _from_dataview(_u1){");
