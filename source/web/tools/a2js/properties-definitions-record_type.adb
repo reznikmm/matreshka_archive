@@ -252,11 +252,17 @@ package body Properties.Definitions.Record_Type is
          for J in List'Range loop
             declare
                Id    : League.Strings.Universal_String;
+               Comp  : constant Asis.Definition :=
+                 Asis.Declarations.Object_Declaration_View (List (J));
+               Def   : constant Asis.Definition :=
+                 Asis.Definitions.Component_Definition_View (Comp);
                Names : constant Asis.Defining_Name_List :=
                  Asis.Declarations.Names (List (J));
+               Down : League.Strings.Universal_String;
             begin
                if Is_Array_Buffer then
                   Size := Engine.Text.Get_Property (List (J), Engines.Size);
+                  Down := Engine.Text.Get_Property (Def, Name);
                end if;
 
                for N in Names'Range loop
@@ -275,10 +281,15 @@ package body Properties.Definitions.Record_Type is
                      Result.Append (Size);
                      Result.Append ("}; props.");
                      Result.Append (Id);
-                     Result.Append ("= {get: function(){ return this._f4[");
-                     Result.Append ("this._pos_");
+                     Result.Append ("= {get: function(){ return ");
+                     Result.Append (Down);
+                     Result.Append (".prototype._from_dataview (");
+                     Result.Append ("new DataView (this.A,");
+                     Result.Append ("this._u1.byteOffset+this._pos_");
                      Result.Append (Id);
-                     Result.Append ("];},");
+                     Result.Append (",this._size_");
+                     Result.Append (Id);
+                     Result.Append ("/8));},");
                      Result.Append ("set: function(_v){ this._f4[");
                      Result.Append ("this._pos_");
                      Result.Append (Id);
@@ -286,8 +297,9 @@ package body Properties.Definitions.Record_Type is
                      Prev.Clear;
                      Prev.Append ("props._pos_");
                      Prev.Append (Id);
-                     Prev.Append ("+props._size_");
+                     Prev.Append (".value+props._size_");
                      Prev.Append (Id);
+                     Prev.Append (".value/8");
                   else
                      Result.Append ("'");
                      Result.Append (Id);

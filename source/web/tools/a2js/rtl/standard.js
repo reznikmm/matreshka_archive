@@ -371,6 +371,15 @@ define('standard', [], function(){
         return result;
     };
 
+    standard._ada_array_ta.prototype._from_dataview = function(_dv){
+        var _result = Object.create (this);
+        _result.A = _dv.buffer;
+        _result._u1 = new Uint8Array(_result.A, _dv.byteOffset, _dv.byteLength);
+        _result._f4 = new Float32Array
+          (_result.A, _dv.byteOffset, _dv.byteLength/4);
+        return _result;
+    };
+
     standard._fortran_array = //  A constructor for any Fortran array
     function (){
         standard._ada_array.apply (this, arguments);
