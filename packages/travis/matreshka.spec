@@ -449,7 +449,8 @@ make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %else
 %configure --without-amf
 %endif
-make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
+cat config.log
+make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags" AWS_BUILD=default
 
 %check 
 ## find libs without RPATH, Fedora specific
@@ -465,7 +466,7 @@ rm -f %{buildroot}/%{_datadir}/gdb/python/matreshka/matreshka.py?
 
 %install
 rm -rf %{buildroot}
-make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir}
+make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir}  AWS_BUILD=default
 ## Delete rpath
 chrpath --delete %{buildroot}%{_libdir}/lib*
 

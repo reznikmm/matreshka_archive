@@ -231,7 +231,7 @@ endif
 
 spikedog-aws: spikedog-core
 ifdef HAS_GPRINSTALL
-	$(GPRINSTALL) $(GPRINSTALL_FLAGS) -p -P gnat/matreshka_spikedog_aws.gpr --install-name=spikedog_aws -XXMLADA_BUILD=relocatable
+	$(GPRINSTALL) $(GPRINSTALL_FLAGS) -p -P gnat/matreshka_spikedog_aws.gpr --install-name=spikedog_aws  -XAWS_BUILD=$(AWS_BUILD) -XXMLADA_BUILD=relocatable
 else
 	$(INSTALL) -d $(INSTALL_INCLUDE_DIR)/spikedog/aws
 	gnat ls -d -s -P gnat/matreshka_spikedog_aws.gpr | sort | uniq | grep -v '^$$' > spikedog-aws-src.aux
