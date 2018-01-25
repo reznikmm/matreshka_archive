@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -802,6 +802,12 @@ is
       (Name   => N.Size,
        Kind   => F.A_Modular_Type_Definition,
        Action => P.Definitions.Modular.Size'Access),
+      (Name   => N.Size,
+       Kind   => F.A_Signed_Integer_Type_Definition,
+       Action => P.Definitions.Modular.Size'Access),
+      (Name   => N.Size,
+       Kind   => F.A_Private_Type_Declaration,
+       Action => P.Declarations.Private_Type.Initialize'Access),
 
       --  Tag_Name
       (Name   => N.Tag_Name,
@@ -942,6 +948,12 @@ is
       (Name   => N.Alignment,
        Kind   => F.A_Modular_Type_Definition,
        Action => P.Definitions.Modular.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.A_Signed_Integer_Type_Definition,
+       Action => P.Definitions.Modular.Alignment'Access),
+      (Name   => N.Alignment,
+       Kind   => F.A_Private_Type_Declaration,
+       Action => P.Declarations.Private_Type.Alignment'Access),
       (Name   => N.Alignment,
        Kind   => F.A_Constrained_Array_Definition,
        Action => P.Definitions.Constrained_Array_Type.Alignment'Access));

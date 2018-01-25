@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -58,5 +58,10 @@ package Properties.Declarations.Private_Type is
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
       Name    : Engines.Boolean_Property) return Boolean;
+
+   function Alignment
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Integer_Property) return Integer;
 
 end Properties.Declarations.Private_Type;
