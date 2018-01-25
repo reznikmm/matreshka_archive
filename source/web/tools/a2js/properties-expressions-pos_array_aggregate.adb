@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,7 +57,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       List    : Asis.Association_List)
       return League.Strings.Universal_String;
 
-   function Is_Typed_Array
+   function Is_Array_Buffer
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression) return Boolean;
 
@@ -79,14 +79,15 @@ package body Properties.Expressions.Pos_Array_Aggregate is
    is
       procedure Append_Elements;
 
-      Down   : League.Strings.Universal_String;
-      Result : League.Strings.Universal_String;
-      Depth  : constant Natural := Properties.Tools.Get_Dimension (Element);
-      List   : constant Asis.Association_List :=
+      Array_Buffer : constant Boolean := Is_Array_Buffer (Engine, Element);
+      Depth        : constant Natural :=
+        Properties.Tools.Get_Dimension (Element);
+      List         : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
-      Comp   : constant Asis.Definition := Component (Element, List);
+      Comp         : constant Asis.Definition := Component (Element, List);
 
-      Typed_Array : constant Boolean := Is_Typed_Array (Engine, Element);
+      Down         : League.Strings.Universal_String;
+      Result       : League.Strings.Universal_String;
 
       ---------------------
       -- Append_Elements --
@@ -112,7 +113,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       if Depth = 0 then
          Append_Elements;
 
-      elsif Typed_Array then
+      elsif Array_Buffer then
          declare
             Size : constant League.Strings.Universal_String :=
               Engine.Text.Get_Property (Comp, Engines.Size);
@@ -341,24 +342,26 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       return Result;
    end Get_Bounds;
 
-   --------------------
-   -- Is_Typed_Array --
-   --------------------
+   ---------------------
+   -- Is_Array_Buffer --
+   ---------------------
 
-   function Is_Typed_Array
+   function Is_Array_Buffer
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression) return Boolean
    is
       pragma Unreferenced (Engine);
       Tipe : constant Asis.Expression :=
         Asis.Expressions.Corresponding_Expression_Type (Element);
+
    begin
       if Asis.Elements.Is_Nil (Tipe) then
          return False;
+
       else
-         return Properties.Tools.Is_Typed_Array (Tipe);
+         return Properties.Tools.Is_Array_Buffer (Tipe);
       end if;
-   end Is_Typed_Array;
+   end Is_Array_Buffer;
 
    ----------------------------
    -- Typed_Array_Initialize --

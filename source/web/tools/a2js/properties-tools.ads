@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -105,9 +105,9 @@ package Properties.Tools is
    function Has_Controlling_Result (Func : Asis.Declaration) return Boolean;
    --  Check if function Func is like 'function F return T' where T is tagged
 
-   function Is_Typed_Array (Element : Asis.Declaration) return Boolean;
+   function Is_Array_Buffer (Element : Asis.Declaration) return Boolean;
    --  Check if given type declaration has corresponding pragma
-   --  JavaScript_Typed_Array
+   --  JavaScript_Array_Buffer
 
    function Join
      (Left, Right : League.Strings.Universal_String)

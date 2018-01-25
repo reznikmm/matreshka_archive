@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -80,14 +80,13 @@ package body Properties.Definitions.Record_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Decl           : constant Asis.Declaration :=
+      Decl            : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
+      Is_Array_Buffer : constant Boolean :=
+        Properties.Tools.Is_Array_Buffer (Decl);
 
-      Is_Typed_Array : constant Boolean :=
-        Properties.Tools.Is_Typed_Array (Decl);
-
-      Result         : League.Strings.Universal_String;
-      Size           : League.Strings.Universal_String;
+      Result          : League.Strings.Universal_String;
+      Size            : League.Strings.Universal_String;
 
    begin
       Result.Append ("(function (){");  --  Wrapper
@@ -117,7 +116,7 @@ package body Properties.Definitions.Record_Type is
 
          Result.Append ("){");
 
-         if Is_Typed_Array then
+         if Is_Array_Buffer then
             Size := Engine.Text.Get_Property (Element, Engines.Size);
             Result.Append ("this.A = new ArrayBuffer(");
             Result.Append (Size);
@@ -241,7 +240,7 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("return result;");
       Result.Append ("};");
 
-      if Is_Typed_Array then
+      if Is_Array_Buffer then
          Result.Append ("var props = {");
 
          declare

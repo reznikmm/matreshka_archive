@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -96,27 +96,29 @@ package body Properties.Expressions.Indexed_Component is
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Text  : League.Strings.Universal_String;
-      Down  : League.Strings.Universal_String;
-      List  : constant Asis.Expression_List :=
+      Text            : League.Strings.Universal_String;
+      Down            : League.Strings.Universal_String;
+      List            : constant Asis.Expression_List :=
         Asis.Expressions.Index_Expressions (Element);
-      Prefix : constant Asis.Expression :=
+      Prefix          : constant Asis.Expression :=
         Asis.Expressions.Prefix (Element);
-      Tipe   : constant Asis.Declaration :=
+      Tipe            : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Prefix);
-      Is_Typed_Array : Boolean := False;
-      Is_Simple_Ref  : constant Boolean :=
+      Is_Simple_Ref   : constant Boolean :=
         Engine.Boolean.Get_Property (Element, Engines.Is_Simple_Ref);
+      Is_Array_Buffer : Boolean := False;
+
    begin
       if not Asis.Elements.Is_Nil (Tipe) then
-         Is_Typed_Array := Properties.Tools.Is_Typed_Array (Tipe);
+         Is_Array_Buffer := Properties.Tools.Is_Array_Buffer (Tipe);
       end if;
 
       Down := Engine.Text.Get_Property (Prefix, Name);
       Text.Append (Down);
 
-      if Is_Typed_Array then
+      if Is_Array_Buffer then
          Text.Append ("._get(");
+
       else
          Text.Append (".A[");
          Text.Append (Down);
@@ -134,7 +136,7 @@ package body Properties.Expressions.Indexed_Component is
 
       Text.Append (")");
 
-      if not Is_Typed_Array then
+      if not Is_Array_Buffer then
          Text.Append ("]");
 
          if Is_Simple_Ref then

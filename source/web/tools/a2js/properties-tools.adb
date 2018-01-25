@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -758,11 +758,11 @@ package body Properties.Tools is
       return False;
    end Is_Primitive_Subprogram;
 
-   --------------------
-   -- Is_Typed_Array --
-   --------------------
+   ---------------------
+   -- Is_Array_Buffer --
+   ---------------------
 
-   function Is_Typed_Array (Element : Asis.Declaration) return Boolean is
+   function Is_Array_Buffer (Element : Asis.Declaration) return Boolean is
       Env  : constant Asis.Element :=
         Asis.Elements.Enclosing_Element (Element);
 
@@ -798,7 +798,7 @@ package body Properties.Tools is
                Image : constant Asis.Program_Text :=
                  Asis.Elements.Pragma_Name_Image (Element);
             begin
-               if Image = "JavaScript_Typed_Array" then
+               if Image = "JavaScript_Array_Buffer" then
                   declare
                      Args : constant Asis.Association_List :=
                        Asis.Elements.Pragma_Argument_Associations (Element);
@@ -807,7 +807,7 @@ package body Properties.Tools is
                      pragma Assert
                        (Args'Length = 1,
                         "Expected one argument in pragma"
-                        &" JavaScript_Typed_Array");
+                        &" JavaScript_Array_Buffer");
 
                      Arg := Asis.Expressions.Actual_Parameter (Args (1));
 
@@ -823,7 +823,7 @@ package body Properties.Tools is
          end if;
       end Pre_Operation;
 
-      procedure Search_Typed_Array_Pragma is
+      procedure Search_Array_Buffer_Pragma is
         new Asis.Iterator.Traverse_Element
           (State_Information => Boolean,
            Pre_Operation     => Pre_Operation,
@@ -831,11 +831,12 @@ package body Properties.Tools is
 
       Control : Asis.Traverse_Control := Asis.Continue;
       Found   : Boolean := False;
+
    begin
-      Search_Typed_Array_Pragma (Env, Control, Found);
+      Search_Array_Buffer_Pragma (Env, Control, Found);
 
       return Found;
-   end Is_Typed_Array;
+   end Is_Array_Buffer;
 
    ----------
    -- Join --

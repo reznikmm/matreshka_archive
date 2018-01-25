@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -57,12 +57,14 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Element : Asis.Definition;
       Name    : Engines.Text_Property) return League.Strings.Universal_String
    is
-      Decl : constant Asis.Declaration :=
+      Decl            : constant Asis.Declaration :=
         Asis.Elements.Enclosing_Element (Element);
-      Is_Typed_Array : constant Boolean :=
-        Properties.Tools.Is_Typed_Array (Decl);
-      Result : League.Strings.Universal_String;
-      Text   : League.Strings.Universal_String;
+      Is_Array_Buffer : constant Boolean :=
+        Properties.Tools.Is_Array_Buffer (Decl);
+
+      Result          : League.Strings.Universal_String;
+      Text            : League.Strings.Universal_String;
+
    begin
       Result.Append ("(function (){");  --  Wrapper
       Result.Append ("var _result = function (_from,_to){");  --  Constructor
@@ -72,7 +74,7 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Result.Append ("var _length=_len.reduce (function (a, b)" &
                        "{ return a * b; }, 1);");
 
-      if Is_Typed_Array then
+      if Is_Array_Buffer then
          declare
             Comp : constant Asis.Component_Definition :=
               Asis.Definitions.Array_Component_Definition (Element);
@@ -102,6 +104,7 @@ package body Properties.Definitions.Unconstrained_Array_Type is
             Result.Append (Text);
             Result.Append (";");
          end;
+
       else
          Result.Append ("var _data=Array(_length);");
          Result.Append ("for (var _j=0;_j<_length;_j++)");
@@ -124,8 +127,10 @@ package body Properties.Definitions.Unconstrained_Array_Type is
       Result.Append ("};");  --  End of Constructor
 
       Result.Append ("_result.prototype=");
-      if Is_Typed_Array then
+
+      if Is_Array_Buffer then
          Result.Append ("Object.create(_ec._ada_array_ta.prototype);");
+
       else
          Result.Append ("_ec.");
 

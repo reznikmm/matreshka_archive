@@ -180,8 +180,9 @@ package body Properties.Expressions.Attribute_Reference is
                Type_Decl : constant Asis.Declaration :=
                  Tools.Enclosing_Declaration
                    (Asis.Elements.Enclosing_Element (Def));
+
             begin
-               if Tools.Is_Typed_Array (Type_Decl) then
+               if Tools.Is_Array_Buffer (Type_Decl) then
                   declare
                      Type_View : constant Asis.Definition :=
                        Tools.Type_Declaration_View (Type_Decl);
