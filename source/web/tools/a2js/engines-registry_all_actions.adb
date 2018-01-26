@@ -74,6 +74,7 @@ with Properties.Definitions.Modular;
 with Properties.Definitions.Others_Choice;
 with Properties.Definitions.Range_Attribute;
 with Properties.Definitions.Record_Type;
+with Properties.Definitions.Signed;
 with Properties.Definitions.Simple_Expression_Range;
 with Properties.Definitions.Subtype_Indication;
 with Properties.Definitions.Tagged_Record_Type;
@@ -870,6 +871,9 @@ is
        Kind   => F.A_Modular_Type_Definition,
        Action => P.Definitions.Modular.Typed_Array_Item_Type'Access),
       (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Signed_Integer_Type_Definition,
+       Action => P.Definitions.Signed.Typed_Array_Item_Type'Access),
+      (Name   => N.Typed_Array_Item_Type,
        Kind   => F.A_Constrained_Array_Definition,
        Action => P.Common.Empty'Access),
       (Name   => N.Typed_Array_Item_Type,
@@ -878,6 +882,9 @@ is
       (Name   => N.Typed_Array_Item_Type,
        Kind   => F.An_Identifier,
        Action => P.Expressions.Identifiers.Bounds'Access),
+      (Name   => N.Typed_Array_Item_Type,
+       Kind   => F.A_Private_Type_Declaration,
+       Action => P.Declarations.Private_Type.Initialize'Access),
       (Name   => N.Typed_Array_Item_Type,
        Kind   => F.A_Selected_Component,
        Action => P.Expressions.Selected_Components

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016-2018, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2018, Vadim Godunko <vgodunko@gmail.com>                     --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,69 +41,17 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Asis;
 
-with Asis.Elements;
+with Engines.Contexts;
 
-with Properties.Tools;
+with League.Strings;
 
-package body Properties.Definitions.Modular is
-
-   ---------------
-   -- Alignment --
-   ---------------
-
-   function Alignment
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Definition;
-      Name    : Engines.Integer_Property) return Integer
-   is
-      pragma Unreferenced (Engine, Element, Name);
-   begin
-      return 1;
-   end Alignment;
-
-   ----------
-   -- Size --
-   ----------
-
-   function Size
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Definition;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Name);
-
-      Result : League.Strings.Universal_String;
-      Size : constant Asis.Expression := Tools.Attribute_Definition
-        (Asis.Elements.Enclosing_Element (Element), "Size");
-   begin
-      if Asis.Elements.Is_Nil (Size) then
-         Result.Append ("8");
-      else
-         Result := Engine.Text.Get_Property (Size, Engines.Code);
-      end if;
-
-      return Result;
-   end Size;
-
-   ---------------------------
-   -- Typed_Array_Item_Type --
-   ---------------------------
+package Properties.Definitions.Signed is
 
    function Typed_Array_Item_Type
      (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
-      Name    : Engines.Text_Property)
-      return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Name);
-      Down   : League.Strings.Universal_String;
-      Result : League.Strings.Universal_String;
-   begin
-      Down := Engine.Text.Get_Property (Element, Engines.Size);
-      Result.Append ("_u");
-      Result.Append (Down);
-      return Result;
-   end Typed_Array_Item_Type;
+      Element : Asis.Definition;
+      Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-end Properties.Definitions.Modular;
+end Properties.Definitions.Signed;
