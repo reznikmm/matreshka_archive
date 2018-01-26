@@ -182,12 +182,20 @@ package body Properties.Definitions.Constrained_Array_Type is
             Image : constant Wide_Wide_String :=
               Integer'Wide_Wide_Image (Align - 1);
          begin
-            Result.Append
-              ("this._ArrayBuffer(_p._total * ((_p._element_size + ");
-            Result.Append (Image (2 .. Image'Last));
-            Result.Append (") & ~");
-            Result.Append (Image (2 .. Image'Last));
-            Result.Append ("));");
+            if Is_Array_Of_Simple then
+               Text := Engine.Text.Get_Property
+                 (View, Engines.Typed_Array_Item_Type);
+               Result.Append ("this._ArrayBuffer");
+               Result.Append (Text);
+               Result.Append ("();");
+            else
+               Result.Append
+                 ("this._ArrayBuffer(_p._total * ((_p._element_size + ");
+               Result.Append (Image (2 .. Image'Last));
+               Result.Append (") & ~");
+               Result.Append (Image (2 .. Image'Last));
+               Result.Append ("));");
+            end if;
          end;
 
       else

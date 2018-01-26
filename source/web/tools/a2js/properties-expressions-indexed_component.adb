@@ -102,21 +102,25 @@ package body Properties.Expressions.Indexed_Component is
         Asis.Expressions.Index_Expressions (Element);
       Prefix          : constant Asis.Expression :=
         Asis.Expressions.Prefix (Element);
-      Tipe            : constant Asis.Declaration :=
+      Prefix_Tipe     : constant Asis.Declaration :=
         Asis.Expressions.Corresponding_Expression_Type (Prefix);
+      Element_Tipe    : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Is_Simple_Type  : constant Boolean :=
+        Engine.Boolean.Get_Property (Element_Tipe, Engines.Is_Simple_Type);
       Is_Simple_Ref   : constant Boolean :=
         Engine.Boolean.Get_Property (Element, Engines.Is_Simple_Ref);
       Is_Array_Buffer : Boolean := False;
 
    begin
-      if not Asis.Elements.Is_Nil (Tipe) then
-         Is_Array_Buffer := Properties.Tools.Is_Array_Buffer (Tipe);
+      if not Asis.Elements.Is_Nil (Prefix_Tipe) then
+         Is_Array_Buffer := Properties.Tools.Is_Array_Buffer (Prefix_Tipe);
       end if;
 
       Down := Engine.Text.Get_Property (Prefix, Name);
       Text.Append (Down);
 
-      if Is_Array_Buffer then
+      if Is_Array_Buffer and not Is_Simple_Type then
          Text.Append ("._get(");
 
       else
@@ -136,7 +140,7 @@ package body Properties.Expressions.Indexed_Component is
 
       Text.Append (")");
 
-      if not Is_Array_Buffer then
+      if not Is_Array_Buffer or else Is_Simple_Type then
          Text.Append ("]");
 
          if Is_Simple_Ref then

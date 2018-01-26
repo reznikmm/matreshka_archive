@@ -79,15 +79,16 @@ package body Properties.Expressions.Pos_Array_Aggregate is
    is
       procedure Append_Elements;
 
-      Array_Buffer : constant Boolean := Is_Array_Buffer (Engine, Element);
-      Depth        : constant Natural :=
+      Array_Buffer   : constant Boolean := Is_Array_Buffer (Engine, Element);
+      Depth          : constant Natural :=
         Properties.Tools.Get_Dimension (Element);
-      List         : constant Asis.Association_List :=
+      List           : constant Asis.Association_List :=
         Asis.Expressions.Array_Component_Associations (Element);
-      Comp         : constant Asis.Definition := Component (Element, List);
-
-      Down         : League.Strings.Universal_String;
-      Result       : League.Strings.Universal_String;
+      Comp           : constant Asis.Definition := Component (Element, List);
+      Is_Simple_Comp : constant Boolean :=
+        Engine.Boolean.Get_Property (Comp, Engines.Is_Simple_Type);
+      Down           : League.Strings.Universal_String;
+      Result         : League.Strings.Universal_String;
 
       ---------------------
       -- Append_Elements --
@@ -112,8 +113,10 @@ package body Properties.Expressions.Pos_Array_Aggregate is
    begin
       if Depth = 0 then
          Append_Elements;
+         return Result;
+      end if;
 
-      elsif Array_Buffer then
+      if Array_Buffer then
          declare
             Size : constant League.Strings.Universal_String :=
               Engine.Text.Get_Property (Comp, Engines.Size);
@@ -134,12 +137,21 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Result.Append ("_result._element_size=");
             Result.Append (Size);  --  Size always x8 for TypedArray
             Result.Append ("/8;");
-            Result.Append ("_result._ArrayBuffer(_length*((");
-            Result.Append ("_result._element_size + ");
-            Result.Append (Image (2 .. Image'Last));
-            Result.Append (") & ~");
-            Result.Append (Image (2 .. Image'Last));
-            Result.Append ("));");
+
+            if Is_Simple_Comp then
+               Down := Engine.Text.Get_Property
+                 (Comp, Engines.Typed_Array_Item_Type);
+               Result.Append ("_result._ArrayBuffer");
+               Result.Append (Down);
+               Result.Append ("();");
+            else
+               Result.Append ("_result._ArrayBuffer(_length*((");
+               Result.Append ("_result._element_size + ");
+               Result.Append (Image (2 .. Image'Last));
+               Result.Append (") & ~");
+               Result.Append (Image (2 .. Image'Last));
+               Result.Append ("));");
+            end if;
          end;
 
          for J in List'Range loop
@@ -162,7 +174,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       else
          Result.Append ("(new _ec.");
 
-         if Engine.Boolean.Get_Property (Comp, Engines.Is_Simple_Type) then
+         if Is_Simple_Comp then
             Result.Append ("_ada_array_simple");
          else
             Result.Append ("_ada_array");

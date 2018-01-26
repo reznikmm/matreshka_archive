@@ -281,6 +281,13 @@ define('standard', [], function(){
             this._ta_index = 0;
             this._align = 4;
         },
+        "_ArrayBuffer_f4" : function () {
+            this.A = new Float32Array(this._total);
+            this._u1 = new Uint8Array(this.A.buffer);
+            this._f4 = this.A;
+            this._ta_index = 0;
+            this._align = 4;
+        },
         "_TA_allign" : function (size) {
             if (this._align < size)
                 this._ta_index =

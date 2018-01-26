@@ -1,0 +1,54 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  p.adb
+--  ta_conv.adb
+--  END OF BIND LIST
+--
+--  MAIN: ta_conv
+
+with P;
+procedure TA_Conv is
+   use type P.GLfloat;
+   A : P.Matrix_2x2 := ((1.0, 2.0), (3.0, 4.0));
+   B : P.GLfloat_Matrix_2x2 := P.Test (A);
+begin
+   if B (1, 1) /= 1.0 then
+      raise Program_Error;
+   end if;
+end;
+
+with Interfaces;
+package P is
+
+   type Real is new Interfaces.IEEE_Float_64;
+
+   type GLfloat is new Interfaces.IEEE_Float_32;
+
+   type GLfloat_Matrix_2x2 is
+     array (Positive range 1 .. 2, Positive range 1 .. 2) of GLfloat
+       with Convention => Fortran;
+   pragma JavaScript_Array_Buffer (GLfloat_Matrix_2x2);
+
+   type Matrix_2x2 is
+     array (Positive range 1 .. 2, Positive range 1 .. 2) of Real;
+
+   function Test (Item : Matrix_2x2) return GLfloat_Matrix_2x2;
+
+end P;
+
+package body P is
+
+   ----------
+   -- Test --
+   ----------
+
+   function Test (Item : Matrix_2x2) return GLfloat_Matrix_2x2 is
+   begin
+      return R : GLfloat_Matrix_2x2 do
+         R (1, 1) := GLfloat (Item (1, 1));
+      end return;
+   end Test;
+
+end P;
