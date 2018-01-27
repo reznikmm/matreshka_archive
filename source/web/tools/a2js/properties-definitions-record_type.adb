@@ -259,10 +259,20 @@ package body Properties.Definitions.Record_Type is
                Names : constant Asis.Defining_Name_List :=
                  Asis.Declarations.Names (List (J));
                Down : League.Strings.Universal_String;
+               Comp_Size : League.Strings.Universal_String;
+               Is_Simple_Type : Boolean;
             begin
                if Is_Array_Buffer then
-                  Size := Engine.Text.Get_Property (List (J), Engines.Size);
-                  Down := Engine.Text.Get_Property (Def, Name);
+                  Comp_Size := Engine.Text.Get_Property
+                    (List (J), Engines.Size);
+                  Is_Simple_Type := Engine.Boolean.Get_Property
+                    (Def, Engines.Is_Simple_Type);
+                  if Is_Simple_Type then
+                     Down := Engine.Text.Get_Property
+                       (Def, Engines.Typed_Array_Item_Type);
+                  else
+                     Down := Engine.Text.Get_Property (Def, Name);
+                  end if;
                end if;
 
                for N in Names'Range loop
@@ -278,22 +288,54 @@ package body Properties.Definitions.Record_Type is
                      Result.Append ("props._size_");
                      Result.Append (Id);
                      Result.Append ("={value: ");
-                     Result.Append (Size);
+                     Result.Append (Comp_Size);
                      Result.Append ("}; props.");
                      Result.Append (Id);
                      Result.Append ("= {get: function(){ return ");
-                     Result.Append (Down);
-                     Result.Append (".prototype._from_dataview (");
-                     Result.Append ("new DataView (this.A,");
-                     Result.Append ("this._u1.byteOffset+this._pos_");
-                     Result.Append (Id);
-                     Result.Append (",this._size_");
-                     Result.Append (Id);
-                     Result.Append ("/8));},");
-                     Result.Append ("set: function(_v){ this._f4[");
-                     Result.Append ("this._pos_");
-                     Result.Append (Id);
-                     Result.Append ("]=_v}};");
+
+                     if Is_Simple_Type then
+                        Result.Append ("this.");
+                        Result.Append (Down);
+                        Result.Append ("[");
+                        Result.Append ("this._pos_");
+                        Result.Append (Id);
+                        Result.Append ("*8/this._size_");
+                        Result.Append (Id);
+                        Result.Append ("]");
+                     else
+                        Result.Append (Down);
+                        Result.Append (".prototype._from_dataview (");
+                        Result.Append ("new DataView (this.A,");
+                        Result.Append ("this._u1.byteOffset+this._pos_");
+                        Result.Append (Id);
+                        Result.Append (",this._size_");
+                        Result.Append (Id);
+                        Result.Append ("/8))");
+                     end if;
+
+                     Result.Append (";},");
+                     Result.Append ("set: function(_v){ ");
+                     if Is_Simple_Type then
+                        Result.Append ("this.");
+                        Result.Append (Down);
+                        Result.Append ("[");
+                        Result.Append ("this._pos_");
+                        Result.Append (Id);
+                        Result.Append ("*8/this._size_");
+                        Result.Append (Id);
+                        Result.Append ("]=_v");
+                     else
+                        Result.Append (Down);
+                        Result.Append (".prototype._from_dataview (");
+                        Result.Append ("new DataView (this.A,");
+                        Result.Append ("this._u1.byteOffset+this._pos_");
+                        Result.Append (Id);
+                        Result.Append (",this._size_");
+                        Result.Append (Id);
+                        Result.Append ("/8))._assign(_v)");
+                     end if;
+                     Result.Append (";}};");
+
                      Prev.Clear;
                      Prev.Append ("props._pos_");
                      Prev.Append (Id);

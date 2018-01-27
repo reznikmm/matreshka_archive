@@ -19,10 +19,10 @@ package Data is
       Y : Real;
       Z : Real;
    end record;
-   pragma JavaScript_Typed_Array (Item);
+   pragma JavaScript_Array_Buffer (Item);
 
    type Item_Array is array (Positive range <>) of Item;
-   pragma JavaScript_Typed_Array (Item_Array);
+   pragma JavaScript_Array_Buffer (Item_Array);
 
 end Data;
 
