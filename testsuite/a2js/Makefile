@@ -16,6 +16,7 @@ all:
 	./run.sh matrix2d.test
 #	./run.sh typedarray.test
 	./run.sh typedarray2.test
+	./run.sh typedarray3.test
 	./run.sh slice.test
 	./run.sh pkg_rename.test
 	./run.sh ta_conv.test

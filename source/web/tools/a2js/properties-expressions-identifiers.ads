@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -94,10 +94,5 @@ package Properties.Expressions.Identifiers is
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
       Name    : Engines.Integer_Property) return Integer;
-
-   function Typed_Array_Initialize
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
 end Properties.Expressions.Identifiers;

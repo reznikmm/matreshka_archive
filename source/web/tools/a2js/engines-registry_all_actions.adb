@@ -895,10 +895,6 @@ is
        Action => P.Expressions.Pos_Array_Aggregate
                      .Typed_Array_Initialize'Access),
       (Name   => N.Typed_Array_Initialize,
-       Kind   => F.An_Identifier,
-       Action => P.Expressions.Identifiers
-                     .Typed_Array_Initialize'Access),
-      (Name   => N.Typed_Array_Initialize,
        Kind   => F.A_Record_Aggregate,
        Action => P.Expressions.Record_Aggregate.Typed_Array_Initialize'Access)
      );

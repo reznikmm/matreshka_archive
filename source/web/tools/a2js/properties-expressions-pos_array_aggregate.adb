@@ -89,6 +89,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
         Engine.Boolean.Get_Property (Comp, Engines.Is_Simple_Type);
       Down           : League.Strings.Universal_String;
       Result         : League.Strings.Universal_String;
+      JS_Type        : League.Strings.Universal_String;
 
       ---------------------
       -- Append_Elements --
@@ -154,12 +155,26 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             end if;
          end;
 
+         JS_Type := Engine.Text.Get_Property
+           (Comp, Engines.Typed_Array_Item_Type);
+
          for J in List'Range loop
             Down := Engine.Text.Get_Property
               (Asis.Expressions.Component_Expression (List (J)),
-               Engines.Typed_Array_Initialize);
+               Name);
 
-            Result.Append (Down);
+            if JS_Type.Is_Empty then
+               Result.Append ("_result._push_ta");
+               Result.Append ("(");
+               Result.Append (Down);
+               Result.Append (");");
+            else
+               Result.Append ("_result._push");
+               Result.Append (JS_Type);
+               Result.Append ("(");
+               Result.Append (Down);
+               Result.Append (");");
+            end if;
          end loop;
 
          Result.Append ("_result._first=_from;");

@@ -87,7 +87,7 @@ package body Properties.Definitions.Float_Point is
       pragma Unreferenced (Engine, Element, Name);
       Result : League.Strings.Universal_String;
    begin
-      Result.Append ("_f4");
+      Result.Append ("_f32");
       return Result;
    end Typed_Array_Item_Type;
 

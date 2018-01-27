@@ -121,8 +121,8 @@ package body Properties.Definitions.Record_Type is
             Result.Append ("this.A = new ArrayBuffer(");
             Result.Append (Size);
             Result.Append ("/8);");
-            Result.Append ("this._u1 = new Uint8Array(this.A);");
-            Result.Append ("this._f4 = new Float32Array(this.A);");
+            Result.Append ("this._u8 = new Uint8Array(this.A);");
+            Result.Append ("this._f32 = new Float32Array(this.A);");
          end if;
 
          --  Copy type's discriminant
@@ -306,7 +306,7 @@ package body Properties.Definitions.Record_Type is
                         Result.Append (Down);
                         Result.Append (".prototype._from_dataview (");
                         Result.Append ("new DataView (this.A,");
-                        Result.Append ("this._u1.byteOffset+this._pos_");
+                        Result.Append ("this._u8.byteOffset+this._pos_");
                         Result.Append (Id);
                         Result.Append (",this._size_");
                         Result.Append (Id);
@@ -328,7 +328,7 @@ package body Properties.Definitions.Record_Type is
                         Result.Append (Down);
                         Result.Append (".prototype._from_dataview (");
                         Result.Append ("new DataView (this.A,");
-                        Result.Append ("this._u1.byteOffset+this._pos_");
+                        Result.Append ("this._u8.byteOffset+this._pos_");
                         Result.Append (Id);
                         Result.Append (",this._size_");
                         Result.Append (Id);
@@ -357,14 +357,14 @@ package body Properties.Definitions.Record_Type is
       if Is_Array_Buffer then
          --  Set _from_dataview
          Result.Append
-           ("_result._from_dataview = function _from_dataview(_u1){");
+           ("_result._from_dataview = function _from_dataview(_u8){");
          Result.Append ("var result = Object.create (_result.prototype);");
-         Result.Append ("result.A = _u1.buffer;");
+         Result.Append ("result.A = _u8.buffer;");
          Result.Append
-           ("result._f4 = new Float32Array(_u1.buffer,_u1.byteOffset,");
+           ("result._f32 = new Float32Array(_u8.buffer,_u8.byteOffset,");
          Result.Append (Size);
          Result.Append ("/8/4);");
-         Result.Append ("result._u1 = _u1;");
+         Result.Append ("result._u8 = _u8;");
          Result.Append ("return result;");
          Result.Append ("};");  --  End of _from_dataview
       end if;

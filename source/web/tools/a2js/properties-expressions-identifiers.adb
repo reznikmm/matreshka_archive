@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -520,39 +520,5 @@ package body Properties.Expressions.Identifiers is
 
       return Result;
    end Name_Prefix;
-
-   ----------------------------
-   -- Typed_Array_Initialize --
-   ----------------------------
-
-   function Typed_Array_Initialize
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Expression;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Name);
-      Result  : League.Strings.Universal_String;
-      Down    : constant League.Strings.Universal_String :=
-        Engine.Text.Get_Property (Element, Engines.Code);
-      Tipe    : constant Asis.Declaration :=
-        Asis.Expressions.Corresponding_Expression_Type (Element);
-      JS_Type : constant League.Strings.Universal_String :=
-        Engine.Text.Get_Property (Tipe, Engines.Typed_Array_Item_Type);
-   begin
-      if JS_Type.Is_Empty then
-         Result.Append ("_result._push_ta");
-         Result.Append ("(");
-         Result.Append (Down);
-         Result.Append (");");
-      else
-         Result.Append ("_result._push");
-         Result.Append (JS_Type);
-         Result.Append ("(");
-         Result.Append (Down);
-         Result.Append (");");
-      end if;
-
-      return Result;
-   end Typed_Array_Initialize;
 
 end Properties.Expressions.Identifiers;

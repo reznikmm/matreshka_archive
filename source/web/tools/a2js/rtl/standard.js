@@ -276,15 +276,22 @@ define('standard', [], function(){
         },
         "_ArrayBuffer" : function (size) {
             this.A = new ArrayBuffer(size);
-            this._u1 = new Uint8Array(this.A);
-            this._f4 = new Float32Array(this.A);
+            this._u8 = new Uint8Array(this.A);
+            this._f32 = new Float32Array(this.A);
             this._ta_index = 0;
             this._align = 4;
         },
-        "_ArrayBuffer_f4" : function () {
+        "_ArrayBuffer_f32" : function () {
             this.A = new Float32Array(this._total);
-            this._u1 = new Uint8Array(this.A.buffer);
-            this._f4 = this.A;
+            this._u8 = new Uint8Array(this.A.buffer);
+            this._f32 = this.A;
+            this._ta_index = 0;
+            this._align = 4;
+        },
+        "_ArrayBuffer_u8" : function () {
+            this.A = new Uint8Array(this._total);
+            this._u8 = this.A;
+            this._f32 = this.A;
             this._ta_index = 0;
             this._align = 4;
         },
@@ -297,17 +304,17 @@ define('standard', [], function(){
         },
         "_push_ta" : function (value) {
             this._TA_allign (4);
-            this._f4.set (value._f4, this._ta_index / 4);
-            this._ta_index += value._f4.length*4;
+            this._f32.set (value._f32, this._ta_index / 4);
+            this._ta_index += value._f32.length*4;
         },
-        "_push_f4" : function (value) {
+        "_push_f32" : function (value) {
             this._TA_allign (4);
-            this._f4[this._ta_index / 4] = value;
+            this._f32[this._ta_index / 4] = value;
             this._ta_index += 4;
         },
-        "_push_u1" : function (value) {
+        "_push_u8" : function (value) {
             this._align = 1;
-            this._u1[this._ta_index++] = value;
+            this._u8[this._ta_index++] = value;
         }
     };
 
@@ -343,19 +350,19 @@ define('standard', [], function(){
     standard._ada_array_ta.prototype._assign = function (r) {
         if (this._length.length > 1){
             this.A = r.A.slice(0); //  Copy of ArrayBuffer
-            this._u1 = new Uint8Array(this.A);
-            this._f4 = new Float32Array(this.A);
+            this._u8 = new Uint8Array(this.A);
+            this._f32 = new Float32Array(this.A);
         }else if (this.A.byteLength == r._length[0] * r._element_size){
             this.A = r.A.slice(r._offset * r._element_size,
                                (r._offset + r._length[0]) * r._element_size);
-            this._u1 = new Uint8Array(this.A);
-            this._f4 = new Float32Array(this.A);
+            this._u8 = new Uint8Array(this.A);
+            this._f32 = new Float32Array(this.A);
         }else{
             var t,s; // reuse .A if only slice of it is assigned
-            t=this._u1.subarray
+            t=this._u8.subarray
               (this._offset * this._element_size,
                (this._offset + this._length[0]) * this._element_size);
-            s=r._u1.subarray
+            s=r._u8.subarray
               (r._offset * r._element_size,
                (r._offset + r._length[0]) * r._element_size);
             t.set (s);
@@ -364,15 +371,15 @@ define('standard', [], function(){
 
     standard._ada_array_ta.prototype._get = function(index){
         var offset = this._index.apply(this, arguments);
-        var ta = this._u1.subarray (offset * this._element_size,
+        var ta = this._u8.subarray (offset * this._element_size,
                                     (offset + 1) * this._element_size);
         return this._element_type._from_dataview(ta);
     };
 
     standard._ada_array_ta.prototype._slice = function (_from, _to) {
         var result = standard._ada_array.prototype._slice.apply(this, arguments);
-        result._u1 = this._u1;
-        result._f4 = this._f4;
+        result._u8 = this._u8;
+        result._f32 = this._f32;
         result._element_type = this._element_type;
         result._element_size = this._element_size;
         return result;
@@ -381,8 +388,8 @@ define('standard', [], function(){
     standard._ada_array_ta.prototype._from_dataview = function(_dv){
         var _result = Object.create (this);
         _result.A = _dv.buffer;
-        _result._u1 = new Uint8Array(_result.A, _dv.byteOffset, _dv.byteLength);
-        _result._f4 = new Float32Array
+        _result._u8 = new Uint8Array(_result.A, _dv.byteOffset, _dv.byteLength);
+        _result._f32 = new Float32Array
           (_result.A, _dv.byteOffset, _dv.byteLength/4);
         return _result;
     };
