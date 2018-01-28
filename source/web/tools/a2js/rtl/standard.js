@@ -352,13 +352,10 @@ define('standard', [], function(){
             this.A = r.A.slice(0); //  Copy of ArrayBuffer
             this._u8 = new Uint8Array(this.A);
             this._f32 = new Float32Array(this.A);
-        }else if (this.A.byteLength == r._length[0] * r._element_size){
-            this.A = r.A.slice(r._offset * r._element_size,
-                               (r._offset + r._length[0]) * r._element_size);
-            this._u8 = new Uint8Array(this.A);
-            this._f32 = new Float32Array(this.A);
+        }else if (this._u8.byteLength == r._length[0] * r._element_size){
+            this._u8.set (r._u8);
         }else{
-            var t,s; // reuse .A if only slice of it is assigned
+            var t,s;
             t=this._u8.subarray
               (this._offset * this._element_size,
                (this._offset + this._length[0]) * this._element_size);

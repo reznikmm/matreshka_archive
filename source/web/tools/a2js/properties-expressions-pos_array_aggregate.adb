@@ -46,6 +46,7 @@ with Asis.Definitions;
 with Asis.Elements;
 with Asis.Expressions;
 
+with Properties.Expressions.Identifiers;
 with Properties.Tools;
 
 package body Properties.Expressions.Pos_Array_Aggregate is
@@ -90,6 +91,9 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       Down           : League.Strings.Universal_String;
       Result         : League.Strings.Universal_String;
       JS_Type        : League.Strings.Universal_String;
+      Type_Decl      : constant Asis.Declaration :=
+        Asis.Expressions.Corresponding_Expression_Type (Element);
+      Is_Constrained : Boolean := False;
 
       ---------------------
       -- Append_Elements --
@@ -117,6 +121,17 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          return Result;
       end if;
 
+      if not Asis.Elements.Is_Nil (Type_Decl) then
+         declare
+            use type Asis.Type_Kinds;
+            View : constant Asis.Definition :=
+              Tools.Type_Declaration_View (Type_Decl);
+         begin
+            Is_Constrained := Asis.Elements.Type_Kind (View) =
+              Asis.A_Constrained_Array_Definition;
+         end;
+      end if;
+
       if Array_Buffer then
          declare
             Size : constant League.Strings.Universal_String :=
@@ -126,32 +141,44 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             Image : constant Wide_Wide_String :=
               Integer'Wide_Wide_Image (Align - 1);
          begin
-            Result.Append ("function(_from,_to){");
-            Result.Append
-              ("var _result=Object.create(_ec._ada_array_ta.prototype);");
-            Result.Append ("var _first=_from.map (_ec._pos);");
-            Result.Append ("var _len=_to.map (function (_to, i)" &
-                             "{ return _ec._pos(_to) - _first[i] + 1; });");
-            Result.Append ("var _length=_len.reduce (function (a, b)" &
-                             "{ return a * b; }, 1);");
-            Result.Append ("_result._length=_len;");
-            Result.Append ("_result._element_size=");
-            Result.Append (Size);  --  Size always x8 for TypedArray
-            Result.Append ("/8;");
-
-            if Is_Simple_Comp then
+            if Is_Constrained then
+               Result.Append ("function(){");
+               Result.Append ("var _result=new ");
+               Down := Properties.Expressions.Identifiers.Name_Prefix
+                 (Engine, Element, Type_Decl);
+               Result.Append (Down);
                Down := Engine.Text.Get_Property
-                 (Comp, Engines.Typed_Array_Item_Type);
-               Result.Append ("_result._ArrayBuffer");
+                 (Asis.Declarations.Names (Type_Decl) (1), Engines.Code);
                Result.Append (Down);
                Result.Append ("();");
             else
-               Result.Append ("_result._ArrayBuffer(_length*((");
-               Result.Append ("_result._element_size + ");
-               Result.Append (Image (2 .. Image'Last));
-               Result.Append (") & ~");
-               Result.Append (Image (2 .. Image'Last));
-               Result.Append ("));");
+               Result.Append ("function(_from,_to){");
+               Result.Append
+                 ("var _result=Object.create(_ec._ada_array_ta.prototype);");
+               Result.Append ("var _first=_from.map (_ec._pos);");
+               Result.Append ("var _len=_to.map (function (_to, i)" &
+                                "{ return _ec._pos(_to) - _first[i] + 1; });");
+               Result.Append ("var _length=_len.reduce (function (a, b)" &
+                                "{ return a * b; }, 1);");
+               Result.Append ("_result._length=_len;");
+               Result.Append ("_result._element_size=");
+               Result.Append (Size);  --  Size always x8 for TypedArray
+               Result.Append ("/8;");
+
+               if Is_Simple_Comp then
+                  Down := Engine.Text.Get_Property
+                    (Comp, Engines.Typed_Array_Item_Type);
+                  Result.Append ("_result._ArrayBuffer");
+                  Result.Append (Down);
+                  Result.Append ("();");
+               else
+                  Result.Append ("_result._ArrayBuffer(_length*((");
+                  Result.Append ("_result._element_size + ");
+                  Result.Append (Image (2 .. Image'Last));
+                  Result.Append (") & ~");
+                  Result.Append (Image (2 .. Image'Last));
+                  Result.Append ("));");
+               end if;
             end if;
          end;
 
@@ -177,15 +204,19 @@ package body Properties.Expressions.Pos_Array_Aggregate is
             end if;
          end loop;
 
-         Result.Append ("_result._first=_from;");
-         Result.Append ("_result._last=_to;");
-         Result.Append ("_result._offset=0;");
+         if not Is_Constrained then
+            Result.Append ("_result._first=_from;");
+            Result.Append ("_result._last=_to;");
+            Result.Append ("_result._offset=0;");
 
-         Result.Append ("return _result;}(");
+            Result.Append ("return _result;}(");
 
-         Result.Append (Get_Bounds (Engine, Element, Depth, List));
+            Result.Append (Get_Bounds (Engine, Element, Depth, List));
+            Result.Append (")");
+         else
+            Result.Append ("return _result;}()");
+         end if;
 
-         Result.Append (")");
       else
          Result.Append ("(new _ec.");
 
