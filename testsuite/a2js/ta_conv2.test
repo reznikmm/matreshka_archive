@@ -1,0 +1,78 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  test4.adb
+--  test.adb
+--  END OF BIND LIST
+--
+--  MAIN: test
+with Interfaces;
+
+package Test4 is
+
+   type Real is new Interfaces.IEEE_Float_64;
+
+   type Matrix_4x4 is
+     array (Positive range 1 .. 4, Positive range 1 .. 4) of Real;
+
+   type GLfloat is new Interfaces.IEEE_Float_32;
+
+   type GLfloat_Matrix_4x4 is
+     array (Positive range 1 .. 4, Positive range 1 .. 4) of GLfloat
+       with Convention => Fortran;
+   pragma JavaScript_Array_Buffer (GLfloat_Matrix_4x4);
+
+   function Convert (Item : Matrix_4x4) return GLfloat_Matrix_4x4;
+
+end Test4;
+
+package body Test4 is
+
+   function Convert (Item : Matrix_4x4) return GLfloat_Matrix_4x4 is
+   begin
+      return
+       (1 =>
+          (1 => GLfloat (Item (1, 1)),
+           2 => GLfloat (Item (1, 2)),
+           3 => GLfloat (Item (1, 3)),
+           4 => GLfloat (Item (1, 4))),
+        2 =>
+          (1 => GLfloat (Item (2, 1)),
+           2 => GLfloat (Item (2, 2)),
+           3 => GLfloat (Item (2, 3)),
+           4 => GLfloat (Item (2, 4))),
+        3 =>
+          (1 => GLfloat (Item (3, 1)),
+           2 => GLfloat (Item (3, 2)),
+           3 => GLfloat (Item (3, 3)),
+           4 => GLfloat (Item (3, 4))),
+        4 =>
+          (1 => GLfloat (Item (4, 1)),
+           2 => GLfloat (Item (4, 2)),
+           3 => GLfloat (Item (4, 3)),
+           4 => GLfloat (Item (4, 4))));
+   end Convert;
+
+end Test4;
+
+with Test4; use Test4;
+procedure Test is
+   S : constant Matrix_4x4
+     := (1 => (0.1, 0.2, 0.3, 0.4),
+         2 => (0.5, 0.6, 0.7, 0.8),
+         3 => (0.9, 1.0, 1.1, 1.2),
+         4 => (1.3, 1.4, 1.5, 1.6));
+   E : constant GLfloat_Matrix_4x4
+     := (1 => (0.1, 0.2, 0.3, 0.4),
+         2 => (0.5, 0.6, 0.7, 0.8),
+         3 => (0.9, 1.0, 1.1, 1.2),
+         4 => (1.3, 1.4, 1.5, 1.6));
+   R : constant GLfloat_Matrix_4x4 := Convert (S);
+
+begin
+   if E /= R then
+      raise Program_Error;
+   end if;
+end Test;
+

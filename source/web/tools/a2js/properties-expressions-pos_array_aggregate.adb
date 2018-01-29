@@ -79,6 +79,9 @@ package body Properties.Expressions.Pos_Array_Aggregate is
       return League.Strings.Universal_String
    is
       procedure Append_Elements;
+      procedure Append_Type_Array_Elements
+        (List  : Asis.Association_List;
+         Depth : Positive);
 
       Array_Buffer   : constant Boolean := Is_Array_Buffer (Engine, Element);
       Depth          : constant Natural :=
@@ -114,6 +117,46 @@ package body Properties.Expressions.Pos_Array_Aggregate is
 
          Result.Append ("]");
       end Append_Elements;
+
+      --------------------------------
+      -- Append_Type_Array_Elements --
+      --------------------------------
+
+      procedure Append_Type_Array_Elements
+        (List  : Asis.Association_List;
+         Depth : Positive) is
+      begin
+         for J in List'Range loop
+            declare
+               Expr : constant Asis.Expression :=
+                 Asis.Expressions.Component_Expression (List (J));
+            begin
+               if Depth = 1 then
+                  Down := Engine.Text.Get_Property (Expr, Name);
+
+                  if JS_Type.Is_Empty then
+                     Result.Append ("_result._push_ta");
+                     Result.Append ("(");
+                     Result.Append (Down);
+                     Result.Append (");");
+                  else
+                     Result.Append ("_result._push");
+                     Result.Append (JS_Type);
+                     Result.Append ("(");
+                     Result.Append (Down);
+                     Result.Append (");");
+                  end if;
+               else
+                  declare
+                     Children : constant Asis.Association_List :=
+                       Asis.Expressions.Array_Component_Associations (Expr);
+                  begin
+                     Append_Type_Array_Elements (Children, Depth - 1);
+                  end;
+               end if;
+            end;
+         end loop;
+      end Append_Type_Array_Elements;
 
    begin
       if Depth = 0 then
@@ -185,24 +228,7 @@ package body Properties.Expressions.Pos_Array_Aggregate is
          JS_Type := Engine.Text.Get_Property
            (Comp, Engines.Typed_Array_Item_Type);
 
-         for J in List'Range loop
-            Down := Engine.Text.Get_Property
-              (Asis.Expressions.Component_Expression (List (J)),
-               Name);
-
-            if JS_Type.Is_Empty then
-               Result.Append ("_result._push_ta");
-               Result.Append ("(");
-               Result.Append (Down);
-               Result.Append (");");
-            else
-               Result.Append ("_result._push");
-               Result.Append (JS_Type);
-               Result.Append ("(");
-               Result.Append (Down);
-               Result.Append (");");
-            end if;
-         end loop;
+         Append_Type_Array_Elements (list, Depth);
 
          if not Is_Constrained then
             Result.Append ("_result._first=_from;");

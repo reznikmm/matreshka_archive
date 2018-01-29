@@ -419,8 +419,23 @@ define('standard', [], function(){
     standard._tag ('frame_request_callback','');
     standard.webapi = {
         dom: {event_listeners: {event_listener: function(){}}},
-        html: {frame_request_callbacks: {frame_request_callback: function(){}}}
+        html: {frame_request_callbacks: {frame_request_callback: function(){}}},
+        webgl: {
+            glfloat_matrix_4x4: function() {
+                this._ArrayBuffer_f32();
+                this._offset = 0;
+            }
+        }
     };
-
+    standard.webapi.webgl.glfloat_matrix_4x4.prototype = Object.create(
+        standard._ada_array_ta.prototype,
+        {
+            _element_size: {value: 4},
+            _length: {value: [4, 4]},
+            _total: {value: 16},
+            _first: {value: [1, 1]},
+            _last: {value: [4, 4]}
+        });
+        
     return standard;
 });

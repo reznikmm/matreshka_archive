@@ -20,4 +20,5 @@ all:
 	./run.sh slice.test
 	./run.sh pkg_rename.test
 	./run.sh ta_conv.test
+	./run.sh ta_conv2.test
 	@echo A2JS Tests succeed!
