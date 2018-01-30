@@ -7,29 +7,36 @@ matreshka
 
 The framework includes:
 
- * League - a rich set of reusable core components to develop Ada applications.
+ * [League](https://forge.ada-ru.org/matreshka/wiki/League/UniversalString) -
+a rich set of reusable core components to develop Ada applications.
 Its main purpose is to provide a high level abstraction tool for localization,
 internationalization and globalization of applications, as well as a portable
 interface to different operating systems. It contains many other useful
-features, among them advanced calendrical calculations, regular expressions,
+features, among them advanced
+[calendrical calculations](https://forge.ada-ru.org/matreshka/wiki/League/Calendar),
+[regular expressions](https://forge.ada-ru.org/matreshka/wiki/League/Regexp),
 and JSON support to process and generate data in JSON format; 
 
  * XML processor - provides the capability of manipulating XML streams and
    documents; including:
 
-   - SAX reader to read XML streams and documents; it supports XML1.0 (Fifth
+   - [SAX reader](https://forge.ada-ru.org/matreshka/wiki/XML/SAX)
+     to read XML streams and documents; it supports XML1.0 (Fifth
      Edition), XML1.1 (Second Edition), Namespaces in XML and XML Base
      specifications;
-   - SAX writer to generate XML streams and documents from application;
+   - [SAX writer](https://forge.ada-ru.org/matreshka/wiki/XML/SAX)
+     to generate XML streams and documents from application;
    - DOM API to process XML documents 0.8;
    - XML Catalogs resolver;
-   - Markup Templates Engine to process XML templates and generates XML
+   - [Markup Templates Engine](https://forge.ada-ru.org/matreshka/wiki/XML/Templates)
+     to process XML templates and generates XML
      or HTML/XHTML output 0.6. 
 
  * Web framework
  
-   - standalone application server - SpikeDog implemented over AWS (Ada Web
-     Server) with Servlet API 0.7
+   - standalone application server -
+     [SpikeDog](https://forge.ada-ru.org/matreshka/wiki/Web/Spikedog)
+     implemented over AWS (Ada Web Server) with Servlet API 0.7
    - the FastCGI module assists with developing server side applications
      completely in Ada and using them with standard HTTP servers. (demo).
    - the SOAP module provides implementation of SOAP 1.2 protocol specification
@@ -40,7 +47,8 @@ and JSON support to process and generate data in JSON format;
    - WSDL to Ada translator.
    - Ada to JavaScript translator and run-time library. 
 
- * SQL database access provides a simple generic API for accessing SQL
+ * [SQL database access](https://forge.ada-ru.org/matreshka/wiki/SQL)
+   provides a simple generic API for accessing SQL
    databases. Supported databases include:
 
    - MySQL is the world's most popular open source database software;
@@ -51,7 +59,8 @@ and JSON support to process and generate data in JSON format;
    - Firebird is a relational database offering many ANSI SQL standard
      features that runs on Linux, Windows, and a variety of Unix platforms. 
 
- * Ada Modeling Framework provides implementation of OMG's Meta Object
+ * [Ada Modeling Framework](https://forge.ada-ru.org/matreshka/wiki/AMF)
+   provides implementation of OMG's Meta Object
    Facility (MOF) written completely in Ada. Extension modules are provided
    to assist in the analysis and modification of:
 
@@ -60,6 +69,24 @@ and JSON support to process and generate data in JSON format;
       + OCL models
       + UML Testing Profile to support Model-Driven Testing 
    - Diagram Definition 
+
+Large number of specifications are used and are supported, see
+[Specifications](https://forge.ada-ru.org/matreshka/wiki/Specifications)
+for complete information about conformance to specifications.
+ 
+## Table of Contents
+
+ - [Install](#install)
+   - [Dependencies](#dependencies)
+   - [Linux and other POSIX environment](#linux-and-other-posix-environment)
+   - [Windows 32bit](#windows-32bit)
+   - [Windows 64bit](#windows-64bit)
+   - [Mac OS](#mac-os)
+   - [Advanced installation](#advanced-installation)
+ - [Usage](#usage)
+ - [Maintainers](#maintainers)
+ - [Contribute](#contribute)
+ - [License](#license)
 
 ## Install
 
@@ -133,8 +160,8 @@ make all install
 
 ### Mac OS
 
-You may use GNAT GPL or
-​[GCC from sf.net](https://sourceforge.net/projects/gnuada/files/GNAT_GCC%20Mac%20OS%20X/6.1.0/native-2016/).
+You may use GNAT GPL
+or ​[GCC from sf.net](https://sourceforge.net/projects/gnuada/files/GNAT_GCC%20Mac%20OS%20X/6.1.0/native-2016/).
 
 On Mac OS system you need "Command Line Tools" installed. You can install this
 from Xcode menu > Preferences > Downloads or, alternatively, there are
@@ -226,7 +253,7 @@ project My_Project is
 end My_Project;
 ```
 
-See some examples in ```examples``` directory.
+There are some examples in [examples](examples/) directory.
 
 Other examples could be found on the site:
  * [Strings](https://forge.ada-ru.org/matreshka/wiki/League/UniversalString)
