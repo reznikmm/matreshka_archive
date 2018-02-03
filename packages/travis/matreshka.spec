@@ -397,15 +397,24 @@ Requires:   fedora-gnat-project-common  >= 2
 %description spikedog-core-devel
 %{summary}
 
-#%package spikedog-awsd
-#Summary:    Web-application server to execute Ada applications (executable)
-#License:    BSD
-#Group:      Development/Libraries
-#Requires:   %{name}%{?_isa} = %{version}-%{release}
-#Requires:   fedora-gnat-project-common  >= 2
-#
-#%description spikedog-awsd
-#%{summary}
+%package spikedog-awsd
+Summary:    Web-application server to execute Ada applications (executable)
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+
+%description spikedog-awsd
+%{summary}
+
+%package spikedog-awsd-devel
+Summary:    Devel package for spikedog-awsd
+License:    BSD
+Group:      Development/Libraries
+Requires:   %{name}-spikedog-awsd%{?_isa} = %{version}-%{release}
+Requires:   fedora-gnat-project-common  >= 2
+%description spikedog-awsd-devel
+%{summary}
 
 %package servlet-lib
 Summary:    Server-independent implementation of Servlet API
@@ -450,7 +459,7 @@ make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %configure --without-amf
 %endif
 cat config.log
-make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags" AWS_BUILD=default
+make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 
 %check 
 ## find libs without RPATH, Fedora specific
@@ -466,7 +475,7 @@ rm -f %{buildroot}/%{_datadir}/gdb/python/matreshka/matreshka.py?
 
 %install
 rm -rf %{buildroot}
-make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir}  AWS_BUILD=default
+make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir}
 ## Delete rpath
 chrpath --delete %{buildroot}%{_libdir}/lib*
 
@@ -498,7 +507,7 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %dir %{_datadir}/%{name}
 
 %files devel
-%doc README
+%doc README.md
 %{_libdir}/%{name}/league/libleague-%{rtl_version}.so
 %{_libdir}/libleague-%{rtl_version}.so
 %{_libdir}/%{name}/league/*.ali
@@ -721,14 +730,26 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/spikedog_core/libspikedog-core-%{rtl_version}.so.%{version}
 %{_libdir}/libspikedog-core-%{rtl_version}.so.%{version}
 
-##%files spikedog-awsd
-##%{_bindir}/spikedog_awsd
+%files spikedog-awsd-devel
+%{_includedir}/%{name}/spikedog_aws
+%{_libdir}/%{name}/spikedog_aws/libspikedog-aws-%{rtl_version}.so
+%{_libdir}/libspikedog-aws-%{rtl_version}.so
+%{_libdir}/%{name}/spikedog_aws/*.ali
+%{_gprdir}/%{name}_spikedog_core.gpr
+%{_gprdir}/manifests/spikedog_core
+%{_gprdir}/%{name}_spikedog_aws.gpr
+%{_gprdir}/manifests/spikedog_aws
+
+%files spikedog-awsd
+%{_bindir}/spikedog_awsd
+%{_libdir}/%{name}/spikedog_aws/libspikedog-aws-%{rtl_version}.so.%{version}
+%{_libdir}/libspikedog-aws-%{rtl_version}.so.%{version}
 
 %files servlet-devel
 %{_includedir}/%{name}/servlet
 %{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so
 %{_libdir}/libmatreshka-servlet-%{rtl_version}.so
-%{_libdir}/%{name}/servlet
+%{_libdir}/%{name}/servlet/*.ali
 %{_gprdir}/%{name}_servlet.gpr
 %{_gprdir}/manifests/servlet
 
