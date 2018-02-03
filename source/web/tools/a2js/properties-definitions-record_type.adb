@@ -240,7 +240,7 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("return result;");
       Result.Append ("};");
 
-      Result.Append ("var props = {}");
+      Result.Append ("var props = {};");
 
       declare
          List  : constant Asis.Declaration_List :=

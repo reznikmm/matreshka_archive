@@ -44,6 +44,7 @@
 with Ada.Wide_Wide_Text_IO;
 
 with Asis.Declarations;
+with Asis.Definitions;
 with Asis.Elements;
 with Asis.Expressions;
 with Asis.Statements;
@@ -160,6 +161,9 @@ package body Properties.Statements.Procedure_Call_Statement is
       then
          declare
             Arg    : League.Strings.Universal_String;
+            Expr   : Asis.Expression;
+            Decl   : Asis.Declaration;
+            Comp   : Asis.Definition;
             List   : constant Asis.Association_List :=
               Asis.Statements.Call_Statement_Parameters
                 (Element, Normalized => False);
@@ -173,10 +177,27 @@ package body Properties.Statements.Procedure_Call_Statement is
             Text.Append ("(");
 
             for J in 2 .. List'Last loop
-               Arg := Engine.Text.Get_Property
-                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
+               Expr := Asis.Expressions.Actual_Parameter (List (J));
+               Arg := Engine.Text.Get_Property (Expr, Name);
 
                Text.Append (Arg);
+               Decl := Asis.Expressions.Corresponding_Expression_Type (Expr);
+
+               if Tools.Is_Array (Expr)
+                 and then Tools.Is_Array_Buffer (Decl)
+               then
+                  Comp := Asis.Definitions.Array_Component_Definition
+                    (Tools.Type_Declaration_View (Decl));
+                  Comp := Asis.Definitions.Component_Definition_View (Comp);
+
+                  Arg := Engine.Text.Get_Property
+                    (Comp, Engines.Typed_Array_Item_Type);
+
+                  if not Arg.Is_Empty then
+                     Text.Append (".");
+                     Text.Append (Arg);
+                  end if;
+               end if;
 
                if J /= List'Last then
                   Text.Append (", ");
