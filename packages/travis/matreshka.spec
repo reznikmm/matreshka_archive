@@ -456,7 +456,8 @@ make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %if %{with_amf}
 %configure
 %else
-%configure --without-amf
+echo "HARDWARE_PLATFORM=$HARDWARE_PLATFORM"
+HARDWARE_PLATFORM=x86_64 %configure --without-amf
 %endif
 cat config.log
 make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
