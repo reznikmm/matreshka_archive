@@ -117,6 +117,8 @@ package body Properties.Definitions.Constrained_Array_Type is
         Asis.Elements.Enclosing_Element (Element);
       Is_Array_Buffer : constant Boolean :=
         Properties.Tools.Is_Array_Buffer (Decl);
+      Convention      : constant Wide_String :=
+        Properties.Tools.Get_Aspect (Decl, "Convention");
       Is_Array_Of_Simple : constant Boolean :=
         Engine.Boolean.Get_Property (Element, Engines.Is_Array_Of_Simple);
 
@@ -132,7 +134,12 @@ package body Properties.Definitions.Constrained_Array_Type is
       Result.Append ("var _p=");
 
       if Is_Array_Buffer then
-         Result.Append ("Object.create(_ec._ada_array_ta.prototype);");
+         if Convention = "Fortran" then
+            Result.Append ("Object.create(_ec._fortran_array_ta.prototype);");
+         else
+            Result.Append ("Object.create(_ec._ada_array_ta.prototype);");
+         end if;
+
          Result.Append ("_p._element_size =");
          Text := Engine.Text.Get_Property (View, Engines.Size);
          Result.Append (Text);  --  Size always x8 for TypedArray

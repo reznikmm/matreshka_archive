@@ -14,7 +14,7 @@ procedure TA_Conv is
    A : P.Matrix_2x2 := ((1.0, 2.0), (3.0, 4.0));
    B : P.GLfloat_Matrix_2x2 := P.Test (A);
 begin
-   if B (1, 1) /= 1.0 then
+   if B (1, 1) /= 1.0 or B (1, 2) /= 2.0 then
       raise Program_Error;
    end if;
 end;
@@ -48,6 +48,9 @@ package body P is
    begin
       return R : GLfloat_Matrix_2x2 do
          R (1, 1) := GLfloat (Item (1, 1));
+         R (1, 2) := GLfloat (Item (1, 2));
+         R (2, 1) := GLfloat (Item (2, 1));
+         R (2, 2) := GLfloat (Item (2, 2));
       end return;
    end Test;
 

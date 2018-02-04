@@ -409,6 +409,15 @@ define('standard', [], function(){
         return index;
     };
 
+    standard._fortran_array_ta = //  Fortran array for Typed_Array
+    function (){
+        standard._ada_array_ta.apply (this, arguments);
+    };
+    standard._fortran_array_ta.prototype =
+        Object.create (standard._ada_array_ta.prototype);
+    standard._fortran_array_ta.prototype._index =
+        standard._fortran_array.prototype._index;
+
     standard._singleton =
         function (value) { this.all = value }
     standard._singleton.prototype = {

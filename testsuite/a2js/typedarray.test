@@ -38,7 +38,7 @@ package P is
    type Float_2_Matrix is
      array (Positive range 1 .. 2, Positive range 1 .. 2) of Float_2
        with Convention => Fortran;
-   pragma JavaScript_Typed_Array (Float_2_Matrix);
+   pragma JavaScript_Array_Buffer (Float_2_Matrix);
 
    procedure Call (Value : Float_1_Matrix);
 
