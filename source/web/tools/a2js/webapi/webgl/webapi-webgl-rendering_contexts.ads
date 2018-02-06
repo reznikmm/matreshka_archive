@@ -159,17 +159,6 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum FRONT                          = 0x0404;
 --    const GLenum BACK                           = 0x0405;
 --    const GLenum FRONT_AND_BACK                 = 0x0408;
---
---    /* DepthFunction */
---    /*      NEVER */
---    /*      LESS */
---    /*      EQUAL */
---    /*      LEQUAL */
---    /*      GREATER */
---    /*      NOTEQUAL */
---    /*      GEQUAL */
---    /*      ALWAYS */
---
 
    ---------------
    -- EnableCap --
@@ -318,16 +307,19 @@ package WebAPI.WebGL.Rendering_Contexts is
 --    const GLenum SHADING_LANGUAGE_VERSION         = 0x8B8C;
 --    const GLenum CURRENT_PROGRAM                  = 0x8B8D;
 
---    /* StencilFunction */
---    const GLenum NEVER                          = 0x0200;
---    const GLenum LESS                           = 0x0201;
---    const GLenum EQUAL                          = 0x0202;
---    const GLenum LEQUAL                         = 0x0203;
---    const GLenum GREATER                        = 0x0204;
---    const GLenum NOTEQUAL                       = 0x0205;
---    const GLenum GEQUAL                         = 0x0206;
---    const GLenum ALWAYS                         = 0x0207;
---
+   -------------------------------------
+   -- StencilFunction / DepthFunction --
+   -------------------------------------
+
+   NEVER    : constant := 16#0200#;
+   LESS     : constant := 16#0201#;
+   EQUAL    : constant := 16#0202#;
+   LEQUAL   : constant := 16#0203#;
+   GREATER  : constant := 16#0204#;
+   NOTEQUAL : constant := 16#0205#;
+   GEQUAL   : constant := 16#0206#;
+   ALWAYS   : constant := 16#0207#;
+
 --    /* StencilOp */
 --    /*      ZERO */
 --    const GLenum KEEP                           = 0x1E00;
@@ -770,7 +762,13 @@ package WebAPI.WebGL.Rendering_Contexts is
               Convention => JavaScript_Method,
               Link_Name  => "deleteTexture";
 
---    void depthFunc(GLenum func);
+   not overriding procedure Depth_Func
+    (Self : not null access WebGL_Rendering_Context;
+     Func : GLenum) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "depthFunc";
+
 --    void depthMask(GLboolean flag);
 --    void depthRange(GLclampf zNear, GLclampf zFar);
 --    void detachShader(WebGLProgram? program, WebGLShader? shader);
