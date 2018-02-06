@@ -36,7 +36,7 @@ function linux_script()
     umask og+w
     mkdir upload
     docker run -i -t -v$(pwd)/upload:/upload --user=max \
-     -e HARDWARE_PLATFORM=x86_64 matreshka /bin/bash \
+     -e HARDWARE_PLATFORM=x86_64 -e AWS_BUILD=default matreshka /bin/bash \
      -c 'rpmbuild -bb /src/matreshka.spec --define "_rpmdir /upload"'
 
 }
