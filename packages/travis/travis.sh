@@ -35,8 +35,9 @@ function linux_script()
 {
     umask og+w
     mkdir upload
-    docker run -i -t -v$(pwd)/upload:/upload --user=max matreshka /bin/bash -c \
-           'rpmbuild -bb /src/matreshka.spec --define "_rpmdir /upload"'
+    docker run -i -t -v$(pwd)/upload:/upload --user=max matreshka /bin/bash \
+     -e HARDWARE_PLATFORM=x86_64 \
+     -c 'rpmbuild -bb /src/matreshka.spec --define "_rpmdir /upload"'
 
 }
 
