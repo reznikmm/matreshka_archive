@@ -198,23 +198,8 @@ package body Properties.Definitions.Record_Type is
       Result.Append ("};");  --  End of constructor
 
       --  Limited types should also have _cast, so we need _assign
-      declare
-         Down : League.Strings.Universal_String;
-         List : constant Asis.Declaration_List :=
-           Properties.Tools.Corresponding_Type_Discriminants (Element);
-      begin
-         --  Update prototype with _assign
-         Result.Append ("_result.prototype._assign = function(src){");
-
-         Down := Engine.Text.Get_Property
-           (List  => List,
-            Name  => Engines.Assign,
-            Empty => League.Strings.Empty_Universal_String,
-            Sum   => Properties.Tools.Join'Access);
-
-         Result.Append (Down);
-
-      end;
+      --  Update prototype with _assign
+      Result.Append ("_result.prototype._assign = function(src){");
 
       declare
          Down : League.Strings.Universal_String;
@@ -235,7 +220,34 @@ package body Properties.Definitions.Record_Type is
       end;
 
       Result.Append ("_result._cast = function _cast (value){");
-      Result.Append ("var result = new _result();");
+      Result.Append ("var result = new _result(");
+
+      declare
+         Down : League.Strings.Universal_String;
+         List : constant Asis.Declaration_List :=
+           Properties.Tools.Corresponding_Type_Discriminants (Element);
+      begin
+         for J in List'Range loop
+            declare
+               Names : constant Asis.Defining_Name_List :=
+                 Asis.Declarations.Names (List (J));
+            begin
+               for K in Names'Range loop
+                  Down := Engine.Text.Get_Property (Names (K), Name);
+
+                  Result.Append ("value.");
+                  Result.Append (Down);
+
+                  if K /= Names'Last or J /= List'Last then
+                     Result.Append (",");
+                  end if;
+               end loop;
+            end;
+         end loop;
+
+      end;
+
+      Result.Append (");");
       Result.Append ("result._assign (value);");
       Result.Append ("return result;");
       Result.Append ("};");

@@ -445,6 +445,27 @@ define('standard', [], function(){
             _first: {value: [1, 1]},
             _last: {value: [4, 4]}
         });
-        
+    standard._reviver = function _reviver(key, value){
+        function walk(pkg,name) {return pkg[name]}
+        if (typeof value === 'object') {
+            if ('A' in value) {
+                var result = Object.create(standard._ada_array.prototype);
+                result._length = value._last.map (function (to, i){
+                    return standard._pos(to) -
+                        standard._pos(value._first[i]) + 1;
+                });
+                result.A = value.A;
+                result._first = value._first;
+                result._last = value._last;
+                result._offset = 0;
+                value = result;
+            } else if ('_type' in value) {
+                var type_path = value['_type'].split ('.');
+                var _type = type_path.reduce(walk, standard);
+                value = _type._cast(value);
+            }
+        }
+        return value;
+    }
     return standard;
 });
