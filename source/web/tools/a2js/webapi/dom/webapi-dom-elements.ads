@@ -128,7 +128,7 @@ package WebAPI.DOM.Elements is
     (Self : not null access constant Element)
        return WebAPI.DOM.Token_Lists.DOM_Token_List_Access is abstract
          with Import     => True,
-              Convention => JavaScript_Method,
+              Convention => JavaScript_Property_Getter,
               Link_Name  => "classList";
 
    not overriding function Get_Attribute
