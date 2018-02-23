@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -47,6 +47,7 @@ with WebAPI.DOM.Nodes;
 with WebAPI.DOM.Non_Document_Type_Child_Nodes;
 with WebAPI.DOM.Parent_Nodes;
 with WebAPI.DOM.Rects;
+with WebAPI.DOM.Token_Lists;
 
 package WebAPI.DOM.Elements is
 
@@ -64,7 +65,6 @@ package WebAPI.DOM.Elements is
 --   XXX Not implemented
 --
 --   interface Element : Node {
---     [SameObject] readonly attribute DOMTokenList classList;
 --     [SameObject] readonly attribute Attr[] attributes;
 --   };
 
@@ -123,6 +123,13 @@ package WebAPI.DOM.Elements is
        with Import     => True,
             Convention => JavaScript_Property_Setter,
             Link_Name  => "className";
+
+   not overriding function Get_Class_List
+    (Self : not null access constant Element)
+       return WebAPI.DOM.Token_Lists.DOM_Token_List_Access is abstract
+         with Import     => True,
+              Convention => JavaScript_Method,
+              Link_Name  => "classList";
 
    not overriding function Get_Attribute
     (Self : not null access constant Element;
