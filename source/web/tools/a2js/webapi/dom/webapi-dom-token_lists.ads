@@ -55,11 +55,23 @@ package WebAPI.DOM.Token_Lists is
 --    readonly attribute unsigned long length;
 --    getter DOMString? item(unsigned long index);
 --    boolean contains(DOMString token);
---    void add(DOMString... tokens);
---    void remove(DOMString... tokens);
 --    boolean toggle(DOMString token, optional boolean force);
 --    stringifier;
 --    iterable<DOMString>;
 --  };
+
+   not overriding procedure Add
+    (Self  : not null access constant DOM_Token_List;
+     Token : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "add";
+
+   not overriding procedure Remove
+    (Self  : not null access constant DOM_Token_List;
+     Toekn : WebAPI.DOM_String) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "remove";
 
 end WebAPI.DOM.Token_Lists;
