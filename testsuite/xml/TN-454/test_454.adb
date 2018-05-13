@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2016, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2016-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -86,10 +86,10 @@ procedure Test_454 is
            & "<html xmlns='http://www.w3.org/1999/xhtml'>"
            & " <body>"
            & "     post 1"
-           & "       post 2 -> subitem 1-2"
-           & "       post 2 -> subitem 1-2"
+           & "       post 1 -> subitem 1-1"
+           & "       post 1 -> subitem 1-2"
            & "        post 2"
-           & "       post 2 -> subitem 2-2"
+           & "       post 2 -> subitem 2-1"
            & "       post 2 -> subitem 2-2"
            & "      </body></html>");
 

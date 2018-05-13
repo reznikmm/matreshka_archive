@@ -282,6 +282,7 @@ package body XML.Templates.Processors is
 
                      Self.Parameters.Include (Name, Holder);
                      Process_Stream (Self, Self, Stream, Success);
+                     Self.Process_Characters (Success);
 
                      if not Success then
                         return;
