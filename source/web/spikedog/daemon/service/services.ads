@@ -187,7 +187,7 @@ private
    NO_ERROR : constant := 0;
 
    type C_SERVICE_STATUS is record
-      dwServiceType             : DWORD := SERVICE_USER_OWN_PROCESS;
+      dwServiceType             : DWORD := SERVICE_WIN32_OWN_PROCESS;
       dwCurrentState            : DWORD := SERVICE_STOPPED;
       dwControlsAccepted        : DWORD := SERVICE_ACCEPT_STOP;
       dwWin32ExitCode           : DWORD := NO_ERROR;
