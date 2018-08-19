@@ -54,6 +54,7 @@ with Properties.Declarations.Element_Iterator_Specification;
 with Properties.Declarations.Function_Declarations;
 with Properties.Declarations.Function_Renaming_Declaration;
 with Properties.Declarations.Generic_Declaration;
+with Properties.Declarations.Incomplete_Type;
 with Properties.Declarations.Loop_Parameter_Specification;
 with Properties.Declarations.Ordinary_Type;
 with Properties.Declarations.Package_Declaration;
@@ -473,6 +474,9 @@ is
        Action => P.Common.Empty'Access),
       (Name   => N.Code,
        Kind   => F.A_Use_Type_Clause,
+       Action => P.Common.Empty'Access),  --  Ignore
+      (Name   => N.Code,
+       Kind   => F.A_Use_All_Type_Clause,
        Action => P.Common.Empty'Access),  --  Ignore
       (Name   => N.Code,
        Kind   => F.A_Procedure_Call_Statement,
@@ -1120,6 +1124,9 @@ is
       (Kind    => F.A_Tagged_Incomplete_Type_Declaration,
        Name    => N.Is_Simple_Type,
        Action  => P.Common.False'Access),
+      (Kind    => F.An_Incomplete_Type_Declaration,
+       Name    => N.Is_Simple_Type,
+       Action  => P.Declarations.Incomplete_Type.Is_Simple_Type'Access),
       (Kind    => F.An_Enumeration_Type_Definition,
        Name    => N.Is_Simple_Type,
        Action  => P.Definitions.Enumeration_Type.Is_Simple_Type'Access),
