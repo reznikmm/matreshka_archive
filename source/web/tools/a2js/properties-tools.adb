@@ -306,23 +306,8 @@ package body Properties.Tools is
          when Asis.A_Private_Type_Definition |
               Asis.A_Tagged_Private_Type_Definition
             =>
-            declare
-               Decl : Asis.Declaration :=
-                 Asis.Elements.Enclosing_Element (Definition);
-            begin
-               while Asis.Elements.Declaration_Kind (Decl) in
-                 Asis.An_Incomplete_Type_Declaration |
-                 Asis.A_Tagged_Incomplete_Type_Declaration |
-                 Asis.A_Private_Type_Declaration |
-                 Asis.A_Private_Extension_Declaration
-               loop
-                  Decl :=
-                    Asis.Declarations.Corresponding_Type_Completion (Decl);
-               end loop;
+            return Corresponding_Type_Components (Full_Type_View (Definition));
 
-               return Corresponding_Type_Components
-                 (Asis.Declarations.Type_Declaration_View (Decl));
-            end;
          when Asis.A_Record_Definition =>
 
             return Filter (Asis.Definitions.Record_Components (Definition));
@@ -709,8 +694,7 @@ package body Properties.Tools is
       Kind : Asis.Type_Kinds := Asis.Not_A_Type_Definition;
    begin
       if not Asis.Elements.Is_Nil (Decl) then
-         View := Asis.Declarations.Type_Declaration_View (Decl);
-         View := Full_Type_View (View);
+         View := Type_Declaration_View (Decl);
          Kind := Asis.Elements.Type_Kind (View);
       end if;
 
