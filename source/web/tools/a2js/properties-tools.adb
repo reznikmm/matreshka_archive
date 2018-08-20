@@ -710,6 +710,7 @@ package body Properties.Tools is
    begin
       if not Asis.Elements.Is_Nil (Decl) then
          View := Asis.Declarations.Type_Declaration_View (Decl);
+         View := Full_Type_View (View);
          Kind := Asis.Elements.Type_Kind (View);
       end if;
 
