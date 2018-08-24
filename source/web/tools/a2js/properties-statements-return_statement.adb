@@ -85,9 +85,7 @@ package body Properties.Statements.Return_Statement is
       Result.Append ("return");
 
       if Asis.Elements.Is_Nil (Value) then
-         Down := Engine.Text.Get_Property (Proc, Engines.Simple_Output_Names);
-
-         if not Down.Is_Empty then
+         if Engine.Boolean.Get_Property (Proc, Engines.Has_Simple_Output) then
             Result.Append (" _return()");
          end if;
       else

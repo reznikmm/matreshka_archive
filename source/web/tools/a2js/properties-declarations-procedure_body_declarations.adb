@@ -44,8 +44,6 @@
 with Asis.Declarations;
 with Asis.Elements;
 
-with League.String_Vectors;
-
 with Properties.Tools;
 
 package body Properties.Declarations.Procedure_Body_Declarations is
@@ -80,9 +78,14 @@ package body Properties.Declarations.Procedure_Body_Declarations is
           (Element => Asis.Declarations.Names (Element) (1),
            Name    => Name);
 
-      Output : constant League.Strings.Universal_String :=
-        Engine.Text.Get_Property
-          (Element, Engines.Simple_Output_Names);
+      List : constant Asis.Parameter_Specification_List :=
+        Asis.Declarations.Parameter_Profile (Element);
+
+      Has_Output : constant Boolean :=
+        Has_Simple_Output (Engine, Element, Engines.Has_Simple_Output);
+
+      Names : array (List'Range) of League.Strings.Universal_String;
+      First : Boolean := True;
 
       Text : League.Strings.Universal_String;
    begin
@@ -132,8 +135,6 @@ package body Properties.Declarations.Procedure_Body_Declarations is
 
       declare
          Default : League.Strings.Universal_String;
-         List    : constant Asis.Declaration_List :=
-           Asis.Declarations.Parameter_Profile (Element);
       begin
          for J in List'Range loop
             declare
@@ -144,6 +145,7 @@ package body Properties.Declarations.Procedure_Body_Declarations is
                  Engine.Text.Get_Property
                    (Asis.Declarations.Names (List (J)) (1), Name);
             begin
+               Names (J) := Arg_Code;
                if not Is_Dispatching or J /= List'First then
                   Text.Append (Arg_Code);
 
@@ -171,25 +173,27 @@ package body Properties.Declarations.Procedure_Body_Declarations is
          Text.Append (Default);
       end;
 
-      if Output.Length > 0 then
-         declare
-            Vector : constant League.String_Vectors.Universal_String_Vector :=
-              Output.Split (',');
-         begin
-            Text.Append ("function _return(){ return {");
+      if Has_Output then
+         Text.Append ("function _return(){ return {");
 
-            for J in 1 .. Vector.Length loop
-               if J > 1 then
+         for J in List'Range loop
+            if Engine.Boolean.Get_Property
+                (Element => List (J),
+                 Name    => Engines.Has_Simple_Output)
+            then
+               if First then
+                  First := False;
+               else
                   Text.Append (", ");
                end if;
 
-               Text.Append (Vector.Element (J));
+               Text.Append (Names (J));
                Text.Append (": ");
-               Text.Append (Vector.Element (J));
-            end loop;
+               Text.Append (Names (J));
+            end if;
+         end loop;
 
-            Text.Append ("}; };");
-         end;
+         Text.Append ("}; };");
       end if;
 
       declare
@@ -220,7 +224,7 @@ package body Properties.Declarations.Procedure_Body_Declarations is
          Text.Append (Down);
       end;
 
-      if Output.Length > 0 then
+      if Has_Output then
          Text.Append ("return _return();");
       end if;
 
@@ -257,6 +261,31 @@ package body Properties.Declarations.Procedure_Body_Declarations is
       end if;
    end Export;
 
+   -----------------------
+   -- Has_Simple_Output --
+   -----------------------
+
+   function Has_Simple_Output
+     (Engine  : access Engines.Contexts.Context;
+      Element : Asis.Declaration;
+      Name    : Engines.Boolean_Property) return Boolean
+   is
+      pragma Unreferenced (Name);
+
+      List : constant Asis.Parameter_Specification_List :=
+        Asis.Declarations.Parameter_Profile (Element);
+
+      Output : constant Boolean :=
+        Engine.Boolean.Get_Property
+          (List  => List,
+           Name  => Engines.Has_Simple_Output,
+           Empty => False,
+           Sum   => Properties.Tools."or"'Access);
+
+   begin
+      return Output;
+   end Has_Simple_Output;
+
    --------------------
    -- Is_Dispatching --
    --------------------
@@ -275,30 +304,5 @@ package body Properties.Declarations.Procedure_Body_Declarations is
          return Engine.Boolean.Get_Property (Spec, Name);
       end if;
    end Is_Dispatching;
-
-   -------------------------
-   -- Simple_Output_Names --
-   -------------------------
-
-   function Simple_Output_Names
-     (Engine  : access Engines.Contexts.Context;
-      Element : Asis.Declaration;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String
-   is
-      pragma Unreferenced (Name);
-
-      List : constant Asis.Parameter_Specification_List :=
-        Asis.Declarations.Parameter_Profile (Element);
-
-      Output : constant League.Strings.Universal_String :=
-        Engine.Text.Get_Property
-          (List  => List,
-           Name  => Engines.Simple_Output_Names,
-           Empty => League.Strings.Empty_Universal_String,
-           Sum   => Properties.Tools.Comma'Access);
-
-   begin
-      return Output;
-   end Simple_Output_Names;
 
 end Properties.Declarations.Procedure_Body_Declarations;

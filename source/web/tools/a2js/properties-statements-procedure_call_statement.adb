@@ -49,8 +49,6 @@ with Asis.Elements;
 with Asis.Expressions;
 with Asis.Statements;
 
-with League.String_Vectors;
-
 with Properties.Tools;
 with Properties.Expressions.Identifiers;
 
@@ -60,12 +58,6 @@ package body Properties.Statements.Procedure_Call_Statement is
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Expression;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
-
-   function Filter_Simple_Type_Output
-     (Engine : access Engines.Contexts.Context;
-      Param  : Asis.Parameter_Specification_List)
-      return League.String_Vectors.Universal_String_Vector;
-   --  Filter parameter of [in] out mode of simple type from given Param list
 
    ----------
    -- Code --
@@ -99,14 +91,18 @@ package body Properties.Statements.Procedure_Call_Statement is
          declare
             Params : constant Asis.Parameter_Specification_List :=
               Properties.Tools.Parameter_Profile (Prefix);
-            Output : constant League.String_Vectors.Universal_String_Vector :=
-              Filter_Simple_Type_Output (Engine, Params);
+            Has_Output : constant Boolean :=
+              Engine.Boolean.Get_Property
+                (List  => Params,
+                 Name  => Engines.Has_Simple_Output,
+                 Empty => False,
+                 Sum   => Properties.Tools."or"'Access);
             Arg    : League.Strings.Universal_String;
             List   : constant Asis.Association_List :=
               Asis.Statements.Call_Statement_Parameters
                 (Element, Normalized => False);
          begin
-            if Output.Length > 0  then
+            if Has_Output  then
                Text.Append ("var _r=");
             end if;
 
@@ -128,13 +124,19 @@ package body Properties.Statements.Procedure_Call_Statement is
 
             Text.Append (")");
 
-            for J in 1 .. Output.Length loop
-               Text.Append (";");
-               Arg := Engine.Text.Get_Property
-                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
-               Text.Append (Arg);
-               Text.Append ("=_r.");
-               Text.Append (Output.Element (J));
+            for J in Params'Range loop
+               if Engine.Boolean.Get_Property
+                 (Params (J), Engines.Has_Simple_Output)
+               then
+                  Text.Append (";");
+                  Arg := Engine.Text.Get_Property
+                    (Asis.Expressions.Actual_Parameter (List (J)), Name);
+                  Text.Append (Arg);
+                  Text.Append ("=_r.");
+                  Arg := Engine.Text.Get_Property
+                    (Asis.Declarations.Names (Params (J)) (1), Name);
+                  Text.Append (Arg);
+               end if;
             end loop;
          end;
       elsif Conv = Engines.JavaScript_Property_Setter then
@@ -250,26 +252,6 @@ package body Properties.Statements.Procedure_Call_Statement is
       Text.Append (";");
       return Text;
    end Code;
-
-   -------------------------------
-   -- Filter_Simple_Type_Output --
-   -------------------------------
-
-   function Filter_Simple_Type_Output
-     (Engine : access Engines.Contexts.Context;
-      Param  : Asis.Parameter_Specification_List)
-      return League.String_Vectors.Universal_String_Vector
-   is
-      Text   : League.Strings.Universal_String;
-   begin
-      Text := Engine.Text.Get_Property
-        (List  => Param,
-         Name  => Engines.Simple_Output_Names,
-         Empty => League.Strings.Empty_Universal_String,
-         Sum   => Properties.Tools.Comma'Access);
-
-      return Text.Split (',');
-   end Filter_Simple_Type_Output;
 
    ---------------
    -- Intrinsic --

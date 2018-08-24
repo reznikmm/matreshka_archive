@@ -52,8 +52,6 @@ package Engines is
       Associations, --  names of record assotiation a,b,c
       Tag_Name,  --  external tag name image
       Method_Name,  --  name of subrogram in virtual table
-      Simple_Output_Names,  --  names of parameters if it's Is_Simple_Type and
-                            --  has [in] out mode, empty string otherwise
       Address,  --  Access or address of an object
       Initialize,
       --  Code to initialize an object of given type
@@ -65,6 +63,8 @@ package Engines is
 
    type Boolean_Property is
      (Export,
+      Has_Simple_Output,  --  Has parameters of Is_Simple_Type and
+                          --  has [in] out mode
       Is_Simple_Type,   --  Is non-object type (Number, Boolean, etc)
       Is_Simple_Ref,    --  Wrapper for non-object type (Number, Boolean, etc)
       Is_Array_Of_Simple,  --  Is array elements Is_Simple_Type

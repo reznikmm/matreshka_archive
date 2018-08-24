@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,10 +64,10 @@ package Properties.Declarations.Constant_Declarations is
       Element : Asis.Declaration;
       Name    : Engines.Text_Property) return League.Strings.Universal_String;
 
-   function Simple_Output_Names
+   function Has_Simple_Output
      (Engine  : access Engines.Contexts.Context;
       Element : Asis.Declaration;
-      Name    : Engines.Text_Property) return League.Strings.Universal_String;
+      Name    : Engines.Boolean_Property) return Boolean;
 
    function Is_Simple_Ref
      (Engine  : access Engines.Contexts.Context;
