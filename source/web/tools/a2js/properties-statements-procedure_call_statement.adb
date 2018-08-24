@@ -70,6 +70,48 @@ package body Properties.Statements.Procedure_Call_Statement is
    is
       use type Engines.Convention_Kind;
 
+      function Get_Parameters
+        (Prefix : Asis.Expression;
+         Is_Dispatching : Boolean;
+         Is_JavaScript  : Boolean)
+         return Asis.Parameter_Specification_List
+      is
+      begin
+         if not Is_Dispatching and not Is_JavaScript then
+            return Properties.Tools.Parameter_Profile (Prefix);
+         elsif Asis.Statements.Is_Dispatching_Call (Element) then
+            declare
+               Decl : constant Asis.Declaration :=
+                 Properties.Tools.Corresponding_Declaration (Prefix);
+            begin
+               case Asis.Elements.Declaration_Kind (Decl) is
+                  when
+                       Asis.A_Procedure_Declaration |
+                       Asis.A_Function_Declaration |
+                       Asis.A_Procedure_Body_Declaration |
+                       Asis.A_Function_Body_Declaration |
+                       Asis.A_Null_Procedure_Declaration |
+                       Asis.A_Procedure_Renaming_Declaration |
+                       Asis.A_Function_Renaming_Declaration |
+                       Asis.An_Entry_Declaration |
+                       Asis.An_Entry_Body_Declaration |
+                       Asis.A_Procedure_Body_Stub |
+                       Asis.A_Function_Body_Stub |
+                       Asis.A_Generic_Function_Declaration |
+                       Asis.A_Generic_Procedure_Declaration |
+                       Asis.A_Formal_Function_Declaration |
+                       Asis.A_Formal_Procedure_Declaration |
+                       Asis.An_Expression_Function_Declaration =>
+                     return Asis.Declarations.Parameter_Profile (Decl);
+                  when others =>
+                     return Asis.Nil_Element_List;
+               end case;
+            end;
+         else
+            return Asis.Nil_Element_List;
+         end if;
+      end Get_Parameters;
+
       Text   : League.Strings.Universal_String;
       Prefix : constant Asis.Expression :=
         Asis.Statements.Called_Name (Element);
@@ -77,101 +119,73 @@ package body Properties.Statements.Procedure_Call_Statement is
         Engine.Call_Convention.Get_Property
           (Prefix,
            Engines.Call_Convention);
-      Is_Dispatching : Boolean;
+      Is_Dispatching : constant Boolean := Engine.Boolean.Get_Property
+        (Prefix, Engines.Is_Dispatching);
       Is_Prefixed    : constant Boolean :=
         Conv in Engines.JavaScript_Property_Setter |
                 Engines.JavaScript_Method;
+      Params : constant Asis.Parameter_Specification_List :=
+        Get_Parameters (Prefix, Is_Dispatching, Is_Prefixed);
+      Has_Output : constant Boolean :=
+        Engine.Boolean.Get_Property
+          (List  => Params,
+           Name  => Engines.Has_Simple_Output,
+           Empty => False,
+           Sum   => Properties.Tools."or"'Access);
+      List   : constant Asis.Association_List :=
+        Asis.Statements.Call_Statement_Parameters
+          (Element, Normalized => False);
+      Arg    : League.Strings.Universal_String;
    begin
-      Is_Dispatching := Engine.Boolean.Get_Property
-        (Prefix, Engines.Is_Dispatching);
+      if Has_Output  then
+         Text.Append ("var _r=");
+      end if;
 
       if Conv = Engines.Intrinsic then
-         Text := Intrinsic (Engine, Element, Name);
+         Arg := Intrinsic (Engine, Element, Name);
+         Text.Append (Arg);
       elsif not Is_Dispatching and not Is_Prefixed then
-         declare
-            Params : constant Asis.Parameter_Specification_List :=
-              Properties.Tools.Parameter_Profile (Prefix);
-            Has_Output : constant Boolean :=
-              Engine.Boolean.Get_Property
-                (List  => Params,
-                 Name  => Engines.Has_Simple_Output,
-                 Empty => False,
-                 Sum   => Properties.Tools."or"'Access);
-            Arg    : League.Strings.Universal_String;
-            List   : constant Asis.Association_List :=
-              Asis.Statements.Call_Statement_Parameters
-                (Element, Normalized => False);
-         begin
-            if Has_Output  then
-               Text.Append ("var _r=");
-            end if;
+         Arg := Engine.Text.Get_Property (Prefix, Name);
+         Text.Append (Arg);
 
-            Arg := Engine.Text.Get_Property (Prefix, Name);
-            Text.Append (Arg);
+         Text.Append ("(");
 
-            Text.Append ("(");
-
-            for J in 1 .. List'Last loop
-               Arg := Engine.Text.Get_Property
-                 (Asis.Expressions.Actual_Parameter (List (J)), Name);
-
-               Text.Append (Arg);
-
-               if J /= List'Last then
-                  Text.Append (", ");
-               end if;
-            end loop;
-
-            Text.Append (")");
-
-            for J in Params'Range loop
-               if Engine.Boolean.Get_Property
-                 (Params (J), Engines.Has_Simple_Output)
-               then
-                  Text.Append (";");
-                  Arg := Engine.Text.Get_Property
-                    (Asis.Expressions.Actual_Parameter (List (J)), Name);
-                  Text.Append (Arg);
-                  Text.Append ("=_r.");
-                  Arg := Engine.Text.Get_Property
-                    (Asis.Declarations.Names (Params (J)) (1), Name);
-                  Text.Append (Arg);
-               end if;
-            end loop;
-         end;
-      elsif Conv = Engines.JavaScript_Property_Setter then
-         declare
-            Arg    : League.Strings.Universal_String;
-            List   : constant Asis.Association_List :=
-              Asis.Statements.Call_Statement_Parameters
-                (Element, Normalized => False);
-         begin
-            Text := Engine.Text.Get_Property
-              (Asis.Expressions.Actual_Parameter (List (1)), Name);
-            Text.Append (".");
-            Text.Append
-              (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
-            Text.Append (" = ");
-
+         for J in 1 .. List'Last loop
             Arg := Engine.Text.Get_Property
-              (Asis.Expressions.Actual_Parameter (List (2)), Name);
+              (Asis.Expressions.Actual_Parameter (List (J)), Name);
 
             Text.Append (Arg);
-         end;
+
+            if J /= List'Last then
+               Text.Append (", ");
+            end if;
+         end loop;
+
+         Text.Append (")");
+      elsif Conv = Engines.JavaScript_Property_Setter then
+         Arg := Engine.Text.Get_Property
+           (Asis.Expressions.Actual_Parameter (List (1)), Name);
+         Text.Append (Arg);
+         Text.Append (".");
+         Text.Append
+           (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
+         Text.Append (" = ");
+
+         Arg := Engine.Text.Get_Property
+           (Asis.Expressions.Actual_Parameter (List (2)), Name);
+
+         Text.Append (Arg);
       elsif Asis.Statements.Is_Dispatching_Call (Element) or
         Conv = Engines.JavaScript_Method
       then
          declare
-            Arg    : League.Strings.Universal_String;
             Expr   : Asis.Expression;
             Decl   : Asis.Declaration;
             Comp   : Asis.Definition;
-            List   : constant Asis.Association_List :=
-              Asis.Statements.Call_Statement_Parameters
-                (Element, Normalized => False);
          begin
-            Text := Engine.Text.Get_Property
+            Arg := Engine.Text.Get_Property
               (Asis.Expressions.Actual_Parameter (List (1)), Name);
+            Text.Append (Arg);
             Text.Append (".");
             Text.Append
               (Engine.Text.Get_Property (Prefix, Engines.Method_Name));
@@ -212,20 +226,17 @@ package body Properties.Statements.Procedure_Call_Statement is
          declare
             Proc   : Asis.Declaration :=
               Asis.Statements.Corresponding_Called_Entity (Element);
-            Arg    : League.Strings.Universal_String;
-            List   : constant Asis.Association_List :=
-              Asis.Statements.Call_Statement_Parameters
-                (Element, Normalized => False);
          begin
             while Asis.Elements.Is_Part_Of_Inherited (Proc) loop
                Proc :=
                  Asis.Declarations.Corresponding_Subprogram_Derivation (Proc);
             end loop;
 
-            Text := Properties.Expressions.Identifiers.Name_Prefix
+            Arg := Properties.Expressions.Identifiers.Name_Prefix
               (Engine => Engine,
                Name   => Element,
                Decl   => Proc);
+            Text.Append (Arg);
 
             Text.Append
               (Engine.Text.Get_Property
@@ -248,6 +259,21 @@ package body Properties.Statements.Procedure_Call_Statement is
             Text.Append (")");
          end;
       end if;
+
+      for J in Params'Range loop
+         if Engine.Boolean.Get_Property
+           (Params (J), Engines.Has_Simple_Output)
+         then
+            Text.Append (";");
+            Arg := Engine.Text.Get_Property
+              (Asis.Expressions.Actual_Parameter (List (J)), Name);
+            Text.Append (Arg);
+            Text.Append ("=_r.");
+            Arg := Engine.Text.Get_Property
+              (Asis.Declarations.Names (Params (J)) (1), Name);
+            Text.Append (Arg);
+         end if;
+      end loop;
 
       Text.Append (";");
       return Text;

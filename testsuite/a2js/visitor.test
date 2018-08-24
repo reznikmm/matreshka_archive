@@ -1,0 +1,94 @@
+--  EXPECTED OUTPUT:
+--  END OF EXPECTED OUTPUT
+--
+--  BIND LIST:
+--  models.adb
+--  my_visitors.adb
+--  test.adb
+--  END OF BIND LIST
+--
+--  MAIN: test
+package Models is
+   type Element is tagged null record;
+
+   package Visitors is
+      type Visitor is abstract tagged null record;
+
+      not overriding procedure On_Element
+        (Self    : in out Visitors.Visitor;
+         Element : Models.Element;
+         Control : in out Boolean) is abstract;
+   end Visitors;
+
+   not overriding procedure Visit
+    (Element : Models.Element;
+     Visitor : in out Visitors.Visitor'Class;
+     Control : in out Boolean);
+
+   procedure Do_Visit
+     (Visitor : in out Visitors.Visitor'Class;
+      Element : Models.Element'Class;
+      Control : in out Boolean);
+
+end Models;
+
+with Models;
+package My_Visitors is
+   type My_Visitor is new Models.Visitors.Visitor with null record;
+
+   overriding procedure On_Element
+     (Self    : in out My_Visitor;
+      Element : Models.Element;
+      Control : in out Boolean);
+
+end My_Visitors;
+
+package body Models is
+
+   procedure Do_Visit
+     (Visitor : in out Visitors.Visitor'Class;
+      Element : Models.Element'Class;
+      Control : in out Boolean) is
+   begin
+      Element.Visit (Visitor, Control);
+   end Do_Visit;
+
+   not overriding procedure Visit
+     (Element : Models.Element;
+      Visitor : in out Visitors.Visitor'Class;
+      Control : in out Boolean) is
+   begin
+      Visitor.On_Element (Element, Control);
+   end Visit;
+
+end Models;
+
+package body My_Visitors is
+
+   overriding procedure On_Element
+     (Self    : in out My_Visitor;
+      Element : Models.Element;
+      Control : in out Boolean) is
+   begin
+      Control := True;
+   end On_Element;
+
+end My_Visitors;
+
+with Models;
+with My_Visitors;
+procedure Test is
+   Element : Models.Element;
+   Visitor : My_Visitors.My_Visitor;
+   Control : Boolean := False;
+begin
+   Models.Do_Visit (Visitor, Element, Control);
+   if not Control then
+      raise Program_Error;
+   end if;
+   --  Repeat it to ensure that Visitor isn't corrupted
+   Models.Do_Visit (Visitor, Element, Control);
+   if not Control then
+      raise Program_Error;
+   end if;
+end Test; 
