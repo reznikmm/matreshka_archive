@@ -64,6 +64,8 @@
       for Include_Switches ("Ada") use ("-I");
       for Mapping_File_Switches ("Ada") use ("-gnatem=");
    end Compiler;
+
+   for Runtime_Dir       ("Ada") use "${RUNTIME_DIR(ada)}";
     </config>
   </configuration>
 </gprconfig>

@@ -10,7 +10,7 @@
 ==                                                                          ==
 ==============================================================================
 ==                                                                          ==
-== Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     ==
+== Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                ==
 == All rights reserved.                                                     ==
 ==                                                                          ==
 == Redistribution and use in source and binary forms, with or without       ==
@@ -51,5 +51,17 @@
     <version>0.1</version>
     <languages>Ada</languages>
     <target>javascript</target>
+
+    <variable name="gcc_prefix">
+      <external>which gcc</external>
+      <grep regexp="^(\S+)/gcc" group="1"></grep>
+    </variable>
+    <variable name="gcc_version">
+      <external>gcc -v</external>
+      <grep regexp="^[-\w]*gcc \S+ (\S+)" group="1"></grep>
+    </variable>
+    <runtimes default="default">
+       <directory group="default" >$gcc_prefix/\.\./lib/gcc/.*/$gcc_version/adalib/</directory>
+    </runtimes>
   </compiler_description>
 </gprconfig>
