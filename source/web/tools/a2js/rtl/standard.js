@@ -467,5 +467,13 @@ define('standard', [], function(){
         }
         return value;
     }
+    standard._null_proc = function _null_proc(descr){
+	return function (){
+           var args = arguments, result = {};
+           for (var key in descr)
+             result[key] = args[descr[key]];
+           return result
+        }
+    }
     return standard;
 });

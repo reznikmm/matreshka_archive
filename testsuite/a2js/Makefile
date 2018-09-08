@@ -22,4 +22,5 @@ all:
 	./run.sh ta_conv.test
 	./run.sh ta_conv2.test
 	./run.sh visitor.test
+	./run.sh null_simple_out.test
 	@echo A2JS Tests succeed!

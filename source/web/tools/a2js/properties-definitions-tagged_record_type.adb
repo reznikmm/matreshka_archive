@@ -238,7 +238,27 @@ package body Properties.Definitions.Tagged_Record_Type is
                      Engines.Method_Name));
 
                if Is_Null_Procedure (List (J)) then
-                  Result.Append (" = function (){};");
+                  declare
+                     Params : constant Asis.Parameter_Specification_List :=
+                       Asis.Declarations.Parameter_Profile (List (J));
+                  begin
+                     Result.Append (" = _ec._null_proc({");
+                     for P in Params'Range loop
+                        if Engine.Boolean.Get_Property
+                          (Element => Params (P),
+                           Name    => Engines.Has_Simple_Output)
+                        then
+                           Result.Append ("'");
+                           Result.Append
+                             (Engine.Text.Get_Property
+                                (Asis.Declarations.Names (Params (P)) (1), Name));
+                           Result.Append ("':");
+                           Result.Append (Natural'Wide_Wide_Image (J - 1));
+                           Result.Append (",");
+                        end if;
+                     end loop;
+                     Result.Append ("});");
+                  end;
                else
                   Result.Append (" = _ec._abstract;");
                end if;
