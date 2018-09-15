@@ -1069,9 +1069,7 @@ package body Properties.Tools is
       end To_Unit;
 
    begin
-      Text.Append ("define('");
-      Text.Append (To_Module_Name (Unit));
-      Text.Append ("', ['");
+      Text.Append ("define(['");
 
       Append_Dependencies (Unit);
       Text.Append (Deps.Join ("', '"));
