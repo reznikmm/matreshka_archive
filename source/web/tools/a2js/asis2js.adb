@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,8 @@ with Ada.Wide_Text_IO;
 with Ada.Wide_Wide_Text_IO;
 with Ada.Command_Line;
 
+with GNAT.Directory_Operations;
+with GNAT.OS_Lib;
 with GNAT.Strings;
 
 with Asis;
@@ -77,6 +79,17 @@ procedure Asis2JS is
 
    procedure Create_ADT_File (Source_File : League.Strings.Universal_String);
    --  Runs GNAT compiler to generate ADT file.
+
+   procedure Print_Runtime_Directory (Arg : League.Strings.Universal_String);
+   --  Print adalib directory in format expected by gprconfig.
+   --  Escape '..' to work with regexp. Avoid windows style pathes
+   --  because gprconfig doesn't understand it well enought.
+
+   function Relative_Path
+     (From : League.Strings.Universal_String;
+      To   : League.Strings.Universal_String;
+      Escape : Wide_Wide_String)
+      return League.Strings.Universal_String;
 
    Engine        : aliased Engines.Contexts.Context;
    Context       : Asis.Context;
@@ -223,6 +236,128 @@ procedure Asis2JS is
       end if;
    end Create_ADT_File;
 
+   -----------------------------
+   -- Print_Runtime_Directory --
+   -----------------------------
+
+   procedure Print_Runtime_Directory (Arg : League.Strings.Universal_String) is
+      procedure Launch_GCC
+        (GCC    : League.Strings.Universal_String;
+         Output : out League.Strings.Universal_String);
+      --  gcc -print-file-name=adalib
+
+      procedure Launch_GCC
+        (GCC    : League.Strings.Universal_String;
+         Output : out League.Strings.Universal_String)
+      is
+         Code : Integer;
+         Name : constant String := GCC.To_UTF_8_String;
+         Full : GNAT.OS_Lib.String_Access;
+         Temp : GNAT.OS_Lib.String_Access;
+         FD   : GNAT.OS_Lib.File_Descriptor;
+         Args : GNAT.OS_Lib.Argument_List :=
+           (1 => new String'("-print-file-name=adalib"));
+      begin
+         if Ada.Directories.Simple_Name (Name) = Name then
+            Full := GNAT.OS_Lib.Locate_Exec_On_Path (Name);
+         else
+            Full := new String'(GCC.To_UTF_8_String);
+         end if;
+
+         GNAT.OS_Lib.Create_Temp_Output_File (FD, Temp);
+         GNAT.OS_Lib.Spawn
+           (Program_Name           => Full.all,
+            Args                   => Args,
+            Output_File_Descriptor => FD,
+            Return_Code            => Code);
+
+         declare
+            Input : Ada.Wide_Wide_Text_IO.File_Type;
+         begin
+            Ada.Wide_Wide_Text_IO.Open
+              (Input, Ada.Wide_Wide_Text_IO.In_File, Temp.all);
+            while not Ada.Wide_Wide_Text_IO.End_Of_File (Input) loop
+               Output.Append (Ada.Wide_Wide_Text_IO.Get_Line (Input));
+            end loop;
+
+            Ada.Wide_Wide_Text_IO.Close (Input);
+            GNAT.OS_Lib.Close (FD);
+            Ada.Directories.Delete_File (Temp.all);
+
+            GNAT.Strings.Free (Args (1));
+            GNAT.Strings.Free (Full);
+            GNAT.Strings.Free (Temp);
+
+            if Code = 0 then
+               declare
+                  Cmd  : constant String := Ada.Directories.Full_Name
+                    (Ada.Command_Line.Command_Name);
+                  Real : constant String := Ada.Directories.Full_Name
+                    (Output.To_UTF_8_String);
+               begin
+                  Output := Relative_Path
+                    (League.Strings.From_UTF_8_String (Cmd),
+                     League.Strings.From_UTF_8_String (Real),
+                     Escape => "\.\.");
+               end;
+            else
+               Ada.Command_Line.Set_Exit_Status (Ada.Command_Line.Failure);
+            end if;
+         end;
+      end Launch_GCC;
+
+      GCC : League.Strings.Universal_String :=
+        League.Strings.To_Universal_String ("gcc");
+      Output : League.Strings.Universal_String;
+   begin
+      if Arg.Index ("=") > 0 then
+         GCC := Arg.Tail_From (Arg.Index ("=") + 1);
+      end if;
+
+      Launch_GCC (GCC, Output);
+      Ada.Wide_Wide_Text_IO.Put_Line (Output.To_Wide_Wide_String);
+   end Print_Runtime_Directory;
+
+   -------------------
+   -- Relative_Path --
+   -------------------
+
+   function Relative_Path
+     (From   : League.Strings.Universal_String;
+      To     : League.Strings.Universal_String;
+      Escape : Wide_Wide_String)
+      return League.Strings.Universal_String
+   is
+      Sep : constant Character := GNAT.Directory_Operations.Dir_Separator;
+      W_Sep : constant Wide_Wide_Character :=
+        Wide_Wide_Character'Val (Character'Pos (Sep));
+      F : constant League.String_Vectors.Universal_String_Vector :=
+        From.Split (W_Sep);
+      T : constant League.String_Vectors.Universal_String_Vector :=
+        To.Split (W_Sep);
+      Common : Natural := Natural'Min (F.Length, T.Length);
+      Result : League.Strings.Universal_String;
+   begin
+      for J in 1 .. Common loop
+         if F (J) /= T (J) then
+            Common := J - 1;
+            exit;
+         end if;
+      end loop;
+
+      for J in Common + 1 .. F.Length - 1 loop
+         Result.Append (Escape);
+         Result.Append ("/");
+      end loop;
+
+      for J in Common + 1 .. T.Length loop
+         Result.Append (T (J));
+         Result.Append ("/");
+      end loop;
+
+      return Result;
+   end Relative_Path;
+
 begin
    --  Process command line parameters.
 
@@ -241,6 +376,10 @@ begin
             Ada.Wide_Text_IO.Put_Line
              (Ada.Wide_Text_IO.Standard_Error,
               "warning: -g switch is not supported yet");
+
+         elsif Arguments (J).Starts_With ("--print-runtime-dir") then
+            Print_Runtime_Directory (Arguments (J));
+            return;
 
          elsif Source_File.Is_Empty then
             Source_File := Arguments (J);
