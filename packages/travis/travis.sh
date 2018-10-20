@@ -7,9 +7,9 @@ function osx_before_install()
 {
     npm -g install requirejs
     npm -g install js-beautify
-    export OSX_GCC=gcc-5.2.0-x86_64-apple-darwin15-bin
+    export OSX_GCC=gcc-8.1.0-x86_64-apple-darwin15-bin
     export URL=http://sourceforge.net/projects/gnuada/files
-    wget $URL/'GNAT_GCC%20Mac%20OS%20X/5.2.0/native'/$OSX_GCC.tar.bz2
+    wget $URL/'GNAT_GCC%20Mac%20OS%20X/8.1.0/native-2017'/$OSX_GCC.tar.bz2
     tar xjf $OSX_GCC.tar.bz2
     cd $OSX_GCC; echo -e "\n$HOME/gnat\ny\ny\n" | ./doinstall
     cd $TRAVIS_BUILD_DIR

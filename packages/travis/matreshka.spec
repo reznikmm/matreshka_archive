@@ -1,9 +1,10 @@
 %undefine _hardened_build
 %global with_amf 0
 %define _gprdir %_GNAT_project_dir
+%define major 19
 
 Name:       matreshka
-Version:    0.8.0
+Version:    %{major}.0
 Release:    svn%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
@@ -510,7 +511,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files devel
 %doc README.md
 %{_libdir}/%{name}/league/libleague-%{rtl_version}.so
+%{_libdir}/%{name}/league/libleague-%{rtl_version}.so.%{major}
 %{_libdir}/libleague-%{rtl_version}.so
+%{_libdir}/libleague-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/league/*.ali
 %{_includedir}/%{name}/league
 %{_datadir}/gdb/python/%{name}
@@ -526,7 +529,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files fastcgi-devel 
 %{_includedir}/%{name}/fastcgi
 %{_libdir}/%{name}//fastcgi/libmatreshka-fastcgi-%{rtl_version}.so
+%{_libdir}/%{name}//fastcgi/libmatreshka-fastcgi-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-fastcgi-%{rtl_version}.so
+%{_libdir}/libmatreshka-fastcgi-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}//fastcgi/*.ali
 %{_gprdir}/%{name}_fastcgi.gpr
 %{_gprdir}/manifests/fastcgi
@@ -540,7 +545,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files soap-core-devel
 %{_includedir}/%{name}/soap
 %{_libdir}/%{name}/soap/libmatreshka-soap-%{rtl_version}.so
+%{_libdir}/%{name}/soap/libmatreshka-soap-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-soap-%{rtl_version}.so
+%{_libdir}/libmatreshka-soap-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/soap/*.ali
 %{_gprdir}/%{name}_soap.gpr
 %{_gprdir}/manifests/soap
@@ -553,7 +560,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files soap-wsse-devel
 %{_includedir}/%{name}/wsse
 %{_libdir}/%{name}/wsse/libmatreshka-soap-wsse-%{rtl_version}.so
+%{_libdir}/%{name}/wsse/libmatreshka-soap-wsse-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-soap-wsse-%{rtl_version}.so
+%{_libdir}/libmatreshka-soap-wsse-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/wsse/*.ali
 %{_gprdir}/%{name}_soap_wsse.gpr
 %{_gprdir}/manifests/wsse
@@ -566,7 +575,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-core-devel 
 %{_includedir}/%{name}/sql
 %{_libdir}/%{name}/sql/libmatreshka-sql-%{rtl_version}.so
+%{_libdir}/%{name}/sql/libmatreshka-sql-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-sql-%{rtl_version}.so
+%{_libdir}/libmatreshka-sql-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql/*.ali
 %{_gprdir}/%{name}_sql.gpr
 %{_gprdir}/manifests/sql
@@ -580,7 +591,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-sqlite-devel
 %{_includedir}/%{name}/sql_sqlite3
 %{_libdir}/%{name}/sql_sqlite3/libmatreshka-sql-sqlite3-%{rtl_version}.so
+%{_libdir}/%{name}/sql_sqlite3/libmatreshka-sql-sqlite3-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-sql-sqlite3-%{rtl_version}.so
+%{_libdir}/libmatreshka-sql-sqlite3-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_sqlite3/*.ali
 %{_gprdir}/%{name}_sql_sqlite3.gpr
 %{_gprdir}/manifests/sql_sqlite3
@@ -593,7 +606,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-postgresql-devel
 %{_includedir}/%{name}/sql_postgresql
 %{_libdir}/%{name}/sql_postgresql/libmatreshka-sql-postgresql-%{rtl_version}.so
+%{_libdir}/%{name}/sql_postgresql/libmatreshka-sql-postgresql-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-sql-postgresql-%{rtl_version}.so
+%{_libdir}/libmatreshka-sql-postgresql-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_postgresql/*.ali
 %{_gprdir}/%{name}_sql_postgresql.gpr
 %{_gprdir}/manifests/sql_postgresql
@@ -606,7 +621,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files sql-mysql-devel
 %{_includedir}/%{name}/sql_mysql
 %{_libdir}/%{name}/sql_mysql/libmatreshka-sql-mysql-%{rtl_version}.so
+%{_libdir}/%{name}/sql_mysql/libmatreshka-sql-mysql-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-sql-mysql-%{rtl_version}.so
+%{_libdir}/libmatreshka-sql-mysql-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_mysql/*.ali
 %{_gprdir}/%{name}_sql_mysql.gpr
 %{_gprdir}/manifests/sql_mysql
@@ -619,7 +636,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files xml-devel
 %{_includedir}/%{name}/xml
 %{_libdir}/%{name}/xml/libmatreshka-xml-%{rtl_version}.so
+%{_libdir}/%{name}/xml/libmatreshka-xml-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-xml-%{rtl_version}.so
+%{_libdir}/libmatreshka-xml-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/xml/*.ali
 %{_gprdir}/%{name}_xml.gpr
 %{_gprdir}/manifests/xml
@@ -634,7 +653,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-devel
 %{_includedir}/%{name}/sql_amf
 %{_libdir}/%{name}/sql_amf/libmatreshka-amf-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf/libmatreshka-amf-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf/*.ali
 %{_gprdir}/%{name}_amf.gpr
 %{_gprdir}/manifests/sql_amf
@@ -647,7 +668,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-dd-devel
 %{_includedir}/%{name}/sql_amf_dd
 %{_libdir}/%{name}/sql_amf_dd/libmatreshka-amf-dd-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf_dd/libmatreshka-amf-dd-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-dd-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-dd-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf_dd/*ali
 %{_gprdir}/%{name}_amf_dd.gpr
 %{_gprdir}/manifests/sql_amf_dd
@@ -659,7 +682,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 
 %files amf-uml-devel
 %{_libdir}/%{name}/sql_amf_uml/libmatreshka-amf-uml-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf_uml/libmatreshka-amf-uml-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-uml-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-uml-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf_uml/*.ali
 %{_includedir}/%{name}/sql_amf_uml
 %{_gprdir}/%{name}_amf_uml.gpr
@@ -673,7 +698,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-utp-devel
 %{_includedir}/%{name}/sql_amf_utp
 %{_libdir}/%{name}/sql_amf_utp/libmatreshka-amf-utp-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf_utp/libmatreshka-amf-utp-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-utp-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-utp-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf_utp/*.ali
 %{_gprdir}/%{name}_amf_utp.gpr
 %{_gprdir}/manifests/sql_amf_utp
@@ -686,7 +713,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-ocl-devel 
 %{_includedir}/%{name}/sql_amf_ocl
 %{_libdir}/%{name}/sql_amf_ocl/libmatreshka-amf-ocl-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf_ocl/libmatreshka-amf-ocl-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-ocl-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-ocl-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf_ocl/*.ali
 %{_gprdir}/%{name}_amf_ocl.gpr
 %{_gprdir}/manifests/sql_amf_ocl
@@ -699,7 +728,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files amf-mofext-devel 
 %{_includedir}/%{name}/sql_amf_mofext
 %{_libdir}/%{name}/sql_amf_mofext/libmatreshka-amf-mofext-%{rtl_version}.so
+%{_libdir}/%{name}/sql_amf_mofext/libmatreshka-amf-mofext-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-amf-mofext-%{rtl_version}.so
+%{_libdir}/libmatreshka-amf-mofext-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/sql_amf_mofext/*.ali
 %{_gprdir}/%{name}_amf_mofext.gpr
 %{_gprdir}/manifests/sql_amf_mofext
@@ -708,7 +739,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files spikedog-api-devel
 %{_includedir}/%{name}/spikedog_api
 %{_libdir}/%{name}/spikedog_api/libspikedog-api-%{rtl_version}.so
+%{_libdir}/%{name}/spikedog_api/libspikedog-api-%{rtl_version}.so.%{major}
 %{_libdir}/libspikedog-api-%{rtl_version}.so
+%{_libdir}/libspikedog-api-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/spikedog_api/*.ali
 %{_gprdir}/%{name}_spikedog_api.gpr
 %{_gprdir}/manifests/spikedog_api
@@ -721,7 +754,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files spikedog-core-devel 
 %{_includedir}/%{name}/spikedog_core
 %{_libdir}/%{name}/spikedog_core/libspikedog-core-%{rtl_version}.so
+%{_libdir}/%{name}/spikedog_core/libspikedog-core-%{rtl_version}.so.%{major}
 %{_libdir}/libspikedog-core-%{rtl_version}.so
+%{_libdir}/libspikedog-core-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/spikedog_core/*.ali
 %{_gprdir}/%{name}_spikedog_core.gpr
 %{_gprdir}/manifests/spikedog_core
@@ -734,7 +769,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files spikedog-awsd-devel
 %{_includedir}/%{name}/spikedog_aws
 %{_libdir}/%{name}/spikedog_aws/libspikedog-aws-%{rtl_version}.so
+%{_libdir}/%{name}/spikedog_aws/libspikedog-aws-%{rtl_version}.so.%{major}
 %{_libdir}/libspikedog-aws-%{rtl_version}.so
+%{_libdir}/libspikedog-aws-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/spikedog_aws/*.ali
 %{_gprdir}/%{name}_spikedog_core.gpr
 %{_gprdir}/manifests/spikedog_core
@@ -749,7 +786,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %files servlet-devel
 %{_includedir}/%{name}/servlet
 %{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so
+%{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so.%{major}
 %{_libdir}/libmatreshka-servlet-%{rtl_version}.so
+%{_libdir}/libmatreshka-servlet-%{rtl_version}.so.%{major}
 %{_libdir}/%{name}/servlet/*.ali
 %{_gprdir}/%{name}_servlet.gpr
 %{_gprdir}/manifests/servlet
@@ -769,6 +808,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_gprdir}/manifests/webapi
 
 %changelog
+* Sat Oct 20 2018 Maxim Reznik <reznikmm@gmail.com> - 19.0-1
+- Update to 19.0 version
+
 * Sat Jan 20 2018 Maxim Reznik <reznikmm@gmail.com> - 0.8.0-11
 - Add package for a2js
 

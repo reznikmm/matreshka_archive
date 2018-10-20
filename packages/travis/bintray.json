@@ -3,7 +3,7 @@
         "subject": "reznikmm",
         "repo": "matreshka",
         "name": "matreshka",
-        "desc": "I was pushed completely automatically by travis CI",
+        "desc": "It was pushed completely automatically by travis CI",
         "labels": ["ada"],
         "licenses": ["BSD 3-Clause"],
         "vcs_url": "https://github.com/reznikmm/matreshka.git",
@@ -16,7 +16,7 @@
     },
 
     "version": {
-        "name": "0.8-svn",
+        "name": "19.0-svn",
         "desc": "This is a trunk version",
         "gpgSign": false
     },
