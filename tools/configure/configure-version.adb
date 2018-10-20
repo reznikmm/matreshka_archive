@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,7 +46,7 @@
 
 procedure Configure.Version is
    Version_Name  : constant Unbounded_String := +"VERSION";
-   Version_Value : constant Unbounded_String := +"0.8.0";
+   Version_Value : constant Unbounded_String := +"18.0";
 
 begin
    Substitutions.Insert (Version_Name, Version_Value);
