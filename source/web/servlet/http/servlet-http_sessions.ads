@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -80,6 +80,7 @@
 --  (ServletContext), so information stored in one context will not be directly
 --  visible in another.
 ------------------------------------------------------------------------------
+with League.Calendars;
 with League.Strings;
 
 package Servlet.HTTP_Sessions is
@@ -88,10 +89,39 @@ package Servlet.HTTP_Sessions is
 
    type HTTP_Session is limited interface;
 
+   not overriding function Get_Creation_Time
+    (Self : HTTP_Session) return League.Calendars.Date_Time is abstract;
+   --  Returns the time when this session was created.
+   --
+   --  Raises Program_Error if this method is called on an invalidated session.
+
    not overriding function Get_Id
     (Self : HTTP_Session) return League.Strings.Universal_String is abstract;
    --  Returns a string containing the unique identifier assigned to this
    --  session. The identifier is assigned by the servlet container and is
    --  implementation dependent.
+
+   not overriding function Get_Last_Accessed_Time
+    (Self : HTTP_Session) return League.Calendars.Date_Time is abstract;
+   --  Returns the last time the client sent a request associated with this
+   --  session, and marked by the time the container received the request.
+   --
+   --  Actions that your application takes, such as getting or setting a value
+   --  associated with the session, do not affect the access time.
+   --
+   --  Raises Program_Error if this method is called on an invalidated session.
+
+   not overriding function Is_New
+    (Self : HTTP_Session) return Boolean is abstract;
+   --  Returns True if the client does not yet know about the session or if the
+   --  client chooses not to join the session. For example, if the server used
+   --  only cookie-based sessions, and the client had disabled the use of
+   --  cookies, then a session would be new on each request.
+   --
+   --  Returns True if the server has created a session, but the client has not
+   --  yet joined.
+   --
+   --  Raises Program_Error if this method is called on an already invalidated
+   --  session.
 
 end Servlet.HTTP_Sessions;
