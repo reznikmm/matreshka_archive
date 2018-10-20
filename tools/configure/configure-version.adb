@@ -46,7 +46,7 @@
 
 procedure Configure.Version is
    Version_Name  : constant Unbounded_String := +"VERSION";
-   Version_Value : constant Unbounded_String := +"18.0";
+   Version_Value : constant Unbounded_String := +"18.1";
 
 begin
    Substitutions.Insert (Version_Name, Version_Value);
