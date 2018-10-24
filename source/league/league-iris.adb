@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -1778,9 +1778,7 @@ package body League.IRIs is
    procedure Set_Query
     (Self : in out IRI'Class; To : League.Strings.Universal_String) is
    begin
-      --  Generated stub: replace with real body!
-      pragma Compile_Time_Warning (Standard.True, "Set_Query unimplemented");
-      raise Program_Error;
+      Self.Query := To;
    end Set_Query;
 
    -----------------------
