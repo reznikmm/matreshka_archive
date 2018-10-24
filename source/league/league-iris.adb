@@ -56,10 +56,6 @@ package body League.IRIs is
 
    end IRI_Parser;
 
-   package URI_Parser is
-
-   end URI_Parser;
-
    procedure Normalize_Path (Self : in out IRI'Class);
 
    function Is_ALPHA
