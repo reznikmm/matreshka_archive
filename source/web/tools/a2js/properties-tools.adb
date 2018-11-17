@@ -326,6 +326,11 @@ package body Properties.Tools is
 
                   return Asis.Nil_Element_List;
 
+               when Asis.A_Derived_Type_Definition =>
+                  return Corresponding_Type_Components
+                           (Type_Declaration_View
+                              (Asis.Elements.Enclosing_Element (Definition)));
+
                when others =>
 
                   raise Program_Error;
