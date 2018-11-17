@@ -1,6 +1,7 @@
 FROM fedora
 RUN curl -o /etc/yum.repos.d/bintray-reznikmm-matreshka.repo \
  https://bintray.com/reznikmm/matreshka/rpm && \
+    dnf --assumeyes install make && \
     dnf --assumeyes install rpmdevtools && \
     dnf --assumeyes install aws-devel && \
     dnf --assumeyes install mariadb-devel && \
