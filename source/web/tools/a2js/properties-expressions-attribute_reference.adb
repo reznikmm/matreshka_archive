@@ -186,6 +186,10 @@ package body Properties.Expressions.Attribute_Reference is
                return Text;
             end;
 
+         when Asis.A_Model_Epsilon_Attribute =>
+               Text.Append ("Number.EPSILON");
+
+               return Text;
          when Asis.An_Implementation_Defined_Attribute =>
             declare
                Id : constant Asis.Identifier :=
