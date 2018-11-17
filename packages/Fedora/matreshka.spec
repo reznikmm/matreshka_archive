@@ -3,7 +3,7 @@
 %define major 18
 
 Name:       matreshka
-Version:    %{major}.0
+Version:    %{major}.1
 Release:    1%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
@@ -434,27 +434,27 @@ Requires:   fedora-gnat-project-common  >= 2
 %{summary}
 
 %prep 
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
 %patch1 -p1
 
 %build
 make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %configure
-make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
+make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags" AWS_BUILD=default
 
 %check 
 ## find libs without RPATH, Fedora specific
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
 # FIXME http://forge.ada-ru.org/matreshka/ticket/482#ticket
 %ifnarch ppc64le
-make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check
+make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check AWS_BUILD=default
 %endif
 ## Delete compiled python files 
 rm -f %{buildroot}/%{_datadir}/gdb/python/matreshka/matreshka.py?
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir}
+make install DESTDIR=%{buildroot} LIBDIR=%{_libdir} PREFIX=%{_prefix} GPRDIR=%{_gprdir} BINDIR=%{_bindir} AWS_BUILD=default
 ## Delete rpath
 chrpath --delete %{buildroot}%{_libdir}/lib*
 

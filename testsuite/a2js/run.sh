@@ -5,12 +5,13 @@ set -e
 TEST=$1
 WORK_DIR=${TEMPDIR:-/tmp}/$1.test
 PATH=$PATH:`pwd`/../../.objs/a2js
+JS_BEAUTIFY=${JS_BEAUTIFY:-js-beautify}
 export LD_LIBRARY_PATH=`pwd`/../../.libs:$LD_LIBRARY_PATH
 
 compile()
 {
     NAME=${1%.*}.js
-    js-beautify $WORK_DIR/.objs/$NAME > $WORK_DIR/$NAME
+    $JS_BEAUTIFY $WORK_DIR/.objs/$NAME > $WORK_DIR/$NAME
 }
 
 mkdir $WORK_DIR

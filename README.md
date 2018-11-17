@@ -112,23 +112,31 @@ Automatic configuration utility will be build and run to configure Matreshka
 to meet your machine and operating system.
 
 
-### Windows 32bit
-
-On Windows system you need 'make', 'install' and a few other commands.
-The easiest way to get them is to install
-[​Make](http://gnuwin32.sourceforge.net/packages/make.htm) and
-[​CoreUtils](http://gnuwin32.sourceforge.net/packages/coreutils.htm)
-packages from GnuWin32 port.
-Another option - install MinGW or Cygwin environment.
-
-
 ### Windows 64bit
 
-On Windows 64 bits the only 'working' compiler (capable to run gprbuild) is
-one of ​[msys2](https://msys2.github.io/) distribution.
-To run Matreshka on Windows 64:
+On Windows system you need `make`, `install` and a few other commands.
+The easiest way to get them is to install
+[Make](http://gnuwin32.sourceforge.net/packages/make.htm) and
+[CoreUtils](http://gnuwin32.sourceforge.net/packages/coreutils.htm)
+packages from GnuWin32 port.
 
- * Download and install msys2 as described on ​https://msys2.github.io/
+**Note for Windows 10 users**: Windows assumes that `install` should ask for
+elevated privileges and prevents it to work as expected. To workaround that
+issue launch the Local Security Policy editor and
+
+1. Go to Local policies / Security Options
+2. Set User Account Control: Detect application installations and prompt for
+elevation to disabled
+    
+Another option - install [msys2](https://msys2.github.io/) MinGW or Cygwin
+environment.
+
+Use [GNAT Community 2018](https://www.adacore.com/download/more)  Ada compiler.
+
+Alternatively you can use GCC from [msys2](https://msys2.github.io/)
+distribution. Follow these installation instructions for msys2:
+
+ * Download and install msys2 as described on https://msys2.github.io/
  * Install Ada compiler `pacman -S mingw-w64-gcc-ada
  * Now you need to replace unworking *.dll.a with corresponding dll.
    Do this in msys2 console:
@@ -136,8 +144,8 @@ To run Matreshka on Windows 64:
 ```
 adalib=$(dirname `gcc -print-libgcc-file-name`)/adalib
 bin_dir=$(dirname `which gcc`)
-rm -f ${adalib}/libgna{t,rl}-6.dll.a
-cp ${bin_dir}/libgna{t,rl}-6.dll ${adalib}/
+rm -f ${adalib}/libgna{t,rl}-*.dll.a
+cp ${bin_dir}/libgna{t,rl}-*.dll ${adalib}/
 ```
 
 To install gprbuild setup our repository with precompiled packages:
@@ -158,16 +166,22 @@ make all install
 ```
 
 
+### Windows 32bit
+
+Use GNAT GPL 2017 Ada compiler.
+You also need make and install utilities, see Windows 64bit for details. 
+
+
 ### Mac OS
 
 You may use GNAT GPL
-or ​[GCC from sf.net](https://sourceforge.net/projects/gnuada/files/GNAT_GCC%20Mac%20OS%20X/6.1.0/native-2016/).
+or [GCC from sf.net](https://sourceforge.net/projects/gnuada/files/GNAT_GCC%20Mac%20OS%20X/6.1.0/native-2016/).
 
 On Mac OS system you need "Command Line Tools" installed. You can install this
 from Xcode menu > Preferences > Downloads or, alternatively, there are
 stand-alone installation packages
- * for ​[Mountain Lion (10.8)](https://developer.apple.com/downloads/index.action?=Command%20Line%20Tools%20%28OS%20X%20Mountain%20Lion%29)
- * for ​[Mavericks (10.9)](https://developer.apple.com/downloads/index.action?=Command%20Line%20Tools%20%28OS%20X%20Mavericks%29).
+ * for [Mountain Lion (10.8)](https://developer.apple.com/downloads/index.action?=Command%20Line%20Tools%20%28OS%20X%20Mountain%20Lion%29)
+ * for [Mavericks (10.9)](https://developer.apple.com/downloads/index.action?=Command%20Line%20Tools%20%28OS%20X%20Mavericks%29).
 
 
 ### Advanced installation
