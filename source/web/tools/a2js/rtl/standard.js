@@ -114,6 +114,11 @@ define('standard', [], function(){
         return x.toString();
     };
 
+    //  T'Rounding attribute
+    standard._rounding = function (x){
+        return Math.sign(x) * Math.round(Math.abs(x));
+    };
+
     //  Ada.Numerics.Generic_Complex_Elementary_Functions
     standard._generic_elementary_functions = function(){ return {
         arccos : Math.acos,

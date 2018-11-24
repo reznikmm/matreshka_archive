@@ -418,5 +418,7 @@ begin
    Fn_To.Append (League.Strings.To_Universal_String ("_ec._pred"));
    Fn_From.Append (League.Strings.To_Universal_String ("A_SUCC_ATTRIBUTE"));
    Fn_To.Append (League.Strings.To_Universal_String ("_ec._succ"));
+   Fn_From.Append (League.Strings.To_Universal_String ("A_ROUNDING_ATTRIBUTE"));
+   Fn_To.Append (League.Strings.To_Universal_String ("_ec._rounding"));
 
 end Properties.Expressions.Function_Calls;
