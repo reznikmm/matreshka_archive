@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,10 +70,12 @@ package Matreshka.Servlet_Containers is
    type Servlet_Container_Access is access all Servlet_Container'Class;
 
    procedure Initialize
-    (Self   : not null access Servlet_Container'Class;
-     Server : not null Matreshka.Servlet_Servers.Server_Access);
+    (Self    : not null access Servlet_Container'Class;
+     Server  : not null Matreshka.Servlet_Servers.Server_Access;
+     Success : out Boolean);
    --  Initializes servlet container. Specified server object must be
-   --  initialized.
+   --  initialized. Sets Success to False on error during application
+   --  loading/startup.
 
    procedure Finalize (Self : not null access Servlet_Container'Class);
    --  Finalizes servlet container.

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -49,6 +49,9 @@ package Matreshka.Servlet_Servers.AWS_Servers is
    type AWS_Server is new Abstract_Server with null record;
 
    procedure Initialize (Self : not null access AWS_Server'Class);
+
+   procedure Finalize (Self : not null access AWS_Server'Class);
+   --  Shutdown AWS server.
 
    overriding procedure Set_Container
     (Self      : not null access AWS_Server;

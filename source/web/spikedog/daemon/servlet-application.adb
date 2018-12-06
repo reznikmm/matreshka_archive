@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -124,12 +124,16 @@ package body Servlet.Application is
 
       --  Fallback to use AWS server.
 
-      if not Success then
-         AWS_Server.Initialize;
-         Server := AWS_Server'Access;
-      end if;
+--      if not Success then
+      AWS_Server.Initialize;
+      Server := AWS_Server'Access;
+--      end if;
 
-      Container.Initialize (Server);
+      Container.Initialize (Server, Success);
+
+      if not Success then
+         AWS_Server.Finalize;
+      end if;
    end Initialize;
 
 end Servlet.Application;

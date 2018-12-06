@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -320,8 +320,9 @@ package body Matreshka.Servlet_Containers is
    ----------------
 
    procedure Initialize
-    (Self   : not null access Servlet_Container'Class;
-     Server : not null Matreshka.Servlet_Servers.Server_Access)
+    (Self    : not null access Servlet_Container'Class;
+     Server  : not null Matreshka.Servlet_Servers.Server_Access;
+     Success : out Boolean)
    is
       Source      : aliased XML.SAX.File_Input_Sources.File_Input_Source;
       Reader      : XML.SAX.Simple_Readers.Simple_Reader;
@@ -332,9 +333,11 @@ package body Matreshka.Servlet_Containers is
         Matreshka.Spikedog_Deployment_Descriptors.Deployment_Descriptor_Access;
       Initializer :
           Servlet.Container_Initializers.Servlet_Container_Initializer_Access;
-      Success     : Boolean;
+      Aux         : Boolean;
 
    begin
+      Success := False;
+
       --  Load deployment descriptor.
 
       Descriptor :=
@@ -357,10 +360,23 @@ package body Matreshka.Servlet_Containers is
       --  XXX Can container be connected to server later, after successful
       --  initialization?
 
-      --  Load application.
+      --  Load and startup application.
 
-      Loader.Load (Self.all, Initializer);
-      Initializer.On_Startup (Self.all);
+      begin
+         Loader.Load (Self.all, Initializer);
+         Initializer.On_Startup (Self.all);
+
+      exception
+         when X : others =>
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              "Exception during application load/startup:");
+            Ada.Text_IO.Put_Line
+             (Ada.Text_IO.Standard_Error,
+              Ada.Exceptions.Exception_Information (X));
+
+            return;
+      end;
 
       --  Notify ServletContextListeners about initialization of context
 
@@ -402,7 +418,9 @@ package body Matreshka.Servlet_Containers is
               Name    => League.Strings.Empty_Universal_String,
               Servlet => new Matreshka.Servlet_Defaults.Default_Servlet),
         League.Strings.To_Universal_String ("/"),
-        Success);
+        Aux);
+
+      Success := True;
    end Initialize;
 
    -------------------------

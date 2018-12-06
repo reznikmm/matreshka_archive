@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -97,6 +97,15 @@ package body Matreshka.Servlet_Servers.AWS_Servers is
      Name     : Wide_Wide_String;
      Default  : String);
    --  Read setting with given Name or set Default if no such setting.
+
+   --------------
+   -- Finalize --
+   --------------
+
+   procedure Finalize (Self : not null access AWS_Server'Class) is
+   begin
+      Shutdown_Request_Handler;
+   end Finalize;
 
    ----------------
    -- Initialize --
