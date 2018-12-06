@@ -54,17 +54,13 @@ with AWS.Status;
 
 with League.Holders;
 with League.Settings;
-with League.String_Vectors;
 with League.Strings;
 
 with Matreshka.Servlet_AWS_Requests;
 with Matreshka.Servlet_AWS_Responses;
 with Matreshka.Servlet_Containers;
-with Matreshka.Servlet_HTTP_Requests;
-with Matreshka.Servlet_HTTP_Responses;
 with Servlet.HTTP_Responses;
 with Servlet.HTTP_Upgrade_Handlers;
-with Servlet.Responses;
 with Web_Socket.Handlers.AWS_Handlers;
 
 package body Matreshka.Servlet_Servers.AWS_Servers is
