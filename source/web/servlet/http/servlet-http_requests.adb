@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -46,6 +46,18 @@ with Ada.Containers;
 package body Servlet.HTTP_Requests is
 
    use type League.Strings.Universal_String;
+
+   -----------------------
+   -- Change_Session_Id --
+   -----------------------
+
+   procedure Change_Session_Id (Self : in out HTTP_Servlet_Request'Class) is
+      Aux : constant League.Strings.Universal_String := Self.Change_Session_Id;
+      pragma Unreferenced (Aux);
+
+   begin
+      null;
+   end Change_Session_Id;
 
    ----------------------
    -- Get_Context_Path --

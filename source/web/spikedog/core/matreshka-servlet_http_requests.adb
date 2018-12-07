@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -44,6 +44,19 @@
 with Servlet.HTTP_Cookies;
 
 package body Matreshka.Servlet_HTTP_Requests is
+
+   -----------------------
+   -- Change_Session_Id --
+   -----------------------
+
+   overriding function Change_Session_Id
+    (Self : in out Abstract_HTTP_Servlet_Request)
+       return League.Strings.Universal_String is
+   begin
+      raise Program_Error
+        with "HTTP_Request.Change_Session_Id is not implemented";
+      return League.Strings.Empty_Universal_String;
+   end Change_Session_Id;
 
    ----------------------
    -- Get_Context_Path --

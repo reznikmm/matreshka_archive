@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -176,6 +176,12 @@ package Matreshka.Servlet_HTTP_Requests is
    overriding function Is_Requested_Session_Id_Valid
     (Self : Abstract_HTTP_Servlet_Request) return Boolean;
    --  Checks whether the requested session ID is still valid.
+
+   overriding function Change_Session_Id
+    (Self : in out Abstract_HTTP_Servlet_Request)
+       return League.Strings.Universal_String;
+   --  Change the session id of the current session associated with this
+   --  request and return the new session id.
 
 private
 

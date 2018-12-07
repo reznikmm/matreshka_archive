@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -67,6 +67,15 @@ package Servlet.HTTP_Requests is
 
    type HTTP_Servlet_Request is limited interface
      and Servlet.Requests.Servlet_Request;
+
+   not overriding function Change_Session_Id
+    (Self : in out HTTP_Servlet_Request)
+       return League.Strings.Universal_String is abstract;
+   procedure Change_Session_Id (Self : in out HTTP_Servlet_Request'Class);
+   --  Change the session id of the current session associated with this
+   --  request and return the new session id.
+   --
+   --  Raises Program_Error if there is no session associates with the request.
 
    not overriding function Get_Context_Path
     (Self : HTTP_Servlet_Request)
