@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2018, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -70,5 +70,11 @@ package Spikedog.HTTP_Session_Managers is
    not overriding function New_Session
     (Self : in out HTTP_Session_Manager)
        return access Servlet.HTTP_Sessions.HTTP_Session'Class is abstract;
+
+   not overriding procedure Change_Session_Id
+    (Self    : in out HTTP_Session_Manager;
+     Session : not null access Servlet.HTTP_Sessions.HTTP_Session'Class)
+       is abstract;
+   --  Changes session identifier for given session.
 
 end Spikedog.HTTP_Session_Managers;

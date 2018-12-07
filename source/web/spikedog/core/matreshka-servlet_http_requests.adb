@@ -45,6 +45,8 @@ with Servlet.HTTP_Cookies;
 
 package body Matreshka.Servlet_HTTP_Requests is
 
+   use type Spikedog.HTTP_Session_Managers.HTTP_Session_Manager_Access;
+
    -----------------------
    -- Change_Session_Id --
    -----------------------
@@ -53,9 +55,15 @@ package body Matreshka.Servlet_HTTP_Requests is
     (Self : in out Abstract_HTTP_Servlet_Request)
        return League.Strings.Universal_String is
    begin
-      raise Program_Error
-        with "HTTP_Request.Change_Session_Id is not implemented";
-      return League.Strings.Empty_Universal_String;
+      if Self.Session_Manager = null
+        or else Self.Data.Session = null
+      then
+         raise Program_Error;
+      end if;
+
+      Self.Session_Manager.Change_Session_Id (Self.Data.Session);
+
+      return Self.Data.Session.Get_Id;
    end Change_Session_Id;
 
    ----------------------
@@ -195,10 +203,7 @@ package body Matreshka.Servlet_HTTP_Requests is
    overriding function Get_Session
     (Self   : Abstract_HTTP_Servlet_Request;
      Create : Boolean := True)
-       return access Servlet.HTTP_Sessions.HTTP_Session'Class
-   is
-      use type Spikedog.HTTP_Session_Managers.HTTP_Session_Manager_Access;
-
+       return access Servlet.HTTP_Sessions.HTTP_Session'Class is
    begin
       if Self.Data.Session /= null
         or else Self.Data.Session_Computed
