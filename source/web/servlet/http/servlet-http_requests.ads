@@ -69,9 +69,9 @@ package Servlet.HTTP_Requests is
      and Servlet.Requests.Servlet_Request;
 
    not overriding function Change_Session_Id
-    (Self : in out HTTP_Servlet_Request)
+    (Self : HTTP_Servlet_Request)
        return League.Strings.Universal_String is abstract;
-   procedure Change_Session_Id (Self : in out HTTP_Servlet_Request'Class);
+   procedure Change_Session_Id (Self : HTTP_Servlet_Request'Class);
    --  Change the session id of the current session associated with this
    --  request and return the new session id.
    --

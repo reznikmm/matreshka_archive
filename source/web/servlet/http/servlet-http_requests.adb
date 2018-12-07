@@ -51,7 +51,7 @@ package body Servlet.HTTP_Requests is
    -- Change_Session_Id --
    -----------------------
 
-   procedure Change_Session_Id (Self : in out HTTP_Servlet_Request'Class) is
+   procedure Change_Session_Id (Self : HTTP_Servlet_Request'Class) is
       Aux : constant League.Strings.Universal_String := Self.Change_Session_Id;
       pragma Unreferenced (Aux);
 

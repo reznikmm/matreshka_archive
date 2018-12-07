@@ -178,7 +178,7 @@ package Matreshka.Servlet_HTTP_Requests is
    --  Checks whether the requested session ID is still valid.
 
    overriding function Change_Session_Id
-    (Self : in out Abstract_HTTP_Servlet_Request)
+    (Self : Abstract_HTTP_Servlet_Request)
        return League.Strings.Universal_String;
    --  Change the session id of the current session associated with this
    --  request and return the new session id.

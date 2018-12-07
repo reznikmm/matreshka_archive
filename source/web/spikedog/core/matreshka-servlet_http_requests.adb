@@ -52,7 +52,7 @@ package body Matreshka.Servlet_HTTP_Requests is
    -----------------------
 
    overriding function Change_Session_Id
-    (Self : in out Abstract_HTTP_Servlet_Request)
+    (Self : Abstract_HTTP_Servlet_Request)
        return League.Strings.Universal_String is
    begin
       if Self.Session_Manager = null
