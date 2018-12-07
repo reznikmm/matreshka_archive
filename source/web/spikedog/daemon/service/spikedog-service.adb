@@ -96,8 +96,9 @@ package body Spikedog.Service is
         League.Application.Environment.Value
           (League.Strings.To_Universal_String ("TEMP"));
       --  This is usually C:|Windows\TEMP
-      Server : Matreshka.Servlet_Servers.Server_Access;
-      File   : Ada.Text_IO.File_Type;
+      Server  : Matreshka.Servlet_Servers.Server_Access;
+      File    : Ada.Text_IO.File_Type;
+      Success : Boolean;
    begin
       Ada.Directories.Set_Directory (Dir);
       Status.Set_Status (Services.Running);
@@ -119,7 +120,8 @@ package body Spikedog.Service is
 
       Self.AWS_Server.Initialize;
       Server := Self.AWS_Server'Unchecked_Access;
-      Self.Container.Initialize (Server);
+      Self.Container.Initialize (Server, Success);
+      Ada.Text_IO.Put_Line (File, "Initialize " & Boolean'Image (Success));
 
       Self.Stop_Flag.Acquire;
       Status.Set_Status (Services.Stop_Pending);

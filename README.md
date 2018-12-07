@@ -2,6 +2,7 @@ matreshka
 =========
 
 [![Build Status](https://travis-ci.org/reznikmm/matreshka.svg?branch=master)](https://travis-ci.org/reznikmm/matreshka)
+[![Build status](https://ci.appveyor.com/api/projects/status/nwxgxkdsju14bd6a?svg=true)](https://ci.appveyor.com/project/reznikmm/matreshka)
 
 > Matreshka is Ada framework to develop information systems
 
