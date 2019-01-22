@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2019, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -144,6 +144,20 @@ private
      Location : League.IRIs.IRI);
    --  Sends a temporary redirect response to the client using the specified
    --  redirect location URL and clears the buffer.
+
+   overriding procedure Send_Error
+    (Self    : in out AWS_Servlet_Response;
+     Code    : Servlet.HTTP_Responses.Status_Code;
+     Message : League.Strings.Universal_String);
+   --  Sends an error response to the client using the specified status and
+   --  clears the buffer. The server defaults to creating the response to look
+   --  like an HTML-formatted server error page containing the specified
+   --  message, setting the content type to "text/html". The server will
+   --  preserve cookies and may clear or update any headers needed to serve the
+   --  error page as a valid response. If an error-page declaration has been
+   --  made for the web application corresponding to the status code passed in,
+   --  it will be served back in preference to the suggested msg parameter and
+   --  the msg parameter will be ignored.
 
    overriding procedure Set_Character_Encoding
     (Self     : in out AWS_Servlet_Response;

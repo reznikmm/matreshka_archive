@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2019, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -293,6 +293,18 @@ package body Matreshka.Servlet_AWS_Responses is
 
       return False;
    end Is_Ready;
+
+   ----------------
+   -- Send_Error --
+   ----------------
+
+   overriding procedure Send_Error
+    (Self    : in out AWS_Servlet_Response;
+     Code    : Servlet.HTTP_Responses.Status_Code;
+     Message : League.Strings.Universal_String) is
+   begin
+      AWS.Response.Set.Status_Code (Self.Data, To_AWS_Status_Code (Code));
+   end Send_Error;
 
    -------------------
    -- Send_Redirect --

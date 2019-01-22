@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2019, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -248,6 +248,38 @@ package Servlet.HTTP_Responses is
    not overriding function Get_Status
     (Self : HTTP_Servlet_Response) return Status_Code is abstract;
    --  Gets the current status code of this response.
+
+   procedure Send_Error
+    (Self : in out HTTP_Servlet_Response'Class;
+     Code : Status_Code);
+   --  Sends an error response to the client using the specified status code
+   --  and clears the buffer. The server will preserve cookies and may clear or
+   --  update any headers needed to serve the error page as a valid response.
+   --  If an error-page declaration has been made for the web application
+   --  corresponding to the status code passed in, it will be served back the
+   --  error page.
+   --
+   --  If the response has already been committed, this subprogram raise an
+   --  Program_Error exception. After using this method, the response should be
+   --  considered to be committed and should not be written to. 
+
+   not overriding procedure Send_Error
+    (Self    : in out HTTP_Servlet_Response;
+     Code    : Status_Code;
+     Message : League.Strings.Universal_String) is abstract;
+   --  Sends an error response to the client using the specified status and
+   --  clears the buffer. The server defaults to creating the response to look
+   --  like an HTML-formatted server error page containing the specified
+   --  message, setting the content type to "text/html". The server will
+   --  preserve cookies and may clear or update any headers needed to serve the
+   --  error page as a valid response. If an error-page declaration has been
+   --  made for the web application corresponding to the status code passed in,
+   --  it will be served back in preference to the suggested msg parameter and
+   --  the msg parameter will be ignored.
+   --
+   --  If the response has already been committed, this method throws an
+   --  Program_Error. After using this method, the response should be
+   --  considered to be committed and should not be written to.
 
    not overriding procedure Send_Redirect
     (Self     : in out HTTP_Servlet_Response;

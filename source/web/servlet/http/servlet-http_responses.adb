@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2015, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2015-2019, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -64,5 +64,16 @@ package body Servlet.HTTP_Responses is
          return Aux (1);
       end if;
    end Get_Header;
+
+   ----------------
+   -- Send_Error --
+   ----------------
+
+   procedure Send_Error
+    (Self : in out HTTP_Servlet_Response'Class;
+     Code : Status_Code) is
+   begin
+      Self.Send_Error (Code, League.Strings.Empty_Universal_String);
+   end Send_Error;
 
 end Servlet.HTTP_Responses;
