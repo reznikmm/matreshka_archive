@@ -69,6 +69,8 @@ procedure UAFLEX.Run
    Scanner : League.Strings.Universal_String;
    Success : out Boolean)
 is
+   use type League.Strings.Universal_String;
+
    procedure Each_Condition (Cursor : Nodes.Start_Condition_Maps.Cursor);
    procedure Each
      (Name : League.Strings.Universal_String;
