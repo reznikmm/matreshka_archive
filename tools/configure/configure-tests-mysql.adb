@@ -201,6 +201,10 @@ package body Configure.Tests.MySQL is
 
                Last := Last + 1;
             end loop;
+
+            if First <= Output'Last then
+               Aux.Append (Output (First .. Last - 1));
+            end if;
          end if;
 
          return Aux;
