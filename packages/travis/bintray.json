@@ -16,7 +16,7 @@
     },
 
     "version": {
-        "name": "19.0-svn",
+        "name": "head-fc31",
         "desc": "This is a trunk version",
         "gpgSign": false
     },

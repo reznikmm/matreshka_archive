@@ -1,14 +1,12 @@
 --  EXPECTED OUTPUT:
---  { A: [ 1, 2, 3, 2 ],
---    _first: [ 1 ],
---    _last: [ 4 ],
---    _length: [ 4 ],
---    _offset: 0 }
---  { A: [ 1, 2, 1, 2 ],
---    _first: [ 1 ],
---    _last: [ 4 ],
---    _length: [ 4 ],
---    _offset: 0 }
+--  1
+--  2
+--  3
+--  2
+--  1
+--  2
+--  1
+--  2
 --  END OF EXPECTED OUTPUT
 --
 --  BIND LIST:
@@ -21,14 +19,22 @@
 with Consoles;
 procedure Slice is
    use Consoles;
+   procedure Log_Array (Text : Int_Array);
+
+   procedure Log_Array (Text : Int_Array) is
+   begin
+      for J in Text'Range loop
+         Console.Log (Text (J));
+      end loop;
+   end Log_Array;
    Test : Int_Matrix (1 .. 2);
 begin
    Test (1) (1 .. 2) := (1, 2);
    Test (1) (3 .. Test (1)'Last) := Test (1) (Test (1)'First .. 2);
    Test (2 .. 2) := Test (1 .. 1);
    Test (1) (3) := 3;
-   Console.Log (Test (1));
-   Console.Log (Test (2));
+   Log_Array (Test (1));
+   Log_Array (Test (2));
 end;
 
 package Consoles is
@@ -41,7 +47,7 @@ package Consoles is
 
    not overriding procedure Log
      (Self : not null access Console_Type;
-      Text : Int_Array)
+      Text : Integer)
      with Import     => True,
           Convention => JavaScript_Function,
           Link_Name  => "log";

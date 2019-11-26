@@ -3,7 +3,7 @@ RUN curl -o /etc/yum.repos.d/bintray-reznikmm-matreshka.repo \
  https://bintray.com/reznikmm/matreshka/rpm && \
     dnf --assumeyes install make && \
     dnf --assumeyes install rpmdevtools && \
-    dnf --enablerepo='updates-testing' --assumeyes install aws-devel && \
+    dnf --assumeyes install aws-devel && \
     dnf --assumeyes install mariadb-devel && \
     dnf --assumeyes install --repo bintray--reznikmm-matreshka libgnatutil-devel &&\
     dnf --assumeyes install --repo bintray--reznikmm-matreshka asis-devel &&\
