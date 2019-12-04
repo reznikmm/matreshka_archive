@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<web-app xmlns='http://forge.ada-ru.org/matreshka/xml/ns/spikedogdd'>
+  <library-name>hello_world</library-name>
+
+  <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-tag>SERVLETS.HELLO.HELLO_SERVLET</servlet-tag>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/count</url-pattern>
+  </servlet-mapping>
+
+</web-app>
