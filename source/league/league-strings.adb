@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -2514,7 +2514,7 @@ package body League.Strings is
                --  from reallocation of shared data in corner case.
 
                declare
-                  Old : not null Shared_String_Access := Destination;
+                  Old : Shared_String_Access := Destination;
 
                begin
                   Destination := Allocate (Destination.Unused + 2);

@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -148,7 +148,7 @@ package body Matreshka.JSON_Types is
    ------------
 
    procedure Mutate (Self : in out not null Shared_JSON_Array_Access) is
-      Source : not null Shared_JSON_Array_Access := Self;
+      Source : Shared_JSON_Array_Access := Self;
 
    begin
       if Self = Empty_Shared_JSON_Array'Access
@@ -174,7 +174,7 @@ package body Matreshka.JSON_Types is
    ------------
 
    procedure Mutate (Self : in out not null Shared_JSON_Object_Access) is
-      Source : not null Shared_JSON_Object_Access := Self;
+      Source : Shared_JSON_Object_Access := Self;
 
    begin
       if Self = Empty_Shared_JSON_Object'Access

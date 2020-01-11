@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2010-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2010-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -77,7 +77,7 @@ package body Matreshka.Internals.Strings.Operations is
 
       if not Can_Be_Reused (Self, Next_Unused) then
          declare
-            Old : not null Shared_String_Access := Self;
+            Old : Shared_String_Access := Self;
 
          begin
             Self := Allocate (Next_Unused);
@@ -105,7 +105,7 @@ package body Matreshka.Internals.Strings.Operations is
     (Self : in out not null Shared_String_Access;
      Item : Shared_String_Access)
    is
-      Source : not null Shared_String_Access := Self;
+      Source : Shared_String_Access := Self;
       Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
    begin
@@ -119,9 +119,9 @@ package body Matreshka.Internals.Strings.Operations is
          null;
 
       elsif Self.Unused = 0 then
-         Dereference (Self);
          Self := Item;
          Reference (Self);
+         Dereference (Source);
 
       else
          if not Can_Be_Reused (Self, Size) then
@@ -167,8 +167,13 @@ package body Matreshka.Internals.Strings.Operations is
 
       else
          if not Can_Be_Reused (Self, Size) then
-            Dereference (Self);
-            Self := Allocate (Size);
+            declare
+               Old : Shared_String_Access := Self;
+
+            begin
+               Self := Allocate (Size);
+               Dereference (Old);
+            end;
 
          else
             Free (Self.Index_Map);
@@ -190,7 +195,7 @@ package body Matreshka.Internals.Strings.Operations is
     (Target : in out not null Shared_String_Access;
      Code   : Matreshka.Internals.Unicode.Code_Point)
    is
-      Source   : not null Shared_String_Access := Target;
+      Source   : Shared_String_Access := Target;
       Position : Utf16_String_Index := 0;
       Offset   : Utf16_String_Index;
 
@@ -253,7 +258,7 @@ package body Matreshka.Internals.Strings.Operations is
     (Target : in out not null Shared_String_Access;
      Item   : Shared_String_Access)
    is
-      Source : not null Shared_String_Access := Target;
+      Source : Shared_String_Access := Target;
       Size   : constant Utf16_String_Index := Source.Unused + Item.Unused;
 
    begin
@@ -265,9 +270,9 @@ package body Matreshka.Internals.Strings.Operations is
       elsif Source.Unused = 0 then
          --  Source string is empty, share data of prepended string.
 
-         Dereference (Target);
          Reference (Item);
          Target := Item;
+         Dereference (Source);
 
       else
          if not Can_Be_Reused (Source, Size) then
@@ -376,8 +381,13 @@ package body Matreshka.Internals.Strings.Operations is
          String_Handler.Fill_Null_Terminator (Self);
 
       else
-         Dereference (Self);
-         Self := Shared_Empty'Access;
+         declare
+            Old : Shared_String_Access := Self;
+
+         begin
+            Self := Shared_Empty'Access;
+            Dereference (Old);
+         end;
       end if;
    end Reset;
 
@@ -496,7 +506,7 @@ package body Matreshka.Internals.Strings.Operations is
 
       if not Can_Be_Reused (Self, Next_Unused) then
          declare
-            Old : not null Shared_String_Access := Self;
+            Old : Shared_String_Access := Self;
 
          begin
             Self := Allocate (Next_Unused);
