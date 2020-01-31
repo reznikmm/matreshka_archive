@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2018, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -647,7 +647,13 @@ package WebAPI.WebGL.Rendering_Contexts is
             Convention => JavaScript_Method,
             Link_Name  => "clearColor";
 
---    void clearDepth(GLclampf depth);
+   not overriding procedure Clear_Depth
+    (Self  : not null access WebGL_Rendering_Context;
+     Depth : GLclampf) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "clearDepth";
+
 --    void clearStencil(GLint s);
 --    void colorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
 
@@ -796,7 +802,15 @@ package WebAPI.WebGL.Rendering_Contexts is
             Convention => JavaScript_Method,
             Link_Name  => "drawArrays";
 
---    void drawElements(GLenum mode, GLsizei count, GLenum type, GLintptr offset);
+   not overriding procedure Draw_Elements
+    (Self      : not null access WebGL_Rendering_Context;
+     Mode      : GLenum;
+     Count     : GLsizei;
+     Data_Type : GLenum;
+     Offset    : GLintptr) is abstract
+       with Import     => True,
+            Convention => JavaScript_Method,
+            Link_Name  => "drawElements";
 
    not overriding procedure Enable
     (Self       : not null access WebGL_Rendering_Context;
