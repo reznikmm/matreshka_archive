@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<script>
+'use strict';
+
+let wss = location.protocol == 'https:' ? "wss" : "ws";
+let socket = new WebSocket(wss + "://localhost:8080/hello");
+
+socket.onopen = function(e) {
+  alert("[open] Connected");
+  alert("Send data to the server");
+  socket.send("My name is Jo");
+};
+
+socket.onmessage = function(event) {
+  alert(`[message] Got data: ${event.data}`);
+};
+
+socket.onclose = function(event) {
+  if (event.wasClean) {
+    alert(`[close] Clean disconnect, code=${event.code} reason=${event.reason}`);
+  } else {
+    alert('[close] Connection terminated');
+  }
+};
+
+socket.onerror = function(error) {
+  alert(`[error] ${error.message}`);
+};
+</script>

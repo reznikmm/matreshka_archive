@@ -1,6 +1,7 @@
 # Hello_World servlet
 
-This example demonstrates simples servlet that uses
+This example demonstrates simplest servlet
+with session support that uses
 sessions to keep information across requests.
 
 To run it just execute `make run` and open
