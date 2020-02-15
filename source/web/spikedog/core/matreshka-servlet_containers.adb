@@ -251,6 +251,9 @@ package body Matreshka.Servlet_Containers is
       elsif Path.Ends_With (".js") then
          return League.Strings.To_Universal_String ("text/javascript");
 
+      elsif Path.Ends_With (".mjs") then
+         return League.Strings.To_Universal_String ("text/javascript");
+
       elsif Path.Ends_With (".pdf") then
          return League.Strings.To_Universal_String ("application/pdf");
 
