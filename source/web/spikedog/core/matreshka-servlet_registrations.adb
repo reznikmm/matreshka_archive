@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2015, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,7 +61,8 @@ package body Matreshka.Servlet_Registrations is
    begin
       return Result : League.String_Vectors.Universal_String_Vector do
          for J in 1 .. URL_Patterns.Length loop
-            Self.Context.Add_Mapping (Self, URL_Patterns (J), Success);
+            Self.Context.Add_Mapping
+             (Self.all'Unchecked_Access, URL_Patterns (J), Success);
 
             if not Success then
                Result.Append (URL_Patterns (J));

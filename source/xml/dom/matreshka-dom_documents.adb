@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -85,7 +85,8 @@ package body Matreshka.DOM_Documents is
 
       procedure Initialize (Self : not null access Document_Node'Class) is
       begin
-         Matreshka.DOM_Nodes.Constructors.Initialize (Self, Self);
+         Matreshka.DOM_Nodes.Constructors.Initialize
+          (Self, Matreshka.DOM_Nodes.Document_Access (Self));
       end Initialize;
 
    end Constructors;
@@ -109,7 +110,7 @@ package body Matreshka.DOM_Documents is
               Matreshka.DOM_Attributes.Create);
 
       Parameters : aliased Matreshka.DOM_Attributes.Attribute_L2_Parameters
-        := (Document      => Self,
+        := (Document      => Matreshka.DOM_Nodes.Document_Access (Self),
             Namespace_URI => Namespace_URI,
             Prefix        => Prefix,
             Local_Name    => Local_Name);
@@ -176,7 +177,7 @@ package body Matreshka.DOM_Documents is
               Matreshka.DOM_Elements.Create);
 
       Parameters : aliased Matreshka.DOM_Elements.Element_L2_Parameters
-        := (Document      => Self,
+        := (Document      => Matreshka.DOM_Nodes.Document_Access (Self),
             Namespace_URI => Namespace_URI,
             Prefix        => Prefix,
             Local_Name    => Local_Name);
@@ -236,7 +237,9 @@ package body Matreshka.DOM_Documents is
 
    begin
       Matreshka.DOM_Texts.Constructors.Initialize
-       (Matreshka.DOM_Texts.Text_Node'Class (Node.all)'Access, Self, Data);
+       (Matreshka.DOM_Texts.Text_Node'Class (Node.all)'Access,
+        Matreshka.DOM_Nodes.Document_Access (Self),
+        Data);
 
       return XML.DOM.Texts.DOM_Text_Access (Node);
    end Create_Text_Node;

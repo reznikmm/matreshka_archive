@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -241,7 +241,8 @@ package body Matreshka.DOM_Elements is
       --  Append new attribute node to the list of element's attributes.
 
       Matreshka.DOM_Lists.Remove_From_Detached (New_Attribute);
-      Matreshka.DOM_Lists.Insert_Into_Attributes (Self, New_Attribute);
+      Matreshka.DOM_Lists.Insert_Into_Attributes
+       (Matreshka.DOM_Nodes.Element_Access (Self), New_Attribute);
 
       return XML.DOM.Attributes.DOM_Attribute_Access (Old_Attribute);
    end Set_Attribute_Node_NS;
