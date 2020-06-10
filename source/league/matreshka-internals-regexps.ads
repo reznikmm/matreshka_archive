@@ -218,7 +218,7 @@ package Matreshka.Internals.Regexps is
       --  Slices of captured data.
 
       Captures   : Shared_String_Array (0 .. Groups);
-      pragma Volatile (Captures);
+      --  pragma Volatile (Captures);
       --  Actual captured data.
    end record;
    --  Shared match is a results of the match of the string to pattern. When
