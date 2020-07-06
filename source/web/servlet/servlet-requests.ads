@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -59,6 +59,13 @@ package Servlet.Requests is
    type Servlet_Request is limited interface;
 
    type Servlet_Request_Access is access all Servlet_Request'Class;
+
+   not overriding function Get_Content_Type
+    (Self : Servlet_Request)
+       return League.Strings.Universal_String is abstract;
+   --  Returns the MIME type of the body of the request, or null if the type
+   --  is not known. For HTTP servlets, same as the value of the CGI variable
+   --  CONTENT_TYPE.
 
    not overriding function Get_Input_Stream
     (Self : Servlet_Request)

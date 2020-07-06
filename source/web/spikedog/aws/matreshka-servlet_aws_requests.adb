@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -65,6 +65,18 @@ package body Matreshka.Servlet_AWS_Requests is
    begin
       null;
    end Finalize;
+
+   ----------------------
+   -- Get_Content_Type --
+   ----------------------
+
+   overriding function Get_Content_Type
+    (Self : AWS_Servlet_Request) return League.Strings.Universal_String is
+   begin
+      return
+        League.Strings.From_UTF_8_String
+         (AWS.Status.Content_Type (Self.Request));
+   end Get_Content_Type;
 
    ----------------
    -- Get_Cookie --

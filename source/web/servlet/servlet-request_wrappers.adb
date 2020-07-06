@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -43,6 +43,16 @@
 ------------------------------------------------------------------------------
 
 package body Servlet.Request_Wrappers is
+
+   ----------------------
+   -- Get_Content_Type --
+   ----------------------
+
+   overriding function Get_Content_Type
+    (Self : Servlet_Request_Wrapper) return League.Strings.Universal_String is
+   begin
+      return Self.Request.Get_Content_Type;
+   end Get_Content_Type;
 
    ----------------------
    -- Get_Input_Stream --

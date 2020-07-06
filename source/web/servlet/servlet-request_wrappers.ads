@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,9 @@ package Servlet.Request_Wrappers is
    type Servlet_Request_Wrapper
     (Request : not null access Servlet.Requests.Servlet_Request'Class) is
        limited new Servlet.Requests.Servlet_Request with null record;
+
+   overriding function Get_Content_Type
+    (Self : Servlet_Request_Wrapper) return League.Strings.Universal_String;
 
    overriding function Get_Input_Stream
     (Self : Servlet_Request_Wrapper)

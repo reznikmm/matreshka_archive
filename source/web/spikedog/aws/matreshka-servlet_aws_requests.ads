@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2016, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -112,6 +112,12 @@ private
       Data_Storage : aliased Internal_Cache;
       Body_Stream  : aliased Body_Stream_Type (AWS_Servlet_Request'Access);
    end record;
+
+   overriding function Get_Content_Type
+    (Self : AWS_Servlet_Request) return League.Strings.Universal_String;
+   --  Returns the MIME type of the body of the request, or null if the type
+   --  is not known. For HTTP servlets, same as the value of the CGI variable
+   --  CONTENT_TYPE.
 
    overriding function Get_Cookies
     (Self : AWS_Servlet_Request)
