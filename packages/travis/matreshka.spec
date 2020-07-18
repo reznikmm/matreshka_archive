@@ -14,9 +14,9 @@ URL:        http://forge.ada-ru.org/matreshka
 Source0:    matreshka.tar.gz
 Patch2:     %{name}-gprinstall.patch
 BuildRequires:   gcc-gnat
-BuildRequires:   fedora-gnat-project-common  >= 3 
+BuildRequires:   fedora-gnat-project-common  >= 3
 BuildRequires:   chrpath
-BuildRequires:   gprbuild valgrind
+BuildRequires:   gprbuild
 BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
 BuildRequires:   aws-devel
 BuildRequires:   asis-devel
