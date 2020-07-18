@@ -1,7 +1,7 @@
 %undefine _hardened_build
 %global with_amf 0
 %define _gprdir %_GNAT_project_dir
-%define major 19
+%define major 20
 
 Name:       matreshka
 Version:    %{major}.0
@@ -808,6 +808,9 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_gprdir}/manifests/webapi
 
 %changelog
+* Sat Jul 18 2020 Maxim Reznik <reznikmm@gmail.com> - 20.0-1
+- Update to 20.0 version
+
 * Sat Oct 20 2018 Maxim Reznik <reznikmm@gmail.com> - 19.0-1
 - Update to 19.0 version
 

@@ -16,7 +16,7 @@
     },
 
     "version": {
-        "name": "head-fc31",
+        "name": "head-fc32",
         "desc": "This is a trunk version",
         "gpgSign": false
     },
