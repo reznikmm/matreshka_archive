@@ -12,11 +12,10 @@ License:    BSD
 URL:        http://forge.ada-ru.org/matreshka
 ### Direct download is not availeble
 Source0:    matreshka.tar.gz
-Patch2:     %{name}-gprinstall.patch
 BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3
 BuildRequires:   chrpath
-BuildRequires:   gprbuild
+BuildRequires:   gprbuild valgrind
 BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
 BuildRequires:   aws-devel
 BuildRequires:   asis-devel
@@ -450,7 +449,6 @@ Requires:   asis%{?_isa}
 %prep 
 %setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
-%patch2 -p1
 
 %build
 make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
@@ -470,7 +468,7 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
 export NODE_PATH=/usr/lib/node_modules
 # FIXME http://forge.ada-ru.org/matreshka/ticket/482#ticket
 %ifnarch ppc64le
-make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check
+make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" JS_BEAUTIFY=cat check
 %endif
 ## Delete compiled python files 
 rm -f %{buildroot}/%{_datadir}/gdb/python/matreshka/matreshka.py?
