@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -61,6 +61,8 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
    Rewriter : SQL_Parameter_Rewriters.PostgreSQL.PostgreSQL_Parameter_Rewriter;
    --  SQL statement parameter rewriter.
 
+   Date_Format      : constant League.Strings.Universal_String
+     := League.Strings.To_Universal_String ("yyyy-MM-dd");
    Timestamp_Format : constant League.Strings.Universal_String
      := League.Strings.To_Universal_String ("yyyy-MM-dd HH:mm:ss.SSSSSS");
    --  PostgreSQL supports up to 6 digits in fractional seconds, while
@@ -138,6 +140,30 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
               Interfaces.C.Strings.New_String
                (League.Holders.Universal_Float'Image
                  (League.Holders.Element (Value)));
+
+         elsif League.Holders.Is_Date (Value) then
+            --  There was no formatting subprogram available for Date type,
+            --  thus, convert it into Date_Time.
+
+            declare
+               Date_Value      : constant League.Calendars.Date :=
+                 League.Holders.Element (Value);
+               Date_Time_Value : constant League.Calendars.Date_Time :=
+                 League.Calendars.ISO_8601.Create
+                  (League.Calendars.ISO_8601.Year (Date_Value),
+                   League.Calendars.ISO_8601.Month (Date_Value),
+                   League.Calendars.ISO_8601.Day (Date_Value),
+                   0,
+                   0,
+                   0,
+                   0);
+
+            begin
+               Params (J) :=
+                 Interfaces.C.Strings.New_String
+                  (League.Calendars.ISO_8601.Image
+                    (Date_Format, Date_Time_Value).To_UTF_8_String);
+            end;
 
          elsif League.Holders.Is_Date_Time (Value) then
             Params (J) :=
@@ -458,6 +484,37 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Queries is
                begin
                   League.Holders.Replace_Element
                    (Value, League.Holders.Universal_Float'Value (Image));
+               end;
+            end if;
+
+         when Databases.Date_Data =>
+            --  Process DATE data.
+
+            League.Holders.Set_Tag (Value, League.Holders.Date_Tag);
+
+            if PQgetisnull (Self.Result, Self.Row, Column) = 0 then
+               declare
+                  Image : constant String
+                    := Interfaces.C.Strings.Value
+                        (PQgetvalue (Self.Result, Self.Row, Column));
+                  Year  : League.Calendars.ISO_8601.Year_Number;
+                  Month : League.Calendars.ISO_8601.Month_Number;
+                  Day   : League.Calendars.ISO_8601.Day_Number;
+
+               begin
+                  Year :=
+                    League.Calendars.ISO_8601.Year_Number'Value
+                     (Image (1 .. 4));
+                  Month :=
+                    League.Calendars.ISO_8601.Month_Number'Value
+                     (Image (6 .. 7));
+                  Day :=
+                    League.Calendars.ISO_8601.Day_Number'Value
+                     (Image (9 .. 10));
+
+                  League.Holders.Replace_Element
+                   (Value,
+                    League.Calendars.ISO_8601.Create (Year, Month, Day));
                end;
             end if;
 

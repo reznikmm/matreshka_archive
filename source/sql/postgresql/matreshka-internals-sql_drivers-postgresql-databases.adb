@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2020, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -190,6 +190,9 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
 
             elsif Name = "varchar" then
                Self.Type_Map.Insert (Type_Oid, Text_Data);
+
+            elsif Name = "date" then
+               Self.Type_Map.Insert (Type_Oid, Date_Data);
 
             elsif Name = "timestamp" then
                Self.Type_Map.Insert (Type_Oid, Timestamp_Data);
