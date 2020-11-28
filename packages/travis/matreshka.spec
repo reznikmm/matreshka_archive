@@ -20,7 +20,7 @@ BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
 BuildRequires:   aws-devel
 BuildRequires:   asis-devel
 # We need node.js for testing a2js
-BuildRequires:   nodejs nodejs-requirejs
+BuildRequires:   nodejs
 
 # gprbuild only available on these:
 ExclusiveArch: %GPRbuild_arches
@@ -446,11 +446,15 @@ Requires:   asis%{?_isa}
 %description a2js
 %{summary}
 
-%prep 
+%prep
 %setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
 
 %build
+# This package triggers a fault in the Ada compiler when LTO is enable.  We
+# see the same failure in GtkAda and GtkAda3.  Disable LTO for now.
+%define _lto_cflags %{nil}
+
 make config  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %if %{with_amf}
 %configure
@@ -465,7 +469,8 @@ make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 ## find libs without RPATH, Fedora specific
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
 ## To find installed nodejs modules by default
-export NODE_PATH=/usr/lib/node_modules
+npm install requirejs
+export NODE_PATH=$PWD/node_modules
 # FIXME http://forge.ada-ru.org/matreshka/ticket/482#ticket
 %ifnarch ppc64le
 make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" JS_BEAUTIFY=cat check
