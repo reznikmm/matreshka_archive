@@ -53,6 +53,7 @@ package body XML.Templates.Processors.Parser is
     (Token_Identifier,
      Token_Full_Stop,
      Token_Equals,
+     Token_Not_Equals,
      Token_Is,
      Token_Of,
      Token_Not,
@@ -156,8 +157,12 @@ package body XML.Templates.Processors.Parser is
                   Success := False;
                end if;
 
-            when Token_Equals =>
+            when Token_Equals | Token_Not_Equals =>
                Left := Holder;
+
+               if Scanner.Token = Token_Not_Equals then
+                  Invert := True;
+               end if;
 
                Scanner.Evaluate_Simple_Expression (Context, Holder, Success);
 
@@ -392,6 +397,17 @@ package body XML.Templates.Processors.Parser is
       elsif Self.Text (Self.First) = League.Characters.Latin.Equals_Sign then
          Self.Current := Self.Current + 1;
          Self.Token := Token_Equals;
+
+      elsif Self.Text (Self.First) = League.Characters.Latin.Solidus then
+         Self.Current := Self.Current + 1;
+
+         if Self.Text (Self.Current) = League.Characters.Latin.Equals_Sign then
+            Self.Current := Self.Current + 1;
+            Self.Token := Token_Not_Equals;
+
+         else
+            raise Constraint_Error with "Syntax error";
+         end if;
 
       else
 
