@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013-2014, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2013-2021, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -52,6 +52,7 @@ package body XML.Templates.Processors.Parser is
    type Token_Kinds is
     (Token_Identifier,
      Token_Full_Stop,
+     Token_Equals,
      Token_Is,
      Token_Of,
      Token_Not,
@@ -95,10 +96,12 @@ package body XML.Templates.Processors.Parser is
      Value   : out Boolean;
      Success : out Boolean)
    is
-      Scanner   : Scanner_Type;
-      Holder    : League.Holders.Holder;
-      Invert    : Boolean := False;
-      Save      : Positive := 1;  --  Position of scanner after last 'not'
+      Scanner : Scanner_Type;
+      Left    : League.Holders.Holder;
+      Holder  : League.Holders.Holder;
+      Invert  : Boolean := False;
+      Save    : Positive := 1;  --  Position of scanner after last 'not'
+
    begin
       Scanner.Text := Text;
 
@@ -151,6 +154,32 @@ package body XML.Templates.Processors.Parser is
 
                if Scanner.Next_Token /= Token_End_Of_Expression then
                   Success := False;
+               end if;
+
+            when Token_Equals =>
+               Left := Holder;
+
+               Scanner.Evaluate_Simple_Expression (Context, Holder, Success);
+
+               if Success then
+                  if League.Holders.Is_Abstract_Integer (Left)
+                    and then League.Holders.Is_Abstract_Integer (Holder)
+                  then
+                     declare
+                        use type League.Holders.Universal_Integer;
+
+                        L : constant League.Holders.Universal_Integer
+                          := League.Holders.Element (Left);
+                        R : constant League.Holders.Universal_Integer
+                          := League.Holders.Element (Holder);
+
+                     begin
+                        Value := L = R;
+                     end;
+
+                  else
+                     Success := False;
+                  end if;
                end if;
 
             when others =>
@@ -359,6 +388,10 @@ package body XML.Templates.Processors.Parser is
       elsif Self.Text (Self.First) = League.Characters.Latin.Full_Stop then
          Self.Current := Self.Current + 1;
          Self.Token := Token_Full_Stop;
+
+      elsif Self.Text (Self.First) = League.Characters.Latin.Equals_Sign then
+         Self.Current := Self.Current + 1;
+         Self.Token := Token_Equals;
 
       else
 
