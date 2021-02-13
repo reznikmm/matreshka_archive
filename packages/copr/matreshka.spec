@@ -26,6 +26,7 @@ BuildRequires:   aws-devel
 BuildRequires:   asis-devel
 # We need node.js for testing a2js
 BuildRequires:   nodejs
+BuildRequires:   npm
 
 # gprbuild only available on these:
 ExclusiveArch: %GPRbuild_arches
