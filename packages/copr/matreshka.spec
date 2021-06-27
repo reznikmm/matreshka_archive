@@ -460,13 +460,7 @@ make  %{?_smp_mflags} GPRBUILD_FLAGS="%Gnatmake_optflags"
 %check 
 ## find libs without RPATH, Fedora specific
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}/:$LD_LIBRARY_PATH"
-## To find installed nodejs modules by default
-npm install requirejs
-export NODE_PATH=$PWD/node_modules
-# FIXME http://forge.ada-ru.org/matreshka/ticket/482#ticket
-%ifnarch ppc64le
-make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" JS_BEAUTIFY=cat check
-%endif
+make %{?_smp_mflags} GNAT_OPTFLAGS="%{GNAT_optflags}" check
 ## Delete compiled python files 
 rm -f %{buildroot}/%{_datadir}/gdb/python/matreshka/matreshka.py?
 
