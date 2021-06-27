@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2014-2017, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2014-2021, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -124,7 +124,7 @@ package body Matreshka.Servlet_Dispatchers is
               := URL.Split ('/', League.Strings.Skip_Empty);
             Index      : Positive          := 1;
             Current    : Dispatcher_Access;
-            Parent     : Dispatcher_Access := Self;
+            Parent     : Dispatcher_Access := Self.all'Unchecked_Access;
             Aux        : Dispatcher_Access;
             Position   : Dispatcher_Maps.Cursor;
 
