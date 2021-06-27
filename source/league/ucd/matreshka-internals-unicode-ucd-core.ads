@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2009-2012, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2009-2021, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -41,10 +41,6 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
-
-pragma Restrictions (No_Elaboration_Code);
---  GNAT: enforce generation of preinitialized data section instead of
---  generation of elaboration code.
 
 with Matreshka.Internals.Unicode.Ucd.Core_0000;
 with Matreshka.Internals.Unicode.Ucd.Core_0001;
