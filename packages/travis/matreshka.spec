@@ -18,9 +18,6 @@ BuildRequires:   chrpath
 BuildRequires:   gprbuild valgrind
 BuildRequires:   postgresql-devel sqlite-devel mariadb-devel
 BuildRequires:   aws-devel
-BuildRequires:   asis-devel
-# We need node.js for testing a2js
-BuildRequires:   nodejs
 
 # gprbuild only available on these:
 ExclusiveArch: %GPRbuild_arches
@@ -436,16 +433,6 @@ Requires:   fedora-gnat-project-common  >= 2
 %description servlet-devel
 %{summary}
 
-%package a2js
-Summary:    Ada to JavaScript translator and WebAPI binding
-License:    BSD
-Group:      Development/Libraries
-Requires:   %{name}-devel%{?_isa} = %{version}-%{release}
-Requires:   asis%{?_isa}
-
-%description a2js
-%{summary}
-
 %prep
 %setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
@@ -801,16 +788,10 @@ chrpath --delete %{buildroot}%{_libdir}/lib*
 %{_libdir}/%{name}/servlet/libmatreshka-servlet-%{rtl_version}.so.%{version}
 %{_libdir}/libmatreshka-servlet-%{rtl_version}.so.%{version}
 
-%files a2js
-%{_bindir}/a2js
-%{_includedir}/%{name}/webapi
-%{_libdir}/%{name}/webapi
-%{_datadir}/%{name}/a2js
-%{_datadir}/gprconfig/*.xml
-%{_gprdir}/%{name}_webapi.gpr
-%{_gprdir}/manifests/webapi
-
 %changelog
+* Sun Jun 27 2021 Maxim Reznik <reznikmm@gmail.com> - 20.0-2
+- Drop a2js package
+
 * Sat Jul 18 2020 Maxim Reznik <reznikmm@gmail.com> - 20.0-1
 - Update to 20.0 version
 

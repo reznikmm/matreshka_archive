@@ -12,17 +12,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: matreshka
-      - uses: reznikmm/fedora-ada-action@v3
+      - uses: reznikmm/fedora-ada-action@master
         with:
           spec: matreshka/packages/travis/matreshka.spec
-      - name: Upload tar-ball to Bintray
-        uses: reznikmm/upload-bintray-action@v3
-        with:
-          subject: reznikmm
-          repository: matreshka
-          package: matreshka
-          version: head-fc33
-          sourcePath: x86_64/*
-          override: 1
-          username: reznikmm
-          apiKey: ${{secrets.BINTRAY_API_KEY}}
