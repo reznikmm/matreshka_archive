@@ -17,6 +17,8 @@ TOKEN_TRANSFORMER = ../../../tools/token_transformer/token_transformer
 PARSER_TRANSFORMER = ../../../tools/parser_transformer/parser_transformer
 SCANNER_TRANSFORMER = ../../../tools/scanner_transformer/scanner_transformer
 
+.PHONY: config
+
 all: Makefile.config
 	${MAKE} -f Makefile.build SMP_MFLAGS="$(SMP_MFLAGS)"
 
