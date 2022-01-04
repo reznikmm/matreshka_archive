@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2022, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -879,6 +879,10 @@ package body XML.SAX.HTML5_Writers is
             null;
 
          when Foreign =>
+            if Self.State.Last_Unquoted then
+               Self.Output.Put (' ');
+            end if;
+
             Self.Output.Put ("/>");
             Foreign_Closed := True;
 
@@ -1430,7 +1434,7 @@ package body XML.SAX.HTML5_Writers is
 
    begin
       Self.Diagnosis.Clear;
-      Self.State := (Element_Kind => Normal);
+      Self.State := (Element_Kind => Normal, Last_Unquoted => False);
       Self.Omit            := None;
       Self.History         := None;
       Self.Stack.Clear;
@@ -1883,6 +1887,8 @@ package body XML.SAX.HTML5_Writers is
          Syntax        : Attribute_Value_Syntax;
 
       begin
+         Self.State.Last_Unquoted := False;
+
          Escape_Attribute_Value (Value, Escaped_Value, Syntax);
 
          if Syntax = Empty
@@ -1893,6 +1899,7 @@ package body XML.SAX.HTML5_Writers is
             Self.Output.Put (Qualified_Name);
 
          elsif Syntax = Unquoted then
+            Self.State.Last_Unquoted := True;
             Self.Output.Put (' ');
             Self.Output.Put (Qualified_Name);
             Self.Output.Put ('=');
@@ -1922,6 +1929,8 @@ package body XML.SAX.HTML5_Writers is
       Value          : League.Strings.Universal_String;
 
    begin
+      Self.State.Last_Unquoted := False;
+
       for J in 1 .. Attributes.Length loop
          Namespace_URI  := Attributes.Namespace_URI (J);
          Local_Name     := Attributes.Local_Name (J);

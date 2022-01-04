@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2013, Vadim Godunko <vgodunko@gmail.com>                     --
+-- Copyright © 2013-2022, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -120,7 +120,10 @@ private
    --  corresponds to previously omited tag.
 
    type Writer_State is record
-      Element_Kind : Element_Kinds := Normal;
+      Element_Kind  : Element_Kinds := Normal;
+      Last_Unquoted : Boolean       := False;
+      --  'unquoted' syntax is used for the last attribute of the element,
+      --  it is used to generate whitespace before SOLIDUS ('/')
    end record;
 
    package State_Stacks is
