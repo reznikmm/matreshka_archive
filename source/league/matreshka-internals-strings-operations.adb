@@ -81,7 +81,7 @@ package body Matreshka.Internals.Strings.Operations is
 
          begin
             Self := Allocate (Next_Unused);
-            Self.Value (Old.Value'Range) := Old.Value;
+            Self.Value (0 .. Old.Unused) := Old.Value (0 .. Old.Unused);
             Self.Unused := Old.Unused;
             Self.Length := Old.Length;
 
