@@ -7,16 +7,14 @@
 %define ver %{major}.0
 
 Name:       matreshka
-#Name:       {{{ git_dir_name }}}
-Version:    {{{ git_dir_version lead=20 }}}
+Version:    22
 Release:    svn%{?dist}
 Summary:    Set of Ada libraries to help to develop information systems
 Group:      System Environment/Libraries
 License:    BSD
-VCS:        {{{ git_dir_vcs }}}
 URL:        http://forge.ada-ru.org/matreshka
 ### Direct download is not availeble
-Source:     {{{ git_dir_pack }}}
+Source0:    matreshka.tar.gz
 BuildRequires:   gcc-gnat
 BuildRequires:   fedora-gnat-project-common  >= 3
 BuildRequires:   chrpath
@@ -439,7 +437,7 @@ Requires:   fedora-gnat-project-common  >= 2
 %{summary}
 
 %prep
-{{{ git_dir_setup_macro }}}
+%setup -q -n %{name}
 %define rtl_version %(gcc -v 2>&1 | grep -P 'gcc version'  | awk '{print $3}' | cut -d '.' -f 1-2)
 
 %build
