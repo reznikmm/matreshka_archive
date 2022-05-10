@@ -8,7 +8,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 --                                                                          --
--- Copyright © 2011-2020, Vadim Godunko <vgodunko@gmail.com>                --
+-- Copyright © 2011-2022, Vadim Godunko <vgodunko@gmail.com>                --
 -- All rights reserved.                                                     --
 --                                                                          --
 -- Redistribution and use in source and binary forms, with or without       --
@@ -185,7 +185,7 @@ package body Matreshka.Internals.SQL_Drivers.PostgreSQL.Databases is
             if Name = "int4" then
                Self.Type_Map.Insert (Type_Oid, Integer_Data);
 
-            elsif Name = "float8" then
+            elsif Name in "float8" | "float4" then
                Self.Type_Map.Insert (Type_Oid, Float_Data);
 
             elsif Name = "varchar" then
