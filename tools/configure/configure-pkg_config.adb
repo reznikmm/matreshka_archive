@@ -107,7 +107,7 @@ package body Configure.Pkg_Config is
    is
       Status : aliased Integer;
       Output : constant String :=
-        Get_Command_Output
+        Get_Trimmed_Command_Output
          ("pkg-config",
           (1 => new String'("--libs"),
            2 => new String'(Package_Name)),
@@ -163,7 +163,7 @@ package body Configure.Pkg_Config is
       declare
          Status : aliased Integer;
          Output : constant String :=
-           Get_Command_Output
+           Get_Trimmed_Command_Output
             ("pkg-config",
              (1 => new String'("--modversion"),
               2 => new String'(Package_Name)),
@@ -197,7 +197,7 @@ package body Configure.Pkg_Config is
       declare
          Status : aliased Integer;
          Output : constant String :=
-           Get_Command_Output
+           Get_Trimmed_Command_Output
             ("pkg-config",
              (1 => new String'("--modversion"),
               2 => new String'("--atleast-version=" & Expected),

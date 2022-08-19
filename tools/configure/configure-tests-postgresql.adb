@@ -106,7 +106,7 @@ package body Configure.Tests.PostgreSQL is
          Status : aliased Integer;
          Output : constant String :=
            Trim
-            (Get_Command_Output
+            (Get_Trimmed_Command_Output
               ("pg_config",
                 (1 => new String'("--libdir")),
                  "",

@@ -46,6 +46,8 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Containers.Vectors;
 with Ada.Strings.Unbounded.Hash;
 
+with GNAT.OS_Lib;
+
 package Configure is
 
    use Ada.Strings.Unbounded;
@@ -116,6 +118,15 @@ package Configure is
    --  Converts '\' to '/' to be compatible with sh.
    --
    --  XXX Should be removed after implementation of own install utility.
+
+   function Get_Trimmed_Command_Output
+     (Command    : String;
+      Arguments  : GNAT.OS_Lib.Argument_List;
+      Input      : String;
+      Status     : not null access Integer;
+      Err_To_Out : Boolean := False) return String;
+   --  Replacement for GNAT.Expect.Get_Command_Output which trims CR, LF from
+   --  the result.
 
    Internal_Error : exception;
 

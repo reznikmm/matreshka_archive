@@ -41,11 +41,14 @@
 ------------------------------------------------------------------------------
 --  $Revision$ $Date$
 ------------------------------------------------------------------------------
+with Ada.Characters.Latin_1;
 with Ada.Command_Line;
 with Ada.Directories;
 with Ada.Strings.Fixed;
 with Ada.Strings.Maps;
 with Ada.Text_IO;
+
+with GNAT.Expect;
 
 package body Configure is
 
@@ -82,6 +85,39 @@ package body Configure is
 
       raise Internal_Error;
    end Fatal_Error;
+
+   --------------------------------
+   -- Get_Trimmed_Command_Output --
+   --------------------------------
+
+   function Get_Trimmed_Command_Output
+     (Command    : String;
+      Arguments  : GNAT.OS_Lib.Argument_List;
+      Input      : String;
+      Status     : not null access Integer;
+      Err_To_Out : Boolean := False) return String
+   is
+      Output : constant String := GNAT.Expect.Get_Command_Output
+        (Command, Arguments, Input, Status, Err_To_Out);
+
+      First  : Positive := Output'First;
+      Last   : Natural := Output'Last;
+
+   begin
+      while First <= Last and then Output (First) in
+        Ada.Characters.Latin_1.CR | Ada.Characters.Latin_1.LF
+      loop
+         First := First + 1;
+      end loop;
+
+      while First <= Last and then Output (Last) in
+        Ada.Characters.Latin_1.CR | Ada.Characters.Latin_1.LF
+      loop
+         Last := Last - 1;
+      end loop;
+
+      return Output (First .. Last);
+   end Get_Trimmed_Command_Output;
 
    -------------------
    -- Has_Parameter --
