@@ -73,9 +73,13 @@ package body League.Calendars.Ada_Conversions is
 
    begin
       Ada.Calendar.Split (UTC, Year, Month, Day, Seconds);
-      Whole_Seconds := Integer (Seconds - 0.5);
+      Whole_Seconds := Integer (Seconds);
+
       --  Conversion to integer uses mathematical rounding, so we need to
-      --  subtract by 0.5 to extract whole number of seconds.
+      --  correct it to extract whole number of seconds.
+      if Duration (Whole_Seconds) > Seconds then
+         Whole_Seconds := Whole_Seconds - 1;
+      end if;
 
       Hour :=
         League.Calendars.ISO_8601.Hour_Number (Whole_Seconds / 3_600);
