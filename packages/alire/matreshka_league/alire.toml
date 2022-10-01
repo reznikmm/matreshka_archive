@@ -1,0 +1,33 @@
+description = "League - universal string library. Part of Matreshka framework"
+name = "matreshka_league"
+version = "22.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["build_matreshka_league.gpr"]
+tags = ["unicode", "xml", "sax", "json", "encoding", "regexp", "time"]
+
+[configuration]
+disabled = true
+
+# Actual project files are locates in gnat/
+[environment.GPR_PROJECT_PATH]
+append = "${CRATE_ROOT}/../../../gnat"
+
+# Update PATH on Windows to help it find .DLL files
+[environment.'case(os)'.windows.PATH]
+append = "${CRATE_ROOT}/../../../.libs"
+
+[[actions]]
+type = "post-fetch"
+command = ["make", "-C", "../../..", "reconfig"]
+
+[[depends-on]]
+make = "any"
+
+[depends-on.'case(os)'.macos]
+gnat = "<2000"
+# GNAT CE 2020 miss TLS support, alire GCC 11 works fine
+

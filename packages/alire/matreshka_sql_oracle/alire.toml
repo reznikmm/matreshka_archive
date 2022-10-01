@@ -1,0 +1,19 @@
+description = "Oracle DB binding for Ada"
+name = "matreshka_sql_oracle"
+version = "22.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["../../../gnat/matreshka_sql_oracle.gpr"]
+tags = ["sql", "database", "db", "oracle"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+libclntsh = "any"
+matreshka_league = "22.0.0"
+matreshka_sql = "22.0.0"
+

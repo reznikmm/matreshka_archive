@@ -1,0 +1,5 @@
+with "matreshka_fastcgi.gpr";
+
+project Build_Matreshka_Fastcgi is
+   for Source_Dirs use ();
+end Build_Matreshka_Fastcgi;

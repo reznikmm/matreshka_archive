@@ -1,0 +1,19 @@
+description = "MySQL binding for Ada"
+name = "matreshka_sql_mysql"
+version = "22.0.0"
+website = "https://forge.ada-ru.org/matreshka"
+authors = ["Vadim Godunko"]
+licenses = "BSD-3-Clause"
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>", "Maxim Reznik <reznikmm@gmail.com>"]
+maintainers-logins = ["godunko", "reznikmm"]
+project-files = ["../../../gnat/matreshka_sql_mysql.gpr"]
+tags = ["sql", "database", "db", "mysql", "mariadb"]
+
+[configuration]
+disabled = true
+
+[[depends-on]]
+libmysqlclient = "any"
+matreshka_league = "22.0.0"
+matreshka_sql = "22.0.0"
+

@@ -1,0 +1,5 @@
+with "matreshka_amf_ocl.gpr";
+
+project Build_Matreshka_AMF_OCL is
+   for Source_Dirs use ();
+end Build_Matreshka_AMF_OCL;

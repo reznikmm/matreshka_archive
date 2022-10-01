@@ -1,0 +1,5 @@
+with "matreshka_league.gpr";
+
+project Build_Matreshka_League is
+   for Source_Dirs use ();
+end Build_Matreshka_League;
