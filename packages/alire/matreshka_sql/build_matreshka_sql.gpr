@@ -1,0 +1,5 @@
+with "matreshka_sql.gpr";
+
+project Build_Matreshka_SQL is
+   for Source_Dirs use ();
+end Build_Matreshka_SQL;

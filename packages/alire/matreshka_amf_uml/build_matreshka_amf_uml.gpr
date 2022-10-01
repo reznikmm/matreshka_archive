@@ -1,0 +1,5 @@
+with "matreshka_amf_uml.gpr";
+
+project Build_Matreshka_AMF_UML is
+   for Source_Dirs use ();
+end Build_Matreshka_AMF_UML;

@@ -1,0 +1,5 @@
+with "matreshka_sql_sqlite3.gpr";
+
+project Build_Matreshka_SQL_SQLite3 is
+   for Source_Dirs use ();
+end Build_Matreshka_SQL_SQLite3;

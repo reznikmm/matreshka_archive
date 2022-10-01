@@ -1,0 +1,5 @@
+with "matreshka_amf_dd.gpr";
+
+project Build_Matreshka_AMF_DD is
+   for Source_Dirs use ();
+end Build_Matreshka_AMF_DD;

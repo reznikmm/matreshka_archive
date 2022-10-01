@@ -1,0 +1,5 @@
+with "matreshka_amf_mofext.gpr";
+
+project Build_Matreshka_AMF_MOFExt is
+   for Source_Dirs use ();
+end Build_Matreshka_AMF_MOFExt;

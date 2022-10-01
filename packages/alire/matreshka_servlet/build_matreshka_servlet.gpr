@@ -1,0 +1,5 @@
+with "matreshka_servlet.gpr";
+
+project Build_Matreshka_Servlet is
+   for Source_Dirs use ();
+end Build_Matreshka_Servlet;

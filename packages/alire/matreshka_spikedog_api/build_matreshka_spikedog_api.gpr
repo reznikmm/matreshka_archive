@@ -1,0 +1,5 @@
+with "matreshka_spikedog_api.gpr";
+
+project Build_Matreshka_SpikeDog_API is
+   for Source_Dirs use ();
+end Build_Matreshka_SpikeDog_API;

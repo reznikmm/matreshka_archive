@@ -1,0 +1,5 @@
+with "matreshka_soap.gpr";
+
+project Build_Matreshka_Soap is
+   for Source_Dirs use ();
+end Build_Matreshka_Soap;
